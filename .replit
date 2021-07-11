@@ -1,2 +1,2 @@
 language = "python3"
-run = "git pull origin master; python main.py"
+run = "git reset --hard; git reset --hard origin/master; python main.py"

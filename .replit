@@ -1,2 +1,2 @@
 language = "python3"
-run = "killall python; killall python3; killall prybar-python3 ; git reset --hard; git reset --hard origin/master; python main.py"
+run = "killall python; killall python3; killall prybar-python3 ; git reset --hard; git reset --hard origin/master; git clean -xffd; git pull; python main.py"

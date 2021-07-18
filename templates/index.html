@@ -31,7 +31,6 @@
                 --bs-font-sans-serif: system-ui !important;
                 --bs-font-monospace: system-ui !important;
             }
-            
             .listscroll {
                 max-height: 500px;
                 width: 800px;
@@ -39,17 +38,16 @@
                 overflow: scroll;
                 -webkit-overflow-scrolling: touch;
             }
-            
             body, b, span, th, td {
                 background-color: #191f28 !important;
                 color: #eee;
             }
-            
             b, span, th, td {
                 background-color: #191f28 !important;
                 color: #eee;
                 text-align: center;
             }
+			
             
             thead, tr, td, th {
                 border: 5px solid rgb(141, 197, 63) !important;
@@ -58,11 +56,15 @@
                 height: 100%;
                 max-height: 430px;
             }
+			
+			
             .progress-bar {
                 color: initial !important;
                 font-size: initial !important;
                 bottom
             }
+			
+			
             .bar-free {
                 background-color: limegreen !important;
             }
@@ -72,6 +74,7 @@
             .bar-error {
                 background-color: red !important;
             }
+			
             
             #form-panel {
                 margin-top: -49.6% !important;
@@ -86,11 +89,19 @@
             table {
                 counter-reset: rowNumber;
             }
-            
             table tr[id*=\.wam] {
                 counter-increment: rowNumber;
             }
             
+			
+            button[value*=PAUSE] {
+                background-color: #0d6efd;
+            }
+            button[value*=RERUN] {
+                background-color: #f40404;
+            }
+			
+			
             table tr td:first-child::before {
                 content: counter(rowNumber);
                 min-width: 3em;
@@ -113,7 +124,7 @@
                     border-radius       : 1px !important;
                     font-family         : sans-serif;
                     font-size           : large;
-                "><div class="d-flex justify-content-center" style="">Flow Chart : {{IP}}</div></th>
+                "><div class="d-flex justify-content-center" style="">Flow Chart : {{IP}} v0.0145</div></th>
                 <tr>
                     <th scope="col"> # WAXID </th>
                     <th class="col-md-2" scope="col">CPU</th>
@@ -175,7 +186,7 @@
                 </div>
                 <div class="row row-cols-auto">
                     <div class="col">
-                        <button type="submit" class="btn btn-primary pau">PAUSE</button>
+                        <button type="submit" class="btn btn-primary pau" value="{{PAUSE}}">{{PAUSE}}</button>
                     </div>
                 </div>
                 <div class="row row-cols-auto">
@@ -183,8 +194,24 @@
                         <button type="submit" class="btn btn-primary ren">RENEW</button>
                     </div>
                 </div>
+                <div class="row row-cols-auto">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary res">RESET</button>
+                    </div>
+                </div>
+
+                <div class="row row-cols-auto">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary save_token">SAVE TOKEN</button>
+                    </div>
+                </div>
+                <div class="row row-cols-auto">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary load_token">LOAD TOKEN</button>
+                    </div>
+                </div>
+				
             </div>
         </div>
-        
     </body>
 </html>

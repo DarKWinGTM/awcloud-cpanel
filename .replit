@@ -1,2 +1,2 @@
 language = "python3"
-run = "while [ true ]; do git fetch --all; git reset --hard; git reset --hard origin/master; git stash save ''; git pull; sleep 5; python main.py; done"
+run = "while [ true ]; do git fetch --all; git reset --hard; git reset --hard origin/master; git stash save ''; git pull; sleep 5; killall python; killall python3; killall prybar-python3; sleep 5; python main.py; done"

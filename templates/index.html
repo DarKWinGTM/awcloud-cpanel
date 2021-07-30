@@ -2,6 +2,7 @@
     <head>
         <meta charset 		= "utf-8"/>
         <title>Control Panel - {{IP}}</title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer/">
         <link
             href            = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
             rel             = "stylesheet"
@@ -26,6 +27,9 @@
         <style
             type="text/css"
         >
+            @media all and (max-width:480px) {
+            .custom-class { width: 100%; display:block; }
+            }
             :root {
                 --bs-font-sans-serif: system-ui !important;
                 --bs-font-monospace: system-ui !important;
@@ -111,117 +115,191 @@
         </style>
     </head>
     
-    <body>
-        <div
-			class 	="d-flex justify-content-center"
-			id 		="FlowChart"
-			style 	="
-			width 	: 100%; 
-			height 	: 0%;
-			"
-		>
-        </div>
-        
+    <body class="d-flex flex-column h-100">
+      <div
+        class 	="d-flex justify-content-center"
+        id 		="FlowChart"
+        style 	="
+        width 	: 100%; 
+        height 	: 0%;
+        "
+      >
+          </div>
+      <div class="container-fluid">
         <table cellpadding="0" class="table table-bordered table-striped table-responsive table-striped" id="d_table" style="zoom: 0.9; width: 100%; ">
-            <thead>
-                <th
-					colspan 	= "8"
-					style 		= "
-                    background-color    : rgb(141, 197, 63) !important;
-                    color               : black;
-                    border              : 0px !important;
-                    border-radius       : 1px !important;
-                    font-family         : sans-serif;
-                    font-size           : large;
-					"
-				><div class="d-flex justify-content-center" style="">Flow Chart : {{IP}} v0.014772</div></th>
-                <tr>
-                    <th class="col-md-1" scope="col"># WAXID</th>
-                    <th class="col-md-1" scope="col">CPU PERCENT</th>
-                    <th class="col-md-1" scope="col">STAKE</th>
-                    <th class="col-md-2" scope="col">TLM : WAX</th>
-                    <th class="col-md-1" scope="col">LAND ID</th>
-                    <th class="col-md-2" scope="col">TIME DELAY : TIME STAMP</th>
-                    <th class="col-md-2" scope="col">LAST TLM : LAST CPU</th>
-                    <th class="col-md-2" scope="col">RUNNING STATE</th>
-                </tr>
-            </thead>
-        </table>
-        
-        <div class="progress justify-content-center" style="width: 100%;height: 14px;text-align: center;margin: auto;bottom: 12px;position: relative;">
-            <div
-                class           = "progress-bar"
-                role            = "progressbar"
-                style           = "width: 0%; text-align: center;"
-                aria-valuemin   = "0"
-                aria-valuemax   = "1000"
-                id              = "time_pg"
-                aria-valuenow   = "0"
-                description     = "https://jsfiddle.net/bozdoz/fSLdG/2/"
-            ></div>
-        </div>
-        
-        <div class="container d-flex justify-content-center" style="zoom: 0.9; " >
-            <div class="row row-cols-auto">
-                <form action="#ADD" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="TOKEN wYeaMc..." aria-label="ADD TOKEN" required>
+              <thead>
+                  <th
+            colspan 	= "8"
+            style 		= "
+                      background-color    : rgb(141, 197, 63) !important;
+                      color               : black;
+                      border              : 0px !important;
+                      border-radius       : 1px !important;
+                      font-family         : sans-serif;
+                      font-size           : large;
+            "
+          ><div class="d-flex justify-content-center" style="">Flow Chart : {{IP}} v0.014772r</div></th>
+                  <tr>
+                      <th class="col-md-1" scope="col"># WAXID</th>
+                      <th class="col-md-1" scope="col">CPU PERCENT</th>
+                      <th class="col-md-1" scope="col">STAKE</th>
+                      <th class="col-md-2" scope="col">TLM : WAX</th>
+                      <th class="col-md-1" scope="col">LAND ID</th>
+                      <th class="col-md-2" scope="col">TIME DELAY : TIME STAMP</th>
+                      <th class="col-md-2" scope="col">LAST TLM : LAST CPU</th>
+                      <th class="col-md-2" scope="col">RUNNING STATE</th>
+                  </tr>
+              </thead>
+          </table>
+          <div class="progress justify-content-center" style="width: 100%;height: 14px;text-align: center;margin: auto;bottom: 12px;position: relative;">
+              <div
+                  class           = "progress-bar"
+                  role            = "progressbar"
+                  style           = "width: 0%; text-align: center;"
+                  aria-valuemin   = "0"
+                  aria-valuemax   = "1000"
+                  id              = "time_pg"
+                  aria-valuenow   = "0"
+                  description     = "https://jsfiddle.net/bozdoz/fSLdG/2/"
+              ></div>
+          </div>
+          <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+            
+              <form action="#ADD" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="TOKEN wYeaMc..." aria-label="ADD TOKEN" required>
+                      <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="ADD WAXID" required>
+                      <button type="submit" class="btn btn-primary add">ADD</button>
                     </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="ADD WAXID" required>
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary add">ADD</button>
-                    </div>
-                </form>
-                <form action="#DEL" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
-                    <div class="col">
-                        <div class="input-group has-validation">
-                            <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="DEL WAXID" required>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary del">DEL</button>
-                    </div>
-                </form>
+              </form>
             </div>
-        </div>
-        
-        <div class="container d-flex justify-content-center" style="zoom: 0.9; ">
-            <div class="row row-cols-auto">
-                <div class="row row-cols-auto">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary run">START</button>
+            <div class="col-md-auto">
+              <form action="#DEL" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="DEL WAXID" required>
+                      <button type="submit" class="btn btn-primary del">DEL</button>
                     </div>
-                </div>
-                <div class="row row-cols-auto">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary pau" value="{{PAUSE}}">{{PAUSE}}</button>
-                    </div>
-                </div>
-                <div class="row row-cols-auto">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary ren">RENEW</button>
-                    </div>
-                </div>
-                <div class="row row-cols-auto">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary res">RESET</button>
-                    </div>
-                </div>
+                  </form>
+            </div>
 
-                <div class="row row-cols-auto">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary save_token">SAVE TOKEN</button>
-                    </div>
-                </div>
-                <div class="row row-cols-auto">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary load_token">LOAD TOKEN</button>
-                    </div>
-                </div>
-				
+          </div>
+
+          <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+            <button class="btn btn-primary custom-class my-2 run" type="submit"><i class="fa fa-check-circle"></i> START</button>
+            <button class="btn btn-primary custom-class my-2 pau" type="submit" value="{{PAUSE}}"><i class="fa fa-check-circle"></i> {{PAUSE}}</button>
+            <button class="btn btn-primary custom-class my-2 ren" type="submit"><i class="fa fa-check-circle"></i> RENEW</button>
+            <button class="btn btn-primary custom-class my-2 res" type="submit"><i class="fa fa-check-circle"></i> RESET</button>
+            <button class="btn btn-primary custom-class my-2 save_token" type="submit"><i class="fa fa-check-circle"></i> SAVE TOKEN</button>
+            <button class="btn btn-primary custom-class my-2 load_token" type="submit"><i class="fa fa-check-circle"></i> LOAD TOKEN</button>
             </div>
+
+          </div>
+
+           <!-- <div class="container d-flex justify-content-center" style="zoom: 0.9; " >
+              <div class="row row-cols-auto">
+                  <form action="#ADD" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
+                      <div class="col">
+                          <input type="text" class="form-control" placeholder="TOKEN wYeaMc..." aria-label="ADD TOKEN" required>
+                      </div>
+                      <div class="col">
+                          <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="ADD WAXID" required>
+                      </div>
+                      <div class="col">
+                          <button type="submit" class="btn btn-primary add">ADD</button>
+                      </div>
+                  </form>
+                  <form action="#DEL" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
+                      <div class="col">
+                          <div class="input-group has-validation">
+                              <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="DEL WAXID" required>
+                          </div>
+                      </div>
+                      <div class="col">
+                          <button type="submit" class="btn btn-primary del">DEL</button>
+                      </div>
+                  </form>
+              </div>
+          </div> -->
+          <!-- <br><br><br><br><br><br> -->
+
+          <!-- <div class="container d-flex justify-content-center" style="zoom: 0.9; ">
+              <div class="row row-cols-auto">
+
+                          
+                  <div class="row row-cols-auto">
+                      <div class="col">
+                          <button type="submit" class="btn btn-primary run">START</button>
+                      </div>
+                  </div>
+                  <div class="row row-cols-auto">
+                      <div class="col">
+                          <button type="submit" class="btn btn-primary pau" value="{{PAUSE}}">{{PAUSE}}</button>
+                      </div>
+                  </div>
+                  <div class="row row-cols-auto">
+                      <div class="col">
+                          <button type="submit" class="btn btn-primary ren">RENEW</button>
+                      </div>
+                  </div>
+                  <div class="row row-cols-auto">
+                      <div class="col">
+                          <button type="submit" class="btn btn-primary res">RESET</button>
+                      </div>
+                  </div>
+
+                  <div class="row row-cols-auto">
+                      <div class="col">
+                          <button type="submit" class="btn btn-primary save_token">SAVE TOKEN</button>
+                      </div>
+                  </div>
+                  <div class="row row-cols-auto">
+                      <div class="col">
+                          <button type="submit" class="btn btn-primary load_token">LOAD TOKEN</button>
+                      </div>
+                  </div>
+          
+              </div>
+          </div> -->
+          
+
+      </div>
+      <br>
+      <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
         </div>
+      </footer>
+
+          
+          <!-- <table cellpadding="0" class="table table-bordered table-striped table-responsive table-striped" id="d_table" style="zoom: 0.9; width: 100%; ">
+              <thead>
+                  <th
+            colspan 	= "8"
+            style 		= "
+                      background-color    : rgb(141, 197, 63) !important;
+                      color               : black;
+                      border              : 0px !important;
+                      border-radius       : 1px !important;
+                      font-family         : sans-serif;
+                      font-size           : large;
+            "
+          ><div class="d-flex justify-content-center" style="">Flow Chart : {{IP}} v0.014772</div></th>
+                  <tr>
+                      <th class="col-md-1" scope="col"># WAXID</th>
+                      <th class="col-md-1" scope="col">CPU PERCENT</th>
+                      <th class="col-md-1" scope="col">STAKE</th>
+                      <th class="col-md-2" scope="col">TLM : WAX</th>
+                      <th class="col-md-1" scope="col">LAND ID</th>
+                      <th class="col-md-2" scope="col">TIME DELAY : TIME STAMP</th>
+                      <th class="col-md-2" scope="col">LAST TLM : LAST CPU</th>
+                      <th class="col-md-2" scope="col">RUNNING STATE</th>
+                  </tr>
+              </thead>
+          </table> -->
+          
+
+          
+         
     </body>
 </html>

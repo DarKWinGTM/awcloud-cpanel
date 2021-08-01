@@ -1,0 +1,61 @@
+<td><span id="waxid" style="color: #00ff38; font-weight: bold;" >{ WAXID }</span></td>
+<td>
+  <!-- <div class="progress justify-content-center">
+    <option
+      class           = "progress-bar bg-success"
+      role            = "progressbar"
+      aria-valuemin   = "0"
+      id              = "cpu_prg"
+      aria-valuenow   = "{ CPU NOW }"
+      aria-valuemax   = "{ CPU MAX }"
+      style           = "width: { CPU PER }%;"
+    >{ CPU PER }%</option>
+  </div> -->
+  <div class="progress ">
+    <div 
+      class           = "progress-bar bg-success"
+      role            = "progressbar"
+      aria-valuemin   = "0"
+      id              = "cpu_prg"
+      aria-valuenow   = "{ CPU NOW }"
+      aria-valuemax   = "{ CPU MAX }"
+      style           = "width: { CPU PER }%;"
+    >{ CPU PER }%</div>
+</div>
+</td>
+<td><span id="cpustake"     >{ STAKE } WAX</span></td>
+<td><span id="waxbalance"   >{ WAX TOTAL } WAX</span><span> : </span><span id="tlmbalance" >{ TLM TOTAL } TLM</span></td>
+<td><button id="land" class="btn-primary btn-sm land">{ LAND }</button></td>
+<td>
+  <span
+    id      = "lastminedelay"
+    style   = "color: #00ff38;"
+  >{ LAST MINE DELAY }/s</span><span>&nbsp;</span><span
+    id      = "maximumcooldown"
+    style   = "color: #47e4fd;"
+  >{ MAXIMUM COOLDOWN }/s</span><span>&nbsp;</span><span id="lastminestamp" >{ LAST MINE STAMP }</span>
+</td>
+<td><span id="lasttlm"      >{ LAST TLM } TLM</span><span> : </span><span id="lastcpu" >{ LAST CPU } US</span></td>
+<td><span id="state"        >-------------------------</span></td>
+<td>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+    <button type="button" class="btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+        <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+      </svg>
+    </button>
+    <button type="button" class="btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-lg" viewBox="0 0 16 16">
+        <path d="m10.277 5.433-4.031.505-.145.67.794.145c.516.123.619.309.505.824L6.101 13.68c-.34 1.578.186 2.32 1.423 2.32.959 0 2.072-.443 2.577-1.052l.155-.732c-.35.31-.866.434-1.206.434-.485 0-.66-.34-.536-.939l1.763-8.278zm.122-3.673a1.76 1.76 0 1 1-3.52 0 1.76 1.76 0 0 1 3.52 0z"/>
+      </svg>
+    </button>
+  </div>
+
+</td>
+
+
+
+
+
+

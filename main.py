@@ -1225,7 +1225,7 @@ class AWMINE():
                             'info'          : x
                         }}) for x in json.loads(self.DATA['PROCESS']['get_bags']['request'].content)['data'] 
                     }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : wax.api.atomicassets.io 85' )
-                elif random.randrange(100) >= 48:
+                elif random.randrange(100) >= 56:
                     self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.create_scraper().get(
                         f'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }', 
                         headers = {
@@ -1241,7 +1241,7 @@ class AWMINE():
                             'delay'         : x["data"]["delay"], 
                             'info'          : x
                         }}) for x in json.loads(self.DATA['PROCESS']['get_bags']['request'].content)['data'] 
-                    }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : cors.bridged.cc - wax.api.atomicassets.io 48' )
+                    }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : cors.bridged.cc - wax.api.atomicassets.io 56' )
                 elif random.randrange(100) >= 32:
                     self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.create_scraper().get(
                         f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }&b=0&f=norefer', 
@@ -1383,7 +1383,7 @@ class AWMINE():
                             ) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"] >= 1 else 1.0
                         }
                     }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : wax.api.atomicassets.io 85' )
-                elif random.randrange(100) >= 48:
+                elif random.randrange(100) >= 56:
                     self.DATA['PROCESS']['get_land']            = cloudscraper.create_scraper().get(
                         f'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }', 
                         headers = {
@@ -1405,7 +1405,7 @@ class AWMINE():
                                 )
                             ) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"] >= 1 else 1.0
                         }
-                    }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : cors.bridged.cc - wax.api.atomicassets.io 48' )
+                    }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : cors.bridged.cc - wax.api.atomicassets.io 56' )
                 elif random.randrange(100) >= 32:
                     self.DATA['PROCESS']['get_land']            = cloudscraper.create_scraper().get(
                         f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }&b=0&f=norefer', 
@@ -2300,49 +2300,15 @@ def index():
         )
         #   ''' '''.replace('XXX IP XXX', POOLDATA['ip'])
     else:
-        #   if not re.search('.id.repl.co', request.host_url) and len(list(DATABASE)) == 0:
+        #   if len(list(DATABASE)) == 0:
         if not re.search('.id.repl.co', request.host_url) and len(list(DATABASE)) == 0:
             print( re.sub('(.*)://awcloud-cpanel|.repl.co(.*)', '', request.host_url).replace('.', '').replace('patiwatnumbut', '') )
             CONTROLLER(repli = re.sub('(.*)://awcloud-cpanel|.repl.co(.*)', '', request.host_url).replace('.', '').replace('patiwatnumbut', '')).run()
         return jsonify(
             DATA = DATABASE, 
-            DOMS = '''<td><span id="waxid" style="color: #00ff38; font-weight: bold;" >{ WAXID }</span></td>\
-<td>\
-    <div class="progress justify-content-center">\
-        <option\
-            class           = "progress-bar bg-success"\
-            role            = "progressbar"\
-            aria-valuemin   = "0"\
-            id              = "cpu_prg"\
-            aria-valuenow   = "{ CPU NOW }"\
-            aria-valuemax   = "{ CPU MAX }"\
-            style           = "width: { CPU PER }%;"\
-        >{ CPU PER }%</option>\
-    </div>\
-</td>\
-<td><span id="cpustake"     >{ STAKE } WAX</span></td>\
-<td><span id="waxbalance"   >{ WAX TOTAL } WAX</span><span> : </span><span id="tlmbalance" >{ TLM TOTAL } TLM</span></td>\
-<td><button id="land" type="submit" class="btn btn-primary land">{ LAND }</button></td>\
-<td>\
-    <span\
-        id      = "lastminedelay"\
-        style   = "color: #00ff38;"\
-    >{ LAST MINE DELAY }/s</span><span>&nbsp;</span><span\
-        id      = "maximumcooldown"\
-        style   = "color: #47e4fd;"\
-    >{ MAXIMUM COOLDOWN }/s</span><span>&nbsp;</span><span id="lastminestamp" >{ LAST MINE STAMP }</span>\
-</td>\
-<td><span id="lasttlm"      >{ LAST TLM } TLM</span><span> : </span><span id="lastcpu" >{ LAST CPU } US</span></td>\
-<td><span id="state"        >-------------------------</span></td>\
-        ''', 
+            DOMS = render_template('index-row.html'), 
             IPDA = POOLDATA['ip']
         ), 200
-
-#   <td>
-#       <button id="xxxxx" type="submit" class="btn btn-primary xxxx">
-#           <input type="text" required=""></input>
-#       </button>
-#   </td>
 
 
 @app.route('/run', methods = ['GET', 'HEAD'])

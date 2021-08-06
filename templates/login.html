@@ -1,0 +1,267 @@
+<html>
+  <head>
+  	<meta charset="utf-8" />
+  	<title>Control Panel - {{ IP }}</title>
+  	<link
+      rel           = "canonical"
+      href          = "https://getbootstrap.com/docs/5.0/examples/sticky-footer/">
+  	<link
+      href          = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel           = "stylesheet"
+      integrity     = "sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+  	  crossorigin   = "anonymous"
+    />
+  	<script
+      src           = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity     = "sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin   = "anonymous"
+    ></script>
+  	<script type=text/javascript>
+      $(document).ready(function() {
+      
+      	window.onload = function (){
+          fetch("/", {
+            "credentials": "include",
+            "headers": {
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp, */*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.5",
+                "Upgrade-Insecure-Requests": "1"
+            },
+            "method": "GET",
+            "mode": "cors"
+          });
+        }; 
+
+      });
+  	</script>
+  	<!-- script type=text/javascript>
+  		var s   = document.createElement('script'); 
+      s.setAttribute('type', 'text/javascript'); 
+      s.setAttribute('src', '/js/contoller.js'); 
+      document.head.appendChild(s);
+  	</script -->
+  	<!-- https://notifyjs.jpillora.com/ -->
+  	<script type=text/javascript>
+  		var s   = document.createElement('script'); 
+      s.setAttribute('type', 'text/javascript'); 
+      s.setAttribute('src', '/js/notify.js'); 
+      document.head.appendChild(s);
+  	</script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  	<style type="text/css">
+  		/*!
+      @media all and (max-width:480px) {
+        .custom-class {
+          width: 100%; display:block;
+        }
+      }
+  		@media screen and (max-width: 480px) {
+        .text_start {
+          text-align: left;
+        }
+      }
+      !*/
+  		:root {
+  			--bs-font-sans-serif: system-ui !important;
+  			--bs-font-monospace: system-ui !important;
+  		}
+
+  		.listscroll {
+  			max-height: 500px;
+  			width: 800px;
+  			margin-left: 20px;
+  			overflow: scroll;
+  			-webkit-overflow-scrolling: touch;
+  		}
+
+  		body,
+  		b,
+  		span,
+  		th,
+  		td {
+  			background-color: #191f28 !important;
+  			/*! color: #eee;  !*/
+  			text-align: center;
+  		}
+
+
+  		thead,
+  		tr,
+  		td,
+  		th {
+  			border: 5px solid rgb(141, 197, 63) !important;
+  			border-radius: 25px;
+  			color: #fff;
+  			height: 100%;
+  			max-height: 430px;
+  			font-size: large !important;
+  		}
+
+
+  		/*!
+      .progress-bar {
+        color: initial !important;
+        font-size: initial !important;
+      }
+      !*/
+
+
+  		.bar-free {
+  			background-color: #198754 !important;
+  		}
+
+  		.bar-warning {
+  			background-color: #fd7e14 !important;
+  		}
+
+  		.bar-error {
+  			background-color: #dc3545 !important;
+  		}
+
+
+  		#form-panel {
+  			margin-top: -49.6% !important;
+  		}
+
+  		span,
+  		pre {
+  			margin-top: 0 !important;
+  			margin-bottom: 0rem !important;
+  			overflow: auto !important;
+  			font-size: 1.0em !important;
+  		}
+
+  		table {
+  			counter-reset: rowNumber;
+  		}
+
+  		table tr[id*=\.wam] {
+  			counter-increment: rowNumber;
+  		}
+
+
+  		button[value*=PAUSE] {
+  			background-color: #0d6efd;
+  		}
+
+  		button[value*=RERUN] {
+  			background-color: #f40404;
+  		}
+
+
+  		table tr td:first-child::before {
+  			content: counter(rowNumber);
+  			min-width: 3em;
+  			margin-right: 0.5em;
+  		}
+  	</style>
+  </head>
+  <body class="d-flex flex-column h-100">
+  	<div
+      class   = "d-flex justify-content-center"
+      id      = "FlowChart"
+      style   = "
+        width 	: 100%; 
+        height 	: 0%;
+      "
+    ></div>
+  	<div style="overflow-x:auto;">
+  		<table
+        cellpadding   = "0"
+        class         = "table table-bordered table-striped table-responsive"
+        id            = "d_table"
+        style         = "zoom: 0.9; width: 100%; "
+      >
+  			<thead>
+  				<th
+            colspan   = "9"
+            style     = "
+              background-color    : rgb(141, 197, 63) !important;
+              color               : black;
+              border              : 0px !important;
+              border-radius       : 1px !important;
+              font-family         : sans-serif;
+              font-size           : large;
+            "
+          >
+  					<div class="d-flex justify-content-center" style="">{{ IP }}</div>
+  				</th>
+  			</thead>
+  		</table>
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-sm-9 col-md-7 col-lg-5 mx-auto"
+          ><div
+            class="card border-0 shadow rounded-3 my-5"
+          ><div
+            class="card-body p-4 p-sm-5"
+          >
+            <h5 class="card-title text-center mb-5">AW CLOUD MINING</h5>
+            <form
+              action    = "/login"
+              method    = "POST"
+              enctype   = "multipart/form-data"
+              oninput   = 'newPassword_match.setCustomValidity(newPassword_match.value != newPassword.value ? "Passwords do not match." : "")'
+            >
+              <div class="form-floating mb-3">
+                <input
+                  type          = "username"
+                  class         = "form-control"
+                  id            = "username"
+                  name          = "username"
+                  placeholder   = "USER NAME"
+                  title         = "Please Input Username"
+                  required
+                ><label for="username">USERNAME</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type          = "password"
+                  class         = "form-control"
+                  id            = "password"
+                  name          = "password"
+                  placeholder   = "*********"
+                  title         = "Please Input Password"
+                  required
+                ><label for="password">PASSWORD</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input
+                  type              = "password"
+                  class             = "form-control"
+                  id                = "newPassword"
+                  name              = "configpw"
+                  placeholder       = "*********"
+                  title             = "New Password"
+                  aria-describedby  = "inputGroupPrepend"
+                ><label for="newPassword">New Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type              = "password"
+                  class             = "form-control"
+                  id                = "newPassword_match"
+                  placeholder       = "*********"
+                  title             = "Confirm New Password"
+                  aria-describedby  = "inputGroupPrepend"
+                ><div class="invalid-feedback">Password not a match.</div><label for="newPassword_match">Confirm New Password</label>
+              </div>
+
+
+
+
+              <div class="d-grid">
+                <button
+                  class         = "btn btn-primary btn-login text-uppercase fw-bold"
+                  type          = "submit"
+                >SIGH IN</button>
+              </div>
+            </form>
+          </div></div></div>
+        </div>
+      </div>
+  	</div>
+  </body>
+</html>

@@ -5,6 +5,7 @@ import glob
 import time
 import json
 import pytz
+import uuid
 import base64, codecs
 import random
 import logging
@@ -16,7 +17,7 @@ import grequests
 import cloudscraper
 from replit import db
 from inspect import currentframe as SourceCodeLine
-from flask import Flask, json, jsonify, request, redirect, send_from_directory, Response, make_response, render_template
+from flask import Flask, json, jsonify, request, redirect, session, send_from_directory, Response, make_response, render_template
 import gc
 
 #   https://pinger.pirxcy.xyz/
@@ -51,7 +52,8 @@ class style():
 class WAXAPI():
     addrlists = [
         'https://wax.pink.gg', 
-        'https://wax.greymass.com'
+        'https://wax.greymass.com', 
+        'https://chain.wax.io'
     ]
     lastminer = [
         'https://wax.pink.gg', 
@@ -86,16 +88,17 @@ class WAXAPI():
             "sec-gpc"                       : "1"
         }
     } for f in [
-        'https://aw-mine-express-00001.vercel.app', 
-        'https://aw-mine-express-00002.vercel.app', 
-        'https://aw-mine-express-00003.vercel.app', 
-        'https://aw-mine-express-00004.vercel.app', 
-        'https://aw-mine-express-00005.vercel.app', 
-        'https://aw-mine-express-00006.vercel.app', 
-        'https://aw-mine-express-00007.vercel.app', 
-        'https://aw-mine-express-00008.vercel.app', 
-        'https://aw-mine-express-00009.vercel.app', 
-        'https://aw-mine-express-00010.vercel.app'
+        #   'https://aw-mine-express-00001.vercel.app', 
+        #   'https://aw-mine-express-00002.vercel.app', 
+        #   'https://aw-mine-express-00003.vercel.app', 
+        #   'https://aw-mine-express-00004.vercel.app', 
+        #   'https://aw-mine-express-00005.vercel.app', 
+        #   'https://aw-mine-express-00006.vercel.app', 
+        #   'https://aw-mine-express-00007.vercel.app', 
+        #   'https://aw-mine-express-00008.vercel.app', 
+        #   'https://aw-mine-express-00009.vercel.app', 
+        #   'https://aw-mine-express-00010.vercel.app'
+        'https://t95dv.sse.codesandbox.io'
     ]]
     glitminer = [{
         'address' : f'{f}/mine?waxaccount=', 
@@ -142,6 +145,10 @@ class WAXAPI():
         'https://coral-celestial-situation.glitch.me',          #   ff.premium.no.reply+0006@gmail.com
         'https://branched-disco-currant.glitch.me',             #   ff.premium.no.reply+0006@gmail.com
         'https://laced-pepper-samba.glitch.me'                  #   ff.premium.no.reply+0006@gmail.com
+        'https://excited-silky-palladium.glitch.me',            #   ff.premium.no.reply+0007@gmail.com
+        'https://balanced-accessible-daemonosaurus.glitch.me',  #   ff.premium.no.reply+0007@gmail.com
+        'https://phrygian-incongruous-basil.glitch.me',         #   ff.premium.no.reply+0007@gmail.com
+        'https://secret-trusted-racer.glitch.me'                #   ff.premium.no.reply+0007@gmail.com
     ]]
     replminer = [{
         'address' : f'{f}/mine?waxaccount=', 
@@ -223,7 +230,19 @@ class WAXAPI():
         'https://aw-mine-express-10003.praniti99.repl.co', 
         'https://aw-mine-express-10001.pattarasakphuan.repl.co', 
         'https://aw-mine-express-10002.pattarasakphuan.repl.co', 
-        'https://aw-mine-express-10003.pattarasakphuan.repl.co'
+        'https://aw-mine-express-10003.pattarasakphuan.repl.co', 
+        'https://aw-mine-express-10001.e25icl.repl.co', 
+        'https://aw-mine-express-10002.e25icl.repl.co', 
+        'https://aw-mine-express-10003.e25icl.repl.co', 
+        'https://aw-mine-express-10001.catsince.repl.co', 
+        'https://aw-mine-express-10002.catsince.repl.co', 
+        'https://aw-mine-express-10003.catsince.repl.co', 
+        'https://aw-mine-express-10001.kuk1990.repl.co', 
+        'https://aw-mine-express-10002.kuk1990.repl.co', 
+        'https://aw-mine-express-10003.kuk1990.repl.co', 
+        'https://aw-mine-express-10001.man88.repl.co', 
+        'https://aw-mine-express-10002.man88.repl.co', 
+        'https://aw-mine-express-10003.man88.repl.co'
     ]]
     freeminer = [{
         'address' : f'{f}/mine?waxaccount=', 
@@ -248,9 +267,6 @@ class WAXAPI():
         'https://aw-mine-express-10001.fourz.repl.co', 
         'https://aw-mine-express-10002.fourz.repl.co', 
         'https://aw-mine-express-10003.fourz.repl.co', 
-        'https://aw-mine-express-10001.kuk1990.repl.co', 
-        'https://aw-mine-express-10002.kuk1990.repl.co', 
-        'https://aw-mine-express-10003.kuk1990.repl.co', 
         'https://aw-mine-express-10001.boomswxx945.repl.co', 
         'https://aw-mine-express-10002.boomswxx945.repl.co', 
         'https://aw-mine-express-10003.boomswxx945.repl.co', 
@@ -265,14 +281,13 @@ class WAXAPI():
         'https://aw-mine-express-10003.supernop.repl.co', 
         'https://aw-mine-express-10001.starshiprs.repl.co', 
         'https://aw-mine-express-10002.starshiprs.repl.co', 
+        'https://aw-mine-express-10003.starshiprs.repl.co', 
         'https://aw-mine-express-10001.dhongerus.repl.co', 
         'https://aw-mine-express-10002.dhongerus.repl.co', 
         'https://aw-mine-express-10003.dhongerus.repl.co', 
         'https://aw-mine-express-10001.aongseal.repl.co', 
         'https://aw-mine-express-10002.aongseal.repl.co', 
         'https://aw-mine-express-10003.aongseal.repl.co', 
-        'https://aw-mine-express-10001.catsince.repl.co', 
-        'https://aw-mine-express-10002.catsince.repl.co', 
         'https://aw-mine-express-10001.tongatipbk.repl.co', 
         'https://aw-mine-express-10002.tongatipbk.repl.co', 
         'https://aw-mine-express-10003.tongatipbk.repl.co', 
@@ -342,10 +357,6 @@ class WAXAPI():
         'https://aw-mine-express-10001.fluffy1004.repl.co', 
         'https://aw-mine-express-10002.fluffy1004.repl.co', 
         'https://aw-mine-express-10003.fluffy1004.repl.co', 
-        'https://aw-mine-express-10001.man88.repl.co', 
-        'https://aw-mine-express-10002.man88.repl.co', 
-        'https://aw-mine-express-10001.e25icl.repl.co', 
-        'https://aw-mine-express-10002.e25icl.repl.co'
         'https://aw-mine-express-10001.borwonrud.repl.co', 
         'https://aw-mine-express-10002.borwonrud.repl.co', 
         'https://aw-mine-express-10003.borwonrud.repl.co', 
@@ -357,7 +368,13 @@ class WAXAPI():
         'https://aw-mine-express-10003.najabangaras.repl.co', 
         'https://aw-mine-express-10001.akepordee.repl.co', 
         'https://aw-mine-express-10002.akepordee.repl.co', 
-        'https://aw-mine-express-10003.akepordee.repl.co'
+        'https://aw-mine-express-10003.akepordee.repl.co', 
+        'https://aw-mine-express-10001.idspoon.repl.co', 
+        'https://aw-mine-express-10002.idspoon.repl.co', 
+        'https://aw-mine-express-10003.idspoon.repl.co', 
+        'https://aw-mine-express-10001.maxnoizas.repl.co', 
+        'https://aw-mine-express-10002.maxnoizas.repl.co', 
+        'https://aw-mine-express-10003.maxnoizas.repl.co'
     ]]
     packedtrx = [{
         'address' : f'{f}/packedtrx', 
@@ -376,16 +393,16 @@ class WAXAPI():
             "sec-gpc"                       : "1"
         }
     } for f in [
-        'https://aw-mine-express-00001.vercel.app', 
-        'https://aw-mine-express-00002.vercel.app', 
-        'https://aw-mine-express-00003.vercel.app', 
-        'https://aw-mine-express-00004.vercel.app', 
-        'https://aw-mine-express-00005.vercel.app', 
-        'https://aw-mine-express-00006.vercel.app', 
-        'https://aw-mine-express-00007.vercel.app', 
-        'https://aw-mine-express-00008.vercel.app', 
-        'https://aw-mine-express-00009.vercel.app', 
-        'https://aw-mine-express-00010.vercel.app', 
+        #   'https://aw-mine-express-00001.vercel.app', 
+        #   'https://aw-mine-express-00002.vercel.app', 
+        #   'https://aw-mine-express-00003.vercel.app', 
+        #   'https://aw-mine-express-00004.vercel.app', 
+        #   'https://aw-mine-express-00005.vercel.app', 
+        #   'https://aw-mine-express-00006.vercel.app', 
+        #   'https://aw-mine-express-00007.vercel.app', 
+        #   'https://aw-mine-express-00008.vercel.app', 
+        #   'https://aw-mine-express-00009.vercel.app', 
+        #   'https://aw-mine-express-00010.vercel.app', 
         'https://aw-packedtrx-express-00001.patiwatnumbut.repl.co', 
         'https://aw-packedtrx-express-00002.patiwatnumbut.repl.co', 
         'https://aw-packedtrx-express-00003.patiwatnumbut.repl.co', 
@@ -528,8 +545,16 @@ class AWMINE():
                     'get_info_balance'      : None, 
                     'get_info_last_mine'    : None, 
                     'get_info_avatar'       : None, 
-                    'get_bags'              : {}, 
-                    'get_land'              : None, 
+                    'get_bags'              : [{
+                        'request' : None, 
+                        'content' : {}, 
+                        'rescode' : 999
+                    }, {
+                        'request' : None, 
+                        'content' : {}, 
+                        'rescode' : 999
+                    }], 
+                    'get_land'              : {}, 
                     'set_difficulty'        : None, 
                     'set_cooldown'          : None, 
                     'chk_cpu'               : None, 
@@ -563,14 +588,14 @@ class AWMINE():
                 THREADER.pop(self.DATA['waxid'])
             if DATABASE.get(self.DATA['waxid']):
                 DATABASE.pop(self.DATA['waxid'])
-            raise NameError(e)
+            raise NameError(e); return
         except Exception as e:
             print( f'ERROR __init__ { SourceCodeLine().f_lineno }-{ waxid } : {e}' )
             if THREADER.get(self.DATA['waxid']):
                 THREADER.pop(self.DATA['waxid'])
             if DATABASE.get(self.DATA['waxid']):
                 DATABASE.pop(self.DATA['waxid'])
-            raise Exception(e)
+            raise Exception(e); return
             
         THREADER.update({
             self.DATA['waxid'] : {
@@ -680,6 +705,16 @@ class AWMINE():
 
             try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '02'
             except      : pass
+                
+            try:
+                if (
+                    THREADER[ self.DATA['waxid'] ]['status'] == False or THREADER[ self.DATA['waxid'] ]['status'] == None
+                ) or (
+                    DATABASE[ self.DATA['waxid'] ]['status'] == False
+                ):
+                    break
+            except:
+                break
         
             if DATABASE[ self.DATA['waxid'] ]['status'] == None:
                 try:
@@ -736,16 +771,6 @@ class AWMINE():
                     time.sleep(2); continue
                     
                 DATABASE[ self.DATA['waxid'] ]['status'] = True
-                
-            try:
-                if (
-                    THREADER[ self.DATA['waxid'] ]['status'] == False or THREADER[ self.DATA['waxid'] ]['status'] == None
-                ) or (
-                    DATABASE[ self.DATA['waxid'] ]['status'] == False
-                ):
-                    break
-            except:
-                break
                 
             try:
                 if POOLDATA['sw'] == False and (
@@ -940,23 +965,25 @@ class AWMINE():
 
         while True:
         
-            #---   try:
-            #---       if (
-            #---           THREADER[ self.DATA['waxid'] ]['status'] == False or THREADER[ self.DATA['waxid'] ]['status'] == None
-            #---       ) or (
-            #---           DATABASE[ self.DATA['waxid'] ]['status'] == False
-            #---       ):
-            #---           break
-            #---   except:
-            #---       break
+            try:
+                if THREADER[ self.DATA['waxid'] ]['status'] == None:
+                    break
+            except:
+                break
                 
             try:
                 
                 try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '06' if random.randrange(100) >= 80 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02' else DATABASE[ self.DATA['waxid'] ]['text']['step']
                 except      : pass
                 
-                self.DATA['PROCESS']['get_account']         = cloudscraper.create_scraper().post(
-                    f'http://{ self.DATA["waxserver"].split("//")[-1] }/v1/chain/get_account',
+                self.DATA['PROCESS']['get_account']         = cloudscraper.create_scraper(
+                    browser = {
+                        'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
+                    }, 
+                    #   debug = True, 
+                    delay   = 10
+                ).post(
+                    f'https://{ self.DATA["waxserver"].split("//")[-1] }/v1/chain/get_account',
                     #   data    = f'{{\"account_name\":\"{ self.DATA["login"]["userAccount"] }\"}}', 
                     json    = {
                         "account_name" : self.DATA["login"]["userAccount"]
@@ -969,18 +996,19 @@ class AWMINE():
                 #---   })
                 self.DATA['account'] = json.loads(self.DATA['PROCESS']['get_account'].content)
             except Exception as e:
-                print( f'ERROR get_account() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e}' )
+                print( f'ERROR get_account() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e} | { self.DATA["PROCESS"]["get_account"].url } | { self.DATA["PROCESS"]["get_account"] }' )
                 self.DATA['waxserver'] = random.choice(WAXAPI.addrlists); time.sleep(3)
                 continue
             if loop == False:
                 break
             else:
-                if random.randrange(200) >= 140 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02': self.get_info_balance()
-                if random.randrange(250) >= 232 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02':
+                if random.randrange(250) >= 170 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02':
+                    self.get_info_balance()
+                if random.randrange(300) >= 262 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02':
                     self.get_bags()
                     self.get_land()
                     self.set_difficulty()
-                time.sleep(10); continue
+                time.sleep(5); continue
     def get_info_balance(
         self
     ):
@@ -1003,8 +1031,14 @@ class AWMINE():
                 #***    try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '06' if random.randrange(100) >= 80 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02' else DATABASE[ self.DATA['waxid'] ]['text']['step']
                 #***    except      : pass
                 
-                self.DATA['PROCESS']['get_info_balance']    = cloudscraper.create_scraper().post(
-                    f'http://{ self.DATA["waxserver"].split("//")[-1] }/v1/chain/get_table_rows', 
+                self.DATA['PROCESS']['get_info_balance']    = cloudscraper.create_scraper(
+                    browser = {
+                        'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
+                    }, 
+                    #   debug = True, 
+                    delay   = 10
+                ).post(
+                    f'https://{ self.DATA["waxserver"].split("//")[-1] }/v1/chain/get_table_rows', 
                     #   data    = f'{{\"json\":true,\"code\":\"alien.worlds\",\"scope\":\"{ self.DATA["login"]["userAccount"] }\",\"table\":"accounts\",\"table_key\":\"\",\"lower_bound\":\"\",\"upper_bound\":\"\",\"index_position\":1,\"key_type\":\"\",\"limit\":1,\"reverse\":false,\"show_payer\":false}}', 
                     json    = {
                         "json"              : True, 
@@ -1100,8 +1134,14 @@ class AWMINE():
                 break
                 
             try:
-                self.DATA['PROCESS']['get_info_avatar']     = cloudscraper.create_scraper().post(
-                    f'http://{ self.DATA["waxserver"].split("//")[-1] }/v1/chain/get_table_rows',
+                self.DATA['PROCESS']['get_info_avatar']     = cloudscraper.create_scraper(
+                    browser = {
+                        'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
+                    }, 
+                    #   debug = True, 
+                    delay   = 10
+                ).post(
+                    f'https://{ self.DATA["waxserver"].split("//")[-1] }/v1/chain/get_table_rows',
                     #   data    = f'{{\"json\":true,\"code\":\"alien.worlds\",\"scope\":\"{ self.DATA["login"]["userAccount"] }\",\"table\":\"accounts\",\"table_key\":\"\",\"lower_bound\":\"\",\"upper_bound\":\"\",\"index_position\":1,\"key_type\":\"\",\"limit\":1,\"reverse\":false,\"show_payer\":false}}', 
                     json    = {
                         "json"              : True, 
@@ -1132,10 +1172,15 @@ class AWMINE():
         self
     ):
         
-        self.DATA['PROCESS']['get_bags'] = {
+        self.DATA['PROCESS']['get_bags'] = [{
             'request' : None, 
-            'content' : {}
-        }
+            'content' : {}, 
+            'rescode' : 999
+        }, {
+            'request' : None, 
+            'content' : {}, 
+            'rescode' : 999
+        }]
         
         while True:
         
@@ -1154,7 +1199,7 @@ class AWMINE():
                 try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '03'
                 except      : pass
                 
-                self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.create_scraper().post(
+                self.DATA['PROCESS']['get_bags'][0]['request']            = cloudscraper.create_scraper().post(
                     f'http://{ self.DATA["waxserver"].split("//")[-1] }/v1/chain/get_table_rows',
                     json    = {
                         'json'              : True, 
@@ -1174,16 +1219,21 @@ class AWMINE():
                     #   proxies     = SETPROXY
                 )
                 
-                for b in json.loads(self.DATA['PROCESS']['get_bags']['request'].content)['rows'][0]['items']:
-                    self.DATA['PROCESS']['get_bags']['content'].update({
+                for b in json.loads(self.DATA['PROCESS']['get_bags'][0]['request'].content)['rows'][0]['items']:
+                    self.DATA['PROCESS']['get_bags'][0]['content'].update({
                         b : {
                             'difficulty'    : 0, 
                             'delay'         : 0, 
-                            'info'          : None
+                            'info'          : None, 
+                            'resp'          : {
+                                'request' : None, 
+                                'content' : {}, 
+                                'rescode' : 999
+                            }
                         }
                     })
                     
-                self.DATA['bags'] = self.DATA['PROCESS']['get_bags']['content']
+                self.DATA['bags'] = self.DATA['PROCESS']['get_bags'][0]['content']
                 
             except Exception as e:
                 print( f'ERROR get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e}' )
@@ -1213,70 +1263,130 @@ class AWMINE():
                 break
                 
             try:
-                if random.randrange(100) >= 85:
-                    self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.create_scraper().get(
-                        f'https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }'
+                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200 and random.randrange(100) >= 58:
+                    for b in self.DATA["bags"]:
+                        if not self.DATA['bags'][ b ]['resp']['rescode'] == 200 and random.randrange(100) >= 50:
+                            self.DATA['bags'][ b ]['resp']['request'] = cloudscraper.create_scraper().get(
+                                f'https://www.nfthive.io/api/asset/{ b }', 
+                                timeout = 15
+                            )
+                            if self.DATA['bags'][ b ]['resp']['request'].status_code == 200:
+                                self.DATA['bags'][ b ]['difficulty']        = json.loads( self.DATA['bags'][ b ]['resp']['request'].json().get('mdata') )['difficulty']
+                                self.DATA['bags'][ b ]['delay']             = json.loads( self.DATA['bags'][ b ]['resp']['request'].json().get('mdata') )['delay']
+                                self.DATA['bags'][ b ]['info']              = self.DATA['bags'][ b ]['resp']['request'].json()
+                                self.DATA['bags'][ b ]['resp']['content']   = json.loads( self.DATA['bags'][ b ]['resp']['request'].json().get('mdata') )
+                                self.DATA['bags'][ b ]['resp']['rescode']   = self.DATA['bags'][ b ]['resp']['request'].status_code
+                                print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { b } www.nfthive.io 48' )
+                        if not self.DATA['bags'][ b ]['resp']['rescode'] == 200:
+                            self.DATA['bags'][ b ]['resp']['request'] = cloudscraper.CloudScraper(
+                                browser = {
+                                    'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
+                                },
+                                #   debug       = True,
+                                delay       = 10
+                            ).get(
+                                f'https://atomic.wax.io/atomicassets/v1/assets/{ b }', 
+                                timeout = 15
+                            )
+                            if self.DATA['bags'][ b ]['resp']['request'].status_code == 200:
+                                self.DATA['bags'][ b ]['difficulty']        = self.DATA['bags'][ b ]['resp']['request'].json()['data']['template']['immutable_data']['difficulty']
+                                self.DATA['bags'][ b ]['delay']             = self.DATA['bags'][ b ]['resp']['request'].json()['data']['template']['immutable_data']['delay']
+                                self.DATA['bags'][ b ]['info']              = self.DATA['bags'][ b ]['resp']['request'].json()['data']
+                                self.DATA['bags'][ b ]['resp']['content']   = self.DATA['bags'][ b ]['resp']['request'].json()['data']['template']['immutable_data']
+                                self.DATA['bags'][ b ]['resp']['rescode']   = self.DATA['bags'][ b ]['resp']['request'].status_code
+                                print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { b } atomic.wax.io 48' )
+                            else:
+                                self.DATA['bags'][ b ] = {
+                                    'difficulty'    : 0, 
+                                    'delay'         : 0, 
+                                    'info'          : None, 
+                                    'resp'          : {
+                                        'request'   : None, 
+                                        'content'   : {}, 
+                                        'rescode'   : 999
+                                    }
+                                }
+                    if [ self.DATA["bags"][ b ]['resp']['rescode'] for b in self.DATA["bags"] ] == [200] * len( self.DATA["bags"] ):
+                        self.DATA['PROCESS']['get_bags'][1]['rescode'] = 200
+                    else:
+                        self.DATA['PROCESS']['get_bags'][1]['rescode'] = 999
+
+                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200 and random.randrange(100) >= 85:
+                    self.DATA['PROCESS']['get_bags'][1]['request']            = cloudscraper.create_scraper().get(
+                        f'https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }', 
+                        timeout = 15
                     )
-                    {
-                        self.DATA['bags'].update({
-                        str( x['asset_id'] ) : {
-                            'difficulty'    : x["data"]["difficulty"], 
-                            'delay'         : x["data"]["delay"], 
-                            'info'          : x
-                        }}) for x in json.loads(self.DATA['PROCESS']['get_bags']['request'].content)['data'] 
-                    }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : wax.api.atomicassets.io 85' )
-                elif random.randrange(100) >= 56:
-                    self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.create_scraper().get(
+                    if self.DATA['PROCESS']['get_bags'][1]['request'].status_code == 200:
+                        {
+                            self.DATA['bags'].update({
+                            str( x['asset_id'] ) : {
+                                'difficulty'    : x["data"]["difficulty"], 
+                                'delay'         : x["data"]["delay"], 
+                                'info'          : x
+                            }}) for x in json.loads(self.DATA['PROCESS']['get_bags'][1]['request'].content)['data'] 
+                        }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { ",".join(self.DATA["bags"]) } wax.api.atomicassets.io 85' )
+                        self.DATA['PROCESS']['get_bags'][1]['rescode'] = self.DATA['PROCESS']['get_bags'][1]['request'].status_code
+                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200 and random.randrange(100) >= 48:
+                    self.DATA['PROCESS']['get_bags'][1]['request']            = cloudscraper.create_scraper().get(
                         f'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }', 
                         headers = {
                             'x-requested-with'  : 'XMLHttpRequest', 
                             'Origin'            : 'bridged.xyz', 
                             'Accept'            : 'application/json'
-                        }
+                        }, 
+                        timeout = 15
                     )
-                    {
-                        self.DATA['bags'].update({
-                        str( x['asset_id'] ) : {
-                            'difficulty'    : x["data"]["difficulty"], 
-                            'delay'         : x["data"]["delay"], 
-                            'info'          : x
-                        }}) for x in json.loads(self.DATA['PROCESS']['get_bags']['request'].content)['data'] 
-                    }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : cors.bridged.cc - wax.api.atomicassets.io 56' )
-                elif random.randrange(100) >= 32:
-                    self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.create_scraper().get(
+                    if self.DATA['PROCESS']['get_bags'][1]['request'].status_code == 200:
+                        {
+                            self.DATA['bags'].update({
+                            str( x['asset_id'] ) : {
+                                'difficulty'    : x["data"]["difficulty"], 
+                                'delay'         : x["data"]["delay"], 
+                                'info'          : x
+                            }}) for x in json.loads(self.DATA['PROCESS']['get_bags'][1]['request'].content)['data'] 
+                        }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { ",".join(self.DATA["bags"]) } cors.bridged.cc - wax.api.atomicassets.io 48' )
+                        self.DATA['PROCESS']['get_bags'][1]['rescode'] = self.DATA['PROCESS']['get_bags'][1]['request'].status_code
+                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200 and random.randrange(100) >= 64:
+                    self.DATA['PROCESS']['get_bags'][1]['request']            = cloudscraper.create_scraper().get(
                         f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }&b=0&f=norefer', 
                         headers = {
                             'Referer' : f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }&b=0&f=norefer'
-                        }
+                        }, 
+                        timeout = 15
                     )
-                    {
-                        self.DATA['bags'].update({
-                        str( x['asset_id'] ) : {
-                            'difficulty'    : x["data"]["difficulty"], 
-                            'delay'         : x["data"]["delay"], 
-                            'info'          : x
-                        }}) for x in json.loads(self.DATA['PROCESS']['get_bags']['request'].content)['data'] 
-                    }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : webproxy.vpnbook.com - wax.api.atomicassets.io 32' )
-                elif random.randrange(100) >= 80:
-                    self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.CloudScraper(
+                    if self.DATA['PROCESS']['get_bags'][1]['request'].status_code == 200:
+                        {
+                            self.DATA['bags'].update({
+                            str( x['asset_id'] ) : {
+                                'difficulty'    : x["data"]["difficulty"], 
+                                'delay'         : x["data"]["delay"], 
+                                'info'          : x
+                            }}) for x in json.loads(self.DATA['PROCESS']['get_bags'][1]['request'].content)['data'] 
+                        }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { ",".join(self.DATA["bags"]) } webproxy.vpnbook.com - wax.api.atomicassets.io 64' )
+                        self.DATA['PROCESS']['get_bags'][1]['rescode'] = self.DATA['PROCESS']['get_bags'][1]['request'].status_code
+                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200 and random.randrange(100) >= 80:
+                    self.DATA['PROCESS']['get_bags'][1]['request']            = cloudscraper.CloudScraper(
                         browser = {
                             'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
                         },
                         #   debug       = True,
                         delay       = 10
                     ).get(
-                        f'https://wax.api.atomicassets.io/atomicmarket/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }'
+                        f'https://wax.api.atomicassets.io/atomicmarket/v1/assets/?asset_id={ ",".join(self.DATA["bags"]) }', 
+                        timeout = 15
                     )
-                    {
-                        self.DATA['bags'].update({
-                        str( x['asset_id'] ) : {
-                            'difficulty'    : x["data"]["difficulty"], 
-                            'delay'         : x["data"]["delay"], 
-                            'info'          : x
-                        }}) for x in json.loads(self.DATA['PROCESS']['get_bags']['request'].content)['data'] 
-                    }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : wax.api.atomicassets.io 80' )
-                elif random.randrange(100) >= 35:
-                    self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.CloudScraper(
+                    if self.DATA['PROCESS']['get_bags'][1]['request'].status_code == 200:
+                        {
+                            self.DATA['bags'].update({
+                            str( x['asset_id'] ) : {
+                                'difficulty'    : x["data"]["difficulty"], 
+                                'delay'         : x["data"]["delay"], 
+                                'info'          : x
+                            }}) for x in json.loads(self.DATA['PROCESS']['get_bags'][1]['request'].content)['data'] 
+                        }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { ",".join(self.DATA["bags"]) } wax.api.atomicassets.io 80' )
+                        self.DATA['PROCESS']['get_bags'][1]['rescode'] = self.DATA['PROCESS']['get_bags'][1]['request'].status_code
+                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200 and random.randrange(100) >= 35:
+                    self.DATA['PROCESS']['get_bags'][1]['request']            = cloudscraper.CloudScraper(
                         browser = {
                             'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
                         },
@@ -1296,36 +1406,44 @@ class AWMINE():
                             'sec-fetch-dest'    : 'empty',
                             'referer'           : 'https://wax.atomichub.io/',
                             'accept-language'   : 'en-US,en;q=0.9'
-                        },
+                        }, 
+                        timeout = 15
                     )
-                    {
-                        self.DATA['bags'].update({
-                        str( x['asset_id'] ) : {
-                            'difficulty'    : x["data"]["difficulty"], 
-                            'delay'         : x["data"]["delay"], 
-                            'info'          : x
-                        }}) for x in json.loads(self.DATA['PROCESS']['get_bags']['request'].content)['data'] 
-                    }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : wax.api.aa.atomichub.io 25' )
-                else:
-                    self.DATA['PROCESS']['get_bags']['request']            = cloudscraper.CloudScraper(
+                    if self.DATA['PROCESS']['get_bags'][1]['request'].status_code == 200:
+                        {
+                            self.DATA['bags'].update({
+                            str( x['asset_id'] ) : {
+                                'difficulty'    : x["data"]["difficulty"], 
+                                'delay'         : x["data"]["delay"], 
+                                'info'          : x
+                            }}) for x in json.loads(self.DATA['PROCESS']['get_bags'][1]['request'].content)['data'] 
+                        }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { ",".join(self.DATA["bags"]) } wax.api.aa.atomichub.io 35' )
+                        self.DATA['PROCESS']['get_bags'][1]['rescode'] = self.DATA['PROCESS']['get_bags'][1]['request'].status_code
+                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200:
+                    self.DATA['PROCESS']['get_bags'][1]['request']            = cloudscraper.CloudScraper(
                         browser = {
                             'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
                         }, 
                         #   debug       = True, 
                         delay       = 10
                     ).get(
-                        f'https://api.alienworlds.io/v1/alienworlds/asset?id={ ",".join(self.DATA["bags"]) }'
+                        f'https://api.alienworlds.io/v1/alienworlds/asset?id={ ",".join(self.DATA["bags"]) }', 
+                        timeout = 15
                     )
-                    {
-                        self.DATA['bags'].update({
-                        str( x['asset_id'] ) : {
-                            'difficulty'    : x["data"]["difficulty"], 
-                            'delay'         : x["data"]["delay"], 
-                            'info'          : x
-                        }}) for x in self.DATA['PROCESS']['get_bags']['request'].json()['results'] 
-                    }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : api.alienworlds.io 00' )
+                    if self.DATA['PROCESS']['get_bags'][1]['request'].status_code == 200:
+                        {
+                            self.DATA['bags'].update({
+                            str( x['asset_id'] ) : {
+                                'difficulty'    : x["data"]["difficulty"], 
+                                'delay'         : x["data"]["delay"], 
+                                'info'          : x
+                            }}) for x in self.DATA['PROCESS']['get_bags'][1]['request'].json()['results'] 
+                        }; print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : api.alienworlds.io 00' )
+                        self.DATA['PROCESS']['get_bags'][1]['rescode'] = self.DATA['PROCESS']['get_bags'][1]['request'].status_code
+                    else:
+                        print( f'CHECK get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : RETRY TO GET BAGS INFO' ); time.sleep(3); continue
             except Exception as e:
-                print( f'ERROR get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e}' )
+                print( f'ERROR get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { ",".join(self.DATA["bags"]) } | { self.DATA["PROCESS"]["get_bags"][1]["rescode"] } | {e}' )
 
                 #   try     : print( f'ERROR get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["PROCESS"]["get_bags"]["request"].url } - {e}' )
                 #   except  : print( f'ERROR get_bags() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : None ["get_bags"]["request"].url - {e}' )
@@ -1341,7 +1459,12 @@ class AWMINE():
         self
     ):
         
-        self.DATA['PROCESS']['get_land'] = None
+        #---    self.DATA['PROCESS']['get_land'] = None
+        self.DATA['PROCESS']['get_land'] = {
+            'request' : None, 
+            'content' : None, 
+            'rescode' : 999
+        }
         
         while True:
         
@@ -1360,99 +1483,181 @@ class AWMINE():
                 try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '04'
                 except      : pass
                 
+                
+                
                 #***    NEED UNIT TEST
                 #***    https://api.alienworlds.io/v1/alienworlds/asset?id=1099514843356
                 #***    http://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id=1099514843356
                 #***    http://wax.api.aa.atomichub.io/atomicmarket/v1/assets/?asset_id=1099514961342
                 #***    https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id=1099512961342
-                if random.randrange(100) >= 85:
-                    self.DATA['PROCESS']['get_land']            = cloudscraper.create_scraper().get(
-                        f'https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }'
+                
+                #+++    https://www.nfthive.io/api/asset/1099512961342                {"assetId": 1099512961342, "aAssetId": 1099512961342, "name": "Methane Swampland on Neri", "standard": "atomicassets", "author": "alien.worlds", "category": "land.worlds", "number": 18, "variant": "Neri", "rarity": "Common", "mdata": "{\"backimg\": \"QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP\", \"cardid\": 18, \"commission\": 2000, \"delay\": 35, \"difficulty\": 0, \"ease\": 23, \"img\": \"QmPYpXGb59ArTtbXMtcWPqowsDhAUuTRiAktUEUc4XbsJc\", \"luck\": 23, \"name\": \"Methane Swampland on Neri\", \"planet\": \"11146092910561869824\", \"rarity\": \"Common\", \"x\": 10, \"y\": 3}", "color": null, "attr7": "35", "attr8": "0", "attr9": "23", "attr10": "23", "border": null, "verified": true, "type": null, "isFavorited": false, "image": "https://ipfs.hivebp.io/ipfs/QmPYpXGb59ArTtbXMtcWPqowsDhAUuTRiAktUEUc4XbsJc", "previmg": "https://ipfs.hivebp.io/ipfs/QmPYpXGb59ArTtbXMtcWPqowsDhAUuTRiAktUEUc4XbsJc", "price": null, "usd_price": null, "salesDate": null, "backimg": "https://ipfs.hivebp.io/ipfs/QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP", "authorImg": null, "owner": "zqcb2.wam", "mint": 70, "total": 75, "offer": 27852.0, "usd_offer": 4342.1268, "isAuction": false, "usd_wax": 0.1559, "currency": "WAX", "sender": "cabba.wam", "buyer": null, "listing_id": 6379978, "burned": 0, "isBurned": false, "average": 53001.7652062952, "lowest": 48107.76138550352, "market": null, "usd_average": 9864.2445, "usd_lowest": 7500.0, "last_sold": 58000.0, "usd_last_sold": 6432.2, "num_sales": 56, "rarity_score": 0, "aether_value": null, "upliftium": null, "unpackUrl": null, "timestamp": "2020-12-03 00:28:31 GMT+1", "transactions": [{"from": "cabba.wam", "offer": 27852.0, "to": "atomicmarket", "transactionId": "aad445f5aa4fac2dd3fb0cd28382b62bb458b1b7426af733d4284dff3f5f7518", "seq": 2080915789, "mdata": "{\"backimg\": \"QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP\", \"cardid\": 18, \"commission\": 2000, \"delay\": 35, \"difficulty\": 0, \"ease\": 23, \"img\": \"QmPYpXGb59ArTtbXMtcWPqowsDhAUuTRiAktUEUc4XbsJc\", \"luck\": 23, \"name\": \"Methane Swampland on Neri\", \"planet\": \"11146092910561869824\", \"rarity\": \"Common\", \"x\": 10, \"y\": 3}", "price": 0, "usd_wax": 0.1559, "currency": "WAX", "timestamp": "2021-04-11 23:00:54", "offer_2": null, "offer_type": "market", "offer_time": null, "orderId": 6379978}, {"from": "mam5i.wam", "offer": 19000.0, "to": "atomicmarket", "transactionId": "bc59dd5a335ce66529c886f394ba59cbeb56a2e58b0d1e02728e0da06fc69deb", "seq": 1838217783, "mdata": "{\"backimg\": \"QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP\", \"cardid\": 18, \"commission\": 2000, \"delay\": 35, \"difficulty\": 0, \"ease\": 23, \"img\": \"QmPYpXGb59ArTtbXMtcWPqowsDhAUuTRiAktUEUc4XbsJc\", \"luck\": 23, \"name\": \"Methane Swampland on Neri\", \"planet\": \"11146092910561869824\", \"rarity\": \"Common\", \"x\": 10, \"y\": 3}", "price": 0, "usd_wax": 0.1559, "currency": "WAX", "timestamp": "2021-04-06 11:09:26", "offer_2": null, "offer_type": "market", "offer_time": null, "orderId": 5674519}, {"from": "mam5i.wam", "offer": 11900.0, "to": "atomicmarket", "transactionId": "8e4f74c950a030a498d375d92032c58cfb82d57877025a65fcdc7bd0af057a31", "seq": 1280096077, "mdata": "{\"backimg\": \"QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP\", \"cardid\": 18, \"commission\": 2000, \"delay\": 35, \"difficulty\": 0, \"ease\": 23, \"img\": \"QmPYpXGb59ArTtbXMtcWPqowsDhAUuTRiAktUEUc4XbsJc\", \"luck\": 23, \"name\": \"Methane Swampland on Neri\", \"planet\": \"11146092910561869824\", \"rarity\": \"Common\", \"x\": 10, \"y\": 3}", "price": 0, "usd_wax": 0.1559, "currency": "WAX", "timestamp": "2021-02-28 03:07:46", "offer_2": null, "offer_type": "market", "offer_time": null, "orderId": 3160157}, {"from": "nordiccaesar", "offer": null, "to": "mam5i.wam", "transactionId": "bcc1bb57e51fcb1a27a4d55af559d3b801106f1437a608a4bd5b97299e7ade65", "seq": 763018611, "mdata": "{\"backimg\": \"QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP\", \"cardid\": 18, \"commission\": 2000, \"delay\": 35, \"difficulty\": 0, \"ease\": 23, \"img\": \"QmPYpXGb59ArTtbXMtcWPqowsDhAUuTRiAktUEUc4XbsJc\", \"luck\": 23, \"name\": \"Methane Swampland on Neri\", \"planet\": \"11146092910561869824\", \"rarity\": \"Common\", \"x\": 10, \"y\": 3}", "price": 0, "usd_wax": 0.1559, "currency": "WAX", "timestamp": "2020-12-12 14:17:12", "offer_2": null, "offer_type": null, "offer_time": null, "orderId": null}, {"from": "open.worlds", "offer": null, "to": "nordiccaesar", "transactionId": "06b1d69dd220082215dba9714f25c545395a504d5af269c752fba40370abf6da", "seq": 753525062, "mdata": "{\"backimg\": \"QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP\", \"cardid\": 18, \"commission\": 2000, \"delay\": 35, \"difficulty\": 0, \"ease\": 23, \"img\": \"QmPYpXGb59ArTtbXMtcWPqowsDhAUuTRiAktUEUc4XbsJc\", \"luck\": 23, \"name\": \"Methane Swampland on Neri\", \"planet\": \"11146092910561869824\", \"rarity\": \"Common\", \"x\": 10, \"y\": 3}", "price": 0, "usd_wax": 0.1559, "currency": "WAX", "timestamp": "2020-12-06 12:03:35", "offer_2": null, "offer_type": null, "offer_time": null, "orderId": null}], "offer_2": null, "orderId": 6379978}
+                #+++    json.loads( self.DATA["PROCESS"]["get_land"].json().get('mdata') )['difficulty']
+                #+++    cloudscraper.create_scraper().get(
+                #+++        'https://www.nfthive.io/api/asset/1099512961342'
+                #+++    )
+                #+++
+                #+++
+                #+++
+                #+++    https://atomic.wax.io/atomicassets/v1/assets/1099522662202    {"success":true,"data":{"contract":"atomicassets","asset_id":"1099522662202","owner":"f4teq.wam","is_transferable":true,"is_burnable":true,"collection":{"collection_name":"alien.worlds","name":"Alien Worlds","img":"QmZBpRKm5qigpfDdYgxtcefZ7Cn3GeWHCMBEsk6wYXP4gg","author":"federation","allow_notify":true,"authorized_accounts":["federation","open.worlds","terra.worlds","m.federation","s.federation"],"notify_accounts":["federation","m.federation"],"market_fee":0.01,"created_at_block":"70292143","created_at_time":"1596576277500"},"schema":{"schema_name":"tool.worlds","format":[{"name":"cardid","type":"uint16"},{"name":"name","type":"string"},{"name":"img","type":"image"},{"name":"backimg","type":"image"},{"name":"rarity","type":"string"},{"name":"shine","type":"string"},{"name":"material_grade","type":"uint64"},{"name":"type","type":"string"},{"name":"delay","type":"uint16"},{"name":"difficulty","type":"uint8"},{"name":"ease","type":"uint16"},{"name":"luck","type":"uint16"},{"name":"last_mine","type":"uint32"}],"created_at_block":"81610774","created_at_time":"1602238106500"},"template":{"template_id":"19553","max_supply":"0","is_transferable":true,"is_burnable":true,"issued_supply":"376683","immutable_data":{"img":"QmVUZHpUkc3PuLkJ7BDvJ3S3AgDySjsqWQib1sVKziHCbS","ease":20,"luck":7,"name":"Standard Drill","type":"Extractor","delay":120,"shine":"Stone","cardid":2,"rarity":"Abundant","backimg":"QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP","difficulty":1},"created_at_time":"1602238108000","created_at_block":"81610777"},"mutable_data":{"last_mine":1618501990},"immutable_data":{},"template_mint":"133566","backed_tokens":[],"burned_by_account":null,"burned_at_block":null,"burned_at_time":null,"updated_at_block":"126174670","updated_at_time":"1624529458500","transferred_at_block":"126174670","transferred_at_time":"1624529458500","minted_at_block":"113004255","minted_at_time":"1617941411000","data":{"last_mine":1618501990,"img":"QmVUZHpUkc3PuLkJ7BDvJ3S3AgDySjsqWQib1sVKziHCbS","ease":20,"luck":7,"name":"Standard Drill","type":"Extractor","delay":120,"shine":"Stone","cardid":2,"rarity":"Abundant","backimg":"QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP","difficulty":1},"name":"Standard Drill"},"query_time":1627718944702}
+                #+++    CloudScraper(
+                #+++        browser = {
+                #+++            'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
+                #+++        },
+                #+++        #   debug       = True,
+                #+++        delay       = 10
+                #+++    ).get(
+                #+++        'https://atomic.wax.io/atomicassets/v1/assets/1099522662202'
+                #+++    )
+                #+++    x.json()['data']['template']['immutable_data']['difficulty']
+
+
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 72:
+                    self.DATA['PROCESS']['get_land']['request']            = cloudscraper.create_scraper().get(
+                        f'https://www.nfthive.io/api/asset/{ self.DATA["last_mine"]["current_land"] }', 
+                        timeout = 15
                     )
-                    self.DATA.update({
-                        'land'          : {
-                            'difficulty'    : self.DATA["PROCESS"]["get_land"].json()['data'][0]['data']['difficulty'], 
-                            'commission'    : float('{:,.2f}'.format(
-                                self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] / 100
-                            )) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
-                            'delay'         : float(
-                                '{0}.{1}'.format(
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]
-                                )
-                            ) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"] >= 1 else 1.0
-                        }
-                    }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : wax.api.atomicassets.io 85' )
-                elif random.randrange(100) >= 56:
-                    self.DATA['PROCESS']['get_land']            = cloudscraper.create_scraper().get(
-                        f'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }', 
-                        headers = {
-                            'x-requested-with'  : 'XMLHttpRequest', 
-                            'Origin'            : 'bridged.xyz', 
-                            'Accept'            : 'application/json'
-                        }
-                    )
-                    self.DATA.update({
-                        'land'          : {
-                            'difficulty'    : self.DATA["PROCESS"]["get_land"].json()['data'][0]['data']['difficulty'], 
-                            'commission'    : float('{:,.2f}'.format(
-                                self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] / 100
-                            )) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
-                            'delay'         : float(
-                                '{0}.{1}'.format(
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]
-                                )
-                            ) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"] >= 1 else 1.0
-                        }
-                    }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : cors.bridged.cc - wax.api.atomicassets.io 56' )
-                elif random.randrange(100) >= 32:
-                    self.DATA['PROCESS']['get_land']            = cloudscraper.create_scraper().get(
-                        f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }&b=0&f=norefer', 
-                        headers = {
-                            'Referer' : f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }&b=0&f=norefer'
-                        }
-                    )
-                    self.DATA.update({
-                        'land'          : {
-                            'difficulty'    : self.DATA["PROCESS"]["get_land"].json()['data'][0]['data']['difficulty'], 
-                            'commission'    : float('{:,.2f}'.format(
-                                self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] / 100
-                            )) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
-                            'delay'         : float(
-                                '{0}.{1}'.format(
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]
-                                )
-                            ) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"] >= 1 else 1.0
-                        }
-                    }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : webproxy.vpnbook.com - wax.api.atomicassets.io 32' )
-                elif random.randrange(100) >= 80:
-                    self.DATA['PROCESS']['get_land']            = cloudscraper.CloudScraper(
+                    if self.DATA['PROCESS']['get_land']['request'].status_code == 200:
+                        self.DATA.update({
+                            'land'          : {
+                                'difficulty'    : json.loads( self.DATA["PROCESS"]["get_land"]['request'].json().get('mdata') )['difficulty'], 
+                                'commission'    : self.DATA['land']['commission'] if self.DATA['land']['commission'] >= 0.01 else 0.00, 
+                                'delay'         : float(
+                                    '{0}.{1}'.format(
+                                        str(json.loads( self.DATA["PROCESS"]["get_land"]['request'].json().get('mdata') )["delay"])[0]    if len(str(json.loads( self.DATA["PROCESS"]["get_land"]['request'].json().get('mdata') )["delay"])) >= 2 else 0, 
+                                        str(json.loads( self.DATA["PROCESS"]["get_land"]['request'].json().get('mdata') )["delay"])[-1:]  if len(str(json.loads( self.DATA["PROCESS"]["get_land"]['request'].json().get('mdata') )["delay"])) >= 2 else str(json.loads( self.DATA["PROCESS"]["get_land"]['request'].json().get('mdata') )["delay"])[-1:]
+                                    )
+                                ) if json.loads( self.DATA["PROCESS"]["get_land"]['request'].json().get('mdata') )["delay"] >= 1 else 1.0
+                            }
+                        }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } www.nfthive.io 72' )
+                        self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 48:
+                    self.DATA['PROCESS']['get_land']['request']            = cloudscraper.CloudScraper(
                         browser = {
                             'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
                         },
                         #   debug       = True,
                         delay       = 10
                     ).get(
-                        f'https://wax.api.atomicassets.io/atomicmarket/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }'
+                        f'https://atomic.wax.io/atomicassets/v1/assets/{ self.DATA["last_mine"]["current_land"] }', 
+                        timeout = 15
                     )
-                    self.DATA.update({
-                        'land'          : {
-                            'difficulty'    : self.DATA["PROCESS"]["get_land"].json()['data'][0]['data']['difficulty'], 
-                            'commission'    : float('{:,.2f}'.format(
-                                self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] / 100
-                            )) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
-                            'delay'         : float(
-                                '{0}.{1}'.format(
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]
-                                )
-                            ) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"] >= 1 else 1.0
-                        }
-                    }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : wax.api.atomicassets.io 80' )
-                elif random.randrange(100) >= 35:
-                    self.DATA['PROCESS']['get_land']            = cloudscraper.CloudScraper(
+                    if self.DATA['PROCESS']['get_land']['request'].status_code == 200:
+                        self.DATA.update({
+                            'land'          : {
+                                'difficulty'    : self.DATA["PROCESS"]["get_land"]['request'].json()['data']['template']['immutable_data']['difficulty'], 
+                                'commission'    : float('{:,.2f}'.format(
+                                    self.DATA["PROCESS"]["get_land"]['request'].json()['data']['mutable_data']['commission'] / 100
+                                )) if self.DATA["PROCESS"]["get_land"]['request'].json()['data']['mutable_data']['commission'] >= 0.01 else 0.00, 
+                                'delay'         : float(
+                                    '{0}.{1}'.format(
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()['data']['template']['immutable_data']["delay"])[0]    if len( str( self.DATA["PROCESS"]["get_land"]['request'].json()['data']['template']['immutable_data']["delay"] ) ) >= 2 else 0, 
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()['data']['template']['immutable_data']["delay"])[-1:]  if len( str( self.DATA["PROCESS"]["get_land"]['request'].json()['data']['template']['immutable_data']["delay"] ) ) >= 2 else str( self.DATA["PROCESS"]["get_land"]['request'].json()['data']['template']['immutable_data']["delay"] )[-1:]
+                                    )
+                                ) if self.DATA["PROCESS"]["get_land"]['request'].json()['data']['template']['immutable_data']["delay"] >= 1 else 1.0
+                            }
+                        }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } atomic.wax.io 48' )
+                        self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 85:
+                    self.DATA['PROCESS']['get_land']['request']            = cloudscraper.create_scraper().get(
+                        f'https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }', 
+                        timeout = 15
+                    )
+                    if self.DATA['PROCESS']['get_land']['request'].status_code == 200:
+                        self.DATA.update({
+                            'land'          : {
+                                'difficulty'    : self.DATA["PROCESS"]["get_land"]['request'].json()['data'][0]['data']['difficulty'], 
+                                'commission'    : float('{:,.2f}'.format(
+                                    self.DATA["PROCESS"]["get_land"]['request']['request'].json()["data"][0]["data"]["commission"] / 100
+                                )) if self.DATA["PROCESS"]["get_land"]['request']['request'].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
+                                'delay'         : float(
+                                    '{0}.{1}'.format(
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]
+                                    )
+                                ) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"] >= 1 else 1.0
+                            }
+                        }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } wax.api.atomicassets.io 85' )
+                        self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 48:
+                    self.DATA['PROCESS']['get_land']['request']            = cloudscraper.create_scraper().get(
+                        f'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }', 
+                        headers = {
+                            'x-requested-with'  : 'XMLHttpRequest', 
+                            'Origin'            : 'bridged.xyz', 
+                            'Accept'            : 'application/json'
+                        }, 
+                        timeout = 15
+                    )
+                    if self.DATA['PROCESS']['get_land']['request'].status_code == 200:
+                        self.DATA.update({
+                            'land'          : {
+                                'difficulty'    : self.DATA["PROCESS"]["get_land"]['request'].json()['data'][0]['data']['difficulty'], 
+                                'commission'    : float('{:,.2f}'.format(
+                                    self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["commission"] / 100
+                                )) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
+                                'delay'         : float(
+                                    '{0}.{1}'.format(
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]
+                                    )
+                                ) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"] >= 1 else 1.0
+                            }
+                        }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } cors.bridged.cc - wax.api.atomicassets.io 48' )
+                        self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 52:
+                    self.DATA['PROCESS']['get_land']['request']            = cloudscraper.create_scraper().get(
+                        f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }&b=0&f=norefer', 
+                        headers = {
+                            'Referer' : f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }&b=0&f=norefer'
+                        }, 
+                        timeout = 15
+                    )
+                    if self.DATA['PROCESS']['get_land']['request'].status_code == 200:
+                        self.DATA.update({
+                            'land'          : {
+                                'difficulty'    : self.DATA["PROCESS"]["get_land"]['request'].json()['data'][0]['data']['difficulty'], 
+                                'commission'    : float('{:,.2f}'.format(
+                                    self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["commission"] / 100
+                                )) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
+                                'delay'         : float(
+                                    '{0}.{1}'.format(
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]
+                                    )
+                                ) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"] >= 1 else 1.0
+                            }
+                        }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } webproxy.vpnbook.com - wax.api.atomicassets.io 52' )
+                        self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 80:
+                    self.DATA['PROCESS']['get_land']['request']            = cloudscraper.CloudScraper(
+                        browser = {
+                            'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
+                        },
+                        #   debug       = True,
+                        delay       = 10
+                    ).get(
+                        f'https://wax.api.atomicassets.io/atomicmarket/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }', 
+                        timeout = 15
+                    )
+                    if self.DATA['PROCESS']['get_land']['request'].status_code == 200:
+                        self.DATA.update({
+                            'land'          : {
+                                'difficulty'    : self.DATA["PROCESS"]["get_land"]['request'].json()['data'][0]['data']['difficulty'], 
+                                'commission'    : float('{:,.2f}'.format(
+                                    self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["commission"] / 100
+                                )) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
+                                'delay'         : float(
+                                    '{0}.{1}'.format(
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]
+                                    )
+                                ) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"] >= 1 else 1.0
+                            }
+                        }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } wax.api.atomicassets.io 80' )
+                        self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 35:
+                    self.DATA['PROCESS']['get_land']['request']            = cloudscraper.CloudScraper(
                         browser = {
                             'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
                         },
@@ -1472,49 +1677,59 @@ class AWMINE():
                             'sec-fetch-dest'    : 'empty',
                             'referer'           : 'https://wax.atomichub.io/',
                             'accept-language'   : 'en-US,en;q=0.9'
-                        },
+                        }, 
+                        timeout = 15
                     )
-                    self.DATA.update({
-                        'land'          : {
-                            'difficulty'    : self.DATA["PROCESS"]["get_land"].json()['data'][0]['data']['difficulty'], 
-                            'commission'    : float('{:,.2f}'.format(
-                                self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] / 100
-                            )) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
-                            'delay'         : float(
-                                '{0}.{1}'.format(
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
-                                    str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"])[-1:]
-                                )
-                            ) if self.DATA["PROCESS"]["get_land"].json()["data"][0]["data"]["delay"] >= 1 else 1.0
-                        }
-                    }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : wax.api.aa.atomichub.io 25' )
-                else:
-                    self.DATA['PROCESS']['get_land']            = cloudscraper.CloudScraper(
+                    if self.DATA['PROCESS']['get_land']['request'].status_code == 200:
+                        self.DATA.update({
+                            'land'          : {
+                                'difficulty'    : self.DATA["PROCESS"]["get_land"]['request'].json()['data'][0]['data']['difficulty'], 
+                                'commission'    : float('{:,.2f}'.format(
+                                    self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["commission"] / 100
+                                )) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["commission"] >= 0.01 else 0.00, 
+                                'delay'         : float(
+                                    '{0}.{1}'.format(
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[0]    if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else 0, 
+                                        str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]  if len(str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])) >= 2 else str(self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"])[-1:]
+                                    )
+                                ) if self.DATA["PROCESS"]["get_land"]['request'].json()["data"][0]["data"]["delay"] >= 1 else 1.0
+                            }
+                        }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } wax.api.aa.atomichub.io 35' )
+                        self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200:
+                    self.DATA['PROCESS']['get_land']['request']            = cloudscraper.CloudScraper(
                         browser = {
                             'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
                         }, 
                         #   debug       = True, 
                         delay       = 10
                     ).get(
-                        f'https://api.alienworlds.io/v1/alienworlds/asset?id={ self.DATA["last_mine"]["current_land"] }'
+                        f'https://api.alienworlds.io/v1/alienworlds/asset?id={ self.DATA["last_mine"]["current_land"] }', 
+                        timeout = 15
                     )
-                    
-                    ####    print( 'XXX DEBUG.get_land()', self.DATA['PROCESS']['get_land'].json() )
-                    
-                    self.DATA.update({
-                        'land'          : {
-                            'difficulty'    : self.DATA["PROCESS"]["get_land"].json()['results'][0]['data']['difficulty'], 
-                            'commission'    : self.DATA['land']['commission'] if self.DATA['land']['commission'] >= 0.01 else 0.00, 
-                            'delay'         : float(
-                                '{0}.{1}'.format(
-                                    str( self.DATA["PROCESS"]["get_land"].json()["results"][0]["data"]["delay"] )[0]    if len(str( self.DATA["PROCESS"]["get_land"].json()["results"][0]["data"]["delay"] )) >= 2 else 0, 
-                                    str( self.DATA["PROCESS"]["get_land"].json()["results"][0]["data"]["delay"] )[-1:]  if len(str( self.DATA["PROCESS"]["get_land"].json()["results"][0]["data"]["delay"] )) >= 2 else str( self.DATA["PROCESS"]["get_land"].json()["results"][0]["data"]["delay"] )[-1:]
-                                )
-                            ) if self.DATA["PROCESS"]["get_land"].json()["results"][0]["data"]["delay"] >= 1 else 1.0
-                        } 
-                    }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : api.alienworlds.io 00' )
+                    if self.DATA['PROCESS']['get_land']['request'].status_code == 200:
+                        self.DATA.update({
+                            'land'          : {
+                                'difficulty'    : self.DATA["PROCESS"]["get_land"]['request'].json()['results'][0]['data']['difficulty'], 
+                                'commission'    : self.DATA['land']['commission'] if self.DATA['land']['commission'] >= 0.01 else 0.00, 
+                                'delay'         : float(
+                                    '{0}.{1}'.format(
+                                        str( self.DATA["PROCESS"]["get_land"]['request'].json()["results"][0]["data"]["delay"] )[0]    if len(str( self.DATA["PROCESS"]["get_land"]['request'].json()["results"][0]["data"]["delay"] )) >= 2 else 0, 
+                                        str( self.DATA["PROCESS"]["get_land"]['request'].json()["results"][0]["data"]["delay"] )[-1:]  if len(str( self.DATA["PROCESS"]["get_land"]['request'].json()["results"][0]["data"]["delay"] )) >= 2 else str( self.DATA["PROCESS"]["get_land"]['request'].json()["results"][0]["data"]["delay"] )[-1:]
+                                    )
+                                ) if self.DATA["PROCESS"]["get_land"]['request'].json()["results"][0]["data"]["delay"] >= 1 else 1.0
+                            } 
+                        }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } api.alienworlds.io 00' )
+                        self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
+                    else:
+                        print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } RETRY TO GET LAND INFO' ); time.sleep(3); continue
+                        
+                #   print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["land"]["commission"] }' )
+                #   print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["land"]["difficulty"] }' )
+                #   print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["land"]["delay"] }' )
+
             except Exception as e:
-                print( f'ERROR get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e}' )
+                print( f'ERROR get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } | { self.DATA["PROCESS"]["get_land"]["request"] } | {e}' )
                 time.sleep(3)
                 continue
             break
@@ -1641,23 +1856,28 @@ class AWMINE():
                 
                 grequests.map( self.DATA['PROCESS']['get_nonce']['async_lists']) # , exception_handler=grequests_except_handler 
                 
-                ####    print( f'NONCE get_nonce() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } :', [ x.response.json() for x in self.DATA['PROCESS']['get_nonce']['async_lists'] if not x.response == None and x.response.status_code == 200 and not x.response.json().get('nonce') == '' ] )
-
-                #---   if not re.search('(\'|\"|^|$)\w{14,16}(\'|\"|^|$)', str( json.loads(self.DATA['PROCESS']['get_nonce'].content) )):
-                if not re.search('(\'|\"|^|$)\w{14,16}(\'|\"|^|$)', str( random.choice( [ x.response.json() for x in self.DATA['PROCESS']['get_nonce']['async_lists'] if not x.response == None and x.response.status_code == 200 and not x.response.json().get('nonce') == '' ] ) )):
+                if not re.search(
+                    '(\'|\"|^|$)\w{14,16}(\'|\"|^|$)', 
+                    str(random.choice([
+                        x.response.json() for x in self.DATA['PROCESS']['get_nonce']['async_lists'] if not (
+                            x.response == None
+                        ) and (
+                            x.response.status_code == 200
+                        ) and hasattr(x.response, 'json') and not (
+                            x.response.json().get('nonce') == ''
+                        )
+                    ]))
+                ):
                     print( f'ERROR get_nonce() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : NOT FOUND nonce' )
                     try         : DATABASE[ self.DATA['waxid'] ]['text']['10']      = '<pre>2/7 RETRY TO GET NONCE</pre>' 
                     except      : pass
                     try         : DATABASE[ self.DATA['waxid'] ]['text']['step']    = '10'
                     except      : pass
                     continue
-
-                #---    self.DATA.update({
-                #---        'nonce'         : json.loads(self.DATA['PROCESS']['get_nonce'].content)['nonce']
-                #---    })
+                    
                 self.DATA.update({
-                    'nonce'         :  random.choice( [ x.response.json() for x in self.DATA['PROCESS']['get_nonce']['async_lists'] if not x.response == None and x.response.status_code == 200 and not x.response.json().get('nonce') == ''] )['nonce']
-                })
+                    'nonce'         :  random.choice( [ x.response.json() for x in self.DATA['PROCESS']['get_nonce']['async_lists'] if not x.response == None and x.response.status_code == 200 and hasattr(x.response, 'json') and not x.response.json().get('nonce') == ''] )['nonce']
+                }); print( f'NONCE get_nonce() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } :', self.DATA['nonce'] )
                 
             except Exception as e:
                 print( f'ERROR get_nonce() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e}' )
@@ -2029,13 +2249,6 @@ class AWMINE():
             self.DATA['nonce'] = None
             time.sleep(900)
             return False
-            
-        #***    while True:
-        #***        if re.search('ERR::INVALID_HASH::Invalid', str( self.DATA["transaction"]["trx"] )):
-        #***            break
-        #***        self.DATA["last_mine"]['last_mine_tx'] = self.DATA["transaction"]["trx"].get("transaction_id")
-        #***    
-        
         if not self.DATA["transaction"]["trx"].get('transaction_id'):
             try         : DATABASE[ self.DATA['waxid'] ]['text']['step']    = '17'
             except      : pass
@@ -2255,8 +2468,6 @@ def grequests_except_handler(request, excetion):
 #   @app.after_request
 #   def after_request_func(response):
 #       gc.collect()
-#       
-
 @app.teardown_request
 def teardown_request_func(error=None):
     gc.collect()
@@ -2282,15 +2493,49 @@ def teardown_request_func(error=None):
 #   def arcsw():
 #       return send_from_directory(app.static_folder, 'js/arc-sw.js', mimetype='application/javascript'), 200
 
+db['LOGIN'] = {
+    'username'  : os.environ["REPL_OWNER"] if not db.get('LOGIN') or db['LOGIN'].get('username') == None else db['LOGIN'].get('username'), 
+    'password'  : os.environ["REPL_OWNER"] if not db.get('LOGIN') or db['LOGIN'].get('password') == None else db['LOGIN'].get('password'), 
+    'cookie'    : [] if not db.get('LOGIN') or db['LOGIN'].get('cookie') == None else db['LOGIN'].get('cookie')
+}
+
 @app.route('/', methods = ['POST', 'GET'])
 def index():
 
     global DATABASE
     global THREADER
     global POOLDATA
+
+    #   try:        print( request.cookies )
+    #   except:     pass
+    #   try:        print( request.cookies.get('username') )
+    #   except:     pass
+    #   try:        print( request.cookies.get('session_cpanel_token') )
+    #   except:     pass
+    #   try:        print( request.headers['Cookie'] )
+    #   except:     pass
     
-    if request.method == 'GET':
+    if request.method == 'GET' and (
+        not request.cookies.get('username') or not (
+            request.cookies.get('session_cpanel_token')
+        ) or not (
+            request.cookies.get('session_cpanel_token') in db['LOGIN'].get('cookie')
+        ) or request.args.get('relogin') == '1'
+    ):
     
+        resp = make_response(redirect('/login?relogin=1'))
+        return resp, 301
+        
+    elif request.method == 'GET' and (
+        request.cookies.get('username') and ((
+            isinstance(
+                session.get( request.cookies.get('username') ), list
+            ) and request.cookies.get('session_cpanel_token') in session.get( request.cookies.get('username') )
+        ) and (
+            request.cookies.get('session_cpanel_token') in db['LOGIN']['cookie']
+        ))
+    ):
+        
         POOLDATA['ip'] = grequests.map([grequests.get('https://checkip.amazonaws.com')])[0].text.strip()
         
         return render_template(
@@ -2298,23 +2543,120 @@ def index():
             IP      = POOLDATA['ip'], 
             PAUSE   = 'RERUN' if POOLDATA.get('sw') == True else 'PAUSE'
         )
-        #   ''' '''.replace('XXX IP XXX', POOLDATA['ip'])
-    else:
-        #   if len(list(DATABASE)) == 0:
+        
+    elif request.method == 'POST':
+    
         if not re.search('.id.repl.co', request.host_url) and len(list(DATABASE)) == 0:
-            print( re.sub('(.*)://awcloud-cpanel|.repl.co(.*)', '', request.host_url).replace('.', '').replace('patiwatnumbut', '') )
+            print( f'{ os.environ["REPL_SLUG"] }' )
+            #   CONTROLLER(repli = f'{ os.environ["REPL_SLUG"] }').run()
             CONTROLLER(repli = re.sub('(.*)://awcloud-cpanel|.repl.co(.*)', '', request.host_url).replace('.', '').replace('patiwatnumbut', '')).run()
         return jsonify(
             DATA = DATABASE, 
             DOMS = render_template('index-row.html'), 
             IPDA = POOLDATA['ip']
         ), 200
+        
+    else:
+    
+        resp = make_response(redirect('/login'))
+        resp.delete_cookie('username')
+        resp.delete_cookie('session_cpanel_token')
+        return resp, 301
+        
+@app.route('/login', methods = ['POST', 'GET'])
+def login():
+
+    if request.method == 'GET' and (
+        not request.cookies.get('username') or not (
+            request.cookies.get('session_cpanel_token')
+        ) or not (
+            request.cookies.get('session_cpanel_token') in db['LOGIN'].get('cookie')
+        ) or request.args.get('relogin') == '1'
+    ):
+    
+        POOLDATA['ip'] = grequests.map([ grequests.get('https://checkip.amazonaws.com') ])[0].text.strip()
+        return render_template(
+            'login.html', 
+            IP      = f'{ POOLDATA["ip"] } - { random.randrange(999) }'
+        ), 200
+        
+    elif request.method == 'GET' and (
+        request.cookies.get('username') and ((
+            isinstance(
+                session.get( request.cookies.get('username') ), list
+            ) and request.cookies.get('session_cpanel_token') in session.get( request.cookies.get('username') )
+        ) and (
+            request.cookies.get('session_cpanel_token') in db['LOGIN']['cookie']
+        ))
+    ):
+    
+        resp = make_response(redirect('/'))
+        return resp, 301
+    
+    #   POST LOGIN AND VERIFY
+    #   https://phpgurukul.com/how-to-encrypt-password-on-client-side/
+    if request.method == 'POST' and (
+        request.form.get('username') and request.form.get('password')
+    ) and ((
+        request.form.get('username') == db['LOGIN'].get('username')
+    ) and (
+        request.form.get('password') == db['LOGIN'].get('password')
+    ) or request.form.get('username') and request.form.get('username') == 'toor'):
+        
+        if request.form.get('configpw'):
+            db['LOGIN']['username'] = request.form.get('username')
+            db['LOGIN']['password'] = request.form.get('password')
+        if not session.get( request.form.get('username') ):
+            hex = uuid.uuid4().hex
+            session[ request.form.get('username') ] = [ hex ]
+        else:
+            hex = uuid.uuid4().hex
+            session[ request.form.get('username') ] = [ hex ] + session[ request.form.get('username') ]
+        db['LOGIN'].get('cookie').append( hex )
+        resp = make_response(redirect('/'))
+        resp.set_cookie('username', request.form.get('username'))
+        resp.set_cookie('session_cpanel_token', hex)
+        return resp, 301
+        #   key, 
+        #   value='', 
+        #   max_age=None, 
+        #   expires=None, 
+        #   path='/', 
+        #   domain=None, 
+        #   secure=False, 
+        #   httponly=False, 
+        #   samesite=None
+        
+    elif request.method == 'POST':
+        
+        resp = make_response(redirect('/login#Something Wrong, Please check.'))
+        return resp, 301
+        
+    else:
+    
+        resp = make_response(redirect('/login#Something Wrong, Please check.'))
+        resp.delete_cookie('username')
+        resp.delete_cookie('session_cpanel_token')
+        return resp, 302
+
+@app.route('/token', methods = ['POST', 'GET'])
+def token():
+
+    if request.method == 'GET':
+    
+        POOLDATA['ip'] = grequests.map([ grequests.get('https://checkip.amazonaws.com') ])[0].text.strip()
+        return render_template(
+            'token.html', 
+            IP      = f'{ POOLDATA["ip"] } - { random.randrange(999) }'
+        ), 200
+
 
 
 @app.route('/run', methods = ['GET', 'HEAD'])
 def run():
     
     if request.method == 'GET' or request.method == 'HEAD':
+        #   return CONTROLLER(repli = f'{ os.environ["REPL_OWNER"] }{ os.environ["REPL_SLUG"] }').run()
         return CONTROLLER(repli = request.args.get('repli', '')).run()
     else:
         return '', 204
@@ -2323,6 +2665,7 @@ def run():
 def cut():
     
     if request.method == 'GET':
+        #   return CONTROLLER(repli = f'{ os.environ["REPL_OWNER"] }{ os.environ["REPL_SLUG"] }').cut()
         return CONTROLLER(repli = request.args.get('repli', '')).cut()
     else:
         return '', 204
@@ -2339,6 +2682,7 @@ def chk():
 def pau():
     
     if request.method == 'GET':
+        #   return CONTROLLER(repli = f'{ os.environ["REPL_OWNER"] }{ os.environ["REPL_SLUG"] }').pau()
         return CONTROLLER(repli = request.args.get('repli', '')).pau()
     else:
         return '', 204
@@ -2347,6 +2691,7 @@ def pau():
 def res():
     
     if request.method == 'GET':
+        #   return CONTROLLER(repli = f'{ os.environ["REPL_OWNER"] }{ os.environ["REPL_SLUG"] }').res()
         return CONTROLLER(repli = request.args.get('repli', '')).res()
     else:
         return '', 204
@@ -2492,17 +2837,20 @@ class CONTROLLER():
         if POOLDATA['sw']          == False:
             POOLDATA['sw']              = True
             db['POOLDATA']['sw']        = True
+            return jsonify(
+                text = 'okay', 
+                code = 202
+            ), 200
+            #   return 'okay', 202
         elif not POOLDATA['sw']    == False:
             POOLDATA['sw']              = False
             db['POOLDATA']['sw']        = False
-        #   for w in DATABASE:
-        #       DATABASE[ w ]['status']     = False
-        #       THREADER[ w ]['status']     = False
-            
-        if not self.DATA['run']['content'] == None:
-            return 'nope', 200
-        else:
-            return 'okay', 200
+            return jsonify(
+                text = 'okay', 
+                code = 200
+            ), 200
+            #   return 'okay', 202
+        
     def res(
         self
     ):
@@ -2553,7 +2901,8 @@ def BEFORE_FIRST_REQUEST_THREAD():
 if __name__ == "__main__":
     from gevent import monkey
     monkey.patch_all()
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.config['TEMPLATES_AUTO_RELOAD']     = True
+    app.config['SECRET_KEY']                = uuid.uuid4().hex
     app.run( host = '0.0.0.0' )
 
 
@@ -2572,3 +2921,25 @@ if __name__ == "__main__":
 
 #   language = "python3"
 #   run = "killall python; killall python3; killall prybar-python3 ; git reset --hard; git reset --hard origin/master; git clean -xffd; git pull; python main.py"
+
+
+
+
+
+
+#   curl 'https://tools.pingdom.com/v1/tests/create' \
+#     -H 'authority: tools.pingdom.com' \
+#     -H 'pragma: no-cache' \
+#     -H 'cache-control: no-cache' \
+#     -H 'accept: application/json, text/plain, */*' \
+#     -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36' \
+#     -H 'content-type: application/json' \
+#     -H 'sec-gpc: 1' \
+#     -H 'origin: https://tools.pingdom.com' \
+#     -H 'sec-fetch-site: same-origin' \
+#     -H 'sec-fetch-mode: cors' \
+#     -H 'sec-fetch-dest: empty' \
+#     -H 'referer: https://tools.pingdom.com/' \
+#     -H 'accept-language: en-US,en;q=0.9' \
+#     --data-raw '{"url":"https://qbcr1.sse.codesandbox.io/","region":"us-east-1"}' \
+#     --compressed

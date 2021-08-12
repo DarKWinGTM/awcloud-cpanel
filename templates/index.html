@@ -519,10 +519,11 @@
   </div>
 </body>
 <script>
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl)
+  function tooltipTriggerRender(){
+    [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function (ele){
+      return new bootstrap.Tooltip(ele)
     })
+  }; tooltipTriggerRender(); 
 </script>
 
 </html>

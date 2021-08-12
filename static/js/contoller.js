@@ -45,11 +45,9 @@ $(document).ready(function() {
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     id          : WAXID, 
-                                    title       : WAXID, 
                                     innerHTML   : window['information-data']['DOMS'].replace(
                                         '{ WAXID }', 
-										
-                                        `${ WAXID.replace('.wam', '.').slice(-3) }`
+                                        `${ WAXID.replace('.wam', '.').slice(-4) }`
                                     ).replace(
                                         '{ STAKE }', 
                                         window['information-data']['DATA'][WAXID]['cpu']['stake'].toString().split('.')[0]
@@ -90,16 +88,8 @@ $(document).ready(function() {
                                         '-------------------------', 
                                         window['information-data']['DATA'][WAXID]['text'][ window['information-data']['DATA'][WAXID]['text']['step'] ]
                                     )
-                                    
                                 })
                             ); document.querySelector(`tr[id*="${WAXID}"]`).setAttribute('class', 'align-middle'); 
-							//	document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
-							//		'onmouseover', `$(this).notify(this.querySelector('span[id="waxid"]').id, "success", { position : "top" })`
-							//	); 
-							//	.onmouseover = function (e) {
-							//		$.notify(`WAXID ${ WAXID }`, "success", { position : "top" }); 
-							//	}; 
-							
                             (function thiscode(w){
                                 setTimeout(function () {
                                     w.innerText = `${Number(w.innerText.split('/')[0]) + 1}/s`; thiscode(w); 
@@ -119,10 +109,21 @@ $(document).ready(function() {
                                             (function (a) {return a[Math.floor((Math.random()*a.length))]})([
                                                 'wax.cryptolions.io', 
                                                 'waxapi.ledgerwise.io', 
-                                                'api.waxsweden.org', 
                                                 'apiwax.3dkrender.com', 
-												'cors.bridged.cc/https://api.waxsweden.org', 
-												'cors.bridged.cc/https://api.waxsweden.org'
+                                                'wax.cryptolions.io', 
+                                                'waxapi.ledgerwise.io', 
+                                                'apiwax.3dkrender.com', 
+                                                'wax.cryptolions.io', 
+                                                'waxapi.ledgerwise.io', 
+                                                'apiwax.3dkrender.com', 
+                                                'wax.cryptolions.io', 
+                                                'waxapi.ledgerwise.io', 
+                                                'apiwax.3dkrender.com', 
+                                                'api.waxsweden.org', 
+                                                'cors.bridged.cc/https://api.waxsweden.org', 
+                                                'cors.bridged.cc/https://api.waxsweden.org', 
+                                                'cors.bridged.cc/https://api.waxsweden.org', 
+                                                'cors.bridged.cc/https://api.waxsweden.org'
                                             ])
                                         }/v2/history/get_actions?account=${
                                             w.id
@@ -145,19 +146,33 @@ $(document).ready(function() {
                                         
                                         w.querySelector('span[id="tlmperday"]').innerText = `${ TLM.toFixed(4) }/h`; 
                                         
-                                        setTimeout(function(){ thiscode(w) }, 16000); 
+                                        setTimeout(function(){ thiscode(w) }, 8000); 
                                         
                                     }).catch(error => {
                                         console.error(`Error : ${ error }`); setTimeout(function(){ thiscode(w) }, 1000); 
                                     }); 
                                 }else{
-                                    setTimeout(function(){ thiscode(w) }, 16000); 
+                                    setTimeout(function(){ thiscode(w) }, 8000); 
                                 }; 
                             })(
                                 window[WAXID]
                             ); // <span id="tlmperday">0.0000/24h</span> .querySelector('[id*="tlmperday"]')
                             
                         }catch(e){}; 
+						
+                        document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
+							'title', `${ WAXID }`
+                        ); 
+                        document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
+							'data-bs-toggle', `tooltip`
+                        ); 
+                        document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
+							'data-bs-placement', `top`
+                        ); 
+                        document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
+							'data-bs-original-title', `${ WAXID }`
+                        ); 
+						
                     }else{
                         try{ window[WAXID].querySelector('[id*="lastminedelay"]').innerText     = `${ window['information-data']['DATA'][WAXID]['cooldown'] }/s`}catch(e){}; 
                         try{ window[WAXID].querySelector('[id*="lastminestamp"]').innerText     = `${ window['information-data']['DATA'][WAXID]['last_mine']['time'].replace('T', ' ') }`}catch(e){}; 
@@ -210,16 +225,16 @@ $(document).ready(function() {
                             style   : "width: 100%;height: 100%;"
                         })
                     ); 
-					document.querySelector('div.modal.fade#sessionsToken').addEventListener('shown.bs.modal', function () {
-						document.querySelector('iframe[id*="SessionsToken"]').setAttribute(
-							'src', `https://awcloud-token.patiwatnumbut.repl.co/`
-						); 
-					}); 
-					document.querySelector('div.modal.fade#sessionsToken').addEventListener('hide.bs.modal', function () {
-						document.querySelector('iframe[id*="SessionsToken"]').setAttribute(
-							'src', ``
-						); 
-					}); 
+                    document.querySelector('div.modal.fade#sessionsToken').addEventListener('shown.bs.modal', function () {
+                        document.querySelector('iframe[id*="SessionsToken"]').setAttribute(
+                            'src', `https://awcloud-token.patiwatnumbut.repl.co/`
+                        ); 
+                    }); 
+                    document.querySelector('div.modal.fade#sessionsToken').addEventListener('hide.bs.modal', function () {
+                        document.querySelector('iframe[id*="SessionsToken"]').setAttribute(
+                            'src', ``
+                        ); 
+                    }); 
                 }; 
 
                 if (
@@ -231,16 +246,16 @@ $(document).ready(function() {
                         Object.keys( window['information-data']['DATA'] ).join('-')
                     ))
                 ){
-					document.querySelector('div.modal.fade#waxDetective').addEventListener('shown.bs.modal', function () {
-					document.querySelector('iframe[id*="FlowChart"]').setAttribute(
-						'src', `https://waxdetective.io/network/transfers?accounts=${ Object.keys( window['information-data']['DATA'] ).join('-') }&time_min=0&time_max=2555555555555`
-					); 
-					}); 
-					document.querySelector('div.modal.fade#waxDetective').addEventListener('hide.bs.modal', function () {
-						document.querySelector('iframe[id*="FlowChart"]').setAttribute(
-							'src', ''
-						); 
-					}); 
+                    document.querySelector('div.modal.fade#waxDetective').addEventListener('shown.bs.modal', function () {
+                    document.querySelector('iframe[id*="FlowChart"]').setAttribute(
+                        'src', `https://waxdetective.io/network/transfers?accounts=${ Object.keys( window['information-data']['DATA'] ).join('-') }&time_min=0&time_max=2555555555555`
+                    ); 
+                    }); 
+                    document.querySelector('div.modal.fade#waxDetective').addEventListener('hide.bs.modal', function () {
+                        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
+                            'src', ''
+                        ); 
+                    }); 
                 }else if(
                     (
                         !window['information-data']['DATA'] || 
@@ -333,35 +348,35 @@ $(document).ready(function() {
                 xhr.setRequestHeader("Content-Type", "application/json");
                 xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
-					
+                    
                     if(xhr.responseText != 'okay'){ 
                         $('form[action*="#ADD"]').find('button').notify(`ERROR : ${ xhr.responseText }`, "error", { position : "top" }); 
-						$('button[class*="btn btn-primary add"]').prop( "disabled", false ); 
-						$('input[aria-label*="ADD EMAIL"]').prop(  "disabled", false ); 
-						$('input[aria-label*="ADD PASSW"]').prop(  "disabled", false ); 
-						$('input[aria-label*="ADD SECRET"]').prop( "disabled", false ); 
-						$('input[aria-label*="ADD BACKUP"]').prop( "disabled", false ); 
-						$('input[aria-label*="ADD WAXID"]').prop(  "disabled", false ); 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD EMAIL"]')[0].value = ''; 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD PASSW"]')[0].value = ''; 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD SECRET"]')[0].value = ''; 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD BACKUP"]')[0].value = ''; 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD WAXID"]')[0].value = ''; 
-					}else{
-						$('form[action*="#ADD"]').find('button').notify("ADD NEW ACCOUNT", "success", { position : "top" }); 
-						$('button[class*="btn btn-primary add"]').prop( "disabled", false ); 
-						$('input[aria-label*="ADD EMAIL"]').prop(  "disabled", false ); 
-						$('input[aria-label*="ADD PASSW"]').prop(  "disabled", false ); 
-						$('input[aria-label*="ADD SECRET"]').prop( "disabled", false ); 
-						$('input[aria-label*="ADD BACKUP"]').prop( "disabled", false ); 
-						$('input[aria-label*="ADD WAXID"]').prop(  "disabled", false ); 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD EMAIL"]')[0].value = ''; 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD PASSW"]')[0].value = ''; 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD SECRET"]')[0].value = ''; 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD BACKUP"]')[0].value = ''; 
-						$('form[action*="#ADD"]').find('input[aria-label*="ADD WAXID"]')[0].value = ''; 
+                        $('button[class*="btn btn-primary add"]').prop( "disabled", false ); 
+                        $('input[aria-label*="ADD EMAIL"]').prop(  "disabled", false ); 
+                        $('input[aria-label*="ADD PASSW"]').prop(  "disabled", false ); 
+                        $('input[aria-label*="ADD SECRET"]').prop( "disabled", false ); 
+                        $('input[aria-label*="ADD BACKUP"]').prop( "disabled", false ); 
+                        $('input[aria-label*="ADD WAXID"]').prop(  "disabled", false ); 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD EMAIL"]')[0].value = ''; 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD PASSW"]')[0].value = ''; 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD SECRET"]')[0].value = ''; 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD BACKUP"]')[0].value = ''; 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD WAXID"]')[0].value = ''; 
+                    }else{
+                        $('form[action*="#ADD"]').find('button').notify("ADD NEW ACCOUNT", "success", { position : "top" }); 
+                        $('button[class*="btn btn-primary add"]').prop( "disabled", false ); 
+                        $('input[aria-label*="ADD EMAIL"]').prop(  "disabled", false ); 
+                        $('input[aria-label*="ADD PASSW"]').prop(  "disabled", false ); 
+                        $('input[aria-label*="ADD SECRET"]').prop( "disabled", false ); 
+                        $('input[aria-label*="ADD BACKUP"]').prop( "disabled", false ); 
+                        $('input[aria-label*="ADD WAXID"]').prop(  "disabled", false ); 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD EMAIL"]')[0].value = ''; 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD PASSW"]')[0].value = ''; 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD SECRET"]')[0].value = ''; 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD BACKUP"]')[0].value = ''; 
+                        $('form[action*="#ADD"]').find('input[aria-label*="ADD WAXID"]')[0].value = ''; 
                     }; 
-					
+                    
                 }}; 
                 xhr.send(JSON.stringify({
                     "waxid"     : e.currentTarget.querySelector('input[aria-label*="ADD WAXID"]').value.trim(), 
@@ -385,7 +400,7 @@ $(document).ready(function() {
                 $('button[class*="btn btn-primary add"]').prop( "disabled", false ); 
             };
         }); 
-		
+        
         document.querySelector('form[action="#DEL"]').addEventListener('submit', function (e) {
             
             if(
@@ -393,7 +408,7 @@ $(document).ready(function() {
                 e.currentTarget.querySelector('input[aria-label*="DEL WAXID"]').value.match('.wam') && 
                 !$('button[class="btn btn-primary del"]').attr('disabled')
             ){
-				
+                
                 $('button[class="btn btn-primary del"]').prop( "disabled", true ); 
                 $('input[aria-label*="DEL WAXID"]').prop( "disabled", true );
                 
@@ -402,20 +417,20 @@ $(document).ready(function() {
                 xhr.setRequestHeader("Content-Type", "application/json");
                 xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
-					
-					if(
-						xhr.responseText == 'okay'
-					){
-						$.notify("REMOVED ACCOUNT", "success");
-						$('button[class*="btn btn-primary del"]').prop( "disabled", false ); 
-						$('input[aria-label*="DEL WAXID"]').prop(  "disabled", false ); 
-						$('form[action*="#DEL"]').find('input[aria-label*="DEL WAXID"]')[0].value = ''; 
-					}else{
-						$.notify(`ERROR : ${ xhr.responseText }`, "error"); 
-						$('button[class*="btn btn-primary del"]').prop( "disabled", false ); 
-						$('input[aria-label*="DEL WAXID"]').prop(  "disabled", false ); 
-						$('form[action*="#DEL"]').find('input[aria-label*="DEL WAXID"]')[0].value = ''; 
-					}; 
+                    
+                    if(
+                        xhr.responseText == 'okay'
+                    ){
+                        $.notify("REMOVED ACCOUNT", "success");
+                        $('button[class*="btn btn-primary del"]').prop( "disabled", false ); 
+                        $('input[aria-label*="DEL WAXID"]').prop(  "disabled", false ); 
+                        $('form[action*="#DEL"]').find('input[aria-label*="DEL WAXID"]')[0].value = ''; 
+                    }else{
+                        $.notify(`ERROR : ${ xhr.responseText }`, "error"); 
+                        $('button[class*="btn btn-primary del"]').prop( "disabled", false ); 
+                        $('input[aria-label*="DEL WAXID"]').prop(  "disabled", false ); 
+                        $('form[action*="#DEL"]').find('input[aria-label*="DEL WAXID"]')[0].value = ''; 
+                    }; 
                     
                 }}; 
                 xhr.send(JSON.stringify({
@@ -423,7 +438,7 @@ $(document).ready(function() {
                 })); 
             }; 
         }); 
-		
+        
         document.querySelector('button[class="btn btn-primary run"]').onclick = function (e) {
     
             if (
@@ -454,7 +469,7 @@ $(document).ready(function() {
             function (e) {
                 if (
                     !$('button[class="btn btn-primary pau"]').attr('disabled')
-				){
+                ){
                     $('button[class="btn btn-primary pau"]').prop( "disabled", true );
                  
                     fetch(

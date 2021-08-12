@@ -1,147 +1,145 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<title>Control Panel - {{IP}}</title>
-	<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer/">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-	 crossorigin="anonymous" />
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	 crossorigin="anonymous">
-	</script>
-	<!-- <link 
-            href            = "/your-path-to-fontawesome/css/fontawesome.css" 
-            rel             = "stylesheet"> -->
-
-
-	<script type=text/javascript>
-		var s   = document.createElement('script'); 
-            s.setAttribute('type', 'text/javascript'); 
-            s.setAttribute('src', '/js/contoller.js'); 
-            document.head.appendChild(s);
-	</script>
-	<!-- https://notifyjs.jpillora.com/ -->
-	<script type=text/javascript>
-		var s   = document.createElement('script'); 
-            s.setAttribute('type', 'text/javascript'); 
-            s.setAttribute('src', '/js/notify.js'); 
-            document.head.appendChild(s);
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-	</script>
-	<style type="text/css">
-		/* @media all and (max-width:480px) {
+    <meta charset="utf-8" />
+    <title>Control Panel - {{IP}}</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+     crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+     crossorigin="anonymous">
+    </script>
+    <!-- link 
+  href            = "/your-path-to-fontawesome/css/fontawesome.css" 
+  rel             = "stylesheet" -->
+    <script type=text/javascript>
+        var s   = document.createElement('script'); 
+    s.setAttribute('type', 'text/javascript'); 
+    s.setAttribute('src', '/js/contoller.js'); 
+    document.head.appendChild(s);
+    </script>
+    <!-- https://notifyjs.jpillora.com/ -->
+    <script type=text/javascript>
+        var s   = document.createElement('script'); 
+    s.setAttribute('type', 'text/javascript'); 
+    s.setAttribute('src', '/js/notify.js'); 
+    document.head.appendChild(s);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    </script>
+    <style type="text/css">
+        /* @media all and (max-width:480px) {
             .custom-class { width: 100%; display:block;}
             } */
-		/* @media screen and (max-width: 480px) {
+        /* @media screen and (max-width: 480px) {
               .text_start {
                     text-align: left;
 
               }
             } */
-		:root {
-			--bs-font-sans-serif: system-ui !important;
-			--bs-font-monospace: system-ui !important;
-		}
+        :root {
+            --bs-font-sans-serif: system-ui !important;
+            --bs-font-monospace: system-ui !important;
+        }
 
-		.listscroll {
-			max-height: 500px;
-			width: 800px;
-			margin-left: 20px;
-			overflow: scroll;
-			-webkit-overflow-scrolling: touch;
-		}
+        .listscroll {
+            max-height: 500px;
+            width: 800px;
+            margin-left: 20px;
+            overflow: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
 
-		body,
-		b,
-		span,
-		th,
-		td {
-			background-color: #191f28 !important;
-			color: #eee;
-		}
+        body,
+        b,
+        span,
+        th,
+        td {
+            background-color: #191f28 !important;
+            color: #eee;
+        }
 
-		b,
-		span,
-		th,
-		td {
-			background-color: #191f28 !important;
-			color: #eee;
-			text-align: center;
-		}
-
-
-		thead,
-		tr,
-		td,
-		th {
-			border: 5px solid rgb(141, 197, 63) !important;
-			border-radius: 25px;
-			color: #fff;
-			height: 100%;
-			max-height: 430px;
-			font-size: large !important;
-		}
+        b,
+        span,
+        th,
+        td {
+            background-color: #191f28 !important;
+            color: #eee;
+            text-align: center;
+        }
 
 
-		/* .progress-bar {
+        thead,
+        tr,
+        td,
+        th {
+            border: 5px solid rgb(141, 197, 63) !important;
+            border-radius: 25px;
+            color: #fff;
+            height: 100%;
+            max-height: 430px;
+            font-size: large !important;
+        }
+
+
+        /* .progress-bar {
                 color: initial !important;
                 font-size: initial !important;
             } */
 
 
-		.bar-free {
-			background-color: #198754 !important;
-		}
+        .bar-free {
+            background-color: #198754 !important;
+        }
 
-		.bar-warning {
-			background-color: #fd7e14 !important;
-		}
+        .bar-warning {
+            background-color: #fd7e14 !important;
+        }
 
-		.bar-error {
-			background-color: #dc3545 !important;
-		}
-
-
-		#form-panel {
-			margin-top: -49.6% !important;
-		}
-
-		span,
-		pre {
-			margin-top: 0 !important;
-			margin-bottom: 0rem !important;
-			overflow: auto !important;
-			font-size: 1.0em !important;
-		}
-
-		table {
-			counter-reset: rowNumber;
-		}
-
-		table tr[id*=\.wam] {
-			counter-increment: rowNumber;
-		}
+        .bar-error {
+            background-color: #dc3545 !important;
+        }
 
 
-		button[value*=PAUSE] {
-			background-color: #0d6efd !important;
-		}
+        #form-panel {
+            margin-top: -49.6% !important;
+        }
 
-		button[value*=RERUN] {
-			background-color: #f40404 !important;
-		}
+        span,
+        pre {
+            margin-top: 0 !important;
+            margin-bottom: 0rem !important;
+            overflow: auto !important;
+            font-size: 1.0em !important;
+        }
+
+        table {
+            counter-reset: rowNumber;
+        }
+
+        table tr[id*=\.wam] {
+            counter-increment: rowNumber;
+        }
 
 
-		table tr td:first-child::before {
-			content: counter(rowNumber);
-			min-width: 3em;
-			margin-right: 0.5em;
-		}
+        button[value*=PAUSE] {
+            background-color: #0d6efd !important;
+        }
 
-		/*! , th, tr td span    !*/
+        button[value*=RERUN] {
+            background-color: #f40404 !important;
+        }
 
-		/*! Blink Animation !*/
+
+        table tr td:first-child::before {
+            content: counter(rowNumber);
+            min-width: 3em;
+            margin-right: 0.5em;
+        }
+
+        /*! , th, tr td span    !*/
+
+    /*! Blink Animation !*/
     @keyframes fade {
         from {
           opacity: 1.0;
@@ -182,22 +180,17 @@
       background-color: rgb(141, 197, 63);
       border-color: rgb(141, 197, 63);
     }
-		/*! Blink Animation !*/
+    /*! Blink Animation !*/
 
-	</style>
+    </style>
 </head>
 
 <body class="d-flex flex-column h-100">
-	<div class="d-flex justify-content-center" id="FlowChart" style="
-        width 	: 100%; 
-        height 	: 0%;
-        ">
-	</div>
-	<div class="container-fluid">
-		<div style="overflow-x:auto;">
-			<table cellpadding="0" class="table table-bordered table-striped table-responsive" id="d_table" style="zoom: 0.9; width: 100%; ">
-				<thead>
-					<th
+  <div class="container-fluid">
+    <div style="overflow-x:auto;">
+        <table cellpadding="0" class="table table-bordered table-striped table-responsive" id="d_table" style="zoom: 0.9; width:  100%; ">
+        <thead>
+          <th
             colspan   = "9"
             style     = "
               background-color    : rgb(141, 197, 63) !important;
@@ -207,101 +200,413 @@
               font-family         : sans-serif;
               font-size           : large;
             "
-          ><div class="d-flex justify-content-center" style="">{{IP}} v0.014772r</div>
-					</th>
-					<tr>
-						<th class="col-md text-nowrap" scope="col"># WAXID</th>
-						<th class="col-md text-nowrap" scope="col">CPU PERCENT</th>
-						<th class="col-md text-nowrap" scope="col">STAKE</th>
-						<th class="col-md text-nowrap" scope="col">WAX : TLM</th>
-						<th class="col-md text-nowrap" scope="col">LAND ID</th>
-						<th class="col-md text-nowrap" scope="col">TIME DELAY : TIME STAMP</th>
-						<th class="col-md text-nowrap" scope="col">LAST TLM : LAST CPU</th>
-						<th class="col-md text-nowrap" scope="col">RUNNING STATE</th>
-						<th class="col-md text-nowrap" scope="col">ACTIONS</th>
-					</tr>
-				</thead>
-			</table>
-		</div>
-
-		<div class="progress justify-content-center my-1">
-			<div class="progress-bar" role="progressbar" style="width: 0%; text-align: center;" aria-valuemin="0" aria-valuemax="1000"
-			 id="time_pg" aria-valuenow="0" description="https://jsfiddle.net/bozdoz/fSLdG/2/"></div>
-		</div>
-		<br>
-
-          <div class="row justify-content-md-center" id="bar">
-            <div class="col-md-auto">
-              <form action="#ADD" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="TOKEN wYeaMc..." aria-label="ADD TOKEN" required>
-                      <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="ADD WAXID" required>
-                      <button type="submit" class="btn btn-primary add">ADD</button>
-                    </div>
-              </form>
-	  		      <form action="#ADD" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
-	  		      	<div class="input-group">
-	  		      		<input type="email" class="form-control" placeholder="EMAIL @gmai.com" aria-label="ADD EMAIL" required>
-	  		      		<input type="password" class="form-control" placeholder="PASSW *********" aria-label="ADD PASSW" required>
-	  		      		<input type="text" class="form-control" placeholder="SECRET XXXXXXXX" aria-label="ADD SECRET" required>
-	  		      		<input type="text" class="form-control" placeholder="BACKUP XXXXXXXX" aria-label="ADD SECRET">
-	  		      		<input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="ADD WAXID" required>
-	  		      		<button type="submit" class="btn btn-primary add">ADD</button>
-	  		      	</div>
-	  		      </form>
-            </div>
-            <div class="col-md-auto">
-              <form action="#DEL" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="DEL WAXID" required>
-                  <button type="submit" class="btn btn-primary del">DEL</button>
-                </div>
-              </form>
+          ><div class="d-flex justify-content-center" style="">{{IP}} v0.014772r</div></th>
+          <tr>
+            <th class="col-md text-nowrap" scope="col"># WAXID</th>
+            <th class="col-md text-nowrap" scope="col">CPU PERCENT</th>
+            <th class="col-md text-nowrap" scope="col">STAKE</th>
+            <th class="col-md text-nowrap" scope="col">WAX : TLM : SWAP</th>
+            <th class="col-md text-nowrap" scope="col">LAND ID</th>
+            <th class="col-md text-nowrap" scope="col">TIME DELAY : TIME STAMP</th>
+            <th class="col-md text-nowrap" scope="col">LAST TLM : LAST CPU : TLM/h</th>
+            <th class="col-md text-nowrap" scope="col">RUNNING STATE</th>
+            <th class="col-md text-nowrap" scope="col">ACTIONS</th>
+          </tr>
+        </thead>
+        </table>
+    </div>
+    <div class="progress justify-content-center my-1">
+        <div class="progress-bar" role="progressbar" style="width: 0%; text-align: center;" aria-valuemin="0" aria-valuemax="1000"
+         id="time_pg" aria-valuenow="0" description="https://jsfiddle.net/bozdoz/fSLdG/2/"></div>
+    </div>
+    <br>
+    <div class="row justify-content-md-center" id="bar">
+      <div class="col-md-auto">
+        <!--form action="#ADD" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="TOKEN wYeaMc..." aria-label="ADD TOKEN" required>
+                <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="ADD WAXID" required>
+                <button type="submit" class="btn btn-primary add">ADD</button>
+              </div>
+        </form -->
+	  		<form action="#ADD" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
+	  			<div class="input-group">
+	  				<input type="email" class="form-control" placeholder="email@gmai.com" aria-label="ADD EMAIL" required>
+	  				<input type="password" class="form-control" placeholder="PASSW *********" aria-label="ADD PASSW" required>
+	  				<input type="text" class="form-control" placeholder="SECRET XXXXXXXX" aria-label="ADD SECRET" required>
+	  				<input type="text" class="form-control" placeholder="BACKUP XXXXXXXX" aria-label="ADD BACKUP">
+	  				<input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="ADD WAXID" required>
+	  				<button type="submit" class="btn btn-primary add">ADD</button>
+	  			</div>
+	  		</form>
+      </div>
+      <div class="col-md-auto">
+        <form action="#DEL" onsubmit="return false" class="row row-cols-auto needs-validation" validate>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="WAXID xxxxx.wam" aria-label="DEL WAXID" required>
+            <button type="submit" class="btn btn-primary del">DEL</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <button class="btn btn-primary run" type="submit" data-bs-toggle="tooltip" data-bs-placement="top" title="เริ่มบอท">START</button>
+        <button class="btn btn-primary pau" type="submit"data-bs-toggle="tooltip" data-bs-placement="top" title="หยุดบอท" value="{{PAUSE}}">{{PAUSE}}</button>
+        <button class="btn btn-primary ren" type="submit">RENEW</button>
+        <button class="btn btn-primary res" type="submit">RESET</button>
+        <div class="fixed-bottom mx-2 my-2 d-flex flex-row-reverse">
+          <svg
+            class               = "svg svg-primary waxDetective"
+            data-bs-toggle      = "modal"
+            data-bs-target      = "#waxDetective"
+            viewBox             = "0 0 1826.75 1505.23"
+            enable-background   = "new 0 0 1826.75 1505.23"
+            xml:space           = "preserve"
+            style               = "
+              fill                        : rgb(209, 130, 55); 
+              opacity                     : 0.3; 
+              width                       : 64px; 
+              height                      : 64px; 
+              border-radius               : 32px; 
+              line-height                 : 1; 
+              colo                        : white !important; 
+              border                      : 5px solid rgb(141, 197, 63) !important;
+            "
+            onmouseover         = "this.style.opacity = '100%'"
+            onmouseout          = "this.style.opacity = '30%'"
+          >
+            <g>
+              <path
+                d = "
+                  M220.05,755.46c-61.39-18.37-115.65-33.16-168.68-51.49c-13.31-4.6-22.69-20.6-33.87-31.36
+                  c10.25-10.1,18.82-25.68,31.02-29.45c102.34-31.6,204.47-64.77,308.61-89.17c38.38-8.99,82.02,3.49,123.15,7.41
+                  c207.23,19.73,409.97-6.59,609.38-61.69c38.7-10.69,74.9-20.75,116.04-14.67c91.2,13.48,183.14,21.95,274.35,35.32
+                  c16.14,2.37,30.25,18.58,45.3,28.41c-12.24,11.82-22.46,28.38-37.08,34.63c-62.88,26.87-127.05,50.72-196.95,78.1
+                  c80.18,48.09,138.58,111.23,163.47,199.81c25.09,89.27,11.35,174.33-34.76,260.76c41.09,29.1,82.19,58.37,123.45,87.4
+                  c76.79,54.02,153.78,107.75,230.46,161.92c35.8,25.29,44.97,58.7,24.83,87.1c-20.11,28.35-55.98,29.84-90.82,2.83
+                  c-103.67-80.38-207.52-160.56-310.34-242.02c-25.63-20.31-43.92-23.78-74.22-3.1c-126.06,86.04-296.54,67.97-402.4-38.36
+                  c-107.61-108.1-125.01-274.6-42.17-402.98c5.86-9.07,11.35-18.37,22.79-36.94c-57.28,7.3-106.15,13.54-158.91,20.27
+                  c91.54,187.86,76.3,351.38-107.52,469.85c-109.51,70.58-266.82,52.55-363.38-31.38c-64.08-55.7-103.58-124.68-112.67-209.72
+                  C150.14,902.98,171.9,826.17,220.05,755.46z M1395.91,953.84c9.29-111.24-81.83-251.5-248.64-254.94
+                  c-134.96-2.79-251.63,115.2-252.94,249.53c-1.33,135.88,113.12,251.18,249.52,251.38C1285.42,1200.01,1395.6,1092.5,1395.91,953.84
+                  z M360.94,765.85c-45.51-16.58-72.33,13.65-95.75,50.82c-32.85,52.13-43.12,108.56-35.96,169.53
+                  c11.86,101.02,97.63,190.98,204.1,211.93c98.09,19.31,210.91-33.6,260.46-122.16c54.11-96.71,42.58-216.64-29.94-290.91
+                  c-10.06-10.3-27.79-18.09-42.15-18.37C536.46,765,451.17,765.85,360.94,765.85z
+                "
+              ></path>
+              <path
+                d = "
+                  M1124.32,395.89c-235.16,73.04-470.76,91.63-719.02,68.46c3.9-43.5,5.25-85.5,  11.9-126.64
+                  c11.6-71.84,25.8-143.29,40.43-214.59c3.53-17.2,11.17-34.27,20.13-49.51c22.38-38.07,49.04-45.77,86.68-23.13
+                  c28.28,17.01,53.97,38.33,80.85,57.68c76.62,55.14,136.35,49.41,201.14-19.41c14.19-15.08,27.2-31.33,42.07-45.68
+                  c40.73-39.3,65.92-39.08,96.9,7.08C1055.42,154.43,1088.47,273.8,1124.32,395.89z
+                "
+              ></path>
+              <path
+                d = "
+                  M809.48,1490.73c-58.89-71.19-109.9-132.86-158.41-191.5c59.94-51.98,  110.63-95.95,156.85-136.03
+                  c43.9,35.98,91.31,73.07,136.05,113.15c8,7.16,11.81,31.81,5.92,39.61C907.71,1371.87,862.52,1425.53,809.48,1490.73z
+                "
+              ></path>
+              <path
+                d = "
+                  M574.13,915.09c17.43,47.63,5.99,91.23-31.68,  120.7c-33.45,26.17-87.56,28.42-124.63,5.17
+                  c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C458.97,929.17,508.69,955.94,574.13,915.09z
+                "
+              ></path>
+              <path
+                d = "
+                  M1244.84,913.36c17.43,47.63,5.99, 91.23-31.68,120.7c-33.45,26.17-87.56,28.42-124.63,5.17
+                  c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C1129.68,927.45,1179.4,954.21,1244.84,913.36z
+                "
+              ></path>
+            </g>
+          </svg>
+        </div>
+        <div class="fixed-bottom mx-2 my-2 d-flex flex-row">
+          <img
+              class               = "img img-primary sessionsToken"
+              data-bs-toggle      = "modal"
+              data-bs-target      = "#sessionsToken" 
+              src                 = "https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48"
+              srcset              = "
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48 1x,
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=96x96 2x,
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=144x144 3x
+              "
+              style               = "
+                  position                : fixed; 
+                  bottom                  : 1%; 
+                  opacity                 : 0.3; 
+                  width                   : 64px; 
+                  height                  : 64px; 
+                  border-radius           : 32px; 
+                  line-height             : 1; 
+                  border                  : 5px solid rgb(141, 197, 63) !important;
+              "
+              onmouseover         = "this.style.opacity = '100%'"
+              onmouseout          = "this.style.opacity = '30%'"
+          >
+        </div>
+      </div>
+    </div>
+    <br>
+    <footer class="footer mt-auto py-3 bg-light" style="opacity: 0;">
+      <div class="container">
+      </div>
+    </footer>
+    <!-- Modal setTool -->
+    <div class="modal fade" id="setTool" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+            <h5 class="modal-title" id="">SET TOOLS</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal boxNFT -->
+    <div class="modal fade" id="boxNFT" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+            <h5 class="modal-title" id="">BOX NFT</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal getNFT -->
+    <div class="modal fade" id="getNFT" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+            <h5 class="modal-title" id="">GET NFT</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal setLand -->
+    <div class="modal fade" id="setLand" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+            <h5 class="modal-title" id="">SET LAND</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal transferWax -->
+    <div class="modal fade" id="transferWax" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+            <h5 class="modal-title" id="">Transfer WAX (Support : Kucoin)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal swapTLM -->
+    <div class="modal fade" id="swapTLM" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+            <h5 class="modal-title" id="">SWAP TLM (Alcor.Exchange)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal waxDetective -->
+    <div class="modal fade" id="waxDetective" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+            <h5 class="modal-title" id="">Wax Detective</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div
+                class   = "d-flex justify-content-center"
+                id      = "FlowChart"
+                style   = "
+                width   : 100%; 
+                height  : 100%;
+              "
+            >
             </div>
           </div>
-
-          <div class="row justify-content-md-center">
-            <div class="col-md-auto">
-            <button class="btn btn-primary run" type="submit" data-bs-toggle="tooltip" data-bs-placement="top" title="เริ่มบอท">
-              <i class="fa fa-check-circle"></i> START
-            </button>
-            <button class="btn btn-primary pau" type="submit"  data-bs-toggle="tooltip" data-bs-placement="top" title="หยุดบอท" value="{{PAUSE}}"><i class="fa fa-check-circle"></i> {{PAUSE}}</button>
-            <button class="btn btn-primary ren" type="submit"><i class="fa fa-check-circle"></i> RENEW</button>
-            <button class="btn btn-primary res" type="submit"><i class="fa fa-check-circle"></i> RESET</button>
-            <button class="btn btn-primary save_token" type="submit"><i class="fa fa-check-circle"></i> SAVE TOKEN</button>
-            <button class="btn btn-primary load_token" type="submit"><i class="fa fa-check-circle"></i> LOAD TOKEN</button>
-            <button
-              class           = "btn btn-primary wax_detective"
-              type            = "submit"
-              data-bs-toggle  = "modal"
-              data-bs-target  = "#waxDetective"
-              style           = "
-                position        : fixed;
-                bottom          : 1%;
-                right           : 1%;
-                opacity         : 30%;
-                width           : 64px;
-                height          : 64px;
-                padding         : 6px;
-                border-radius   : 32px;
-                font-size       : 24px;
-                line-height     : 1;
+          <!-- div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div -->
+        </div>
+      </div>
+    </div>
+    <!-- Modal sessionsToken -->
+    <div class="modal fade" id="sessionsToken" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+            <h5 class="modal-title" id="">Sessions Token</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div
+              class   = "d-flex justify-content-center"
+              id      = "SessionsToken"
+              style   = "
+                width   : 100%; 
+                height  : 100%;
               "
-              onmouseover     = "this.style.opacity = '100%'"
-              onmouseout      = "this.style.opacity = '30%'"
-            ><img
-                src             = "https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48"
-                srcset          = "
-                  https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48 1x,
-                  https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=96x96 2x,
-                  https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=144x144 3x
-                "
-                width           = "48"
-                height          = "48"
-            ></button>
+            >
+            </div>
+          </div>
+          <!-- div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div -->
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+
+</html>
+
+
+
+          <!--img
+              class               ="img img-primary waxDetective"
+              data-bs-toggle      = "modal"
+              data-bs-target      = "#waxDetective" 
+              src                 = "https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48"
+              srcset              = "
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48 1x,
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=96x96 2x,
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=144x144 3x
+              "
+              style               = "
+                  opacity                 : 0.3; 
+                  width                   : 64px; 
+                  height                  : 64px; 
+                  border-radius           : 32px; 
+                  line-height             : 1; 
+                  color                   : white !important; 
+                  background-color        : white !important; 
+                  border                  : 5px solid rgb(141, 197, 63) !important;
+              "
+              onmouseover         = "this.style.opacity = '100%'"
+              onmouseout          = "this.style.opacity = '30%'"
+          -->
+          <!-- img
+              class               ="img img-primary sessionsToken"
+              data-bs-toggle      = "modal"
+              data-bs-target      = "#sessionsToken" 
+              src                 = "https://cdn.coinranking.com/dapp/sorare.svg?size=48x48"
+              srcset              = "
+            https://cdn.coinranking.com/dapp/sorare.svg?size=48x48 1x,
+            https://cdn.coinranking.com/dapp/sorare.svg?size=96x96 2x,
+            https://cdn.coinranking.com/dapp/sorare.svg?size=144x144 3x
+          "
+              style               = "
+                  position                : fixed; 
+                  bottom                  : 1%; 
+                  opacity                 : 0.3; 
+                  width                   : 64px; 
+                  height                  : 64px; 
+                  border-radius           : 32px; 
+                  line-height             : 1; 
+                  color                   : white !important; 
+                  background-color        : white !important; 
+                  border                  : 5px solid rgb(141, 197, 63) !important;
+              "
+              onmouseover         = "this.style.opacity = '100%'"
+              onmouseout          = "this.style.opacity = '30%'"
+          -->
+        <!-- <img
+            class               ="img img-primary waxDetective"
+            data-bs-toggle  = "modal"
+            data-bs-target  = "#waxDetective" 
+            src                   = "https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48"
+            srcset              = "
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48 1x,
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=96x96 2x,
+                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=144x144 3x
+              "
+            width               = "48"
+            height              = "48"
+            style               = "
+                position                : fixed; 
+                bottom                  : 1%; right: 1%; 
+                opacity                 : 0.3; width: 64px; 
+                height                  : 64px; 
+                border-radius       : 32px; 
+                font-size             : 24px; 
+                line-height           : 1; 
+                color                   : white !important; 
+                background-color    : white !important; 
+                border                  : 5px solid rgb(141, 197, 63) !important;
+            "
+            onmouseover       = "this.style.opacity = '100%'"
+            onmouseout        = "this.style.opacity = '30%'"
+          > -->
+
 
             <!-- </div> -->
-          </div>
 
            <!-- <div class="container d-flex justify-content-center" style="zoom: 0.9; " >
               <div class="row row-cols-auto">
@@ -370,28 +675,23 @@
           </div> -->
           
 
-      </div>
-      <br>
-      <footer class="footer mt-auto py-3 bg-light" style="opacity: 0;">
-        <div class="container">
-        </div>
-      </footer>
-<!-- <script>
-  $(document).ready(function(){
-  if(current_width < 481)
-      $('html').addClass("m320").removeClass("m768").removeClass("desktop").removeClass("m480");
-    });
-</script> -->
-<!-- <script>
-  function showModal(){
-  }
-</script>
-           -->
+
+            <!-- script>
+            $(document).ready(function(){
+            if(current_width < 481)
+                $('html').addClass("m320").removeClass("m768").removeClass("desktop").removeClass("m480");
+                });
+            </script> -->
+            <!-- <script>
+            function showModal(){
+            }
+            </script -->
+           
           <!-- <table cellpadding="0" class="table table-bordered table-striped table-responsive table-striped" id="d_table" style="zoom: 0.9; width: 100%; ">
               <thead>
                   <th
-            colspan 	= "8"
-            style 		= "
+            colspan     = "8"
+            style       = "
                       background-color    : rgb(141, 197, 63) !important;
                       color               : black;
                       border              : 0px !important;
@@ -413,52 +713,3 @@
               </thead>
           </table> -->
           
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
-                  <h5 class="modal-title" id="exampleModalLabel">SET TOOLS</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="waxDetective" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen">
-              <div class="modal-content">
-                <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
-                  <h5 class="modal-title" id="exampleModalLabel">Wax Detective</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-         
-    </body>
-    <script>
-      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-          return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-
-    </script>
-
-</html>

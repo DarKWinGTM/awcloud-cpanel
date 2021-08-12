@@ -98,7 +98,9 @@ class WAXAPI():
         #   'https://aw-mine-express-00008.vercel.app', 
         #   'https://aw-mine-express-00009.vercel.app', 
         #   'https://aw-mine-express-00010.vercel.app'
-        'https://t95dv.sse.codesandbox.io'
+        'https://t95dv.sse.codesandbox.io', 
+        'https://mdf8l.sse.codesandbox.io', 
+        'https://2nwqr.sse.codesandbox.io'
     ]]
     glitminer = [{
         'address' : f'{f}/mine?waxaccount=', 
@@ -144,7 +146,7 @@ class WAXAPI():
         'https://coordinated-evergreen-gargoyle.glitch.me',     #   ff.premium.no.reply+0006@gmail.com
         'https://coral-celestial-situation.glitch.me',          #   ff.premium.no.reply+0006@gmail.com
         'https://branched-disco-currant.glitch.me',             #   ff.premium.no.reply+0006@gmail.com
-        'https://laced-pepper-samba.glitch.me'                  #   ff.premium.no.reply+0006@gmail.com
+        'https://laced-pepper-samba.glitch.me',                 #   ff.premium.no.reply+0006@gmail.com
         'https://excited-silky-palladium.glitch.me',            #   ff.premium.no.reply+0007@gmail.com
         'https://balanced-accessible-daemonosaurus.glitch.me',  #   ff.premium.no.reply+0007@gmail.com
         'https://phrygian-incongruous-basil.glitch.me',         #   ff.premium.no.reply+0007@gmail.com
@@ -177,11 +179,11 @@ class WAXAPI():
         'https://aw-mine-express-10003.artwisut.repl.co', 
         'https://aw-mine-express-10004.artwisut.repl.co', 
         'https://aw-mine-express-10005.artwisut.repl.co', 
-        'https://aw-mine-express-10001.aorsai5.repl.co/', 
-        'https://aw-mine-express-10002.aorsai5.repl.co/', 
-        'https://aw-mine-express-10003.aorsai5.repl.co/', 
-        'https://aw-mine-express-10004.aorsai5.repl.co/', 
-        'https://aw-mine-express-10005.aorsai5.repl.co/', 
+        'https://aw-mine-express-10001.aorsai5.repl.co', 
+        'https://aw-mine-express-10002.aorsai5.repl.co', 
+        'https://aw-mine-express-10003.aorsai5.repl.co', 
+        'https://aw-mine-express-10004.aorsai5.repl.co', 
+        'https://aw-mine-express-10005.aorsai5.repl.co', 
         'https://aw-mine-express-10001.awduchbot1.repl.co', 
         'https://aw-mine-express-10002.awduchbot1.repl.co', 
         'https://aw-mine-express-10003.awduchbot1.repl.co', 
@@ -242,7 +244,19 @@ class WAXAPI():
         'https://aw-mine-express-10003.kuk1990.repl.co', 
         'https://aw-mine-express-10001.man88.repl.co', 
         'https://aw-mine-express-10002.man88.repl.co', 
-        'https://aw-mine-express-10003.man88.repl.co'
+        'https://aw-mine-express-10003.man88.repl.co', 
+        'https://aw-mine-express-10001.aongseal.repl.co', 
+        'https://aw-mine-express-10002.aongseal.repl.co', 
+        'https://aw-mine-express-10003.aongseal.repl.co', 
+        'https://aw-mine-express-10001.tongatipbk.repl.co', 
+        'https://aw-mine-express-10002.tongatipbk.repl.co', 
+        'https://aw-mine-express-10003.tongatipbk.repl.co', 
+        'https://aw-mine-express-10001.khowglong2.repl.co', 
+        'https://aw-mine-express-10002.khowglong2.repl.co', 
+        'https://aw-mine-express-10003.khowglong2.repl.co', 
+        'https://aw-mine-express-10001.borwonrud.repl.co', 
+        'https://aw-mine-express-10002.borwonrud.repl.co', 
+        'https://aw-mine-express-10003.borwonrud.repl.co'
     ]]
     freeminer = [{
         'address' : f'{f}/mine?waxaccount=', 
@@ -285,12 +299,6 @@ class WAXAPI():
         'https://aw-mine-express-10001.dhongerus.repl.co', 
         'https://aw-mine-express-10002.dhongerus.repl.co', 
         'https://aw-mine-express-10003.dhongerus.repl.co', 
-        'https://aw-mine-express-10001.aongseal.repl.co', 
-        'https://aw-mine-express-10002.aongseal.repl.co', 
-        'https://aw-mine-express-10003.aongseal.repl.co', 
-        'https://aw-mine-express-10001.tongatipbk.repl.co', 
-        'https://aw-mine-express-10002.tongatipbk.repl.co', 
-        'https://aw-mine-express-10003.tongatipbk.repl.co', 
         'https://aw-mine-express-10001.micvbn.repl.co', 
         'https://aw-mine-express-10002.micvbn.repl.co', 
         'https://aw-mine-express-10003.micvbn.repl.co', 
@@ -303,9 +311,6 @@ class WAXAPI():
         'https://aw-mine-express-10001.poopui123.repl.co', 
         'https://aw-mine-express-10002.poopui123.repl.co', 
         'https://aw-mine-express-10003.poopui123.repl.co', 
-        'https://aw-mine-express-10001.khowglong2.repl.co', 
-        'https://aw-mine-express-10002.khowglong2.repl.co', 
-        'https://aw-mine-express-10003.khowglong2.repl.co', 
         'https://aw-mine-express-10001.aphichai123.repl.co', 
         'https://aw-mine-express-10002.aphichai123.repl.co', 
         'https://aw-mine-express-10003.aphichai123.repl.co', 
@@ -357,9 +362,6 @@ class WAXAPI():
         'https://aw-mine-express-10001.fluffy1004.repl.co', 
         'https://aw-mine-express-10002.fluffy1004.repl.co', 
         'https://aw-mine-express-10003.fluffy1004.repl.co', 
-        'https://aw-mine-express-10001.borwonrud.repl.co', 
-        'https://aw-mine-express-10002.borwonrud.repl.co', 
-        'https://aw-mine-express-10003.borwonrud.repl.co', 
         'https://aw-mine-express-10001.songeiei1.repl.co', 
         'https://aw-mine-express-10002.songeiei1.repl.co', 
         'https://aw-mine-express-10003.songeiei1.repl.co', 
@@ -422,8 +424,8 @@ db['POOLDATA'] = {
     'sw' : False if not db.get('POOLDATA') or db['POOLDATA'].get('sw') == None else db['POOLDATA'].get('sw')
 }
 POOLDATA = {
-    'ip' : db['POOLDATA'].get('ip'), 
-    'sw' : db['POOLDATA'].get('sw')
+    'ip' : db['POOLDATA']['ip'], 
+    'sw' : db['POOLDATA']['sw']
 }
 SETPROXY = {
     "http"      : "socks5://127.0.0.1:23321", 
@@ -434,8 +436,7 @@ SETPROXY = {
 class AWMINE():
     def __init__(
         self, 
-        waxid, 
-        token
+        waxid
     ):
         
         global DATABASE
@@ -467,35 +468,36 @@ class AWMINE():
                 'status'        : None, 
                 'text'          : {
                     'step'  : '00', 
-                    '00'    : '<pre>0/0 UPDATE DATABASE ------</pre>', 
-                    '01'    : '<pre>0/0 LOGIN SESSIONS --------</pre>', 
-                    '02'    : '<pre>1/4 WAITING --------------------</pre>', 
-                    '03'    : '<pre>2/4 GET BAGS INFO ----------</pre>', 
-                    '04'    : '<pre>3/4 GET LAND ------------------</pre>', 
-                    '05'    : '<pre>4/4 READY TO MINE ----------</pre>', 
-                    '06'    : '<pre>0/0 GET ACCOUNT INFO ----</pre>', 
-                    '07'    : '<pre>0/0 CALCU DIFFICULTY ------</pre>', 
-                    '08'    : '<pre>0/0 CHECK LAST_TRX ---------</pre>', 
-                    '09'    : '<pre>2/9 GET NONCE ----------------</pre>', 
-                    '10'    : '<pre>3/9 GET { NONCE }</pre>', 
-                    '11'    : '<pre>4/9 CLAIM PACKED TRX ------</pre>', 
-                    '12'    : '<pre>5/9 CLAIM REQ KEYS ----------</pre>', 
-                    '13'    : '<pre>6/9 CLAIM SIGN ---------------</pre>', 
-                    '14'    : '<pre>7/9 CLAIM PUSH --------------</pre>', 
-                    '15'    : '<pre>8/9 CHECK HISTORY ----------</pre>', 
-                    '16'    : '<pre>9/9 CLAIM DONE ---------------</pre>', 
-                    '17'    : '<pre>9/9 CLAIM NONE ---------------</pre>', 
-                    '18'    : '<pre>0/0 RENEW ENDPOINT -------</pre>', 
-                    '19'    : '<pre>0/0 CHECK COOLDOWN --------</pre>', 
-                    '20'    : '<pre>0/0 CALCU CPU -------------</pre>', 
-                    '21'    : '<pre>1/9 CLAIM START -----------</pre>', 
-                    '22'    : '<pre>NOTHING TO BE MINED</pre>', 
-                    '23'    : '<pre>MINE WITH EMPTY BAG</pre>'
+                    '00'    : '<pre class="overflow-hidden">0/0 UPDATE DATABASE ------</pre>', 
+                    '01'    : '<pre class="overflow-hidden">0/0 LOGIN SESSIONS --------</pre>', 
+                    '02'    : '<pre class="overflow-hidden">1/4 WAITING --------------------</pre>', 
+                    '03'    : '<pre class="overflow-hidden">2/4 GET BAGS INFO ----------</pre>', 
+                    '04'    : '<pre class="overflow-hidden">3/4 GET LAND ------------------</pre>', 
+                    '05'    : '<pre class="overflow-hidden">4/4 READY TO MINE ----------</pre>', 
+                    '06'    : '<pre class="overflow-hidden">0/0 GET ACCOUNT INFO ----</pre>', 
+                    '07'    : '<pre class="overflow-hidden">0/0 CALCU DIFFICULTY ------</pre>', 
+                    '08'    : '<pre class="overflow-hidden">0/0 CHECK LAST_TRX ---------</pre>', 
+                    '09'    : '<pre class="overflow-hidden">2/9 GET NONCE ----------------</pre>', 
+                    '10'    : '<pre class="overflow-hidden">3/9 GET { NONCE }</pre>', 
+                    '11'    : '<pre class="overflow-hidden">4/9 CLAIM PACKED TRX ------</pre>', 
+                    '12'    : '<pre class="overflow-hidden">5/9 CLAIM REQ KEYS ----------</pre>', 
+                    '13'    : '<pre class="overflow-hidden">6/9 CLAIM SIGN ---------------</pre>', 
+                    '14'    : '<pre class="overflow-hidden">7/9 CLAIM PUSH --------------</pre>', 
+                    '15'    : '<pre class="overflow-hidden">8/9 CHECK HISTORY ----------</pre>', 
+                    '16'    : '<pre class="overflow-hidden">9/9 CLAIM DONE ---------------</pre>', 
+                    '17'    : '<pre class="overflow-hidden">9/9 CLAIM NONE ---------------</pre>', 
+                    '18'    : '<pre class="overflow-hidden">0/0 RENEW ENDPOINT -------</pre>', 
+                    '19'    : '<pre class="overflow-hidden">0/0 CHECK COOLDOWN --------</pre>', 
+                    '20'    : '<pre class="overflow-hidden">0/0 CALCU CPU -------------</pre>', 
+                    '21'    : '<pre class="overflow-hidden">1/9 CLAIM START -----------</pre>', 
+                    '22'    : '<pre class="overflow-hidden blink">NOTHING TO BE MINED</pre>', 
+                    '23'    : '<pre class="overflow-hidden">MINE WITH EMPTY BAG</pre>', 
+                    '24'    : '<pre class="overflow-hidden">6/9 GET SESSIONS TOKEN ---pre>'
                 } , 
                 'fail'          : {
                     'step'  : '00', 
-                    '00'    : '<pre>NOTHING TO BE MINED</pre>', 
-                    '01'    : '<pre>MINE WITH EMPTY BAG</pre>'
+                    '00'    : '<pre class="overflow-hidden">NOTHING TO BE MINED</pre>', 
+                    '01'    : '<pre class="overflow-hidden">MINE WITH EMPTY BAG</pre>'
                 }
             }
         })
@@ -503,7 +505,7 @@ class AWMINE():
         try:
             self.DATA   = {
                 'waxid'             : waxid, 
-                'token'             : token, 
+                'token'             : '', 
                 'login'             : None, 
                 'account'           : None, 
                 'block'             : {
@@ -540,6 +542,7 @@ class AWMINE():
                 'claimsigh'         : random.choice(WAXAPI.claimsigh), 
                 'getserver'         : WAXAPI.getserver, 
                 'PROCESS'           : {
+                    'get_token'             : None, 
                     'get_login'             : None, 
                     'get_account'           : None, 
                     'get_info_balance'      : None, 
@@ -563,8 +566,8 @@ class AWMINE():
                     'set_packedtrx'         : None, 
                     'claim_sign'            : None, 
                     'get_transaction'       : {
-                        'request'               : None, 
-                        'content'               : None
+                        'request' : None, 
+                        'content' : None
                     }
                 }, 
                 'log'            : {
@@ -580,6 +583,15 @@ class AWMINE():
                 DATABASE.pop(self.DATA['waxid'])
             raise Exception(e)
             
+        try:
+            self.get_token()
+        except NameError as e:
+            print( f'ERROR __init__ { SourceCodeLine().f_lineno }-{ waxid } : {e}' )
+            if THREADER.get(self.DATA['waxid']):
+                THREADER.pop(self.DATA['waxid'])
+            if DATABASE.get(self.DATA['waxid']):
+                DATABASE.pop(self.DATA['waxid'])
+            raise NameError(e); return
         try:
             self.get_login()
         except NameError as e:
@@ -789,7 +801,7 @@ class AWMINE():
                         ) * 1.15) >= int(
                             self.DATA['log']['last_cpu_usage']
                         )
-                    ) or random.randrange(999) >= 969
+                    ) or random.randrange(999) >= 889
                 ) and THREADER[ self.DATA['waxid'] ]['status'] == True:
                 
                     try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '05'
@@ -805,9 +817,6 @@ class AWMINE():
                     try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '18'
                     except      : pass
                     
-                    #---   self.DATA.update({
-                    #---       'waxserver' : random.choice(WAXAPI.addrlists)
-                    #---   })
                     self.DATA['waxserver'] = random.choice(WAXAPI.addrlists)
                 elif POOLDATA['sw'] == False and (
                     self.DATA['nonce'] == '' or self.DATA['nonce'] == None
@@ -894,6 +903,45 @@ class AWMINE():
             self.get_nonce()
         self.set_info_block()
         self.set_packedtrx()
+    #***
+    #***
+    #***
+    def get_token(
+        self
+    ):
+        global DATABASE
+        
+        self.DATA['PROCESS']['get_token'] = None
+
+        while True:
+            try:
+                self.DATA['PROCESS']['get_token']       = cloudscraper.create_scraper().get(
+                    f'https://awcloud-token.{ os.environ["REPL_OWNER"] }.repl.co/token?waxid={ self.DATA["waxid"] }'
+                )
+                #   {"BASE":"h2drw.wam","DATA":{"email":"ff.premium.no.reply@gmail.com","status":true,"token":"EqbHbtBe5ByQFeDAXmupxDP40YIHWCc8jyMzQJWU","totp":"925019"}}
+                if not self.DATA['PROCESS']['get_token'].json()['DATA']:
+                    print( f'ERROR get_token() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : NOT REGISTERED SESSIONS TOKEN STORAGE' )
+                    time.sleep(1)
+                    raise NameError('NOT REGISTERED SESSIONS TOKEN STORAGE'); break
+                elif self.DATA['PROCESS']['get_token'].json()['DATA'].get('token') == '':
+                    print( f'ERROR get_token() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : EMPTY TOKEN' )
+                    time.sleep(6)
+                    continue
+                else:
+                    self.DATA["token"] = self.DATA['PROCESS']['get_token'].json()['DATA']['token']
+            except NameError as e:
+                print( f'ERROR get_token() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e}' )
+                raise NameError(e)
+                break
+            except Exception as e:
+                print( f'ERROR get_token() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e}' )
+                time.sleep(6)
+                continue
+            break
+    #***
+    #***
+    #***
+        
     def get_login(
         self
     ):
@@ -1004,7 +1052,7 @@ class AWMINE():
             else:
                 if random.randrange(250) >= 170 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02':
                     self.get_info_balance()
-                if random.randrange(300) >= 262 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02':
+                if random.randrange(300) >= 286 and DATABASE[ self.DATA['waxid'] ]['text']['step'] == '02':
                     self.get_bags()
                     self.get_land()
                     self.set_difficulty()
@@ -1263,9 +1311,9 @@ class AWMINE():
                 break
                 
             try:
-                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200 and random.randrange(100) >= 58:
+                if not self.DATA['PROCESS']['get_bags'][1]['rescode'] == 200 and random.randrange(100) >= 64:
                     for b in self.DATA["bags"]:
-                        if not self.DATA['bags'][ b ]['resp']['rescode'] == 200 and random.randrange(100) >= 50:
+                        if not self.DATA['bags'][ b ]['resp']['rescode'] == 200 and random.randrange(100) >= 64:
                             self.DATA['bags'][ b ]['resp']['request'] = cloudscraper.create_scraper().get(
                                 f'https://www.nfthive.io/api/asset/{ b }', 
                                 timeout = 15
@@ -1512,7 +1560,7 @@ class AWMINE():
                 #+++    x.json()['data']['template']['immutable_data']['difficulty']
 
 
-                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 72:
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 82:
                     self.DATA['PROCESS']['get_land']['request']            = cloudscraper.create_scraper().get(
                         f'https://www.nfthive.io/api/asset/{ self.DATA["last_mine"]["current_land"] }', 
                         timeout = 15
@@ -1579,7 +1627,7 @@ class AWMINE():
                             }
                         }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } wax.api.atomicassets.io 85' )
                         self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
-                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 48:
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 42:
                     self.DATA['PROCESS']['get_land']['request']            = cloudscraper.create_scraper().get(
                         f'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }', 
                         headers = {
@@ -1605,7 +1653,7 @@ class AWMINE():
                             }
                         }); print( f'CHECK get_land() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["last_mine"]["current_land"] } cors.bridged.cc - wax.api.atomicassets.io 48' )
                         self.DATA['PROCESS']['get_land']['rescode'] = self.DATA['PROCESS']['get_land']['request'].status_code
-                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 52:
+                if not self.DATA['PROCESS']['get_land']['rescode'] == 200 and random.randrange(100) >= 58:
                     self.DATA['PROCESS']['get_land']['request']            = cloudscraper.create_scraper().get(
                         f'https://webproxy.vpnbook.com/browse.php?u=https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id={ self.DATA["last_mine"]["current_land"] }&b=0&f=norefer', 
                         headers = {
@@ -1854,7 +1902,7 @@ class AWMINE():
                     self.DATA['PROCESS']['get_nonce']['action_item'] = grequests.get(u, timeout=60)
                     self.DATA['PROCESS']['get_nonce']['async_lists'].append( self.DATA['PROCESS']['get_nonce']['action_item'] )
                 
-                grequests.map( self.DATA['PROCESS']['get_nonce']['async_lists']) # , exception_handler=grequests_except_handler 
+                grequests.map( self.DATA['PROCESS']['get_nonce']['async_lists'], exception_handler=grequests_except_handler) # , exception_handler=grequests_except_handler 
                 
                 if not re.search(
                     '(\'|\"|^|$)\w{14,16}(\'|\"|^|$)', 
@@ -2045,10 +2093,6 @@ class AWMINE():
                 try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '12'
                 except      : pass
                 
-                #---   self.DATA['transaction'].update({
-                #---       'raw' : f'{{\"transaction\":{{\"expiration\":\"{ self.DATA["block"]["expiration"][1] }\",\"ref_block_num\":{ self.DATA["packedtrx"]["transactions"]["ref_block_num"] },\"ref_block_prefix\":{ self.DATA["packedtrx"]["transactions"]["ref_block_prefix"] },\"actions\":[{{\"account\":\"m.federation\",\"name\":\"mine\",\"authorization\":[{{\"actor\":\"{ self.DATA["login"]["userAccount"] }\",\"permission\":\"active\"}}],\"data":\"{ self.DATA["packedtrx"]["transactions"]["actions"][0]["data"] }\"}}]}},\"available_keys\":[\"{ self.DATA["login"]["pubKeys"][0] }\",\"{ self.DATA["login"]["pubKeys"][1] }\"]}}'
-                #---   })
-                #---   self.DATA['transaction']['raw'] = f'{{\"transaction\":{{\"expiration\":\"{ self.DATA["block"]["expiration"][1] }\",\"ref_block_num\":{ self.DATA["packedtrx"]["transactions"]["ref_block_num"] },\"ref_block_prefix\":{ self.DATA["packedtrx"]["transactions"]["ref_block_prefix"] },\"actions\":[{{\"account\":\"m.federation\",\"name\":\"mine\",\"authorization\":[{{\"actor\":\"{ self.DATA["login"]["userAccount"] }\",\"permission\":\"active\"}}],\"data":\"{ self.DATA["packedtrx"]["transactions"]["actions"][0]["data"] }\"}}]}},\"available_keys\":[\"{ self.DATA["login"]["pubKeys"][0] }\",\"{ self.DATA["login"]["pubKeys"][1] }\"]}}'
                 self.DATA['transaction']['raw'] = {
                     "transaction"       : {
                         "expiration"        : self.DATA["block"]["expiration"][1],
@@ -2077,16 +2121,11 @@ class AWMINE():
                     #*   debug   = True, 
                     delay   = 10
                 ).post(
-                    #   'https://wax.dapplica.io/v1/chain/get_required_keys', 
                     f'{ self.DATA["claimsigh"] }/v1/chain/get_required_keys', 
                     #   data    = self.DATA['transaction']['raw'], 
                     json    = self.DATA['transaction']['raw'], 
                     #   proxies     = SETPROXY
                 )
-                
-                #---   self.DATA['transaction'].update({
-                #---       'res' : json.loads(self.DATA['PROCESS']['claim_sign'].content)
-                #---   })
                 self.DATA['transaction']['res'] = json.loads(self.DATA['PROCESS']['claim_sign'].content)
                 
             except Exception as e:
@@ -2107,6 +2146,12 @@ class AWMINE():
                 break
                 
             try:
+            
+                try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '24'
+                except      : pass
+        
+                try         : self.get_token()
+                except      : time.sleep(3); continue
             
                 try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '13'
                 except      : pass
@@ -2178,10 +2223,6 @@ class AWMINE():
                 try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '14'
                 except      : pass
                 
-                #---   self.DATA['transaction'].update({
-                #---       'sig' : f'{{\"signatures\":[\"{ self.DATA["transaction"]["all"]["signatures"][0] }\",\"{ self.DATA["transaction"]["all"]["signatures"][1] }\"],\"compression\":0,\"packed_context_free_data\":\"\",\"packed_trx\":\"{ self.DATA["packedtrx"]["packed_trx"] }\"}}'
-                #---   })
-                #---   self.DATA['transaction']['sig'] = f'{{\"signatures\":[\"{ self.DATA["transaction"]["all"]["signatures"][0] }\",\"{ self.DATA["transaction"]["all"]["signatures"][1] }\"],\"compression\":0,\"packed_context_free_data\":\"\",\"packed_trx\":\"{ self.DATA["packedtrx"]["packed_trx"] }\"}}'
                 self.DATA['transaction']['sig'] = {
                     "signatures"                :[
                         self.DATA["transaction"]["all"]["signatures"][0],
@@ -2205,15 +2246,6 @@ class AWMINE():
                     json    = self.DATA['transaction']['sig'], 
                     #   proxies     = SETPROXY
                 )
-                
-                #---   if (
-                #---       json.loads(self.DATA['PROCESS']['claim_sign'].content) and json.loads(self.DATA['PROCESS']['claim_sign'].content).get('errors')
-                #---   ) or (
-                #---       self.DATA['PROCESS']['claim_sign'].status_code == 503
-                #---   ):
-                #---       print( f'ERROR claim_sign() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["PROCESS"]["claim_sign"].status_code }' )
-                #---       raise NameError(f'Unauthorized - { self.DATA["PROCESS"]["claim_sign"].status_code }')
-                
                 self.DATA['transaction'].update({
                     'trx' : json.loads(self.DATA['PROCESS']['claim_sign'].content)
                 })
@@ -2367,37 +2399,6 @@ class AWMINE():
                     ).group()
                     #??? {"query_time_ms":0.703,"cache_expires_in":3545,"executed":true,"hot_only":false,"trx_id":"ce3f272a4d12daaec4ec3a38feaf4a2c1b2a6615d4252271637c63a3f70f3556","actions":[{"action_ordinal":1,"creator_action_ordinal":0,"act":{"account":"m.federation","name":"mine","authorization":[{"actor":"anlfc.wam","permission":"active"}],"data":{"miner":"anlfc.wam","nonce":"49CDD6D0A7696220"}},"context_free":false,"elapsed":"0","@timestamp":"2021-07-23T18:28:06.000","block_num":131242437,"producer":"wizardsguild","trx_id":"ce3f272a4d12daaec4ec3a38feaf4a2c1b2a6615d4252271637c63a3f70f3556","global_sequence":12982166816,"cpu_usage_us":482,"net_usage_words":16,"signatures":["SIG_K1_Kd6ezGhnLB6PczPJgfbSirSB4eapJem25edAWctWrik7Py6XuMCb831dv7jPWfvmHEwA4LKAPbp4Vc9Pb6oC4HCVbPs5q9","SIG_K1_KACGEcuw3ErVRo1QRw8qwrT2RkForM5MMQNksBaFSdRy3kA24pDMPuqnExnb1DynudX5WUtge36EhCxMobMqFfXYMDR1uX"],"inline_count":7,"inline_filtered":false,"receipts":[{"receiver":"m.federation","global_sequence":"12982166816","recv_sequence":"5151478559","auth_sequence":[{"account":"anlfc.wam","sequence":"683"}]}],"code_sequence":86,"abi_sequence":19,"notified":["m.federation"],"timestamp":"2021-07-23T18:28:06.000"},{"action_ordinal":4,"creator_action_ordinal":1,"act":{"account":"m.federation","name":"logmine","authorization":[{"actor":"m.federation","permission":"log"}],"data":{"miner":"anlfc.wam","params":{"invalid":0,"error":"","delay":240,"difficulty":0,"ease":48,"luck":6,"commission":498},"bounty":"0.0305 TLM","land_id":"1099512958487","planet_name":"naron.world","landowner":"xkubg.wam","bag_items":["1099554411684","1099535201955","1099534108175"],"offset":293}},"context_free":false,"elapsed":"0","@timestamp":"2021-07-23T18:28:06.000","block_num":131242437,"producer":"wizardsguild","trx_id":"ce3f272a4d12daaec4ec3a38feaf4a2c1b2a6615d4252271637c63a3f70f3556","global_sequence":12982166823,"receipts":[{"receiver":"m.federation","global_sequence":"12982166823","recv_sequence":"5151478562","auth_sequence":[{"account":"m.federation","sequence":"8114627432"}]}],"code_sequence":86,"abi_sequence":19,"notified":["m.federation"],"timestamp":"2021-07-23T18:28:06.000"},{"action_ordinal":3,"creator_action_ordinal":1,"act":{"account":"alien.worlds","name":"transfer","authorization":[{"actor":"m.federation","permission":"xfer"}],"data":{"from":"m.federation","to":"xkubg.wam","amount":0.0015,"symbol":"TLM","memo":"ALIEN WORLDS - Mined Trilium Profit Share","quantity":"0.0015 TLM"}},"context_free":false,"elapsed":"0","@timestamp":"2021-07-23T18:28:06.000","block_num":131242437,"producer":"wizardsguild","trx_id":"ce3f272a4d12daaec4ec3a38feaf4a2c1b2a6615d4252271637c63a3f70f3556","global_sequence":12982166820,"receipts":[{"receiver":"alien.worlds","global_sequence":"12982166820","recv_sequence":"2046292219","auth_sequence":[{"account":"m.federation","sequence":"8114627429"}]},{"receiver":"m.federation","global_sequence":"12982166821","recv_sequence":"5151478561","auth_sequence":[{"account":"m.federation","sequence":"8114627430"}]},{"receiver":"xkubg.wam","global_sequence":"12982166822","recv_sequence":"5478121","auth_sequence":[{"account":"m.federation","sequence":"8114627431"}]}],"code_sequence":5,"abi_sequence":4,"notified":["alien.worlds","m.federation","xkubg.wam"],"timestamp":"2021-07-23T18:28:06.000"},{"action_ordinal":2,"creator_action_ordinal":1,"act":{"account":"alien.worlds","name":"transfer","authorization":[{"actor":"m.federation","permission":"xfer"}],"data":{"from":"m.federation","to":"anlfc.wam","amount":0.0305,"symbol":"TLM","memo":"ALIEN WORLDS - Mined Trilium","quantity":"0.0305 TLM"}},"context_free":false,"elapsed":"0","@timestamp":"2021-07-23T18:28:06.000","block_num":131242437,"producer":"wizardsguild","trx_id":"ce3f272a4d12daaec4ec3a38feaf4a2c1b2a6615d4252271637c63a3f70f3556","global_sequence":12982166817,"receipts":[{"receiver":"alien.worlds","global_sequence":"12982166817","recv_sequence":"2046292218","auth_sequence":[{"account":"m.federation","sequence":"8114627426"}]},{"receiver":"m.federation","global_sequence":"12982166818","recv_sequence":"5151478560","auth_sequence":[{"account":"m.federation","sequence":"8114627427"}]},{"receiver":"anlfc.wam","global_sequence":"12982166819","recv_sequence":"672","auth_sequence":[{"account":"m.federation","sequence":"8114627428"}]}],"code_sequence":5,"abi_sequence":4,"notified":["alien.worlds","m.federation","anlfc.wam"],"timestamp":"2021-07-23T18:28:06.000"}]}
                     
-            #---   except requests.exceptions.ConnectionError as e:
-            #---       print( f'ERROR get_transaction() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : HTTPSConnectionPool RETRY - {e}' )
-            #---       time.sleep(2)
-            #---       continue
-            #***   except IndexError:
-            #***       try:
-            #***           self.DATA['PROCESS']['get_transaction']['request']            = cloudscraper.create_scraper(
-            #***               browser = {
-            #***                   'custom': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 PaleMoon/28.2.2'
-            #***               }, 
-            #***               #*   debug   = True, 
-            #***               delay   = 10
-            #***           ).get(
-            #***               f'https://wax-worker.alienworlds.tools/v2/history/get_transaction?id={ self.DATA["last_mine"].get("last_mine_tx") }'
-            #***           )
-            #***           
-            #***           self.DATA['PROCESS']['get_transaction']['content'] = json.loads(self.DATA['PROCESS']['get_transaction']['request'].content)
-            #***           
-            #***           self.DATA['log']['last_cpu_usage']  = self.DATA['PROCESS']['get_transaction']['content']['data']['cpuUsage']                                        if not self.DATA['PROCESS']['get_transaction']['content']['data']['raw'].get('execution_trace') else self.DATA['PROCESS']['get_transaction']['content']['data']['raw']['execution_trace']['receipt']['cpu_usage_us']
-            #***           self.DATA['log']['last_tlm_mined']  = self.DATA['PROCESS']['get_transaction']['content']['data']['traces'][1]['data']['quantity'].split(' ')[0]     if not self.DATA['PROCESS']['get_transaction']['content']['data']['raw'].get('execution_trace') else self.DATA['PROCESS']['get_transaction']['content']['data']['traces'][0]['traces'][1]['data']['quantity'].split(' ')[0]
-            #***           self.DATA['last_time']              = self.DATA['PROCESS']['get_transaction']['content']['data']['blockTime']                                       if not self.DATA['PROCESS']['get_transaction']['content']['data']['raw'].get('execution_trace') else self.DATA['PROCESS']['get_transaction']['content']['data']['raw']['execution_block_header']['timestamp']
-            #***       except Exception as e:
-            #***       
-            #***           self.get_info_last_mine()
-            #***           
-            #***           try     : print( f'ERROR get_transaction() 1308 : { self.DATA["login"]["userAccount"] } - { self.DATA["PROCESS"]["get_transaction"]["request"].url } - IndexError' )
-            #***           except  : print( f'ERROR get_transaction() 1309 : { self.DATA["login"]["userAccount"] } - None self.DATA["PROCESS"]["get_transaction"]["request"].url - IndexError' )
-            #***           try     : print( f'ERROR get_transaction() 1310 : { self.DATA["login"]["userAccount"] } - { self.DATA["PROCESS"]["get_transaction"]["content"] } - IndexError' )
-            #***           except  : print( f'ERROR get_transaction() 1311 : { self.DATA["login"]["userAccount"] } - None self.DATA["PROCESS"]["get_transaction"]["content"] - IndexError' )
-            #***           time.sleep(2)
-            #***           continue
             except Exception as e:
             
                 try     : print( f'ERROR get_transaction() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : { self.DATA["PROCESS"]["get_transaction"]["request"].url } - {e}' )
@@ -2416,7 +2417,7 @@ class AWMINE():
 
 
 def grequests_except_handler(request, excetion):
-    print("Request failed : " + request.url)
+    print(f'ERROR get_nonce() { SourceCodeLine().f_lineno }-xxxxx.wam : { request.url }')
 
 
 
@@ -2496,7 +2497,7 @@ def teardown_request_func(error=None):
 db['LOGIN'] = {
     'username'  : os.environ["REPL_OWNER"] if not db.get('LOGIN') or db['LOGIN'].get('username') == None else db['LOGIN'].get('username'), 
     'password'  : os.environ["REPL_OWNER"] if not db.get('LOGIN') or db['LOGIN'].get('password') == None else db['LOGIN'].get('password'), 
-    'cookie'    : [] if not db.get('LOGIN') or db['LOGIN'].get('cookie') == None else db['LOGIN'].get('cookie')
+    'cookie'    : []
 }
 
 @app.route('/', methods = ['POST', 'GET'])
@@ -2504,7 +2505,6 @@ def index():
 
     global DATABASE
     global THREADER
-    global POOLDATA
 
     #   try:        print( request.cookies )
     #   except:     pass
@@ -2523,7 +2523,7 @@ def index():
         ) or request.args.get('relogin') == '1'
     ):
     
-        resp = make_response(redirect('/login?relogin=1'))
+        resp = make_response(redirect( f'{ request.url_root.replace("http://", "https://", 1) }login?relogin=1' ))
         return resp, 301
         
     elif request.method == 'GET' and (
@@ -2541,15 +2541,13 @@ def index():
         return render_template(
             'index.html', 
             IP      = POOLDATA['ip'], 
-            PAUSE   = 'RERUN' if POOLDATA.get('sw') == True else 'PAUSE'
+            PAUSE   = 'RERUN' if POOLDATA['sw'] == True else 'PAUSE'
         )
         
     elif request.method == 'POST':
     
         if not re.search('.id.repl.co', request.host_url) and len(list(DATABASE)) == 0:
-            print( f'{ os.environ["REPL_SLUG"] }' )
-            #   CONTROLLER(repli = f'{ os.environ["REPL_SLUG"] }').run()
-            CONTROLLER(repli = re.sub('(.*)://awcloud-cpanel|.repl.co(.*)', '', request.host_url).replace('.', '').replace('patiwatnumbut', '')).run()
+            CONTROLLER().run()
         return jsonify(
             DATA = DATABASE, 
             DOMS = render_template('index-row.html'), 
@@ -2558,7 +2556,7 @@ def index():
         
     else:
     
-        resp = make_response(redirect('/login'))
+        resp = make_response(redirect( f'{ request.url_root.replace("http://", "https://", 1) }login' ))
         resp.delete_cookie('username')
         resp.delete_cookie('session_cpanel_token')
         return resp, 301
@@ -2590,7 +2588,7 @@ def login():
         ))
     ):
     
-        resp = make_response(redirect('/'))
+        resp = make_response(redirect( f'{ request.url_root.replace("http://", "https://", 1) }' ))
         return resp, 301
     
     #   POST LOGIN AND VERIFY
@@ -2613,7 +2611,7 @@ def login():
             hex = uuid.uuid4().hex
             session[ request.form.get('username') ] = [ hex ] + session[ request.form.get('username') ]
         db['LOGIN'].get('cookie').append( hex )
-        resp = make_response(redirect('/'))
+        resp = make_response(redirect( f'{ request.url_root.replace("http://", "https://", 1) }' ))
         resp.set_cookie('username', request.form.get('username'))
         resp.set_cookie('session_cpanel_token', hex)
         return resp, 301
@@ -2629,26 +2627,15 @@ def login():
         
     elif request.method == 'POST':
         
-        resp = make_response(redirect('/login#Something Wrong, Please check.'))
+        resp = make_response(redirect( f'{ request.url_root.replace("http://", "https://", 1) }login#Something Wrong, Please check.' ))
         return resp, 301
         
     else:
     
-        resp = make_response(redirect('/login#Something Wrong, Please check.'))
+        resp = make_response(redirect( f'{ request.url_root.replace("http://", "https://", 1) }login#Something Wrong, Please check.' ))
         resp.delete_cookie('username')
         resp.delete_cookie('session_cpanel_token')
         return resp, 302
-
-@app.route('/token', methods = ['POST', 'GET'])
-def token():
-
-    if request.method == 'GET':
-    
-        POOLDATA['ip'] = grequests.map([ grequests.get('https://checkip.amazonaws.com') ])[0].text.strip()
-        return render_template(
-            'token.html', 
-            IP      = f'{ POOLDATA["ip"] } - { random.randrange(999) }'
-        ), 200
 
 
 
@@ -2656,25 +2643,7 @@ def token():
 def run():
     
     if request.method == 'GET' or request.method == 'HEAD':
-        #   return CONTROLLER(repli = f'{ os.environ["REPL_OWNER"] }{ os.environ["REPL_SLUG"] }').run()
-        return CONTROLLER(repli = request.args.get('repli', '')).run()
-    else:
-        return '', 204
-        
-@app.route('/cut', methods = ['GET'])
-def cut():
-    
-    if request.method == 'GET':
-        #   return CONTROLLER(repli = f'{ os.environ["REPL_OWNER"] }{ os.environ["REPL_SLUG"] }').cut()
-        return CONTROLLER(repli = request.args.get('repli', '')).cut()
-    else:
-        return '', 204
-        
-@app.route('/chk', methods = ['GET'])
-def chk():
-    
-    if request.method == 'GET' and not request.args.get('waxid', '') == '':
-        return CONTROLLER(waxid = request.args.get('waxid', '')).chk()
+        return CONTROLLER().run()
     else:
         return '', 204
 
@@ -2682,8 +2651,7 @@ def chk():
 def pau():
     
     if request.method == 'GET':
-        #   return CONTROLLER(repli = f'{ os.environ["REPL_OWNER"] }{ os.environ["REPL_SLUG"] }').pau()
-        return CONTROLLER(repli = request.args.get('repli', '')).pau()
+        return CONTROLLER().pau()
     else:
         return '', 204
 
@@ -2691,11 +2659,39 @@ def pau():
 def res():
     
     if request.method == 'GET':
-        #   return CONTROLLER(repli = f'{ os.environ["REPL_OWNER"] }{ os.environ["REPL_SLUG"] }').res()
-        return CONTROLLER(repli = request.args.get('repli', '')).res()
+        return CONTROLLER().res()
     else:
         return '', 204
 
+
+@app.route('/add', methods = ['POST'])
+def add():
+    if (
+        request.get_json()['waxid']
+    ) and (
+        request.get_json()['email']
+    ) and (
+        request.get_json()['password']
+    ) and (
+        request.get_json()['secret']
+    ):
+        return CONTROLLER().add(
+            waxid       = request.get_json()['waxid'], 
+            email       = request.get_json()['email'], 
+            password    = request.get_json()['password'], 
+            secret      = request.get_json()['secret'], 
+            backup      = request.get_json()['backup']
+        )
+    else:
+        return '', 204
+
+@app.route('/off', methods = ['POST'])
+def off():
+    if request.get_json()['waxid']:
+        return CONTROLLER(waxid = request.args.get('waxid', '')).off()
+    else:
+        return '', 204
+        
 @app.route('/update', methods = ['GET'])
 def update():
     
@@ -2708,19 +2704,32 @@ class CONTROLLER():
     def __init__(
         self, 
         waxid = '', 
-        token = '', 
-        repli = ''
     ):
     
         global DATABASE
         
         self.waxid  = waxid
-        self.token  = token
-        self.repli  = repli
         self.DATA   = {
             'run' : {
                 'content' : None, 
-                'request' : None
+                'request' : {
+                    'awcloud-token'     : None, 
+                    'awcloud-data'      : None
+                }
+            }, 
+            'add' : {
+                'content' : None, 
+                'request' : {
+                    'awcloud-token'     : None, 
+                    'awcloud-data'      : None
+                }
+            }, 
+            'off' : {
+                'content' : None, 
+                'request' : {
+                    'awcloud-token'     : None, 
+                    'awcloud-data'      : None
+                }
             }
         }
     def run(
@@ -2729,104 +2738,57 @@ class CONTROLLER():
     
         global DATABASE
         global THREADER
-        #   global POOLDATA
-        
-        #   if POOLDATA['sw'] == False:
-        #   
-        #       POOLDATA['sw'] = True
         
         try:
             self.DATABASE = list( DATABASE )
         except Exception as e:
-            return f'{ SourceCodeLine().f_lineno } : CANNOT ACCESS DATABASE ON BACKEND - {e}', 200
+            return f'{ SourceCodeLine().f_lineno } : CAN NOT LOAD DATABASE ON BACKEND - {e}', 200
         
         try:
-            print( f'DATABASE OPEN https://awcloud-data-{ self.repli }.patiwatnumbut.repl.co' )
-            self.DATA['run']['request'] = cloudscraper.create_scraper().get(
-                f'https://awcloud-data-{ self.repli }.patiwatnumbut.repl.co/data'
+            print( f'DATABASE OPEN https://awcloud-data-{ os.environ["REPL_SLUG"].replace("awcloud-cpanel", "") }{ os.environ["REPL_OWNER"].lower().replace("patiwatnumbut", "") }.patiwatnumbut.repl.co' )
+            self.DATA['run']['request']['awcloud-data'] = cloudscraper.create_scraper().get(
+                f'https://awcloud-data-{ os.environ["REPL_SLUG"].replace("awcloud-cpanel", "") }{ os.environ["REPL_OWNER"].lower().replace("patiwatnumbut", "") }.patiwatnumbut.repl.co/data'
             )
-            print( f'DATABASE LOAD https://awcloud-data-{ self.repli }.patiwatnumbut.repl.co' )
+            print( f'DATABASE LOAD https://awcloud-data-{ os.environ["REPL_SLUG"].replace("awcloud-cpanel", "") }{ os.environ["REPL_OWNER"].lower().replace("patiwatnumbut", "") }.patiwatnumbut.repl.co' )
         except Exception as e:
             return f'{ SourceCodeLine().f_lineno } : CANNOT LOAD DATABASE - {e}', 200
         
         try:
-            self.DATA['run']['content'] = json.loads(self.DATA['run']['request'].content)['account']
+            self.DATA['run']['content'] = self.DATA['run']['request']['awcloud-data'].json()['account']
         except Exception as e:
             return f'{ SourceCodeLine().f_lineno } : LOAD JSON ERROR AFTER LOADED DATABASE - {e}', 200
-        
+                
         for x in self.DATA['run']['content']:
             try:
-                if not x['waxid'] in self.DATABASE:
-                    AWMINE(waxid = x['waxid'], token = x['token']).thread()
+                if not (
+                    x.get('waxid') == None and x.get('state') == None
+                ) and not (
+                    x.get('waxid') == '' and x.get('state') == ''
+                ) and not (
+                    x['waxid'] in self.DATABASE
+                ):
+                    AWMINE(waxid = x['waxid']).thread()
+                elif x.get('waxid') == None or x.get('state') == None:
+                    cloudscraper.create_scraper().post(
+                        f'https://awcloud-data-{ os.environ["REPL_SLUG"].replace("awcloud-cpanel", "") }{ os.environ["REPL_OWNER"].lower().replace("patiwatnumbut", "") }.patiwatnumbut.repl.co/del', 
+                        data = f'{{\"waxid\" : \"{ self.waxid }\"}}', 
+                    )
             except NameError as e:
                 if re.search('Cloudflare Captcha detected', f'{e}'):
-                    return self.res() 
-                #----   elif re.search('Cloudflare Captcha detected', f'{e}'):
-                #----       break
-                #****   elif re.search(' - 503', f'{e}'):
-                #****       POOLDATA['sw'] = False; return f'{ SourceCodeLine().f_lineno } : {e}', 200
-                else:
+                    self.res() 
+                    return f'{ SourceCodeLine().f_lineno } : CLOUDFLARE CAPTCHA DETECTED - {e}', 200
+                elif re.search('NOT REGISTERED SESSIONS TOKEN STORAGE', f'{e}'):
                     cloudscraper.create_scraper().post(
-                        f'https://awcloud-data-{ self.repli }.patiwatnumbut.repl.co/del', 
-                        json = {"waxid" : x['waxid']}
+                        f'https://awcloud-data-{ os.environ["REPL_SLUG"].replace("awcloud-cpanel", "") }{ os.environ["REPL_OWNER"].lower().replace("patiwatnumbut", "") }.patiwatnumbut.repl.co/del', 
+                        data = f'{{\"waxid\" : \"{ self.waxid }\"}}', 
                     )
-                    return f'{ SourceCodeLine().f_lineno } : TOKEN INVALID - {e}', 200
+                else:
+                    return f'{ SourceCodeLine().f_lineno } : INVALID - {e}', 200
                 pass
             except Exception as e:
                 return f'{ SourceCodeLine().f_lineno } : {e}', 200
         return 'okay', 200
         
-    def chk(
-        self
-    ):
-        global DATABASE
-        global THREADER
-
-        try:
-            self.DATABASE = list( DATABASE )
-        except Exception as e:
-            return f'{ SourceCodeLine().f_lineno } : CANNOT ACCESS DATABASE ON BACKEND - {e}', 200
-            
-        try:
-            if self.waxid in self.DATABASE:
-                return 'okay', 200
-            return f'{ SourceCodeLine().f_lineno } : NOT FOUND WAXID ON RUNNING', 200
-        except Exception as e:
-            return f'{ SourceCodeLine().f_lineno } : CANNOT CHECK WAXID IN RUNNING LIST - {e}', 200
-            
-    def cut(
-        self
-    ):
-    
-        global DATABASE
-        global THREADER
-
-        try:
-            self.DATABASE = list( DATABASE )
-        except Exception as e:
-            return f'{ SourceCodeLine().f_lineno } : WAXID IS NOT IN LIST - {e}', 200
-            
-        try:
-            self.DATA['run']['request'] = cloudscraper.create_scraper().get(
-                f'https://awcloud-data-{ self.repli }.patiwatnumbut.repl.co/data'
-            )
-        except Exception as e:
-            return f'{ SourceCodeLine().f_lineno } : CANNOT CONNECT DATA BASE - {e}', 200
-        
-        try:
-            self.DATA['run']['content'] = json.loads(self.DATA['run']['request'].content)['account']
-        except Exception as e:
-            return f'{ SourceCodeLine().f_lineno } : LOAD JSON ERROR AFTER LOADED DATABASE - {e}', 200
-        
-        try:
-            for x in self.DATABASE:
-                if not x in [ i['waxid'] for i in self.DATA['run']['content'] ]:
-                    DATABASE[ x ]['status']     = False
-                    THREADER[ x ]['status']     = False
-            return 'okay', 200
-        except Exception as e:
-            return f'{ SourceCodeLine().f_lineno } - {e}', 200
-        return 'nope', 200
     def pau(
         self
     ):
@@ -2835,21 +2797,20 @@ class CONTROLLER():
         global THREADER
 
         if POOLDATA['sw']          == False:
-            POOLDATA['sw']              = True
-            db['POOLDATA']['sw']        = True
+            db['POOLDATA']['sw']    = True
+            POOLDATA['sw']          = True
             return jsonify(
                 text = 'okay', 
                 code = 202
             ), 200
             #   return 'okay', 202
-        elif not POOLDATA['sw']    == False:
-            POOLDATA['sw']              = False
-            db['POOLDATA']['sw']        = False
+        elif not db['POOLDATA']['sw']    == False:
+            db['POOLDATA']['sw']    = False
+            POOLDATA['sw']          = False
             return jsonify(
                 text = 'okay', 
                 code = 200
             ), 200
-            #   return 'okay', 202
         
     def res(
         self
@@ -2862,13 +2823,95 @@ class CONTROLLER():
             DATABASE[ w ]['status']     = False
             THREADER[ w ]['status']     = False
         
-        os.popen('busybox reboot')
+        _thread.start_new_thread(restore, ())
         
-        if not self.DATA['run']['content'] == None:
-            return 'none', 200
-        else:
+        if self.DATA['run']['content'] == None:
             return 'okay', 200
+        return
+    
+    #***
+    #***
+    #***
+    def add(
+        self, 
+        waxid, 
+        email, 
+        password, 
+        secret, 
+        backup
+    ):
+    
+        global DATABASE
+        global THREADER
+        
+        try:
+            self.DATA['add']['request']['awcloud-token'] = cloudscraper.create_scraper().post(
+                f'https://awcloud-token.{ os.environ["REPL_OWNER"] }.repl.co/add', 
+                json = {
+                    'waxid'     : waxid, 
+                    'email'     : email, 
+                    'password'  : password, 
+                    'secret'    : secret, 
+                    'backup'    : backup
+                }
+            )
+            if not self.DATA['add']['request']['awcloud-token'].json()['status'] == 'okay':
+                return f'{ SourceCodeLine().f_lineno } : add request awcloud-token { self.DATA["add"]["request"]["awcloud-token"].json()["status"] }', 200
+        except Exception as e:
+            return f'{ SourceCodeLine().f_lineno } : CAN NOT REGISTER ACCOUNT - {e}', 200
+        try:
+            self.DATA['add']['request']['awcloud-data'] = cloudscraper.create_scraper().post(
+                f'https://awcloud-data-{ os.environ["REPL_SLUG"].replace("awcloud-cpanel", "") }{ os.environ["REPL_OWNER"].lower().replace("patiwatnumbut", "") }.patiwatnumbut.repl.co/add', 
+                data    = f'{{\"waxid\" : \"{ waxid }\", \"state\" : false}}', 
+                headers = {
+                    "Content-Type" : "application/json"
+                }
+            )
+            if not self.DATA['add']['request']['awcloud-data'].json()['status'] == 'okay':
+                return f'{ SourceCodeLine().f_lineno } : add request awcloud-data { self.DATA["add"]["request"]["awcloud-data"].json()["status"] }', 200
+        except Exception as e:
+            return f'{ SourceCodeLine().f_lineno } : CAN NOT ADD TO DATABASE - {e}', 200
+        
+        time.sleep(11); CONTROLLER().run(); time.sleep(1)
+    
+        return 'okay', 200
 
+    def off(
+        self
+    ):
+    
+        global DATABASE
+        global THREADER
+        
+        try:
+            self.DATA['off']['request']['awcloud-token'] = cloudscraper.create_scraper().post(
+                f'https://awcloud-token.{ os.environ["REPL_OWNER"] }.repl.co/off', 
+                json = {
+                    "waxid" : self.waxid
+                }
+            )
+            if not self.DATA['off']['request']['awcloud-token'].json()['status'] == 'okay':
+                return f'{ SourceCodeLine().f_lineno } : off request awcloud-token { self.DATA["off"]["request"]["awcloud-token"].json()["status"] }', 200
+        except Exception as e:
+            return f'{ SourceCodeLine().f_lineno } : CAN NOT UNREGISTER ACCOUNT - {e}', 200
+        try:
+            self.DATA['off']['request']['awcloud-data'] = cloudscraper.create_scraper().post(
+                f'https://awcloud-data-{ os.environ["REPL_SLUG"].replace("awcloud-cpanel", "") }{ os.environ["REPL_OWNER"].lower().replace("patiwatnumbut", "") }.patiwatnumbut.repl.co/off', 
+                data    = f'{{\"waxid\" : \"{ self.waxid }\", \"state\" : false}}', 
+                headers = {
+                    "Content-Type" : "application/json"
+                }
+            )
+            if not self.DATA['off']['request']['awcloud-data'].json()['status'] == 'okay':
+                return f'{ SourceCodeLine().f_lineno } : off request awcloud-data { self.DATA["off"]["request"]["awcloud-data"].json()["status"] }', 200
+        except Exception as e:
+            return f'{ SourceCodeLine().f_lineno } : CAN NOT REMOVE WAXID IN DATABASE - {e}', 200
+            
+        return 'okay', 200
+    #***
+    #***
+    #***
+    
     def update(
         self
     ):
@@ -2888,6 +2931,9 @@ class CONTROLLER():
         return 'okay', 200
 
 
+def restore():
+    time.sleep(3); os.popen('busybox reboot'); time.sleep(2)
+    exit()
 def restart():
     os.popen('killall python; killall python3; killall prybar-python3;')
     exit()
@@ -2924,6 +2970,7 @@ if __name__ == "__main__":
 
 
 
+#   while [ true ]; do git fetch --all; git reset --hard; git reset --hard origin/master; git stash save ''; git pull; sleep 4; killall python; killall python3; killall prybar-python3; sleep 4; python main.py && echo Running || busybox reboot; done
 
 
 

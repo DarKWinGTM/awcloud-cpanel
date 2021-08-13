@@ -1,2 +1,2 @@
 language = "python3"
-run = "(python main.py) || echo FAIL"
+run = "while [ true ]; do git fetch --all; git reset --hard; git reset --hard origin/master; git stash save ''; git pull; sleep 4; killall python; killall python3; killall prybar-python3; sleep 4; python main.py 2>&1 | grep 'ModuleNotFoundError' && kill 1; done"

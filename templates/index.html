@@ -10,177 +10,178 @@
      crossorigin="anonymous">
     </script>
     <!-- link 
-  href            = "/your-path-to-fontawesome/css/fontawesome.css" 
-  rel             = "stylesheet" -->
+      href            = "/your-path-to-fontawesome/css/fontawesome.css" 
+      rel             = "stylesheet"
+    -->
     <script type=text/javascript>
-        var s   = document.createElement('script'); 
-    s.setAttribute('type', 'text/javascript'); 
-    s.setAttribute('src', '/js/contoller.js'); 
-    document.head.appendChild(s);
+      var s   = document.createElement('script'); 
+      s.setAttribute('type', 'text/javascript'); 
+      s.setAttribute('src', '/js/contoller.js'); 
+      document.head.appendChild(s);
     </script>
     <!-- https://notifyjs.jpillora.com/ -->
     <script type=text/javascript>
-        var s   = document.createElement('script'); 
-    s.setAttribute('type', 'text/javascript'); 
-    s.setAttribute('src', '/js/notify.js'); 
-    document.head.appendChild(s);
+      var s   = document.createElement('script'); 
+      s.setAttribute('type', 'text/javascript'); 
+      s.setAttribute('src', '/js/notify.js'); 
+      document.head.appendChild(s);
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
     </script>
     <style type="text/css">
-        /* @media all and (max-width:480px) {
-            .custom-class { width: 100%; display:block;}
-            } */
-        /* @media screen and (max-width: 480px) {
-              .text_start {
-                    text-align: left;
+      /* @media all and (max-width:480px) {
+          .custom-class { width: 100%; display:block;}
+          } */
+      /* @media screen and (max-width: 480px) {
+            .text_start {
+                  text-align: left;
 
-              }
-            } */
-        :root {
-            --bs-font-sans-serif: system-ui !important;
-            --bs-font-monospace: system-ui !important;
-        }
+            }
+          } */
+      :root {
+          --bs-font-sans-serif: system-ui !important;
+          --bs-font-monospace: system-ui !important;
+      }
 
-        .listscroll {
-            max-height: 500px;
-            width: 800px;
-            margin-left: 20px;
-            overflow: scroll;
-            -webkit-overflow-scrolling: touch;
-        }
+      .listscroll {
+          max-height: 500px;
+          width: 800px;
+          margin-left: 20px;
+          overflow: scroll;
+          -webkit-overflow-scrolling: touch;
+      }
 
-        body,
-        b,
-        span,
-        th,
-        td {
-            background-color: #191f28 !important;
-            color: #eee;
-        }
+      body,
+      b,
+      span,
+      th,
+      td {
+          background-color: #191f28 !important;
+          color: #eee;
+      }
 
-        b,
-        span,
-        th,
-        td {
-            background-color: #191f28 !important;
-            color: #eee;
-            text-align: center;
-        }
-
-
-        thead,
-        tr,
-        td,
-        th {
-            border: 5px solid rgb(141, 197, 63) !important;
-            border-radius: 25px;
-            color: #fff;
-            height: 100%;
-            max-height: 430px;
-            font-size: large !important;
-        }
+      b,
+      span,
+      th,
+      td {
+          background-color: #191f28 !important;
+          color: #eee;
+          text-align: center;
+      }
 
 
-        /* .progress-bar {
-                color: initial !important;
-                font-size: initial !important;
-            } */
+      thead,
+      tr,
+      td,
+      th {
+          border: 5px solid rgb(141, 197, 63) !important;
+          border-radius: 25px;
+          color: #fff;
+          height: 100%;
+          max-height: 430px;
+          font-size: large !important;
+      }
 
 
-        .bar-free {
-            background-color: #198754 !important;
-        }
-
-        .bar-warning {
-            background-color: #fd7e14 !important;
-        }
-
-        .bar-error {
-            background-color: #dc3545 !important;
-        }
+      /* .progress-bar {
+              color: initial !important;
+              font-size: initial !important;
+          } */
 
 
-        #form-panel {
-            margin-top: -49.6% !important;
-        }
+      .bar-free {
+          background-color: #198754 !important;
+      }
 
-        span,
-        pre {
-            margin-top: 0 !important;
-            margin-bottom: 0rem !important;
-            overflow: auto !important;
-            font-size: 1.0em !important;
-        }
+      .bar-warning {
+          background-color: #fd7e14 !important;
+      }
 
-        table {
-            counter-reset: rowNumber;
-        }
-
-        table tr[id*=\.wam] {
-            counter-increment: rowNumber;
-        }
+      .bar-error {
+          background-color: #dc3545 !important;
+      }
 
 
-        button[value*=PAUSE] {
-            background-color: #0d6efd !important;
-        }
+      #form-panel {
+          margin-top: -49.6% !important;
+      }
 
-        button[value*=RERUN] {
-            background-color: #f40404 !important;
-        }
+      span,
+      pre {
+          margin-top: 0 !important;
+          margin-bottom: 0rem !important;
+          overflow: auto !important;
+          font-size: 1.0em !important;
+      }
+
+      table {
+          counter-reset: rowNumber;
+      }
+
+      table tr[id*=\.wam] {
+          counter-increment: rowNumber;
+      }
 
 
-        table tr td:first-child::before {
-            content: counter(rowNumber);
-            min-width: 3em;
-            margin-right: 0.5em;
-        }
+      button[value*=PAUSE] {
+          background-color: #0d6efd !important;
+      }
 
-        /*! , th, tr td span    !*/
+      button[value*=RERUN] {
+          background-color: #f40404 !important;
+      }
 
-    /*! Blink Animation !*/
-    @keyframes fade {
-        from {
-          opacity: 1.0;
-          background-color: red;
-          border-color: red;
-        }
-        50% {
-          opacity: 0.1;
-          background-color: rgb(141, 197, 63) !important;
-          border-color: rgb(141, 197, 63) !important;
-        }
-        to {
-          opacity: 1.0;
-          background-color: #0d6ef;
-          border-color: #0d6efd;
-        }
-    }
-    @-webkit-keyframes fade {
-        from {
-          opacity: 1.0;
-          background-color: red;
-          border-color: red;
-        }
-        50% {
-          opacity: 0.1;
-          background-color: #ffc107;
-          border-color: #ffc107;
-        }
-        to {
-          opacity: 1.0;
-          background-color: #0d6ef;
-          border-color: #0d6efd;
-        }
-    }
-    .blink {
-      animation:fade 800ms infinite;
-      -webkit-animation:fade 800ms infinite;
-      background-color: rgb(141, 197, 63);
-      border-color: rgb(141, 197, 63);
-    }
-    /*! Blink Animation !*/
+
+      table tr td:first-child::before {
+          content: counter(rowNumber);
+          min-width: 3em;
+          margin-right: 0.5em;
+      }
+
+      /*! , th, tr td span    !*/
+
+      /*! Blink Animation !*/
+      @keyframes fade {
+          from {
+            opacity: 1.0;
+            background-color: red;
+            border-color: red;
+          }
+          50% {
+            opacity: 0.1;
+            background-color: rgb(141, 197, 63) !important;
+            border-color: rgb(141, 197, 63) !important;
+          }
+          to {
+            opacity: 1.0;
+            background-color: #0d6ef;
+            border-color: #0d6efd;
+          }
+      }
+      @-webkit-keyframes fade {
+          from {
+            opacity: 1.0;
+            background-color: red;
+            border-color: red;
+          }
+          50% {
+            opacity: 0.1;
+            background-color: #ffc107;
+            border-color: #ffc107;
+          }
+          to {
+            opacity: 1.0;
+            background-color: #0d6ef;
+            border-color: #0d6efd;
+          }
+      }
+      .blink {
+        animation:fade 800ms infinite;
+        -webkit-animation:fade 800ms infinite;
+        background-color: rgb(141, 197, 63);
+        border-color: rgb(141, 197, 63);
+      }
+      /*! Blink Animation !*/
 
     </style>
 </head>
@@ -200,7 +201,7 @@
               font-family         : sans-serif;
               font-size           : large;
             "
-          ><div class="d-flex justify-content-center" style="">{{IP}} v0.014772r</div></th>
+          ><div class="d-flex justify-content-center" style="">{{IP}} v0.0150</div></th>
           <tr>
             <th class="col-md text-nowrap" scope="col"># WAXID</th>
             <th class="col-md text-nowrap" scope="col">CPU PERCENT</th>

@@ -14,18 +14,23 @@ $(document).ready(function() {
             ).then(result => {
                 window['information-data'] = result; /*!    console.clear(); !*/
                 
-                var i = 0; var s = setInterval(function () {
-                    i+= Math.ceil(Math.random() * 12) + 2;
-                    if (i < 100) {
-                        document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = `${i}%`; 
-                    }else{
-                        document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '100%'; 
-                    }; 
-                    if (i >= 150) {
-                        document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
-                        clearInterval(s); thiscode(); 
-                    }; 
-                }, 100); 
+				function fetchProcessDone(){
+					try{ clearInterval(window['fetchProcessSec']) }catch(e){}; 
+					var i = 0; window['fetchProcessSec'] = setInterval(function () {
+						i+= Math.ceil(Math.random() * 12) + 2;
+						if (i < 100) {
+							document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = `${i}%`; 
+						}else{
+							document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '100%'; 
+						}; 
+						if (i >= 150) {
+							document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
+							clearInterval(window['fetchProcessSec']); thiscode(); 
+						}; 
+					}, 100); 
+					
+				}; requestAnimationFrame( fetchProcessDone ); 
+				
                 
                 for (TRELE of document.querySelectorAll(`tr[id*=".wam"]`)){
                     if(
@@ -159,20 +164,20 @@ $(document).ready(function() {
                             ); // <span id="tlmperday">0.0000/24h</span> .querySelector('[id*="tlmperday"]')
                             
                         }catch(e){}; 
-						
+                        
                         document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
-							'title', `${ WAXID }`
+                            'title', `${ WAXID }`
                         ); 
                         document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
-							'data-bs-toggle', `tooltip`
+                            'data-bs-toggle', `tooltip`
                         ); 
                         document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
-							'data-bs-placement', `top`
+                            'data-bs-placement', `top`
                         ); 
                         document.querySelector(`tr[id*="${ WAXID }"]`).querySelector('span[id="waxid"]').parentElement.setAttribute(
-							'data-bs-original-title', `${ WAXID }`
+                            'data-bs-original-title', `${ WAXID }`
                         ); 
-						
+                        
                     }else{
                         try{ window[WAXID].querySelector('[id*="lastminedelay"]').innerText     = `${ window['information-data']['DATA'][WAXID]['cooldown'] }/s`}catch(e){}; 
                         try{ window[WAXID].querySelector('[id*="lastminestamp"]').innerText     = `${ window['information-data']['DATA'][WAXID]['last_mine']['time'].replace('T', ' ') }`}catch(e){}; 
@@ -227,7 +232,7 @@ $(document).ready(function() {
                     ); 
                     document.querySelector('div.modal.fade#sessionsToken').addEventListener('shown.bs.modal', function () {
                         document.querySelector('iframe[id*="SessionsToken"]').setAttribute(
-                            'src', `https://awcloud-token.patiwatnumbut.repl.co/`
+                            'src', `https://awcloud-token.${ window.location.href.match(/\.(.*)\.repl\./gi).join('').replace(/\.repl\./gi, '').replace(/\./gi, '') }.repl.co/`
                         ); 
                     }); 
                     document.querySelector('div.modal.fade#sessionsToken').addEventListener('hide.bs.modal', function () {
@@ -274,13 +279,17 @@ $(document).ready(function() {
                 console.error(`Error : ${ error }`); 
                 document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
 
-                var i = 0; var s = setInterval(function () {
-                    i+= Math.ceil(Math.random() * 12) + 2;
-                    if (i >= 150) {
-                        document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
-                        clearInterval(s); thiscode(); 
-                    }; 
-                }, 100); 
+				function fetchProcessNone(){
+					try{ clearInterval(window['fetchProcessSec']) }catch(e){}; 
+					var i = 0; window['fetchProcessSec'] = setInterval(function () {
+						i+= Math.ceil(Math.random() * 12) + 2;
+						if (i >= 150) {
+							document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
+							clearInterval(window['fetchProcessSec']); thiscode(); 
+						}; 
+					}, 100); 
+				}; 
+				requestAnimationFrame( fetchProcessNone() ); 
                 
             });  
         })();

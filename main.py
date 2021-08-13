@@ -2149,9 +2149,6 @@ class AWMINE():
             
                 try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '24'
                 except      : pass
-        
-                try         : self.get_token()
-                except      : time.sleep(3); continue
             
                 try         : DATABASE[ self.DATA['waxid'] ]['text']['step'] = '13'
                 except      : pass
@@ -2202,6 +2199,10 @@ class AWMINE():
                     'all' : json.loads(self.DATA['PROCESS']['claim_sign'].content)
                 })
             except Exception as e:
+        
+                try         : self.get_token()
+                except      : time.sleep(3); continue
+                
                 print( f'ERROR claim_sign() { SourceCodeLine().f_lineno }-{ self.DATA["waxid"] } : {e}' )
                 time.sleep(3)
                 continue
@@ -2935,7 +2936,7 @@ def restore():
     time.sleep(3); os.popen('busybox reboot'); time.sleep(2)
     exit()
 def restart():
-    os.popen('killall python; killall python3; killall prybar-python3;')
+    os.popen('killall python; killall python3; killall prybar-python3;') #  os.popen('kill 1')
     exit()
 
 @app.before_first_request
@@ -2974,19 +2975,4 @@ if __name__ == "__main__":
 
 
 
-#   curl 'https://tools.pingdom.com/v1/tests/create' \
-#     -H 'authority: tools.pingdom.com' \
-#     -H 'pragma: no-cache' \
-#     -H 'cache-control: no-cache' \
-#     -H 'accept: application/json, text/plain, */*' \
-#     -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36' \
-#     -H 'content-type: application/json' \
-#     -H 'sec-gpc: 1' \
-#     -H 'origin: https://tools.pingdom.com' \
-#     -H 'sec-fetch-site: same-origin' \
-#     -H 'sec-fetch-mode: cors' \
-#     -H 'sec-fetch-dest: empty' \
-#     -H 'referer: https://tools.pingdom.com/' \
-#     -H 'accept-language: en-US,en;q=0.9' \
-#     --data-raw '{"url":"https://qbcr1.sse.codesandbox.io/","region":"us-east-1"}' \
-#     --compressed
+# run = "while [ true ]; do git fetch --all; git reset --hard; git reset --hard origin/master; git stash save ''; git pull; sleep 4; killall python; killall python3; killall prybar-python3; sleep 4; python main.py 2>&1 | grep "ModuleNotFoundError" && kill 1; done"

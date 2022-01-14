@@ -1,0 +1,22 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool]
+[tool.poetry]
+authors = ["Your Name <you@example.com>"]
+description = ""
+name = "repl_python3_awcloud-cpanel"
+version = "0.1.0"
+[tool.poetry.dependencies]
+Flask = "*"
+PySocks = "^1.7.1"
+cffi = "1.15.0"
+cloudscraper = "*"
+cryptography = "3.4.7"
+grequests = "*"
+python = "^3.8"
+pytz = "*"
+replit = "*"
+requests = "*"
+[tool.poetry.dev-dependencies]

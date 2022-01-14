@@ -1,0 +1,8 @@
+language = "python3"
+run = "while [ true ]; do npm install nodemon; sleep 1; npx nodemon -L -x 'git fetch --all; git reset --hard; git reset --hard origin/master; git stash save ''; git pull; sleep 1; pip install --force-reinstall -r requirements.txt; sleep 1; killall python; killall python3; killall prybar-python3; sleep 1; python awcloud.pyc || sleep 1; echo $(date +'%Y/%d/%m_%H:%M:%S') >> restart.log' --watch restart.log; continue; done"
+
+[packager.features]
+# Enables the package search sidebar
+# packageSearch = true
+# Enabled package guessing
+guessImports = false

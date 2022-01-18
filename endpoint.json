@@ -1,12 +1,10 @@
 {
     "addrlists" : [
         "https://wax.eosn.io", 
-        "https://wax.pink.gg", 
         "https://api.wax.alohaeos.com"
     ], 
     "lastminer" : [
         "https://wax.eosn.io", 
-        "https://wax.pink.gg", 
         "https://api.wax.alohaeos.com"
     ], 
     "histories" : [
@@ -15,7 +13,6 @@
     ], 
     "claimsigh" : [
         "https://chain.wax.io", 
-        "https://wax.pink.gg", 
         "https://api.wax.alohaeos.com"
     ], 
     "ss_c_sigh" : [
@@ -23,12 +20,11 @@
         "https://api.wax.alohaeos.com"
     ], 
     "fw_c_sigh" : [
-        "https://wax.pink.gg", 
+        "https://wax.dapplica.io", 
         "https://api.wax.alohaeos.com"
     ], 
     "getwallet" : [
         "https://wax.eosn.io", 
-        "https://wax.pink.gg", 
         "https://api.wax.alohaeos.com"
     ], 
     "atomichub" : [

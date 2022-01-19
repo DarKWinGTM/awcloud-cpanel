@@ -1,19 +1,24 @@
 {
     "addrlists" : [
         "https://wax.eosn.io", 
-        "https://api.wax.alohaeos.com"
+        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
+        "https://wax.greymass.com"
     ], 
     "lastminer" : [
         "https://wax.eosn.io", 
-        "https://api.wax.alohaeos.com"
+        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
+        "https://wax.greymass.com"
     ], 
     "histories" : [
         "https://wax.eosphere.io/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id="
     ], 
     "claimsigh" : [
-        "https://chain.wax.io", 
-        "https://api.wax.alohaeos.com"
+        "https://wax.dapplica.io", 
+        "https://wax.pink.gg", 
+        "https://wax.greymass.com"
     ], 
     "ss_c_sigh" : [
         "https://chain.wax.io", 
@@ -25,7 +30,9 @@
     ], 
     "getwallet" : [
         "https://wax.eosn.io", 
-        "https://api.wax.alohaeos.com"
+        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
+        "https://wax.greymass.com"
     ], 
     "atomichub" : [
         "https://atomic.3dkrender.com/atomicassets/v1/assets?", 

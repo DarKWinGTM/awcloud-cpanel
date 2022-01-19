@@ -1,13 +1,13 @@
 {
     "addrlists" : [
         "https://wax.eosn.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
         "https://wax.greymass.com"
     ], 
     "lastminer" : [
         "https://wax.eosn.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
         "https://wax.greymass.com"
     ], 
@@ -22,15 +22,15 @@
     ], 
     "ss_c_sigh" : [
         "https://chain.wax.io", 
-        "https://api.wax.alohaeos.com"
+        "https://wax.eosphere.io"
     ], 
     "fw_c_sigh" : [
         "https://wax.dapplica.io", 
-        "https://api.wax.alohaeos.com"
+        "https://wax.eosphere.io"
     ], 
     "getwallet" : [
         "https://wax.eosn.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
         "https://wax.greymass.com"
     ], 
@@ -46,7 +46,7 @@
         "d41d965b590f44d9812baff9c5e74519979b095cc31"
     ], 
     "mineables" : [
-        "https://wax.blokcrafters.io", 
+        "https://wax.eosphere.io", 
         "https://wax.pink.gg"
     ]
 }

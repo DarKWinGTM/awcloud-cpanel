@@ -14,12 +14,12 @@
         "https://wax.hivebp.io/v2/history/get_transaction?id="
     ], 
     "claimsigh" : [
-        "https://wax.dapplica.io", 
         "https://wax.cryptolions.io", 
-        "https://chain.wax.io"
+        "https://wax.eosphere.io", 
+        "https://wax.dapplica.io"
     ], 
     "ss_c_sigh" : [
-        "https://chain.wax.io", 
+        "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 
         "https://wax.dapplica.io"
     ], 

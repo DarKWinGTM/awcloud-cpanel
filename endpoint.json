@@ -2,12 +2,12 @@
     "addrlists" : [
         "https://wax.eosn.io", 
         "https://wax.eosphere.io", 
-        "https://wax.cryptolions.io"
+        "https://wax.eosdac.io"
     ], 
     "lastminer" : [
         "https://wax.eosn.io", 
         "https://wax.eosphere.io", 
-        "https://wax.cryptolions.io"
+        "https://wax.eosdac.io"
     ], 
     "histories" : [
         "https://wax.eosphere.io/v2/history/get_transaction?id=", 
@@ -31,7 +31,7 @@
     "getwallet" : [
         "https://wax.eosn.io", 
         "https://wax.eosphere.io", 
-        "https://wax.cryptolions.io"
+        "https://wax.eosdac.io"
     ], 
     "atomichub" : [
         "https://atomic.3dkrender.com/atomicassets/v1/assets?", 

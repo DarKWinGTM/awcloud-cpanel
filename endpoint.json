@@ -46,6 +46,7 @@
     ], 
     "mineables" : [
         "https://api.wax.eosdetroit.io", 
-        "https://wax.eu.eosamsterdam.net"
+        "https://wax.eu.eosamsterdam.net", 
+        "https://api.wax.greeneosio.com"
     ]
 }

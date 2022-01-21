@@ -2151,7 +2151,6 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
       document.querySelector('div[id*="transferWax"]').querySelector('.modal-header'), 
       `TRANSFER : PLEASE WAIT`, 'info'
     ); 
-    
     fetch(`/transfer?waxid=${ document.querySelector('div.modal.fade#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
       document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
     }&memo=${
@@ -2242,7 +2241,6 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
         $("button.btn.btn-primary.transferallto").removeClass('invisible'); 
         $("button.btn.btn-primary.transferallto").attr('readonly', false); 
     }); 
-
   }else if(
     $("button.btn.btn-primary.transferallto").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.transferallto')
   ){
@@ -2256,63 +2254,65 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
         `TRANSFER : PLEASE WAIT`, 'info'
         ); 
         (function ( ID ){
-          fetch(`/transfer?waxid=${ ID }&to=${
-            document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
-          }&memo=${
-            document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value
-          }&quantity=${
-            window['information-data']['DATA'][ ID ]['balance'][ $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]
-          }&symbol=${
-            $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
-          }`, {
-            "headers"       : {}, 
-            "body"          : null,
-            "method"        : "GET",
-          }).then(
-              result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
-          ).then(result => {
-            if ( result['code'] == 200 ){
-              $.notify(
-                window[ ID ].querySelector('button#land'), 
-                `TRANSFER : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX</a>`, 
-                'success'
-              ); 
-            }else{
-                try{
-                  if(
-                      result['data']['transaction'] && 
-                      result['data']['transaction']['trx'] && 
-                      result['data']['transaction']['trx']['error'] && 
-                      result['data']['transaction']['trx']['error']['what']
-                  ){
-                      $.notify(
-                        window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                        `TRANSFER : WARNING - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
-                      ); 
+            setTimeout(function(){
+                fetch(`/transfer?waxid=${ ID }&to=${
+                  document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
+                }&memo=${
+                  document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value
+                }&quantity=${
+                  window['information-data']['DATA'][ ID ]['balance'][ $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]
+                }&symbol=${
+                  $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
+                }`, {
+                  "headers"       : {}, 
+                  "body"          : null,
+                  "method"        : "GET",
+                }).then(
+                    result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
+                ).then(result => {
+                  if ( result['code'] == 200 ){
+                    $.notify(
+                      window[ ID ].querySelector('button#land'), 
+                      `TRANSFER : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX</a>`, 
+                      'success'
+                    ); 
                   }else{
-                      $.notify(
-                        window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                        `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-                      ); 
+                      try{
+                        if(
+                            result['data']['transaction'] && 
+                            result['data']['transaction']['trx'] && 
+                            result['data']['transaction']['trx']['error'] && 
+                            result['data']['transaction']['trx']['error']['what']
+                        ){
+                            $.notify(
+                              window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+                              `TRANSFER : WARNING - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                            ); 
+                        }else{
+                            $.notify(
+                              window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+                              `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                            ); 
+                        }; 
+                        //    $.notify(
+                        //      window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+                        //      `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                        //    ); 
+                      }catch(e){
+                        $.notify(
+                          window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+                          `TRANSFER : ERROR - ${ result['text'] }`, 
+                          'error'
+                        ); 
+                      }; 
                   }; 
-                  //    $.notify(
-                  //      window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                  //      `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-                  //    ); 
-                }catch(e){
+                }).catch(error => {
                   $.notify(
                     window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                    `TRANSFER : ERROR - ${ result['text'] }`, 
-                    'error'
+                    `TRANSFER : CONNECTION FAILED ${ error }`, 'error'
                   ); 
-                }; 
-            }; 
-          }).catch(error => {
-            $.notify(
-              window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-              `TRANSFER : CONNECTION FAILED ${ error }`, 'error'
-            ); 
-          }); 
+                }); 
+            }, 1000 + Math.ceil(Math.random() * 10000)); 
         })( TRFERWAX ); 
       }else{
         $.notify(

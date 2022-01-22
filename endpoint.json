@@ -2,7 +2,7 @@
     "addrlists" : [
         "https://wax.eosn.io", 
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com"
+        "https://api.tokengamer.io"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
@@ -31,7 +31,7 @@
     "getwallet" : [
         "https://wax.eosn.io", 
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com"
+        "https://api.tokengamer.io"
     ], 
     "atomichub" : [
         "https://atomic.3dkrender.com/atomicassets/v1/assets?", 

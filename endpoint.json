@@ -10,7 +10,7 @@
         "https://wax.dapplica.io"
     ], 
     "histories" : [
-        "https://wax.eosphere.io/v2/history/get_transaction?id=", 
+        "https://wax.hkeos.com/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id="
     ], 
     "claimsigh" : [

@@ -2,12 +2,16 @@
     "addrlists" : [
         "https://wax.eosn.io", 
         "https://wax.eosphere.io", 
-        "https://api.tokengamer.io"
+        "https://api.tokengamer.io", 
+        "https://wax.dfuse.eosnation.io", 
+        "https://wax.pink.gg"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 
-        "https://wax.dapplica.io"
+        "https://wax.dapplica.io", 
+        "https://wax.dfuse.eosnation.io", 
+        "https://wax.pink.gg"
     ], 
     "histories" : [
         "https://wax.eosphere.io/v2/history/get_transaction?id=", 
@@ -16,22 +20,27 @@
     "claimsigh" : [
         "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 
-        "https://wax.dapplica.io"
+        "https://wax.dapplica.io", 
+        "https://aw-guard.yeomen.ai"
     ], 
     "ss_c_sigh" : [
         "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 
-        "https://wax.dapplica.io"
+        "https://wax.dapplica.io", 
+        "https://wax.pink.gg"
     ], 
     "fw_c_sigh" : [
         "https://wax.dapplica.io", 
         "https://wax.eosphere.io", 
-        "https://wax.cryptolions.io"
+        "https://wax.cryptolions.io", 
+        "https://wax.pink.gg"
     ], 
     "getwallet" : [
         "https://wax.eosn.io", 
         "https://wax.eosphere.io", 
-        "https://api.tokengamer.io"
+        "https://api.tokengamer.io", 
+        "https://wax.dfuse.eosnation.io", 
+        "https://wax.pink.gg"
     ], 
     "atomichub" : [
         "https://atomic.3dkrender.com/atomicassets/v1/assets?", 

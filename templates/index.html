@@ -3598,7 +3598,7 @@ document.querySelector('form[action="#FREE-STAKE"]').addEventListener('submit', 
                   </div>
                   <div class="input-group">
                     <div class="input-group-text" id="basic-addon WAX" style="width: inherit; justify-content: center; ">PAYER WAX ID</div>
-                    <input type="text" class="form-control" placeholder="PAYER WAX ID xxxxx.wam" aria-label="RENT SAFE STAKE WAX ID PAYER" pattern=".{4,5}.wam|\w{12,12}" onchange="if(this.value == this.parentElement.parentElement.querySelector('input[aria-label*=\x22RENT SAFE STAKE RECIEVER\x22]').value){this.value=''; $.notify(this, `RENT : INCORRECT`, 'warn'); }"required="">
+                    <input type="text" class="form-control" placeholder="PAYER WAX ID xxxxx.wam" aria-label="RENT SAFE STAKE WAX ID PAYER" pattern=".{4,8}.wam|\w{12,12}" onchange="if(this.value == this.parentElement.parentElement.querySelector('input[aria-label*=\x22RENT SAFE STAKE RECIEVER\x22]').value){this.value=''; $.notify(this, `RENT : INCORRECT`, 'warn'); }"required="">
                   </div>
                   <div class="input-group">
                     <div class="input-group-text" id="basic-addon WAX" style="width: inherit; justify-content: center; "><a href="https://www.youtube.com/watch?v=O5eG5b4-RtY" target="_blank">PAYER TOKEN</a></div>

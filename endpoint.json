@@ -56,6 +56,8 @@
     "mineables" : [
         "https://api.wax.eosdetroit.io", 
         "https://wax.eu.eosamsterdam.net", 
-        "https://api.wax.greeneosio.com"
+        "https://wax.eosdac.io", 
+        "https://api.wax.bountyblok.io", 
+        "https://api.wax.liquidstudios.io"
     ]
 }

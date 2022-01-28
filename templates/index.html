@@ -401,7 +401,7 @@
                 font-family         : sans-serif;
                 font-size           : large;
               ">
-						<div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.51</div>
+						<div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.52</div>
 					</th>
 
 					<tr>
@@ -855,6 +855,8 @@ if(
                 <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
 	  		        <form action="#SENDNFT" onsubmit="return false" class="row-cols-auto needs-validation" validate>
                         <div class="input-group">
+                            <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">MEMO</div>
+                            <input type="text" class="form-control" placeholder="MEMO" aria-label="SEND NFT MEMO">
                             <div class="input-group-text" id="basic-addon WAX" style="width: 76px;">TO</div>
                             <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="SEND NFT TO WAX ID" required>
                             <button type="submit" class="btn btn-primary send-nft">SEND NFT</button>
@@ -1185,6 +1187,8 @@ document.querySelector('form[action="#SENDNFT"]').addEventListener('submit', fun
     
     fetch(`/sendnft?waxid=${ document.querySelector('div.modal.fade#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
       document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
+    }&memo=${
+      document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT MEMO"]').value
     }&toolid=${
       Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(',')
     }`, {

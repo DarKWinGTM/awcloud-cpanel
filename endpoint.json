@@ -13,7 +13,9 @@
     ], 
     "histories" : [
         "https://wax.eosphere.io/v2/history/get_transaction?id=", 
-        "https://wax.hivebp.io/v2/history/get_transaction?id="
+        "https://wax.hivebp.io/v2/history/get_transaction?id=", 
+        "https://hyperion.sentnl.io/v2/history/get_transaction?id=", 
+        "https://wax.eosdublin.io/v2/history/get_transaction?id="
     ], 
     "claimsigh" : [
         "https://wax.cryptolions.io", 
@@ -36,12 +38,15 @@
     "getwallet" : [
         "https://wax.eosn.io", 
         "https://wax.eosphere.io", 
-        "https://api.tokengamer.io", 
-        "https://wax.pink.gg"
+        "https://wax.pink.gg", 
+        "https://wax.neftyblocks.com"
     ], 
     "atomichub" : [
         "https://atomic.3dkrender.com/atomicassets/v1/assets?", 
-        "https://atomic.hivebp.io/atomicassets/v1/assets?"
+        "https://atomic.tokengamer.io/atomicassets/v1/assets?", 
+        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
+        "https://atomic.hivebp.io/atomicassets/v1/assets?", 
+        "https://atomic.sentnl.io/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 
@@ -54,5 +59,8 @@
         "https://api.wax.eosdetroit.io", 
         "https://wax.eu.eosamsterdam.net", 
         "https://wax.eosdac.io"
+    ], 
+    "endpoints" : [
+        "https://wax.validationcore.io/reports/nodes/wallet"
     ]
 }

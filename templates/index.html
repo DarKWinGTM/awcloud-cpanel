@@ -401,7 +401,7 @@
                 font-family         : sans-serif;
                 font-size           : large;
               ">
-						<div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.54</div>
+						<div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.55</div>
 					</th>
 
 					<tr>
@@ -1733,7 +1733,7 @@ document.querySelector('div.modal.fade#transferWax input[aria-label=\x22TRANSFER
                       class         = "form-check-input"
                       type          = "checkbox"
                       style         = "margin-top: 0.18em; opacity: 1 !important;"
-                      onmousedown   = "this.click();"
+                      onmousedown   = "console.log('this.click();')"
                       oninvalid     = "this.setCustomValidity('WAX ID IS NOT RECOMMEND TO TRANSFER : FOUND ALIEANWORLD HISTORY'); this.checked == false"
                       required
                     >
@@ -3586,10 +3586,10 @@ document.querySelector('form[action="#FREE-STAKE"]').addEventListener('submit', 
                   <div class="input-group">
                     <div class="input-group-text" id="basic-addon WAX" style="width: 100px;">QUALITY</div>
                     <select class="form-select" aria-label="RENT SAFE STAKE QUANTITY" required="">
-                      <option rate="" value="100" selected>X.XX WAX FOR STAKE CPU 100 WAX</option>
-                      <option rate="" value="200">X.XX WAX FOR STAKE CPU 200 WAX</option>
-                      <option rate="" value="500">X.XX WAX FOR STAKE CPU 500 WAX</option>
-                      <option rate="" value="1000">X.XX WAX FOR STAKE CPU 1000 WAX</option>
+                      <option rate="" value="100" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" selected>X.XX WAX FOR STAKE CPU 100 WAX</option>
+                      <option rate="" value="200" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 200 WAX</option>
+                      <option rate="" value="500" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 500 WAX</option>
+                      <option rate="" value="1000" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 1000 WAX</option>
                     </select>
                   </div>
                   <div class="input-group">
@@ -3634,7 +3634,7 @@ document.querySelector('form[action="#RENT-SAFE-STAKE"]').addEventListener('subm
         `RENT STAKE : PLEASE WAIT`, 'info'
         ); 
         
-        fetch(`/rentstakecpu?waxid=${
+        fetch(`/grentstakecpu?waxid=${
             document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE WAX ID PAYER"]').value
         }&amount=${
             Number(document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("rate")).toFixed(4)
@@ -3642,7 +3642,7 @@ document.querySelector('form[action="#RENT-SAFE-STAKE"]').addEventListener('subm
             document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').value
         }&token=${
             document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE TOKEN"]').value
-        }&check=aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=`, {
+        }&check=${document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("check")}`, {
             "headers"       : {}, 
             "body"          : null,
             "method"        : "GET",

@@ -3634,7 +3634,7 @@ document.querySelector('form[action="#RENT-SAFE-STAKE"]').addEventListener('subm
         `RENT STAKE : PLEASE WAIT`, 'info'
         ); 
         
-        fetch(`/grentstakecpu?waxid=${
+        fetch(`/rentstakecpu?waxid=${
             document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE WAX ID PAYER"]').value
         }&amount=${
             Number(document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("rate")).toFixed(4)

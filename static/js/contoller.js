@@ -261,13 +261,13 @@ $(document).ready(function() {
 >
     <iframe
     url         = "https://farmersworld.idigger.online/affiliate?waxid=${ WAXID }"
-    style       = "width : 100%; height : 720px;"
+    style       = "width : 100%; height : 878px;"
     scrolling   = "no"
     ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-fw-panel-monitor">
 	<div class="input-group fw-deposit-fwf">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO DEPOSIT TO GAME WHEN HAVE OVER SUPPLY</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO DEPOSIT TO GAME WHEN HAVE NOT ENOUGH SUPPLY</div>
 		<div class="input-group-text">
 			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
 				<label class="form-check-label">
@@ -292,7 +292,7 @@ $(document).ready(function() {
 		<button type="submit" class="btn btn-primary fw-deposit-fwg-set" style="width: 60px; ">SET</button>
 	</div>
 	<div class="input-group fw-swap-wax-fwf">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO SWAP WHEN NOT ENOUGH SUPPLY FOR RECOVERY</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO SWAP WHEN HAVE NOT ENOUGH SUPPLY</div>
 		<div class="input-group-text">
 			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
 				<label class="form-check-label">

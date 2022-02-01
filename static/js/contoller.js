@@ -266,21 +266,6 @@ $(document).ready(function() {
     ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-fw-panel-monitor">
-	<div class="input-group fw-swap-fww-wax">
-		<div class="input-group-text">
-			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
-				<!--
-				label class="form-check-label">
-					<input type="checkbox" class="form-check-input fw-sell-fww-wax-switch" value="0">
-				</label
-				-->
-			</div>
-		</div>
-		<div class="input-group-text" style="width: 248px;">MANUAL SELL FWW TO WAX</div>
-		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
-		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
-		<button type="submit" class="btn btn-primary fw-swap-fww-wax-set" style="width: 60px; ">SET</button>
-	</div>
 	<div class="input-group fw-deposit-fwf">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO DEPOSIT TO GAME WHEN HAVE OVER SUPPLY</div>
 		<div class="input-group-text">
@@ -352,6 +337,51 @@ $(document).ready(function() {
 		<input type="number" class="form-control" placeholder="FWF" value="" step="5" min="5" max="100" aria-label="">
 		<input type="number" class="form-control" placeholder="FWG" value="" step="5" min="5" max="100" aria-label="">
 		<button type="submit" class="btn btn-primary fw-deposit" style="width: 20%; "">DEPOSIT</button>
+	</div>
+	<div class="input-group fw-swap-fww-wax">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<!--
+				label class="form-check-label">
+					<input type="checkbox" class="form-check-input fw-sell-fww-wax-switch" value="0">
+				</label
+				-->
+			</div>
+		</div>
+		<div class="input-group-text" style="width: 248px;">MANUAL SELL FWW TO WAX</div>
+		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
+		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
+		<button type="submit" class="btn btn-primary fw-swap-fww-wax-set" style="width: 60px; ">SET</button>
+	</div>
+	<div class="input-group fw-swap-fwg-wax">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<!--
+				label class="form-check-label">
+					<input type="checkbox" class="form-check-input fw-sell-fwg-wax-switch" value="0">
+				</label
+				-->
+			</div>
+		</div>
+		<div class="input-group-text" style="width: 248px;">MANUAL SELL FWG TO WAX</div>
+		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
+		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
+		<button type="submit" class="btn btn-primary fw-swap-fww-wax-set" style="width: 60px; ">SET</button>
+	</div>
+	<div class="input-group fw-swap-fwf-wax">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<!--
+				label class="form-check-label">
+					<input type="checkbox" class="form-check-input fw-sell-fwf-wax-switch" value="0">
+				</label
+				-->
+			</div>
+		</div>
+		<div class="input-group-text" style="width: 248px;">MANUAL SELL FWF TO WAX</div>
+		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
+		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
+		<button type="submit" class="btn btn-primary fw-swap-fww-wax-set" style="width: 60px; ">SET</button>
 	</div>
 	<div class="input-group fw-auto-plant">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -1991,6 +2021,3 @@ $(document).ready(function() {
         });
     }; 
 }); 
-
-
-

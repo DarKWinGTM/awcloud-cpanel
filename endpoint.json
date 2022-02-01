@@ -14,7 +14,6 @@
     "histories" : [
         "https://wax.eosphere.io/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id=", 
-        "https://hyperion.sentnl.io/v2/history/get_transaction?id=", 
         "https://wax.eosdublin.io/v2/history/get_transaction?id="
     ], 
     "claimsigh" : [
@@ -43,7 +42,8 @@
     ], 
     "atomichub" : [
         "https://atomic.3dkrender.com/atomicassets/v1/assets?", 
-        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?"
+        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
+        "https://atomic.hivebp.io/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

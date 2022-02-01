@@ -42,7 +42,24 @@
     ], 
     "atomichub" : [
         "https://atomic.3dkrender.com/atomicassets/v1/assets?", 
-        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?"
+        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
+        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
+        "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
+        "https://api-wax-aa.eosarabia.net/atomicassets/v1/assets?"
+    ], 
+    "assetshub" : [
+        "https://cors.bridged.cc/https://atomic.hivebp.io/atomicassets/v1/assets?", 
+        "https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
+        "https://cors.bridged.cc/https://atomic.3dkrender.com/atomicassets/v1/assets?", 
+        "https://cors.bridged.cc/https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
+        "https://cors.bridged.cc/https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
+        "https://cors.bridged.cc/https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
+        "https://cors.bridged.cc/https://api-wax-aa.eosarabia.net/atomicassets/v1/assets?", 
+        "https://atomic.3dkrender.com/atomicassets/v1/assets?", 
+        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
+        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
+        "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
+        "https://api-wax-aa.eosarabia.net/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

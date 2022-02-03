@@ -355,7 +355,6 @@ $(document).ready(function() {
 		<div class="input-group-text" style="width: 96px;">BARLEY</div>
 		<input type="number" class="form-control fw-auto-plant-barley-input" placeholder="BARLEY" value="0" step="1" min="0" max="8" aria-label="">
 		<button type="submit" class="btn btn-primary fw-auto-plant-set" style="width: 60px; ">SET</button>
-		<>
 	</div>
 	<div class="input-group fw-buy-seed">
 		<div class="input-group-text" style="width: inherit; ">BUY SEED</div>
@@ -454,36 +453,73 @@ $(document).ready(function() {
 							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-plant-switch').addEventListener('change', function(e) {
 								this['var'] = {
 									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
 								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked, 
+									'corn' 		: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').value, 
+									'barley' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').value
+								}; 
+								
+								if ( parseInt(this['var']['db']['corn']) + parseInt(this['var']['db']['barley']) >= 8 ){
+									this['var']['db']['corn'] = Math.max(0, (8 - parseInt(this['var']['db']['barley']))); 
+									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').value = this['var']['db']['corn']; 
+								}; 
+								if ( parseInt(this['var']['db']['barley']) + parseInt(this['var']['db']['corn']) >= 8 ){
+									this['var']['db']['barley'] = Math.max(0, (8 - parseInt(this['var']['db']['corn']))); 
+									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').value = this['var']['db']['barley']; 
+								}; console.debug( this['var'] ); 
+								
 								fetch(
-									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_plants=` + 
-									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked + 
-									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').getAttribute('value') + 
-									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').getAttribute('value'), 
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_plants=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['corn'] + 
+									',' + this['var']['db']['barley'], 
 									{method : 'GET'}
 								); 
 							}); 
 							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-plant-corn-input').addEventListener('change', function(e) {
 								this['var'] = {
-									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
 								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked, 
+									'corn' 		: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').value, 
+									'barley' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').value, 
+								}; 
+								
+								if ( parseInt(this['var']['db']['corn']) + parseInt(this['var']['db']['barley']) >= 8 ){
+									this['var']['db']['corn'] = Math.max(0, (8 - parseInt(this['var']['db']['barley']))); 
+									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').value = this['var']['db']['corn']; 
+								}; console.debug( this['var'] ); 
+								
 								fetch(
-									`/TEST/fw/set?waxid=${ this['var']['id'] }&auto_plants=` + 
-									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked + 
-									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').getAttribute('value') + 
-									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').getAttribute('value'), 
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_plants=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['corn'] + 
+									',' + this['var']['db']['barley'], 
 									{method : 'GET'}
 								); 
 							}); 
 							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-plant-barley-input').addEventListener('change', function(e) {
 								this['var'] = {
-									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
 								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked, 
+									'corn' 		: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').value, 
+									'barley' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').value, 
+								}; 
+								
+								if ( parseInt(this['var']['db']['barley']) + parseInt(this['var']['db']['corn']) >= 8 ){
+									this['var']['db']['barley'] = Math.max(0, (8 - parseInt(this['var']['db']['corn']))); 
+									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').value = this['var']['db']['barley']; 
+								}; console.debug( this['var'] ); 
+								
 								fetch(
-									`/TEST/fw/set?waxid=${ this['var']['id'] }&auto_plants=` + 
-									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked + 
-									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').getAttribute('value') + 
-									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').getAttribute('value'), 
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_plants=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['corn'] + 
+									',' + this['var']['db']['barley'], 
 									{method : 'GET'}
 								); 
 							}); 
@@ -1094,6 +1130,7 @@ $(document).ready(function() {
                     }else{
 						
 						(function (_WAXID){
+							
 							setTimeout(function(){
 								try{ window[_WAXID].querySelector('[id*="lastminedelay"]').innerText     = `${ window['information-data']['DATA'][_WAXID]['cooldown'] }/s`}catch(e){}; 
 								//  try{ window[_WAXID].querySelector('[id*="lastminestamp"]').innerText     = `${ window['information-data']['DATA'][_WAXID]['last_mine']['time'].replace('T', ' ') }`}catch(e){}; 
@@ -1121,9 +1158,25 @@ $(document).ready(function() {
 									'aria-valuenow', 0
 								)}catch(e){}; 
 								try{ window[_WAXID].querySelector('[id*="cpu_prg"]').setAttribute(
-									'aria-valuemax', 
-									`${ window['information-data']['DATA'][_WAXID]['cpu']['max'] }`
+									'aria-valuemax', `${ window['information-data']['DATA'][_WAXID]['cpu']['max'] }`
 								)}catch(e){}; 
+								try{ window[_WAXID].querySelector('[id*="net_prg"]').innerText           = `NET ${ (window['information-data']['DATA'][_WAXID]['net']['total']['use'] * 100 / window['information-data']['DATA'][_WAXID]['net']['total']['max']).toFixed(2) }%`}catch(e){}; 
+								try{ window[_WAXID].querySelector('[id*="net_prg"]').style.width         = `${ Number(window['information-data']['DATA'][_WAXID]['net']['total']['use'] * 100 / window['information-data']['DATA'][_WAXID]['net']['total']['max']) }%`}catch(e){}; 
+								try{ window[_WAXID].querySelector('[id*="net_prg"]').setAttribute(
+									'aria-valuenow', 0
+								)}catch(e){}; 
+								try{ window[_WAXID].querySelector('[id*="net_prg"]').setAttribute(
+									'aria-valuemax', `${ window['information-data']['DATA'][_WAXID]['net']['total']['max'] }`
+								)}catch(e){}; 
+								try{ window[_WAXID].querySelector('[id*="ram_prg"]').innerText           = `RAM ${ (window['information-data']['DATA'][_WAXID]['ram']['total']['use'] * 100 / window['information-data']['DATA'][_WAXID]['ram']['total']['max']).toFixed(2) }%`}catch(e){}; 
+								try{ window[_WAXID].querySelector('[id*="ram_prg"]').style.width         = `${ Number(window['information-data']['DATA'][_WAXID]['ram']['total']['use'] * 100 / window['information-data']['DATA'][_WAXID]['ram']['total']['max']) }%`}catch(e){}; 
+								try{ window[_WAXID].querySelector('[id*="ram_prg"]').setAttribute(
+									'aria-valuenow', 0
+								)}catch(e){}; 
+								try{ window[_WAXID].querySelector('[id*="ram_prg"]').setAttribute(
+									'aria-valuemax', `${ window['information-data']['DATA'][_WAXID]['ram']['total']['max'] }`
+								)}catch(e){}; 
+								
 								try{ window[_WAXID].querySelector('[id*="waxbalance"]').innerText        = `${ Number( window['information-data']['DATA'][_WAXID]['balance']['WAX'] ).toFixed(4) }`}catch(e){}; 
 								try{ window[_WAXID].querySelector('[id*="tlmbalance"]').innerText        = `${ Number( window['information-data']['DATA'][_WAXID]['balance']['TLM'] ).toFixed(4) }`}catch(e){}; 
 								try{
@@ -1218,6 +1271,17 @@ $(document).ready(function() {
 										); 
 										document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_plants'][0]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_plants'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').value 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_plants'][2]; 
+										}catch(e){ }; 
+										
 									}; 
 								}catch(e){ }; 
 								try{
@@ -1240,6 +1304,7 @@ $(document).ready(function() {
 								//  try{
 								//      delete window.window['total']['Profit']; 
 								//  }catch(e){}; 
+								
 							}, 100 + Math.ceil(Math.random() * 4000)); 
 						})(WAXID); 
                         
@@ -2044,7 +2109,5 @@ $(document).ready(function() {
         });
     }; 
 }); 
-
-
 
 

@@ -265,7 +265,7 @@ $(document).ready(function() {
     scrolling   = "no"
     ></iframe>
 </th>
-<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-fw-panel-monitor">
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id="${ WAXID }-fw-panel-monitor">
 	<div class="input-group fw-deposit-fwf">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO DEPOSIT TO GAME WHEN HAVE NOT ENOUGH SUPPLY</div>
 		<div class="input-group-text">
@@ -342,15 +342,20 @@ $(document).ready(function() {
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">
 		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
 			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input fw-auto-plant-switch" value="0">
+				<input
+					type 			= "checkbox"
+					class 			= "form-check-input fw-auto-plant-switch"
+					value 			= "0"
+				>
 				<!--span style="padding-left: 5;"></span-->
 			</label>
 		</div>AUTO PLANTS CORN BARLEY</div>
 		<div class="input-group-text" style="width: 96px;">CORN</div>
-		<input type="number" class="form-control" placeholder="CORN" value="0" step="1" min="0" max="8" aria-label="">
+		<input type="number" class="form-control fw-auto-plant-corn-input" placeholder="CORN" value="0" step="1" min="0" max="8" aria-label="">
 		<div class="input-group-text" style="width: 96px;">BARLEY</div>
-		<input type="number" class="form-control fw-auto-plant-input" placeholder="BARLEY" value="0" step="1" min="0" max="8" aria-label="">
+		<input type="number" class="form-control fw-auto-plant-barley-input" placeholder="BARLEY" value="0" step="1" min="0" max="8" aria-label="">
 		<button type="submit" class="btn btn-primary fw-auto-plant-set" style="width: 60px; ">SET</button>
+		<>
 	</div>
 	<div class="input-group fw-buy-seed">
 		<div class="input-group-text" style="width: inherit; ">BUY SEED</div>
@@ -443,6 +448,48 @@ $(document).ready(function() {
 </th>`
                                 })
                             );  //	('0000' + '1000').slice(-'0000'.length)
+							
+							
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-plant-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+								}; 
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_plants=` + 
+									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked + 
+									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').getAttribute('value') + 
+									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').getAttribute('value'), 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-plant-corn-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+								}; 
+								fetch(
+									`/TEST/fw/set?waxid=${ this['var']['id'] }&auto_plants=` + 
+									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked + 
+									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').getAttribute('value') + 
+									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').getAttribute('value'), 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-plant-barley-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+								}; 
+								fetch(
+									`/TEST/fw/set?waxid=${ this['var']['id'] }&auto_plants=` + 
+									document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked + 
+									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').getAttribute('value') + 
+									',' + document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').getAttribute('value'), 
+									{method : 'GET'}
+								); 
+							}); 
+							
+							
+							
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -1997,3 +2044,7 @@ $(document).ready(function() {
         });
     }; 
 }); 
+
+
+
+

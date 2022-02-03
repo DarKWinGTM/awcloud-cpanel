@@ -550,7 +550,7 @@ $(document).ready(function() {
 				</label>
 			</div>
 		</div>
-		<div class="input-group-text" style="width: 248px;">PLANET TARGET</div>
+		<div class="input-group-text" style="width: 248px;">PLANET TARGET<span style="visibility: hidden;">_</span><a href="https://starship.primatepirate.com/planetarium" target="_blank">ID</a></div>
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH" value="SS-TARGET-SWITCH" step="1" min="1" max="100000" aria-label="">
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 		<button type="submit" class="btn btn-primary ss-target-set" style="width: 60px; ">SET</button>

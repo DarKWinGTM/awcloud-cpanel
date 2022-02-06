@@ -4,14 +4,14 @@
         "https://wax.eosphere.io", 
         "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
-        "https://query.3dkrender.com"
+        "https://wax.api.eosnation.io"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg", 
-        "https://query.3dkrender.com"
+        "https://wax.api.eosnation.io"
     ], 
     "histories" : [
         "https://wax.eosphere.io/v2/history/get_transaction?id=", 
@@ -42,21 +42,18 @@
         "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
-        "https://query.3dkrender.com"
+        "https://wax.api.eosnation.io"
     ], 
     "atomichub" : [
-        "https://atomic.3dkrender.com/atomicassets/v1/assets?", 
         "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
-        "https://cors.bridged.cc/https://atomic.3dkrender.com/atomicassets/v1/assets?", 
         "https://cors.bridged.cc/https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
         "https://cors.bridged.cc/https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://cors.bridged.cc/https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?", 
-        "https://atomic.3dkrender.com/atomicassets/v1/assets?", 
         "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?"

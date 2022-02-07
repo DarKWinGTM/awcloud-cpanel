@@ -19,6 +19,11 @@
         "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
         "https://apiwax.3dkrender.com/v2/history/get_transaction?id="
     ], 
+    "blockinfo" : [
+        "https://wax.cryptolions.io", 
+        "https://wax.eosphere.io", 
+        "https://wax.dapplica.io"
+    ], 
     "claimsigh" : [
         "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 

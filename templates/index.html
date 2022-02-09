@@ -401,7 +401,7 @@
                 font-family         : sans-serif;
                 font-size           : large;
               ">
-						<div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.64</div>
+						<div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.65</div>
 					</th>
 
 					<tr>
@@ -921,9 +921,13 @@ document.querySelector('div.modal.fade#boxNFT').addEventListener('shown.bs.modal
   document.querySelector('div.modal.fade#boxNFT button.btn.btn-primary.set-tool').disabled = true; 
   //    document.querySelector('div.modal.fade#boxNFT button.btn.btn-primary.send-nft').disabled = true; 
   document.querySelector('div.modal.fade#boxNFT button.btn.btn-primary.claim-nft').disabled = true; 
-
-  fetch(`https://wax.api.atomicassets.io/atomicassets/v1/assets?owner=${ event.relatedTarget.parentNode.parentNode.parentNode.id }&limit=1000`, {
-    "headers"       : {},
+  fetch(`${
+    window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+  }?owner=${ event.relatedTarget.parentNode.parentNode.parentNode.id }&limit=1000`, {
+    "headers"       : {
+        'x-requested-with'      : 'XMLHttpRequest', 
+        'x-cors-grida-api-key'  : '61dbebf9-36c6-45c6-909e-323209a8116d'
+    },
     "body"          : null,
     "method"        : "GET"
   }).then(
@@ -1291,8 +1295,14 @@ document.querySelector('div.modal.fade#setLand').addEventListener('shown.bs.moda
 
   document.querySelector('div.modal.fade#setLand').querySelector('div.modal-header').querySelector('h5').innerText = `SET LAND : ${ event.relatedTarget.parentNode.parentNode.id }` 
   document.querySelector('div.modal.fade#setLand').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.id); 
-  fetch(`https://atomic.hivebp.io/atomicassets/v1/assets/?asset_id=${window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"] }`, {
-    "headers"       : {},
+  //    fetch(`https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id=${window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"] }`, {
+  fetch(`${
+      window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+  }?asset_id=${window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"] }`, {
+    "headers"       : {
+        'x-requested-with'      : 'XMLHttpRequest', 
+        'x-cors-grida-api-key'  : '61dbebf9-36c6-45c6-909e-323209a8116d'
+    },
     "body"          : null,
     "method"        : "GET",
   }).then(
@@ -1403,7 +1413,9 @@ document.querySelector('button.btn.btn-primary.get_land').addEventListener(
   "click", 
   function (e) {
     try{
-      fetch(`https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id=${ document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0] }`, {
+      fetch(`${
+            window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+        }?asset_id=${ document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0] }`, {
         "headers"       : {
           'x-requested-with'      : 'XMLHttpRequest', 
           'x-cors-grida-api-key'  : '61dbebf9-36c6-45c6-909e-323209a8116d'
@@ -5052,6 +5064,14 @@ document.querySelector('button.btn.btn-primary.import-account').addEventListener
         }; fileReader.readAsBinaryString(selectedFile);
     }
 }); 
+window['atomichub'] = [
+  'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/', 
+  'https://cors.bridged.cc/https://atomic.hivebp.io/atomicassets/v1/assets/', 
+  'https://cors.bridged.cc/https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/', 
+  'https://wax.api.atomicassets.io/atomicassets/v1/assets/', 
+  //    'https://atomic.hivebp.io/atomicassets/v1/assets/',  
+  'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/'
+]; 
 </script>
 
 </html>

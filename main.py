@@ -26,21 +26,4 @@ import gc
 timedate = datetime.datetime
 timezone = pytz.timezone
 
-
-
-
-#   app = Flask(
-#       __name__, 
-#       static_url_path = '', 
-#       static_folder   = 'static',
-#       template_folder = 'templates'
-#   )
-#   
-#   
-#   
-#   if __name__ == "__main__":
-#       app.config['TEMPLATES_AUTO_RELOAD']     = True
-#       app.config['SECRET_KEY']                = uuid.uuid4().hex
-#       app.run( host = '0.0.0.0' )
-
-#   import awcloud
+os.popen("rm -f .git/index.lock; git fetch --all; git reset --hard; git reset --hard origin/master; git stash save ''; git pull --force; ")

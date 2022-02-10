@@ -1,3 +1,30 @@
+// LIST ALL NFT IN WAX ID
+fetch("https://wax.api.aa.atomichub.io/atomicmarket/v1/assets", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "en-US,en;q=0.9",
+    "cache-control": "no-cache",
+    "content-type": "application/json",
+    "pragma": "no-cache",
+    "sec-ch-ua": "\"Chromium\";v=\"96\", \"Opera\";v=\"82\", \";Not A Brand\";v=\"99\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Linux\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site"
+  },
+  "referrer": "https://wax.atomichub.io/",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "{\"limit\":\"100\",\"order\":\"desc\",\"owner\":\"gj1xc.wam\",\"sort\":\"transferred\",\"page\":\"1\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+
+
+
+
+
 $(document).ready(function() {
     
     window.onload = function (){
@@ -313,7 +340,7 @@ $(document).ready(function() {
 		<input type="range" class="form-control fw-swap-wax-fwg-input" placeholder="20" value="20" step="5" min="0" max="600" >
 	</div>
 	<div class="input-group fw-withdraw-deposit">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.00 F 0.00 G 0.00 : WITH [0%] DEPO : W 0.00 F 0.00 G 0.00</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.00 G 0.0 : WITH [0%] DEPO : W 0.0 F 0.0 G 0.0</div>
 		<button type="submit" class="btn btn-primary fw-withdraw" style="width: 20%; "">WITHDRAW</button>
 		<input type="number" class="form-control" placeholder="FWW" value="" step="5" min="5" max="100" aria-label="">
 		<input type="number" class="form-control" placeholder="FWF" value="" step="5" min="5" max="100" aria-label="">
@@ -1442,17 +1469,17 @@ $(document).ready(function() {
 										
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('div.fw-withdraw-deposit div').innerText 		= `W ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWW']).toFixed(2)
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWW']).toFixed(1)
 											} F ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWF']).toFixed(2)
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWF']).toFixed(1)
 											} G ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWG']).toFixed(2)
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWG']).toFixed(1)
 											} : WITH [0%] DEPO : W ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWW']).toFixed(2)
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWW']).toFixed(1)
 											} F ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWF']).toFixed(2)
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWF']).toFixed(1)
 											} G ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWG']).toFixed(2)
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWG']).toFixed(1)
 											}`; 
 										}catch(e){ }; 
 									}; 
@@ -2296,3 +2323,5 @@ $(document).ready(function() {
         });
     }; 
 }); 
+
+

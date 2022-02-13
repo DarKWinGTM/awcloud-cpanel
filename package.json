@@ -12,6 +12,7 @@
   "dependencies": {
     "blake2b": "^2.1.4",
     "blakejs": "^1.1.1",
-    "safe-buffer": "^5.2.1"
+    "safe-buffer": "^5.2.1",
+    "crypto-js": "^4.1.1"
   }
 }

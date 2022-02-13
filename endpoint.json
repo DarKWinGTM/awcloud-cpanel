@@ -32,16 +32,22 @@
         "https://wax.dapplica.io", 
         "https://aw-guard.yeomen.ai"
     ], 
+    "fw_c_sigh" : [
+        "https://wax.dapplica.io", 
+        "https://wax.eosphere.io", 
+        "https://wax.cryptolions.io", 
+        "https://wax.pink.gg"
+    ], 
     "ss_c_sigh" : [
         "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg"
     ], 
-    "fw_c_sigh" : [
-        "https://wax.dapplica.io", 
-        "https://wax.eosphere.io", 
+    "kq_c_sigh" : [
         "https://wax.cryptolions.io", 
+        "https://wax.eosphere.io", 
+        "https://wax.dapplica.io", 
         "https://wax.pink.gg"
     ], 
     "getwallet" : [

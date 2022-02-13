@@ -2,6 +2,7 @@ source.py
 *.source
 *.source.html
 *.source.md
+*.source.js
 *.source.py
 *.source.pyc
 *.source.json

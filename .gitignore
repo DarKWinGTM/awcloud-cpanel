@@ -14,8 +14,10 @@ poetry.lock
 awcloud.build
 minified
 *.key
+*.wam
 *.log
 /node_modules
 /node_modules/*
 /static/log
 /static/log/*
+/static/log

@@ -14,7 +14,7 @@
         "https://wax.api.eosnation.io"
     ], 
     "histories" : [
-        "https://wax.eosphere.io/v2/history/get_transaction?id=", 
+        "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id=", 
         "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
         "https://apiwax.3dkrender.com/v2/history/get_transaction?id="

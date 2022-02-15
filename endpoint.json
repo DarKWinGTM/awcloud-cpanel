@@ -1,17 +1,17 @@
 {
     "addrlists" : [
-        "https://wax.eosn.io", 
-        "https://wax.eosphere.io", 
+        "https://wax-public1.neftyblocks.com", 
+        "https://wax-public2.neftyblocks.com", 
         "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
-        "https://wax.api.eosnation.io"
+        "https://wax.greymass.com"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
-        "https://wax.eosphere.io", 
+        "https://chain.wax.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg", 
-        "https://wax.api.eosnation.io"
+        "https://wax.greymass.com"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
@@ -21,41 +21,41 @@
     ], 
     "blockinfo" : [
         "https://wax.cryptolions.io", 
-        "https://wax.eosphere.io", 
+        "https://chain.wax.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg", 
-        "https://wax.api.eosnation.io"
+        "https://wax.greymass.com"
     ], 
     "claimsigh" : [
         "https://wax.cryptolions.io", 
-        "https://wax.eosphere.io", 
+        "https://chain.wax.io", 
         "https://wax.dapplica.io", 
         "https://aw-guard.yeomen.ai"
     ], 
     "fw_c_sigh" : [
         "https://wax.dapplica.io", 
-        "https://wax.eosphere.io", 
+        "https://api.wax.bountyblok.io", 
         "https://wax.cryptolions.io", 
         "https://wax.pink.gg"
     ], 
     "ss_c_sigh" : [
         "https://wax.cryptolions.io", 
-        "https://wax.eosphere.io", 
+        "https://chain.wax.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg"
     ], 
     "kq_c_sigh" : [
         "https://wax.cryptolions.io", 
-        "https://wax.eosphere.io", 
+        "https://chain.wax.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg"
     ], 
     "getwallet" : [
-        "https://wax.eosn.io", 
-        "https://wax.eosphere.io", 
+        "https://wax-public1.neftyblocks.com", 
+        "https://wax-public2.neftyblocks.com", 
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
-        "https://wax.api.eosnation.io"
+        "https://wax.greymass.com"
     ], 
     "atomichub" : [
         "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 

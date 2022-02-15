@@ -1,7 +1,7 @@
 {
     "addrlists" : [
-        "https://wax-public1.neftyblocks.com", 
-        "https://wax-public2.neftyblocks.com", 
+        "https://chain.wax.io", 
+        "https://api.wax.greeneosio.com", 
         "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://wax.greymass.com"
@@ -51,8 +51,8 @@
         "https://wax.pink.gg"
     ], 
     "getwallet" : [
-        "https://wax-public1.neftyblocks.com", 
-        "https://wax-public2.neftyblocks.com", 
+        "https://chain.wax.io", 
+        "https://api.wax.greeneosio.com", 
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
         "https://wax.greymass.com"

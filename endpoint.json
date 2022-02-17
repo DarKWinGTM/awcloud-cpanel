@@ -1,17 +1,19 @@
 {
     "addrlists" : [
         "https://chain.wax.io", 
-        "https://api.waxsweden.org", 
+        "https://wax.api.eosnation.io", 
         "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
-        "https://wax.greymass.com"
+        "https://query.3dkrender.com", 
+        "https://wax.eoseoul.io"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
-        "https://chain.wax.io", 
+        "https://wax.api.eosnation.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg", 
-        "https://wax.greymass.com"
+        "https://wax.blacklusion.io", 
+        "https://query.3dkrender.com"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
@@ -24,7 +26,8 @@
         "https://chain.wax.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg", 
-        "https://wax.greymass.com"
+        "https://query.3dkrender.com", 
+        "https://wax.eoseoul.io"
     ], 
     "claimsigh" : [
         "https://wax.cryptolions.io", 
@@ -52,10 +55,11 @@
     ], 
     "getwallet" : [
         "https://chain.wax.io", 
-        "https://api.waxsweden.org", 
+        "https://wax.api.eosnation.io", 
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
-        "https://wax.greymass.com"
+        "https://query.3dkrender.com", 
+        "https://wax.eoseoul.io"
     ], 
     "atomichub" : [
         "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 

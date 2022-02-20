@@ -6,7 +6,7 @@
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
         "https://apiwax.3dkrender.com", 
-        "https://wax.eoseoul.io"
+        "https://api.wax.greeneosio.com"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
@@ -30,7 +30,7 @@
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
         "https://apiwax.3dkrender.com", 
-        "https://wax.eoseoul.io"
+        "https://api.wax.greeneosio.com"
     ], 
     "claimsigh" : [
         "https://wax.cryptolions.io", 
@@ -61,9 +61,9 @@
         "https://wax.api.eosnation.io", 
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
-        "https://hyperion.tokengamer.io", 
+        "http://api.waxsweden.org", 
         "https://wax.dfuse.eosnation.io", 
-        "https://wax.eoseoul.io"
+        "https://wax.greymass.com"
     ], 
     "atomichub" : [
         "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 

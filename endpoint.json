@@ -15,21 +15,22 @@
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://query.3dkrender.com", 
-        "https://apiwax.3dkrender.com"
+        "https://hyperion.wax.blacklusion.io"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id=", 
         "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
-        "https://apiwax.3dkrender.com/v2/history/get_transaction?id="
+        "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
+        "https://hyperion.wax.blacklusion.io/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
         "https://wax.cryptolions.io", 
         "https://chain.wax.io", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg", 
-        "https://query.3dkrender.com", 
-        "https://apiwax.3dkrender.com", 
+        "https://api.waxsweden.org", 
+        "https://wax.neftyblocks.com", 
         "https://api.wax.greeneosio.com"
     ], 
     "claimsigh" : [

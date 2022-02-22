@@ -15,14 +15,14 @@
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://query.3dkrender.com", 
-        "https://hyperion.wax.blacklusion.io"
+        "https://waxapi.ledgerwise.io"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id=", 
         "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
         "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
-        "https://api.waxeastern.cn/v2/history/get_transaction?id="
+        "https://waxapi.ledgerwise.io/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
         "https://wax.cryptolions.io", 

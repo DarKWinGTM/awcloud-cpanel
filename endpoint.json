@@ -22,7 +22,7 @@
         "https://wax.hivebp.io/v2/history/get_transaction?id=", 
         "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
         "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
-        "https://hyperion.wax.blacklusion.io/v2/history/get_transaction?id="
+        "https://api.waxeastern.cn/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
         "https://wax.cryptolions.io", 

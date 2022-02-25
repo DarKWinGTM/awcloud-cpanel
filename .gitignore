@@ -16,8 +16,7 @@ minified
 *.key
 *.wam
 *.log
+*.txt
 /node_modules
 /node_modules/*
-/static/log
-/static/log/*
-/static/log
+/static/log/*.txt

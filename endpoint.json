@@ -11,11 +11,11 @@
     "lastminer" : [
         "https://wax.cryptolions.io", 
         "https://wax.api.eosnation.io", 
-        "https://wax.dapplica.io", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://query.3dkrender.com", 
-        "https://waxapi.ledgerwise.io"
+        "https://waxapi.ledgerwise.io", 
+        "https://wax.greymass.com"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
@@ -27,7 +27,6 @@
     "blockinfo" : [
         "https://wax.cryptolions.io", 
         "https://chain.wax.io", 
-        "https://wax.dapplica.io", 
         "https://wax.pink.gg", 
         "https://api.waxsweden.org", 
         "https://wax.neftyblocks.com", 
@@ -36,26 +35,32 @@
     "claimsigh" : [
         "https://wax.cryptolions.io", 
         "https://chain.wax.io", 
-        "https://wax.dapplica.io", 
-        "https://aw-guard.yeomen.ai"
+        "https://aw-guard.yeomen.ai", 
+        "https://api.wax.alohaeos.com"
     ], 
     "fw_c_sigh" : [
-        "https://wax.dapplica.io", 
         "https://api.wax.bountyblok.io", 
         "https://wax.cryptolions.io", 
-        "https://wax.pink.gg"
+        "https://wax.pink.gg", 
+        "https://api.wax.alohaeos.com"
     ], 
     "ss_c_sigh" : [
         "https://wax.cryptolions.io", 
         "https://chain.wax.io", 
-        "https://wax.dapplica.io", 
-        "https://wax.pink.gg"
+        "https://wax.pink.gg", 
+        "https://api.wax.alohaeos.com"
     ], 
     "kq_c_sigh" : [
         "https://wax.cryptolions.io", 
         "https://chain.wax.io", 
-        "https://wax.dapplica.io", 
-        "https://wax.pink.gg"
+        "https://wax.pink.gg", 
+        "https://api.wax.alohaeos.com"
+    ], 
+    "cc_c_sigh" : [
+        "https://wax.cryptolions.io", 
+        "https://chain.wax.io", 
+        "https://wax.pink.gg", 
+        "https://api.wax.alohaeos.com"
     ], 
     "getwallet" : [
         "https://chain.wax.io", 

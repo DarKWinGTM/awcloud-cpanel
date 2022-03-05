@@ -1,7 +1,5 @@
 {
     "addrlists" : [
-        "https://chain.wax.io", 
-        "https://wax.api.eosnation.io", 
         "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
@@ -10,7 +8,6 @@
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
-        "https://wax.api.eosnation.io", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://query.3dkrender.com", 
@@ -33,10 +30,7 @@
         "https://api.wax.greeneosio.com"
     ], 
     "claimsigh" : [
-        "https://wax.cryptolions.io", 
-        "https://chain.wax.io", 
-        "https://aw-guard.yeomen.ai", 
-        "https://api.wax.alohaeos.com"
+        "https://aw-guard.yeomen.ai"
     ], 
     "fw_c_sigh" : [
         "https://chain.wax.io", 
@@ -63,8 +57,6 @@
         "https://api.wax.alohaeos.com"
     ], 
     "getwallet" : [
-        "https://chain.wax.io", 
-        "https://wax.api.eosnation.io", 
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
         "http://api.waxsweden.org", 

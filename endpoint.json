@@ -16,7 +16,7 @@
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
-        "https://wax.hivebp.io/v2/history/get_transaction?id=", 
+        "https://wax.hkeos.com/v2/history/get_transaction?id=", 
         "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
         "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
         "https://waxapi.ledgerwise.io/v2/history/get_transaction?id="
@@ -60,7 +60,7 @@
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
         "http://api.waxsweden.org", 
-        "https://wax.eosn.io", 
+        "https://chain.wax.io", 
         "https://wax.greymass.com"
     ], 
     "atomichub" : [

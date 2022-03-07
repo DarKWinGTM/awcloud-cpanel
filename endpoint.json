@@ -4,7 +4,8 @@
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
         "https://apiwax.3dkrender.com", 
-        "https://api.wax.greeneosio.com"
+        "https://api.wax.greeneosio.com", 
+        "https://wax.eosphere.io"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
@@ -23,7 +24,7 @@
     ], 
     "blockinfo" : [
         "https://wax.cryptolions.io", 
-        "https://chain.wax.io", 
+        "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
         "https://api.waxsweden.org", 
         "https://wax.neftyblocks.com", 
@@ -60,7 +61,7 @@
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
         "http://api.waxsweden.org", 
-        "https://chain.wax.io", 
+        "https://wax.eosphere.io", 
         "https://wax.greymass.com"
     ], 
     "atomichub" : [

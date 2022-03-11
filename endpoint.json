@@ -12,7 +12,7 @@
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://query.3dkrender.com", 
-        "https://waxapi.ledgerwise.io", 
+        "https://api-wax-mainnet.wecan.dev", 
         "https://wax.greymass.com"
     ], 
     "histories" : [
@@ -20,7 +20,7 @@
         "https://wax.hkeos.com/v2/history/get_transaction?id=", 
         "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
         "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
-        "https://waxapi.ledgerwise.io/v2/history/get_transaction?id="
+        "http://history-wax-mainnet.wecan.dev/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
         "https://wax.cryptolions.io", 

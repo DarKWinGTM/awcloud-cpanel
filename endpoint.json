@@ -72,10 +72,6 @@
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
-        "https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
-        "https://cors.bridged.cc/https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
-        "https://cors.bridged.cc/https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
-        "https://cors.bridged.cc/https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 

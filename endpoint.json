@@ -4,7 +4,7 @@
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
         "https://apiwax.3dkrender.com", 
-        "https://api.wax.greeneosio.com", 
+        "https://api-wax-mainnet.wecan.dev", 
         "https://wax.eosphere.io"
     ], 
     "lastminer" : [
@@ -28,7 +28,7 @@
         "https://wax.pink.gg", 
         "https://api.waxsweden.org", 
         "https://wax.neftyblocks.com", 
-        "https://api.wax.greeneosio.com"
+        "https://api-wax-mainnet.wecan.dev"
     ], 
     "claimsigh" : [
         "https://aw-guard.yeomen.ai"
@@ -52,6 +52,12 @@
         "https://api.wax.alohaeos.com"
     ], 
     "cc_c_sigh" : [
+        "https://wax.cryptolions.io", 
+        "https://chain.wax.io", 
+        "https://wax.pink.gg", 
+        "https://api.wax.alohaeos.com"
+    ], 
+    "gx_c_sigh" : [
         "https://wax.cryptolions.io", 
         "https://chain.wax.io", 
         "https://wax.pink.gg", 

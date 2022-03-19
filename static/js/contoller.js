@@ -624,6 +624,30 @@ $(document).ready(function() {
 	<div class="input-group cc-offchain-mainchain">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FGL 0.0000 : WITH [0%] DEPO : FGL 0.0000</div>
 	</div>
+	<div class="input-group cc-auto-battle-season">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
+			<label class="form-check-label">
+				<input
+					type 			= "checkbox"
+					class 			= "form-check-input cc-auto-battle-season-switch"
+					value 			= "0"
+				>
+			</label>
+		</div>AUTO BATTLE SEASON</div>
+	</div>
+	<div class="input-group cc-auto-battle-weekly">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
+			<label class="form-check-label">
+				<input
+					type 			= "checkbox"
+					class 			= "form-check-input cc-auto-battle-weekly-switch"
+					value 			= "0"
+				>
+			</label>
+		</div>AUTO BATTLE WEEKLY</div>
+	</div>
 </th>`
                                 })
                             ); 
@@ -1939,88 +1963,56 @@ $(document).ready(function() {
                     }); 
                 }; 
 
-                if (
-                    window['information-data']['DATA'] && 
-                    Object.keys( window['information-data']['DATA'] ).length >= 1 && (
-                    !document.querySelector('iframe[id*="FlowChart"]') || 
-                    !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src') || 
-                    !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src').match(
-                        Object.keys( window['information-data']['DATA'] ).join('-')
-                    ))
-                ){
-                    document.querySelector('div.modal.fade#waxDetective').addEventListener('shown.bs.modal', function () {
-                        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
-                            'src', `https://waxdetective.io/network/transfers?accounts=${ Object.keys( window['information-data']['DATA'] ).join('-') }&time_min=0&time_max=2555555555555`
-                        ); 
-                    }); 
-                    document.querySelector('div.modal.fade#waxDetective').addEventListener('hide.bs.modal', function () {
-                        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
-                            'src', ''
-                        ); 
-                    }); 
-                }else if(
-                    (
-                        !window['information-data']['DATA'] || 
-                        Object.keys( window['information-data']['DATA'] ).length == 0
-                    ) && (
-                        !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src') || 
-                        !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src').match('waxdetective.io')
-                    )
-                ){
-                    document.querySelector('iframe[id*="FlowChart"]').setAttribute(
-                        'url', 'https://waxdetective.io/network/'
-                    ); 
-                }; 
-                if (
-                    window['information-data']['DATA'] && 
-                    Object.keys( window['information-data']['DATA'] ).length >= 1 && (
-                    !document.querySelector('iframe[id*="iframeChart"]') || 
-                    !document.querySelector('iframe[id*="iframeChart"]').getAttribute('src') || 
-                    !document.querySelector('iframe[id*="iframeChart"]').getAttribute('src').match(
-                        Object.keys( window['information-data']['DATA'] ).join(',')
-                    ))
-                ){
-                    document.querySelector('iframe[id*="iframeChart"]').setAttribute(
-                        'src', `https://mining.idigger.online/iframeChart?waxid=${ Object.keys( window['information-data']['DATA'] ).join(',') }`
-                    ); 
-                }; 
-                
-                try{ window['check-wax-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['wax'] }catch(e){}; 
-                try{
-                    if (window['check-wax-pool-before-mine'].parentNode.querySelector('input[type="range"]').getAttribute('value') == 0.00){
-                        window['check-wax-pool-before-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
-                            'value', 
-                            window['information-data']['POOL']['fr']['might']['wax']
-                        ); window['check-wax-pool-before-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['might']['wax']; 
-                        window['check-wax-pool-before-mine'].parentNode.querySelector('label').innerText = `CURRENT RATE ${ window['information-data']['POOL']['fr']['might']['wax'] } : Enable Check WAX Pool Before Mine.`; 
-                    }; 
-                }catch(e){}; 
-                try{ window['check-eos-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['eos'] }catch(e){}; 
-                try{
-                    if (window['check-eos-pool-before-mine'].parentNode.querySelector('input[type="range"]').getAttribute('value') == 0.00){
-                        window['check-eos-pool-before-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
-                            'value', 
-                            window['information-data']['POOL']['fr']['might']['eos']
-                        ); window['check-eos-pool-before-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['might']['eos']; 
-                        window['check-eos-pool-before-mine'].parentNode.querySelector('label').innerText = `CURRENT RATE ${ window['information-data']['POOL']['fr']['might']['eos'] } : Enable Check EOS Pool Before Mine.`; 
-                    }; 
-                }catch(e){}; 
-                try{ window['check-random-mine'].checked = window['information-data']['POOL']['fr']['randm']['var'] }catch(e){}; 
-                try{
-                    window['check-random-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
-                        'value', 
-                        window['information-data']['POOL']['fr']['randm']['sec']
-                    ); window['check-random-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['randm']['sec'] ; 
-				}catch(e){}; 
-                //  try{
-                //      
-                //  }catch(e){};
+                //	if (
+                //	    window['information-data']['DATA'] && 
+                //	    Object.keys( window['information-data']['DATA'] ).length >= 1 && (
+                //	    !document.querySelector('iframe[id*="FlowChart"]') || 
+                //	    !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src') || 
+                //	    !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src').match(
+                //	        Object.keys( window['information-data']['DATA'] ).join('-')
+                //	    ))
+                //	){
+                //	    document.querySelector('div.modal.fade#waxDetective').addEventListener('shown.bs.modal', function () {
+                //	        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
+                //	            'src', `https://waxdetective.io/network/transfers?accounts=${ Object.keys( window['information-data']['DATA'] ).join('-') }&time_min=0&time_max=2555555555555`
+                //	        ); 
+                //	    }); 
+                //	    document.querySelector('div.modal.fade#waxDetective').addEventListener('hide.bs.modal', function () {
+                //	        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
+                //	            'src', ''
+                //	        ); 
+                //	    }); 
+                //	}else if(
+                //	    (
+                //	        !window['information-data']['DATA'] || 
+                //	        Object.keys( window['information-data']['DATA'] ).length == 0
+                //	    ) && (
+                //	        !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src') || 
+                //	        !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src').match('waxdetective.io')
+                //	    )
+                //	){
+                //	    document.querySelector('iframe[id*="FlowChart"]').setAttribute(
+                //	        'url', 'https://waxdetective.io/network/'
+                //	    ); 
+                //	}; 
+                //	if (
+                //	    window['information-data']['DATA'] && 
+                //	    Object.keys( window['information-data']['DATA'] ).length >= 1 && (
+                //	    !document.querySelector('iframe[id*="iframeChart"]') || 
+                //	    !document.querySelector('iframe[id*="iframeChart"]').getAttribute('src') || 
+                //	    !document.querySelector('iframe[id*="iframeChart"]').getAttribute('src').match(
+                //	        Object.keys( window['information-data']['DATA'] ).join(',')
+                //	    ))
+                //	){
+                //	    document.querySelector('iframe[id*="iframeChart"]').setAttribute(
+                //	        'src', `https://mining.idigger.online/iframeChart?waxid=${ Object.keys( window['information-data']['DATA'] ).join(',') }`
+                //	    ); 
+                //	}; 
 
             }).catch(error => {
                 console.error(`Error : ${ error }`); 
                 document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
-
-                //	function fetchProcessNone(){
+				
                 try{ clearInterval(window['fetchProcessSec']) }catch(e){}; 
                 var i = 0; window['fetchProcessSec'] = setInterval(function () {
                     i+= Math.ceil(Math.random() * 12) + 1;
@@ -2029,90 +2021,8 @@ $(document).ready(function() {
                         clearInterval(window['fetchProcessSec']); thiscode(); 
                     }; 
                 }, 200); 
-                //	}; 
-                //	requestAnimationFrame( fetchProcessNone() ); 
                 
             });  
-            
-            //	try{
-            //	    if (
-            //	        Math.ceil(Math.random() * 100) >= 95
-            //	    ){
-            //	        window['coinMarketCap'].src = ''; 
-            //	        window['coinMarketCap'].src = window['coinMarketCap'].getAttribute('url'); 
-            //	    }; 
-            //	}catch(e){}; 
-
-            try{
-				if (
-					window['information-data']['POOL']['MASTERKE']['PrvKey'] == 'YES' && 
-					window['information-data']['POOL']['MASTERKE']['TagKey']
-				){
-					document.querySelector('input[aria-label="KEY PRV ACTIVE"]').value = window['information-data']['POOL']['MASTERKE']['PubKey']; 
-					document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = `${ window['information-data']['POOL']['MASTERKE']['TagKey'].substring(0, 5) }XXXXXXX`; 
-					if( !$( document.querySelector('form[action="#KEY"] input.masterKey-switch') ).attr('disabled') ){
-						document.querySelector('form[action="#KEY"] input.masterKey-switch').checked = window['information-data']['POOL']['MASTERKE']['Switch']; 
-					}; 
-						
-					$( document.querySelector('input[aria-label="KEY PRV ACTIVE"]') ).prop( "disabled", true ); 
-					
-					fetch(`https://${ $( document.querySelector('select[aria-label*="Endpoint"]') ).find("option:selected").val() }/v1/chain/get_account`, {
-						"headers": {
-							"accept"            : "*/*",
-							"content-type"      : "text/plain;charset=UTF-8"
-						},
-						"body"              : JSON.stringify({
-							"account_name" : window['information-data']['POOL']['MASTERKE']['TagKey']
-						}),
-						"method"            : "POST"
-					}).then(
-						result => result.json()
-					).then(result => {
-						
-						try{
-							//	document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').parentElement.querySelector('div.progress-label').innerText = `CPU ${ Number( (100 - result['cpu_limit']['available'] * 100 / result['cpu_limit']['max']) ).toFixed(2) }%`
-							document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').parentElement.querySelector('div.progress-label').innerText = `CPU ${ result['cpu_limit']['max'] }`
-						}catch(e){}; 
-						//	try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').innerText           = `${ result['cpu_limit']['max'] }`}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').style.width         = `${ Number(100 - Number( result['cpu_limit']['available'] * 100 / result['cpu_limit']['max'] )).toFixed(2) }%`}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').setAttribute(
-							'aria-valuenow', 0
-						)}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').setAttribute(
-							'aria-valuemax', 
-							`${ result['cpu_limit']['max'] }`
-						)}catch(e){}; 
-
-						try{
-							//	document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').parentElement.querySelector('div.progress-label').innerText = `NET ${ Number( (100 - result['net_limit']['available'] * 100 / result['net_limit']['max']) ).toFixed(2) }%`
-							document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').parentElement.querySelector('div.progress-label').innerText = `NET ${ result['net_limit']['max'] }`
-						}catch(e){}; 
-						//	try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').innerText           = `${ result['net_limit']['max'] }`}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').style.width         = `${ Number(100 - Number( result['net_limit']['available'] * 100 / result['net_limit']['max'] )).toFixed(2) }%`}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').setAttribute(
-							'aria-valuenow', 0
-						)}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').setAttribute(
-							'aria-valuemax', 
-							`${ result['net_limit']['max'] }`
-						)}catch(e){}; 
-
-						try{
-							//	document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').parentElement.querySelector('div.progress-label').innerText = `RAM ${ Number( 100 - ((result['ram_quota'] - result['ram_usage']) * 100 / result['ram_quota']) ).toFixed(2) }%` 
-							document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').parentElement.querySelector('div.progress-label').innerText = `RAM ${ result['ram_quota'] }` 
-						}catch(e){}; 
-						//	try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').innerText           = `${ result['ram_quota'] }`}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').style.width         = `${ Number(100 - Number( (result['ram_quota'] - result['ram_usage']) * 100 / result['ram_quota'] )).toFixed(2) }%`}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').setAttribute(
-							'aria-valuenow', 0
-						)}catch(e){}; 
-						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').setAttribute(
-							'aria-valuemax', 
-							`${ result['ram_quota'] }`
-						)}catch(e){}; 
-					}).catch(error => {});
-				}; 
-			}catch(e){}; 
             
         })();
 
@@ -2682,11 +2592,3 @@ $(document).ready(function() {
         });
     }; 
 }); 
-
-
-
-
-
-
-
-

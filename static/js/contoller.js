@@ -203,6 +203,8 @@ $(document).ready(function() {
 						try{ window[`${ TRELE.getAttribute('id') }-kq-panel-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-cc-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-cc-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-gx-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-gx-panel-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-panel-monitor`].parentElement.remove() }catch(e){};  
                         try{ TRELE.remove() }catch(e){}; 
@@ -1419,6 +1421,9 @@ $(document).ready(function() {
 						try{
 							window[ WAXID ].querySelector('input[class*="form-check-input cc_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['cc']["sw"]; 
 						}catch(e){ }; 
+						try{
+							window[ WAXID ].querySelector('input[class*="form-check-input gx_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['gx']["sw"]; 
+						}catch(e){ }; 
                         //  try{ $('[data-toggle="tooltip"]').tooltip() }catch(e){}; 
                         
                         (function thiscode(ID){
@@ -1894,6 +1899,84 @@ $(document).ready(function() {
 									}catch(e){ }; 
 									
 								}catch(e){ }; 
+								//	try{
+								//		if(
+								//			window['information-data']["DATA"][ _WAXID ]['vers']['fw']["sw"] == true && 
+								//			Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+								//			!document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
+								//		){
+								//			document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).setAttribute(
+								//				'src', document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).getAttribute('url')
+								//			); 
+								//			document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+								//			document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+								//			
+								//		}; 
+								//		if(
+								//			window['information-data']["DATA"][ _WAXID ]['vers']['fw']["sw"] == true && 
+								//			Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+								//			document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
+								//		){
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_plants'][0]; 
+								//			}catch(e){ }; 
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-corn-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_plants'][1]; 
+								//			}catch(e){ }; 
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-barley-input').value 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_plants'][2]; 
+								//			}catch(e){ }; 
+								//			
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-feature-mbr-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['mbr_mine']; 
+								//			}catch(e){ }; 
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['eco_mine']; 
+								//			}catch(e){ }; 
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['fee_mine']; 
+								//			}catch(e){ }; 
+								//			
+								//			try{
+								//				document.querySelector(
+								//					'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+								//				).querySelector(
+								//					'div.fw-deposit-fwf-text'
+								//				).innerText = 'DEPOSIT FWF ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwf'][1] ).slice(-'0000'.length); 
+								//			}catch(e){ }; 
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwf-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwf'][0]; 
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwf-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwf'][1]; 
+								//			}catch(e){ }; 
+								//			try{
+								//				document.querySelector(
+								//					'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+								//				).querySelector(
+								//					'div.fw-deposit-fwg-text'
+								//				).innerText = 'DEPOSIT FWG ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwg'][1] ).slice(-'0000'.length); 
+								//			}catch(e){ }; 
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwg-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwg'][0]; 
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwg-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwg'][1]; 
+								//			}catch(e){ }; 
+								//			
+								//			try{
+								//				document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('div.fw-withdraw-deposit div').innerText 		= `W ${
+								//					parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWW']).toFixed(1)
+								//				} F ${
+								//					parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWF']).toFixed(1)
+								//				} G ${
+								//					parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWG']).toFixed(1)
+								//				} : WITH [0%] DEPO : W ${
+								//					parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWW']).toFixed(1)
+								//				} F ${
+								//					parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWF']).toFixed(1)
+								//				} G ${
+								//					parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWG']).toFixed(1)
+								//				}`; 
+								//			}catch(e){ }; 
+								//		}; 
+								//	}catch(e){ }; 
 								
 								//  try{
 								//      delete window.window['total']['Stake']; 
@@ -1963,51 +2046,82 @@ $(document).ready(function() {
                     }); 
                 }; 
 
-                //	if (
-                //	    window['information-data']['DATA'] && 
-                //	    Object.keys( window['information-data']['DATA'] ).length >= 1 && (
-                //	    !document.querySelector('iframe[id*="FlowChart"]') || 
-                //	    !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src') || 
-                //	    !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src').match(
-                //	        Object.keys( window['information-data']['DATA'] ).join('-')
-                //	    ))
-                //	){
-                //	    document.querySelector('div.modal.fade#waxDetective').addEventListener('shown.bs.modal', function () {
-                //	        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
-                //	            'src', `https://waxdetective.io/network/transfers?accounts=${ Object.keys( window['information-data']['DATA'] ).join('-') }&time_min=0&time_max=2555555555555`
-                //	        ); 
-                //	    }); 
-                //	    document.querySelector('div.modal.fade#waxDetective').addEventListener('hide.bs.modal', function () {
-                //	        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
-                //	            'src', ''
-                //	        ); 
-                //	    }); 
-                //	}else if(
-                //	    (
-                //	        !window['information-data']['DATA'] || 
-                //	        Object.keys( window['information-data']['DATA'] ).length == 0
-                //	    ) && (
-                //	        !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src') || 
-                //	        !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src').match('waxdetective.io')
-                //	    )
-                //	){
-                //	    document.querySelector('iframe[id*="FlowChart"]').setAttribute(
-                //	        'url', 'https://waxdetective.io/network/'
-                //	    ); 
-                //	}; 
-                //	if (
-                //	    window['information-data']['DATA'] && 
-                //	    Object.keys( window['information-data']['DATA'] ).length >= 1 && (
-                //	    !document.querySelector('iframe[id*="iframeChart"]') || 
-                //	    !document.querySelector('iframe[id*="iframeChart"]').getAttribute('src') || 
-                //	    !document.querySelector('iframe[id*="iframeChart"]').getAttribute('src').match(
-                //	        Object.keys( window['information-data']['DATA'] ).join(',')
-                //	    ))
-                //	){
-                //	    document.querySelector('iframe[id*="iframeChart"]').setAttribute(
-                //	        'src', `https://mining.idigger.online/iframeChart?waxid=${ Object.keys( window['information-data']['DATA'] ).join(',') }`
-                //	    ); 
-                //	}; 
+                if (
+                    window['information-data']['DATA'] && 
+                    Object.keys( window['information-data']['DATA'] ).length >= 1 && (
+                    !document.querySelector('iframe[id*="FlowChart"]') || 
+                    !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src') || 
+                    !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src').match(
+                        Object.keys( window['information-data']['DATA'] ).join('-')
+                    ))
+                ){
+                    document.querySelector('div.modal.fade#waxDetective').addEventListener('shown.bs.modal', function () {
+                        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
+                            'src', `https://waxdetective.io/network/transfers?accounts=${ Object.keys( window['information-data']['DATA'] ).join('-') }&time_min=0&time_max=2555555555555`
+                        ); 
+                    }); 
+                    document.querySelector('div.modal.fade#waxDetective').addEventListener('hide.bs.modal', function () {
+                        document.querySelector('iframe[id*="FlowChart"]').setAttribute(
+                            'src', ''
+                        ); 
+                    }); 
+                }else if(
+                    (
+                        !window['information-data']['DATA'] || 
+                        Object.keys( window['information-data']['DATA'] ).length == 0
+                    ) && (
+                        !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src') || 
+                        !document.querySelector('iframe[id*="FlowChart"]').getAttribute('src').match('waxdetective.io')
+                    )
+                ){
+                    document.querySelector('iframe[id*="FlowChart"]').setAttribute(
+                        'url', 'https://waxdetective.io/network/'
+                    ); 
+                }; 
+                if (
+                    window['information-data']['DATA'] && 
+                    Object.keys( window['information-data']['DATA'] ).length >= 1 && (
+                    !document.querySelector('iframe[id*="iframeChart"]') || 
+                    !document.querySelector('iframe[id*="iframeChart"]').getAttribute('src') || 
+                    !document.querySelector('iframe[id*="iframeChart"]').getAttribute('src').match(
+                        Object.keys( window['information-data']['DATA'] ).join(',')
+                    ))
+                ){
+                    document.querySelector('iframe[id*="iframeChart"]').setAttribute(
+                        'src', `https://mining.idigger.online/iframeChart?waxid=${ Object.keys( window['information-data']['DATA'] ).join(',') }`
+                    ); 
+                }; 
+                
+                try{ window['check-wax-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['wax'] }catch(e){}; 
+                try{
+                    if (window['check-wax-pool-before-mine'].parentNode.querySelector('input[type="range"]').getAttribute('value') == 0.00){
+                        window['check-wax-pool-before-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
+                            'value', 
+                            window['information-data']['POOL']['fr']['might']['wax']
+                        ); window['check-wax-pool-before-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['might']['wax']; 
+                        window['check-wax-pool-before-mine'].parentNode.querySelector('label').innerText = `CURRENT RATE ${ window['information-data']['POOL']['fr']['might']['wax'] } : Enable Check WAX Pool Before Mine.`; 
+                    }; 
+                }catch(e){}; 
+                try{ window['check-eos-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['eos'] }catch(e){}; 
+                try{
+                    if (window['check-eos-pool-before-mine'].parentNode.querySelector('input[type="range"]').getAttribute('value') == 0.00){
+                        window['check-eos-pool-before-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
+                            'value', 
+                            window['information-data']['POOL']['fr']['might']['eos']
+                        ); window['check-eos-pool-before-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['might']['eos']; 
+                        window['check-eos-pool-before-mine'].parentNode.querySelector('label').innerText = `CURRENT RATE ${ window['information-data']['POOL']['fr']['might']['eos'] } : Enable Check EOS Pool Before Mine.`; 
+                    }; 
+                }catch(e){}; 
+                try{ window['check-random-mine'].checked = window['information-data']['POOL']['fr']['randm']['var'] }catch(e){}; 
+                try{
+                    window['check-random-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
+                        'value', 
+                        window['information-data']['POOL']['fr']['randm']['sec']
+                    ); window['check-random-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['randm']['sec'] ; 
+				}catch(e){}; 
+                //  try{
+                //      
+                //  }catch(e){};
 
             }).catch(error => {
                 console.error(`Error : ${ error }`); 
@@ -2023,6 +2137,86 @@ $(document).ready(function() {
                 }, 200); 
                 
             });  
+            
+            //	try{
+            //	    if (
+            //	        Math.ceil(Math.random() * 100) >= 95
+            //	    ){
+            //	        window['coinMarketCap'].src = ''; 
+            //	        window['coinMarketCap'].src = window['coinMarketCap'].getAttribute('url'); 
+            //	    }; 
+            //	}catch(e){}; 
+            
+            try{
+				if (
+					window['information-data']['POOL']['MASTERKE']['PrvKey'] == 'YES' && 
+					window['information-data']['POOL']['MASTERKE']['TagKey']
+				){
+					document.querySelector('input[aria-label="KEY PRV ACTIVE"]').value = window['information-data']['POOL']['MASTERKE']['PubKey']; 
+					document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = `${ window['information-data']['POOL']['MASTERKE']['TagKey'].substring(0, 5) }XXXXXXX`; 
+					if( !$( document.querySelector('form[action="#KEY"] input.masterKey-switch') ).attr('disabled') ){
+						document.querySelector('form[action="#KEY"] input.masterKey-switch').checked = window['information-data']['POOL']['MASTERKE']['Switch']; 
+					}; 
+						
+					$( document.querySelector('input[aria-label="KEY PRV ACTIVE"]') ).prop( "disabled", true ); 
+					
+					fetch(`https://${ $( document.querySelector('select[aria-label*="Endpoint"]') ).find("option:selected").val() }/v1/chain/get_account`, {
+						"headers": {
+							"accept"            : "*/*",
+							"content-type"      : "text/plain;charset=UTF-8"
+						},
+						"body"              : JSON.stringify({
+							"account_name" : window['information-data']['POOL']['MASTERKE']['TagKey']
+						}),
+						"method"            : "POST"
+					}).then(
+						result => result.json()
+					).then(result => {
+						
+						try{
+							//	document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').parentElement.querySelector('div.progress-label').innerText = `CPU ${ Number( (100 - result['cpu_limit']['available'] * 100 / result['cpu_limit']['max']) ).toFixed(2) }%`
+							document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').parentElement.querySelector('div.progress-label').innerText = `CPU ${ result['cpu_limit']['max'] }`
+						}catch(e){}; 
+						//	try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').innerText           = `${ result['cpu_limit']['max'] }`}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').style.width         = `${ Number(100 - Number( result['cpu_limit']['available'] * 100 / result['cpu_limit']['max'] )).toFixed(2) }%`}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').setAttribute(
+							'aria-valuenow', 0
+						)}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_cpu_prg"]').setAttribute(
+							'aria-valuemax', 
+							`${ result['cpu_limit']['max'] }`
+						)}catch(e){}; 
+
+						try{
+							//	document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').parentElement.querySelector('div.progress-label').innerText = `NET ${ Number( (100 - result['net_limit']['available'] * 100 / result['net_limit']['max']) ).toFixed(2) }%`
+							document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').parentElement.querySelector('div.progress-label').innerText = `NET ${ result['net_limit']['max'] }`
+						}catch(e){}; 
+						//	try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').innerText           = `${ result['net_limit']['max'] }`}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').style.width         = `${ Number(100 - Number( result['net_limit']['available'] * 100 / result['net_limit']['max'] )).toFixed(2) }%`}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').setAttribute(
+							'aria-valuenow', 0
+						)}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_net_prg"]').setAttribute(
+							'aria-valuemax', 
+							`${ result['net_limit']['max'] }`
+						)}catch(e){}; 
+
+						try{
+							//	document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').parentElement.querySelector('div.progress-label').innerText = `RAM ${ Number( 100 - ((result['ram_quota'] - result['ram_usage']) * 100 / result['ram_quota']) ).toFixed(2) }%` 
+							document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').parentElement.querySelector('div.progress-label').innerText = `RAM ${ result['ram_quota'] }` 
+						}catch(e){}; 
+						//	try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').innerText           = `${ result['ram_quota'] }`}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').style.width         = `${ Number(100 - Number( (result['ram_quota'] - result['ram_usage']) * 100 / result['ram_quota'] )).toFixed(2) }%`}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').setAttribute(
+							'aria-valuenow', 0
+						)}catch(e){}; 
+						try{ document.querySelector('form[action*="#KEY"]').parentElement.querySelector('div[id*="masterKey_ram_prg"]').setAttribute(
+							'aria-valuemax', 
+							`${ result['ram_quota'] }`
+						)}catch(e){}; 
+					}).catch(error => {});
+				}; 
+			}catch(e){}; 
             
         })();
 
@@ -2592,3 +2786,4 @@ $(document).ready(function() {
         });
     }; 
 }); 
+

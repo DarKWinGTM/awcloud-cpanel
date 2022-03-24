@@ -73,9 +73,6 @@ $(document).ready(function() {
 				'url' : 'wax.hivebp.io'
 			}, {
 				'headers' : {}, 
-				'url' : 'wax.blokcrafters.io'
-			}, {
-				'headers' : {}, 
 				'url' : 'wax.eosphere.io'
 			}, {
 				'headers' : {}, 

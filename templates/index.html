@@ -177,10 +177,10 @@
 			}
 		}
 
-		.blink {
-			animation: fade 2000ms infinite;
-			-webkit-animation: fade 2000ms infinite;
-		}
+		//    .blink {
+		//    	animation: fade 2000ms infinite;
+		//    	-webkit-animation: fade 2000ms infinite;
+		//    }
 
 		@keyframes fade-okay {
 			from {
@@ -218,12 +218,12 @@
 			}
 		}
 
-		.blink-okay {
-			animation: fade-okay 2000ms infinite;
-			-webkit-animation: fade-okay 2000ms infinite;
-			background-color: rgb(141, 197, 63) !important;
-			border-color: rgb(141, 197, 63) !important;
-		}
+		//    .blink-okay {
+		//    	animation: fade-okay 2000ms infinite;
+		//    	-webkit-animation: fade-okay 2000ms infinite;
+		//    	background-color: rgb(141, 197, 63) !important;
+		//    	border-color: rgb(141, 197, 63) !important;
+		//    }
 
 		@keyframes fade-alert {
 			from {
@@ -261,12 +261,12 @@
 			}
 		}
 
-		.blink-alert {
-			animation: fade-alert 2000ms infinite;
-			-webkit-animation: fade-alert 2000ms infinite;
-			background-color: orange;
-			border-color: orange;
-		}
+		//    .blink-alert {
+		//    	animation: fade-alert 2000ms infinite;
+		//    	-webkit-animation: fade-alert 2000ms infinite;
+		//    	background-color: orange;
+		//    	border-color: orange;
+		//    }
 
 		@keyframes fade-okay-text {
 			from {
@@ -299,11 +299,11 @@
 			}
 		}
 
-		.blink-okay-text {
-			animation: fade-okay-text 2000ms infinite;
-			-webkit-animation: fade-okay-text 2000ms infinite;
-			color: rgb(141, 197, 63) !important;
-		}
+		//    .blink-okay-text {
+		//    	animation: fade-okay-text 2000ms infinite;
+		//    	-webkit-animation: fade-okay-text 2000ms infinite;
+		//    	color: rgb(141, 197, 63) !important;
+		//    }
 
 		@keyframes fade-alert-text {
 			from {
@@ -335,11 +335,11 @@
 			}
 		}
 
-		.blink-alert-text {
-			animation: fade-alert-text 2000ms infinite;
-			-webkit-animation: fade-alert-text 2000ms infinite;
-			color: orange;
-		}
+		//    .blink-alert-text {
+		//    	animation: fade-alert-text 2000ms infinite;
+		//    	-webkit-animation: fade-alert-text 2000ms infinite;
+		//    	color: orange;
+		//    }
 
 		@keyframes shake {
 			10%,
@@ -487,6 +487,9 @@ window['expand-all-history'].addEventListener('click', function(e) {
     for (_WAXID_ in window['information-data']['DATA']){ 
         //    window[_WAXID_].querySelector('[id="tlmperday"]').parentElement.click()
         document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.display = 'table-cell'; 
+        document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).setAttribute(
+            'src', document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).getAttribute('url')
+        ); 
         //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
         //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
         //    document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
@@ -495,7 +498,21 @@ window['expand-all-history'].addEventListener('click', function(e) {
         //    document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
         //    document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
         //    document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
-
+        
+        //    if(
+        //    	!document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`)
+        //    ){
+        //    	document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.display = 'table-cell'; 
+        //    	document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).setAttribute(
+        //            'src', document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).getAttribute('url')
+        //        ); 
+        //    }else{
+        //    	document.querySelector(`iframe[src*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.display = 'none'; 
+        //    	document.querySelector(`iframe[src*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).setAttribute(
+        //            'src', ''
+        //        ); 
+        //    }
+        
         document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.removeProperty("position"); 
         document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position"); 
         document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position"); 
@@ -613,7 +630,7 @@ window['collapse-all-history'].addEventListener('click', function(e) {
         </table>
     </div>
     
-    <div class="progress justify-content-center my-1">
+    <div class="progress justify-content-center my-1" style="visibility: hidden;">
         <div class="progress-bar" role="progressbar" style="width: 0%; text-align: center;" aria-valuemin="0" aria-valuemax="1000"
          id="time_pg" aria-valuenow="0" description="https://jsfiddle.net/bozdoz/fSLdG/2/"></div>
     </div>

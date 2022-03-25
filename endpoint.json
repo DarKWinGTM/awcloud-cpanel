@@ -25,7 +25,6 @@
         "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
-        "https://api.waxsweden.org", 
         "https://wax.neftyblocks.com", 
         "https://api-wax-mainnet.wecan.dev"
     ], 
@@ -65,7 +64,6 @@
     "getwallet" : [
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
-        "http://api.waxsweden.org", 
         "https://api-wax-mainnet.wecan.dev", 
         "https://wax.api.eosnation.io", 
         "https://wax.greymass.com"

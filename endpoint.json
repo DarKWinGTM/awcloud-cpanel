@@ -3,7 +3,6 @@
         "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
-        "https://apiwax.3dkrender.com", 
         "https://api-wax-mainnet.wecan.dev", 
         "https://wax.eosphere.io"
     ], 
@@ -11,14 +10,12 @@
         "https://wax.cryptolions.io", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
-        "https://query.3dkrender.com", 
         "https://api-wax-mainnet.wecan.dev", 
         "https://wax.greymass.com"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
         "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
-        "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [

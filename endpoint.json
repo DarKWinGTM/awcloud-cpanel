@@ -67,12 +67,14 @@
     ], 
     "atomichub" : [
         "https://atomic.sentnl.io/atomicassets/v1/assets?", 
+        "https://atomic.3dkrender.com/atomicassets/v1/assets?", 
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?", 
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://atomic.sentnl.io/atomicassets/v1/assets?", 
+        "https://atomic.3dkrender.com/atomicassets/v1/assets?", 
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?", 
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"

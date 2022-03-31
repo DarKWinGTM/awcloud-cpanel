@@ -15,7 +15,7 @@
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
-        "https://wax.eosdublin.io/v2/history/get_transaction?id=", 
+        "https://hyperion.wax.blacklusion.io/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [

@@ -66,12 +66,12 @@
         "https://wax.greymass.com"
     ], 
     "atomichub" : [
-        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
+        "https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
-        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
+        "https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
     ], 

@@ -950,7 +950,109 @@ if(
                             <input type="text" class="form-control" placeholder="MEMO" aria-label="SEND NFT MEMO">
                             <div class="input-group-text" id="basic-addon WAX" style="width: 76px;">TO</div>
                             <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="SEND NFT TO WAX ID" required>
-                            <button type="submit" class="btn btn-primary send-nft">SEND NFT</button>
+                            <button type="submit" class="btn btn-primary nft send-nft">SEND NFT</button>
+                            <select class="form-select nft send-all">
+                                <option value="0" selected>None</option>
+                                <option value="1">All In Bags</option>
+                                <option value="2" disabled>All Account Bags</option>
+                                <option value="3">FW All Farmer Coin</option>
+                                <option value="4">FW All Barley</option>
+                                <option value="5">FW All Corn</option>
+                                <option value="6">FW All Egg</option>
+                                <option value="7">FW All Milk</option>
+                                <option value="8">FW All</option>
+                                <option value="9">FW All Supply</option>
+                                <option value="10" disabled>FW All Account Farmer Coin</option>
+                                <option value="11" disabled>FW All Account Barley</option>
+                                <option value="12" disabled>FW All Account Corn</option>
+                                <option value="13" disabled>FW All Account Egg</option>
+                                <option value="14" disabled>FW All Account Milk</option>
+                                <option value="15" disabled>FW All Account In Pool</option>
+                                <option value="16" disabled>FW All Account Supply</option>
+                                <option value="17">FW Burn Crops</option>
+                            </select>
+                            <script type="text/javascript">
+$('.form-select.nft.send-all').on('change', function(){
+    console.debug( $(this).find("option:selected").val() )
+    switch ( $(this).find("option:selected").val() ) {
+        case '0':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '1':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '2':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '3':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '4':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '5':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '6':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '7':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '8':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '9':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            break;
+        case '10':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false; 
+            break;
+        case '11':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false; 
+            break;
+        case '12':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false; 
+            break;
+        case '13':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false; 
+            break;
+        case '14':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false; 
+            break;
+        case '15':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false; 
+            break;
+        case '16':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false; 
+            break;
+        case '17':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT MEMO"]').value         = 'burn'; 
+            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value    = 'farmersworld'; 
+            break;
+    }; 
+}); 
+                            </script>
+                            <button type="submit" class="btn btn-primary nft send-all" disabled>SEND ALL</button>
                         </div>
 	  		        </form>
                 </div>
@@ -1266,91 +1368,91 @@ document.querySelector('div.modal.fade#boxNFT')['settool'] = function (){
             <script>
 document.querySelector('form[action="#SENDNFT"]').addEventListener('submit', function (e) {
     
-  console.log(Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id)); 
-  console.log(Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(',')); 
-
-  if (
-    $("button.btn.btn-primary.send-nft").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.send-nft')
-  ){
+    console.log(Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id)); 
+    console.log(Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(',')); 
     
-    $("button.btn.btn-primary.send-nft").addClass('invisible'); 
-    $("button.btn.btn-primary.send-nft").attr('readonly', true); 
-    $.notify(
-      document.querySelector('div[id*="boxNFT"]').querySelector('.modal-header'), 
-      `SEND NFT : PLEASE WAIT`, 'info'
-    ); 
+    if (
+        $("button.btn.btn-primary.send-nft").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.send-nft')
+    ){
     
-    fetch(`/sendnft?waxid=${ document.querySelector('div.modal.fade#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
-      document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
-    }&memo=${
-      document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT MEMO"]').value
-    }&toolid=${
-      Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(',')
-    }`, {
-      "headers"       : {}, 
-      "body"          : null,
-      "method"        : "GET",
-    }).then(
-        result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
-    ).then(result => {
-      if ( result['code'] == 200 ){
-        Swal.fire({
-          iconHtml: `
-          <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-          </svg>
-          `,
-          customClass: {
-            icon: 'swalSuccess'
-          },
-          title: 'Done!',
-          html: `<div>SEND NFT DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+        $("button.btn.btn-primary.send-nft").addClass('invisible'); 
+        $("button.btn.btn-primary.send-nft").attr('readonly', true); 
+        $.notify(
+            document.querySelector('div[id*="boxNFT"]').querySelector('.modal-header'), 
+            `SEND NFT : PLEASE WAIT`, 'info'
+        ); 
+    
+        fetch(`/sendnft?waxid=${ document.querySelector('div.modal.fade#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
+            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
+        }&memo=${
+            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT MEMO"]').value
+        }&toolid=${
+            Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(',')
+        }`, {
+          "headers"       : {}, 
+          "body"          : null,
+          "method"        : "GET",
+        }).then(
+            result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
+        ).then(result => {
+            if ( result['code'] == 200 ){
+                Swal.fire({
+                    iconHtml: `
+                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                    </svg>
+                    `,
+                    customClass: {
+                        icon: 'swalSuccess'
+                    },
+                    title: 'Done!',
+                    html: `<div>SEND NFT DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+                }); 
+                $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
+                $("button.btn.btn-primary.send-nft").attr('readonly', false); 
+            }else{
+                try{
+                    Swal.fire(
+                        'Warning!', (Object.keys( result['data']['result'] ) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                    ); 
+                    $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
+                    $("button.btn.btn-primary.send-nft").attr('readonly', false); 
+                }catch(e){
+                    Swal.fire({
+                        iconHtml: `
+                            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                        `,
+                        customClass: {
+                            icon: 'swalError'
+                        },
+                        title: 'Error!',
+                        html: `<div>SEND NFT ERROR</div><div>${ result['text'] }</div>`,
+                    }); 
+                    $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
+                    $("button.btn.btn-primary.send-nft").attr('readonly', false); 
+                }; 
+            }; 
+        }).catch(error => {
+            Swal.fire({
+                iconHtml: `
+                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                `,
+                customClass: {
+                    icon: 'swalError'
+                },
+                title: 'Error!',
+                text: `SEND NFT ERROR : CONNECTION FAILED ${ error }`,
+            });
+            $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
+            $("button.btn.btn-primary.send-nft").attr('readonly', false); 
         }); 
-        $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
-        $("button.btn.btn-primary.send-nft").attr('readonly', false); 
-      }else{
-        try{
-          Swal.fire(
-            'Warning!', (Object.keys( result['data']['result'] ) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-          ); 
-          $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
-          $("button.btn.btn-primary.send-nft").attr('readonly', false); 
-        }catch(e){
-          Swal.fire({
-            iconHtml: `
-            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-            `,
-            customClass: {
-              icon: 'swalError'
-            },
-            title: 'Error!',
-            html: `<div>SEND NFT ERROR</div><div>${ result['text'] }</div>`,
-          }); 
-          $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
-          $("button.btn.btn-primary.send-nft").attr('readonly', false); 
-        }; 
-      }; 
-    }).catch(error => {
-      Swal.fire({
-        iconHtml: `
-        <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-        `,
-        customClass: {
-          icon: 'swalError'
-        },
-        title: 'Error!',
-        text: `SEND NFT ERROR : CONNECTION FAILED ${ error }`,
-      });
-        $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
-        $("button.btn.btn-primary.send-nft").attr('readonly', false); 
-    }); 
-
-  }; 
+    
+    }; 
 }); 
             </script>
             <!-- SEND NFT FUNCTION -->

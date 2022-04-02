@@ -15,9 +15,9 @@
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
-        "https://hyperion.wax.blacklusion.io/v2/history/get_transaction?id=", 
+        "https://wax.hkeos.com/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id=", 
-        "https://api.wax.alohaeos.com/v2/history/get_transaction?id=", 
+        "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
         "https://wax.eu.eosamsterdam.net/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
@@ -59,6 +59,12 @@
         "https://wax.pink.gg", 
         "https://api.wax.alohaeos.com"
     ], 
+    "bl_c_sigh" : [
+        "https://chain.wax.io", 
+        "https://chain.wax.io", 
+        "https://chain.wax.io", 
+        "https://wax.pink.gg"
+    ], 
     "getwallet" : [
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
@@ -68,13 +74,15 @@
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
-        "https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?", 
-        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
+        "https://atomic.hivebp.io/atomicassets/v1/assets?", 
+        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
+        "https://wax.hkeos.com/aa/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
-        "https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?", 
-        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
+        "https://atomic.hivebp.io/atomicassets/v1/assets?", 
+        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
+        "https://wax.hkeos.com/aa/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

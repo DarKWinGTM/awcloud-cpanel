@@ -167,7 +167,6 @@ $(document).ready(function() {
                 
                 window['information-data'] = result; /*!    console.clear(); !*/
                 
-                //	function fetchProcessDone(){
                 try{ clearInterval(window['fetchProcessSec']) }catch(e){}; 
                 var i = 0; window['fetchProcessSec'] = setInterval(function () {
                     i+= Math.ceil(Math.random() * 12) + 1;
@@ -181,8 +180,6 @@ $(document).ready(function() {
                         clearInterval(window['fetchProcessSec']); thiscode(); 
                     }; 
                 }, 200); 
-                //	}; 
-				//	requestAnimationFrame( fetchProcessDone ); 
                 
                 for (TRELE of document.querySelectorAll(`tr[id*=".wam"]`)){
                     if(
@@ -202,6 +199,8 @@ $(document).ready(function() {
 						try{ window[`${ TRELE.getAttribute('id') }-cc-panel-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-gx-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-gx-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-bl-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-bl-panel-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-panel-monitor`].parentElement.remove() }catch(e){};  
                         try{ TRELE.remove() }catch(e){}; 
@@ -812,22 +811,6 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
-//		<div class="input-group kq-target-set">
-//			<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [] : STAKED : 0.0000 </div>
-//			<div class="input-group-text">
-//				<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
-//					<label class="form-check-label">
-//						<!--input type="checkbox" class="form-check-input kq-target-switch" value="0"-->
-//						<!--span style="padding-left: 5;"></span-->
-//					</label>
-//				</div>
-//			</div>
-//			<div class="input-group-text" style="width: 248px;">PLANET TARGET<span style="visibility: hidden;">_</span><a href="https://starship.primatepirate.com/planetarium" target="_blank">ID</a></div>
-//			<input type="number" class="form-control" placeholder="KQ-TARGET-SWITCH" value="KQ-TARGET-SWITCH" step="1" min="1" max="100000" aria-label="">
-//			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
-//			<button type="submit" class="btn btn-primary kq-target-set" style="width: 60px; ">SET</button>
-//		</div>
-
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -1181,6 +1164,30 @@ $(document).ready(function() {
 									{method : 'GET'}
 								); 
 							}); 
+                            document.querySelector('table').querySelector('thead').appendChild(
+                                Object.assign(document.createElement('tr'), {
+                                    innerHTML   : `
+									
+
+<th
+    colspan     = "7"
+    style       = "display: none; "
+	id 			= "${ WAXID }-bl-monitor"
+>
+	<textarea 
+		class 		= "form-control ${ WAXID }"
+		id 			= "message-text ${ WAXID }"
+		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
+		scrolling 	= "no"
+	></textarea>
+</th>
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-bl-panel-monitor">
+	<div class="input-group bl-offchain-mainchain">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">BRWL 0.0000 : WITH [0%] DEPO : BRWL 0.0000</div>
+	</div>
+</th>`
+                                })
+                            ); 
 							
 							
 							
@@ -1620,6 +1627,47 @@ $(document).ready(function() {
                                     };
                                 });
 								
+                                window[WAXID].querySelector('input.bl_switch[type="checkbox"]').addEventListener('change', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+										
+                                        $(this).prop( "disabled", true ); 
+										
+                                        fetch(`/vers/bl/set?waxid=${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }&switch=${ this.checked }`, 
+											{method : 'GET'}
+										).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            if(result['text'] != 'okay'){ throw result }else{
+                                                if (
+                                                    result['data'] == true
+                                                ){
+                                                    this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
+                                                        'BLOCKCHAIN BRAWLERS ON', 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
+                                                        'BLOCKCHAIN BRAWLERS NO', 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`BLOCKCHAIN BRAWLERS : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (button){
+                                                setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
+                                            })(this); 
+                                        }); 
+                                    };
+                                });
+								
 								
 								
                             }catch(e){}; 
@@ -1767,6 +1815,9 @@ $(document).ready(function() {
 						}catch(e){ }; 
 						try{
 							window[ WAXID ].querySelector('input[class*="form-check-input gx_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['gx']["sw"]; 
+						}catch(e){ }; 
+						try{
+							window[ WAXID ].querySelector('input[class*="form-check-input bl_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['bl']["sw"]; 
 						}catch(e){ }; 
                         //  try{ $('[data-toggle="tooltip"]').tooltip() }catch(e){}; 
                         
@@ -2314,6 +2365,45 @@ $(document).ready(function() {
 										}catch(e){ }; 
 									}; 
 								}catch(e){ }; 
+								try{
+									if(
+										window['information-data']["DATA"][ _WAXID ]['vers']['bl']["sw"] == true
+									){
+										document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										//	window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'] = []; 
+										//	for (logs in window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['event']){
+										//		window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'][ logs ] = window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['event'][ logs ].replace(
+										//			/1\d{9,9}.\d{3,6}/gi, (new Date(
+										//				window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['event'][ logs ].match(/1\d{9,9}.\d{3,6}/gi)[0] * 1000
+										//			).toLocaleString(
+										//				"en-US", {
+										//					timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+										//					year    : 'numeric', 
+										//					month   : '2-digit', 
+										//					day     : '2-digit', 
+										//					hour    : '2-digit', 
+										//					hour12  : false, 
+										//					minute  : '2-digit', 
+										//					second  : '2-digit'
+										//				}
+										//			))
+										//		); 
+										//		//	console.debug( window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'][ logs ] ); 
+										//	}; 
+									}; 
+									document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['bl']['db'], undefined, 4); 
+
+									try{
+										document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelector('div.bl-offchain-mainchain div').innerText 		= `BRWL ${
+											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bl']['db']['balance']['pre']['BRWL']).toFixed(4)
+										} : WITH [0%] DEPO : BRWL ${
+											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bl']['db']['balance']['has']['BRWL']).toFixed(4)
+										}`; 
+									}catch(e){ }; 
+									
+								}catch(e){ }; 
 								
 								//  try{
 								//      delete window.window['total']['Stake']; 
@@ -2452,8 +2542,7 @@ $(document).ready(function() {
                 try{ window['check-random-mine'].checked = window['information-data']['POOL']['fr']['randm']['var'] }catch(e){}; 
                 try{
                     window['check-random-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
-                        'value', 
-                        window['information-data']['POOL']['fr']['randm']['sec']
+                        'value', window['information-data']['POOL']['fr']['randm']['sec']
                     ); window['check-random-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['randm']['sec'] ; 
 				}catch(e){}; 
 

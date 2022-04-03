@@ -94,6 +94,7 @@
         "https://wax.eosdac.io"
     ], 
     "endpoints" : [
-        "https://wax.validationcore.io/reports/nodes/wallet"
+        "https://wax.validationcore.io/reports/nodes/wallet", 
+        "https://wax.stats.eosusa.news/d/EUBCMXk7k/global-atomic-api-status"
     ]
 }

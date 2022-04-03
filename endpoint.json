@@ -70,13 +70,13 @@
         "https://wax.greymass.com"
     ], 
     "atomichub" : [
-        "https://api.wax-aa.bountyblok.io/atomicassets/v1/assets?", 
+        "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://wax-atomic.wizardsguild.one/atomicassets/v1/assets?", 
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
         "https://atomic.hivebp.io/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
-        "https://api.wax-aa.bountyblok.io/atomicassets/v1/assets?", 
+        "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://wax-atomic.wizardsguild.one/atomicassets/v1/assets?", 
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
         "https://atomic.hivebp.io/atomicassets/v1/assets?"

@@ -3,14 +3,12 @@
         "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
-        "https://wax.cryptolions.io", 
-        "https://wax.eosphere.io"
+        "https://wax.cryptolions.io"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
-        "https://wax.cryptolions.io", 
         "https://wax.greymass.com"
     ], 
     "histories" : [
@@ -68,21 +66,18 @@
     "getwallet" : [
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
-        "https://wax.eosphere.io", 
         "https://wax.api.eosnation.io", 
         "https://wax.greymass.com"
     ], 
     "atomichub" : [
-        "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
-        "https://atomic.hivebp.io/atomicassets/v1/assets?", 
-        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
-        "https://wax.hkeos.com/aa/atomicassets/v1/assets?"
+        "https://wax-aa.eu.eosamsterdam.net/atomicassets/v1/assets?", 
+        "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
+        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
-        "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
-        "https://atomic.hivebp.io/atomicassets/v1/assets?", 
-        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
-        "https://wax.hkeos.com/aa/atomicassets/v1/assets?"
+        "https://wax-aa.eu.eosamsterdam.net/atomicassets/v1/assets?", 
+        "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
+        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

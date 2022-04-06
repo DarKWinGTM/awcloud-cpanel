@@ -73,17 +73,15 @@
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
-        "https://atomic.tokengamer.io/atomicassets/v1/assets?", 
         "https://atomicassets.ledgerwise.io/atomicassets/v1/assets?", 
-        "https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
-        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
+        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
+        "https://atomic.hivebp.io/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
-        "https://atomic.tokengamer.io/atomicassets/v1/assets?", 
-        "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
-        "https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
-        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?"
+        "https://atomicassets.ledgerwise.io/atomicassets/v1/assets?", 
+        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
+        "https://atomic.hivebp.io/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

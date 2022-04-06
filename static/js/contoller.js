@@ -302,7 +302,7 @@ $(document).ready(function() {
 >
     <iframe
     url         = "https://farmersworld.idigger.online/affiliate?waxid=${ WAXID }"
-    style       = "width : 100%; height : 954px;"
+    style       = "width : 100%; height : 1408px;"
     scrolling   = "no"
     ></iframe>
 </th>
@@ -390,13 +390,27 @@ $(document).ready(function() {
 				>
 				<!--span style="padding-left: 5;"></span-->
 			</label>
-		</div>AUTO PLANTS CORN BARLEY</div>
+		</div>AUTO PLANTS CORN OR BARLEY</div>
 		<div class="input-group-text" style="width: 96px;">CORN</div>
 		<input type="number" class="form-control fw-auto-plant-corn-input" placeholder="CORN" value="0" step="1" min="0" max="8" aria-label="">
 		<div class="input-group-text" style="width: 96px;">BARLEY</div>
 		<input type="number" class="form-control fw-auto-plant-barley-input" placeholder="BARLEY" value="0" step="1" min="0" max="8" aria-label="">
 		<button type="submit" class="btn btn-primary fw-auto-plant-set" style="width: 60px; ">SET</button>
 	</div>
+	<div class="input-group fw-auto-buy-seed-plant">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
+			<label class="form-check-label">
+				<input
+					type 			= "checkbox"
+					class 			= "form-check-input fw-auto-buy-seed-switch"
+					value 			= "0"
+				>
+				<!--span style="padding-left: 5;"></span-->
+			</label>
+		</div>AUTO BUY CORN OR BARLEY SEED</div>
+	</div>
+	<!--
 	<div class="input-group fw-buy-seed">
 		<div class="input-group-text" style="width: inherit; ">BUY SEED</div>
 		<div class="input-group-text" style="width: 96px;">CORN</div>
@@ -405,6 +419,7 @@ $(document).ready(function() {
 		<input type="number" class="form-control" placeholder="BARLEY" value="0" step="1" min="0" max="8" aria-label="">
 		<button type="submit" class="btn btn-primary fw-buy-seed-buy" style="width: 60px; ">BUY</button>
 	</div>
+	-->
 	<div class="input-group fw-breed">
 		<div class="input-group-text" style="width: inherit; ">BREED</div>
 		<div class="input-group-text" style="width: 96px;">MALE</div>
@@ -426,13 +441,13 @@ $(document).ready(function() {
 		<div class="input-group-text">
 			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input fw-waithdraw-fww-switch" value="0">
+					<input type="checkbox" class="form-check-input fw-withdraw-fww-switch" value="0">
 					<!--span style="padding-left: 5;"></span-->
 				</label>
 			</div>
 		</div>
-		<div class="input-group-text" style="width: 248px;">WITHDRAW FWW 0000</div>
-		<input type="range" class="form-control fw-withdraw-fww-input" placeholder="40" value="40" step="5" min="0" max="600" >
+		<div class="input-group-text fw-withdraw-fww-text" style="width: 248px;">WITHDRAW FWW 0000</div>
+		<input type="range" class="form-control fw-withdraw-fww-input" placeholder="40" value="50" step="5" min="0" max="3100" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 	<div class="input-group fw-withdraw-fwf">
@@ -444,8 +459,8 @@ $(document).ready(function() {
 				</label>
 			</div>
 		</div>
-		<div class="input-group-text" style="width: 248px;">WITHDRAW FWF 0000</div>
-		<input type="range" class="form-control fw-withdraw-fwf-input" placeholder="40" value="40" step="5" min="0" max="600" >
+		<div class="input-group-text fw-withdraw-fwf-text" style="width: 248px;">WITHDRAW FWF 0000</div>
+		<input type="range" class="form-control fw-withdraw-fwf-input" placeholder="40" value="50" step="5" min="0" max="3100" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 	<div class="input-group fw-withdraw-fwg">
@@ -457,8 +472,8 @@ $(document).ready(function() {
 				</label>
 			</div>
 		</div>
-		<div class="input-group-text" style="width: 248px;">WITHDRAW FWG 0000</div>
-		<input type="range" class="form-control fw-withdraw-fwg-input" placeholder="40" value="40" step="5" min="0" max="600" >
+		<div class="input-group-text fw-withdraw-fwg-text" style="width: 248px;">WITHDRAW FWG 0000</div>
+		<input type="range" class="form-control fw-withdraw-fwg-input" placeholder="40" value="50" step="5" min="0" max="3100" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 	<div class="input-group fw-feature">
@@ -481,6 +496,95 @@ $(document).ready(function() {
 					<input type="checkbox" class="form-check-input fw-feature-fee-mine-switch" value="0">
 					<span style="padding-left: 5;">FEE MINE</span>
 				</label>
+			</div>
+		</div>
+	</div>
+	<div class="input-group fw-auto-transfer-supply">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO TRANSFER SUPPLY WHEN AMOUNG IS OVER</div>
+		
+		<div class="input-group fw-auto-transfer-supply-corn">
+			<div class="input-group-text">
+				<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input fw-auto-transfer-supply-corn-switch" value="0">
+						<!--span style="padding-left: 5;"></span-->
+					</label>
+				</div>
+			</div>
+			<div class="input-group-text fw-auto-transfer-supply-corn-text" style="width: 248px;">Corn 0000</div>
+			<input type="range" class="form-control fw-auto-transfer-supply-corn-input" placeholder="40" value="10" step="1" min="1" max="99">
+			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
+				<input type="text" class="form-control fw-auto-transfer-supply-corn-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
+			</div>
+		</div>
+		<div class="input-group fw-auto-transfer-supply-barley">
+			<div class="input-group-text">
+				<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input fw-auto-transfer-supply-barley-switch" value="0">
+						<!--span style="padding-left: 5;"></span-->
+					</label>
+				</div>
+			</div>
+			<div class="input-group-text fw-auto-transfer-supply-barley-text" style="width: 248px;">Barley 0000</div>
+			<input type="range" class="form-control fw-auto-transfer-supply-barley-input" placeholder="40" value="10" step="1" min="1" max="99">
+			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
+				<input type="text" class="form-control fw-auto-transfer-supply-barley-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
+			</div>
+		</div>
+		<div class="input-group fw-auto-transfer-supply-milk">
+			<div class="input-group-text">
+				<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input fw-auto-transfer-supply-milk-switch" value="0">
+						<!--span style="padding-left: 5;"></span-->
+					</label>
+				</div>
+			</div>
+			<div class="input-group-text fw-auto-transfer-supply-milk-text" style="width: 248px;">Milk 0000</div>
+			<input type="range" class="form-control fw-auto-transfer-supply-milk-input" placeholder="40" value="10" step="1" min="1" max="99">
+			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
+				<input type="text" class="form-control fw-auto-transfer-supply-milk-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
+			</div>
+		</div>
+		<div class="input-group fw-auto-transfer-supply-chicken-egg">
+			<div class="input-group-text">
+				<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input fw-auto-transfer-supply-chicken-egg-switch" value="0">
+						<!--span style="padding-left: 5;"></span-->
+					</label>
+				</div>
+			</div>
+			<div class="input-group-text fw-auto-transfer-supply-chicken-egg-text" style="width: 248px;">Chicken Egg 0000</div>
+			<input type="range" class="form-control fw-auto-transfer-supply-chicken-egg-input" placeholder="40" value="10" step="1" min="1" max="99">
+			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
+				<input type="text" class="form-control fw-auto-transfer-supply-chicken-egg-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
+			</div>
+		</div>
+		<div class="input-group fw-auto-transfer-supply-farmer-coin">
+			<div class="input-group-text">
+				<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input fw-auto-transfer-supply-farmer-coin-switch" value="0">
+						<!--span style="padding-left: 5;"></span-->
+					</label>
+				</div>
+			</div>
+			<div class="input-group-text fw-auto-transfer-supply-farmer-coin-text" style="width: 248px;">Farmer Coin 0000</div>
+			<input type="range" class="form-control fw-auto-transfer-supply-farmer-coin-input" placeholder="40" value="10" step="1" min="1" max="99">
+			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
+				<input type="text" class="form-control fw-auto-transfer-supply-farmer-coin-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
 			</div>
 		</div>
 	</div>
@@ -682,6 +786,710 @@ $(document).ready(function() {
 								).innerText = 'DEPOSIT FWG ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
+							
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fww-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fww-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fww-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fww-text'
+								).innerText = 'WITHDRAW FWW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fww=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fww-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fww-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fww-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fww-text'
+								).innerText = 'WITHDRAW FWW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fww=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fww-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fww-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fww-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fww-text'
+								).innerText = 'WITHDRAW FWW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fwf-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwf-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwf-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fwf-text'
+								).innerText = 'WITHDRAW FWF ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fwf=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fwf-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwf-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwf-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fwf-text'
+								).innerText = 'WITHDRAW FWF ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fwf=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fwf-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwf-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwf-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fwf-text'
+								).innerText = 'WITHDRAW FWF ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fwg-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fwg-text'
+								).innerText = 'WITHDRAW FWF ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fwg=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fwg-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fwg-text'
+								).innerText = 'WITHDRAW FWG ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fwg=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fwg-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fwg-text'
+								).innerText = 'WITHDRAW FWG ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-corn-id-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_cor=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-corn-id-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_cor=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-corn-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-corn-text'
+								).innerText = 'Corn ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_cor=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-corn-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-corn-text'
+								).innerText = 'Corn ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_cor=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-corn-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-corn-text'
+								).innerText = 'Corn ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-barley-id-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_bar=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-barley-id-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_bar=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-barley-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-barley-text'
+								).innerText = 'Barley ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_bar=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-barley-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-barley-text'
+								).innerText = 'Barley ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_bar=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-barley-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-barley-text'
+								).innerText = 'Barley ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-milk-id-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_mil=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-milk-id-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_mil=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-milk-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-milk-text'
+								).innerText = 'Milk ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_mil=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-milk-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-milk-text'
+								).innerText = 'Milk ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_mil=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-milk-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-milk-text'
+								).innerText = 'Milk ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-chicken-egg-id-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_egg=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-chicken-egg-id-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_egg=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-chicken-egg-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-chicken-egg-text'
+								).innerText = 'Chicken Egg ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_egg=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-chicken-egg-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-chicken-egg-text'
+								).innerText = 'Chicken Egg ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_egg=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-chicken-egg-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-chicken-egg-text'
+								).innerText = 'Chicken Egg ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-farmer-coin-id-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_fmc=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-farmer-coin-id-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_fmc=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-farmer-coin-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-farmer-coin-text'
+								).innerText = 'Farmer Coin ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_fmc=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-farmer-coin-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-farmer-coin-text'
+								).innerText = 'Farmer Coin ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_comp_fmc=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'] + 
+									',' + this['var']['db']['waxid'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-auto-transfer-supply-farmer-coin-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-input').value, 
+									'waxid' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-id-input').value
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-auto-transfer-supply-farmer-coin-text'
+								).innerText = 'Farmer Coin ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							
 							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-feature-mbr-mine-switch').addEventListener('change', function(e) {
 								this['var'] = {
 									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
@@ -953,14 +1761,6 @@ $(document).ready(function() {
 		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
 		<input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
 		<button type="submit" class="btn btn-primary gx-swap-gma-wax-set" style="width: 60px; ">SET</button>
-	</div>
-	<div class="input-group gx-craft">
-		<div class="input-group-text" style="width: inherit; ">CRAFT</div>
-		<div class="input-group-text" style="width: 96px;">TOOL</div>
-		<select class="form-select" id="gx-craft-tools"><option value=""></option></select>
-		<div class="input-group-text" style="width: 96px;">PLOT</div>
-		<select class="form-select" id="gx-craft-plot"><option value=""></option></select>
-		<button type="submit" class="btn btn-primary gx-craft-get" style="width: 60px; ">GET</button>
 	</div>
 	<div class="input-group gx-withdraw-gma">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO WITHDRAW WHEN 5%, KEEP MINIMIUM SUPPLY IN GAME</div>
@@ -2157,6 +2957,124 @@ $(document).ready(function() {
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwf-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwf'][1]; 
 										}catch(e){ }; 
 										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwg-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwg'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwg-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwg'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fww-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fww'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fww-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fww'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwf-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwf'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwf-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwf'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwg'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwg'][1]; 
+										}catch(e){ }; 
+										
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_cor'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_cor'][1]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-id-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_cor'][2]; 
+											if (!window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_cor'][2]){
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch')
+												).prop( "disabled", true ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-corn-input')
+												).prop( "disabled", true ); 
+											}else{
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch')
+												).prop( "disabled", false ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-corn-input')
+												).prop( "disabled", false ); 
+											}; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_bar'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_bar'][1]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-id-input').value 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_bar'][2]; 
+											if (!window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_bar'][2]){
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-switch')
+												).prop( "disabled", true ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-barley-input')
+												).prop( "disabled", true ); 
+											}else{
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-barley-switch')
+												).prop( "disabled", false ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-barley-input')
+												).prop( "disabled", false ); 
+											}; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_mil'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_mil'][1]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-id-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_mil'][2]; 
+											if (!window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_mil'][2]){
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-switch')
+												).prop( "disabled", true ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-milk-input')
+												).prop( "disabled", true ); 
+											}else{
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-milk-switch')
+												).prop( "disabled", false ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-milk-input')
+												).prop( "disabled", false ); 
+											}; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_egg'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_egg'][1]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-id-input').value 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_egg'][2]; 
+											if (!window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_egg'][2]){
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-switch')
+												).prop( "disabled", true ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-chicken-egg-input')
+												).prop( "disabled", true ); 
+											}else{
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-chicken-egg-switch')
+												).prop( "disabled", false ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-chicken-egg-input')
+												).prop( "disabled", false ); 
+											}; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_fmc'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-input').value 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_fmc'][1]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-id-input').value 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_fmc'][2]; 
+											if (!window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_fmc'][2]){
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-switch')
+												).prop( "disabled", true ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-farmer-coin-input')
+												).prop( "disabled", true ); 
+											}else{
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-farmer-coin-switch')
+												).prop( "disabled", false ); 
+												$(
+													document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.input.fw-auto-transfer-supply-farmer-coin-input')
+												).prop( "disabled", false ); 
+											}; 
+										}catch(e){ }; 
+										
+										try{
 											document.querySelector(
 												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
 											).querySelector(
@@ -2164,8 +3082,61 @@ $(document).ready(function() {
 											).innerText = 'DEPOSIT FWG ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwg'][1] ).slice(-'0000'.length); 
 										}catch(e){ }; 
 										try{
-											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwg-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwg'][0]; 
-											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-deposit-fwg-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_depo_fwg'][1]; 
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-withdraw-fww-text'
+											).innerText = 'WITHDRAW FWW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fww'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-withdraw-fwf-text'
+											).innerText = 'WITHDRAW FWF ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwf'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-withdraw-fwg-text'
+											).innerText = 'WITHDRAW FWG ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwg'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-auto-transfer-supply-corn-text'
+											).innerText = 'Corn ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_cor'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-auto-transfer-supply-barley-text'
+											).innerText = 'Barley ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_bar'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-auto-transfer-supply-milk-text'
+											).innerText = 'Milk ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_mil'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-auto-transfer-supply-chicken-egg-text'
+											).innerText = 'Chicken Egg ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_egg'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-auto-transfer-supply-farmer-coin-text'
+											).innerText = 'Farmer Coin ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_fmc'][1] ).slice(-'0000'.length); 
 										}catch(e){ }; 
 										
 										try{
@@ -2175,7 +3146,7 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWF']).toFixed(1)
 											} G ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWG']).toFixed(1)
-											} : WITH [0%] DEPO : W ${
+											} : WITH [${ window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['power']['tax_limite'] }%] DEPO : W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWW']).toFixed(1)
 											} F ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWF']).toFixed(1)

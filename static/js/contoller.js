@@ -218,7 +218,8 @@ $(document).ready(function() {
                                     id          : WAXID, 
                                     innerHTML   : window['information-data']['DOMS'].replace(
                                         '{ WAXID }', 
-                                        `${ WAXID.replace('.wam', '.').slice(0, 2) }` + (function(x){ if (x.length % 2){ return '-' }else{ return '--' } })(WAXID.replace('.wam', '.')) + `${ WAXID.replace('.wam', '.').slice(-2) }`
+                                        //	`${ WAXID.replace('.wam', '.').slice(0, 2) }` + (function(x){ if (x.length % 2){ return '-' }else{ return '--' } })(WAXID.replace('.wam', '.')) + `${ WAXID.replace('.wam', '.').slice(-2) }`
+                                        `${ WAXID }`
                                     ).replace(
                                         '{ STAKE }', 
                                         window['information-data']['DATA'][WAXID]['cpu']['stake']['alls'].toString().split('.')[0]

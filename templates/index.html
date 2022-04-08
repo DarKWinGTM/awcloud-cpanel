@@ -1313,7 +1313,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function (){
           icon: 'swalSuccess'
         },
         title: 'Done!',
-        html: `<div>SET TOOL DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+        html: `<div>SET TOOL DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
       }); 
       $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop( 'disabled', true ); 
     }else if (
@@ -1431,7 +1431,7 @@ document.querySelector('form[action="#SENDNFT"]').addEventListener('submit', fun
                         icon: 'swalSuccess'
                     },
                     title: 'Done!',
-                    html: `<div>SEND NFT DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+                    html: `<div>SEND NFT DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
                 }); 
                 $("button.btn.btn-primary.send-nft").removeClass('invisible'); 
                 $("button.btn.btn-primary.send-nft").attr('readonly', false); 
@@ -1755,7 +1755,7 @@ document.querySelector('button.btn.btn-primary.set_landtoall').addEventListener(
               //  ); 
               $.notify(
                 window[ ID ].querySelector('button#land'), 
-                `SET LAND : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX</a>`, 
+                `SET LAND : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
                 'success'
               ); // {encode: false}, 
 	            //  document.querySelector(`iframe[url*="affiliate?waxid=${ ID }"]`).parentElement.style.display = 'table-cell'; 
@@ -1837,7 +1837,7 @@ document.querySelector('button.btn.btn-primary.set_land').addEventListener(
               icon: 'swalSuccess'
             },
             title: 'Done!',
-            html: `<div>SET LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+            html: `<div>SET LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
           });
           $(this).prop( "disabled", false ); $(this).attr('readonly', false); 
         }else{
@@ -2460,7 +2460,7 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
             icon: 'swalSuccess'
           },
           title: 'Done!',
-          html: `<div>TRANSFER DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+          html: `<div>TRANSFER DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
         }); 
         $("button.btn.btn-primary.transfer").removeClass('invisible'); 
         $("button.btn.btn-primary.transfer").attr('readonly', false); 
@@ -2555,7 +2555,7 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
                   if ( result['code'] == 200 ){
                     $.notify(
                       window[ ID ].querySelector('button#land'), 
-                      `TRANSFER : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX</a>`, 
+                      `TRANSFER : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
                       'success'
                     ); 
                   }else{
@@ -2731,7 +2731,7 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                             result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
                         ).then(result => {
                             if ( result['code'] == 200 ){
-                                $.notify(`ALLOCATE : DONE - ${ID} <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX</a>`, 'success'); 
+                                $.notify(`ALLOCATE : DONE - ${ID} <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 'success'); 
                             }else{
                                 try{
                                     if(
@@ -2961,7 +2961,7 @@ document.querySelector('button.btn.btn-primary.swaptoall').addEventListener(
             if ( result['code'] == 200 ){
               $.notify(
                 window[ ID ].querySelector('button#land'), 
-                `SWAP : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX</a>`, 
+                `SWAP : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
                 'success'
               ); 
             }else{
@@ -3041,7 +3041,7 @@ document.querySelector('button.btn.btn-primary.swap').addEventListener(
               icon: 'swalSuccess'
             },
             title: 'Done!',
-            html: `<div>SWAP DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+            html: `<div>SWAP DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
           }); 
           //  $(this).prop( "disabled", true ); $(this).attr('readonly', false); 
           //  //  $('button.btn.btn-primary.swaptoall').prop( "disabled", false ); $(this).attr('readonly', false); 
@@ -3229,7 +3229,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
             icon: 'swalSuccess'
           },
           title: 'Done!',
-          html: `<div>STAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+          html: `<div>STAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
         }); 
         $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.stake')).prop( 'disabled', false ); 
       }else if (
@@ -3386,7 +3386,7 @@ document.querySelector('form[action="#UNSTAKE"]').addEventListener('submit', fun
             icon: 'swalSuccess'
           },
           title: 'Done!',
-          html: `<div>UNSTAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+          html: `<div>UNSTAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
         }); 
         $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.unstake')).prop( 'disabled', false ); 
       }else if (
@@ -3551,7 +3551,7 @@ document.querySelector('div.modal#stakeWax button.btn.btn-primary.refund').addEv
                         icon: 'swalSuccess'
                     },
                     title: 'Done!',
-                    html: `<div>REFUND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+                    html: `<div>REFUND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
                 }); 
                 $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.refund')).prop( 'disabled', false ); 
             }else if (
@@ -3708,7 +3708,7 @@ document.querySelector('form[action="#RENT-UNSTAKE"]').addEventListener('submit'
             icon: 'swalSuccess'
           },
           title: 'Done!',
-          html: `<div>RENT UNSTAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+          html: `<div>RENT UNSTAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
         }); 
         $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-unstake')).prop( 'disabled', false ); 
       }else if (
@@ -3892,7 +3892,7 @@ document.querySelector('form[action="#FREE-STAKE"]').addEventListener('submit', 
                         icon: 'swalSuccess'
                     },
                     title: 'Done!',
-                    html: `<div>FREE STAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+                    html: `<div>FREE STAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
                 }); 
                 $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.free-stake')).prop( 'disabled', false ); 
             }else if (
@@ -4127,7 +4127,7 @@ document.querySelector('form[action="#RENT-SAFE-STAKE"]').addEventListener('subm
                         icon: 'swalSuccess'
                     },
                     title: 'Done!',
-                    html: `<div>RENT STAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX</a></div>`, 
+                    html: `<div>RENT STAKE DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`, 
                 }); 
                 $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop( 'disabled', false ); 
             }else if (

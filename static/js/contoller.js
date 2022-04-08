@@ -179,7 +179,7 @@ $(document).ready(function() {
                         document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
                         clearInterval(window['fetchProcessSec']); thiscode(); 
                     }; 
-                }, 200); 
+                }, 300); 
                 
                 for (TRELE of document.querySelectorAll(`tr[id*=".wam"]`)){
                     if(
@@ -3387,7 +3387,7 @@ $(document).ready(function() {
 								//      delete window.window['total']['Profit']; 
 								//  }catch(e){}; 
 								
-							}, 1000 + Math.ceil(Math.random() * 8000)); 
+							}, 2000 + Math.ceil(Math.random() * 16000)); 
 						})(WAXID); 
                         
                     }; 
@@ -3545,7 +3545,7 @@ $(document).ready(function() {
                         document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
                         clearInterval(window['fetchProcessSec']); thiscode(); 
                     }; 
-                }, 200); 
+                }, 300); 
 
                 
                 

@@ -38,7 +38,7 @@
 
 $(document).ready(function() {
     
-    window.onload = function (){
+    //	window.onload = function (){
         
         window['waxserver'] = {}; window['waxserver']['endpoint'] = [
 			//	{
@@ -4188,7 +4188,7 @@ $(document).ready(function() {
             //	    console.log("Checkbox is not checked..", this.checked);
             //	}; 
         });
-    }; 
+    //    }; 
 }); 
 
 

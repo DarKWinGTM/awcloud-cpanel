@@ -144,15 +144,15 @@ $(document).ready(function() {
             //			//  'cors.bridged.cc/https://apiminingv2.idigger.online'
         ]; 
         
-        document.querySelector('div.modal.fade#poolMineable').addEventListener('shown.bs.modal', function () {
-            document.querySelector('div.modal.fade#poolMineable').querySelector('iframe').setAttribute(
+        document.querySelector('div.modal#poolMineable').addEventListener('shown.bs.modal', function () {
+            document.querySelector('div.modal#poolMineable').querySelector('iframe').setAttribute(
                 'src', `https://wax.stats.eosusa.news/d-solo/g-n07fbGz/alienworlds-planet-info-big?orgId=1&refresh=1m&from=now-5m&to=now&fullscreen&panelId=9`
                 //  `https://wax.stats.eosusa.news/d/Mfo5qfbMz/alienworlds-planet-info-big?orgId=1&refresh=1m&from=now-5m&to=now&fullscreen&panelId=9`
                 // https://wax.stats.eosusa.news/d-solo/g-n07fbGz/alienworlds-planet-info?orgId=1&refresh=60s&from=1628522900956&to=1628526500956&var-planet=All&theme=light&panelId=9
             ); 
         }); 
-        document.querySelector('div.modal.fade#poolMineable').addEventListener('hide.bs.modal', function () {
-            document.querySelector('div.modal.fade#poolMineable').querySelector('iframe').setAttribute(
+        document.querySelector('div.modal#poolMineable').addEventListener('hide.bs.modal', function () {
+            document.querySelector('div.modal#poolMineable').querySelector('iframe').setAttribute(
                 'src', ``
             ); 
         }); 
@@ -289,6 +289,7 @@ $(document).ready(function() {
     url         = "https://mining.idigger.online/affiliate?waxid=${ WAXID }"
     style       = "width : 100%; height : 580px;"
     scrolling   = "no"
+	loading 	= "lazy"
     ></iframe>
 </th>`
                                 })
@@ -305,6 +306,7 @@ $(document).ready(function() {
     url         = "https://farmersworld.idigger.online/affiliate?waxid=${ WAXID }"
     style       = "width : 100%; height : 1408px;"
     scrolling   = "no"
+	loading 	= "lazy"
     ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id="${ WAXID }-fw-panel-monitor">
@@ -515,7 +517,7 @@ $(document).ready(function() {
 			<div class="input-group-text fw-auto-transfer-supply-corn-text" style="width: 248px;">Corn 0000</div>
 			<input type="range" class="form-control fw-auto-transfer-supply-corn-input" placeholder="40" value="10" step="1" min="1" max="99">
 			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
-			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
 				<input type="text" class="form-control fw-auto-transfer-supply-corn-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
 			</div>
@@ -532,7 +534,7 @@ $(document).ready(function() {
 			<div class="input-group-text fw-auto-transfer-supply-barley-text" style="width: 248px;">Barley 0000</div>
 			<input type="range" class="form-control fw-auto-transfer-supply-barley-input" placeholder="40" value="10" step="1" min="1" max="99">
 			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
-			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
 				<input type="text" class="form-control fw-auto-transfer-supply-barley-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
 			</div>
@@ -549,7 +551,7 @@ $(document).ready(function() {
 			<div class="input-group-text fw-auto-transfer-supply-milk-text" style="width: 248px;">Milk 0000</div>
 			<input type="range" class="form-control fw-auto-transfer-supply-milk-input" placeholder="40" value="10" step="1" min="1" max="99">
 			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
-			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
 				<input type="text" class="form-control fw-auto-transfer-supply-milk-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
 			</div>
@@ -566,7 +568,7 @@ $(document).ready(function() {
 			<div class="input-group-text fw-auto-transfer-supply-chicken-egg-text" style="width: 248px;">Chicken Egg 0000</div>
 			<input type="range" class="form-control fw-auto-transfer-supply-chicken-egg-input" placeholder="40" value="10" step="1" min="1" max="99">
 			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
-			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
 				<input type="text" class="form-control fw-auto-transfer-supply-chicken-egg-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
 			</div>
@@ -583,7 +585,7 @@ $(document).ready(function() {
 			<div class="input-group-text fw-auto-transfer-supply-farmer-coin-text" style="width: 248px;">Farmer Coin 0000</div>
 			<input type="range" class="form-control fw-auto-transfer-supply-farmer-coin-input" placeholder="40" value="10" step="1" min="1" max="99">
 			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
-			<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>
 				<input type="text" class="form-control fw-auto-transfer-supply-farmer-coin-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
 			</div>
@@ -1534,6 +1536,7 @@ $(document).ready(function() {
     url         = "https://starship-explorer.io/?user=${ WAXID }"
     style       = "width : 100%; height : 3038px; filter: invert(0.95) contrast(1.0) saturate(0.6);"
     scrolling   = "no"
+	loading 	= "lazy"
     ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-ss-panel-monitor">
@@ -1580,7 +1583,7 @@ $(document).ready(function() {
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">000000 TEAM SORE : TEAM RANGE 000000</div>
 	</div>
 	<div class="input-group fq-auto-repair">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
 			<label class="form-check-label">
 				<input
@@ -1593,7 +1596,7 @@ $(document).ready(function() {
 		</div>AUTO REPAIR ROBO</div>
 	</div>
 	<div class="input-group fq-auto-defect">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
 			<label class="form-check-label">
 				<input
@@ -1606,7 +1609,7 @@ $(document).ready(function() {
 		</div>AUTO DEFECT ENEMY</div>
 	</div>
 	<div class="input-group fq-auto-revive">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
 			<label class="form-check-label">
 				<input
@@ -1642,7 +1645,7 @@ $(document).ready(function() {
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FGL 0.0000 : WITH [0%] DEPO : FGL 0.0000</div>
 	</div>
 	<div class="input-group cc-auto-battle-season">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
 			<label class="form-check-label">
 				<input
@@ -1654,7 +1657,7 @@ $(document).ready(function() {
 		</div>AUTO BATTLE SEASON</div>
 	</div>
 	<div class="input-group cc-auto-battle-weekly">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
 			<label class="form-check-label">
 				<input
@@ -2700,7 +2703,7 @@ $(document).ready(function() {
 						//			//	).then(result => {
 						//			//	    
 						//			//	    for (x in result['rows']){
-						//			//	        document.querySelector('div.modal.fade#transferWax').querySelector(`[value*="${ result['rows'][x]['balance'].split(' ')[1] }-alien.worlds"]`).setAttribute(
+						//			//	        document.querySelector('div.modal#transferWax').querySelector(`[value*="${ result['rows'][x]['balance'].split(' ')[1] }-alien.worlds"]`).setAttribute(
 						//			//	            'val', result['rows'][x]['balance'].split(' ')[0]
 						//			//	        ); 
 						//			//	    }
@@ -3433,12 +3436,12 @@ $(document).ready(function() {
                             style   : "width: 100%;height: 100%;"
                         })
                     ); 
-                    document.querySelector('div.modal.fade#sessionsToken').addEventListener('shown.bs.modal', function () {
+                    document.querySelector('div.modal#sessionsToken').addEventListener('shown.bs.modal', function () {
                         document.querySelector('iframe[id*="SessionsToken"]').setAttribute(
                             'src', `https://awcloud-token.${ window.location.href.match(/\.(.*)\.repl\./gi).join('').replace(/\.repl\./gi, '').replace(/\./gi, '') }.repl.co/`
                         ); 
                     }); 
-                    document.querySelector('div.modal.fade#sessionsToken').addEventListener('hide.bs.modal', function () {
+                    document.querySelector('div.modal#sessionsToken').addEventListener('hide.bs.modal', function () {
                         document.querySelector('iframe[id*="SessionsToken"]').setAttribute(
                             'src', ``
                         ); 
@@ -3454,12 +3457,12 @@ $(document).ready(function() {
                         Object.keys( window['information-data']['DATA'] ).join('-')
                     ))
                 ){
-                    document.querySelector('div.modal.fade#waxDetective').addEventListener('shown.bs.modal', function () {
+                    document.querySelector('div.modal#waxDetective').addEventListener('shown.bs.modal', function () {
                         document.querySelector('iframe[id*="FlowChart"]').setAttribute(
                             'src', `https://waxdetective.io/network/transfers?accounts=${ Object.keys( window['information-data']['DATA'] ).join('-') }&time_min=0&time_max=2555555555555`
                         ); 
                     }); 
-                    document.querySelector('div.modal.fade#waxDetective').addEventListener('hide.bs.modal', function () {
+                    document.querySelector('div.modal#waxDetective').addEventListener('hide.bs.modal', function () {
                         document.querySelector('iframe[id*="FlowChart"]').setAttribute(
                             'src', ''
                         ); 
@@ -3523,13 +3526,28 @@ $(document).ready(function() {
                 document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
 				
                 try{ clearInterval(window['fetchProcessSec']) }catch(e){}; 
+                
+                //    var i = 0; window['fetchProcessSec'] = setInterval(function () {
+                //        i+= Math.ceil(Math.random() * 12) + 1;
+                //        if (i >= 180) {
+                //            document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
+                //            clearInterval(window['fetchProcessSec']); thiscode(); 
+                //        }; 
+                //    }, 200); 
                 var i = 0; window['fetchProcessSec'] = setInterval(function () {
                     i+= Math.ceil(Math.random() * 12) + 1;
+                    if (i < 100) {
+                        document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = `${i}%`; 
+                    }else{
+                        document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '100%'; 
+                    }; 
                     if (i >= 180) {
                         document.querySelector('div[class*="progress-bar"][id*="time_pg"]').style.width = '0%'; 
                         clearInterval(window['fetchProcessSec']); thiscode(); 
                     }; 
                 }, 200); 
+
+                
                 
             });  
             

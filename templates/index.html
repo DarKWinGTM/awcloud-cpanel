@@ -11,8 +11,15 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous" />
 	<script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"> </script>
     -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+    
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="//cdn.jsdelivr.net/npm/eosjs-ecc@4.0.4/lib/eosjs-ecc.min.js" crossorigin="anonymous"></script>
     <script src="/js/waxjs.js" crossorigin="anonymous"></script>
@@ -28,7 +35,6 @@
       s.setAttribute('src', '/js/notify.js'); 
       document.head.appendChild(s);
 	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
 
 	</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.3/xlsx.full.min.js">
@@ -39,7 +45,32 @@
 			--bs-font-sans-serif: system-ui !important;
 			--bs-font-monospace: system-ui !important;
 		}
-
+        
+        .modal {
+            display: none; /* Hidden by default */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
+            -webkit-animation-name: none; /* Fade in the background */
+            -webkit-animation-duration: none;
+        }
+        .progress .bar {
+            -webkit-transition: none;
+            -moz-transition: none;
+            -ms-transition: none;
+            -o-transition: none;
+            transition: none;
+        }
+        
+        .bootstrap-tagsinput {
+            padding: 0.375rem 0.75rem; 
+            width: 100%;
+        }
+        .bootstrap-tagsinput .tag {
+            margin-right: 2px;
+            color: black;
+        }
+        
 		.listscroll {
 			max-height: 500px;
 			width: 800px;
@@ -405,7 +436,7 @@
                         font-family         : sans-serif;
                         font-size           : large;
                     ">
-						<div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.88</div>
+						<div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.89</div>
 					</th>
 
 					<tr>
@@ -420,8 +451,8 @@
 						<th class="col-md text-nowrap" scope="col">STAKE</th>
 						<th class="col-md text-nowrap" scope="col">WAX : TLM : SWAP</th>
 						<th class="col-md text-nowrap" scope="col">LAND ID</th>
-						<th class="col-md text-nowrap" scope="col">TIME DELAY : TIME STAMP</th>
-						<th class="col-md text-nowrap" scope="col">LAST TLM : LAST CPU : TLM/h</th>
+						<th class="col-md text-nowrap" scope="col">DELAY : LAST</th>
+						<th class="col-md text-nowrap" scope="col">TLM : CPU : TLM/h</th>
 						<th class="col-md text-nowrap" scope="col">RUNNING STATE</th>
 						<th class="col-md text-nowrap" scope="col">ACTIONS</th>
 					</tr>
@@ -594,7 +625,7 @@ window['collapse-all-history'].addEventListener('click', function(e) {
                                 data-bs-toggle  = "modal"
                                 data-bs-target  = "#totalSetting"
                                 style           = "width: 50%;"
-                            >SETTING</button>
+                            >ALHOR TOOL</button>
                             <button
                                 id              = "pool_mineable"
                                 type            = "submit"
@@ -897,7 +928,7 @@ if(
       <div class="container">
       </div>
     </footer>
-    <div class="modal fade" id="boxNFT" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="boxNFT" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -933,14 +964,14 @@ if(
             </ul>
             <div class="tab-content" id="boxNFTTabContent">
 
-              <div class="tab-pane fade show active" id="set-tool" role="tabpanel" aria-labelledby="set-tool-tab">
+              <div class="tab-pane show active" id="set-tool" role="tabpanel" aria-labelledby="set-tool-tab">
                 <div class="boxnft justify-content-center row" style="--bs-gutter-x: 0rem; ">
                 </div>
                 <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
-                  <button type="button" class="btn btn-primary set-tool" onclick="document.querySelector('div.modal.fade#boxNFT')['settool']()">SET TOOLS</button>
+                  <button type="button" class="btn btn-primary set-tool" onclick="document.querySelector('div.modal#boxNFT')['settool']()">SET TOOLS</button>
                 </div>
               </div>
-              <div class="tab-pane fade" id="send-nft" role="tabpanel" aria-labelledby="send-nft-tab">
+              <div class="tab-pane" id="send-nft" role="tabpanel" aria-labelledby="send-nft-tab">
                 <div class="send-nft justify-content-center row" style="--bs-gutter-x: 0rem; ">
                 </div>
                 <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
@@ -1033,14 +1064,14 @@ $('.form-select.nft.send-all').on('change', function(){
         case '17':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
-            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT MEMO"]').value         = 'burn'; 
-            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value    = 'farmersworld'; 
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value         = 'burn'; 
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value    = 'farmersworld'; 
             break;
         case '18':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
-            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT MEMO"]').value         = 'stake'; 
-            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value    = 'farmersworld'; 
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value         = 'stake'; 
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value    = 'farmersworld'; 
             break;
     }; 
 }); 
@@ -1050,21 +1081,21 @@ $('.form-select.nft.send-all').on('change', function(){
 	  		        </form>
                 </div>
               </div>
-              <div class="tab-pane fade" id="claim-nft" role="tabpanel" aria-labelledby="claim-nft-tab">
+              <div class="tab-pane" id="claim-nft" role="tabpanel" aria-labelledby="claim-nft-tab">
                 <div class="claim-nft justify-content-center row" style="--bs-gutter-x: 0rem; ">
                 </div>
                 <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
                   <button type="button" class="btn btn-primary claim-nft" >CLAIM NFT</button>
                 </div>
               </div>
-              <div class="tab-pane fade" id="back-token" role="tabpanel" aria-labelledby="back-token-tab">
+              <div class="tab-pane" id="back-token" role="tabpanel" aria-labelledby="back-token-tab">
                 <div class="back-token justify-content-center row" style="--bs-gutter-x: 0rem; ">
                 </div>
                 <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
                   <button type="button" class="btn btn-primary back_token" >BACK TOKEN</button>
                 </div>
               </div>
-              <div class="tab-pane fade" id="create-link" role="tabpanel" aria-labelledby="create-link-tab">
+              <div class="tab-pane" id="create-link" role="tabpanel" aria-labelledby="create-link-tab">
                 <div class="create-link justify-content-center row" style="--bs-gutter-x: 0rem; ">
                 </div>
                 <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
@@ -1072,14 +1103,14 @@ $('.form-select.nft.send-all').on('change', function(){
                   <button type="button" class="btn btn-primary create_link-collect_all" >COLLECT ALL</button>
                 </div>
               </div>
-              <div class="tab-pane fade" id="claim-link" role="tabpanel" aria-labelledby="claim-link-tab">
+              <div class="tab-pane" id="claim-link" role="tabpanel" aria-labelledby="claim-link-tab">
                 <div class="claim-link justify-content-center row" style="--bs-gutter-x: 0rem; ">
                 </div>
                 <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
                   <button type="button" class="btn btn-primary claim_link" >CLAIM LINK</button>
                 </div>
               </div>
-              <div class="tab-pane fade" id="burn-nft" role="tabpanel" aria-labelledby="burn-nft-tab">
+              <div class="tab-pane" id="burn-nft" role="tabpanel" aria-labelledby="burn-nft-tab">
                 <div class="burn-nft justify-content-center row" style="--bs-gutter-x: 0rem; ">
                 </div>
                 <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
@@ -1092,21 +1123,21 @@ $('.form-select.nft.send-all').on('change', function(){
 
 
             <script>
-document.querySelector('div.modal.fade#boxNFT').addEventListener('shown.bs.modal', function (event) {
+document.querySelector('div.modal#boxNFT').addEventListener('shown.bs.modal', function (event) {
   //  if(
   //    $('input.boxnft:checked').length > 3
   //  ) {
   //    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
   //  }; 
   //    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
-  document.querySelector('div.modal.fade#boxNFT').querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
-  document.querySelector('div.modal.fade#boxNFT').querySelector('div.send-nft.justify-content-center.row').innerHTML = '';
+  document.querySelector('div.modal#boxNFT').querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
+  document.querySelector('div.modal#boxNFT').querySelector('div.send-nft.justify-content-center.row').innerHTML = '';
 
-  document.querySelector('div.modal.fade#boxNFT').querySelector('div.modal-header').querySelector('h5').innerText = `BOX NFT : ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`
-  document.querySelector('div.modal.fade#boxNFT').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id); 
-  document.querySelector('div.modal.fade#boxNFT button.btn.btn-primary.set-tool').disabled = true; 
-  //    document.querySelector('div.modal.fade#boxNFT button.btn.btn-primary.send-nft').disabled = true; 
-  document.querySelector('div.modal.fade#boxNFT button.btn.btn-primary.claim-nft').disabled = true; 
+  document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').innerText = `BOX NFT : ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`
+  document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id); 
+  document.querySelector('div.modal#boxNFT button.btn.btn-primary.set-tool').disabled = true; 
+  //    document.querySelector('div.modal#boxNFT button.btn.btn-primary.send-nft').disabled = true; 
+  document.querySelector('div.modal#boxNFT button.btn.btn-primary.claim-nft').disabled = true; 
   fetch(`${
     window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
   }?owner=${ event.relatedTarget.parentNode.parentNode.parentNode.id }&limit=1000`, {
@@ -1131,7 +1162,7 @@ document.querySelector('div.modal.fade#boxNFT').addEventListener('shown.bs.modal
       // cloudflare-ipfs.com/ipfs/
       // ipfs.com/ipfs/
       // https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/  &h=354
-      document.querySelector('div.modal.fade#boxNFT').querySelector('div.boxnft.justify-content-center.row').appendChild(
+      document.querySelector('div.modal#boxNFT').querySelector('div.boxnft.justify-content-center.row').appendChild(
         Object.assign( event['createElement'], {
           innerHTML   : `\
 <div class="custom-control custom-checkbox image-checkbox" style = "width: 180 !important;">\
@@ -1168,12 +1199,12 @@ color           : #fff; \
       if(
         window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.parentNode.id ]['tool'].includes( asset['asset_id'] )
       ){
-        document.querySelector('div.modal.fade#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').checked = true; 
+        document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').checked = true; 
       }; 
       if(
         asset['schema']['schema_name'] != 'tool.worlds'
       ){
-        document.querySelector('div.modal.fade#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').disabled = true;
+        document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').disabled = true;
       }; 
       
     }; 
@@ -1191,7 +1222,7 @@ color           : #fff; \
       event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`); 
       event['createElement'].setAttribute("style", "width: 180 !important;"); 
       event['createElement'].setAttribute("value", asset['asset_id']); 
-      document.querySelector('div.modal.fade#boxNFT').querySelector('div.send-nft.justify-content-center.row').appendChild(
+      document.querySelector('div.modal#boxNFT').querySelector('div.send-nft.justify-content-center.row').appendChild(
         Object.assign( event['createElement'], {
           innerHTML   : `\
 <div class="custom-control custom-checkbox image-checkbox" style = "width: 180 !important;">\
@@ -1228,12 +1259,12 @@ color           : #fff; \
       if(
         window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.parentNode.id ]['tool'].includes( asset['asset_id'] )
       ){
-        document.querySelector('div.modal.fade#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').checked = true; 
+        document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').checked = true; 
       }; 
       if(
         asset['schema']['schema_name'] != 'tool.worlds'
       ){
-        document.querySelector('div.modal.fade#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').disabled = true;
+        document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').disabled = true;
       }; 
 
     }; 
@@ -1242,7 +1273,7 @@ color           : #fff; \
 
   }); 
 }); 
-//  document.querySelector('div.modal.fade#boxNFT').addEventListener('hide.bs.modal', function () {
+//  document.querySelector('div.modal#boxNFT').addEventListener('hide.bs.modal', function () {
 //    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
 //  }); 
             </script>
@@ -1252,7 +1283,7 @@ color           : #fff; \
             <!-- SET TOOL FUNCTION -->
             <!-- SET TOOL FUNCTION -->
             <script>
-document.querySelector('div.modal.fade#boxNFT')['settool'] = function (){
+document.querySelector('div.modal#boxNFT')['settool'] = function (){
 
   console.log(Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id)); 
   console.log(Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id).join(',')); 
@@ -1263,7 +1294,7 @@ document.querySelector('div.modal.fade#boxNFT')['settool'] = function (){
     `SET TOOL : PLEASE WAIT`, 'info'
   ); 
   
-  fetch(`/settool?waxid=${ document.querySelector('div.modal.fade#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&toolid=${ Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id).join(',') }`, {
+  fetch(`/settool?waxid=${ document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&toolid=${ Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id).join(',') }`, {
     "headers"       : {}, 
     "body"          : null,
     "method"        : "GET",
@@ -1375,10 +1406,10 @@ document.querySelector('form[action="#SENDNFT"]').addEventListener('submit', fun
             `SEND NFT : PLEASE WAIT`, 'info'
         ); 
     
-        fetch(`/sendnft?waxid=${ document.querySelector('div.modal.fade#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
-            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
+        fetch(`/sendnft?waxid=${ document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
         }&memo=${
-            document.querySelector('div.modal.fade#boxNFT [aria-label*="SEND NFT MEMO"]').value
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value
         }&toolid=${
             Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(',')
         }`, {
@@ -1460,7 +1491,7 @@ document.querySelector('form[action="#SENDNFT"]').addEventListener('submit', fun
         </div>
       </div>
     </div>
-    <div class="modal fade" id="setLand" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="setLand" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -1472,15 +1503,15 @@ document.querySelector('form[action="#SENDNFT"]').addEventListener('submit', fun
             <div class="setLand justify-content-center row" style="--bs-gutter-x: 0.0rem; ">
             </div>
             <script>
-document.querySelector('div.modal.fade#setLand').addEventListener('shown.bs.modal', function (event) {
+document.querySelector('div.modal#setLand').addEventListener('shown.bs.modal', function (event) {
 
   document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value = ''; 
   document.querySelector('div.setLand.justify-content-center.row').innerHTML = '';
   document.querySelector('button.btn.btn-primary.set_land').disabled = true; 
   document.querySelector('button.btn.btn-primary.set_landtoall').disabled = true; 
 
-  document.querySelector('div.modal.fade#setLand').querySelector('div.modal-header').querySelector('h5').innerText = `SET LAND : ${ event.relatedTarget.parentNode.parentNode.id }` 
-  document.querySelector('div.modal.fade#setLand').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.id); 
+  document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').innerText = `SET LAND : ${ event.relatedTarget.parentNode.parentNode.id }` 
+  document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.id); 
   //    fetch(`https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id=${window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"] }`, {
   fetch(`${
       window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
@@ -1501,11 +1532,11 @@ document.querySelector('div.modal.fade#setLand').addEventListener('shown.bs.moda
       event['createElement'].setAttribute("style", "width: 256 !important;"); 
       event['createElement'].setAttribute("value", asset['asset_id']); 
       event['createElement'].setAttribute("commission", asset['mutable_data']['commission']); 
-      document.querySelector('div.modal.fade#setLand').querySelector('div[commission*=""]'); 
+      document.querySelector('div.modal#setLand').querySelector('div[commission*=""]'); 
       // ipfs.niftylife.io/ipfs/
       // cloudflare-ipfs.com/ipfs/
       // ipfs.com/ipfs/
-      document.querySelector('div.modal.fade#setLand').querySelector('div.setLand.justify-content-center.row').appendChild(
+      document.querySelector('div.modal#setLand').querySelector('div.setLand.justify-content-center.row').appendChild(
         Object.assign( event['createElement'], {
           innerHTML   : `\
 <div class="custom-control custom-checkbox image-checkbox" style="width: 256 !important;">\
@@ -1578,7 +1609,7 @@ ${ asset['owner'] } \
     tooltipTriggerRender(); 
   }); 
 }); 
-//  document.querySelector('div.modal.fade#setLand').addEventListener('hide.bs.modal', function () {
+//  document.querySelector('div.modal#setLand').addEventListener('hide.bs.modal', function () {
 //    document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value = ''
 //    document.querySelector('div.setLand.justify-content-center.row').innerHTML = '';
 //    document.querySelector('button.btn.btn-primary.set_land').disabled = true; 
@@ -1614,7 +1645,7 @@ document.querySelector('button.btn.btn-primary.get_land').addEventListener(
         console.log( result ); 
         for (asset of result['data']){
           document.querySelector(
-            'div.modal.fade#setLand'
+            'div.modal#setLand'
           ).querySelector(
             'div.setLand.justify-content-center.row'
           ).querySelector(
@@ -1624,7 +1655,7 @@ document.querySelector('button.btn.btn-primary.get_land').addEventListener(
           ).setAttribute("src", `https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] }&h=354`); 
 
           document.querySelector(
-            'div.modal.fade#setLand'
+            'div.modal#setLand'
           ).querySelector(
             'div.setLand.justify-content-center.row'
           ).querySelector(
@@ -1632,7 +1663,7 @@ document.querySelector('button.btn.btn-primary.get_land').addEventListener(
           ).querySelectorAll('div')[0].innerText = `${ asset['data']['name'] }`; 
 
           document.querySelector(
-            'div.modal.fade#setLand'
+            'div.modal#setLand'
           ).querySelector(
             'div.setLand.justify-content-center.row'
           ).querySelector(
@@ -1640,15 +1671,15 @@ document.querySelector('button.btn.btn-primary.get_land').addEventListener(
           ).querySelectorAll('div')[1].innerText = `${ asset['asset_id'] }`; 
           
           //  document.querySelector(
-          //    'div.modal.fade#setLand'
+          //    'div.modal#setLand'
           //  ).querySelector(
           //    'div.setLand.justify-content-center.row'
           //  ).querySelector(
           //    'div.custom-control.custom-checkbox.image-checkbox'
-          //  ).querySelectorAll('div')[2].innerText = `${ ( Number( document.querySelector('div.modal.fade#setLand').querySelector('div[commission]').getAttribute('commission') ) / 100).toFixed(2) } %`; 
+          //  ).querySelectorAll('div')[2].innerText = `${ ( Number( document.querySelector('div.modal#setLand').querySelector('div[commission]').getAttribute('commission') ) / 100).toFixed(2) } %`; 
           // FIX COMMISSION NOT UPDATE FOUND BUG IN v0.0151.610
           document.querySelector(
-            'div.modal.fade#setLand'
+            'div.modal#setLand'
           ).querySelector(
             'div.setLand.justify-content-center.row'
           ).querySelector(
@@ -1656,7 +1687,7 @@ document.querySelector('button.btn.btn-primary.get_land').addEventListener(
           ).querySelectorAll('div')[2].innerText = `${ ( Number( asset['data']['commission'] ) / 100).toFixed(2) } %`; 
 
           document.querySelector(
-            'div.modal.fade#setLand'
+            'div.modal#setLand'
           ).querySelector(
             'div.setLand.justify-content-center.row'
           ).querySelector(
@@ -1664,7 +1695,7 @@ document.querySelector('button.btn.btn-primary.get_land').addEventListener(
           ).querySelectorAll('div')[3].innerText = `X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }`; 
 
           document.querySelector(
-            'div.modal.fade#setLand'
+            'div.modal#setLand'
           ).querySelector(
             'div.setLand.justify-content-center.row'
           ).querySelector(
@@ -1787,7 +1818,7 @@ document.querySelector('button.btn.btn-primary.set_land').addEventListener(
         `SET LAND : PLEASE WAIT`, 'info'
       ); 
       
-      fetch(`/setland?waxid=${ document.querySelector('div.modal.fade#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&landid=${ document.querySelector('button.btn.btn-primary.set_land').getAttribute('value') }`, {
+      fetch(`/setland?waxid=${ document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&landid=${ document.querySelector('button.btn.btn-primary.set_land').getAttribute('value') }`, {
         "headers"       : {}, 
         "body"          : null,
         "method"        : "GET",
@@ -1865,7 +1896,7 @@ document.querySelector('button.btn.btn-primary.set_land').addEventListener(
       </div>
     </div>
     <!-- MODEL TRANSFER WAX-->
-    <div class="modal fade" id="transferWax" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="transferWax" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog">
 	  		<form action="#TRANSFERWAX" onsubmit="return false" class="row-cols-auto needs-validation" validate>
           <div class="modal-content">
@@ -1880,12 +1911,12 @@ document.querySelector('button.btn.btn-primary.set_land').addEventListener(
                 <div class="input-group">
                   <!-- div class="input-group-text" id="basic-addon WAX" style="width: 76px;">WAX</div -->
                   <select class="form-select" aria-label="TRANSFER WAX SYMBOL" style="max-width: 96px; " onchange="
-document.querySelector('div.modal.fade#transferWax input[aria-label=\x22TRANSFER WAX QUANTITY\x22]').value = window['information-data']['DATA'][
-	document.querySelector('div.modal.fade#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+document.querySelector('div.modal#transferWax input[aria-label=\x22TRANSFER WAX QUANTITY\x22]').value = window['information-data']['DATA'][
+	document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
 ]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]; 
-document.querySelector('div.modal.fade#transferWax input[aria-label=\x22TRANSFER WAX QUANTITY\x22]').setAttribute(
+document.querySelector('div.modal#transferWax input[aria-label=\x22TRANSFER WAX QUANTITY\x22]').setAttribute(
     'value', window['information-data']['DATA'][
-		document.querySelector('div.modal.fade#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+		document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
 	]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]
 ); 
                   ">
@@ -1962,7 +1993,7 @@ document.querySelector('div.modal.fade#transferWax input[aria-label=\x22TRANSFER
 console.log('this.click();'); 
 $('div[id*=\x22transferWax\x22] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
 $('div[id*=\x22transferWax\x22] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
-document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
                     "
                       oninvalid     = "this.setCustomValidity('WAX ID IS NOT RECOMMEND TO TRANSFER : FOUND ALIEANWORLD HISTORY'); this.checked == false"
                       required
@@ -1974,7 +2005,7 @@ document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = '
                       class         = "form-check-input"
                       type          = "checkbox"
                       style         = "margin-top: 0.18em; opacity: 1 !important;"
-                      onchange      = "if(document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked == true && document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked == true){$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', $(this).is(':checked')); }else{$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', false); this.checked = false;}"
+                      onchange      = "if(document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked == true && document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked == true){$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', $(this).is(':checked')); }else{$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', false); this.checked = false;}"
                     >
                     <label style="margin-left: 1.0em; position: absolute; ">Save WAX ID</label>
                   </div>
@@ -1989,27 +2020,27 @@ document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = '
             </div>
             
             <script type="text/javascript">
-document.querySelector('div.modal.fade#transferWax').addEventListener('shown.bs.modal', function (event) {
-  document.querySelector('div.modal.fade#transferWax').querySelector('div.modal-header').querySelector('h5').innerText = `Transfer WAX : ${ event.relatedTarget.parentNode.parentNode.id }`; 
-  document.querySelector('div.modal.fade#transferWax').querySelector('div.modal-header').querySelector('h5').setAttribute(
+document.querySelector('div.modal#transferWax').addEventListener('shown.bs.modal', function (event) {
+  document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').innerText = `Transfer WAX : ${ event.relatedTarget.parentNode.parentNode.id }`; 
+  document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').setAttribute(
     "value", event.relatedTarget.parentNode.parentNode.id
   ); 
   $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
   $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
                 
-  document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['balance'][ $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]; 
+  document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['balance'][ $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]; 
 
-  //  document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].click()
-  //  document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].click()
+  //  document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].click()
+  //  document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].click()
 
   //  (function thiscode( ID ){})(  );
 
-  //    document.querySelector('div.modal.fade#transferWax').querySelector('[value*="NER-token.worlds"]').setAttribute('val', '0.0000'); 
-  //    document.querySelector('div.modal.fade#transferWax').querySelector('[value*="NAR-token.worlds"]').setAttribute('val', '0.0000'); 
-  //    document.querySelector('div.modal.fade#transferWax').querySelector('[value*="MAG-token.worlds"]').setAttribute('val', '0.0000'); 
-  //    document.querySelector('div.modal.fade#transferWax').querySelector('[value*="EYE-token.worlds"]').setAttribute('val', '0.0000'); 
-  //    document.querySelector('div.modal.fade#transferWax').querySelector('[value*="VEL-token.worlds"]').setAttribute('val', '0.0000'); 
-  //    document.querySelector('div.modal.fade#transferWax').querySelector('[value*="KAV-token.worlds"]').setAttribute('val', '0.0000'); 
+  //    document.querySelector('div.modal#transferWax').querySelector('[value*="NER-token.worlds"]').setAttribute('val', '0.0000'); 
+  //    document.querySelector('div.modal#transferWax').querySelector('[value*="NAR-token.worlds"]').setAttribute('val', '0.0000'); 
+  //    document.querySelector('div.modal#transferWax').querySelector('[value*="MAG-token.worlds"]').setAttribute('val', '0.0000'); 
+  //    document.querySelector('div.modal#transferWax').querySelector('[value*="EYE-token.worlds"]').setAttribute('val', '0.0000'); 
+  //    document.querySelector('div.modal#transferWax').querySelector('[value*="VEL-token.worlds"]').setAttribute('val', '0.0000'); 
+  //    document.querySelector('div.modal#transferWax').querySelector('[value*="KAV-token.worlds"]').setAttribute('val', '0.0000'); 
   
   //    fetch(`https://${ $( document.querySelector('select[aria-label*="Endpoint"]') ).find("option:selected").val() }/v1/chain/get_table_rows`, {
   //      "headers": {},
@@ -2033,7 +2064,7 @@ document.querySelector('div.modal.fade#transferWax').addEventListener('shown.bs.
   //    ).then(result => {
   //        
   //        for (x in result['rows']){
-  //            document.querySelector('div.modal.fade#transferWax').querySelector(`[value*="${ result['rows'][x]['balance'].split(' ')[1] }-token.worlds"]`).setAttribute(
+  //            document.querySelector('div.modal#transferWax').querySelector(`[value*="${ result['rows'][x]['balance'].split(' ')[1] }-token.worlds"]`).setAttribute(
   //                'val', result['rows'][x]['balance'].split(' ')[0]
   //            ); 
   //        }
@@ -2048,118 +2079,118 @@ $('.form-select[aria-label*="TRANSFER WAX TYPE"]').on('change', function(){
   $(this).find("option:selected").val();
   switch ( $(this).find("option:selected").val() ) {
     case '1':
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').removeAttribute('required'); 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = ''; 
-      $('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', false ); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').removeAttribute('required'); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = ''; 
+      $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', false ); 
 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 0.5; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'red'; 
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = false; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 0.5; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'red'; 
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = false; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 0.5; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'red'; 
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = false; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 0.5; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'red'; 
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = false; 
       $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', true ); 
       $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', true ); 
 
       break;
 
     case '2':
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'coinex111111'; 
-      $('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'coinex111111'; 
+      $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = true; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = true; 
       $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
       $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
       break;
 
     case '3':
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'waxonbinance'; 
-      $('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'waxonbinance'; 
+      $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = true; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = true; 
       $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
       $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
 
       break;
 
     case '4':
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'bittrex'; 
-      $('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'bittrex'; 
+      $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = true; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = true; 
       $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
       $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
 
       break;
 
     case '5':
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'kcstothemoon'; 
-      $('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'kcstothemoon'; 
+      $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = true; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = true; 
       $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
       $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
 
       break;
 
     case '6':
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'huobiwaxdepo'; 
-      $('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'huobiwaxdepo'; 
+      $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = true; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = true; 
       $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
       $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
 
       break;
 
     case '7':
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'waxpwaxpwexc'; 
-      $('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', ''); 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = ''; 
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'waxpwaxpwexc'; 
+      $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop( 'disabled', true ); 
 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = true; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 1; 
-      document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
-      document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = true; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 1; 
+      document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+      document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = true; 
       $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
       $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
 
@@ -2169,59 +2200,59 @@ $('.form-select[aria-label*="TRANSFER WAX TYPE"]').on('change', function(){
 }); 
             </script>
             <script type="text/javascript">
-document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').addEventListener('input', function (e) {
+document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').addEventListener('input', function (e) {
   if(
-    document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value && (
+    document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value && (
       Number(
-        document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
+        document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
       ).toFixed(8).match(/\d{1,6}\.\d{1,16}/gi) || []
     ).join() && (
       parseFloat(parseFloat(
-        document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
+        document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
       ).toFixed(8)) > parseFloat(parseFloat(
-        window['information-data']['DATA'][document.querySelector('div.modal.fade#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['balance'][
-            $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0]
+        window['information-data']['DATA'][document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['balance'][
+            $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0]
         ]
       ).toFixed(8)) || parseFloat(parseFloat(
-        document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
-      )).toFixed(8) < 0 || document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value.match(/\+|\-|\*|\\/gi)
+        document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
+      )).toFixed(8) < 0 || document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value.match(/\+|\-|\*|\\/gi)
     )
   ){
-    document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value = window['information-data']['DATA'][
-      document.querySelector('div.modal.fade#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+    document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value = window['information-data']['DATA'][
+      document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
     ]['balance'][ 
-        $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0]
+        $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0]
     ]; 
   }; 
   if(
-    document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value && 
+    document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value && 
     !(
       Number(
-        document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
+        document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
       ).toFixed(8).match(/\d{1,6}\.\d{1,16}/gi) || []
     ).join()
   ){
-    document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value = ''; 
+    document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value = ''; 
     $.notify(
       document.querySelector('div[id*="transferWax"]').querySelector('.modal-header'), 
-      `${ $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] } : QUANTITY INVALID `, 'warn'
+      `${ $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] } : QUANTITY INVALID `, 'warn'
     ); 
   }; 
 }); 
 
-document.querySelector('div.modal.fade#transferWax').querySelector('input[aria-label="TRANSFER TO WAX ID"]').addEventListener('input', function (e) {
+document.querySelector('div.modal#transferWax').querySelector('input[aria-label="TRANSFER TO WAX ID"]').addEventListener('input', function (e) {
   if (
     (
       this.value.length >= 8 && this.value.match('.wam')
     ) || this.value.length >= 12
   ){
     
-    document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 0.5; 
-    document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'red'; 
-    document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = false; 
-    document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 0.5; 
-    document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'red'; 
-    document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = false; 
+    document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 0.5; 
+    document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'red'; 
+    document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = false; 
+    document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 0.5; 
+    document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'red'; 
+    document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = false; 
     $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', true ); 
     $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', true ); 
 
@@ -2244,9 +2275,9 @@ document.querySelector('div.modal.fade#transferWax').querySelector('input[aria-l
         //  result['actions'].length >= 1
         !result.hasOwnProperty('account_name')
       ){
-        document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 0.5; 
-        document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'red'; 
-        document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = false; 
+        document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 0.5; 
+        document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'red'; 
+        document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = false; 
         $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', true ); 
         $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', true ); 
         //  $.notify(
@@ -2258,13 +2289,13 @@ document.querySelector('div.modal.fade#transferWax').querySelector('input[aria-l
           `TRANSFER : MISSING ${ this.value }`, 'error'
         ); 
       }else{
-        document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 1; 
-        document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
-        document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = true; 
+        document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1; 
+        document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'rgb(141, 197, 63)'; 
+        document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = true; 
         
         if(
-          document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked == true && 
-          document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked == true
+          document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked == true && 
+          document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked == true
         ){
           $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
           $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
@@ -2281,9 +2312,9 @@ document.querySelector('div.modal.fade#transferWax').querySelector('input[aria-l
       //  else if(
       //    !result.hasOwnProperty('account_name')
       //  ){
-      //    document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 0.5; 
-      //    document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'red'; 
-      //    document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = false; 
+      //    document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 0.5; 
+      //    document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'red'; 
+      //    document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = false; 
       //    $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', true ); 
       //    $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', true ); 
       //    $.notify(
@@ -2323,11 +2354,11 @@ document.querySelector('div.modal.fade#transferWax').querySelector('input[aria-l
         result.hasOwnProperty('rows') && 
         result.rows && 
         result['rows'].length >= 1 && 
-        $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] == 'WAX'
+        $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] == 'WAX'
       ){
-        document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 0.5; 
-        document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'red'; 
-        document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = false; 
+        document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 0.5; 
+        document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'red'; 
+        document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = false; 
         $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', true ); 
         $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', true ); 
         $.notify(
@@ -2337,9 +2368,9 @@ document.querySelector('div.modal.fade#transferWax').querySelector('input[aria-l
       }else if(
         !result.hasOwnProperty('rows')
       ){
-        document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 0.5; 
-        document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'red'; 
-        document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = false; 
+        document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 0.5; 
+        document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'red'; 
+        document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = false; 
         $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', true ); 
         $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', true ); 
         $.notify(
@@ -2347,13 +2378,13 @@ document.querySelector('div.modal.fade#transferWax').querySelector('input[aria-l
           `TRANSFER : MISSING ${ this.value }`, 'error'
         ); 
       }else{
-        document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 1; 
-        document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
-        document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = true; 
+        document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 1; 
+        document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+        document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = true; 
         
         if(
-          document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked == true && 
-          document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked == true
+          document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked == true && 
+          document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked == true
         ){
           $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
           $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
@@ -2376,12 +2407,12 @@ document.querySelector('div.modal.fade#transferWax').querySelector('input[aria-l
 
   }else{
 
-    document.querySelectorAll('div.modal.fade#transferWax label')[0].style.opacity = 0.5; 
-    document.querySelectorAll('div.modal.fade#transferWax label')[0].style.color = 'red'; 
-    document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[0].checked = false; 
-    document.querySelectorAll('div.modal.fade#transferWax label')[1].style.opacity = 0.5; 
-    document.querySelectorAll('div.modal.fade#transferWax label')[1].style.color = 'red'; 
-    document.querySelectorAll('div.modal.fade#transferWax input.form-check-input')[1].checked = false; 
+    document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 0.5; 
+    document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'red'; 
+    document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = false; 
+    document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 0.5; 
+    document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'red'; 
+    document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = false; 
     $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop( 'disabled', true ); 
     $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop( 'disabled', true ); 
 
@@ -2402,14 +2433,14 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
       document.querySelector('div[id*="transferWax"]').querySelector('.modal-header'), 
       `TRANSFER : PLEASE WAIT`, 'info'
     ); 
-    fetch(`/transfer?waxid=${ document.querySelector('div.modal.fade#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
+    fetch(`/transfer?waxid=${ document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
     }&memo=${
-      document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value
+      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value
     }&quantity=${
-      document.querySelector('div.modal.fade#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
+      document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
     }&symbol=${
-        $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
+        $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
     }`, {
       "headers"       : {}, 
       "body"          : null,
@@ -2498,7 +2529,7 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
     $('#transferWax').modal('hide'); 
     for (TRFERWAX in window['information-data']['DATA'] ){
       if (
-        window['information-data']['DATA'][ TRFERWAX ]['balance'][ $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ] >= 0.00009
+        window['information-data']['DATA'][ TRFERWAX ]['balance'][ $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ] >= 0.00009
       ){
         $.notify(
         window[ TRFERWAX ].querySelector('button[data-bs-target*="#transferWax"]'), 
@@ -2507,13 +2538,13 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
         (function ( ID ){
             setTimeout(function(){
                 fetch(`/transfer?waxid=${ ID }&to=${
-                  document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
+                  document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
                 }&memo=${
-                  document.querySelector('div.modal.fade#transferWax [aria-label*="TRANSFER MEMO"]').value
+                  document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value
                 }&quantity=${
-                  window['information-data']['DATA'][ ID ]['balance'][ $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]
+                  window['information-data']['DATA'][ ID ]['balance'][ $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]
                 }&symbol=${
-                  $( document.querySelector('div.modal.fade#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
+                  $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
                 }`, {
                   "headers"       : {}, 
                   "body"          : null,
@@ -2579,7 +2610,167 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
         </form>
       </div>
     </div>
-    <div class="modal fade" id="swapTLM" tabindex="-1" aria-labelledby="" aria-hidden="true">
+
+    <!-- MODEL ALLOCATE MNG-->
+    <div class="modal" id="allocateWax" tabindex="-1" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog" style="max-width: 72%; ">
+	  	<form action="#ALLOCATEWAX" onsubmit="return false" class="row-cols-auto needs-validation" validate>
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
+              <h5 class="modal-title" id="">Allocate Token</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+              <div class="allocateWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
+                
+                <div class="input-group">
+                  <!-- div class="input-group-text" id="basic-addon WAX" style="width: 76px;">WAX</div -->
+                  <select class="form-select" aria-label="ALLOCATE WAX SYMBOL" style="max-width: 96px; " onchange="
+document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX QUANTITY\x22]').value = window['information-data']['DATA'][
+	document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]; 
+document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX QUANTITY\x22]').setAttribute(
+    'value', window['information-data']['DATA'][
+		document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+	]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]
+); 
+                  ">
+                    <option value="FWW-farmerstoken" selected>FWW</option>
+                    <option value="FWG-farmerstoken">FWG</option>
+                    <option value="FWF-farmerstoken">FWF</option>
+                  </select>
+                  <input
+                    type          = "text"
+                    class         = "form-control"
+                    placeholder   = "0.0000"
+                    aria-label    = "ALLOCATE WAX QUANTITY"
+                    required
+                  >
+                </div>
+                <div class="input-group">
+                  <div class="input-group-text" id="basic-addon WAX" style="width: 100%; ">TO</div>
+                  <input
+                    type          = "text"
+                    class         = "form-control"
+                    placeholder   = "xxxxx.wam"
+                    aria-label    = "ALLOCATE TO WAX ID"
+                    data-role     = "tagsinput"
+                    oninput       = "$('button.btn.btn-primary.allocate').prop( 'disabled', false ); "
+                    required
+                  >
+                </div>
+                <div class="input-group">
+                  <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">MEMO</div>
+                  <input type="text" class="form-control" placeholder="MEMO" aria-label="ALLOCATE MEMO" value="NodeNetwork" disabled>
+                </div>
+                
+              </div>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary allocate-submit-button">TRANSFER</button>
+            </div>
+            
+            <script type="text/javascript">
+document.querySelector('div.modal#allocateWax').addEventListener('shown.bs.modal', function (event) {
+  document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').innerText = `Allocate WAX : ${ event.relatedTarget.parentNode.parentNode.id }`; 
+  document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').setAttribute(
+    "value", event.relatedTarget.parentNode.parentNode.id
+  ); 
+  //    $('div[id*="allocateWax"] button.btn.btn-primary.allocate').prop( 'disabled', false ); 
+                
+  document.querySelector('div.modal#allocateWax input[aria-label="ALLOCATE WAX QUANTITY"]').value = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['balance'][ $( document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]; 
+  
+}); 
+
+            </script>
+            <script type="text/javascript">
+document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit', function (e) {
+
+    if(
+      $("button.btn.btn-primary.allocate-submit-button").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.allocate-submit-button')
+    ){
+        $('#allocateWax').modal('hide'); 
+
+        this.list = []; console.debug( this.list ); 
+        
+        for (TRFERWAX of $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items') ){
+
+            this.list.push( TRFERWAX ); 
+            
+            if (
+                window['information-data']['DATA'][
+                    document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+                ]['balance'][ $( document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ] >= 0.00009 && 
+                TRFERWAX != document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value') && (
+                    this.list.length >= 5 || 
+                    this.list.length == $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items').length
+                )
+            ){
+                
+                $.notify(`ALLOCATE : PLEASE WAIT ${ this.list.join(',') }`, 'info'); 
+                
+                (function ( ID ){
+                    setTimeout(function(){
+                        fetch(`/allocate?waxid=${
+                            document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+                        }&to=${
+                            ID
+                        }&memo=${
+                            document.querySelector('div.modal#allocateWax [aria-label*="ALLOCATE MEMO"]').value
+                        }&quantity=${
+                            document.querySelector('div.modal#allocateWax input[aria-label="ALLOCATE WAX QUANTITY"]').value
+                        }&symbol=${
+                            $( document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]') ).find("option:selected").val()
+                        }`, {
+                            "headers"       : {}, 
+                            "body"          : null,
+                            "method"        : "GET",
+                        }).then(
+                            result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
+                        ).then(result => {
+                            if ( result['code'] == 200 ){
+                                $.notify(`ALLOCATE : DONE - ${ID} <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX</a>`, 'success'); 
+                            }else{
+                                try{
+                                    if(
+                                        result['data']['transaction'] && 
+                                        result['data']['transaction']['trx'] && 
+                                        result['data']['transaction']['trx']['error'] && 
+                                        result['data']['transaction']['trx']['error']['what']
+                                    ){
+                                        $.notify(`ALLOCATE : WARNING - ${ID} ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'); 
+                                    }else{
+                                        $.notify(`ALLOCATE : WARNING - ${ID} ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'); 
+                                    }; 
+                                }catch(e){
+                                    $.notify(`ALLOCATE : ERROR - ${ID} ${ result['text'] }`, 'error'); 
+                                }; 
+                            }; 
+                        }).catch(error => {
+                            $.notify(`ALLOCATE : CONNECTION FAILED - ${ID} ${ error }`, 'error'); 
+                        }); 
+                    }, 2000 + Math.ceil(Math.random() * 8000)); 
+                })( this.list.join(',') ); 
+
+                this.list = []; 
+                
+            }; 
+            //    else{
+            //        $.notify(`ALLOCATE : ALREADY`, 'success'); 
+            //    }; 
+        }; 
+    }; 
+}); 
+            </script>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- MODEL ALLOCATE MNG-->
+        
+    <div class="modal" id="swapTLM" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -2599,15 +2790,15 @@ document.querySelector('form[action="#TRANSFERWAX"]').addEventListener('submit',
               <div id="coinmarketcap-widget-coin-price-block" coins="2300,9119" currency="THB" theme="light" transparent="true" show-symbol-logo="true"></div>
             </div>
             <script>
-document.querySelector('div.modal.fade#swapTLM').addEventListener('shown.bs.modal', function (event) {
-  document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').innerText = `SWAP TLM : ${ event.relatedTarget.parentNode.parentNode.id }`; 
-  document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.id); 
-  //  document.querySelector('div.modal.fade#swapTLM').querySelector('button.btn.btn-primary.swap').style.opacity = 0; 
-  //  document.querySelector('div.modal.fade#swapTLM').querySelector('button.btn.btn-primary.swap').disabled = true; 
+document.querySelector('div.modal#swapTLM').addEventListener('shown.bs.modal', function (event) {
+  document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').innerText = `SWAP TLM : ${ event.relatedTarget.parentNode.parentNode.id }`; 
+  document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.id); 
+  //  document.querySelector('div.modal#swapTLM').querySelector('button.btn.btn-primary.swap').style.opacity = 0; 
+  //  document.querySelector('div.modal#swapTLM').querySelector('button.btn.btn-primary.swap').disabled = true; 
   $('button.btn.btn-primary.swap').prop( 'disabled', true ); 
   $('button.btn.btn-primary.swaptoall').prop( 'disabled', true ); 
   
-  document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['balance']['TLM']; 
+  document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['balance']['TLM']; 
   
   (function thiscode( ID ){
     if(
@@ -2634,69 +2825,69 @@ document.querySelector('div.modal.fade#swapTLM').addEventListener('shown.bs.moda
             WAXTOTLM : (parseFloat(result.rows[0].pool2.quantity) / parseFloat(result.rows[0].pool1.quantity)).toFixed(8),
         }}; 
         if(
-          document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value && (
+          document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value && (
             Number(
-              document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
+              document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
             ).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
           ).join() && (
             parseFloat(parseFloat(
-              document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
+              document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
             ).toFixed(4)) > parseFloat(parseFloat(
-              window['information-data']['DATA'][document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['balance']['TLM']
+              window['information-data']['DATA'][document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['balance']['TLM']
             ).toFixed(4)) || parseFloat(parseFloat(
-              document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
-            )).toFixed(4) < 0 || document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value.match(/\+|\-|\*|\\/gi)
+              document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
+            )).toFixed(4) < 0 || document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value.match(/\+|\-|\*|\\/gi)
           )
         ){
-          document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value = window['information-data']['DATA'][
-            document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+          document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value = window['information-data']['DATA'][
+            document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
           ]['balance']['TLM']; 
         }; 
         
         if (
-          document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value && 
+          document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value && 
           (
             Number(
-              document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
+              document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
             ).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
           ).join()
         ){
-          document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP WAX"]').value = (Number(
+          document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP WAX"]').value = (Number(
             (
               Number(
-                document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
+                document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
               ).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
             ).join()
           ) * (
-            alcor.price.TLMTOWAX * document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM MIGHT"]').value
+            alcor.price.TLMTOWAX * document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM MIGHT"]').value
           )).toFixed(8); 
           $('button.btn.btn-primary.swap').prop( 'disabled', false ); 
           $('button.btn.btn-primary.swaptoall').prop( 'disabled', false ); 
           if(
-            $('#swapTLM').hasClass('show') && ID == document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+            $('#swapTLM').hasClass('show') && ID == document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
           ){ thiscode( ID ) }; 
         }else if(
-          document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value && 
+          document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value && 
           !(
             Number(
-              document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
+              document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value
             ).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
           ).join()
         ){
-          document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value = ''; 
+          document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value = ''; 
           $.notify(
             document.querySelector('div[id*="swapTLM"]').querySelector('.modal-header'), 
             `TLM : AMOUNT INVALID `, 'warn'
           ); 
           if(
-            $('#swapTLM').hasClass('show') && ID == document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+            $('#swapTLM').hasClass('show') && ID == document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
           ){ thiscode( ID ) }; 
         }else{
-          document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP WAX"]').value = (
-            alcor.price.TLMTOWAX * document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM MIGHT"]').value
+          document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP WAX"]').value = (
+            alcor.price.TLMTOWAX * document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM MIGHT"]').value
           ).toFixed(8); 
           if(
-            $('#swapTLM').hasClass('show') && ID == document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+            $('#swapTLM').hasClass('show') && ID == document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
           ){ thiscode( ID ) }; 
         }; 
       }).catch(error => {
@@ -2704,7 +2895,7 @@ document.querySelector('div.modal.fade#swapTLM').addEventListener('shown.bs.moda
       }); 
     }; 
   })(
-    document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+    document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
   ); 
   
 }); 
@@ -2759,7 +2950,7 @@ document.querySelector('button.btn.btn-primary.swaptoall').addEventListener(
           fetch(`/swap?waxid=${ ID }&amount=${ window['information-data']['DATA'][ ID ]['balance']['TLM'] }&quantity=${ (Number((
   Number(window['information-data']['DATA'][ ID ]['balance']['TLM']).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
 ).join()) * (
-  window['alcor']['price']["TLMTOWAX"] * document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM MIGHT"]').value
+  window['alcor']['price']["TLMTOWAX"] * document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM MIGHT"]').value
 )).toFixed(8) }`, {
             "headers"       : {}, 
             "body"          : null,
@@ -2831,7 +3022,7 @@ document.querySelector('button.btn.btn-primary.swap').addEventListener(
         document.querySelector('div[id*="swapTLM"]').querySelector('.modal-header'), 
         `SWAP : PLEASE WAIT`, 'info'
       ); 
-      fetch(`/swap?waxid=${ document.querySelector('div.modal.fade#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&amount=${ document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value }&quantity=${ document.querySelector('div.modal.fade#swapTLM').querySelector('input[aria-label="SWAP WAX"]').value }`, {
+      fetch(`/swap?waxid=${ document.querySelector('div.modal#swapTLM').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&amount=${ document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM"]').value }&quantity=${ document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP WAX"]').value }`, {
         "headers"       : {}, 
         "body"          : null,
         "method"        : "GET",
@@ -2925,7 +3116,7 @@ document.querySelector('button.btn.btn-primary.swap').addEventListener(
 
 
     <!-- MODEL STAKE WAX -->
-    <div class="modal fade" id="stakeWax" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="stakeWax" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -2958,7 +3149,7 @@ document.querySelector('button.btn.btn-primary.swap').addEventListener(
           </ul>
           <div class="tab-content" id="stakeWaxTabContent">
             
-            <div class="tab-pane fade show active" id="stake" role="tabpanel" aria-labelledby="stake-tab">
+            <div class="tab-pane show active" id="stake" role="tabpanel" aria-labelledby="stake-tab">
 	  		    <form action="#STAKE" onsubmit="return false" class="row-cols-auto needs-validation" style="margin-block-end: 0px; " validate>
                 
                     <div class="stakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
@@ -2986,26 +3177,26 @@ document.querySelector('button.btn.btn-primary.swap').addEventListener(
                     <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
                       <button type="submit" class="btn btn-primary stake">STAKE</button>
                       <script>
-document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').addEventListener('input', function (e) {
+document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').addEventListener('input', function (e) {
   if(
-    document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value && (
+    document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value && (
       Number(
-        document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value
+        document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value
       ).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
     ).join() && (
       parseFloat(parseFloat(
-        document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value
+        document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value
       ).toFixed(4)) > parseFloat(parseFloat(
-        //  window['information-data']['DATA'][ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['balance']['WAX']
-        Number(window['information-data']['DATA'][ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['balance']['WAX']) + (function (){ try{ return Number(window['information-data']['DATA'][ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['refund']['refund_request']['cpu_amount'].split(' ')[0])  }catch(e){ return 0.0000} })()
+        //  window['information-data']['DATA'][ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['balance']['WAX']
+        Number(window['information-data']['DATA'][ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['balance']['WAX']) + (function (){ try{ return Number(window['information-data']['DATA'][ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['refund']['refund_request']['cpu_amount'].split(' ')[0])  }catch(e){ return 0.0000} })()
       ).toFixed(4)) || parseFloat(parseFloat(
-        document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value
-      )).toFixed(4) < 0 || document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value.match(/\+|\-|\*|\\/gi)
+        document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value
+      )).toFixed(4) < 0 || document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value.match(/\+|\-|\*|\\/gi)
     )
   ){
-    document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value = Number(window['information-data']['DATA'][
-      document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
-    ]['balance']['WAX']) + (function (){ try{ return Number(window['information-data']['DATA'][ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['refund']['refund_request']['cpu_amount'].split(' ')[0])  }catch(e){ return 0.0000} })(); 
+    document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value = Number(window['information-data']['DATA'][
+      document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+    ]['balance']['WAX']) + (function (){ try{ return Number(window['information-data']['DATA'][ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['refund']['refund_request']['cpu_amount'].split(' ')[0])  }catch(e){ return 0.0000} })(); 
   }; 
 }); 
 
@@ -3019,7 +3210,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
       `STAKE : PLEASE WAIT`, 'info'
     ); 
 
-    fetch(`/${ e.srcElement.querySelector('select[aria-label="STAKE RESOURCE"]').selectedOptions[0].value }?waxid=${ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&quantity=${ Number(document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value).toFixed(8) }`, {
+    fetch(`/${ e.srcElement.querySelector('select[aria-label="STAKE RESOURCE"]').selectedOptions[0].value }?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&quantity=${ Number(document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value).toFixed(8) }`, {
       "headers"       : {}, 
       "body"          : null,
       "method"        : "GET",
@@ -3108,7 +3299,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
 	  		    </form>
             </div>
             
-            <div class="tab-pane fade" id="unstake" role="tabpanel" aria-labelledby="unstake-tab">
+            <div class="tab-pane" id="unstake" role="tabpanel" aria-labelledby="unstake-tab">
 	  		      <form action="#UNSTAKE" onsubmit="return false" class="row-cols-auto needs-validation" style="margin-block-end: 0px; " validate>
                 
                 <div class="unstakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
@@ -3144,24 +3335,24 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                     <!-- UNSTAKE -->
                     <!-- UNSTAKE -->
                     <script>
-document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').addEventListener('input', function (e) {
+document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').addEventListener('input', function (e) {
   if(
-    document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value && (
+    document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value && (
       Number(
-        document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value
+        document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value
       ).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
     ).join() && (
       parseFloat(parseFloat(
-        document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value
+        document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value
       ).toFixed(4)) > parseFloat(parseFloat(
-        window['information-data']['DATA'][document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['cpu']['stake']['self']
+        window['information-data']['DATA'][document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['cpu']['stake']['self']
       ).toFixed(4)) || parseFloat(parseFloat(
-        document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value
-      )).toFixed(4) < 0 || document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value.match(/\+|\-|\*|\\/gi)
+        document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value
+      )).toFixed(4) < 0 || document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value.match(/\+|\-|\*|\\/gi)
     )
   ){
-    document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value = window['information-data']['DATA'][
-      document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+    document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value = window['information-data']['DATA'][
+      document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
     ]['cpu']['stake']['self']; 
   }; 
 }); 
@@ -3176,7 +3367,7 @@ document.querySelector('form[action="#UNSTAKE"]').addEventListener('submit', fun
       `UNSTAKE : PLEASE WAIT`, 'info'
     ); 
 
-    fetch(`/unstakecpu?waxid=${ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&quantity=${ Number(document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value).toFixed(8) }`, {
+    fetch(`/unstakecpu?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&quantity=${ Number(document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value).toFixed(8) }`, {
       "headers"       : {}, 
       "body"          : null,
       "method"        : "GET",
@@ -3219,9 +3410,9 @@ document.querySelector('form[action="#UNSTAKE"]').addEventListener('submit', fun
             title: 'Error!',
             html: `<div>UNSTAKE ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
           }); 
-          document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value = (
-            document.querySelector('div.modal.fade#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value * (
-                Number(document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE QUANTITY MIGHT"]').value) / 100
+          document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value = (
+            document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value * (
+                Number(document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE QUANTITY MIGHT"]').value) / 100
             )
           ).toFixed(8); 
           $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.unstake')).prop( 'disabled', false ); 
@@ -3268,7 +3459,7 @@ document.querySelector('form[action="#UNSTAKE"]').addEventListener('submit', fun
                     </script>
                     <button type="button" class="btn btn-primary unstaketoall">UNSTAKE ALL</button>
                     <script>
-document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.unstaketoall').addEventListener(
+document.querySelector('div.modal#stakeWax button.btn.btn-primary.unstaketoall').addEventListener(
   "click", 
   function (e) {
     $('#stakeWax').modal('hide'); 
@@ -3278,7 +3469,7 @@ document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.unstaketo
         `UNSTAKE : PLEASE WAIT`, 'info'
       ); 
       (function ( ID ){
-        fetch(`/unstakecpu?waxid=${ ID }&quantity=${ Number(window['information-data']['DATA'][ ID ]['cpu']['stake']['self']).toFixed(4) * ( Number(document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE QUANTITY MIGHT"]').value) / 100 ) }`, {
+        fetch(`/unstakecpu?waxid=${ ID }&quantity=${ Number(window['information-data']['DATA'][ ID ]['cpu']['stake']['self']).toFixed(4) * ( Number(document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE QUANTITY MIGHT"]').value) / 100 ) }`, {
           "headers"       : {}, 
           "body"          : null,
           "method"        : "GET",
@@ -3323,7 +3514,7 @@ document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.unstaketo
                     <!-- REFUND -->
                     <!-- REFUND -->
                     <script>
-document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.refund').addEventListener(
+document.querySelector('div.modal#stakeWax button.btn.btn-primary.refund').addEventListener(
   "click", 
   function (e) {
 
@@ -3341,7 +3532,7 @@ document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.refund').
         `REFUND : PLEASE WAIT`, 'info'
         ); 
         
-        fetch(`/refund?waxid=${ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }`, {
+        fetch(`/refund?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }`, {
         "headers"       : {}, 
         "body"          : null,
         "method"        : "GET",
@@ -3441,7 +3632,7 @@ document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.refund').
 	  		      </form>
             </div>
             
-            <div class="tab-pane fade" id="rent-unstake" role="tabpanel" aria-labelledby="rent-unstake-tab">
+            <div class="tab-pane" id="rent-unstake" role="tabpanel" aria-labelledby="rent-unstake-tab">
 	  		    <form action="#RENT-UNSTAKE" onsubmit="return false" class="row-cols-auto needs-validation" style="margin-block-end: 0px; "" validate>
                 
                 <div class="rentUnStakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
@@ -3498,7 +3689,7 @@ document.querySelector('form[action="#RENT-UNSTAKE"]').addEventListener('submit'
       `RENT UNSTAKE : PLEASE WAIT`, 'info'
     ); 
 
-    fetch(`/rentunstakecpu?waxid=${ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&amount=${ Number(document.querySelector('div.modal.fade#stakeWax  select[aria-label="RENT UNSTAKE QUANTITY"]').value).toFixed(4) }`, {
+    fetch(`/rentunstakecpu?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&amount=${ Number(document.querySelector('div.modal#stakeWax  select[aria-label="RENT UNSTAKE QUANTITY"]').value).toFixed(4) }`, {
       "headers"       : {}, 
       "body"          : null,
       "method"        : "GET",
@@ -3585,7 +3776,7 @@ document.querySelector('form[action="#RENT-UNSTAKE"]').addEventListener('submit'
                     </script>
                     <button type="button" class="btn btn-primary rent-unstake-to-all" disabled>RENT TO ALL</button>
                     <script>
-document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.rent-unstake-to-all').addEventListener(
+document.querySelector('div.modal#stakeWax button.btn.btn-primary.rent-unstake-to-all').addEventListener(
   "click", 
   function (e) {
     $('#stakeWax').modal('hide'); 
@@ -3595,7 +3786,7 @@ document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.rent-unst
         `RENT UNSTAKE : PLEASE WAIT`, 'info'
       ); 
       (function ( ID ){
-        fetch(`/rentunstakecpu?waxid=${ ID }&amount=${ Number(document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"]').value).toFixed(4) }`, {
+        fetch(`/rentunstakecpu?waxid=${ ID }&amount=${ Number(document.querySelector('div.modal#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"]').value).toFixed(4) }`, {
           "headers"       : {}, 
           "body"          : null,
           "method"        : "GET",
@@ -3637,7 +3828,7 @@ document.querySelector('div.modal.fade#stakeWax button.btn.btn-primary.rent-unst
 	  		    </form>
             </div>
             
-            <div class="tab-pane fade" id="free-stake" role="tabpanel" aria-labelledby="free-stake-tab">
+            <div class="tab-pane" id="free-stake" role="tabpanel" aria-labelledby="free-stake-tab">
 	  		    <form action="#FREE-STAKE" onsubmit="return false" class="row-cols-auto needs-validation" style="margin-block-end: 0px; " validate>
                 
                     <div class="stakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
@@ -3773,7 +3964,7 @@ document.querySelector('form[action="#FREE-STAKE"]').addEventListener('submit', 
 	  		    </form>
             </div>
             
-            <div class="tab-pane fade" id="governance" role="tabpanel" aria-labelledby="governance-tab">
+            <div class="tab-pane" id="governance" role="tabpanel" aria-labelledby="governance-tab">
 	  		    <form action="#GOVERNANCE" onsubmit="return false" class="row-cols-auto needs-validation" style="margin-block-end: 0px; " validate>
                 
                     <div class="stakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
@@ -3821,7 +4012,7 @@ document.querySelector('form[action="#FREE-STAKE"]').addEventListener('submit', 
 	  		    </form>
             </div>
 
-            <div class="tab-pane fade" id="rent-safe-stake" role="tabpanel" aria-labelledby="rent-safe-stake-tab">
+            <div class="tab-pane" id="rent-safe-stake" role="tabpanel" aria-labelledby="rent-safe-stake-tab">
 	  		      <form action="#RENT-SAFE-STAKE" onsubmit="return false" class="row-cols-auto needs-validation" style="margin-block-end: 0px; "" validate>
                 
                 <div class="rentSafeStakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
@@ -3833,10 +4024,38 @@ document.querySelector('form[action="#FREE-STAKE"]').addEventListener('submit', 
                   <div class="input-group">
                     <div class="input-group-text" id="basic-addon WAX" style="width: 100px;">QUALITY</div>
                     <select class="form-select" aria-label="RENT SAFE STAKE QUANTITY" required="">
-                      <option rate="" value="100" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" selected>X.XX WAX FOR STAKE CPU 100 WAX</option>
-                      <option rate="" value="200" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 200 WAX</option>
-                      <option rate="" value="500" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 500 WAX</option>
-                      <option rate="" value="1000" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 1000 WAX</option>
+                        <option rate="" value="100" provider="playgambling" boost="" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" selected>X.XX WAX FOR STAKE CPU 100 WAX</option>
+                        <option rate="" value="200" provider="playgambling" boost="" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 200 WAX</option>
+                        <option rate="" value="500" provider="playgambling" boost="" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 500 WAX</option>
+                        <option rate="" value="1000" provider="playgambling" boost="" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=" >X.XX WAX FOR STAKE CPU 1000 WAX</option>
+                        <option rate="25.0000" value="50" memo="days:1;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>0.53 WAX FOR STAKE CPU 50 WAX 1 DAY</option>
+                        <option rate="50.0000" value="100" memo="days:1;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>0.78 WAX FOR STAKE CPU 100 WAX 1 DAY</option>
+                        <option rate="100.0000" value="200" memo="days:1;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>1.28 WAX FOR STAKE CPU 200 WAX 1 DAY</option>
+                        <option rate="200.0000" value="400" memo="days:1;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>2.28 WAX FOR STAKE CPU 400 WAX 1 DAY</option>
+                        <option rate="300.0000" value="600" memo="days:1;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>3.28 WAX FOR STAKE CPU 600 WAX 1 DAY</option>
+                        <option rate="500.0000" value="1000" memo="days:1;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>5.28 WAX FOR STAKE CPU 1000 WAX 1 DAY</option>
+                        <option rate="1000.0000" value="2000" memo="days:1;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>10.28 WAX FOR STAKE CPU 2000 WAX 1 DAY</option>
+                        <option rate="25.0000" value="50" memo="days:2;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>0.53 WAX FOR STAKE CPU 25 WAX 2 DAY</option>
+                        <option rate="50.0000" value="100" memo="days:2;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>0.78 WAX FOR STAKE CPU 50 WAX 2 DAY</option>
+                        <option rate="100.0000" value="200" memo="days:2;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>1.28 WAX FOR STAKE CPU 100 WAX 2 DAY</option>
+                        <option rate="200.0000" value="400" memo="days:2;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>2.28 WAX FOR STAKE CPU 200 WAX 2 DAY</option>
+                        <option rate="300.0000" value="600" memo="days:2;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>3.28 WAX FOR STAKE CPU 300 WAX 2 DAY</option>
+                        <option rate="500.0000" value="1000" memo="days:2;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>5.28 WAX FOR STAKE CPU 500 WAX 2 DAY</option>
+                        <option rate="1000.0000" value="2000" memo="days:2;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>10.28 WAX FOR STAKE CPU 1000 WAX 2 DAY</option>
+                        <option rate="25.0000" value="50" memo="days:3;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>0.53 WAX FOR STAKE CPU 16 WAX 3 DAY</option>
+                        <option rate="50.0000" value="100" memo="days:3;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>0.78 WAX FOR STAKE CPU 33 WAX 3 DAY</option>
+                        <option rate="100.0000" value="200" memo="days:3;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>1.28 WAX FOR STAKE CPU 66 WAX 3 DAY</option>
+                        <option rate="200.0000" value="400" memo="days:3;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>2.28 WAX FOR STAKE CPU 133 WAX 3 DAY</option>
+                        <option rate="300.0000" value="600" memo="days:3;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>3.28 WAX FOR STAKE CPU 200 WAX 3 DAY</option>
+                        <option rate="500.0000" value="1000" memo="days:3;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>5.28 WAX FOR STAKE CPU 333 WAX 3 DAY</option>
+                        <option rate="1000.0000" value="2000" memo="days:3;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>10.28 WAX FOR STAKE CPU 666 WAX 3 DAY</option>
+                        <option rate="25.0000" value="50" memo="days:4;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>0.53 WAX FOR STAKE CPU 12 WAX 4 DAY</option>
+                        <option rate="50.0000" value="100" memo="days:4;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>0.78 WAX FOR STAKE CPU 25 WAX 4 DAY</option>
+                        <option rate="100.0000" value="200" memo="days:4;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>1.28 WAX FOR STAKE CPU 50 WAX 4 DAY</option>
+                        <option rate="200.0000" value="400" memo="days:4;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>2.28 WAX FOR STAKE CPU 100 WAX 4 DAY</option>
+                        <option rate="300.0000" value="600" memo="days:4;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>3.28 WAX FOR STAKE CPU 150 WAX 4 DAY</option>
+                        <option rate="500.0000" value="1000" memo="days:4;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>5.28 WAX FOR STAKE CPU 250 WAX 4 DAY</option>
+                        <option rate="1000.0000" value="2000" memo="days:4;receiver:" provider="nfthivecpu4u" boost="nft.hive-boost" check="" disabled>10.28 WAX FOR STAKE CPU 500 WAX 4 DAY</option>
                     </select>
                   </div>
                   <div class="input-group">
@@ -3882,14 +4101,14 @@ document.querySelector('form[action="#RENT-SAFE-STAKE"]').addEventListener('subm
         ); 
         
         fetch(`/rentstakecpu?waxid=${
-            document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE WAX ID PAYER"]').value
+            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE WAX ID PAYER"]').value
         }&amount=${
-            Number(document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("rate")).toFixed(4)
+            Number(document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("rate")).toFixed(4)
         }&to=playgambling&memo=${
-            document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').value
+            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').value
         }&token=${
-            document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE TOKEN"]').value
-        }&check=${document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("check")}`, {
+            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE TOKEN"]').value
+        }&check=${document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("check")}`, {
             "headers"       : {}, 
             "body"          : null,
             "method"        : "GET",
@@ -3978,7 +4197,7 @@ document.querySelector('form[action="#RENT-SAFE-STAKE"]').addEventListener('subm
                   </script>
                 </div>
                 
-	  		      </form>
+	  		    </form>
             </div>
             
           </div>
@@ -3986,9 +4205,9 @@ document.querySelector('form[action="#RENT-SAFE-STAKE"]').addEventListener('subm
 
 
           <script type="text/javascript">
-document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.modal', function (event) {
-  document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').innerText = `STAKE : ${ event.relatedTarget.parentNode.parentNode.id }`; 
-  document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').setAttribute(
+document.querySelector('div.modal#stakeWax').addEventListener('shown.bs.modal', function (event) {
+  document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').innerText = `STAKE : ${ event.relatedTarget.parentNode.parentNode.id }`; 
+  document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').setAttribute(
     "value", event.relatedTarget.parentNode.parentNode.id
   ); 
   
@@ -3996,28 +4215,28 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
   $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.unstake')).prop( 'disabled', false ); 
   $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT UNSTAKE QUANTITY"]')).prop( 'disabled', false ); 
 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="STAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="STAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="STAKE QUANTITY"]').value = Number(window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['balance']['WAX']) + (function (){ try{ return Number(window['information-data']['DATA'][ document.querySelector('div.modal.fade#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['refund']['refund_request']['cpu_amount'].split(' ')[0])  }catch(e){ return 0.0000} })(); 
+  document.querySelector('div.modal#stakeWax input[aria-label="STAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
+  document.querySelector('div.modal#stakeWax input[aria-label="STAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
+  document.querySelector('div.modal#stakeWax input[aria-label="STAKE QUANTITY"]').value = Number(window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['balance']['WAX']) + (function (){ try{ return Number(window['information-data']['DATA'][ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") ]['refund']['refund_request']['cpu_amount'].split(' ')[0])  }catch(e){ return 0.0000} })(); 
 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE DURATION"]').value = ''; 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE QUANTITY"]').value = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['cpu']['stake']['self']; 
+  document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
+  document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
+  document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE DURATION"]').value = ''; 
+  document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE QUANTITY"]').value = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['cpu']['stake']['self']; 
 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="FREE STAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="FREE STAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
+  document.querySelector('div.modal#stakeWax input[aria-label="FREE STAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
+  document.querySelector('div.modal#stakeWax input[aria-label="FREE STAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
 
-  //    document.querySelector('div.modal.fade#stakeWax input[aria-label="REFUND RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
-  //    document.querySelector('div.modal.fade#stakeWax input[aria-label="REFUND RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
+  //    document.querySelector('div.modal#stakeWax input[aria-label="REFUND RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
+  //    document.querySelector('div.modal#stakeWax input[aria-label="REFUND RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
 
   try{
 
-    document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE DURATION"]')['old'] = (new Date(new Date(
+    document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE DURATION"]')['old'] = (new Date(new Date(
         `${ window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['refund']['refund_request']['request_time'].replace('T', ' ') }+0000`
     ).getTime())); 
-    document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE DURATION"]')['new'] = Date(new Date().getTime()); 
-    document.querySelector('div.modal.fade#stakeWax input[aria-label="UNSTAKE DURATION"]').value = (new Date(new Date(
+    document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE DURATION"]')['new'] = Date(new Date().getTime()); 
+    document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE DURATION"]').value = (new Date(new Date(
         `${ window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.id]['refund']['refund_request']['request_time'].replace('T', ' ') }+0000`
     ).getTime() + (86400000 * 3))).toLocaleString(
     	"en-US", {
@@ -4064,11 +4283,11 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
 
   }catch(e){}; 
   
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT UNSTAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT UNSTAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id;  
+  document.querySelector('div.modal#stakeWax input[aria-label="RENT UNSTAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
+  document.querySelector('div.modal#stakeWax input[aria-label="RENT UNSTAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id;  
   
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
-  document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
+  document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').setAttribute('value', event.relatedTarget.parentNode.parentNode.id); 
+  document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').value = event.relatedTarget.parentNode.parentNode.id; 
   
   fetch(`https://${ $( document.querySelector('select[aria-label*="Endpoint"]') ).find("option:selected").val() }/v1/chain/get_account`, {
     "headers": {},
@@ -4077,13 +4296,13 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
   }).then(
     result => result.json()
   ).then(result => {
-    document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"] option').forEach(function (e, i, a) {
+    document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"] option').forEach(function (e, i, a) {
       if(
         parseFloat(parseFloat(e.value).toFixed(4)) > parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4))
       ){ $(e).prop( 'disabled', true ) }; 
     }); 
     if (
-      document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"] option').length ==  document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"] option:disabled').length
+      document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"] option').length ==  document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"] option:disabled').length
     ){
       $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-unstake')).prop( 'disabled', true ); 
       $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-unstake-to-all')).prop( 'disabled', true ); 
@@ -4094,10 +4313,10 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
       $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-unstake-to-all')).prop( 'disabled', false ); 
       $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT UNSTAKE QUANTITY"]')).prop( 'disabled', false ); 
     }; 
-    document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT UNSTAKE AVAILABLE"]').setAttribute(
+    document.querySelector('div.modal#stakeWax input[aria-label="RENT UNSTAKE AVAILABLE"]').setAttribute(
       'value', `${parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4)} WAX`
     ); 
-    document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT UNSTAKE AVAILABLE"]').setAttribute(
+    document.querySelector('div.modal#stakeWax input[aria-label="RENT UNSTAKE AVAILABLE"]').setAttribute(
       'placeholder', `${parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4)} WAX`
     ); 
   }).catch(error => {
@@ -4112,13 +4331,13 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
   }).then(
     result => result.json()
   ).then(result => {
-    document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').forEach(function (e, i, a) {
+    document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').forEach(function (e, i, a) {
       if(
         parseFloat(parseFloat(e.value).toFixed(4)) > parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4)) * 0.80
       ){ $(e).prop( 'disabled', true ) }; 
     }); 
     if (
-      document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length ==  document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
+      document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length ==  document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
     ){
       $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop( 'disabled', true ); 
       $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop( 'disabled', true ); 
@@ -4126,10 +4345,10 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
       //  $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop( 'disabled', false ); 
       $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop( 'disabled', false ); 
     }; 
-    //    document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
+    //    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
     //      'value', `${ parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4) * 0.80).toFixed(4) } WAX`
     //    ); 
-    //    document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
+    //    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
     //      'placeholder', `${ parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4) * 0.80).toFixed(4) } WAX`
     //    ); 
   }).catch(error => {
@@ -4165,26 +4384,26 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
                     		parseFloat(parseFloat( home.querySelector('div[class*="suggestion-icon"]').innerText.trim().split(' ')[0] ).toFixed(2)) * 0.05
                     	) + 0.25
                     ]; console.debug( home['price'] ); 
-  				    document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="100"]').setAttribute(
+  				    document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="100"]').setAttribute(
   				    	'rate', (100 * home['price'][0]).toFixed(2)
   				    ); 
   				    document.querySelector(
-  				    	'div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="100"]'
+  				    	'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="100"]'
   				    ).innerText = `${ home['price'][1].toFixed(2) } WAX FOR STAKE CPU 100 WAX`; 
-  				    document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0]; 
+  				    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0]; 
                     home['price'] = [
                     	parseFloat(parseFloat( home.querySelector('div[class*="suggestion-icon"]').innerText.trim().split(' ')[0] ).toFixed(2)) * 5, 
                     	parseFloat(parseFloat( home.querySelector('div[class*="suggestion-icon"]').innerText.trim().split(' ')[0] ).toFixed(2)) * 5 + (
                     		(parseFloat(parseFloat( home.querySelector('div[class*="suggestion-icon"]').innerText.trim().split(' ')[0] ).toFixed(2)) * 5) * 0.05
                     	) + 0.25
                     ]; console.debug( home['price'] ); 
-  				    document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="500"]').setAttribute(
+  				    document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="500"]').setAttribute(
   				    	'rate', (100 * home['price'][0]).toFixed(2)
   				    ); 
   				    document.querySelector(
-  				    	'div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="500"]'
+  				    	'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="500"]'
   				    ).innerText = `${ home['price'][1].toFixed(2) } WAX FOR STAKE CPU 500 WAX`; 
-  				    document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0]; 
+  				    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0]; 
   				}); 
   			})(rate); 
   		}; 
@@ -4197,39 +4416,39 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
                 		parseFloat(parseFloat( home.querySelector('div[class*="suggestion-icon"]').innerText.trim().split(' ')[0] ).toFixed(2)) * 0.05
                 	) + 0.25
                 ]; console.log( home['price'] ); 
-  				document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="200"]').setAttribute(
+  				document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="200"]').setAttribute(
   					'rate', (100 * home['price'][0]).toFixed(2)
   				); 
   				document.querySelector(
-  					'div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="200"]'
+  					'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="200"]'
   				).innerText = `${ home['price'][1].toFixed(2) } WAX FOR STAKE CPU 200 WAX`; 
-  				document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0]; 
+  				document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0]; 
                 home['price'] = [
                 	parseFloat(parseFloat( home.querySelector('div[class*="suggestion-icon"]').innerText.trim().split(' ')[0] ).toFixed(2)) * 5, 
                 	parseFloat(parseFloat( home.querySelector('div[class*="suggestion-icon"]').innerText.trim().split(' ')[0] ).toFixed(2)) * 5 + (
                 		(parseFloat(parseFloat( home.querySelector('div[class*="suggestion-icon"]').innerText.trim().split(' ')[0] ).toFixed(2)) * 5) * 0.05
                 	) + 0.25
                 ]; console.log( home['price'] ); 
-  					document.querySelector('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="1000"]').setAttribute(
+  					document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="1000"]').setAttribute(
   						'rate', (100 * home['price'][0]).toFixed(2)
   					); 
   					document.querySelector(
-  						'div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="1000"]'
+  						'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="1000"]'
   					).innerText = `${ home['price'][1].toFixed(2) } WAX FOR STAKE CPU 1000 WAX`; 
-  					document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0]; 
+  					document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0]; 
   				}); 
   			})(rate); 
   		}; 
   	}; 
     
-    document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
+    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
       'value', `${ parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
     ); 
-    document.querySelector('div.modal.fade#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
+    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
       'placeholder', `${ parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
     ); 
 
-    document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').forEach(function (e, i, a) {
+    document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').forEach(function (e, i, a) {
       if(
         parseFloat(parseFloat(e.value).toFixed(4)) > parseFloat(
           parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4)
@@ -4238,7 +4457,7 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
     }); 
 
   	if (
-  		document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length == document.querySelectorAll('div.modal.fade#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
+  		document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length == document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
   	){
   		$(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop( 'disabled', true ); 
       $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop( 'disabled', true ); 
@@ -4260,7 +4479,7 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
       </div>
     </div>
     <!-- MODEL GOT BAN -->
-    <div class="modal fade" id="gotBAN" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="gotBAN" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -4305,10 +4524,10 @@ document.querySelector('div.modal.fade#stakeWax').addEventListener('shown.bs.mod
 
 
             <script type="text/javascript">
-document.querySelector('div.modal.fade#gotBAN').addEventListener('shown.bs.modal', function (event) {
+document.querySelector('div.modal#gotBAN').addEventListener('shown.bs.modal', function (event) {
 
-  document.querySelector('div.modal.fade#gotBAN').querySelector('div.modal-header').querySelector('h5').innerText = `Report : ${ event.relatedTarget.parentElement.parentElement.parentElement.id }`; 
-  document.querySelector('div.modal.fade#gotBAN').querySelector('div.modal-header').querySelector('h5').setAttribute(
+  document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').innerText = `Report : ${ event.relatedTarget.parentElement.parentElement.parentElement.id }`; 
+  document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').setAttribute(
     "value", event.relatedTarget.parentElement.parentElement.parentElement.id
   ); 
   
@@ -4334,7 +4553,7 @@ document.querySelector('div.modal.fade#gotBAN').addEventListener('shown.bs.modal
   
 
 
-  fetch(`/report/${ document.querySelector('div.modal.fade#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }/value`, {
+  fetch(`/report/${ document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }/value`, {
     "headers": {},
     "method": "GET",
   }).then(
@@ -4345,7 +4564,7 @@ document.querySelector('div.modal.fade#gotBAN').addEventListener('shown.bs.modal
       result['code'] == 200 && result['text'] != '' && result['text'].split('**-**')[0] != '00000'
     ){
       
-      document.querySelector('div.modal.fade#gotBAN').querySelector('div.modal-header').querySelector('h5').innerText = `Report : ${ event.relatedTarget.parentElement.parentElement.parentElement.id } - Ticket ID ${
+      document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').innerText = `Report : ${ event.relatedTarget.parentElement.parentElement.parentElement.id } - Ticket ID ${
         result['text'].split('**-**')[0]
       }`; 
       
@@ -4414,7 +4633,7 @@ document.querySelector('div.modal.fade#gotBAN').addEventListener('shown.bs.modal
 
     }else{
       
-      fetch(`/report/${ document.querySelector('div.modal.fade#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }/getemail`, {
+      fetch(`/report/${ document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }/getemail`, {
         "headers": {},
         "method": "GET",
       }).then(
@@ -4448,7 +4667,7 @@ document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.delete').addEve
     $('div[id*="gotBAN"] button.btn.btn-primary.submit').prop( 'disabled', true ); 
     
     fetch(`report/${
-        document.querySelector('div.modal.fade#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+        document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
       }/delete?firstname=${
         document.querySelector('div[id*="gotBAN"] input[aria-label*="First Name"]').value
       }&lastname=${
@@ -4620,7 +4839,7 @@ document.querySelector('form[action="#GOT-BAN"]').addEventListener('submit', fun
   $('div[id*="gotBAN"] button.btn.btn-primary.submit').prop( 'disabled', true ); 
   
   fetch(`report/${
-      document.querySelector('div.modal.fade#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+      document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
     }/post?firstname=${
       document.querySelector('div[id*="gotBAN"] input[aria-label*="First Name"]').value
     }&lastname=${
@@ -4675,7 +4894,7 @@ document.querySelector('form[action="#GOT-BAN"]').addEventListener('submit', fun
     
 
 
-    <div class="modal fade" id="waxDetective" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="waxDetective" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -4695,7 +4914,7 @@ document.querySelector('form[action="#GOT-BAN"]').addEventListener('submit', fun
         </div>
       </div>
     </div>
-    <div class="modal fade" id="sessionsToken" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="sessionsToken" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -4715,7 +4934,7 @@ document.querySelector('form[action="#GOT-BAN"]').addEventListener('submit', fun
         </div>
       </div>
     </div>
-    <div class="modal fade" id="totalSetting" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="totalSetting" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -4763,7 +4982,7 @@ document.querySelector('form[action="#GOT-BAN"]').addEventListener('submit', fun
         </div>
       </div>
     </div>
-    <div class="modal fade" id="poolMineable" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="poolMineable" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -4863,7 +5082,7 @@ document.querySelector('form[action="#GOT-BAN"]').addEventListener('submit', fun
       </div>
     </div>
     <!-- MODEL Task Scheduler -->
-    <div class="modal fade" id="taskScheduler" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal" id="taskScheduler" tabindex="-1" aria-labelledby="" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
@@ -5015,25 +5234,25 @@ document.querySelector('form[action="#GOT-BAN"]').addEventListener('submit', fun
 
             
             <script>
-document.querySelector('div.modal.fade#taskScheduler').addEventListener('shown.bs.modal', function (event) {
-  document.querySelector('div.modal.fade#taskScheduler').querySelector('div.modal-header').querySelector('h5').innerText = `Task Scheduler : ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`
-  document.querySelector('div.modal.fade#taskScheduler').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id); 
-  //  document.querySelector('div.modal.fade#taskScheduler button.btn.btn-primary.set-task-all').disabled = true; 
+document.querySelector('div.modal#taskScheduler').addEventListener('shown.bs.modal', function (event) {
+  document.querySelector('div.modal#taskScheduler').querySelector('div.modal-header').querySelector('h5').innerText = `Task Scheduler : ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`
+  document.querySelector('div.modal#taskScheduler').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id); 
+  //  document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-all').disabled = true; 
   for (time in window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.parentNode.id ]['time']){
-    document.querySelector(`div.modal.fade#taskScheduler input[value*="${ time }"]`).checked = window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.parentNode.id ]['time'][time]; 
+    document.querySelector(`div.modal#taskScheduler input[value*="${ time }"]`).checked = window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.parentNode.id ]['time'][time]; 
     //  console.debug(
-    //    document.querySelector(`div.modal.fade#taskScheduler input[value*="${ time }"]`), time,
+    //    document.querySelector(`div.modal#taskScheduler input[value*="${ time }"]`), time,
     //    window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.parentNode.id ]['time'][time]
     //  ); 
   }; 
 }); 
-document.querySelectorAll('div.modal.fade#taskScheduler input').forEach(function(e, i, a) {
+document.querySelectorAll('div.modal#taskScheduler input').forEach(function(e, i, a) {
   e.addEventListener('change', function (c) {
     if (
         !$(this).attr('disabled')
     ){
         $(this).prop( "disabled", true ); $(this).attr('readonly', true); 
-        this['time'] = Array.from(document.querySelector('div.modal.fade#taskScheduler').querySelectorAll('input'), time => `${time.value}:${time.checked}`).join(','); 
+        this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input'), time => `${time.value}:${time.checked}`).join(','); 
         this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone; 
         fetch(
             `/task_scheduler/set?waxid=${ this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal-title').getAttribute('value') }&time=${ this['time'] }&zone=${ this['zone'] }`,
@@ -5063,7 +5282,7 @@ document.querySelectorAll('div.modal.fade#taskScheduler input').forEach(function
   }); 
 });
 
-//  Array.from(document.querySelector('div.modal.fade#taskScheduler').querySelectorAll('input'), time => `${el.value}:${el.checked}`).join(','); 
+//  Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input'), time => `${el.value}:${el.checked}`).join(','); 
             </script>
             
 
@@ -5071,7 +5290,7 @@ document.querySelectorAll('div.modal.fade#taskScheduler input').forEach(function
             <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
               <button type="button" class="btn btn-primary set-task-all">SET TASK ALL</button>
                 <script>
-document.querySelector('div.modal.fade#taskScheduler button.btn.btn-primary.set-task-all').addEventListener(
+document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-all').addEventListener(
   "click", 
   function (e) {
     $('#taskScheduler').modal('hide'); 
@@ -5082,7 +5301,7 @@ document.querySelector('div.modal.fade#taskScheduler button.btn.btn-primary.set-
       ); 
       (function ( ID ){
 
-        this['time'] = Array.from(document.querySelector('div.modal.fade#taskScheduler').querySelectorAll('input'), time => `${time.value}:${time.checked}`).join(','); 
+        this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input'), time => `${time.value}:${time.checked}`).join(','); 
         this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone; 
         fetch(`/task_scheduler/set?waxid=${ ID }&time=${ this['time'] }&zone=${ this['zone'] }`, {
           "headers"       : {}, 

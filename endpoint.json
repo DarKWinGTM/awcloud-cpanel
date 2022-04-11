@@ -3,20 +3,21 @@
         "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
-        "https://wax.cryptolions.io"
+        "https://wax.cryptolions.io", 
+        "https://waxapi.ledgerwise.io"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
-        "https://wax.greymass.com"
+        "https://wax.greymass.com", 
+        "https://waxapi.ledgerwise.io"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
         "https://wax.hkeos.com/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id=", 
         "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
-        "https://api.waxeastern.cn/v2/history/get_transaction?id=", 
         "https://api.wax.greeneosio.com/v2/history/get_transaction?id=", 
         "https://wax.blokcrafters.io/v2/history/get_transaction?id="
     ], 
@@ -69,7 +70,8 @@
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
         "https://wax.api.eosnation.io", 
-        "https://wax.greymass.com"
+        "https://wax.greymass.com", 
+        "https://waxapi.ledgerwise.io"
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 

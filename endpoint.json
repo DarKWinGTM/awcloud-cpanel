@@ -16,8 +16,7 @@
         "https://wax.hkeos.com/v2/history/get_transaction?id=", 
         "https://wax.hivebp.io/v2/history/get_transaction?id=", 
         "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
-        "https://api.wax.greeneosio.com/v2/history/get_transaction?id=", 
-        "https://wax.blokcrafters.io/v2/history/get_transaction?id="
+        "https://api.wax.greeneosio.com/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
         "https://wax.cryptolions.io", 

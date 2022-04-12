@@ -1689,7 +1689,7 @@ $(document).ready(function() {
 	<textarea 
 		class 		= "form-control ${ WAXID }"
 		id 			= "message-text ${ WAXID }"
-		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
+		style 		= "width : 100%;height : 649px; background: transparent; color: white; resize: none; border: 0 none;"
 		scrolling 	= "no"
 	></textarea>
 </th>
@@ -3290,6 +3290,8 @@ $(document).ready(function() {
 										document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
+										document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['gx']['db'], undefined, 4); 
+
 										//	try{
 										//		document.querySelector('th[id*="' + _WAXID + '-gx-panel-monitor"]').querySelector('input.gx-feature-mbr-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['gx']['cf']['mbr_mine']; 
 										//	}catch(e){ }; 

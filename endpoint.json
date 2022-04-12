@@ -1,13 +1,11 @@
 {
     "addrlists" : [
-        "https://wax.ping.gg", 
         "https://api.tokengamer.io", 
         "https://api-wax-mainnet.wecan.dev", 
         "https://query.3dkrender.com", 
         "https://wax.cryptolions.io"
     ], 
     "lastminer" : [
-        "https://wax.ping.gg", 
         "https://wax.cryptolions.io", 
         "https://api-wax-mainnet.wecan.dev", 
         "https://wax.blacklusion.io", 
@@ -66,7 +64,6 @@
         "https://wax.greymass.com"
     ], 
     "getwallet" : [
-        "https://wax.ping.gg", 
         "https://wax.neftyblocks.com", 
         "https://wax.api.eosnation.io", 
         "https://wax.greymass.com", 

@@ -3538,7 +3538,7 @@ $(document).ready(function() {
 						})([])
                     ); 
 					document.querySelector('iframe[id*="fwMonitor"]').parentElement.style.display= 'table-cell'; 
-					document.querySelector('iframe[id*="fwMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="fwMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 4) * 312 }`; 
+					document.querySelector('iframe[id*="fwMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="fwMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 4) * 412 }`; 
                 }; 
 				
                 try{ window['check-wax-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['wax'] }catch(e){}; 

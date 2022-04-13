@@ -294,6 +294,12 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
+							//	<iframe
+							//	url         = "https://farmersworld.idigger.online/affiliate?waxid=${ WAXID }"
+							//	style       = "width : 100%; height : 1408px;"
+							//	scrolling   = "no"
+							//	loading 	= "lazy"
+							//	></iframe>
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -302,12 +308,12 @@ $(document).ready(function() {
     style       = "display: none; "
 	id 			= "${ WAXID }-fw-monitor"
 >
-    <iframe
-    url         = "https://farmersworld.idigger.online/affiliate?waxid=${ WAXID }"
-    style       = "width : 100%; height : 1408px;"
-    scrolling   = "no"
-	loading 	= "lazy"
-    ></iframe>
+	<textarea 
+		class 		= "form-control ${ WAXID }"
+		id 			= "message-text ${ WAXID }"
+		style 		= "width : 100%;height : 1408px; background: transparent; color: white; resize: none; border: 0 none;"
+		scrolling 	= "no"
+	></textarea>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id="${ WAXID }-fw-panel-monitor">
 	<div class="input-group fw-deposit-fwf">
@@ -2914,16 +2920,23 @@ $(document).ready(function() {
 								try{
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['fw']["sw"] == true && 
-										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
-										!document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
+										Object.keys( window['information-data']['DATA'] ).length >= 1
+										//	&& 
+										//	!document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
 									){
-										document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).setAttribute(
-											'src', document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).getAttribute('url')
-										); 
-										document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										//	document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).setAttribute(
+										//		'src', document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).getAttribute('url')
+										//	); 
+										//	document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										//	document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['fw']['db'], undefined, 4); 
+									
 										
 									}; 
+									
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['fw']["sw"] == true && 
 										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
@@ -3495,7 +3508,39 @@ $(document).ready(function() {
                         'src', `https://mining.idigger.online/iframeChart?waxid=${ Object.keys( window['information-data']['DATA'] ).join(',') }`
                     ); 
                 }; 
-                
+                if (
+                    window['information-data']['DATA'] && 
+                    Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+					!document.querySelector('iframe[id*="fwMonitor"]').getAttribute('url').match(
+                        (function (arr){
+						    for (WAXID in window['information-data']['DATA']){
+						        if( window['information-data']['DATA'][WAXID]['vers']['fw']['sw'] == true ){ arr.push(WAXID) }
+						    }; return arr.join(',')
+						})([])
+                    ) && (function (arr){
+					    for (WAXID in window['information-data']['DATA']){
+					        if( window['information-data']['DATA'][WAXID]['vers']['fw']['sw'] == true ){ arr.push(WAXID) }
+					    }; return arr.join(',')
+					})([]) != ''
+                ){
+                    document.querySelector('iframe[id*="fwMonitor"]').setAttribute(
+                        'src', '/?monitor=fw&waxid=' + (function (arr){
+						    for (WAXID in window['information-data']['DATA']){
+						        if( window['information-data']['DATA'][WAXID]['vers']['fw']['sw'] == true ){ arr.push(WAXID) }
+						    }; return arr.join(',')
+						})([])
+                    ); 
+                    document.querySelector('iframe[id*="fwMonitor"]').setAttribute(
+                        'url', '/?monitor=fw&waxid=' + (function (arr){
+						    for (WAXID in window['information-data']['DATA']){
+						        if( window['information-data']['DATA'][WAXID]['vers']['fw']['sw'] == true ){ arr.push(WAXID) }
+						    }; return arr.join(',')
+						})([])
+                    ); 
+					document.querySelector('iframe[id*="fwMonitor"]').parentElement.style.display= 'table-cell'; 
+					document.querySelector('iframe[id*="fwMonitor"]').style.height 	= `${ ((new URL(window.location.href + document.querySelector('iframe[id*="fwMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',') / 3) *  1152 }`; 
+                }; 
+				
                 try{ window['check-wax-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['wax'] }catch(e){}; 
                 try{
                     if (window['check-wax-pool-before-mine'].parentNode.querySelector('input[type="range"]').getAttribute('value') == 0.00){
@@ -4031,6 +4076,91 @@ $(document).ready(function() {
 					}).catch(error => {
 						e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
 					});
+					
+					// CHECK PERMISSIONS
+					//	fetch("https://lightapi.eosamsterdam.net/api/accinfo/wax/raicybermoon", {
+					//	  "headers": {
+					//	    "accept": "*/*",
+					//	    "accept-language": "en-US,en;q=0.9",
+					//	    "cache-control": "no-cache",
+					//	    "pragma": "no-cache",
+					//	    "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Opera\";v=\"84\"",
+					//	    "sec-ch-ua-mobile": "?0",
+					//	    "sec-ch-ua-platform": "\"Linux\"",
+					//	    "sec-fetch-dest": "empty",
+					//	    "sec-fetch-mode": "cors",
+					//	    "sec-fetch-site": "cross-site",
+					//	    "Referer": "https://wax.bloks.io/",
+					//	    "Referrer-Policy": "strict-origin-when-cross-origin"
+					//	  },
+					//	  "body": null,
+					//	  "method": "GET"
+					//	}); --> {
+					//	    "resources": {
+					//	        "ram_bytes": 4794,
+					//	        "cpu_weight": 30000000000,
+					//	        "net_weight": 50000000
+					//	    },
+					//	    "linkauth": [],
+					//	    "chain": {
+					//	        "sync": 0,
+					//	        "decimals": 8,
+					//	        "systoken": "WAX",
+					//	        "rex_enabled": 0,
+					//	        "network": "wax",
+					//	        "block_num": 176731778,
+					//	        "chainid": "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4",
+					//	        "description": "WAX",
+					//	        "block_time": "2022-04-13 04:13:12",
+					//	        "production": 1
+					//	    },
+					//	    "delegated_to": [
+					//	        {
+					//	            "account_name": "raicybermoon",
+					//	            "net_weight": 50000000,
+					//	            "cpu_weight": 30000000000
+					//	        }
+					//	    ],
+					//	    "permissions": [
+					//	        {
+					//	            "auth": {
+					//	                "accounts": [],
+					//	                "keys": [
+					//	                    {
+					//	                        "pubkey": "EOS5Uf68Bqh6ANVrHBWsuycFWPkC8bYMABY5b7afxxtRAESrdA22k",
+					//	                        "weight": 1,
+					//	                        "public_key": "PUB_K1_5Uf68Bqh6ANVrHBWsuycFWPkC8bYMABY5b7afxxtRAESofEW8D"
+					//	                    }
+					//	                ]
+					//	            },
+					//	            "threshold": 1,
+					//	            "perm": "active"
+					//	        },
+					//	        {
+					//	            "perm": "owner",
+					//	            "threshold": 1,
+					//	            "auth": {
+					//	                "keys": [
+					//	                    {
+					//	                        "weight": 1,
+					//	                        "public_key": "PUB_K1_89wQs3ZGyC4izmvrpmyeQsgFQbR83eA8EGtvWuvh3PWqteP1zv",
+					//	                        "pubkey": "EOS89wQs3ZGyC4izmvrpmyeQsgFQbR83eA8EGtvWuvh3PWqwawswq"
+					//	                    }
+					//	                ],
+					//	                "accounts": []
+					//	            }
+					//	        }
+					//	    ],
+					//	    "account_name": "raicybermoon",
+					//	    "delegated_from": [
+					//	        {
+					//	            "del_from": "raicybermoon",
+					//	            "net_weight": 50000000,
+					//	            "cpu_weight": 30000000000
+					//	        }
+					//	    ]
+					//	}
+					
 				}else{
 					e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
 				}

@@ -985,7 +985,7 @@ if(
                             <select class="form-select nft send-all">
                                 <option value="0" selected>None</option>
                                 <option value="1">All In Bags</option>
-                                <option value="2" disabled>All Account Bags</option>
+                                <option value="2">All Account Bags</option>
                                 <option value="17">FW Burn Crops</option>
                                 <option value="18">FW Ware Item</option>
                             </select>
@@ -996,14 +996,18 @@ $('.form-select.nft.send-all').on('change', function(){
         case '0':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function (e, i, a) { e.checked = false })
             break;
         case '1':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            //    document.querySelectorAll('label[for*="send-nft-"] img').forEach(function (e, i, a) { e.click() })
+            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function (e, i, a) { e.checked = true })
             break;
         case '2':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true; 
+            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function (e, i, a) { e.checked = false })
             break;
         case '3':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false; 
@@ -1476,7 +1480,90 @@ document.querySelector('form[action="#SENDNFT"]').addEventListener('submit', fun
             $("button.btn.btn-primary.send-nft").attr('readonly', false); 
         }); 
     
-    }; 
+    } else if (
+        $("button.btn.btn-primary.nft.send-all").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.nft.send-all')
+    ){
+        
+        //    $('#boxNFT').modal('hide'); 
+        //    for (TRFERWAX in window['information-data']['DATA'] ){
+        //      if (
+        //        window['information-data']['DATA'][ TRFERWAX ]['balance'][ $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ] >= 0.00009
+        //      ){
+        //        $.notify(
+        //        window[ TRFERWAX ].querySelector('button[data-bs-target*="#transferWax"]'), 
+        //        `TRANSFER : PLEASE WAIT`, 'info'
+        //        ); 
+        //        (function ( ID ){
+        //            setTimeout(function(){
+        //                fetch(`/TESTsendnft?waxid=${ ID }&to=${
+        //                  document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
+        //                }&memo=${
+        //                  document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value
+        //                }&quantity=${
+        //                  window['information-data']['DATA'][ ID ]['balance'][ $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]
+        //                }&symbol=${
+        //                  $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
+        //                }`, {
+        //                  "headers"       : {}, 
+        //                  "body"          : null,
+        //                  "method"        : "GET",
+        //                }).then(
+        //                    result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
+        //                ).then(result => {
+        //                  if ( result['code'] == 200 ){
+        //                    $.notify(
+        //                      window[ ID ].querySelector('button#land'), 
+        //                      `TRANSFER : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
+        //                      'success'
+        //                    ); 
+        //                  }else{
+        //                      try{
+        //                        if(
+        //                            result['data']['transaction'] && 
+        //                            result['data']['transaction']['trx'] && 
+        //                            result['data']['transaction']['trx']['error'] && 
+        //                            result['data']['transaction']['trx']['error']['what']
+        //                        ){
+        //                            $.notify(
+        //                              window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+        //                              `TRANSFER : WARNING - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+        //                            ); 
+        //                        }else{
+        //                            $.notify(
+        //                              window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+        //                              `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+        //                            ); 
+        //                        }; 
+        //                        //    $.notify(
+        //                        //      window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+        //                        //      `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+        //                        //    ); 
+        //                      }catch(e){
+        //                        $.notify(
+        //                          window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+        //                          `TRANSFER : ERROR - ${ result['text'] }`, 
+        //                          'error'
+        //                        ); 
+        //                      }; 
+        //                  }; 
+        //                }).catch(error => {
+        //                  $.notify(
+        //                    window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
+        //                    `TRANSFER : CONNECTION FAILED ${ error }`, 'error'
+        //                  ); 
+        //                }); 
+        //            }, 3000 + Math.ceil(Math.random() * 18000)); 
+        //        })( TRFERWAX ); 
+        //      }else{
+        //        $.notify(
+        //          window[ TRFERWAX ].querySelector('button[data-bs-target*="#transferWax"]'), 
+        //          `TRANSFER : ALREADY`, 'success'
+        //        ); 
+        //      }; 
+        //    }; 
+         
+    };
+    
 }); 
             </script>
             <!-- SEND NFT FUNCTION -->
@@ -3308,6 +3395,14 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
   }
 }); 
                       </script>
+                      <button type="submit" class="btn btn-primary staketoall">STAKE TO ALL</button>
+                      <script>
+//    document.querySelector('div.modal#stakeWax button.btn.btn-primary.staketoall').addEventListener(
+//        "click", 
+//        function (e) {
+//        }
+//    ); 
+                      </script>
                     </div>
 	  		    </form>
             </div>
@@ -3863,7 +3958,7 @@ document.querySelector('div.modal#stakeWax button.btn.btn-primary.rent-unstake-t
                     <div><hr></div>
                     <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
                       <button type="submit" class="btn btn-primary free-stake">FREE STAKE</button>
-                      <button type="button" class="btn btn-primary free-stake-all" disabled>FREE STAKE ALL</button>
+                      <!--button type="button" class="btn btn-primary free-stake-all" disabled>FREE STAKE ALL</button-->
                       <script>
 document.querySelector('form[action="#FREE-STAKE"]').addEventListener('submit', function (e) {
     if (

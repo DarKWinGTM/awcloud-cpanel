@@ -1589,7 +1589,7 @@
                         var a = Object(k["a"])(t, 2)
                           , r = a[0]
                           , n = a[1];
-                        e[r] = n < 10 ? "0".concat(n) : String(n)
+                        e[r] = n < 40 ? "0".concat(n) : String(n)
                     }
                     )),
                     e

@@ -2939,8 +2939,9 @@ $(document).ready(function() {
 									
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['fw']["sw"] == true && 
-										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
-										document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
+										Object.keys( window['information-data']['DATA'] ).length >= 1
+										//	&& 
+										//	document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
 									){
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_plants'][0]; 
@@ -3538,7 +3539,7 @@ $(document).ready(function() {
 						})([])
                     ); 
 					document.querySelector('iframe[id*="fwMonitor"]').parentElement.style.display= 'table-cell'; 
-					document.querySelector('iframe[id*="fwMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="fwMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 4) * 412 }`; 
+					document.querySelector('iframe[id*="fwMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="fwMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 412 }`; 
                 }; 
 				
                 try{ window['check-wax-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['wax'] }catch(e){}; 

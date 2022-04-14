@@ -9254,7 +9254,8 @@ progress {
     flex-wrap: wrap;
     margin-top: calc(var(--mdb-gutter-y) * -1);
     margin-right: calc(var(--mdb-gutter-x) / -2);
-    margin-left: calc(var(--mdb-gutter-x) / -2)
+    margin-left: calc(var(--mdb-gutter-x) / -2);
+    place-content: center;
 }
 
 .row>* {
@@ -9711,7 +9712,7 @@ progress {
 
     .col-md-1 {
         flex: 0 0 auto;
-        width: 8.3333333333%
+        /* width: 8.3333333333% */
     }
 
     .col-md-2 {
@@ -9756,7 +9757,7 @@ progress {
 
     .col-md-10 {
         flex: 0 0 auto;
-        width: 83.3333333333%
+        width: 98%;
     }
 
     .col-md-11 {
@@ -15155,7 +15156,7 @@ textarea.form-control-lg {
 }
 
 .d-inline-block {
-    display: inline-block!important
+    display: inline-block!important;
 }
 
 .d-block {

@@ -555,8 +555,10 @@ window['expand-all-history'].addEventListener('click', function(e) {
         //    }
         
         document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.removeProperty("position"); 
-        document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position"); 
-        document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position"); 
+        //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position"); 
+        //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position"); 
+        document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position"); 
+        document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position"); 
         document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position"); 
         document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position"); 
         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position"); 
@@ -565,8 +567,10 @@ window['expand-all-history'].addEventListener('click', function(e) {
         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position"); 
         
         document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.removeProperty("visibility"); 
-        document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility"); 
-        document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility"); 
+        //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility"); 
+        //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility"); 
+        document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility"); 
+        document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility"); 
         document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility"); 
         document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility"); 
         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility"); 
@@ -597,8 +601,10 @@ window['collapse-all-history'].addEventListener('click', function(e) {
         //    document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'none'; 
 
         document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.position = 'absolute'; 
-        document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute'; 
-        document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute'; 
+        //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute'; 
+        //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute'; 
+        document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute'; 
+        document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute'; 
         document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute'; 
         document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute'; 
         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute'; 
@@ -607,8 +613,10 @@ window['collapse-all-history'].addEventListener('click', function(e) {
         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute'; 
 
         document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.visibility = 'absolute'; 
-        document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden'; 
-        document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden'; 
+        //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden'; 
+        //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden'; 
+        document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden'; 
+        document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden'; 
         document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden'; 
         document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden'; 
         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden'; 

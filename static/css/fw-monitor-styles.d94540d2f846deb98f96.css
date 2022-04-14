@@ -8910,7 +8910,7 @@ figure {
 }
 
 img,svg {
-    vertical-align: middle
+    vertical-align: middle;
 }
 
 table {
@@ -9248,7 +9248,7 @@ progress {
 }
 
 .row {
-    --mdb-gutter-x: 1.5rem;
+    --mdb-gutter-x: 1.1rem;
     --mdb-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
@@ -9262,8 +9262,8 @@ progress {
     width: 100%;
     max-width: 100%;
     padding-right: calc(var(--mdb-gutter-x) / 2);
-    padding-left: calc(var(--mdb-gutter-x) / 2);
-    margin-top: var(--mdb-gutter-y)
+    padding-left: calc(var(--mdb-gutter-x) /1);
+    margin-top: var(--mdb-gutter-y);
 }
 
 .col {
@@ -9564,7 +9564,7 @@ progress {
 
     .col-sm-12 {
         flex: 0 0 auto;
-        width: 100%
+        width: 100%;
     }
 
     .offset-sm-0 {
@@ -15899,7 +15899,7 @@ textarea.form-control-lg {
 }
 
 .mb-4 {
-    margin-bottom: 1.5rem!important
+    /* margin-bottom: 1.5rem!important */
 }
 
 .mb-5 {
@@ -16159,8 +16159,8 @@ textarea.form-control-lg {
 }
 
 .px-2 {
-    padding-right: .5rem!important;
-    padding-left: .5rem!important
+    /* padding-right: .5rem!important; */
+    /* padding-left: .5rem!important; */
 }
 
 .px-3 {
@@ -16385,7 +16385,9 @@ textarea.form-control-lg {
 }
 
 .text-center {
-    text-align: center!important
+    text-align: center!important;
+    font-family: ui-monospace;
+    font: caption;
 }
 
 .text-decoration-none {
@@ -24117,7 +24119,8 @@ i.flag.zimbabwe:before,i.flag.zw:before {
 
 .card {
     border: 0;
-    box-shadow: 0 10px 15px -3px #00000012,0 4px 6px -2px #0000000d
+    box-shadow: 0 10px 15px -3px #00000012,0 4px 6px -2px #0000000d;
+    align-content: center;
 }
 
 .card .bg-image {
@@ -25761,5 +25764,6 @@ body,html {
 
 body {
     margin: 0;
-    font-family: Roboto,Helvetica Neue,sans-serif
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    overflow-x: hidden;
 }

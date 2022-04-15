@@ -4,14 +4,14 @@
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
         "https://wax.cryptolions.io", 
-        "https://wax.dapplica.io"
+        "https://wax.eosrio.io"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://wax.greymass.com", 
-        "https://wax.dapplica.io"
+        "https://wax.eosrio.io"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
@@ -71,7 +71,7 @@
         "https://wax.api.eosnation.io", 
         "https://wax.greymass.com", 
         "https://wax.pink.gg", 
-        "https://wax.dapplica.io"
+        "https://wax.eosrio.io"
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 

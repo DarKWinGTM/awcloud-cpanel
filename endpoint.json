@@ -1,6 +1,7 @@
 {
     "addrlists" : [
         "https://api.tokengamer.io", 
+        "https://hyperion.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
         "https://wax.cryptolions.io", 
@@ -8,6 +9,7 @@
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
+        "https://hyperion.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://wax.greymass.com", 
@@ -68,6 +70,7 @@
     ], 
     "getwallet" : [
         "https://wax.neftyblocks.com", 
+        "https://hyperion.tokengamer.io", 
         "https://wax.api.eosnation.io", 
         "https://wax.greymass.com", 
         "https://wax.pink.gg", 
@@ -78,14 +81,16 @@
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
-        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?"
+        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
+        "https://atomic.tokengamer.io/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
-        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?"
+        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
+        "https://atomic.tokengamer.io/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

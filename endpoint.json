@@ -73,7 +73,7 @@
         "https://wax.greymass.com", 
         "https://wax.pink.gg", 
         "https://wax.eosrio.io", 
-        "https://chain.wax.io"
+        "https://api.wax.liquidstudios.io"
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 

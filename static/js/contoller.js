@@ -502,6 +502,12 @@ $(document).ready(function() {
 			</div>
 			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
 				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fw-feature-key-mine-switch" value="0">
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
 					<input type="checkbox" class="form-check-input fw-feature-fee-mine-switch" value="0">
 					<span style="padding-left: 5;">FEE MINE</span>
 				</label>

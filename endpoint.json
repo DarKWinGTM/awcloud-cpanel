@@ -1,28 +1,31 @@
 {
     "addrlists" : [
         "https://api.tokengamer.io", 
-        "https://api-wax-mainnet.wecan.dev", 
+        "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
-        "https://wax.cryptolions.io"
+        "https://wax.cryptolions.io", 
+        "https://wax.dapplica.io"
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
-        "https://api-wax-mainnet.wecan.dev", 
+        "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
-        "https://wax.greymass.com"
+        "https://wax.greymass.com", 
+        "https://wax.dapplica.io"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
         "https://wax.hkeos.com/v2/history/get_transaction?id=", 
-        "https://wax.hivebp.io/v2/history/get_transaction?id=", 
-        "https://apiwax.3dkrender.com/v2/history/get_transaction?id=", 
-        "https://api.wax.greeneosio.com/v2/history/get_transaction?id="
+        "https://wax.dapplica.io/v2/history/get_transaction?id=", 
+        "https://api.wax.greeneosio.com/v2/history/get_transaction?id=", 
+        "https://waxapi.ledgerwise.io/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
         "https://wax.cryptolions.io", 
         "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
-        "https://wax.neftyblocks.com"
+        "https://wax.neftyblocks.com", 
+        "https://wax.dapplica.io"
     ], 
     "claimsigh" : [
         "https://aw-guard.yeomen.ai"
@@ -67,21 +70,22 @@
         "https://wax.neftyblocks.com", 
         "https://wax.api.eosnation.io", 
         "https://wax.greymass.com", 
-        "https://wax.pink.gg"
+        "https://wax.pink.gg", 
+        "https://wax.dapplica.io"
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
-        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
-        "https://atomic.wax.eosrio.io/atomicassets/v1/assets?"
+        "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
+        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
-        "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
-        "https://atomic.wax.eosrio.io/atomicassets/v1/assets?"
+        "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
+        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

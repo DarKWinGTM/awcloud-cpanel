@@ -500,7 +500,7 @@ $(document).ready(function() {
 					<span style="padding-left: 5;">ECO MINE</span>
 				</label>
 			</div>
-			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
 				<label class="form-check-label">
 					<input type="checkbox" class="form-check-input fw-feature-key-mine-switch" value="0">
 					<span style="padding-left: 5;">KEY MINE</span>
@@ -1533,6 +1533,20 @@ $(document).ready(function() {
 									{method : 'GET'}
 								); 
 							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-feature-key-mine-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-feature-key-mine-switch').checked, 
+								}; 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&key_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
 							
 							
 							
@@ -2126,13 +2140,13 @@ $(document).ready(function() {
                                                     result['data'] == true
                                                 ){
                                                     this.checked = true; 
-                                                    $( this ).notify(
+                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
                                                         'RES MODE ON', 
                                                         "success", { position : "top" }
                                                     ); 
                                                 }else{
                                                     this.checked = false; 
-                                                    $( this ).notify(
+                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
                                                         'RES MODE NO', 
                                                         "error", { position : "top" }
                                                     ); 
@@ -2936,11 +2950,15 @@ $(document).ready(function() {
 										//	document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										//	document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
-										document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
-										document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['fw']['db'], undefined, 4); 
-									
-										
+										try{
+											document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['fw']['db'], undefined, 4); 
+										}catch(e){ }; 
 									}; 
 									
 									if(
@@ -2964,6 +2982,9 @@ $(document).ready(function() {
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['eco_mine']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['key_mine']; 
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['fee_mine']; 

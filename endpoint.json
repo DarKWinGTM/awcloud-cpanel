@@ -1,6 +1,6 @@
 {
     "addrlists" : [
-        "https://api.tokengamer.io", 
+        "https://api-wax-mainnet.wecan.dev", 
         "https://hyperion.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
@@ -9,7 +9,7 @@
     ], 
     "lastminer" : [
         "https://wax.cryptolions.io", 
-        "https://hyperion.tokengamer.io", 
+        "https://api.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://wax.greymass.com", 
@@ -73,7 +73,7 @@
         "https://wax.greymass.com", 
         "https://wax.pink.gg", 
         "https://wax.eosrio.io", 
-        "https://api.tokengamer.io"
+        "https://api-wax-mainnet.wecan.dev"
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 

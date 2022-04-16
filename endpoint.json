@@ -13,7 +13,7 @@
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://wax.greymass.com", 
-        "https://wax.eosrio.io"
+        "https://wax.neftyblocks.com"
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
@@ -72,8 +72,8 @@
         "https://wax.api.eosnation.io", 
         "https://wax.greymass.com", 
         "https://wax.pink.gg", 
-        "https://wax.eosrio.io", 
-        "https://wax.eosphere.io"
+        "https://wax.eosrio.io", , 
+        "https://api.tokengamer.io"
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 

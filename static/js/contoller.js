@@ -595,7 +595,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<div class="input-group-text fw-auto-transfer-supply-farmer-coin-text" style="width: 248px;">Farmer Coin 0000</div>
-			<input type="range" class="form-control fw-auto-transfer-supply-farmer-coin-input" placeholder="40" value="10" step="1" min="1" max="99">
+			<input type="range" class="form-control fw-auto-transfer-supply-farmer-coin-input" placeholder="40" value="10" step="1" min="1" max="499">
 			<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 			<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 				<div class="input-group-text" id="basic-addon WAX">TO ADDRESS</div>

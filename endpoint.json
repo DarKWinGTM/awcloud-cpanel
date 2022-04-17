@@ -1,6 +1,6 @@
 {
     "addrlists" : [
-        "https://api-wax-mainnet.wecan.dev", 
+        "https://waxapi.ledgerwise.io", 
         "https://hyperion.tokengamer.io", 
         "https://wax.pink.gg", 
         "https://query.3dkrender.com", 
@@ -26,7 +26,8 @@
         "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
         "https://wax.neftyblocks.com", 
-        "https://wax.dapplica.io"
+        "https://wax.dapplica.io", 
+        "https://chain.wax.io"
     ], 
     "claimsigh" : [
         "https://aw-guard.yeomen.ai"
@@ -73,7 +74,7 @@
         "https://wax.greymass.com", 
         "https://wax.pink.gg", 
         "https://wax.eosrio.io", 
-        "https://api-wax-mainnet.wecan.dev"
+        "https://hyperion.tokengamer.io"
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 

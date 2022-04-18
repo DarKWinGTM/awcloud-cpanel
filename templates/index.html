@@ -46,18 +46,17 @@
             --bs-font-monospace: system-ui !important;
         }
 
-        .modal {
-            display: none;
-            /* Hidden by default */
+        .modal.fade .modal-dialog, .modal.in .modal-dialog .modal-backdrop {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            transform: translate(0, 0);
+            transition: none; 
             overflow: auto;
-            /* Enable scroll if needed */
             background-color: rgb(0, 0, 0);
-            /* Fallback color */
-            background-color: rgba(0, 0, 0, 0.3);
-            /* Black w/ opacity */
-            -webkit-animation-name: none;
-            /* Fade in the background */
-            -webkit-animation-duration: none;
+        }
+
+        .modal-backdrop .modal-backdrop.show {
+            opacity: 0;
         }
 
         .progress .bar {
@@ -471,22 +470,195 @@
                         font-family         : sans-serif;
                         font-size           : large;
                     ">
-                        <div class="d-flex justify-content-center" style="" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.91</div>
+                        <div class="d-flex justify-content-center" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.92</div>
                     </th>
+                    <ul
+                        class   = "nav nav-tabs"
+                        id      = "MonitorTab"
+                        role    = "tablist"
+                        style   = "
+                            background-color: rgb(141, 197, 63) !important;
+                            color: black;
+                            border: 0px !important;
+                            border-radius: 1px !important;
+                        "
+                    >
+                        <li 
+                            class="nav-item"
+                            role="presentation" 
+                            style="
+                                font: -webkit-mini-control;
+                            "
+                        >
+                            <button
+                                class           = "nav-link active"
+                                id              = "aw-monitor-tab"
+                                data-bs-toggle  = "tab"
+                                data-bs-target  = "#aw-monitor"
+                                type            = "button"
+                                role            = "tab"
+                                aria-controls   = "aw-monitor"
+                                aria-selected   = "true"
+                                style           = "
+                                    font-weight: bold;
+                                    color: black;
+                                "
+                                onclick         = "document.querySelector('iframe#iframeChart').setAttribute('src', document.querySelector('iframe#iframeChart').src)"
+                            >AW</button>
+                        </li>
+                        <li 
+                            class="nav-item"
+                            role="presentation" 
+                            style="
+                                font: -webkit-mini-control;
+                            "
+                        >
+                            <button
+                                class           = "nav-link"
+                                id              = "ss-monitor-tab"
+                                data-bs-toggle  = "tab"
+                                data-bs-target  = "#ss-monitor"
+                                type            = "button"
+                                role            = "tab"
+                                aria-controls   = "ss-monitor"
+                                aria-selected   = "false"
+                                style           = "
+                                    font-weight: bold;
+                                    color: black;
+                                "
+                                onclick         = "document.querySelector('iframe#ssMonitor').setAttribute('src', document.querySelector('iframe#ssMonitor').src)"
+                            >SS</button>
+                        </li>
+                        <li 
+                            class="nav-item"
+                            role="presentation" 
+                            style="
+                                font: -webkit-mini-control;
+                            "
+                        >
+                            <button
+                                class           = "nav-link"
+                                id              = "fw-monitor-tab"
+                                data-bs-toggle  = "tab"
+                                data-bs-target  = "#fw-monitor"
+                                type            = "button"
+                                role            = "tab"
+                                aria-controls   = "fw-monitor"
+                                aria-selected   = "false"
+                                style           = "
+                                    font-weight: bold;
+                                    color: black;
+                                "
+                                onclick         = "document.querySelector('iframe#fwMonitor').setAttribute('src', document.querySelector('iframe#fwMonitor').src)"
+                            >FW</button>
+                        </li>
+                        <li 
+                            class="nav-item"
+                            role="presentation" 
+                            style="
+                                font: -webkit-mini-control;
+                            "
+                        >
+                            <button
+                                class           = "nav-link"
+                                id              = "kq-monitor-tab"
+                                data-bs-toggle  = "tab"
+                                data-bs-target  = "#kq-monitor"
+                                type            = "button"
+                                role            = "tab"
+                                aria-controls   = "kq-monitor"
+                                aria-selected   = "false"
+                                style           = "
+                                    font-weight: bold;
+                                    color: black;
+                                "
+                                onclick         = "document.querySelector('iframe#kqMonitor').setAttribute('src', document.querySelector('iframe#kqMonitor').src)"
+                            >KQ</button>
+                        </li>
+                        <li 
+                            class="nav-item"
+                            role="presentation" 
+                            style="
+                                font: -webkit-mini-control;
+                            "
+                        >
+                            <button
+                                class           = "nav-link"
+                                id              = "cc-monitor-tab"
+                                data-bs-toggle  = "tab"
+                                data-bs-target  = "#cc-monitor"
+                                type            = "button"
+                                role            = "tab"
+                                aria-controls   = "cc-monitor"
+                                aria-selected   = "false"
+                                style           = "
+                                    font-weight: bold;
+                                    color: black;
+                                "
+                                onclick         = "document.querySelector('iframe#ccMonitor').setAttribute('src', document.querySelector('iframe#ccMonitor').src)"
+                            >CC</button>
+                        </li>
+                        <li 
+                            class="nav-item"
+                            role="presentation" 
+                            style="
+                                font: -webkit-mini-control;
+                            "
+                        >
+                            <button
+                                class           = "nav-link"
+                                id              = "gx-monitor-tab"
+                                data-bs-toggle  = "tab"
+                                data-bs-target  = "#gx-monitor"
+                                type            = "button"
+                                role            = "tab"
+                                aria-controls   = "gx-monitor"
+                                aria-selected   = "false"
+                                style           = "
+                                    font-weight: bold;
+                                    color: black;
+                                "
+                                onclick         = "document.querySelector('iframe#gxMonitor').setAttribute('src', document.querySelector('iframe#gxMonitor').src)"
+                            >GX</button>
+                        </li>
+                        <li 
+                            class="nav-item"
+                            role="presentation" 
+                            style="
+                                font: -webkit-mini-control;
+                            "
+                        >
+                            <button
+                                class           = "nav-link"
+                                id              = "bl-monitor-tab"
+                                data-bs-toggle  = "tab"
+                                data-bs-target  = "#bl-monitor"
+                                type            = "button"
+                                role            = "tab"
+                                aria-controls   = "bl-monitor"
+                                aria-selected   = "false"
+                                style           = "
+                                    font-weight: bold;
+                                    color: black;
+                                "
+                                onclick         = "document.querySelector('iframe#blMonitor').setAttribute('src', document.querySelector('iframe#blMonitor').src)"
+                            >BL</button>
+                        </li>
+                    </ul>
 
                     <tr>
                         <th colspan="9" style="display: table-cell;">
-                            <iframe id="iframeChart" style="width : 100%; height : 532px;" scrolling="no"></iframe>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th colspan="9" style="display: none;">
-                            <iframe id="fwMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th colspan="9" style="display: none;">
-                            <iframe id="blMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
+                            <div class="tab-content" id="MonitorTabContent">
+                                <div class="tab-pane show active" id="aw-monitor" role="tabpanel" aria-labelledby="aw-monitor-tab">
+                                    <iframe id="iframeChart" style="width : 100%; height : 532px;" scrolling="no"></iframe>
+                                </div>
+                                <div class="tab-pane" id="fw-monitor" role="tabpanel" aria-labelledby="fw-monitor-tab">
+                                    <iframe id="fwMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
+                                </div>
+                                <div class="tab-pane" id="bl-monitor" role="tabpanel" aria-labelledby="bl-monitor-tab">
+                                    <iframe id="blMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
+                                </div>
+                            </div>
                         </th>
                     </tr>
 
@@ -595,6 +767,8 @@
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position");
 
                                         document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.removeProperty("visibility");
                                         //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility"); 
@@ -607,6 +781,8 @@
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility");
                                     };
                                 });
                             </script>
@@ -636,6 +812,8 @@
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
+                                        document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
+                                        document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
 
                                         document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.visibility = 'absolute';
                                         //    document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden'; 
@@ -648,18 +826,20 @@
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
+                                        document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
+                                        document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
                                     };
                                 });
                             </script>
                         </th>
                         <th colspan="1" style="
-                        background-color    : rgb(141, 197, 63) !important;
-                        color               : black;
-                        border              : 0px !important;
-                        border-radius       : 1px !important;
-                        font-family         : sans-serif;
-                        font-size           : large;
-                    ">
+                            background-color    : rgb(141, 197, 63) !important;
+                            color               : black;
+                            border              : 0px !important;
+                            border-radius       : 1px !important;
+                            font-family         : sans-serif;
+                            font-size           : large;
+                        ">
                             <div class="d-flex justify-content-center" style="">
                                 <button id="total_setting" type="submit" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#totalSetting" style="width: 50%;">ALHOR TOOL</button>
                                 <button id="pool_mineable" type="submit" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#poolMineable" style="width: 50%; ">MINEABLE</button>
@@ -830,69 +1010,88 @@ if(
         <button class="btn btn-primary res" type="submit">RESET</button>
         -->
                 <div class="fixed-bottom mx-2 my-1 d-flex flex-row-reverse" style="left: auto;">
-                    <svg class="svg svg-primary waxDetective" data-bs-toggle="modal" data-bs-target="#waxDetective" viewBox="0 0 1826.75 1505.23" enable-background="new 0 0 1826.75 1505.23" xml:space="preserve" style="
-              fill                        : rgb(209, 130, 55); 
-              opacity                     : 0.3; 
-              width                       : 64px; 
-              height                      : 64px; 
-              border-radius               : 32px; 
-              line-height                 : 1; 
-              colo                        : white !important; 
-              border                      : 5px solid rgb(141, 197, 63) !important;
-            " onmouseover="this.style.opacity = '100%'" onmouseout="this.style.opacity = '30%'">
+                    <svg 
+                        class="svg svg-primary waxDetective" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#waxDetective" 
+                        viewBox="0 0 1826.75 1505.23" 
+                        enable-background="new 0 0 1826.75 1505.23" 
+                        xml:space="preserve" 
+                        style="
+                            fill                        : rgb(209, 130, 55); 
+                            opacity                     : 0.3; 
+                            width                       : 64px; 
+                            height                      : 64px; 
+                            border-radius               : 32px; 
+                            line-height                 : 1; 
+                            color                       : white !important; 
+                            border                      : 5px solid rgb(141, 197, 63) !important;
+                        "
+                        onmouseover="this.style.opacity = '100%'" 
+                        onmouseout="this.style.opacity = '30%'"
+                    >
                         <g>
                             <path d="
-                  M220.05,755.46c-61.39-18.37-115.65-33.16-168.68-51.49c-13.31-4.6-22.69-20.6-33.87-31.36
-                  c10.25-10.1,18.82-25.68,31.02-29.45c102.34-31.6,204.47-64.77,308.61-89.17c38.38-8.99,82.02,3.49,123.15,7.41
-                  c207.23,19.73,409.97-6.59,609.38-61.69c38.7-10.69,74.9-20.75,116.04-14.67c91.2,13.48,183.14,21.95,274.35,35.32
-                  c16.14,2.37,30.25,18.58,45.3,28.41c-12.24,11.82-22.46,28.38-37.08,34.63c-62.88,26.87-127.05,50.72-196.95,78.1
-                  c80.18,48.09,138.58,111.23,163.47,199.81c25.09,89.27,11.35,174.33-34.76,260.76c41.09,29.1,82.19,58.37,123.45,87.4
-                  c76.79,54.02,153.78,107.75,230.46,161.92c35.8,25.29,44.97,58.7,24.83,87.1c-20.11,28.35-55.98,29.84-90.82,2.83
-                  c-103.67-80.38-207.52-160.56-310.34-242.02c-25.63-20.31-43.92-23.78-74.22-3.1c-126.06,86.04-296.54,67.97-402.4-38.36
-                  c-107.61-108.1-125.01-274.6-42.17-402.98c5.86-9.07,11.35-18.37,22.79-36.94c-57.28,7.3-106.15,13.54-158.91,20.27
-                  c91.54,187.86,76.3,351.38-107.52,469.85c-109.51,70.58-266.82,52.55-363.38-31.38c-64.08-55.7-103.58-124.68-112.67-209.72
-                  C150.14,902.98,171.9,826.17,220.05,755.46z M1395.91,953.84c9.29-111.24-81.83-251.5-248.64-254.94
-                  c-134.96-2.79-251.63,115.2-252.94,249.53c-1.33,135.88,113.12,251.18,249.52,251.38C1285.42,1200.01,1395.6,1092.5,1395.91,953.84
-                  z M360.94,765.85c-45.51-16.58-72.33,13.65-95.75,50.82c-32.85,52.13-43.12,108.56-35.96,169.53
-                  c11.86,101.02,97.63,190.98,204.1,211.93c98.09,19.31,210.91-33.6,260.46-122.16c54.11-96.71,42.58-216.64-29.94-290.91
-                  c-10.06-10.3-27.79-18.09-42.15-18.37C536.46,765,451.17,765.85,360.94,765.85z
-                "></path>
+M220.05,755.46c-61.39-18.37-115.65-33.16-168.68-51.49c-13.31-4.6-22.69-20.6-33.87-31.36
+c10.25-10.1,18.82-25.68,31.02-29.45c102.34-31.6,204.47-64.77,308.61-89.17c38.38-8.99,82.02,3.49,123.15,7.41
+c207.23,19.73,409.97-6.59,609.38-61.69c38.7-10.69,74.9-20.75,116.04-14.67c91.2,13.48,183.14,21.95,274.35,35.32
+c16.14,2.37,30.25,18.58,45.3,28.41c-12.24,11.82-22.46,28.38-37.08,34.63c-62.88,26.87-127.05,50.72-196.95,78.1
+c80.18,48.09,138.58,111.23,163.47,199.81c25.09,89.27,11.35,174.33-34.76,260.76c41.09,29.1,82.19,58.37,123.45,87.4
+c76.79,54.02,153.78,107.75,230.46,161.92c35.8,25.29,44.97,58.7,24.83,87.1c-20.11,28.35-55.98,29.84-90.82,2.83
+c-103.67-80.38-207.52-160.56-310.34-242.02c-25.63-20.31-43.92-23.78-74.22-3.1c-126.06,86.04-296.54,67.97-402.4-38.36
+c-107.61-108.1-125.01-274.6-42.17-402.98c5.86-9.07,11.35-18.37,22.79-36.94c-57.28,7.3-106.15,13.54-158.91,20.27
+c91.54,187.86,76.3,351.38-107.52,469.85c-109.51,70.58-266.82,52.55-363.38-31.38c-64.08-55.7-103.58-124.68-112.67-209.72
+C150.14,902.98,171.9,826.17,220.05,755.46z M1395.91,953.84c9.29-111.24-81.83-251.5-248.64-254.94
+c-134.96-2.79-251.63,115.2-252.94,249.53c-1.33,135.88,113.12,251.18,249.52,251.38C1285.42,1200.01,1395.6,1092.5,1395.91,953.84
+z M360.94,765.85c-45.51-16.58-72.33,13.65-95.75,50.82c-32.85,52.13-43.12,108.56-35.96,169.53
+c11.86,101.02,97.63,190.98,204.1,211.93c98.09,19.31,210.91-33.6,260.46-122.16c54.11-96.71,42.58-216.64-29.94-290.91
+c-10.06-10.3-27.79-18.09-42.15-18.37C536.46,765,451.17,765.85,360.94,765.85z
+                            "></path>
                             <path d="
-                  M1124.32,395.89c-235.16,73.04-470.76,91.63-719.02,68.46c3.9-43.5,5.25-85.5,  11.9-126.64
-                  c11.6-71.84,25.8-143.29,40.43-214.59c3.53-17.2,11.17-34.27,20.13-49.51c22.38-38.07,49.04-45.77,86.68-23.13
-                  c28.28,17.01,53.97,38.33,80.85,57.68c76.62,55.14,136.35,49.41,201.14-19.41c14.19-15.08,27.2-31.33,42.07-45.68
-                  c40.73-39.3,65.92-39.08,96.9,7.08C1055.42,154.43,1088.47,273.8,1124.32,395.89z
-                "></path>
+M1124.32,395.89c-235.16,73.04-470.76,91.63-719.02,68.46c3.9-43.5,5.25-85.5,  11.9-126.64
+c11.6-71.84,25.8-143.29,40.43-214.59c3.53-17.2,11.17-34.27,20.13-49.51c22.38-38.07,49.04-45.77,86.68-23.13
+c28.28,17.01,53.97,38.33,80.85,57.68c76.62,55.14,136.35,49.41,201.14-19.41c14.19-15.08,27.2-31.33,42.07-45.68
+c40.73-39.3,65.92-39.08,96.9,7.08C1055.42,154.43,1088.47,273.8,1124.32,395.89z
+                            "></path>
                             <path d="
-                  M809.48,1490.73c-58.89-71.19-109.9-132.86-158.41-191.5c59.94-51.98,  110.63-95.95,156.85-136.03
-                  c43.9,35.98,91.31,73.07,136.05,113.15c8,7.16,11.81,31.81,5.92,39.61C907.71,1371.87,862.52,1425.53,809.48,1490.73z
-                "></path>
+M809.48,1490.73c-58.89-71.19-109.9-132.86-158.41-191.5c59.94-51.98,  110.63-95.95,156.85-136.03
+c43.9,35.98,91.31,73.07,136.05,113.15c8,7.16,11.81,31.81,5.92,39.61C907.71,1371.87,862.52,1425.53,809.48,1490.73z
+                            "></path>
                             <path d="
-                  M574.13,915.09c17.43,47.63,5.99,91.23-31.68,  120.7c-33.45,26.17-87.56,28.42-124.63,5.17
-                  c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C458.97,929.17,508.69,955.94,574.13,915.09z
-                "></path>
+M574.13,915.09c17.43,47.63,5.99,91.23-31.68,  120.7c-33.45,26.17-87.56,28.42-124.63,5.17
+c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C458.97,929.17,508.69,955.94,574.13,915.09z
+                            "></path>
                             <path d="
-                  M1244.84,913.36c17.43,47.63,5.99, 91.23-31.68,120.7c-33.45,26.17-87.56,28.42-124.63,5.17
-                  c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C1129.68,927.45,1179.4,954.21,1244.84,913.36z
-                "></path>
+M1244.84,913.36c17.43,47.63,5.99, 91.23-31.68,120.7c-33.45,26.17-87.56,28.42-124.63,5.17
+c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C1129.68,927.45,1179.4,954.21,1244.84,913.36z
+                            "></path>
                         </g>
                     </svg>
                 </div>
                 <div class="fixed-bottom mx-2 my-2 d-flex flex-row">
-                    <img class="img img-primary sessionsToken" data-bs-toggle="modal" data-bs-target="#sessionsToken" src="https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48" srcset="
-                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48 1x,
-                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=96x96 2x,
-                https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=144x144 3x
-              " style="
-                  position                : fixed; 
-                  bottom                  : 1%; 
-                  opacity                 : 0.3; 
-                  width                   : 64px; 
-                  height                  : 64px; 
-                  border-radius           : 32px; 
-                  line-height             : 1; 
-                  border                  : 5px solid rgb(141, 197, 63) !important;
-              " onmouseover="this.style.opacity = '100%'" onmouseout="this.style.opacity = '30%'">
+                    <img
+                        class           = "img img-primary sessionsToken"
+                        data-bs-toggle  = "modal"
+                        data-bs-target  = "#sessionsToken"
+                        src             = "https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48"
+                        srcset          = "
+                          https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=48x48 1x,
+                          https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=96x96 2x,
+                          https://cdn.coinranking.com/B1c6n7nXG/wax.svg?size=144x144 3x
+                        " 
+                        style           = "
+                            position                : fixed; 
+                            bottom                  : 1%; 
+                            opacity                 : 0.3; 
+                            width                   : 64px; 
+                            height                  : 64px; 
+                            border-radius           : 32px; 
+                            line-height             : 1; 
+                            border                  : 5px solid rgb(141, 197, 63) !important;
+                        " 
+                        onmouseover     = "this.style.opacity = '100%'" 
+                        onmouseout      = "this.style.opacity = '30%'"
+                    >
                 </div>
             </div>
         </div>
@@ -982,101 +1181,101 @@ if(
                                                 <option value="18">FW Ware Item</option>
                                             </select>
                                             <script type="text/javascript">
-                                                $('.form-select.nft.send-all').on('change', function() {
-                                                    console.debug($(this).find("option:selected").val())
-                                                    switch ($(this).find("option:selected").val()) {
-                                                        case '0':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
-                                                                e.checked = false
-                                                            })
-                                                            break;
-                                                        case '1':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            //    document.querySelectorAll('label[for*="send-nft-"] img').forEach(function (e, i, a) { e.click() })
-                                                            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
-                                                                e.checked = true
-                                                            })
-                                                            break;
-                                                        case '2':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
-                                                                e.checked = false
-                                                            })
-                                                            break;
-                                                        case '3':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            break;
-                                                        case '4':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            break;
-                                                        case '5':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            break;
-                                                        case '6':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            break;
-                                                        case '7':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            break;
-                                                        case '8':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            break;
-                                                        case '9':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            break;
-                                                        case '10':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
-                                                            break;
-                                                        case '11':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
-                                                            break;
-                                                        case '12':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
-                                                            break;
-                                                        case '13':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
-                                                            break;
-                                                        case '14':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
-                                                            break;
-                                                        case '15':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
-                                                            break;
-                                                        case '16':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
-                                                            break;
-                                                        case '17':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'burn';
-                                                            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
-                                                            break;
-                                                        case '18':
-                                                            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-                                                            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-                                                            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
-                                                            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
-                                                            break;
-                                                    };
-                                                });
+$('.form-select.nft.send-all').on('change', function() {
+    console.debug($(this).find("option:selected").val())
+    switch ($(this).find("option:selected").val()) {
+        case '0':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
+                e.checked = false
+            })
+            break;
+        case '1':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            //    document.querySelectorAll('label[for*="send-nft-"] img').forEach(function (e, i, a) { e.click() })
+            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
+                e.checked = true
+            })
+            break;
+        case '2':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
+                e.checked = false
+            })
+            break;
+        case '3':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            break;
+        case '4':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            break;
+        case '5':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            break;
+        case '6':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            break;
+        case '7':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            break;
+        case '8':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            break;
+        case '9':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            break;
+        case '10':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            break;
+        case '11':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            break;
+        case '12':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            break;
+        case '13':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            break;
+        case '14':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            break;
+        case '15':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            break;
+        case '16':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            break;
+        case '17':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'burn';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
+            break;
+        case '18':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
+            break;
+    };
+});
                                             </script>
                                             <button type="submit" class="btn btn-primary nft send-all" disabled>SEND ALL</button>
                                         </div>
@@ -1125,48 +1324,47 @@ if(
 
 
                         <script>
-                            document.querySelector('div.modal#boxNFT').addEventListener('shown.bs.modal', function(event) {
-                                //  if(
-                                //    $('input.boxnft:checked').length > 3
-                                //  ) {
-                                //    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
-                                //  }; 
-                                //    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
-                                document.querySelector('div.modal#boxNFT').querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
-                                document.querySelector('div.modal#boxNFT').querySelector('div.send-nft.justify-content-center.row').innerHTML = '';
-
-                                document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').innerText = `BOX NFT : ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`
-                                document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id);
-                                document.querySelector('div.modal#boxNFT button.btn.btn-primary.set-tool').disabled = true;
-                                //    document.querySelector('div.modal#boxNFT button.btn.btn-primary.send-nft').disabled = true; 
-                                document.querySelector('div.modal#boxNFT button.btn.btn-primary.claim-nft').disabled = true;
-                                fetch(`${
-    window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
-  }?owner=${ event.relatedTarget.parentNode.parentNode.parentNode.id }&limit=1000`, {
-                                    "headers": {
-                                        'x-requested-with': 'XMLHttpRequest',
-                                        'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
-                                    },
-                                    "body": null,
-                                    "method": "GET"
-                                }).then(
-                                    result => result.json()
-                                ).then(result => {
-
-                                    console.log(result);
-
-                                    for (asset of result['data']) {
-                                        event['createElement'] = document.createElement('div');
-                                        event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`);
-                                        event['createElement'].setAttribute("style", "width: 180 !important;");
-                                        event['createElement'].setAttribute("value", asset['asset_id']);
-                                        // ipfs.niftylife.io/ipfs/
-                                        // cloudflare-ipfs.com/ipfs/
-                                        // ipfs.com/ipfs/
-                                        // https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/  &h=354
-                                        document.querySelector('div.modal#boxNFT').querySelector('div.boxnft.justify-content-center.row').appendChild(
-                                            Object.assign(event['createElement'], {
-                                                innerHTML: `\
+document.querySelector('div.modal#boxNFT').addEventListener('shown.bs.modal', function(event) {
+    //  if(
+    //    $('input.boxnft:checked').length > 3
+    //  ) {
+    //    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
+    //  }; 
+    //    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
+    document.querySelector('div.modal#boxNFT').querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
+    document.querySelector('div.modal#boxNFT').querySelector('div.send-nft.justify-content-center.row').innerHTML = '';
+    document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').innerText = `BOX NFT : ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`
+    document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id);
+    document.querySelector('div.modal#boxNFT button.btn.btn-primary.set-tool').disabled = true;
+    //    document.querySelector('div.modal#boxNFT button.btn.btn-primary.send-nft').disabled = true; 
+    document.querySelector('div.modal#boxNFT button.btn.btn-primary.claim-nft').disabled = true;
+    fetch(`${
+        window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+    }?owner=${
+        event.relatedTarget.parentNode.parentNode.parentNode.id
+    }&limit=1000`, {
+        "headers": {
+            'x-requested-with': 'XMLHttpRequest',
+            'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+        },
+        "body": null,
+        "method": "GET"
+    }).then(
+        result => result.json()
+    ).then(result => {
+        console.log(result);
+        for (asset of result['data']) {
+            event['createElement'] = document.createElement('div');
+            event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`);
+            event['createElement'].setAttribute("style", "width: 180 !important;");
+            event['createElement'].setAttribute("value", asset['asset_id']);
+            // ipfs.niftylife.io/ipfs/
+            // cloudflare-ipfs.com/ipfs/
+            // ipfs.com/ipfs/
+            // https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/  &h=354
+            document.querySelector('div.modal#boxNFT').querySelector('div.boxnft.justify-content-center.row').appendChild(
+                Object.assign(event['createElement'], {
+                    innerHTML: `\
 <div class="custom-control custom-checkbox image-checkbox" style = "width: 180 !important;">\
     <input type="checkbox"\
         class   = "boxnft custom-control-input" id="set-tool-${ asset['asset_id'] }"\
@@ -1195,38 +1393,34 @@ color           : #fff; \
         >\
     </label>\
 </div>      `
-                                            })
-                                        );
-
-                                        if (
-                                            window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['tool'].includes(asset['asset_id'])
-                                        ) {
-                                            document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').checked = true;
-                                        };
-                                        if (
-                                            asset['schema']['schema_name'] != 'tool.worlds'
-                                        ) {
-                                            document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').disabled = true;
-                                        };
-
-                                    };
-                                    $('input.boxnft').on('change', function(e) {
-                                        if (
-                                            $('input.boxnft:checked').length > 3
-                                        ) {
-                                            this.checked = false;
-                                        };
-                                    });
-
-
-                                    for (asset of result['data']) {
-                                        event['createElement'] = document.createElement('div');
-                                        event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`);
-                                        event['createElement'].setAttribute("style", "width: 180 !important;");
-                                        event['createElement'].setAttribute("value", asset['asset_id']);
-                                        document.querySelector('div.modal#boxNFT').querySelector('div.send-nft.justify-content-center.row').appendChild(
-                                            Object.assign(event['createElement'], {
-                                                innerHTML: `\
+                })
+            );
+            if (
+                window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['tool'].includes(asset['asset_id'])
+            ) {
+                document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').checked = true;
+            };
+            if (
+                asset['schema']['schema_name'] != 'tool.worlds'
+            ) {
+                document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').disabled = true;
+            };
+        };
+        $('input.boxnft').on('change', function(e) {
+            if (
+                $('input.boxnft:checked').length > 3
+            ) {
+                this.checked = false;
+            };
+        });
+        for (asset of result['data']) {
+            event['createElement'] = document.createElement('div');
+            event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`);
+            event['createElement'].setAttribute("style", "width: 180 !important;");
+            event['createElement'].setAttribute("value", asset['asset_id']);
+            document.querySelector('div.modal#boxNFT').querySelector('div.send-nft.justify-content-center.row').appendChild(
+                Object.assign(event['createElement'], {
+                    innerHTML: `\
 <div class="custom-control custom-checkbox image-checkbox" style = "width: 180 !important;">\
     <input type="checkbox"\
         class   = "send-nft custom-control-input" id="send-nft-${ asset['asset_id'] }"\
@@ -1249,35 +1443,34 @@ border          : 5px solid rgb(141, 197, 63) !important; \
 border-radius   : 10px; \
 color           : #fff; \
             "\
-            data-bs-toggle      ="tooltip"\
-            data-bs-placement   ="top"\
-            title               ="${ asset["asset_id"] }"\
+            data-bs-toggle      = "tooltip"\
+            data-bs-placement   = "top"\
+            title               = "${ asset["schema"]["schema_name"] } ${ asset["template"]["template_id"] }-${ asset["asset_id"] } ${ asset["name"] }"\
+            data-schema-name    = "${ asset["schema"]["schema_name"] }"\
+            data-asset-name     = "${ asset["name"] }"\
+            data-template-id    = "${ asset["template"]["template_id"] }"\
         >\
     </label>\
 </div>      `
-                                            })
-                                        );
-
-                                        if (
-                                            window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['tool'].includes(asset['asset_id'])
-                                        ) {
-                                            document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').checked = true;
-                                        };
-                                        if (
-                                            asset['schema']['schema_name'] != 'tool.worlds'
-                                        ) {
-                                            document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').disabled = true;
-                                        };
-
-                                    };
-
-                                    tooltipTriggerRender();
-
-                                });
-                            });
-                            //  document.querySelector('div.modal#boxNFT').addEventListener('hide.bs.modal', function () {
-                            //    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
-                            //  }); 
+                })
+            );
+            if (
+                window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['tool'].includes(asset['asset_id'])
+            ) {
+                document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').checked = true;
+            };
+            if (
+                asset['schema']['schema_name'] != 'tool.worlds'
+            ) {
+                document.querySelector('div.modal#boxNFT').querySelector(`[value*="${ asset['asset_id'] }"]`).querySelector('input').disabled = true;
+            };
+        };
+        tooltipTriggerRender();
+    });
+});
+//  document.querySelector('div.modal#boxNFT').addEventListener('hide.bs.modal', function () {
+//    document.querySelector('div.boxnft.justify-content-center.row').innerHTML = '';
+//  }); 
                         </script>
                         <!-- SET TOOL FUNCTION -->
                         <!-- SET TOOL FUNCTION -->
@@ -1306,11 +1499,11 @@ color           : #fff; \
                                     if (result['code'] == 200) {
                                         Swal.fire({
                                             iconHtml: `
-        <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-              <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-        </svg>
-        `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
+                                            `,
                                             customClass: {
                                                 icon: 'swalSuccess'
                                             },
@@ -1329,10 +1522,10 @@ color           : #fff; \
                                     ) {
                                         Swal.fire({
                                             iconHtml: `
-          <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-          `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                            `,
                                             customClass: {
                                                 icon: 'swalError'
                                             },
@@ -1349,10 +1542,10 @@ color           : #fff; \
                                         } catch (e) {
                                             Swal.fire({
                                                 iconHtml: `
-          <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-          `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                `,
                                                 customClass: {
                                                     icon: 'swalError'
                                                 },
@@ -1365,10 +1558,10 @@ color           : #fff; \
                                 }).catch(error => {
                                     Swal.fire({
                                         iconHtml: `
-      <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-      `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                        `,
                                         customClass: {
                                             icon: 'swalError'
                                         },
@@ -1409,12 +1602,12 @@ color           : #fff; \
                                     );
 
                                     fetch(`/sendnft?waxid=${ document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
-            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
-        }&memo=${
-            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value
-        }&toolid=${
-            Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(',')
-        }`, {
+                                        document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
+                                    }&memo=${
+                                        document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value
+                                    }&toolid=${
+                                        Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(',')
+                                    }`, {
                                         "headers": {},
                                         "body": null,
                                         "method": "GET",
@@ -1430,11 +1623,11 @@ color           : #fff; \
                                         if (result['code'] == 200) {
                                             Swal.fire({
                                                 iconHtml: `
-                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                    </svg>
-                    `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
+                                                `,
                                                 customClass: {
                                                     icon: 'swalSuccess'
                                                 },
@@ -1453,10 +1646,10 @@ color           : #fff; \
                                             } catch (e) {
                                                 Swal.fire({
                                                     iconHtml: `
-                            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-                        `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                    `,
                                                     customClass: {
                                                         icon: 'swalError'
                                                     },
@@ -1470,10 +1663,10 @@ color           : #fff; \
                                     }).catch(error => {
                                         Swal.fire({
                                             iconHtml: `
-                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-                `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                            `,
                                             customClass: {
                                                 icon: 'swalError'
                                             },
@@ -1488,84 +1681,134 @@ color           : #fff; \
                                     $("button.btn.btn-primary.nft.send-all").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.nft.send-all')
                                 ) {
 
-                                    //    $('#boxNFT').modal('hide'); 
-                                    //    for (TRFERWAX in window['information-data']['DATA'] ){
-                                    //      if (
-                                    //        window['information-data']['DATA'][ TRFERWAX ]['balance'][ $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ] >= 0.00009
-                                    //      ){
-                                    //        $.notify(
-                                    //        window[ TRFERWAX ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                                    //        `TRANSFER : PLEASE WAIT`, 'info'
-                                    //        ); 
-                                    //        (function ( ID ){
-                                    //            setTimeout(function(){
-                                    //                fetch(`/TESTsendnft?waxid=${ ID }&to=${
-                                    //                  document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
-                                    //                }&memo=${
-                                    //                  document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value
-                                    //                }&quantity=${
-                                    //                  window['information-data']['DATA'][ ID ]['balance'][ $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]
-                                    //                }&symbol=${
-                                    //                  $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
-                                    //                }`, {
-                                    //                  "headers"       : {}, 
-                                    //                  "body"          : null,
-                                    //                  "method"        : "GET",
-                                    //                }).then(
-                                    //                    result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
-                                    //                ).then(result => {
-                                    //                  if ( result['code'] == 200 ){
-                                    //                    $.notify(
-                                    //                      window[ ID ].querySelector('button#land'), 
-                                    //                      `TRANSFER : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
-                                    //                      'success'
-                                    //                    ); 
-                                    //                  }else{
-                                    //                      try{
-                                    //                        if(
-                                    //                            result['data']['transaction'] && 
-                                    //                            result['data']['transaction']['trx'] && 
-                                    //                            result['data']['transaction']['trx']['error'] && 
-                                    //                            result['data']['transaction']['trx']['error']['what']
-                                    //                        ){
-                                    //                            $.notify(
-                                    //                              window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                                    //                              `TRANSFER : WARNING - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
-                                    //                            ); 
-                                    //                        }else{
-                                    //                            $.notify(
-                                    //                              window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                                    //                              `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-                                    //                            ); 
-                                    //                        }; 
-                                    //                        //    $.notify(
-                                    //                        //      window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                                    //                        //      `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-                                    //                        //    ); 
-                                    //                      }catch(e){
-                                    //                        $.notify(
-                                    //                          window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                                    //                          `TRANSFER : ERROR - ${ result['text'] }`, 
-                                    //                          'error'
-                                    //                        ); 
-                                    //                      }; 
-                                    //                  }; 
-                                    //                }).catch(error => {
-                                    //                  $.notify(
-                                    //                    window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                                    //                    `TRANSFER : CONNECTION FAILED ${ error }`, 'error'
-                                    //                  ); 
-                                    //                }); 
-                                    //            }, 3000 + Math.ceil(Math.random() * 18000)); 
-                                    //        })( TRFERWAX ); 
-                                    //      }else{
-                                    //        $.notify(
-                                    //          window[ TRFERWAX ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                                    //          `TRANSFER : ALREADY`, 'success'
-                                    //        ); 
-                                    //      }; 
-                                    //    }; 
+                                    $('#boxNFT').modal('hide'); 
 
+                                    window['information-task'] = {}; 
+                                    for (TRFERNFT in window['information-data']['DATA'] ){
+                                        $.notify(
+                                            `SEND NFT : PLEASE WAIT ${ TRFERNFT } GET ASSET LIST`, 'info'
+                                        ); 
+                                        (function thiscode( DATA ){
+
+                                            window['information-task'][ DATA['id'] ] = {
+                                                'sendnft' : {
+                                                    'id'    : '', 
+                                                    'to'    : '', 
+                                                    'list'  : [], 
+                                                    'data'  : [], 
+                                                    'join'  : [], 
+                                                    'idat'  : [], 
+                                                    'asse'  : {}
+                                                }
+                                            }; 
+                                            setTimeout(function(){
+                                                fetch(`${
+                                                    window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+                                                }?owner=${
+                                                    DATA['id']
+                                                }&limit=1000`, {
+                                                    "headers"   : {
+                                                        'x-requested-with': 'XMLHttpRequest',
+                                                        'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+                                                    },
+                                                    "body"      : null,
+                                                    "method"    : "GET"
+                                                }).then(
+                                                    result => result.json()
+                                                ).then(result => {
+                                                    if (result['data'].length >= 1){
+                                                        for (window['information-task'][ DATA['id'] ]['sendnft']['asse'] of result['data']) {
+                                                            window['information-task'][ DATA['id'] ]['sendnft']['list'].push(
+                                                                `send-nft-${ window['information-task'][ DATA['id'] ]['sendnft']['asse']['asset_id'] }`
+                                                            )
+                                                        }; 
+                                                        for (var i = 0; i < Math.ceil(window['information-task'][ DATA['id'] ]['sendnft']['list'].length / 100); i++) {
+                                                            window['information-task'][ DATA['id'] ]['sendnft']['join'].push(
+                                                                window['information-task'][ DATA['id'] ]['sendnft']['list'].slice(i * 100, i * 100 + 100)
+                                                            )
+                                                        }; console.debug( window['information-task'][ DATA['id'] ]['sendnft']['join'] ); 
+                                                        for (window['information-task'][ DATA['id'] ]['sendnft']['idat'] in window['information-task'][ DATA['id'] ]['sendnft']['join']){
+                                                            //  console.debug( 
+                                                            //      window['information-task'][ DATA['id'] ]['sendnft']['join'][
+                                                            //          window['information-task'][ DATA['id'] ]['sendnft']['idat']
+                                                            //      ].join(',')
+                                                            //  ); 
+                                                            $.notify(
+                                                                `SEND NFT : PLEASE WAIT ${ DATA['id'] } SENDING`, 'info'
+                                                            ); 
+                                                            (function (POST){
+                                                                setTimeout(function(){
+                                                                    fetch(`/TESTsendnft?waxid=${ 
+                                                                        POST['id']
+                                                                    }&to=${
+                                                                        POST['to']
+                                                                    }&memo=NodeNetwork&toolid=${
+                                                                        POST['idat']
+                                                                    }`, {
+                                                                      "headers"       : {}, 
+                                                                      "body"          : null,
+                                                                      "method"        : "GET",
+                                                                    }).then(
+                                                                        result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
+                                                                    ).then(result => {
+                                                                      if ( result['code'] == 200 ){
+                                                                        $.notify(
+                                                                            `SEND NFT : DONE ${ DATA['id'] } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
+                                                                            'success'
+                                                                        ); 
+                                                                      }else{
+                                                                          try{
+                                                                            if(
+                                                                                result['data']['transaction'] && 
+                                                                                result['data']['transaction']['trx'] && 
+                                                                                result['data']['transaction']['trx']['error'] && 
+                                                                                result['data']['transaction']['trx']['error']['what']
+                                                                            ){
+                                                                                $.notify(
+                                                                                    `SEND NFT : WARNING ${ POST['id'] } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                                ); 
+                                                                            }else{
+                                                                                $.notify(
+                                                                                    `SEND NFT : WARNING ${ POST['id'] } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                                                                ); 
+                                                                            }; 
+                                                                          }catch(e){
+                                                                            $.notify(
+                                                                                `SEND NFT : ERROR ${ POST['id'] } - ${ result['text'] }`, 
+                                                                                'error'
+                                                                            ); 
+                                                                          }; 
+                                                                      }; 
+                                                                    }).catch(error => {
+                                                                        $.notify(
+                                                                            `SEND NFT : CONNECTION FAILED ${ DATA['id'] } ${ error }`, 'error'
+                                                                        ); 
+                                                                    }); 
+                                                                }, 3000 + Math.ceil(Math.random() * 18000)); 
+                                                            })({
+                                                                'idat' : window['information-task'][ DATA['id'] ]['sendnft']['join'][
+                                                                    window['information-task'][ DATA['id'] ]['sendnft']['idat']
+                                                                ].join(','), 
+                                                                'id'    : DATA['id'], 
+                                                                'to'    : DATA['to']
+                                                            }); 
+                                                        }; 
+                                                    }else{
+                                                        $.notify(
+                                                          `SEND NFT : ALREADY ${ DATA['id'] }`, 'success'
+                                                        ); 
+                                                    }; 
+                                                }).catch((error) => {
+                                                    $.notify(
+                                                      `SEND NFT : CONNECTION FAILED ${ DATA['id'] } ${ error }`, 'error'
+                                                    ); thiscode( DATA ); 
+                                                }); 
+                                            }, 3000 + Math.ceil(Math.random() * 18000)); 
+                                        })({
+                                            'id' : TRFERNFT, 
+                                            'to' : document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
+                                        }); 
+                                    }; 
                                 };
 
                             });
@@ -1605,8 +1848,10 @@ color           : #fff; \
                                 document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.id);
                                 //    fetch(`https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id=${window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"] }`, {
                                 fetch(`${
-      window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
-  }?asset_id=${window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"] }`, {
+                                    window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+                                }?asset_id=${
+                                    window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"]
+                                }`, {
                                     "headers": {
                                         'x-requested-with': 'XMLHttpRequest',
                                         'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
@@ -1722,8 +1967,10 @@ ${ asset['owner'] } \
                                 function(e) {
                                     try {
                                         fetch(`${
-            window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
-        }?asset_id=${ document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0] }`, {
+                                            window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+                                        }?asset_id=${
+                                            document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
+                                        }`, {
                                             "headers": {
                                                 'x-requested-with': 'XMLHttpRequest',
                                                 'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
@@ -1828,11 +2075,14 @@ ${ asset['owner'] } \
                                             window['information-data']['DATA'][SLAWAXID]['land']['id'] != document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
                                         ) {
                                             $.notify(
-                                                window[SLAWAXID].querySelector('button#land'),
-                                                `SET LAND : PLEASE WAIT`, 'info'
+                                                `SET LAND : PLEASE WAIT ${ SLAWAXID }`, 'info'
                                             );
                                             (function(ID) {
-                                                fetch(`/setland?waxid=${ ID }&landid=${ document.querySelector('button.btn.btn-primary.set_land').getAttribute('value') }`, {
+                                                fetch(`/setland?waxid=${
+                                                    ID
+                                                }&landid=${
+                                                    document.querySelector('button.btn.btn-primary.set_land').getAttribute('value')
+                                                }`, {
                                                     "headers": {},
                                                     "body": null,
                                                     "method": "GET",
@@ -1840,19 +2090,11 @@ ${ asset['owner'] } \
                                                     result => result.json()
                                                 ).then(result => {
                                                     if (result['code'] == 200) {
-                                                        //  $.notify(
-                                                        //    window[ ID ].querySelector('button#land'), 
-                                                        //    `SET LAND : DONE ${ result['data']['transaction']['trx']['transaction_id'] }`, 'success'
-                                                        //  ); 
                                                         $.notify(
                                                             window[ID].querySelector('button#land'),
-                                                            `SET LAND : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+                                                            `SET LAND : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
                                                             'success'
-                                                        ); // {encode: false}, 
-                                                        //  document.querySelector(`iframe[url*="affiliate?waxid=${ ID }"]`).parentElement.style.display = 'table-cell'; 
-                                                        //  document.querySelector(`iframe[url*="affiliate?waxid=${ ID }"]`).setAttribute(
-                                                        //    'src', `https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax`
-                                                        //  ); 
+                                                        ); 
                                                     } else {
                                                         try {
                                                             if (
@@ -1862,34 +2104,29 @@ ${ asset['owner'] } \
                                                                 result['data']['transaction']['trx']['error']['what']
                                                             ) {
                                                                 $.notify(
-                                                                    window[ID].querySelector('button#land'),
-                                                                    `SET LAND : WARNING - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                    `SET LAND : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
                                                                 );
                                                             } else {
                                                                 $.notify(
-                                                                    window[ID].querySelector('button#land'),
-                                                                    `SET LAND : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                                                    `SET LAND : WARNING ${ ID } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
                                                                 );
                                                             };
                                                         } catch (e) {
                                                             $.notify(
-                                                                window[ID].querySelector('button#land'),
-                                                                `SET LAND : ERROR - ${ result['text'] }`,
+                                                                `SET LAND : ERROR ${ ID } - ${ result['text'] }`,
                                                                 'error'
                                                             );
                                                         };
                                                     };
                                                 }).catch(error => {
                                                     $.notify(
-                                                        window[ID].querySelector('button#land'),
-                                                        `SET LAND : CONNECTION FAILED ${ error }`, 'error'
+                                                        `SET LAND : CONNECTION FAILED ${ ID } ${ error }`, 'error'
                                                     );
                                                 });
                                             })(SLAWAXID);
                                         } else {
                                             $.notify(
-                                                window[SLAWAXID].querySelector('button#land'),
-                                                `SET LAND : ALREADY`, 'success'
+                                                `SET LAND : ALREADY ${ SLAWAXID }`, 'success'
                                             );
                                         };
                                     };
@@ -1910,7 +2147,11 @@ ${ asset['owner'] } \
                                             `SET LAND : PLEASE WAIT`, 'info'
                                         );
 
-                                        fetch(`/setland?waxid=${ document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&landid=${ document.querySelector('button.btn.btn-primary.set_land').getAttribute('value') }`, {
+                                        fetch(`/setland?waxid=${
+                                            document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                        }&landid=${
+                                            document.querySelector('button.btn.btn-primary.set_land').getAttribute('value')
+                                        }`, {
                                             "headers": {},
                                             "body": null,
                                             "method": "GET",
@@ -2503,14 +2744,14 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                         `TRANSFER : PLEASE WAIT`, 'info'
                                     );
                                     fetch(`/transfer?waxid=${ document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
-      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
-    }&memo=${
-      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value
-    }&quantity=${
-      document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
-    }&symbol=${
-        $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
-    }`, {
+                                      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
+                                    }&memo=${
+                                      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value
+                                    }&quantity=${
+                                      document.querySelector('div.modal#transferWax input[aria-label="TRANSFER WAX QUANTITY"]').value
+                                    }&symbol=${
+                                        $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
+                                    }`, {
                                         "headers": {},
                                         "body": null,
                                         "method": "GET",
@@ -2607,8 +2848,7 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                             window['information-data']['DATA'][TRFERWAX]['balance'][$(document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]')).find("option:selected").val().split('-')[0]] >= 0.00009
                                         ) {
                                             $.notify(
-                                                window[TRFERWAX].querySelector('button[data-bs-target*="#transferWax"]'),
-                                                `TRANSFER : PLEASE WAIT`, 'info'
+                                                `TRANSFER : PLEASE WAIT ${ TRFERWAX }`, 'info'
                                             );
                                             (function(ID) {
                                                 setTimeout(function() {
@@ -2635,8 +2875,7 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                                     ).then(result => {
                                                         if (result['code'] == 200) {
                                                             $.notify(
-                                                                window[ID].querySelector('button#land'),
-                                                                `TRANSFER : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+                                                                `TRANSFER : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
                                                                 'success'
                                                             );
                                                         } else {
@@ -2648,39 +2887,30 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                                                     result['data']['transaction']['trx']['error']['what']
                                                                 ) {
                                                                     $.notify(
-                                                                        window[ID].querySelector('button[data-bs-target*="#transferWax"]'),
-                                                                        `TRANSFER : WARNING - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                        `TRANSFER : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
                                                                     );
                                                                 } else {
                                                                     $.notify(
-                                                                        window[ID].querySelector('button[data-bs-target*="#transferWax"]'),
-                                                                        `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                                                        `TRANSFER : WARNING ${ ID } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
                                                                     );
                                                                 };
-                                                                //    $.notify(
-                                                                //      window[ ID ].querySelector('button[data-bs-target*="#transferWax"]'), 
-                                                                //      `TRANSFER : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-                                                                //    ); 
                                                             } catch (e) {
                                                                 $.notify(
-                                                                    window[ID].querySelector('button[data-bs-target*="#transferWax"]'),
-                                                                    `TRANSFER : ERROR - ${ result['text'] }`,
+                                                                    `TRANSFER : ERROR ${ ID } - ${ result['text'] }`,
                                                                     'error'
                                                                 );
                                                             };
                                                         };
                                                     }).catch(error => {
                                                         $.notify(
-                                                            window[ID].querySelector('button[data-bs-target*="#transferWax"]'),
-                                                            `TRANSFER : CONNECTION FAILED ${ error }`, 'error'
+                                                            `TRANSFER : CONNECTION FAILED ${ ID } ${ error }`, 'error'
                                                         );
                                                     });
                                                 }, 3000 + Math.ceil(Math.random() * 18000));
                                             })(TRFERWAX);
                                         } else {
                                             $.notify(
-                                                window[TRFERWAX].querySelector('button[data-bs-target*="#transferWax"]'),
-                                                `TRANSFER : ALREADY`, 'success'
+                                                `TRANSFER : ALREADY ${ TRFERWAX }`, 'success'
                                             );
                                         };
                                     };
@@ -2792,16 +3022,16 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
 
                                                 setTimeout(function() {
                                                     fetch(`/allocate?waxid=${
-                            document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
-                        }&to=${
-                            ID
-                        }&memo=${
-                            document.querySelector('div.modal#allocateWax [aria-label*="ALLOCATE MEMO"]').value
-                        }&quantity=${
-                            document.querySelector('div.modal#allocateWax input[aria-label="ALLOCATE WAX QUANTITY"]').value
-                        }&symbol=${
-                            $( document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]') ).find("option:selected").val()
-                        }`, {
+                                                        document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+                                                    }&to=${
+                                                        ID
+                                                    }&memo=${
+                                                        document.querySelector('div.modal#allocateWax [aria-label*="ALLOCATE MEMO"]').value
+                                                    }&quantity=${
+                                                        document.querySelector('div.modal#allocateWax input[aria-label="ALLOCATE WAX QUANTITY"]').value
+                                                    }&symbol=${
+                                                        $( document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]') ).find("option:selected").val()
+                                                    }`, {
                                                         "headers": {},
                                                         "body": null,
                                                         "method": "GET",
@@ -2824,16 +3054,16 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                                                                     result['data']['transaction']['trx']['error'] &&
                                                                     result['data']['transaction']['trx']['error']['what']
                                                                 ) {
-                                                                    $.notify(`ALLOCATE : WARNING - ${ID} ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn');
+                                                                    $.notify(`ALLOCATE : WARNING ${ID} - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn');
                                                                 } else {
-                                                                    $.notify(`ALLOCATE : WARNING - ${ID} ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn');
+                                                                    $.notify(`ALLOCATE : WARNING ${ID} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn');
                                                                 };
                                                             } catch (e) {
-                                                                $.notify(`ALLOCATE : ERROR - ${ID} ${ result['text'] }`, 'error');
+                                                                $.notify(`ALLOCATE : ERROR ${ID} - ${ result['text'] }`, 'error');
                                                             };
                                                         };
                                                     }).catch(error => {
-                                                        $.notify(`ALLOCATE : CONNECTION FAILED - ${ID} ${ error }`, 'error');
+                                                        $.notify(`ALLOCATE : CONNECTION FAILED ${ID} - ${ error }`, 'error');
                                                     });
                                                 }, 5000 + (function(t) {
                                                     if (t >= 2) {
@@ -3022,15 +3252,20 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                                             window['information-data']['DATA'][SWAWAXID]['balance']['TLM'] >= 0.00009
                                         ) {
                                             $.notify(
-                                                window[SWAWAXID].querySelector('button#land'),
-                                                `SWAP : PLEASE WAIT`, 'info'
+                                                `SWAP : PLEASE WAIT ${ SWAWAXID }`, 'info'
                                             );
                                             (function(ID) {
-                                                fetch(`/swap?waxid=${ ID }&amount=${ window['information-data']['DATA'][ ID ]['balance']['TLM'] }&quantity=${ (Number((
-  Number(window['information-data']['DATA'][ ID ]['balance']['TLM']).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
-).join()) * (
-  window['alcor']['price']["TLMTOWAX"] * document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM MIGHT"]').value
-)).toFixed(8) }`, {
+                                                fetch(`/swap?waxid=${
+                                                    ID
+                                                }&amount=${
+                                                    window['information-data']['DATA'][ ID ]['balance']['TLM']
+                                                }&quantity=${
+                                                    (Number((
+                                                        Number(window['information-data']['DATA'][ ID ]['balance']['TLM']).toFixed(4).match(/\d{1,6}\.\d{1,16}/gi) || []
+                                                    ).join()) * (
+                                                        window['alcor']['price']["TLMTOWAX"] * document.querySelector('div.modal#swapTLM').querySelector('input[aria-label="SWAP TLM MIGHT"]').value
+                                                    )).toFixed(8)
+                                                }`, {
                                                     "headers": {},
                                                     "body": null,
                                                     "method": "GET",
@@ -3039,8 +3274,7 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                                                 ).then(result => {
                                                     if (result['code'] == 200) {
                                                         $.notify(
-                                                            window[ID].querySelector('button#land'),
-                                                            `SWAP : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+                                                            `SWAP : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
                                                             'success'
                                                         );
                                                     } else {
@@ -3052,34 +3286,29 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                                                                 result['data']['transaction']['trx']['error']['what']
                                                             ) {
                                                                 $.notify(
-                                                                    window[ID].querySelector('button[data-bs-target*="#swapTLM"]'),
-                                                                    `TRANSFER : WARNING - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                    `TRANSFER : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
                                                                 );
                                                             } else {
                                                                 $.notify(
-                                                                    window[ID].querySelector('button[data-bs-target*="#swapTLM"]'),
-                                                                    `SWAP : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                                                    `SWAP : WARNING ${ ID } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
                                                                 );
                                                             };
                                                         } catch (e) {
                                                             $.notify(
-                                                                window[ID].querySelector('button[data-bs-target*="#swapTLM"]'),
-                                                                `SWAP : ERROR - ${ result['text'] }`,
+                                                                `SWAP : ERROR ${ ID } - ${ result['text'] }`,
                                                                 'error'
                                                             );
                                                         };
                                                     };
                                                 }).catch(error => {
                                                     $.notify(
-                                                        window[ID].querySelector('button[data-bs-target*="#swapTLM"]'),
-                                                        `SWAP : CONNECTION FAILED ${ error }`, 'error'
+                                                        `SWAP : CONNECTION FAILED ${ ID } ${ error }`, 'error'
                                                     );
                                                 });
                                             })(SWAWAXID);
                                         } else {
                                             $.notify(
-                                                window[SWAWAXID].querySelector('button[data-bs-target*="#swapTLM"]'),
-                                                `SWAP : ALREADY`, 'success'
+                                                `SWAP : ALREADY ${ SWAWAXID }`, 'success'
                                             );
                                         };
                                     };
@@ -3304,7 +3533,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
             document.querySelector('div[id*="stakeWax"]').querySelector('.modal-header'),
             `STAKE : PLEASE WAIT`, 'info'
         );
-        fetch(`/TEST${ e.srcElement.querySelector('select[aria-label="STAKE RESOURCE"]').selectedOptions[0].value }?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&quantity=${ Number(document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value).toFixed(8) }`, {
+        fetch(`/${ e.srcElement.querySelector('select[aria-label="STAKE RESOURCE"]').selectedOptions[0].value }?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&quantity=${ Number(document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="STAKE QUANTITY"]').value).toFixed(8) }`, {
             "headers": {},
             "body": null,
             "method": "GET",
@@ -3396,23 +3625,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
         $('#stakeWax').modal('hide');
         for (STAKEWAX in window['information-data']['DATA']) {
             $.notify(
-                window[STAKEWAX].querySelector('button[data-bs-target*="#stakeWax"]'),
-                `STAKE : PLEASE WAIT`, 'info'
+                `STAKE : PLEASE WAIT ${ STAKEWAX }`, 'info'
             );
             (function(ID) {
                 setTimeout(function() {
-
-                    //  fetch(`/transfer?waxid=${ ID }&to=${
-                    //      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value
-                    //  }&memo=${
-                    //      document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value
-                    //  }&quantity=${
-                    //    window['information-data']['DATA'][ ID ]['balance'][ $( document.querySelector('div.modal#stakeWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val().split('-')[0] ]
-                    //  }&symbol=${
-                    //      $( document.querySelector('div.modal#transferWax select[aria-label="TRANSFER WAX SYMBOL"]') ).find("option:selected").val()
-                    //  }`
-
-                    fetch(`/TEST${
+                    fetch(`/${
                             e.srcElement.querySelector('select[aria-label="STAKE RESOURCE"]').selectedOptions[0].value
                     }?waxid=${
                         ID
@@ -3433,8 +3650,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                     ).then(result => {
                         if (result['code'] == 200) {
                             $.notify(
-                                window[ID].querySelector('button#land'),
-                                `STAKE : DONE - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+                                `STAKE : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
                                 'success'
                             );
                         } else {
@@ -3446,27 +3662,23 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                     result['data']['transaction']['trx']['error']['what']
                                 ) {
                                     $.notify(
-                                        window[ID].querySelector('button[data-bs-target*="#stakeWax"]'),
-                                        `STAKE : WARNING - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                        `STAKE : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
                                     );
                                 } else {
                                     $.notify(
-                                        window[ID].querySelector('button[data-bs-target*="#stakeWax"]'),
-                                        `STAKE : WARNING - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                        `STAKE : WARNING ${ ID } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
                                     );
                                 };
                             } catch (e) {
                                 $.notify(
-                                    window[ID].querySelector('button[data-bs-target*="#stakeWax"]'),
-                                    `STAKE : ERROR - ${ result['text'] }`,
+                                    `STAKE : ERROR ${ ID } - ${ result['text'] }`,
                                     'error'
                                 );
                             };
                         };
                     }).catch(error => {
                         $.notify(
-                            window[ID].querySelector('button[data-bs-target*="#stakeWax"]'),
-                            `STAKE : CONNECTION FAILED ${ error }`, 'error'
+                            `STAKE : CONNECTION FAILED ${ ID } ${ error }`, 'error'
                         );
                     });
                 }, 3000 + Math.ceil(Math.random() * 18000));
@@ -3647,8 +3859,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                     $('#stakeWax').modal('hide');
                                                     for (UNSTAKEC in window['information-data']['DATA']) {
                                                         $.notify(
-                                                            window[UNSTAKEC],
-                                                            `UNSTAKE : PLEASE WAIT`, 'info'
+                                                            `UNSTAKE : PLEASE WAIT ${ UNSTAKEC }`, 'info'
                                                         );
                                                         (function(ID) {
                                                             fetch(`/unstakecpu?waxid=${ ID }&quantity=${ Number(window['information-data']['DATA'][ ID ]['cpu']['stake']['self']).toFixed(4) * ( Number(document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE QUANTITY MIGHT"]').value) / 100 ) }`, {
@@ -3660,28 +3871,23 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                             ).then(result => {
                                                                 if (result['code'] == 200) {
                                                                     $.notify(
-                                                                        window[ID],
-                                                                        `UNSTAKE : DONE`,
+                                                                        `UNSTAKE : DONE ${ ID }`,
                                                                         'success'
                                                                     );
                                                                 } else {
                                                                     try {
                                                                         $.notify(
-                                                                            window[ID],
-                                                                            `UNSTAKE : FAIL - ${ result['text'] }`, 'warn'
+                                                                            `UNSTAKE : FAIL ${ ID } - ${ result['text'] }`, 'warn'
                                                                         );
                                                                     } catch (e) {
                                                                         $.notify(
-                                                                            window[ID],
-                                                                            `UNSTAKE : ERROR - ${ result['text'] }`,
-                                                                            'error'
+                                                                            `UNSTAKE : ERROR ${ ID } - ${ result['text'] }`, 'error'
                                                                         );
                                                                     };
                                                                 };
                                                             }).catch(error => {
                                                                 $.notify(
-                                                                    window[ID],
-                                                                    `UNSTAKE : CONNECTION FAILED ${ error }`, 'error'
+                                                                    `UNSTAKE : CONNECTION FAILED ${ ID } ${ error }`, 'error'
                                                                 );
                                                             });
                                                         })(UNSTAKEC);
@@ -3968,8 +4174,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                             $('#stakeWax').modal('hide');
                                             for (RENTUNST in window['information-data']['DATA']) {
                                                 $.notify(
-                                                    window[RENTUNST],
-                                                    `RENT UNSTAKE : PLEASE WAIT`, 'info'
+                                                    `RENT UNSTAKE : PLEASE WAIT ${ RENTUNST }`, 'info'
                                                 );
                                                 (function(ID) {
                                                     fetch(`/rentunstakecpu?waxid=${ ID }&amount=${ Number(document.querySelector('div.modal#stakeWax select[aria-label="RENT UNSTAKE QUANTITY"]').value).toFixed(4) }`, {
@@ -3981,28 +4186,24 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                     ).then(result => {
                                                         if (result['code'] == 200) {
                                                             $.notify(
-                                                                window[ID],
-                                                                `RENT UNSTAKE : DONE`,
+                                                                `RENT UNSTAKE : DONE ${ ID }`,
                                                                 'success'
                                                             );
                                                         } else {
                                                             try {
                                                                 $.notify(
-                                                                    window[ID],
-                                                                    `RENT UNSTAKE : FAIL - ${ result['text'] }`, 'warn'
+                                                                    `RENT UNSTAKE : FAIL ${ ID } - ${ result['text'] }`, 'warn'
                                                                 );
                                                             } catch (e) {
                                                                 $.notify(
-                                                                    window[ID],
-                                                                    `RENT UNSTAKE : ERROR - ${ result['text'] }`,
+                                                                    `RENT UNSTAKE : ERROR ${ ID } - ${ result['text'] }`,
                                                                     'error'
                                                                 );
                                                             };
                                                         };
                                                     }).catch(error => {
                                                         $.notify(
-                                                            window[ID],
-                                                            `RENT UNSTAKE : CONNECTION FAILED ${ error }`, 'error'
+                                                            `RENT UNSTAKE : CONNECTION FAILED ${ ID } ${ error }`, 'error'
                                                         );
                                                     });
                                                 })(RENTUNST);
@@ -5496,28 +5697,24 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             ).then(result => {
                                 if (result['code'] == 200) {
                                     $.notify(
-                                        window[ID],
-                                        `TASK SCHEDULER : DONE`,
+                                        `TASK SCHEDULER : DONE ${ ID }`,
                                         'success'
                                     );
                                 } else {
                                     try {
                                         $.notify(
-                                            window[ID],
-                                            `TASK SCHEDULER : FAIL - ${ result['text'] }`, 'warn'
+                                            `TASK SCHEDULER : FAIL ${ ID } - ${ result['text'] }`, 'warn'
                                         );
                                     } catch (e) {
                                         $.notify(
-                                            window[ID],
-                                            `TASK SCHEDULER : ERROR - ${ result['text'] }`,
+                                            `TASK SCHEDULER : ERROR  ${ ID }- ${ result['text'] }`,
                                             'error'
                                         );
                                     };
                                 };
                             }).catch(error => {
                                 $.notify(
-                                    window[ID],
-                                    `TASK SCHEDULER : CONNECTION FAILED ${ error }`, 'error'
+                                    `TASK SCHEDULER : CONNECTION FAILED ${ ID } ${ error }`, 'error'
                                 );
                             });
                         })(TASKSCHE);
@@ -5717,14 +5914,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
     });
     window['atomichub'] = [
         'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/',
-        'https://cors.bridged.cc/https://atomic.hivebp.io/atomicassets/v1/assets/',
-        'https://cors.bridged.cc/https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',
+        'https://cors.bridged.cc/https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',  
         'https://wax.api.atomicassets.io/atomicassets/v1/assets/',
-        //    'https://atomic.hivebp.io/atomicassets/v1/assets/',  
-        'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/'
+        'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',  
     ];
 </script>
-
-</html>
 
 </html>

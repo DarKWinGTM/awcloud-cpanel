@@ -1,3 +1,25 @@
+/* MY CUSTOM CSS */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @charset "UTF-8";.mat-badge-content {
     font-weight: 600;
     font-size: 12px;

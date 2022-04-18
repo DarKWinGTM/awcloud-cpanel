@@ -326,7 +326,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-deposit-fwf-text" style="width: 248px;">DEPOSIT FWF 0000</div>
-		<input type="range" class="form-control fw-deposit-fwf-input" placeholder="50" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control fw-deposit-fwf-input" placeholder="200" value="200" step="5" min="150" max="3100" >
 	</div>
 	<div class="input-group fw-deposit-fwg">
 		<div class="input-group-text">
@@ -337,7 +337,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-deposit-fwg-text" style="width: 248px;">DEPOSIT FWG 0000</div>
-		<input type="range" class="form-control fw-deposit-fwg-input" placeholder="50" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control fw-deposit-fwg-input" placeholder="200" value="200" step="5" min="150" max="3100" >
 	</div>
 	<div class="input-group fw-swap-wax-fwf">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO SWAP WHEN HAVE NOT ENOUGH SUPPLY</div>

@@ -3044,106 +3044,99 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                             });
                         </script>
                         <script type="text/javascript">
-                            document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit', function(e) {
-
-                                if (
-                                    $("button.btn.btn-primary.allocate-submit-button").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.allocate-submit-button')
-                                ) {
-                                    $('#allocateWax').modal('hide');
-
-                                    this.list = [];
-                                    console.debug(this.list);
-                                    this.time = 0
-
-                                    for (TRFERWAX of $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items')) {
-
-                                        this.list.push(TRFERWAX);
-
-                                        if (
-                                            window['information-data']['DATA'][
-                                                document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
-                                            ]['balance'][$(document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]')).find("option:selected").val().split('-')[0]] >= 0.00009 &&
-                                            TRFERWAX != document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value') && (
-                                                this.list.length >= 6 ||
-                                                this.list.length == $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items').length ||
-                                                TRFERWAX == $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items')[
-                                                    $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items').length - 1
-                                                ]
-                                            )
-                                        ) {
-
-                                            this.time += 1;
-
-                                            $.notify(`ALLOCATE : PLEASE WAIT ${ this.list.join(',') }`, 'info');
-
-                                            (function(ID, TIME) {
-
-                                                console.debug(ID);
-                                                console.debug(TIME);
-
-                                                setTimeout(function() {
-                                                    fetch(`/allocate?waxid=${
-                                                        document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
-                                                    }&to=${
-                                                        ID
-                                                    }&memo=${
-                                                        document.querySelector('div.modal#allocateWax [aria-label*="ALLOCATE MEMO"]').value
-                                                    }&quantity=${
-                                                        document.querySelector('div.modal#allocateWax input[aria-label="ALLOCATE WAX QUANTITY"]').value
-                                                    }&symbol=${
-                                                        $( document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]') ).find("option:selected").val()
-                                                    }`, {
-                                                        "headers": {},
-                                                        "body": null,
-                                                        "method": "GET",
-                                                    }).then(
-                                                        result => {
-                                                            if (result.redirected == true) {
-                                                                self.location = result.url
-                                                            } else {
-                                                                return result.json()
-                                                            }
-                                                        }
-                                                    ).then(result => {
-                                                        if (result['code'] == 200) {
-                                                            $.notify(`ALLOCATE : DONE - ${ID} <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 'success');
-                                                        } else {
-                                                            try {
-                                                                if (
-                                                                    result['data']['transaction'] &&
-                                                                    result['data']['transaction']['trx'] &&
-                                                                    result['data']['transaction']['trx']['error'] &&
-                                                                    result['data']['transaction']['trx']['error']['what']
-                                                                ) {
-                                                                    $.notify(`ALLOCATE : WARNING ${ID} - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn');
-                                                                } else {
-                                                                    $.notify(`ALLOCATE : WARNING ${ID} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn');
-                                                                };
-                                                            } catch (e) {
-                                                                $.notify(`ALLOCATE : ERROR ${ID} - ${ result['text'] }`, 'error');
-                                                            };
-                                                        };
-                                                    }).catch(error => {
-                                                        $.notify(`ALLOCATE : CONNECTION FAILED ${ID} - ${ error }`, 'error');
-                                                    });
-                                                }, 5000 + (function(t) {
-                                                    if (t >= 2) {
-                                                        return 25000 * t
-                                                    } else {
-                                                        return 0
-                                                    }
-                                                })(TIME));
-                                            })(this.list.join(','), this.time);
-
-                                            this.list = [];
-
-                                        };
-                                        //    else{
-                                        //        $.notify(`ALLOCATE : ALREADY`, 'success'); 
-                                        //    }; 
+document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit', function(e) {
+    if (
+        $("button.btn.btn-primary.allocate-submit-button").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.allocate-submit-button')
+    ) {
+        $('#allocateWax').modal('hide');
+        this.list = [];
+        console.debug(this.list);
+        this.time = 0
+        for (TRFERWAX of $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items')) {
+            this.list.push(TRFERWAX);
+            if (
+                window['information-data']['DATA'][
+                    document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+                ]['balance'][$(document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]')).find("option:selected").val().split('-')[0]] >= 0.00009 &&
+                TRFERWAX != document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value') && (
+                    this.list.length >= 6 ||
+                    this.list.length == $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items').length ||
+                    TRFERWAX == $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items')[
+                        $('div.modal#allocateWax [aria-label*="ALLOCATE TO WAX ID"]').tagsinput('items').length - 1
+                    ]
+                )
+            ) {
+                this.time += 1;
+                $.notify(`ALLOCATE : PLEASE WAIT ${ this.list.join(',') }`, 'info');
+                (function(ID, TIME) {
+                    console.debug(ID);
+                    console.debug(TIME);
+                    setTimeout(function() {
+                        fetch(`/allocate?waxid=${
+                            document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+                        }&to=${
+                            ID
+                        }&memo=${
+                            document.querySelector('div.modal#allocateWax [aria-label*="ALLOCATE MEMO"]').value
+                        }&quantity=${
+                            document.querySelector('div.modal#allocateWax input[aria-label="ALLOCATE WAX QUANTITY"]').value
+                        }&symbol=${
+                            $( document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]') ).find("option:selected").val()
+                        }`, {
+                            "headers": {},
+                            "body": null,
+                            "method": "GET",
+                        }).then(
+                            result => {
+                                if (result.redirected == true) {
+                                    self.location = result.url
+                                } else {
+                                    return result.json()
+                                }
+                            }
+                        ).then(result => {
+                            if (result['code'] == 200) {
+                                $.notify(`ALLOCATE : DONE - ${ID} <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 'success');
+                            } else {
+                                try {
+                                    if (
+                                        result['data']['transaction'] &&
+                                        result['data']['transaction']['trx'] &&
+                                        result['data']['transaction']['trx']['error'] &&
+                                        result['data']['transaction']['trx']['error']['what']
+                                    ) {
+                                        $.notify(`ALLOCATE : WARNING ${ID} - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn');
+                                    } else {
+                                        $.notify(`ALLOCATE : WARNING ${ID} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn');
                                     };
+                                } catch (e) {
+                                    $.notify(`ALLOCATE : ERROR ${ID} - ${ result['text'] }`, 'error');
                                 };
-                            });
+                            };
+                        }).catch(error => {
+                            $.notify(`ALLOCATE : CONNECTION FAILED ${ID} - ${ error }`, 'error');
+                        });
+                    }, 5000 + (function(t) {
+                        if (t >= 2) {
+                            return 25000 * t
+                        } else {
+                            return 0
+                        }
+                    })(TIME));
+                })(this.list.join(','), this.time);
+                this.list = [];
+            }else if (
+                window['information-data']['DATA'][
+                    document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+                ]['balance'][$(document.querySelector('div.modal#allocateWax select[aria-label="ALLOCATE WAX SYMBOL"]')).find("option:selected").val().split('-')[0]] < 0.00009
+            ){
+                $.notify(
+                    `ALLOCATE : ${ document.querySelector('div.modal#allocateWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value') } NOT ENOUGH TOKEN`, 'success'
+                ); break;
+            };
+        };
+    };
+});
                         </script>
                     </div>
                 </form>

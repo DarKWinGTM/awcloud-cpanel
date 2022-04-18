@@ -1584,9 +1584,20 @@ color           : #fff; \
                                         $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
                                     } else {
                                         try {
-                                            Swal.fire(
-                                                'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                            );
+                                            if (
+                                                result['data']['transaction'] &&
+                                                result['data']['transaction']['trx'] &&
+                                                result['data']['transaction']['trx']['error'] &&
+                                                result['data']['transaction']['trx']['error']['what']
+                                            ) {
+                                                Swal.fire(
+                                                    'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                );
+                                            } else {
+                                                Swal.fire(
+                                                    'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                );
+                                            };
                                             $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
                                         } catch (e) {
                                             Swal.fire({
@@ -1687,9 +1698,20 @@ color           : #fff; \
                                             $("button.btn.btn-primary.send-nft").attr('readonly', false);
                                         } else {
                                             try {
-                                                Swal.fire(
-                                                    'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                );
+                                                if (
+                                                    result['data']['transaction'] &&
+                                                    result['data']['transaction']['trx'] &&
+                                                    result['data']['transaction']['trx']['error'] &&
+                                                    result['data']['transaction']['trx']['error']['what']
+                                                ) {
+                                                    Swal.fire(
+                                                        'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                    );
+                                                } else {
+                                                    Swal.fire(
+                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                    );
+                                                };
                                                 $("button.btn.btn-primary.send-nft").removeClass('invisible');
                                                 $("button.btn.btn-primary.send-nft").attr('readonly', false);
                                             } catch (e) {
@@ -3630,9 +3652,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                 $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.staketoall')).prop('disabled', false);
             } else {
                 try {
-                    Swal.fire(
-                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                    );
+                    if (
+                        result['data']['transaction'] &&
+                        result['data']['transaction']['trx'] &&
+                        result['data']['transaction']['trx']['error'] &&
+                        result['data']['transaction']['trx']['error']['what']
+                    ) {
+                        Swal.fire(
+                            'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                        );
+                    } else {
+                        Swal.fire(
+                            'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                        );
+                    };
                     $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.stake')).prop('disabled', false);
                     $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.staketoall')).prop('disabled', false);
                 } catch (e) {
@@ -3861,9 +3894,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                             $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.unstake')).prop('disabled', false);
                                                         } else {
                                                             try {
-                                                                Swal.fire(
-                                                                    'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                                );
+                                                                if (
+                                                                    result['data']['transaction'] &&
+                                                                    result['data']['transaction']['trx'] &&
+                                                                    result['data']['transaction']['trx']['error'] &&
+                                                                    result['data']['transaction']['trx']['error']['what']
+                                                                ) {
+                                                                    Swal.fire(
+                                                                        'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                                    );
+                                                                } else {
+                                                                    Swal.fire(
+                                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                                    );
+                                                                };
                                                                 $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.unstake')).prop('disabled', false);
                                                             } catch (e) {
                                                                 Swal.fire({
@@ -4016,9 +4060,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                                 $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.refund')).prop('disabled', false);
                                                             } else {
                                                                 try {
-                                                                    Swal.fire(
-                                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                                    );
+                                                                    if (
+                                                                        result['data']['transaction'] &&
+                                                                        result['data']['transaction']['trx'] &&
+                                                                        result['data']['transaction']['trx']['error'] &&
+                                                                        result['data']['transaction']['trx']['error']['what']
+                                                                    ) {
+                                                                        Swal.fire(
+                                                                            'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                                        );
+                                                                    } else {
+                                                                        Swal.fire(
+                                                                            'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                                        );
+                                                                    };
                                                                     $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.refund')).prop('disabled', false);
                                                                 } catch (e) {
                                                                     Swal.fire({
@@ -4176,9 +4231,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                     $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-unstake')).prop('disabled', false);
                                                 } else {
                                                     try {
-                                                        Swal.fire(
-                                                            'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                        );
+                                                        if (
+                                                            result['data']['transaction'] &&
+                                                            result['data']['transaction']['trx'] &&
+                                                            result['data']['transaction']['trx']['error'] &&
+                                                            result['data']['transaction']['trx']['error']['what']
+                                                        ) {
+                                                            Swal.fire(
+                                                                'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                            );
+                                                        } else {
+                                                            Swal.fire(
+                                                                'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                            );
+                                                        };
                                                         $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-unstake')).prop('disabled', false);
                                                     } catch (e) {
                                                         Swal.fire({
@@ -4358,9 +4424,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                         $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.free-stake')).prop('disabled', false);
                                                     } else {
                                                         try {
-                                                            Swal.fire(
-                                                                'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                            );
+                                                            if (
+                                                                result['data']['transaction'] &&
+                                                                result['data']['transaction']['trx'] &&
+                                                                result['data']['transaction']['trx']['error'] &&
+                                                                result['data']['transaction']['trx']['error']['what']
+                                                            ) {
+                                                                Swal.fire(
+                                                                    'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                                );
+                                                            } else {
+                                                                Swal.fire(
+                                                                    'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                                );
+                                                            };
                                                             $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.free-stake')).prop('disabled', false);
                                                         } catch (e) {
                                                             Swal.fire({
@@ -4605,9 +4682,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', false);
                                             } else {
                                                 try {
-                                                    Swal.fire(
-                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                    );
+                                                    if (
+                                                        result['data']['transaction'] &&
+                                                        result['data']['transaction']['trx'] &&
+                                                        result['data']['transaction']['trx']['error'] &&
+                                                        result['data']['transaction']['trx']['error']['what']
+                                                    ) {
+                                                        Swal.fire(
+                                                            'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                        );
+                                                    } else {
+                                                        Swal.fire(
+                                                            'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                        );
+                                                    };
                                                     $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', false);
                                                 } catch (e) {
                                                     Swal.fire({

@@ -4102,41 +4102,61 @@ $(document).ready(function() {
 				if (
 					eosjs_ecc.isValidPrivate( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ) == true
 				){
+
 					document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey 		= eosjs_ecc.PrivateKey.fromString( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ).toPublic().toString(); 
 					document.querySelector('input[aria-label="KEY PRV ACTIVE"]').value 			= document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey; 
-					
-					fetch("https://wax.greymass.com/v1/chain/get_accounts_by_authorizers", {
-						"headers": {
-							"accept": "application/json, text/plain, */*",
-							"accept-language": "en-US",
-							"content-type": "application/json;charset=UTF-8",
-							"sec-fetch-dest": "empty",
-							"sec-fetch-mode": "cors",
-							"sec-fetch-site": "cross-site"
-						},
-						"body"              : JSON.stringify({
-							'keys' 			: [document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey]
-						}),
-						"method"            : "POST",
-						"mode" 				: "cors",
-						"credentials" 		: "omit"
+
+					fetch(`${
+						(function (a) {return a[Math.floor((Math.random()*a.length))]})(['https://api.waxsweden.org', 'https://wax.eosdublin.io'])
+					}/v2/state/get_key_accounts?limit=1&public_key=${
+						eosjs_ecc.PrivateKey.fromString( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ).toPublic().toString()
+					}&details=true`, {
+						"headers": {},
+						"body": null,
+						"method": "GET"
 					}).then(
 						result => result.json()
 					).then(result => {
-						document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
-						if (
-							document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
-						){
-							document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
-							$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
+						if (result['permissions'][0]['name'] == 'owner'){
+							$.notify(`MASTER KEY : ADD FAIL THIS IS NOT KEY ACTIVE PERMISSIONS  `, "error", { position : "top" }); 
+							e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
 						}else{
-							document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
-							$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
+							fetch("https://wax.greymass.com/v1/chain/get_accounts_by_authorizers", {
+								"headers": {
+									"accept": "application/json, text/plain, */*",
+									"accept-language": "en-US",
+									"content-type": "application/json;charset=UTF-8",
+									"sec-fetch-dest": "empty",
+									"sec-fetch-mode": "cors",
+									"sec-fetch-site": "cross-site"
+								},
+								"body"              : JSON.stringify({
+									'keys' 			: [document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey]
+								}),
+								"method"            : "POST",
+								"mode" 				: "cors",
+								"credentials" 		: "omit"
+							}).then(
+								result => result.json()
+							).then(result => {
+								document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
+								if (
+									document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
+								){
+									document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
+									$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
+								}else{
+									document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
+									$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
+								}; 
+							}).catch(error => {
+								e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
+							});
 						}; 
 					}).catch(error => {
 						e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
-					});
-					
+					}); 
+
 					// CHECK PERMISSIONS
 					//	fetch("https://lightapi.eosamsterdam.net/api/accinfo/wax/raicybermoon", {
 					//	  "headers": {

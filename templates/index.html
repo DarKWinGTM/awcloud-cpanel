@@ -470,181 +470,230 @@
                         font-family         : sans-serif;
                         font-size           : large;
                     ">
+                        <ul
+                            class   = "nav nav-tabs"
+                            id      = "MonitorTab"
+                            role    = "tablist"
+                            style   = "
+                                background-color: rgb(141, 197, 63) !important;
+                                color: black;
+                                border: 0px !important;
+                                border-radius: 1px !important;
+                            "
+                        >
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link active"
+                                    id              = "aw-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#aw-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "aw-monitor"
+                                    aria-selected   = "true"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                    "
+                                    onclick         = "document.querySelector('iframe#iframeChart').setAttribute('src', document.querySelector('iframe#iframeChart').src)"
+                                ><img
+                                    src     = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/QmX79zrJsk4DbWQ3krgu41pX3fdvEvWjkMXiNCKpxFXSgj&h=96"
+                                    alt     = ""
+                                    style   = "height: 32px; width: 32px; margin-right: 10px; border-radius: 50%;"
+                                >AW</button>
+                            </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
+                                    id              = "ss-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#ss-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "ss-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                    "
+                                    onclick         = "document.querySelector('iframe#ssMonitor').setAttribute('src', document.querySelector('iframe#ssMonitor').src)"
+                                ><img
+                                    src     = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/QmYWS19pX4nfsq8eubJaMtVWwk6at6Ar4TyujvYXoSaiDc&h=96"
+                                    alt     = ""
+                                    style   = "height: 32px; width: 32px; margin-right: 10px; border-radius: 50%;"
+                                >SS</button>
+                            </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
+                                    id              = "fw-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#fw-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "fw-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                    "
+                                    onclick         = "document.querySelector('iframe#fwMonitor').setAttribute('src', document.querySelector('iframe#fwMonitor').src)"
+                                ><img
+                                    src     = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/QmX79zrJsk4DbWQ3krgu41pX3fdvEvWjkMXiNCKpxFXSgj&h=96"
+                                    alt     = ""
+                                    style   = "height: 32px; width: 32px; margin-right: 10px; border-radius: 50%;"
+                                >FW</button>
+                            </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
+                                    id              = "kq-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#kq-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "kq-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                    "
+                                    onclick         = "document.querySelector('iframe#kqMonitor').setAttribute('src', document.querySelector('iframe#kqMonitor').src)"
+                                ><img
+                                    src     = "https://cdn.discordapp.com/icons/914730685787426816/a_5c220086aa26e3a125ca8d04eec8874b.gif?size=96"
+                                    alt     = ""
+                                    style   = "height: 32px; width: 32px; margin-right: 10px; border-radius: 50%;"
+                                >KQ</button>
+                            </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
+                                    id              = "cc-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#cc-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "cc-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                    "
+                                    onclick         = "document.querySelector('iframe#ccMonitor').setAttribute('src', document.querySelector('iframe#ccMonitor').src)"
+                                ><img
+                                    src     = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/QmXLKAnaphaXCHGWxowjUoVjXsiWEdXBC59Beo751FdzSq?size=96"
+                                    alt     = ""
+                                    style   = "height: 32px; width: 32px; margin-right: 10px; border-radius: 50%;"
+                                >CC</button>
+                            </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
+                                    id              = "gx-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#gx-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "gx-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                    "
+                                    onclick         = "document.querySelector('iframe#gxMonitor').setAttribute('src', document.querySelector('iframe#gxMonitor').src)"
+                                ><img
+                                    src     = "https://cdn.discordapp.com/icons/907620431819833404/a_1d459bf6da0d29114ed178e518b145ce.gif?size=96"
+                                    alt     = ""
+                                    style   = "height: 32px; width: 32px; margin-right: 10px; border-radius: 50%;"
+                                >GX</button>
+                            </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
+                                    id              = "bl-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#bl-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "bl-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                    "
+                                    onclick         = "document.querySelector('iframe#blMonitor').setAttribute('src', document.querySelector('iframe#blMonitor').src)"
+                                ><img
+                                    src     = "https://icoholder.com/files/img/fc64de24d3a237c473a2d90b442dd72e.png"
+                                    alt     = ""
+                                    style   = "height: 32px; width: 32px; margin-right: 10px; border-radius: 50%;"
+                                >BL</button>
+                            </li>
+                            <li
+                                class   = "nav-item"
+                                role    = "presentation"
+                                style   = "
+                                    font: -webkit-mini-control;
+                                    margin-left: auto;
+                                    margin-top: auto;
+                                    margin-bottom: auto;
+                                    padding-right: 12px;
+                                    font-size: large;
+                                "
+                            >
+                                <div 
+                                    style            ="
+                                        font-weight: bold;
+                                        color: black;
+                                    " 
+                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.92</div>
+                            </li>
+                        </ul>
+                        <!--
                         <div class="d-flex justify-content-center" onmouseover="window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.92</div>
+                        -->
                     </th>
-                    <ul
-                        class   = "nav nav-tabs"
-                        id      = "MonitorTab"
-                        role    = "tablist"
-                        style   = "
-                            background-color: rgb(141, 197, 63) !important;
-                            color: black;
-                            border: 0px !important;
-                            border-radius: 1px !important;
-                        "
-                    >
-                        <li 
-                            class="nav-item"
-                            role="presentation" 
-                            style="
-                                font: -webkit-mini-control;
-                            "
-                        >
-                            <button
-                                class           = "nav-link active"
-                                id              = "aw-monitor-tab"
-                                data-bs-toggle  = "tab"
-                                data-bs-target  = "#aw-monitor"
-                                type            = "button"
-                                role            = "tab"
-                                aria-controls   = "aw-monitor"
-                                aria-selected   = "true"
-                                style           = "
-                                    font-weight: bold;
-                                    color: black;
-                                "
-                                onclick         = "document.querySelector('iframe#iframeChart').setAttribute('src', document.querySelector('iframe#iframeChart').src)"
-                            >AW</button>
-                        </li>
-                        <li 
-                            class="nav-item"
-                            role="presentation" 
-                            style="
-                                font: -webkit-mini-control;
-                            "
-                        >
-                            <button
-                                class           = "nav-link"
-                                id              = "ss-monitor-tab"
-                                data-bs-toggle  = "tab"
-                                data-bs-target  = "#ss-monitor"
-                                type            = "button"
-                                role            = "tab"
-                                aria-controls   = "ss-monitor"
-                                aria-selected   = "false"
-                                style           = "
-                                    font-weight: bold;
-                                    color: black;
-                                "
-                                onclick         = "document.querySelector('iframe#ssMonitor').setAttribute('src', document.querySelector('iframe#ssMonitor').src)"
-                            >SS</button>
-                        </li>
-                        <li 
-                            class="nav-item"
-                            role="presentation" 
-                            style="
-                                font: -webkit-mini-control;
-                            "
-                        >
-                            <button
-                                class           = "nav-link"
-                                id              = "fw-monitor-tab"
-                                data-bs-toggle  = "tab"
-                                data-bs-target  = "#fw-monitor"
-                                type            = "button"
-                                role            = "tab"
-                                aria-controls   = "fw-monitor"
-                                aria-selected   = "false"
-                                style           = "
-                                    font-weight: bold;
-                                    color: black;
-                                "
-                                onclick         = "document.querySelector('iframe#fwMonitor').setAttribute('src', document.querySelector('iframe#fwMonitor').src)"
-                            >FW</button>
-                        </li>
-                        <li 
-                            class="nav-item"
-                            role="presentation" 
-                            style="
-                                font: -webkit-mini-control;
-                            "
-                        >
-                            <button
-                                class           = "nav-link"
-                                id              = "kq-monitor-tab"
-                                data-bs-toggle  = "tab"
-                                data-bs-target  = "#kq-monitor"
-                                type            = "button"
-                                role            = "tab"
-                                aria-controls   = "kq-monitor"
-                                aria-selected   = "false"
-                                style           = "
-                                    font-weight: bold;
-                                    color: black;
-                                "
-                                onclick         = "document.querySelector('iframe#kqMonitor').setAttribute('src', document.querySelector('iframe#kqMonitor').src)"
-                            >KQ</button>
-                        </li>
-                        <li 
-                            class="nav-item"
-                            role="presentation" 
-                            style="
-                                font: -webkit-mini-control;
-                            "
-                        >
-                            <button
-                                class           = "nav-link"
-                                id              = "cc-monitor-tab"
-                                data-bs-toggle  = "tab"
-                                data-bs-target  = "#cc-monitor"
-                                type            = "button"
-                                role            = "tab"
-                                aria-controls   = "cc-monitor"
-                                aria-selected   = "false"
-                                style           = "
-                                    font-weight: bold;
-                                    color: black;
-                                "
-                                onclick         = "document.querySelector('iframe#ccMonitor').setAttribute('src', document.querySelector('iframe#ccMonitor').src)"
-                            >CC</button>
-                        </li>
-                        <li 
-                            class="nav-item"
-                            role="presentation" 
-                            style="
-                                font: -webkit-mini-control;
-                            "
-                        >
-                            <button
-                                class           = "nav-link"
-                                id              = "gx-monitor-tab"
-                                data-bs-toggle  = "tab"
-                                data-bs-target  = "#gx-monitor"
-                                type            = "button"
-                                role            = "tab"
-                                aria-controls   = "gx-monitor"
-                                aria-selected   = "false"
-                                style           = "
-                                    font-weight: bold;
-                                    color: black;
-                                "
-                                onclick         = "document.querySelector('iframe#gxMonitor').setAttribute('src', document.querySelector('iframe#gxMonitor').src)"
-                            >GX</button>
-                        </li>
-                        <li 
-                            class="nav-item"
-                            role="presentation" 
-                            style="
-                                font: -webkit-mini-control;
-                            "
-                        >
-                            <button
-                                class           = "nav-link"
-                                id              = "bl-monitor-tab"
-                                data-bs-toggle  = "tab"
-                                data-bs-target  = "#bl-monitor"
-                                type            = "button"
-                                role            = "tab"
-                                aria-controls   = "bl-monitor"
-                                aria-selected   = "false"
-                                style           = "
-                                    font-weight: bold;
-                                    color: black;
-                                "
-                                onclick         = "document.querySelector('iframe#blMonitor').setAttribute('src', document.querySelector('iframe#blMonitor').src)"
-                            >BL</button>
-                        </li>
-                    </ul>
 
                     <tr>
                         <th colspan="9" style="display: table-cell;">
@@ -840,7 +889,7 @@
                             font-family         : sans-serif;
                             font-size           : large;
                         ">
-                            <div class="d-flex justify-content-center" style="">
+                            <div class="d-flex justify-content-center">
                                 <button id="total_setting" type="submit" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#totalSetting" style="width: 50%;">ALHOR TOOL</button>
                                 <button id="pool_mineable" type="submit" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#poolMineable" style="width: 50%; ">MINEABLE</button>
                                 <!--

@@ -1809,7 +1809,7 @@ color           : #fff; \
                                                             ); 
                                                             (function (POST){
                                                                 setTimeout(function(){
-                                                                    fetch(`/TESTsendnft?waxid=${ 
+                                                                    fetch(`/sendnft?waxid=${ 
                                                                         POST['id']
                                                                     }&to=${
                                                                         POST['to']
@@ -1947,66 +1947,56 @@ color           : #fff; \
                                             Object.assign(event['createElement'], {
                                                 innerHTML: `\
 <div class="custom-control custom-checkbox image-checkbox" style="width: 256 !important;">\
-  <img\
-      src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] }&h=354"\
-      alt                 = "#"\
-      class               = "img-fluid"\
-      style               = "\
-width           : 256px; \
-height          : auto; \
-border          : 5px solid rgb(141, 197, 63) !important; \
-border-radius   : 10px; \
-color           : #fff; \
-          "\
-          data-bs-toggle      ="tooltip"\
-          data-bs-placement   ="top"\
-          title               ="${ asset["asset_id"] }"\
-  >\
-  <div\
-    class="justify-content-center row text-nowrap"\
-    style = "\
-color       : black; \
-text-align  : center; \
-    "\
-  >\
-${ asset['data']['name'] } \
-  </div>\
-  <div\
-    class="justify-content-center row"\
-    style = "\
-color       : black; \
-text-align  : center; \
-    "\
-  >\
-${ asset['asset_id'] }\
-  </div>\
-  <div\
-    class="justify-content-center row"\
-    style = "\
-color       : black; \
-text-align  : center; \
-    "\
-  >\
-${ ( Number(event['createElement'].getAttribute("commission")) / 100).toFixed(2) } %\
-  </div>\
-  <div\
-    class="justify-content-center row"\
-    style = "\
-color       : black; \
-text-align  : center; \
-    "\
-  >\
-X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }\
-  </div>\
-  <div\
-    class="justify-content-center row"\
-    style = "\
-color       : black; \
-text-align  : center; \
-    "\
-  >\
-${ asset['owner'] } \
-  </div>\
+    <img\
+        src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] }&h=354"\
+        alt                 = "#"\
+        class               = "img-fluid"\
+        style               = "\
+            width           : 256px; \
+            height          : auto; \
+            border          : 5px solid rgb(141, 197, 63) !important; \
+            border-radius   : 10px; \
+            color           : #fff; \
+        "\
+        data-bs-toggle      = "tooltip"\
+        data-bs-placement   = "top"\
+        title               = "${ asset["asset_id"] }"\
+    >\
+    <div\
+        class="justify-content-center row text-nowrap"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['data']['name'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['asset_id'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ ( Number(event['createElement'].getAttribute("commission")) / 100).toFixed(2) } %</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['owner'] }</div>\
 </div>      `
                                             })
                                         );
@@ -2232,10 +2222,10 @@ ${ asset['owner'] } \
                                             if (result['code'] == 200) {
                                                 Swal.fire({
                                                     iconHtml: `
-            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-            </svg>
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
             `,
                                                     customClass: {
                                                         icon: 'swalSuccess'
@@ -2266,9 +2256,9 @@ ${ asset['owner'] } \
                                                 } catch (e) {
                                                     Swal.fire({
                                                         iconHtml: `
-              <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
               `,
                                                         customClass: {
                                                             icon: 'swalError'
@@ -2281,9 +2271,9 @@ ${ asset['owner'] } \
                                         }).catch(error => {
                                             Swal.fire({
                                                 iconHtml: `
-          <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
           `,
                                                 customClass: {
                                                     icon: 'swalError'
@@ -2838,10 +2828,10 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                         if (result['code'] == 200) {
                                             Swal.fire({
                                                 iconHtml: `
-          <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-          </svg>
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
           `,
                                                 customClass: {
                                                     icon: 'swalSuccess'
@@ -2876,9 +2866,9 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                             } catch (e) {
                                                 Swal.fire({
                                                     iconHtml: `
-            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
             `,
                                                     customClass: {
                                                         icon: 'swalError'
@@ -2895,9 +2885,9 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                     }).catch(error => {
                                         Swal.fire({
                                             iconHtml: `
-        <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
         `,
                                             customClass: {
                                                 icon: 'swalError'
@@ -3449,9 +3439,9 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                                                 } catch (e) {
                                                     Swal.fire({
                                                         iconHtml: `
-              <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
               `,
                                                         customClass: {
                                                             icon: 'swalError'

@@ -201,6 +201,8 @@ $(document).ready(function() {
 						try{ window[`${ TRELE.getAttribute('id') }-gx-panel-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-bl-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-bl-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-af-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-af-panel-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-panel-monitor`].parentElement.remove() }catch(e){};  
                         try{ TRELE.remove() }catch(e){}; 
@@ -326,7 +328,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-deposit-fwf-text" style="width: 248px;">DEPOSIT FWF 0000</div>
-		<input type="range" class="form-control fw-deposit-fwf-input" placeholder="200" value="200" step="5" min="150" max="3100" >
+		<input type="range" class="form-control fw-deposit-fwf-input" placeholder="50" value="50" step="5" min="0" max="3100" >
 	</div>
 	<div class="input-group fw-deposit-fwg">
 		<div class="input-group-text">
@@ -337,7 +339,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-deposit-fwg-text" style="width: 248px;">DEPOSIT FWG 0000</div>
-		<input type="range" class="form-control fw-deposit-fwg-input" placeholder="200" value="200" step="5" min="150" max="3100" >
+		<input type="range" class="form-control fw-deposit-fwg-input" placeholder="50" value="50" step="5" min="0" max="3100" >
 	</div>
 	<div class="input-group fw-swap-wax-fwf">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO SWAP WHEN HAVE NOT ENOUGH SUPPLY</div>
@@ -508,7 +510,7 @@ $(document).ready(function() {
 			</div>
 			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input fw-feature-fee-mine-switch" value="0">
+					<input type="checkbox" class="form-check-input fw-feature-fee-mine-switch" value="0" disabled>
 					<span style="padding-left: 5;">FEE MINE</span>
 				</label>
 			</div>
@@ -1849,7 +1851,7 @@ $(document).ready(function() {
 			</div>
 			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input gx-feature-fee-mine-switch" value="0">
+					<input type="checkbox" class="form-check-input gx-feature-fee-mine-switch" value="0" disabled>
 					<span style="padding-left: 5;">FEE MINE</span>
 				</label>
 			</div>
@@ -1997,8 +1999,6 @@ $(document).ready(function() {
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
-									
-
 <th
     colspan     = "7"
     style       = "display: none; "
@@ -2018,6 +2018,101 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
+                            document.querySelector('table').querySelector('thead').appendChild(
+                                Object.assign(document.createElement('tr'), {
+                                    innerHTML   : `
+<th
+    colspan     = "7"
+    style       = "display: none; "
+	id 			= "${ WAXID }-af-monitor"
+>
+	<textarea 
+		class 		= "form-control ${ WAXID }"
+		id 			= "message-text ${ WAXID }"
+		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
+		scrolling 	= "no"
+	></textarea>
+</th>
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-af-panel-monitor">
+
+	<div class="input-group af-set-mine-frequency">
+		<div class="input-group-text af-set-mine-frequency-text" style="width: 248px;">MINE FREQUENCY 0000</div>
+		<input type="range" class="form-control af-set-mine-frequency-input" placeholder="1" value="1" step="1" min="1" max="8" >
+		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+	</div>
+	<div class="input-group af-withdraw-deposit">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [0%] DEPO : W 0.0 F 0.0 S 0.0</div>
+	</div>
+	<div class="input-group af-feature">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input af-feature-key-mine-switch" value="0">
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input af-feature-fee-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">FEE MINE</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</th>`
+                                })
+                            ); 
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('input.af-feature-key-mine-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('input.af-feature-key-mine-switch').checked, 
+								}; 
+								
+								fetch(
+									`/TESTvers/af/set?waxid=${ this['var']['id'] }&key_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('input.af-set-mine-frequency-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('input.af-set-mine-frequency-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-af-panel-monitor"]'
+								).querySelector(
+									'div.af-set-mine-frequency-text'
+								).innerText = 'MINE FREQUENCY ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/TESTvers/af/set?waxid=${ this['var']['id'] }&cfg_mine=time&value=${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('input.af-set-mine-frequency-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('input.af-set-mine-frequency-input').value, 
+								}; console.debug( this['var'] );  
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-af-panel-monitor"]'
+								).querySelector(
+									'div.af-set-mine-frequency-text'
+								).innerText = 'MINE FREQUENCY ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
 							
 							
 							
@@ -2498,6 +2593,47 @@ $(document).ready(function() {
                                     };
                                 });
 								
+                                window[WAXID].querySelector('input.af_switch[type="checkbox"]').addEventListener('change', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+										
+                                        $(this).prop( "disabled", true ); 
+										
+                                        fetch(`/vers/af/set?waxid=${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }&switch=${ this.checked }`, 
+											{method : 'GET'}
+										).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            if(result['text'] != 'okay'){ throw result }else{
+                                                if (
+                                                    result['data'] == true
+                                                ){
+                                                    this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
+                                                        'AGE OF FARMING ON', 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
+                                                        'AGE OF FARMING NO', 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`AGE OF FARMING : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (button){
+                                                setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
+                                            })(this); 
+                                        }); 
+                                    };
+                                });
+								
 								
 								
                             }catch(e){}; 
@@ -2648,6 +2784,9 @@ $(document).ready(function() {
 						}catch(e){ }; 
 						try{
 							window[ WAXID ].querySelector('input[class*="form-check-input bl_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['bl']["sw"]; 
+						}catch(e){ }; 
+						try{
+							window[ WAXID ].querySelector('input[class*="form-check-input af_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['af']["sw"]; 
 						}catch(e){ }; 
                         //  try{ $('[data-toggle="tooltip"]').tooltip() }catch(e){}; 
                         
@@ -3422,6 +3561,87 @@ $(document).ready(function() {
 									}catch(e){ }; 
 									
 								}catch(e){ }; 
+								try{
+									//	if(
+									//		window['information-data']["DATA"][ _WAXID ]['vers']['gx']["sw"] == true && 
+									//		Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+									//		!document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
+									//	){
+									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).setAttribute(
+									//			'src', document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).getAttribute('url')
+									//		); 
+									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+									//		
+									//	}; 
+									if(
+										window['information-data']["DATA"][ _WAXID ]['vers']['af']["sw"] == true && 
+										Object.keys( window['information-data']['DATA'] ).length >= 1
+									){
+										
+										document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['af']['db'], undefined, 4); 
+
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['eco_mine']; 
+										//	}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['key_mine']; 
+										}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['fee_mine']; 
+										//	}catch(e){ }; 
+										
+										
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-af-panel-monitor"]'
+											).querySelector(
+												'div.af-set-mine-frequency-text'
+											).innerText = 'MINE FREQUENCY ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['time'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-af-panel-monitor"]'
+										//		).querySelector(
+										//			'div.af-deposit-aoff-text'
+										//		).innerText = 'DEPOSIT AOFF ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['auto_depo_aoff'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-deposit-aoff-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['auto_depo_aoff'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-deposit-aoff-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['auto_depo_aoff'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-af-panel-monitor"]'
+										//		).querySelector(
+										//			'div.af-deposit-aofs-text'
+										//		).innerText = 'DEPOSIT AOFS ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['auto_depo_aofs'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-deposit-aofs-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['auto_depo_aofs'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-deposit-aofs-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['auto_depo_aofs'][1]; 
+										//	}catch(e){ }; 
+										
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('div.af-withdraw-deposit div').innerText 		= `W ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['pre']['AOFW']).toFixed(1)
+											} F ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['pre']['AOFF']).toFixed(1)
+											} S ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['pre']['AOFS']).toFixed(1)
+											} : WITH [0%] DEPO : W ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['has']['AOFW']).toFixed(1)
+											} F ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['has']['AOFF']).toFixed(1)
+											} S ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['has']['AOFS']).toFixed(1)
+											}`; 
+										}catch(e){ }; 
+									}; 
+								}catch(e){ }; 
 								
 								//  try{
 								//      delete window.window['total']['Stake']; 
@@ -3600,6 +3820,38 @@ $(document).ready(function() {
 					//	document.querySelector('iframe[id*="blMonitor"]').parentElement.style.display= 'table-cell'; 
 					document.querySelector('iframe[id*="blMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="blMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 412 }`; 
                 }; 
+                //	if (
+                //	    window['information-data']['DATA'] && 
+                //	    Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+				//		!document.querySelector('iframe[id*="afMonitor"]').getAttribute('url').match(
+                //	        (function (arr){
+				//			    for (WAXID in window['information-data']['DATA']){
+				//			        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
+				//			    }; return arr.join(',')
+				//			})([])
+                //	    ) && (function (arr){
+				//		    for (WAXID in window['information-data']['DATA']){
+				//		        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
+				//		    }; return arr.join(',')
+				//		})([]) != ''
+                //	){
+                //	    document.querySelector('iframe[id*="afMonitor"]').setAttribute(
+                //	        'src', '/af-monitor?waxid=' + (function (arr){
+				//			    for (WAXID in window['information-data']['DATA']){
+				//			        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
+				//			    }; return arr.join(',')
+				//			})([])
+                //	    ); 
+                //	    document.querySelector('iframe[id*="afMonitor"]').setAttribute(
+                //	        'url', '/af-monitor?waxid=' + (function (arr){
+				//			    for (WAXID in window['information-data']['DATA']){
+				//			        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
+				//			    }; return arr.join(',')
+				//			})([])
+                //	    ); 
+				//		//	document.querySelector('iframe[id*="afMonitor"]').parentElement.style.display= 'table-cell'; 
+				//		document.querySelector('iframe[id*="afMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="afMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 412 }`; 
+                //	}; 
 				
                 try{ window['check-wax-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['wax'] }catch(e){}; 
                 try{
@@ -4102,61 +4354,41 @@ $(document).ready(function() {
 				if (
 					eosjs_ecc.isValidPrivate( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ) == true
 				){
-
 					document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey 		= eosjs_ecc.PrivateKey.fromString( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ).toPublic().toString(); 
 					document.querySelector('input[aria-label="KEY PRV ACTIVE"]').value 			= document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey; 
-
-					fetch(`${
-						(function (a) {return a[Math.floor((Math.random()*a.length))]})(['https://api.waxsweden.org', 'https://wax.eosdublin.io'])
-					}/v2/state/get_key_accounts?limit=1&public_key=${
-						eosjs_ecc.PrivateKey.fromString( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ).toPublic().toString()
-					}&details=true`, {
-						"headers": {},
-						"body": null,
-						"method": "GET"
+					
+					fetch("https://wax.greymass.com/v1/chain/get_accounts_by_authorizers", {
+						"headers": {
+							"accept": "application/json, text/plain, */*",
+							"accept-language": "en-US",
+							"content-type": "application/json;charset=UTF-8",
+							"sec-fetch-dest": "empty",
+							"sec-fetch-mode": "cors",
+							"sec-fetch-site": "cross-site"
+						},
+						"body"              : JSON.stringify({
+							'keys' 			: [document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey]
+						}),
+						"method"            : "POST",
+						"mode" 				: "cors",
+						"credentials" 		: "omit"
 					}).then(
 						result => result.json()
 					).then(result => {
-						if (result['permissions'][0]['name'] == 'owner'){
-							$.notify(`MASTER KEY : ADD FAIL THIS IS NOT KEY ACTIVE PERMISSIONS  `, "error", { position : "top" }); 
-							e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
+						document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
+						if (
+							document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
+						){
+							document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
+							$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
 						}else{
-							fetch("https://wax.greymass.com/v1/chain/get_accounts_by_authorizers", {
-								"headers": {
-									"accept": "application/json, text/plain, */*",
-									"accept-language": "en-US",
-									"content-type": "application/json;charset=UTF-8",
-									"sec-fetch-dest": "empty",
-									"sec-fetch-mode": "cors",
-									"sec-fetch-site": "cross-site"
-								},
-								"body"              : JSON.stringify({
-									'keys' 			: [document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey]
-								}),
-								"method"            : "POST",
-								"mode" 				: "cors",
-								"credentials" 		: "omit"
-							}).then(
-								result => result.json()
-							).then(result => {
-								document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
-								if (
-									document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
-								){
-									document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
-									$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
-								}else{
-									document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
-									$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
-								}; 
-							}).catch(error => {
-								e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
-							});
+							document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
+							$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
 						}; 
 					}).catch(error => {
 						e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
-					}); 
-
+					});
+					
 					// CHECK PERMISSIONS
 					//	fetch("https://lightapi.eosamsterdam.net/api/accinfo/wax/raicybermoon", {
 					//	  "headers": {

@@ -2036,7 +2036,7 @@ $(document).ready(function() {
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-af-panel-monitor">
 
 	<div class="input-group af-set-mine-frequency">
-		<div class="input-group-text af-set-mine-frequency-text" style="width: 248px;">MINE FREQUENCY 0000</div>
+		<div class="input-group-text af-set-mine-frequency-text" style="width: 248px; justify-content: center; ">MINE FREQUENCY 0000</div>
 		<input type="range" class="form-control af-set-mine-frequency-input" placeholder="1" value="1" step="1" min="1" max="8" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
@@ -2073,7 +2073,7 @@ $(document).ready(function() {
 								}; 
 								
 								fetch(
-									`/TESTvers/af/set?waxid=${ this['var']['id'] }&key_mine=${ this['var']['db']['check'] }`, 
+									`/vers/af/set?waxid=${ this['var']['id'] }&key_mine=${ this['var']['db']['check'] }`, 
 									{method : 'GET'}
 								); 
 							}); 
@@ -2093,7 +2093,7 @@ $(document).ready(function() {
 								).innerText = 'MINE FREQUENCY ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
-									`/TESTvers/af/set?waxid=${ this['var']['id'] }&cfg_mine=time&value=${ this['var']['db']['value'] }`, 
+									`/vers/af/set?waxid=${ this['var']['id'] }&cfg_mine=time&value=${ this['var']['db']['value'] }`, 
 									{method : 'GET'}
 								); 
 							}); 
@@ -3601,6 +3601,9 @@ $(document).ready(function() {
 											).querySelector(
 												'div.af-set-mine-frequency-text'
 											).innerText = 'MINE FREQUENCY ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['time'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-key-mine-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['time']; 
 										}catch(e){ }; 
 										//	try{
 										//		document.querySelector(

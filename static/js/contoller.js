@@ -3100,7 +3100,7 @@ $(document).ready(function() {
 								try{
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['fw']["sw"] == true && 
-										Object.keys( window['information-data']['DATA'] ).length >= 1&& 
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
 										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`) 
 									){
 										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).setAttribute(
@@ -3115,16 +3115,11 @@ $(document).ready(function() {
 										//	try{
 										//		document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										//	}catch(e){ }; 
-										//	try{
-										//		document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['fw']['db'], undefined, 4); 
-										//	}catch(e){ }; 
 									}; 
 									
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['fw']["sw"] == true && 
 										Object.keys( window['information-data']['DATA'] ).length >= 1
-										//	&& 
-										//	document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
 									){
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-plant-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_plants'][0]; 
@@ -3342,7 +3337,10 @@ $(document).ready(function() {
 												'div.fw-auto-transfer-supply-farmer-coin-text'
 											).innerText = 'Farmer Coin ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_fmc'][1] ).slice(-'0000'.length); 
 										}catch(e){ }; 
-										
+										//	try{
+										//		document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['fw']['db'], undefined, 4); 
+										//	}catch(e){ }; 
+											
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('div.fw-withdraw-deposit div').innerText 		= `W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWW']).toFixed(1)
@@ -3359,6 +3357,7 @@ $(document).ready(function() {
 											}`; 
 										}catch(e){ }; 
 									}; 
+
 								}catch(e){ }; 
 								try{
 									if(
@@ -3465,7 +3464,7 @@ $(document).ready(function() {
 										//		//	console.debug( window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'][ logs ] ); 
 										//	}; 
 									}; 
-									document.querySelector(`th[id*="${ _WAXID }-cc-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['cc']['db'], undefined, 4); 
+									//	document.querySelector(`th[id*="${ _WAXID }-cc-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['cc']['db'], undefined, 4); 
 
 									try{
 										document.querySelector('th[id*="' + _WAXID + '-cc-panel-monitor"]').querySelector('div.cc-offchain-mainchain div').innerText 		= `FGL ${
@@ -3491,7 +3490,6 @@ $(document).ready(function() {
 										//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
-										//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['gx']['db'], undefined, 4); 
 
 										//	try{
 										//		document.querySelector('th[id*="' + _WAXID + '-gx-panel-monitor"]').querySelector('input.gx-feature-mbr-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['gx']['cf']['mbr_mine']; 
@@ -3502,7 +3500,7 @@ $(document).ready(function() {
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-gx-panel-monitor"]').querySelector('input.gx-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['gx']['cf']['fee_mine']; 
 										}catch(e){ }; 
-										
+
 										try{
 											document.querySelector(
 												'th[id*="' + _WAXID + '-gx-panel-monitor"]'
@@ -3525,23 +3523,25 @@ $(document).ready(function() {
 											document.querySelector('th[id*="' + _WAXID + '-gx-panel-monitor"]').querySelector('input.gx-deposit-gmp-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['gx']['cf']['auto_depo_gmp'][0]; 
 											document.querySelector('th[id*="' + _WAXID + '-gx-panel-monitor"]').querySelector('input.gx-deposit-gmp-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['gx']['cf']['auto_depo_gmp'][1]; 
 										}catch(e){ }; 
-										
-										try{
-											document.querySelector('th[id*="' + _WAXID + '-gx-panel-monitor"]').querySelector('div.gx-withdraw-deposit div').innerText 		= `A ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['pre']['GMA']).toFixed(1)
-											} P ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['pre']['GMP']).toFixed(1)
-											} O ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['pre']['GMO']).toFixed(1)
-											} : WITH [0%] DEPO : A ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['has']['GMA']).toFixed(1)
-											} P ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['has']['GMP']).toFixed(1)
-											} O ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['has']['GMO']).toFixed(1)
-											}`; 
-										}catch(e){ }; 
 									}; 
+									//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['gx']['db'], undefined, 4); 
+
+									try{
+										document.querySelector('th[id*="' + _WAXID + '-gx-panel-monitor"]').querySelector('div.gx-withdraw-deposit div').innerText 		= `A ${
+											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['pre']['GMA']).toFixed(1)
+										} P ${
+											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['pre']['GMP']).toFixed(1)
+										} O ${
+											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['pre']['GMO']).toFixed(1)
+										} : WITH [0%] DEPO : A ${
+											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['has']['GMA']).toFixed(1)
+										} P ${
+											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['has']['GMP']).toFixed(1)
+										} O ${
+											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['gx']['db']['balance']['has']['GMO']).toFixed(1)
+										}`; 
+									}catch(e){ }; 
+									
 								}catch(e){ }; 
 								try{
 									if(
@@ -3579,7 +3579,7 @@ $(document).ready(function() {
 										//		//	console.debug( window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'][ logs ] ); 
 										//	}; 
 									}; 
-									document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['bl']['db'], undefined, 4); 
+									//	document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['bl']['db'], undefined, 4); 
 
 									try{
 										document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelector('div.bl-offchain-mainchain div').innerText 		= `BRWL ${

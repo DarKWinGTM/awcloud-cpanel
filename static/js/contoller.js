@@ -3655,7 +3655,14 @@ $(document).ready(function() {
 								
 							}, 2000 + Math.ceil(Math.random() * 16000)); 
 						})(WAXID); 
-                        
+						
+						document.querySelectorAll('button[data-bs-target*="#transferWax"], button[data-bs-target*="#allocateWax"], button[data-bs-target*="#swapTLM"], button[data-bs-target*="#setLand"], button[data-bs-target*="#gotBAN"], button[data-bs-target*="#taskScheduler"], button[data-bs-target*="#poolMineable"], button[data-bs-target*="#stakeWAX"], button[data-bs-target*="#boxNFT"]').forEach(function(i){
+							//   i.addEventListener('click', function(e) {
+							//      document.querySelector('button#collapse-all-history').click()
+							//   });
+							i.onclick = function (){ document.querySelector('button#collapse-all-history').click() }
+						});
+						
                     }; 
 
                     try{

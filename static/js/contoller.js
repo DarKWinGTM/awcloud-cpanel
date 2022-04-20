@@ -310,12 +310,17 @@ $(document).ready(function() {
     style       = "display: none; "
 	id 			= "${ WAXID }-fw-monitor"
 >
+	<!--
 	<textarea 
 		class 		= "form-control ${ WAXID }"
 		id 			= "message-text ${ WAXID }"
 		style 		= "width : 100%;height : 1408px; background: transparent; color: white; resize: none; border: 0 none;"
-		scrolling 	= "no"
 	></textarea>
+	-->
+    <iframe
+    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=farmersworld"
+	style       = "width : 100%; height : 1409px;"
+    ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id="${ WAXID }-fw-panel-monitor">
 	<div class="input-group fw-deposit-fwf">
@@ -1563,7 +1568,6 @@ $(document).ready(function() {
     <iframe
     url         = "https://starship-explorer.io/?user=${ WAXID }"
     style       = "width : 100%; height : 3038px; filter: invert(0.95) contrast(1.0) saturate(0.6);"
-    scrolling   = "no"
 	loading 	= "lazy"
     ></iframe>
 </th>
@@ -1600,7 +1604,7 @@ $(document).ready(function() {
 		class 		= "form-control ${ WAXID }"
 		id 			= "message-text ${ WAXID }"
 		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
-		scrolling 	= "no"
+		loading 	= "lazy"
 	></textarea>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-kq-panel-monitor">
@@ -1661,12 +1665,18 @@ $(document).ready(function() {
     style       = "display: none; "
 	id 			= "${ WAXID }-cc-monitor"
 >
+	<!--
 	<textarea 
 		class 		= "form-control ${ WAXID }"
 		id 			= "message-text ${ WAXID }"
 		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
-		scrolling 	= "no"
 	></textarea>
+	-->
+    <iframe
+    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=fgltokenmgmt"
+	style       = "width : 100%; height : 816px;"
+	loading 	= "lazy"
+    ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-cc-panel-monitor">
 	<div class="input-group cc-offchain-mainchain">
@@ -1708,18 +1718,17 @@ $(document).ready(function() {
 	id 			= "${ WAXID }-gx-monitor"
 >
     <!--
-		iframe
-		url         = "https://farmersworld.idigger.online/affiliate?waxid=${ WAXID }"
-		style       = "width : 100%; height : 954px;"
-		scrolling   = "no"
-		></iframe
-	-->
 	<textarea 
 		class 		= "form-control ${ WAXID }"
 		id 			= "message-text ${ WAXID }"
 		style 		= "width : 100%;height : 649px; background: transparent; color: white; resize: none; border: 0 none;"
-		scrolling 	= "no"
 	></textarea>
+	-->
+    <iframe
+    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=galaxyminers"
+	style       = "width : 100%; height : 816px;"
+	loading 	= "lazy"
+    ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id="${ WAXID }-gx-panel-monitor">
 	<div class="input-group gx-deposit-gmo">
@@ -2004,12 +2013,18 @@ $(document).ready(function() {
     style       = "display: none; "
 	id 			= "${ WAXID }-bl-monitor"
 >
+	<!--
 	<textarea 
 		class 		= "form-control ${ WAXID }"
 		id 			= "message-text ${ WAXID }"
 		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
-		scrolling 	= "no"
 	></textarea>
+	-->
+    <iframe
+    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=bcbrawlers"
+	style       = "width : 100%; height : 816px;"
+	loading 	= "lazy"
+    ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-bl-panel-monitor">
 	<div class="input-group bl-offchain-mainchain">
@@ -2026,12 +2041,18 @@ $(document).ready(function() {
     style       = "display: none; "
 	id 			= "${ WAXID }-af-monitor"
 >
+	<!--
 	<textarea 
 		class 		= "form-control ${ WAXID }"
 		id 			= "message-text ${ WAXID }"
 		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
-		scrolling 	= "no"
 	></textarea>
+	-->
+    <iframe
+    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=ageoffarming"
+	style       = "width : 100%; height : 816px;"
+	loading 	= "lazy"
+    ></iframe>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-af-panel-monitor">
 
@@ -3079,25 +3100,24 @@ $(document).ready(function() {
 								try{
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['fw']["sw"] == true && 
-										Object.keys( window['information-data']['DATA'] ).length >= 1
-										//	&& 
-										//	!document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
+										Object.keys( window['information-data']['DATA'] ).length >= 1&& 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`) 
 									){
-										//	document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).setAttribute(
-										//		'src', document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).getAttribute('url')
-										//	); 
-										//	document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										//	document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
-										try{
-											document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										}catch(e){ }; 
-										try{
-											document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
-										}catch(e){ }; 
-										try{
-											document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['fw']['db'], undefined, 4); 
-										}catch(e){ }; 
+										//	try{
+										//		document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['fw']['db'], undefined, 4); 
+										//	}catch(e){ }; 
 									}; 
 									
 									if(
@@ -3412,10 +3432,17 @@ $(document).ready(function() {
 								}catch(e){ }; 
 								try{
 									if(
-										window['information-data']["DATA"][ _WAXID ]['vers']['cc']["sw"] == true
+										window['information-data']["DATA"][ _WAXID ]['vers']['cc']["sw"] == true && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`) 
 									){
-										document.querySelector(`th[id*="${ _WAXID }-cc-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`th[id*="${ _WAXID }-cc-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+
+										//	document.querySelector(`th[id*="${ _WAXID }-cc-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										//	document.querySelector(`th[id*="${ _WAXID }-cc-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
 										//	window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'] = []; 
 										//	for (logs in window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['event']){
@@ -3450,27 +3477,21 @@ $(document).ready(function() {
 									
 								}catch(e){ }; 
 								try{
-									//	if(
-									//		window['information-data']["DATA"][ _WAXID ]['vers']['gx']["sw"] == true && 
-									//		Object.keys( window['information-data']['DATA'] ).length >= 1 && 
-									//		!document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
-									//	){
-									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).setAttribute(
-									//			'src', document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).getAttribute('url')
-									//		); 
-									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
-									//		
-									//	}; 
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['gx']["sw"] == true && 
-										Object.keys( window['information-data']['DATA'] ).length >= 1
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`) 
 									){
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
-										document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
-										document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['gx']['db'], undefined, 4); 
+										//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['gx']['db'], undefined, 4); 
 
 										//	try{
 										//		document.querySelector('th[id*="' + _WAXID + '-gx-panel-monitor"]').querySelector('input.gx-feature-mbr-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['gx']['cf']['mbr_mine']; 
@@ -3524,10 +3545,18 @@ $(document).ready(function() {
 								}catch(e){ }; 
 								try{
 									if(
-										window['information-data']["DATA"][ _WAXID ]['vers']['bl']["sw"] == true
+										window['information-data']["DATA"][ _WAXID ]['vers']['bl']["sw"] == true && 
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`) 
 									){
-										document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										//	document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										//	document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
 										//	window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'] = []; 
 										//	for (logs in window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['event']){
@@ -3562,27 +3591,20 @@ $(document).ready(function() {
 									
 								}catch(e){ }; 
 								try{
-									//	if(
-									//		window['information-data']["DATA"][ _WAXID ]['vers']['gx']["sw"] == true && 
-									//		Object.keys( window['information-data']['DATA'] ).length >= 1 && 
-									//		!document.querySelector(`iframe[src*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`) 
-									//	){
-									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).setAttribute(
-									//			'src', document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).getAttribute('url')
-									//		); 
-									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-									//		document.querySelector(`iframe[url*="farmersworld.idigger.online/affiliate?waxid=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
-									//		
-									//	}; 
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['af']["sw"] == true && 
-										Object.keys( window['information-data']['DATA'] ).length >= 1
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`) 
 									){
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
-										document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										//	document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										//	document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
-										document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['af']['db'], undefined, 4); 
 
 										//	try{
 										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['eco_mine']; 
@@ -3594,7 +3616,8 @@ $(document).ready(function() {
 										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['fee_mine']; 
 										//	}catch(e){ }; 
 										
-										
+										//	document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['af']['db'], undefined, 4); 
+
 										try{
 											document.querySelector(
 												'th[id*="' + _WAXID + '-af-panel-monitor"]'

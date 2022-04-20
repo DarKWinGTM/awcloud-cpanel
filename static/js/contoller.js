@@ -317,10 +317,12 @@ $(document).ready(function() {
 		style 		= "width : 100%;height : 1408px; background: transparent; color: white; resize: none; border: 0 none;"
 	></textarea>
 	-->
-    <iframe
-    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=farmersworld"
-	style       = "width : 100%; height : 1409px;"
-    ></iframe>
+	<div style="overflow: auto; height: 1409px; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=farmersworld"
+		style       = "width : 100%; height : 1859px; margin-top: -450px ;overflow: auto;"
+		></iframe>
+	</div>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id="${ WAXID }-fw-panel-monitor">
 	<div class="input-group fw-deposit-fwf">
@@ -1672,11 +1674,13 @@ $(document).ready(function() {
 		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
 	></textarea>
 	-->
-    <iframe
-    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=fgltokenmgmt"
-	style       = "width : 100%; height : 816px;"
-	loading 	= "lazy"
-    ></iframe>
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=fgltokenmgmt"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-cc-panel-monitor">
 	<div class="input-group cc-offchain-mainchain">
@@ -1724,11 +1728,13 @@ $(document).ready(function() {
 		style 		= "width : 100%;height : 649px; background: transparent; color: white; resize: none; border: 0 none;"
 	></textarea>
 	-->
-    <iframe
-    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=galaxyminers"
-	style       = "width : 100%; height : 816px;"
-	loading 	= "lazy"
-    ></iframe>
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=galaxyminers"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id="${ WAXID }-gx-panel-monitor">
 	<div class="input-group gx-deposit-gmo">
@@ -2020,11 +2026,13 @@ $(document).ready(function() {
 		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
 	></textarea>
 	-->
-    <iframe
-    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=bcbrawlers"
-	style       = "width : 100%; height : 816px;"
-	loading 	= "lazy"
-    ></iframe>
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=bcbrawlers"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-bl-panel-monitor">
 	<div class="input-group bl-offchain-mainchain">
@@ -2048,11 +2056,13 @@ $(document).ready(function() {
 		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
 	></textarea>
 	-->
-    <iframe
-    url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=ageoffarming"
-	style       = "width : 100%; height : 816px;"
-	loading 	= "lazy"
-    ></iframe>
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=ageoffarming"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-af-panel-monitor">
 
@@ -3106,8 +3116,8 @@ $(document).ready(function() {
 										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).setAttribute(
 											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).getAttribute('url')
 										); 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
 										//	try{
 										//		document.querySelector(`th[id*="${ _WAXID }-fw-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
@@ -3437,8 +3447,8 @@ $(document).ready(function() {
 										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).setAttribute(
 											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).getAttribute('url')
 										); 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fgltokenmgmt"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 
 										//	document.querySelector(`th[id*="${ _WAXID }-cc-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										//	document.querySelector(`th[id*="${ _WAXID }-cc-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
@@ -3484,8 +3494,8 @@ $(document).ready(function() {
 										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).setAttribute(
 											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).getAttribute('url')
 										); 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=galaxyminers"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
 										//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										//	document.querySelector(`th[id*="${ _WAXID }-gx-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
@@ -3552,8 +3562,8 @@ $(document).ready(function() {
 										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).setAttribute(
 											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).getAttribute('url')
 										); 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=bcbrawlers"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
 										//	document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										//	document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
@@ -3599,8 +3609,8 @@ $(document).ready(function() {
 										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).setAttribute(
 											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).getAttribute('url')
 										); 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=ageoffarming"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
 										//	document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										//	document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 

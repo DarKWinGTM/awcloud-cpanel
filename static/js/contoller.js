@@ -2072,7 +2072,7 @@ $(document).ready(function() {
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 	<div class="input-group af-withdraw-deposit">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [0%] DEPO : W 0.0 F 0.0 S 0.0</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [5%] DEPO : W 0.0 F 0.0 S 0.0</div>
 	</div>
 	<div class="input-group af-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
@@ -2081,6 +2081,12 @@ $(document).ready(function() {
 				<label class="form-check-label">
 					<input type="checkbox" class="form-check-input af-feature-key-mine-switch" value="0">
 					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input af-feature-eco-mine-switch" value="0">
+					<span style="padding-left: 5;">ECO MINE</span>
 				</label>
 			</div>
 			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
@@ -2105,6 +2111,20 @@ $(document).ready(function() {
 								
 								fetch(
 									`/vers/af/set?waxid=${ this['var']['id'] }&key_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('input.af-feature-eco-mine-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('input.af-feature-eco-mine-switch').checked, 
+								}; 
+								
+								fetch(
+									`/vers/af/set?waxid=${ this['var']['id'] }&eco_mine=${ this['var']['db']['check'] }`, 
 									{method : 'GET'}
 								); 
 							}); 
@@ -3616,11 +3636,11 @@ $(document).ready(function() {
 										//	document.querySelector(`th[id*="${ _WAXID }-af-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
 
-										//	try{
-										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['eco_mine']; 
-										//	}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['key_mine']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['eco_mine']; 
 										}catch(e){ }; 
 										//	try{
 										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['fee_mine']; 
@@ -3636,7 +3656,7 @@ $(document).ready(function() {
 											).innerText = 'MINE FREQUENCY ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['time'] ).slice(-'0000'.length); 
 										}catch(e){ }; 
 										try{
-											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-feature-key-mine-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['time']; 
+											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-set-mine-frequency-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['time']; 
 										}catch(e){ }; 
 										//	try{
 										//		document.querySelector(
@@ -3668,7 +3688,7 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['pre']['AOFF']).toFixed(1)
 											} S ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['pre']['AOFS']).toFixed(1)
-											} : WITH [0%] DEPO : W ${
+											} : WITH [5%] DEPO : W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['has']['AOFW']).toFixed(1)
 											} F ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['has']['AOFF']).toFixed(1)
@@ -4677,10 +4697,4 @@ $(document).ready(function() {
         });
     //    }; 
 }); 
-
-
-
-
-
-
 

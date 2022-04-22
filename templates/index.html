@@ -714,7 +714,7 @@
                                         font-weight: bold;
                                         color: black;
                                     " 
-                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.94</div>
+                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.95</div>
                             </li>
                         </ul>
                         <!--
@@ -1298,6 +1298,7 @@ c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C1129.
                                                 <option value="2">All Account Bags</option>
                                                 <option value="17">FW Burn Crops</option>
                                                 <option value="18">FW Ware Item</option>
+                                                <option value="19">AF Ware Item</option>
                                             </select>
                                             <script type="text/javascript">
 $('.form-select.nft.send-all').on('change', function() {
@@ -1392,6 +1393,12 @@ $('.form-select.nft.send-all').on('change', function() {
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
+            break;
+        case '19':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'ageoffarming';
             break;
     };
 });
@@ -4590,9 +4597,9 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                         </div>
 
                         <div class="tab-pane" id="rent-safe-stake" role="tabpanel" aria-labelledby="rent-safe-stake-tab">
-                            <form action="#RENT-SAFE-STAKE" onsubmit="return false" class="row-cols-auto needs-validation" style="margin-block-end: 0px; "" validate>
+                            <form action="#RENT-SAFE-STAKE" onsubmit="return false" class="row-cols-auto needs-validation" style="margin-block-end: 0px; " validate>
                 
-                <div class=" rentSafeStakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
+                            <div class=" rentSafeStakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
 
                                 <div class="input-group">
                                     <div class="input-group-text" id="basic-addon WAX" style="width: 100px;">RECIEVER</div>
@@ -4605,34 +4612,34 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                         <option rate="" value="200" memo="" provider="playgambling" boost="" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=">X.XX WAX FOR STAKE CPU 200 WAX</option>
                                         <option rate="" value="500" memo="" provider="playgambling" boost="" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=">X.XX WAX FOR STAKE CPU 500 WAX</option>
                                         <option rate="" value="1000" memo="" provider="playgambling" boost="" check="aHR0cHM6Ly9hbGllbi13b3JsZHMub25saW5lL3N0YWtlL3N0YWtlLnBocD9pZD0=">X.XX WAX FOR STAKE CPU 1000 WAX</option>
-                                        <option rate="25.0000" value="33" memo="days:1;receiver:" provider="nfthivecpu4u" check="">0.51 WAX FOR STAKE CPU 33 WAX 1 DAY</option>
-                                        <option rate="50.0000" value="66" memo="days:1;receiver:" provider="nfthivecpu4u" check="">0.86 WAX FOR STAKE CPU 66 WAX 1 DAY</option>
-                                        <option rate="100.0000" value="133" memo="days:1;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 133 WAX 1 DAY</option>
-                                        <option rate="200.0000" value="266" memo="days:1;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 266 WAX 1 DAY</option>
-                                        <option rate="300.0000" value="400" memo="days:1;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 400 WAX 1 DAY</option>
-                                        <option rate="500.0000" value="666" memo="days:1;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 666 WAX 1 DAY</option>
-                                        <option rate="1000.0000" value="1333" memo="days:1;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 1333 WAX 1 DAY</option>
-                                        <option rate="25.0000" value="33" memo="days:2;receiver:" provider="nfthivecpu4u" check="">0.51 WAX FOR STAKE CPU 16 WAX 2 DAY</option>
-                                        <option rate="50.0000" value="66" memoo="days:2;receiver:" provider="nfthivecpu4u" check="">0.86 WAX FOR STAKE CPU 33 WAX 2 DAY</option>
-                                        <option rate="100.0000" value="133" memo="days:2;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 66 WAX 2 DAY</option>
-                                        <option rate="200.0000" value="266" memo="days:2;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 133 WAX 2 DAY</option>
-                                        <option rate="300.0000" value="400" memo="days:2;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 200 WAX 2 DAY</option>
-                                        <option rate="500.0000" value="666" meemo="days:2;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 333 WAX 2 DAY</option>
-                                        <option rate="1000.0000" value="1333" memo="days:2;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 666 WAX 2 DAY</option>
-                                        <option rate="25.0000" value="33" memo="days:3;receiver:" provider="nfthivecpu4u" check="">0.51 WAX FOR STAKE CPU 11 WAX 3 DAY</option>
-                                        <option rate="50.0000" value="66" memoo="days:3;receiver:" provider="nfthivecpu4u" check="">0.86 WAX FOR STAKE CPU 22 WAX 3 DAY</option>
-                                        <option rate="100.0000" value="133" memo="days:3;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 44 WAX 3 DAY</option>
-                                        <option rate="200.0000" value="266" memo="days:3;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 88 WAX 3 DAY</option>
-                                        <option rate="300.0000" value="400" memo="days:3;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 133 WAX 3 DAY</option>
-                                        <option rate="500.0000" value="666" meemo="days:3;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 222 WAX 3 DAY</option>
-                                        <option rate="1000.0000" value="1333" memo="days:3;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 444 WAX 3 DAY</option>
-                                        <option rate="25.0000" value="33" memo="days:4;receiver:" provider="nfthivecpu4u" check="">0.51 WAX FOR STAKE CPU 8 WAX 4 DAY</option>
-                                        <option rate="50.0000" value="66" memoo="days:4;receiver:" provider="nfthivecpu4u" check="">0.86 WAX FOR STAKE CPU 16 WAX 4 DAY</option>
-                                        <option rate="100.0000" value="133" memo="days:4;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 33 WAX 4 DAY</option>
-                                        <option rate="200.0000" value="266" memo="days:4;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 66 WAX 4 DAY</option>
-                                        <option rate="300.0000" value="400" memo="days:4;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 100 WAX 4 DAY</option>
-                                        <option rate="500.0000" value="666" meemo="days:4;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 166 WAX 4 DAY</option>
-                                        <option rate="1000.0000" value="1333" memo="days:4;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 333 WAX 4 DAY</option>
+                                        <option rate="25.0000" value="25" memo="days:1;receiver:" provider="nfthivecpu4u" check="">0.51 WAX FOR STAKE CPU 25 WAX 1 DAY</option>
+                                        <option rate="50.0000" value="50" memo="days:1;receiver:" provider="nfthivecpu4u" check="">0.86 WAX FOR STAKE CPU 50 WAX 1 DAY</option>
+                                        <option rate="100.0000" value="100" memo="days:1;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 100 WAX 1 DAY</option>
+                                        <option rate="200.0000" value="200" memo="days:1;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 200 WAX 1 DAY</option>
+                                        <option rate="300.0000" value="300" memo="days:1;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 300 WAX 1 DAY</option>
+                                        <option rate="500.0000" value="500" memo="days:1;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 500 WAX 1 DAY</option>
+                                        <option rate="1000.0000" value="1000" memo="days:1;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 1000 WAX 1 DAY</option>
+                                        <option rate="25.0000" value="25" memo="days:2;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 12 WAX 2 DAY</option>
+                                        <option rate="50.0000" value="50" memoo="days:2;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 25 WAX 2 DAY</option>
+                                        <option rate="100.0000" value="100" memo="days:2;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 50 WAX 2 DAY</option>
+                                        <option rate="200.0000" value="200" memo="days:2;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 100 WAX 2 DAY</option>
+                                        <option rate="300.0000" value="300" memo="days:2;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 150 WAX 2 DAY</option>
+                                        <option rate="500.0000" value="500" meemo="days:2;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 250 WAX 2 DAY</option>
+                                        <option rate="1000.0000" value="1000" memo="days:2;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 500 WAX 2 DAY</option>
+                                        <option rate="25.0000" value="25" memo="days:3;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 8 WAX 3 DAY</option>
+                                        <option rate="50.0000" value="50" memoo="days:3;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 16 WAX 3 DAY</option>
+                                        <option rate="100.0000" value="100" memo="days:3;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 33 WAX 3 DAY</option>
+                                        <option rate="200.0000" value="200" memo="days:3;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 66 WAX 3 DAY</option>
+                                        <option rate="300.0000" value="300" memo="days:3;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 100 WAX 3 DAY</option>
+                                        <option rate="500.0000" value="500" meemo="days:3;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 166 WAX 3 DAY</option>
+                                        <option rate="1000.0000" value="1000" memo="days:3;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 333 WAX 3 DAY</option>
+                                        <option rate="25.0000" value="25" memo="days:4;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 6 WAX 4 DAY</option>
+                                        <option rate="50.0000" value="50" memoo="days:4;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 12 WAX 4 DAY</option>
+                                        <option rate="100.0000" value="100" memo="days:4;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 33 WAX 25 DAY</option>
+                                        <option rate="200.0000" value="200" memo="days:4;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 66 WAX 50 DAY</option>
+                                        <option rate="300.0000" value="300" memo="days:4;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 100 WAX 75 DAY</option>
+                                        <option rate="500.0000" value="500" meemo="days:4;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 166 WAX 125 DAY</option>
+                                        <option rate="1000.0000" value="1000" memo="days:4;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 333 WAX 250 DAY</option>
                                     </select>
                                 </div>
                                 <div class="input-group">
@@ -4652,7 +4659,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                     <input type="text" class="form-control" placeholder="nZPmcxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" aria-label="RENT SAFE STAKE TOKEN" pattern="[A-Za-z0-9]{40}" required="">
                                 </div>
 
-                        </div>
+                            </div>
 
                         <div>
                             <hr>
@@ -4682,20 +4689,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                         );
 
                                         fetch(`/rentstakecpu?waxid=${
-            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE WAX ID PAYER"]').value
-        }&amount=${
-            Number(document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("rate")).toFixed(4)
-        }&to=${
-            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("provider")
-        }&memo=${
-            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("memo")
-        }${
-            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').value
-        }&token=${
-            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE TOKEN"]').value
-        }&check=${
-            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("check")
-        }`, {
+                                            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE WAX ID PAYER"]').value
+                                        }&amount=${
+                                            Number(document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("rate")).toFixed(4)
+                                        }&to=${
+                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("provider")
+                                        }&memo=${
+                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("memo")
+                                        }${
+                                            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE RECIEVER"]').value
+                                        }&token=${
+                                            document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE TOKEN"]').value
+                                        }&check=${
+                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"]').selectedOptions[0].getAttribute("check")
+                                        }`, {
                                             "headers": {},
                                             "body": null,
                                             "method": "GET",
@@ -4705,11 +4712,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                             if (result['code'] == 200) {
                                                 Swal.fire({
                                                     iconHtml: `
-                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                    </svg>
-                    `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
+                                                    `,
                                                     customClass: {
                                                         icon: 'swalSuccess'
                                                     },
@@ -4728,11 +4735,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                             ) {
                                                 Swal.fire({
                                                     iconHtml: `
-                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                    `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                    `,
                                                     customClass: {
                                                         icon: 'swalError'
                                                     },
@@ -4760,11 +4767,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 } catch (e) {
                                                     Swal.fire({
                                                         iconHtml: `
-                        <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                        `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                        `,
                                                         customClass: {
                                                             icon: 'swalError'
                                                         },
@@ -4777,11 +4784,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                         }).catch(error => {
                                             Swal.fire({
                                                 iconHtml: `
-                <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-                `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                `,
                                                 customClass: {
                                                     icon: 'swalError'
                                                 },
@@ -4980,20 +4987,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                         }).catch(error => {});
 
                         fetch("https://cors.bridged.cc/https://apius.reqbin.com/api/v1/requests", {
-                            "headers": {
-                                "accept": "*/*",
-                                "accept-language": "en-US,en;q=0.9",
-                                "content-type": "application/json",
-                                'x-requested-with': 'XMLHttpRequest',
-                                'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+                            "headers"   : {
+                                "accept"                : "*/*",
+                                "accept-language"       : "en-US,en;q=0.9",
+                                "content-type"          : "application/json",
+                                'x-requested-with'      : 'XMLHttpRequest',
+                                'x-cors-grida-api-key'  : '61dbebf9-36c6-45c6-909e-323209a8116d'
                             },
-                            "body": JSON.stringify({
-                                "id": "",
-                                "name": "",
-                                "errors": "",
-                                "json": "{\"method\":\"GET\",\"url\":\"https://wax-stake.com/stake/\",\"apiNode\":\"US\",\"contentType\":\"\",\"content\":\"\",\"headers\":\"authority: wax-stake.com\\r\\nreferer: https://wax-stake.com/stake/\\r\\n\",\"errors\":\"\",\"curlCmd\":\"curl 'https://wax-stake.com/stake/' \\\\\\n  -H 'authority: wax-stake.com' \\\\\\n  -H 'referer: https://wax-stake.com/stake/' \\\\\\n  --compressed\",\"codeCmd\":\"\",\"lang\":\"\",\"auth\":{\"auth\":\"noAuth\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"customHeader\":\"\",\"encrypted\":\"\"},\"compare\":false,\"idnUrl\":\"https://wax-stake.com/stake/\"}",
-                                "deviceId": "",
-                                "sessionId": ""
+                            "body"      : JSON.stringify({
+                                "id"                    : "",
+                                "name"                  : "",
+                                "errors"                : "",
+                                "json"                  : "{\"method\":\"GET\",\"url\":\"https://wax-stake.com/stake/\",\"apiNode\":\"US\",\"contentType\":\"\",\"content\":\"\",\"headers\":\"authority: wax-stake.com\\r\\nreferer: https://wax-stake.com/stake/\\r\\n\",\"errors\":\"\",\"curlCmd\":\"curl 'https://wax-stake.com/stake/' \\\\\\n  -H 'authority: wax-stake.com' \\\\\\n  -H 'referer: https://wax-stake.com/stake/' \\\\\\n  --compressed\",\"codeCmd\":\"\",\"lang\":\"\",\"auth\":{\"auth\":\"noAuth\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"customHeader\":\"\",\"encrypted\":\"\"},\"compare\":false,\"idnUrl\":\"https://wax-stake.com/stake/\"}",
+                                "deviceId"              : "",
+                                "sessionId"             : ""
                             }),
                             "method": "POST",
                         }).then(result => result.json()).then(result => {
@@ -5096,8 +5103,6 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             };
 
                         });
-
-
                     });
                 </script>
 
@@ -5568,33 +5573,63 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
         </div>
     </div>
     <div class="modal" id="totalSetting" tabindex="-1" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog" style="max-width: 82%; ">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
                     <h5 class="modal-title" id="">Total Setting</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div style="
-                color: black;
-                padding-left: 6%;
-              ">
+                    <!--
+                    <div id="alcor_exchange_monitor" style="margin: auto; padding-bottom: 16px;">
+                        <div class="row justify-content-center w-100">
+                            <div class="col w-100" style="max-width: 900px;">
+                                <div class="card">
+                                    <iframe id="fwf_alcor" height="700" width="100%" loading = "lazy" scrolling="no" style="display:block; margin:auto" src="https://wax.alcor.exchange/trade/fwf-farmerstoken_wax-eosio.token"></iframe>
+                                    FWF
+                                </div>
+                            </div>
+                            <div class="col w-100" style="max-width: 900px;">
+                                <div class="card">
+                                    <iframe id="fww_alcor" height="700" width="100%" loading = "lazy" scrolling="no" style="display:block; margin:auto" src="https://wax.alcor.exchange/trade/fww-farmerstoken_wax-eosio.token"></iframe>
+                                    FWW
+                                </div>
+                            </div>
+                            <div class="col w-100" style="max-width: 900px;">
+                                <div class="card">
+                                    <iframe id="fwg_alcor" height="700" width="100%" loading = "lazy" scrolling="no" style="display:block; margin:auto" src="https://wax.alcor.exchange/trade/fwg-farmerstoken_wax-eosio.token"></iframe>
+                                    FWG
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                    <div
+                        style = "
+                            color: black;
+                            padding-left: 6%;
+                        "
+                    >
                         <div class="form-check form-switch text-nowrap">
                             <input class="form-check-input" type="checkbox" id="enable-all-id-auto-swap-tlm-to-wax-alcor-exchange">Enable All ID Auto Swap TLM to WAX, (alcor.exchange).
                         </div>
                     </div>
-                    <div style="
-                color: black;
-                padding-left: 6%;
-              ">
+                    <div
+                        style = "
+                            color: black;
+                            padding-left: 6%;
+                        "
+                    >
                         <div class="form-check form-switch text-nowrap">
                             <input class="form-check-input" type="checkbox" id="enable-all-id-auto-transfer-wax-to-exchange">Enable All ID Auto Transfer WAX to Exchange.
                         </div>
                     </div>
-                    <div style="
-                color: black;
-                padding-left: 6%;
-              ">
+                    <div
+                        style = "
+                            color: black;
+                            padding-left: 6%;
+                        "
+                    >
                         <div class="form-check form-switch text-nowrap">
                             <input class="form-check-input" type="checkbox" id="enable-all-id-auto-transfer-wax-to-wax-id">Enable All ID Auto Transfer WAX to WAX ID, (Not Safe).
                         </div>

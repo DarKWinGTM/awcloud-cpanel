@@ -1849,8 +1849,8 @@ color           : #fff; \
                                                     DATA['id']
                                                 }&limit=1000`, {
                                                     "headers"   : {
-                                                        'x-requested-with': 'XMLHttpRequest',
-                                                        'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+                                                        'x-requested-with'      : 'XMLHttpRequest',
+                                                        'x-cors-grida-api-key'  : '61dbebf9-36c6-45c6-909e-323209a8116d'
                                                     },
                                                     "body"      : null,
                                                     "method"    : "GET"
@@ -1941,7 +1941,7 @@ color           : #fff; \
                                                     }; 
                                                 }).catch((error) => {
                                                     $.notify(
-                                                      `SEND NFT : CONNECTION FAILED ${ DATA['id'] } ${ error }`, 'error'
+                                                      `LIST NFT : CONNECTION FAILED ${ DATA['id'] } ${ error }`, 'error'
                                                     ); thiscode( DATA ); 
                                                 }); 
                                             }, 3000 + Math.ceil(Math.random() * 20000)); 
@@ -4937,22 +4937,22 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                         }).then(
                             result => result.json()
                         ).then(result => {
-                            document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').forEach(function(e, i, a) {
+                            document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"]').forEach(function(e, i, a) {
                                 if (
                                     parseFloat(parseFloat(e.value).toFixed(4)) > parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4)) * 0.80
                                 ) {
                                     $(e).prop('disabled', true)
                                 };
                             });
-                            if (
-                                document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length == document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
-                            ) {
-                                $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', true);
-                                $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', true);
-                            } else {
-                                //  $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop( 'disabled', false ); 
-                                $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', false);
-                            };
+                            //  if (
+                            //      document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length == document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
+                            //  ) {
+                            //      $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', true);
+                            //      $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', true);
+                            //  } else {
+                            //      //  $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop( 'disabled', false ); 
+                            //      $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', false);
+                            //  };
                             //    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
                             //      'value', `${ parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4) * 0.80).toFixed(4) } WAX`
                             //    ); 
@@ -6171,8 +6171,12 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
     window['atomichub'] = [
         'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/',
         'https://cors.bridged.cc/https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',  
+        'https://cors.bridged.cc/https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets/', 
+        'https://cors.bridged.cc/https://atomic.tokengamer.io/atomicassets/v1/assets/', 
         'https://wax.api.atomicassets.io/atomicassets/v1/assets/',
-        'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',  
+        'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',
+        'https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets/',
+        'https://atomic.tokengamer.io/atomicassets/v1/assets/'
     ];
 </script>
 

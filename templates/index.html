@@ -714,7 +714,7 @@
                                         font-weight: bold;
                                         color: black;
                                     " 
-                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.95</div>
+                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.94</div>
                             </li>
                         </ul>
                         <!--
@@ -1298,7 +1298,6 @@ c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C1129.
                                                 <option value="2">All Account Bags</option>
                                                 <option value="17">FW Burn Crops</option>
                                                 <option value="18">FW Ware Item</option>
-                                                <option value="19">AF Ware Item</option>
                                             </select>
                                             <script type="text/javascript">
 $('.form-select.nft.send-all').on('change', function() {
@@ -1393,12 +1392,6 @@ $('.form-select.nft.send-all').on('change', function() {
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
-            break;
-        case '19':
-            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
-            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
-            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'ageoffarming';
             break;
     };
 });
@@ -5580,7 +5573,6 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!--
                     <div id="alcor_exchange_monitor" style="margin: auto; padding-bottom: 16px;">
                         <div class="row justify-content-center w-100">
                             <div class="col w-100" style="max-width: 900px;">
@@ -5603,7 +5595,6 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             </div>
                         </div>
                     </div>
-                    -->
                     <div
                         style = "
                             color: black;
@@ -5651,38 +5642,71 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                 </div>
                 <div class="modal-body">
                     <iframe src="" style="
-                width: 100%;
-                height: 560px;
-                margin-bottom: 24px;
-            "></iframe>
+                        width: 100%;
+                        height: 560px;
+                        margin-bottom: 24px;
+                    "></iframe>
                     <div style="
-                color: black;
-                padding-left: 6%;
-              ">
+                        color: black;
+                        padding-left: 6%;
+                    "
+                    >
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="check-wax-pool-before-mine" style="margin-top: 0.18em;">
-                            <input type="range" class="form-range" min="0.50" max="4.00" value="0.00" step="0.05" style="
-                    width: 14%; 
-                  " oninput="this.parentNode.querySelector('label').innerText = `CHANGED RATE ${ parseFloat(this.value).toFixed(2) } : Enable Check WAX Pool Before Mine.`" onchange="fetch(`/planet/wax/set?might=${parseFloat(this.value).toFixed(2)} `,{method : 'GET'}); this.parentNode.querySelector('label').innerText = `CHANGED RATE ${ parseFloat(this.value).toFixed(2) } : Enable Check WAX Pool Before Mine.`"><label style="margin-left: 1.0em; position: absolute;">CURRENT RATE 0.00 : Enable Check WAX Pool Before Mine.</label>
+                            <input
+                                type        = "range"
+                                class       = "form-range"
+                                min         = "0.50"
+                                max         = "4.00"
+                                value       = "0.00"
+                                step        = "0.05"
+                                style       = "
+                                    width: 14%; 
+                                " 
+                                oninput     ="this.parentNode.querySelector('label').innerText = `CHANGED RATE ${ parseFloat(this.value).toFixed(2) } : Enable Check WAX Pool Before Mine.`"
+                                onchange    ="fetch(`/planet/wax/set?might=${parseFloat(this.value).toFixed(2)} `,{method : 'GET'}); this.parentNode.querySelector('label').innerText = `CHANGED RATE ${ parseFloat(this.value).toFixed(2) } : Enable Check WAX Pool Before Mine.`"
+                            >
+                            <label style="margin-left: 1.0em; position: absolute;">CURRENT RATE 0.00 : Enable Check WAX Pool Before Mine.</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="check-eos-pool-before-mine" style="margin-top: 0.18em;">
-                            <input type="range" class="form-range" min="0.50" max="4.00" value="0.00" step="0.05" style="
-                    width: 14%; 
-                  " oninput="this.parentNode.querySelector('label').innerText = `CHANGED RATE ${ parseFloat(this.value).toFixed(2) } : Enable Check EOS Pool Before Mine.`" onchange="fetch(`/planet/eos/set?might=${parseFloat(this.value).toFixed(2)} `,{method : 'GET'}); this.parentNode.querySelector('label').innerText = `CHANGED RATE ${ parseFloat(this.value).toFixed(2) } : Enable Check EOS Pool Before Mine.`"><label style="margin-left: 1.0em; position: absolute;">CURRENT RATE 0.00 : Enable Check EOS Pool Before Mine.</label>
+                            <input
+                                type        = "range"
+                                class       = "form-range"
+                                min         = "0.50"
+                                max         = "4.00"
+                                value       = "0.00"
+                                step        = "0.05"
+                                style       = "
+                                    width: 14%; 
+                                " 
+                                oninput     ="this.parentNode.querySelector('label').innerText = `CHANGED RATE ${ parseFloat(this.value).toFixed(2) } : Enable Check EOS Pool Before Mine.`"
+                                onchange    ="fetch(`/planet/eos/set?might=${parseFloat(this.value).toFixed(2)} `,{method : 'GET'}); this.parentNode.querySelector('label').innerText = `CHANGED RATE ${ parseFloat(this.value).toFixed(2) } : Enable Check EOS Pool Before Mine.`"
+                            >
+                            <label style="margin-left: 1.0em; position: absolute;" >CURRENT RATE 0.00 : Enable Check EOS Pool Before Mine.</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="check-random-mine" style="margin-top: 0.18em;" onchange="fetch(`/random_mine/set?var=${ this.checked }&sec=${ parseFloat(this.parentNode.querySelector('input.form-range').value) }`,{method : 'GET'}); ">
-                            <input type="range" class="form-range" min="1" max="992" value="689" step="12" style="
-                    width: 14%; 
-                  " onchange="fetch(`/random_mine/set?var=${ this.parentNode.querySelector('input.form-check-input').checked }&sec=${ parseFloat(this.value) }`,{method : 'GET'}); "><label style="margin-left: 1.0em; position: absolute;">Random Mine</label>
+                            <input
+                                type        = "range"
+                                class       = "form-range"
+                                min         = "1"
+                                max         = "992"
+                                value       = "689"
+                                step        = "12"
+                                style       = "
+                                  width: 14%; 
+                                "
+                                onchange    = "fetch(`/random_mine/set?var=${ this.parentNode.querySelector('input.form-check-input').checked }&sec=${ parseFloat(this.value) }`,{method : 'GET'}); "
+                            >
+                            <label style="margin-left: 1.0em; position: absolute;">Random Mine</label>
                         </div>
                     </div>
                 </div>
                 <!-- 
-            div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
-            </div
-          -->
+                    div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
+                    </div
+                -->
             </div>
         </div>
     </div>

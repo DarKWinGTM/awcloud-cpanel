@@ -30,7 +30,10 @@
         "https://chain.wax.io"
     ], 
     "claimsigh" : [
-        "https://aw-guard.yeomen.ai"
+        "https://aw-guard.yeomen.ai", 
+        "https://chain.wax.io", 
+        "https://wax.pink.gg", 
+        "https://api.wax.alohaeos.com"
     ], 
     "fw_c_sigh" : [
         "https://chain.wax.io", 

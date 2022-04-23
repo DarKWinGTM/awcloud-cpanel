@@ -2373,83 +2373,199 @@ color           : #fff; \
                         </div>
 
                         <div class="modal-body">
-                            <div class="transferWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
-
-                                <div class="input-group">
-                                    <!-- div class="input-group-text" id="basic-addon WAX" style="width: 76px;">WAX</div -->
-                                    <select class="form-select" aria-label="TRANSFER WAX SYMBOL" style="max-width: 96px; " onchange="
+                            <ul class="nav nav-tabs" id="TransferTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="transfer-main-tab" data-bs-toggle="tab" data-bs-target="#transfer-main" type="button" role="tab" aria-controls="transfer-main" aria-selected="true">MAIN</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="transfer-task-tab" data-bs-toggle="tab" data-bs-target="#transfer-task" type="button" role="tab" aria-controls="transfer-task" aria-selected="false">TASK</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="TransferTabContent">
+                                <div class="tab-pane show active" id="transfer-main" role="tabpanel" aria-labelledby="transfer-main-tab">
+                                    
+                                    <div class="transferWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
+                                        <div class="input-group">
+                                            <select
+                                                class       = "form-select"
+                                                aria-label  = "TRANSFER WAX SYMBOL"
+                                                style       = "max-width: 96px; "
+                                                onchange    = "
 document.querySelector('div.modal#transferWax input[aria-label=\x22TRANSFER WAX QUANTITY\x22]').value = window['information-data']['DATA'][
-	document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+    document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
 ]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]; 
 document.querySelector('div.modal#transferWax input[aria-label=\x22TRANSFER WAX QUANTITY\x22]').setAttribute(
     'value', window['information-data']['DATA'][
-		document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
-	]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]
+        document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+    ]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]
 ); 
-                  ">
-                                        <option value="WAX-eosio.token" selected>WAX</option>
-                                        <option value="TLM-alien.worlds">TLM</option>
-                                        <option value="NER-token.worlds">NER</option>
-                                        <option value="NAR-token.worlds">NAR</option>
-                                        <option value="MAG-token.worlds">MAG</option>
-                                        <option value="EYE-token.worlds">EYE</option>
-                                        <option value="VEL-token.worlds">VEL</option>
-                                        <option value="KAV-token.worlds">KAV</option>
-                                        <option value="FWW-farmerstoken">FWW</option>
-                                        <option value="FWG-farmerstoken">FWG</option>
-                                        <option value="FWF-farmerstoken">FWF</option>
-                                    </select>
-                                    <input type="text" class="form-control" placeholder="0.0000" aria-label="TRANSFER WAX QUANTITY" required>
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">TO</div>
-                                    <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="TRANSFER TO WAX ID" oninput="$('button.btn.btn-primary.transfer').prop( 'disabled', true ); " required>
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">MEMO</div>
-                                    <input type="text" class="form-control" placeholder="MEMO" aria-label="TRANSFER MEMO">
-                                </div>
-
-                                <div>
-                                    <hr style="color: black;">
-                                </div>
-
-                                <div class="input-group">
-                                    <select class="form-select" aria-label="TRANSFER WAX TYPE">
-                                        <option value="1" selected>WAX ID ( Clean account only. )</option>
-                                        <option value="2">Coinex ( Risk )</option>
-                                        <option value="3">Binance ( Risk )</option>
-                                        <option value="4">Bittrex ( Risk )</option>
-                                        <option value="5">Kucoin ( Risk )</option>
-                                        <option value="6">Huobi ( Risk )</option>
-                                        <option value="7">WEXC ( Risk )</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <hr style="color: black;">
-                                </div>
-
-                                <div style="color: black;padding-left: 6%;">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" style="margin-top: 0.18em; opacity: 1 !important;" onmousedown="this.click();" oninvalid="this.setCustomValidity('WAX ID IS NOT RECOMMEND TO TRANSFER : NOT FOUND WAX ID'); this.checked == false" required>
-                                        <label style="margin-left: 1.0em; position: absolute; color: red; opacity: 0.5;">Found WAX ID.</label>
-                                    </div>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" style="margin-top: 0.18em; opacity: 1 !important;" onmousedown="
+                                                "
+                                            >
+                                                <option value="WAX-eosio.token" selected>WAX</option>
+                                                <option value="TLM-alien.worlds">TLM</option>
+                                                <option value="NER-token.worlds">NER</option>
+                                                <option value="NAR-token.worlds">NAR</option>
+                                                <option value="MAG-token.worlds">MAG</option>
+                                                <option value="EYE-token.worlds">EYE</option>
+                                                <option value="VEL-token.worlds">VEL</option>
+                                                <option value="KAV-token.worlds">KAV</option>
+                                                <option value="FWW-farmerstoken">FWW</option>
+                                                <option value="FWG-farmerstoken">FWG</option>
+                                                <option value="FWF-farmerstoken">FWF</option>
+                                            </select>
+                                            <input type="text" class="form-control" placeholder="0.0000" aria-label="TRANSFER WAX QUANTITY" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">TO</div>
+                                            <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="TRANSFER TO WAX ID" oninput="$('button.btn.btn-primary.transfer').prop( 'disabled', true ); " required>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">MEMO</div>
+                                            <input type="text" class="form-control" placeholder="MEMO" aria-label="TRANSFER MEMO">
+                                        </div>
+        
+                                        <div>
+                                            <hr style="color: black;">
+                                        </div>
+        
+                                        <div class="input-group">
+                                            <select class="form-select" aria-label="TRANSFER WAX TYPE">
+                                                <option value="1" selected>WAX ID ( Clean account only. )</option>
+                                                <option value="2">Coinex ( Risk )</option>
+                                                <option value="3">Binance ( Risk )</option>
+                                                <option value="4">Bittrex ( Risk )</option>
+                                                <option value="5">Kucoin ( Risk )</option>
+                                                <option value="6">Huobi ( Risk )</option>
+                                                <option value="7">WEXC ( Risk )</option>
+                                            </select>
+                                        </div>
+        
+                                        <div>
+                                            <hr style="color: black;">
+                                        </div>
+        
+                                        <div style="color: black;padding-left: 6%;">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" style="margin-top: 0.18em; opacity: 1 !important;" onmousedown="this.click();" oninvalid="this.setCustomValidity('WAX ID IS NOT RECOMMEND TO TRANSFER : NOT FOUND WAX ID'); this.checked == false" required>
+                                                <label style="margin-left: 1.0em; position: absolute; color: red; opacity: 0.5;">Found WAX ID.</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input
+                                                    class       = "form-check-input"
+                                                    type        = "checkbox"
+                                                    style       = "margin-top: 0.18em; opacity: 1 !important;"
+                                                    onmousedown="
 console.log('this.click();'); 
 $('div[id*=\x22transferWax\x22] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
 $('div[id*=\x22transferWax\x22] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
 document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
-                    " oninvalid="this.setCustomValidity('WAX ID IS NOT RECOMMEND TO TRANSFER : FOUND ALIEANWORLD HISTORY'); this.checked == false" required>
-                                        <label style="margin-left: 1.0em; position: absolute; color: red; opacity: 0.5;">No TLM Token in WAX ID.</label>
+                                                    "
+                                                    oninvalid   = "this.setCustomValidity('WAX ID IS NOT RECOMMEND TO TRANSFER : FOUND ALIEANWORLD HISTORY'); this.checked == false"
+                                                    required
+                                                >
+                                                <label style="margin-left: 1.0em; position: absolute; color: red; opacity: 0.5;">No TLM Token in WAX ID.</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" style="margin-top: 0.18em; opacity: 1 !important;" onchange="if(document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked == true && document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked == true){$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', $(this).is(':checked')); }else{$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', false); this.checked = false;}">
+                                                <label style="margin-left: 1.0em; position: absolute; ">Save WAX ID</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" style="margin-top: 0.18em; opacity: 1 !important;" onchange="if(document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked == true && document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked == true){$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', $(this).is(':checked')); }else{$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', false); this.checked = false;}">
-                                        <label style="margin-left: 1.0em; position: absolute; ">Save WAX ID</label>
-                                    </div>
-                                </div>
 
+                                </div>
+                                <div class="tab-pane" id="transfer-task" role="tabpanel" aria-labelledby="transfer-task-tab">
+                                    
+                                    <!--
+                                    <div class="tranTaskWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
+                                        <div class="input-group">
+                                            <select
+                                                class       = "form-select"
+                                                aria-label  = "TRANTASK WAX SYMBOL"
+                                                style       = "max-width: 96px; "
+                                                onchange    = "
+document.querySelector('div.modal#transferWax input[aria-label=\x22TRANSFER WAX QUANTITY\x22]').value = window['information-data']['DATA'][
+    document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]; 
+document.querySelector('div.modal#transferWax input[aria-label=\x22TRANSFER WAX QUANTITY\x22]').setAttribute(
+    'value', window['information-data']['DATA'][
+        document.querySelector('div.modal#transferWax').querySelector('div.modal-header').querySelector('h5').getAttribute('value')
+    ]['balance'][ this.querySelectorAll('option')[this.selectedIndex].innerText ]
+); 
+                                                "
+                                            >
+                                                <option value="WAX-eosio.token" selected>WAX</option>
+                                                <option value="TLM-alien.worlds">TLM</option>
+                                                <option value="NER-token.worlds">NER</option>
+                                                <option value="NAR-token.worlds">NAR</option>
+                                                <option value="MAG-token.worlds">MAG</option>
+                                                <option value="EYE-token.worlds">EYE</option>
+                                                <option value="VEL-token.worlds">VEL</option>
+                                                <option value="KAV-token.worlds">KAV</option>
+                                                <option value="FWW-farmerstoken">FWW</option>
+                                                <option value="FWG-farmerstoken">FWG</option>
+                                                <option value="FWF-farmerstoken">FWF</option>
+                                            </select>
+                                            <input type="text" class="form-control" placeholder="0.0000" aria-label="TRANSFER WAX QUANTITY" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">TO</div>
+                                            <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="TRANSFER TO WAX ID" oninput="$('button.btn.btn-primary.transfer').prop( 'disabled', true ); " required>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">MEMO</div>
+                                            <input type="text" class="form-control" placeholder="MEMO" aria-label="TRANSFER MEMO">
+                                        </div>
+        
+                                        <div>
+                                            <hr style="color: black;">
+                                        </div>
+        
+                                        <div class="input-group">
+                                            <select class="form-select" aria-label="TRANSFER WAX TYPE">
+                                                <option value="1" selected>WAX ID ( Clean account only. )</option>
+                                                <option value="2">Coinex ( Risk )</option>
+                                                <option value="3">Binance ( Risk )</option>
+                                                <option value="4">Bittrex ( Risk )</option>
+                                                <option value="5">Kucoin ( Risk )</option>
+                                                <option value="6">Huobi ( Risk )</option>
+                                                <option value="7">WEXC ( Risk )</option>
+                                            </select>
+                                        </div>
+        
+                                        <div>
+                                            <hr style="color: black;">
+                                        </div>
+        
+                                        <div style="color: black;padding-left: 6%;">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" style="margin-top: 0.18em; opacity: 1 !important;" onmousedown="this.click();" oninvalid="this.setCustomValidity('WAX ID IS NOT RECOMMEND TO TRANSFER : NOT FOUND WAX ID'); this.checked == false" required>
+                                                <label style="margin-left: 1.0em; position: absolute; color: red; opacity: 0.5;">Found WAX ID.</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input
+                                                    class       = "form-check-input"
+                                                    type        = "checkbox"
+                                                    style       = "margin-top: 0.18em; opacity: 1 !important;"
+                                                    onmousedown="
+console.log('this.click();'); 
+$('div[id*=\x22transferWax\x22] button.btn.btn-primary.transfer').prop( 'disabled', false ); 
+$('div[id*=\x22transferWax\x22] button.btn.btn-primary.transferallto').prop( 'disabled', false ); 
+document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+                                                    "
+                                                    oninvalid   = "this.setCustomValidity('WAX ID IS NOT RECOMMEND TO TRANSFER : FOUND ALIEANWORLD HISTORY'); this.checked == false"
+                                                    required
+                                                >
+                                                <label style="margin-left: 1.0em; position: absolute; color: red; opacity: 0.5;">No TLM Token in WAX ID.</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" style="margin-top: 0.18em; opacity: 1 !important;" onchange="if(document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked == true && document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked == true){$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', $(this).is(':checked')); }else{$('input[aria-label=\x22TRANSFER TO WAX ID\x22]').attr('readonly', false); this.checked = false;}">
+                                                <label style="margin-left: 1.0em; position: absolute; ">Save WAX ID</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    -->
+                                    
+                                </div>
                             </div>
                         </div>
 
@@ -6001,9 +6117,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
 </body>
 <script>
     function tooltipTriggerRender() {
+        
         [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function(ele) {
             return new bootstrap.Tooltip(ele)
-        })
+        }); //  setTimeout(function() { tooltipTriggerRender() }, 8000); 
     };
     tooltipTriggerRender();
     (function() {
@@ -6105,7 +6222,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                         }
                                     };
                                     jsondata['XMLh'].send(jsondata['json']);
-                                }, 200 + Math.ceil(Math.random() * 30000));
+                                }, 2000 + Math.ceil(Math.random() * 32000));
                             })({
                                 'XMLh': new XMLHttpRequest(),
                                 'json': JSON.stringify({

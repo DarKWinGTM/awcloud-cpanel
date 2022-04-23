@@ -2196,14 +2196,14 @@ $(document).ready(function() {
                                                     result['code'] == true
                                                 ){
                                                     this.checked = false; 
-                                                    $(this).notify(
-                                                        'PAUSE', 
+                                                    $.notify(
+                                                        `PAUSE ${this.parentElement.parentElement.parentElement.parentElement.parentElement.id}`, 
                                                         "success", { position : "top" }
                                                     ); 
                                                 }else{
                                                     this.checked = true; 
-                                                    $(this).notify(
-                                                        'RERUN', 
+                                                    $.notify(
+                                                        `RERUN ${this.parentElement.parentElement.parentElement.parentElement.parentElement.id}`, 
                                                         "success", { position : "top" }
                                                     ); 
                                                 };
@@ -2334,8 +2334,8 @@ $(document).ready(function() {
                                             result => result.text()
                                         ).then(result => {
                                             if(result != 'okay'){ throw result }else{
-                                                $(this).notify(
-                                                    'DELETE DONE', 
+                                                $.notify(
+                                                    `DELETE ${this.parentElement.parentElement.parentElement.id} DONE`, 
                                                     "success", { position : "top" }
                                                 ); 
                                                 (function (button){

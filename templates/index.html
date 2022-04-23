@@ -1298,6 +1298,7 @@ c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C1129.
                                                 <option value="2">All Account Bags</option>
                                                 <option value="17">FW Burn Crops</option>
                                                 <option value="18">FW Ware Item</option>
+                                                <option value="19">AF Ware Item</option>
                                             </select>
                                             <script type="text/javascript">
 $('.form-select.nft.send-all').on('change', function() {
@@ -1392,6 +1393,12 @@ $('.form-select.nft.send-all').on('change', function() {
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
+            break;
+        case '19':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'ageoffarming';
             break;
     };
 });

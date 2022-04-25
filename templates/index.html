@@ -625,6 +625,33 @@
                             >
                                 <button
                                     class           = "nav-link"
+                                    id              = "gm-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#gm-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "gm-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                    "
+                                    onclick         = "document.querySelector('iframe#gmMonitor').setAttribute('src', document.querySelector('iframe#gmMonitor').src)"
+                                ><img
+                                    src     = "https://cdn.discordapp.com/icons/907620431819833404/a_1d459bf6da0d29114ed178e518b145ce.gif?size=96"
+                                    alt     = ""
+                                    style   = "height: 48px; width: 48px; margin-right: 10px; border-radius: 50%;"
+                                >GM</button>
+                            </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
                                     id              = "gx-monitor-tab"
                                     data-bs-toggle  = "tab"
                                     data-bs-target  = "#gx-monitor"
@@ -638,9 +665,9 @@
                                     "
                                     onclick         = "document.querySelector('iframe#gxMonitor').setAttribute('src', document.querySelector('iframe#gxMonitor').src)"
                                 ><img
-                                    src     = "https://cdn.discordapp.com/icons/907620431819833404/a_1d459bf6da0d29114ed178e518b145ce.gif?size=96"
+                                    src     = "https://media.discordapp.net/attachments/919314801333792770/930831860345475142/Logga_svart.png?size=96"
                                     alt     = ""
-                                    style   = "height: 48px; width: 48px; margin-right: 10px; border-radius: 50%;"
+                                    style   = "height: 48px; width: 84px; margin-right: 10px; border-radius: 50%;"
                                 >GX</button>
                             </li>
                             <li 
@@ -730,6 +757,9 @@
                                 </div>
                                 <div class="tab-pane" id="fw-monitor" role="tabpanel" aria-labelledby="fw-monitor-tab">
                                     <iframe id="fwMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
+                                </div>
+                                <div class="tab-pane" id="gx-monitor" role="tabpanel" aria-labelledby="gx-monitor-tab">
+                                    <iframe id="gxMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
                                 </div>
                                 <div class="tab-pane" id="bl-monitor" role="tabpanel" aria-labelledby="bl-monitor-tab">
                                     <iframe id="blMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
@@ -4722,27 +4752,27 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                         <option rate="300.0000" value="300" memo="days:1;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 300 WAX 1 DAY</option>
                                         <option rate="500.0000" value="500" memo="days:1;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 500 WAX 1 DAY</option>
                                         <option rate="1000.0000" value="1000" memo="days:1;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 1000 WAX 1 DAY</option>
-                                        <option rate="25.0000" value="25" memo="days:2;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 12 WAX 2 DAY</option>
-                                        <option rate="50.0000" value="50" memoo="days:2;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 25 WAX 2 DAY</option>
-                                        <option rate="100.0000" value="100" memo="days:2;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 50 WAX 2 DAY</option>
-                                        <option rate="200.0000" value="200" memo="days:2;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 100 WAX 2 DAY</option>
-                                        <option rate="300.0000" value="300" memo="days:2;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 150 WAX 2 DAY</option>
-                                        <option rate="500.0000" value="500" meemo="days:2;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 250 WAX 2 DAY</option>
-                                        <option rate="1000.0000" value="1000" memo="days:2;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 500 WAX 2 DAY</option>
-                                        <option rate="25.0000" value="25" memo="days:3;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 8 WAX 3 DAY</option>
-                                        <option rate="50.0000" value="50" memoo="days:3;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 16 WAX 3 DAY</option>
-                                        <option rate="100.0000" value="100" memo="days:3;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 33 WAX 3 DAY</option>
-                                        <option rate="200.0000" value="200" memo="days:3;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 66 WAX 3 DAY</option>
-                                        <option rate="300.0000" value="300" memo="days:3;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 100 WAX 3 DAY</option>
-                                        <option rate="500.0000" value="500" meemo="days:3;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 166 WAX 3 DAY</option>
-                                        <option rate="1000.0000" value="1000" memo="days:3;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 333 WAX 3 DAY</option>
-                                        <option rate="25.0000" value="25" memo="days:4;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 6 WAX 4 DAY</option>
-                                        <option rate="50.0000" value="50" memoo="days:4;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 12 WAX 4 DAY</option>
-                                        <option rate="100.0000" value="100" memo="days:4;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 33 WAX 25 DAY</option>
-                                        <option rate="200.0000" value="200" memo="days:4;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 66 WAX 50 DAY</option>
-                                        <option rate="300.0000" value="300" memo="days:4;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 100 WAX 75 DAY</option>
-                                        <option rate="500.0000" value="500" meemo="days:4;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 166 WAX 125 DAY</option>
-                                        <option rate="1000.0000" value="1000" memo="days:4;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 333 WAX 250 DAY</option>
+                                        <option rate="25.0000" value="12" memo="days:2;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 12 WAX 2 DAY</option>
+                                        <option rate="50.0000" value="25" memoo="days:2;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 25 WAX 2 DAY</option>
+                                        <option rate="100.0000" value="50" memo="days:2;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 50 WAX 2 DAY</option>
+                                        <option rate="200.0000" value="100" memo="days:2;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 100 WAX 2 DAY</option>
+                                        <option rate="300.0000" value="150" memo="days:2;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 150 WAX 2 DAY</option>
+                                        <option rate="500.0000" value="250" meemo="days:2;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 250 WAX 2 DAY</option>
+                                        <option rate="1000.0000" value="500" memo="days:2;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 500 WAX 2 DAY</option>
+                                        <option rate="25.0000" value="8" memo="days:3;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 8 WAX 3 DAY</option>
+                                        <option rate="50.0000" value="16" memoo="days:3;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 16 WAX 3 DAY</option>
+                                        <option rate="100.0000" value="33" memo="days:3;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 33 WAX 3 DAY</option>
+                                        <option rate="200.0000" value="66" memo="days:3;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 66 WAX 3 DAY</option>
+                                        <option rate="300.0000" value="100" memo="days:3;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 100 WAX 3 DAY</option>
+                                        <option rate="500.0000" value="166" meemo="days:3;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 166 WAX 3 DAY</option>
+                                        <option rate="1000.0000" value="333" memo="days:3;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 333 WAX 3 DAY</option>
+                                        <option rate="25.0000" value="6" memo="days:4;receiver:" provider="nfthivecpu4u" check="" disabled>0.51 WAX FOR STAKE CPU 6 WAX 4 DAY</option>
+                                        <option rate="50.0000" value="12" memoo="days:4;receiver:" provider="nfthivecpu4u" check="" disabled>0.86 WAX FOR STAKE CPU 12 WAX 4 DAY</option>
+                                        <option rate="100.0000" value="33" memo="days:4;receiver:" provider="nfthivecpu4u" check="">1.30 WAX FOR STAKE CPU 33 WAX 25 DAY</option>
+                                        <option rate="200.0000" value="66" memo="days:4;receiver:" provider="nfthivecpu4u" check="">2.35 WAX FOR STAKE CPU 66 WAX 50 DAY</option>
+                                        <option rate="300.0000" value="100" memo="days:4;receiver:" provider="nfthivecpu4u" check="">3.40 WAX FOR STAKE CPU 100 WAX 75 DAY</option>
+                                        <option rate="500.0000" value="166" meemo="days:4;receiver:" provider="nfthivecpu4u" check="">5.50 WAX FOR STAKE CPU 166 WAX 125 DAY</option>
+                                        <option rate="1000.0000" value="333" memo="days:4;receiver:" provider="nfthivecpu4u" check="">10.75 WAX FOR STAKE CPU 333 WAX 250 DAY</option>
                                     </select>
                                 </div>
                                 <div class="input-group">
@@ -5118,11 +5148,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 ) + 0.25
                                             ];
                                             console.debug(home['price']);
-                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="100"]').setAttribute(
+                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"][value*="100"]').setAttribute(
                                                 'rate', (100 * home['price'][0]).toFixed(2)
                                             );
                                             document.querySelector(
-                                                'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="100"]'
+                                                'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"][value*="100"]'
                                             ).innerText = `${ home['price'][1].toFixed(2) } WAX FOR STAKE CPU 100 WAX`;
                                             document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0];
                                             home['price'] = [
@@ -5132,11 +5162,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 ) + 0.25
                                             ];
                                             console.debug(home['price']);
-                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="500"]').setAttribute(
+                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"][value*="500"]').setAttribute(
                                                 'rate', (100 * home['price'][0]).toFixed(2)
                                             );
                                             document.querySelector(
-                                                'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="500"]'
+                                                'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"][value*="500"]'
                                             ).innerText = `${ home['price'][1].toFixed(2) } WAX FOR STAKE CPU 500 WAX`;
                                             document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0];
                                         });
@@ -5152,11 +5182,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 ) + 0.25
                                             ];
                                             console.log(home['price']);
-                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="200"]').setAttribute(
+                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"][value*="200"]').setAttribute(
                                                 'rate', (100 * home['price'][0]).toFixed(2)
                                             );
                                             document.querySelector(
-                                                'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="200"]'
+                                                'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"][value*="200"]'
                                             ).innerText = `${ home['price'][1].toFixed(2) } WAX FOR STAKE CPU 200 WAX`;
                                             document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0];
                                             home['price'] = [
@@ -5166,11 +5196,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 ) + 0.25
                                             ];
                                             console.log(home['price']);
-                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="1000"]').setAttribute(
+                                            document.querySelector('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"][value*="1000"]').setAttribute(
                                                 'rate', (100 * home['price'][0]).toFixed(2)
                                             );
                                             document.querySelector(
-                                                'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[value*="1000"]'
+                                                'div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"][value*="1000"]'
                                             ).innerText = `${ home['price'][1].toFixed(2) } WAX FOR STAKE CPU 1000 WAX`;
                                             document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE DURATION"]').value = translation[0][0][0].split('for ').splice(-1)[0];
                                         });
@@ -5185,7 +5215,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 'placeholder', `${ parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
                             );
 
-                            document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').forEach(function(e, i, a) {
+                            document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"]').forEach(function(e, i, a) {
                                 if (
                                     parseFloat(parseFloat(e.value).toFixed(4)) > parseFloat(
                                         parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4)
@@ -5195,16 +5225,16 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 };
                             });
 
-                            if (
-                                document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length == document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
-                            ) {
-                                $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', true);
-                                $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', true);
-                            } else {
-                                $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', false);
-                                $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', false);
-                            };
-
+                            //  if (
+                            //      document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"]').length == document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
+                            //  ) {
+                            //      $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', true);
+                            //      $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', true);
+                            //  } else {
+                            //      $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', false);
+                            //      $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', false);
+                            //  };
+                            
                         });
                     });
                 </script>

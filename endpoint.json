@@ -88,18 +88,14 @@
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
-        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
-        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
         "https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
         "https://atomic.wax.io/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
-        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
-        "https://wax-aa.eosdublin.io/atomicassets/v1/assets?", 
         "https://wax.api.atomicassets.io/atomicassets/v1/assets?", 
         "https://atomic.wax.io/atomicassets/v1/assets?"
     ], 

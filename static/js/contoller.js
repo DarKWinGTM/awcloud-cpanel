@@ -4417,124 +4417,60 @@ $(document).ready(function() {
 				if (
 					eosjs_ecc.isValidPrivate( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ) == true
 				){
+					
 					document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey 		= eosjs_ecc.PrivateKey.fromString( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ).toPublic().toString(); 
 					document.querySelector('input[aria-label="KEY PRV ACTIVE"]').value 			= document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey; 
 					
-					fetch("https://wax.greymass.com/v1/chain/get_accounts_by_authorizers", {
-						"headers": {
-							"accept": "application/json, text/plain, */*",
-							"accept-language": "en-US",
-							"content-type": "application/json;charset=UTF-8",
-							"sec-fetch-dest": "empty",
-							"sec-fetch-mode": "cors",
-							"sec-fetch-site": "cross-site"
-						},
-						"body"              : JSON.stringify({
-							'keys' 			: [document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey]
-						}),
-						"method"            : "POST",
+					fetch(`https://api.waxsweden.org/v2/state/get_key_accounts?public_key=${document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey}&details=true`, {
+						"headers": {},
+						"method"            : "GET",
 						"mode" 				: "cors",
 						"credentials" 		: "omit"
 					}).then(
 						result => result.json()
 					).then(result => {
-						document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
-						if (
-							document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
-						){
-							document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
-							$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
+
+						if(result['permissions'][0]['name'] == 'active'){
+							fetch("https://wax.greymass.com/v1/chain/get_accounts_by_authorizers", {
+								"headers": {
+									"accept": "application/json, text/plain, */*",
+									"accept-language": "en-US",
+									"content-type": "application/json;charset=UTF-8",
+									"sec-fetch-dest": "empty",
+									"sec-fetch-mode": "cors",
+									"sec-fetch-site": "cross-site"
+								},
+								"body"              : JSON.stringify({
+									'keys' 			: [document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey]
+								}),
+								"method"            : "POST",
+								"mode" 				: "cors",
+								"credentials" 		: "omit"
+							}).then(
+								result => result.json()
+							).then(result => {
+								document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
+								if (
+									document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
+								){
+									document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
+									$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
+								}else{
+									document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
+									$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
+								}; 
+							}).catch(error => {
+								e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
+							});
 						}else{
-							document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
+							$.notify(`MASTER KEY : INCORRECT PERMISSIONS, WE NEED ACTIVE`, "warn", { position : "top" }); 
+							e.srcElement.value = ''; document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
 							$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
 						}; 
+
 					}).catch(error => {
 						e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
-					});
-					
-					// CHECK PERMISSIONS
-					//	fetch("https://lightapi.eosamsterdam.net/api/accinfo/wax/raicybermoon", {
-					//	  "headers": {
-					//	    "accept": "*/*",
-					//	    "accept-language": "en-US,en;q=0.9",
-					//	    "cache-control": "no-cache",
-					//	    "pragma": "no-cache",
-					//	    "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Opera\";v=\"84\"",
-					//	    "sec-ch-ua-mobile": "?0",
-					//	    "sec-ch-ua-platform": "\"Linux\"",
-					//	    "sec-fetch-dest": "empty",
-					//	    "sec-fetch-mode": "cors",
-					//	    "sec-fetch-site": "cross-site",
-					//	    "Referer": "https://wax.bloks.io/",
-					//	    "Referrer-Policy": "strict-origin-when-cross-origin"
-					//	  },
-					//	  "body": null,
-					//	  "method": "GET"
-					//	}); --> {
-					//	    "resources": {
-					//	        "ram_bytes": 4794,
-					//	        "cpu_weight": 30000000000,
-					//	        "net_weight": 50000000
-					//	    },
-					//	    "linkauth": [],
-					//	    "chain": {
-					//	        "sync": 0,
-					//	        "decimals": 8,
-					//	        "systoken": "WAX",
-					//	        "rex_enabled": 0,
-					//	        "network": "wax",
-					//	        "block_num": 176731778,
-					//	        "chainid": "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4",
-					//	        "description": "WAX",
-					//	        "block_time": "2022-04-13 04:13:12",
-					//	        "production": 1
-					//	    },
-					//	    "delegated_to": [
-					//	        {
-					//	            "account_name": "raicybermoon",
-					//	            "net_weight": 50000000,
-					//	            "cpu_weight": 30000000000
-					//	        }
-					//	    ],
-					//	    "permissions": [
-					//	        {
-					//	            "auth": {
-					//	                "accounts": [],
-					//	                "keys": [
-					//	                    {
-					//	                        "pubkey": "EOS5Uf68Bqh6ANVrHBWsuycFWPkC8bYMABY5b7afxxtRAESrdA22k",
-					//	                        "weight": 1,
-					//	                        "public_key": "PUB_K1_5Uf68Bqh6ANVrHBWsuycFWPkC8bYMABY5b7afxxtRAESofEW8D"
-					//	                    }
-					//	                ]
-					//	            },
-					//	            "threshold": 1,
-					//	            "perm": "active"
-					//	        },
-					//	        {
-					//	            "perm": "owner",
-					//	            "threshold": 1,
-					//	            "auth": {
-					//	                "keys": [
-					//	                    {
-					//	                        "weight": 1,
-					//	                        "public_key": "PUB_K1_89wQs3ZGyC4izmvrpmyeQsgFQbR83eA8EGtvWuvh3PWqteP1zv",
-					//	                        "pubkey": "EOS89wQs3ZGyC4izmvrpmyeQsgFQbR83eA8EGtvWuvh3PWqwawswq"
-					//	                    }
-					//	                ],
-					//	                "accounts": []
-					//	            }
-					//	        }
-					//	    ],
-					//	    "account_name": "raicybermoon",
-					//	    "delegated_from": [
-					//	        {
-					//	            "del_from": "raicybermoon",
-					//	            "net_weight": 50000000,
-					//	            "cpu_weight": 30000000000
-					//	        }
-					//	    ]
-					//	}
+					}); 
 					
 				}else{
 					e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
@@ -4697,3 +4633,5 @@ $(document).ready(function() {
         });
     //    }; 
 }); 
+
+

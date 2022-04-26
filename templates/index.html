@@ -5084,21 +5084,21 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                     $(e).prop('disabled', true)
                                 };
                             });
-                            //  if (
-                            //      document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length == document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
-                            //  ) {
-                            //      $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', true);
-                            //      $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', true);
-                            //  } else {
-                            //      //  $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop( 'disabled', false ); 
-                            //      $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', false);
-                            //  };
-                            //    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
-                            //      'value', `${ parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4) * 0.80).toFixed(4) } WAX`
-                            //    ); 
-                            //    document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
-                            //      'placeholder', `${ parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4) * 0.80).toFixed(4) } WAX`
-                            //    ); 
+                            if (
+                                document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option').length == document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option:disabled').length
+                            ) {
+                                $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', true);
+                                $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', true);
+                            } else {
+                                //  $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop( 'disabled', false ); 
+                                $(document.querySelector('div[id*="stakeWax"] select[aria-label="RENT SAFE STAKE QUANTITY"]')).prop('disabled', false);
+                            };
+                            //  document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
+                            //    'value', `${ parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4) * 0.80).toFixed(4) } WAX`
+                            //  ); 
+                            //  document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
+                            //    'placeholder', `${ parseFloat(parseFloat(result['core_liquid_balance'].split(/\s/gi)[0]).toFixed(4) * 0.80).toFixed(4) } WAX`
+                            //  ); 
                         }).catch(error => {
                             $(document.querySelector('div[id*="stakeWax"] button.btn.btn-primary.rent-safe-stake')).prop('disabled', true);
                         });

@@ -1731,7 +1731,7 @@ $(document).ready(function() {
 	<div style="overflow: auto; ">
     	<iframe
     	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=galaxyminers"
-		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		style       = "width : 100%; height : 1099px; margin-top: -450px ;overflow: auto;"
 		loading 	= "lazy"
     	></iframe>
 	</div>

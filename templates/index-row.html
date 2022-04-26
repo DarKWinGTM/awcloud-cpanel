@@ -114,14 +114,20 @@ if(
 ){
 	document.querySelector(`iframe[url*=\x22mining.idigger.online/affiliate?waxid=${ this.parentElement.parentElement.id }\x22]`).parentElement.style.display = 'table-cell'; 
 	document.querySelector(`iframe[url*=\x22mining.idigger.online/affiliate?waxid=${ this.parentElement.parentElement.id }\x22]`).setAttribute(
-    'src', document.querySelector(`iframe[url*=\x22mining.idigger.online/affiliate?waxid=${ this.parentElement.parentElement.id }\x22]`).getAttribute('url')
-  ); 
+        'src', document.querySelector(`iframe[url*=\x22mining.idigger.online/affiliate?waxid=${ this.parentElement.parentElement.id }\x22]`).getAttribute('url')
+    ); 
+    try{
+        document.querySelector(`iframe[url*=\x22mining.idigger.online/affiliate?waxid=${ this.parentElement.parentElement.id }\x22]`).parentElement.style.removeProperty('position');
+    }catch(e){}; 
 }else{
 	document.querySelector(`iframe[url*=\x22mining.idigger.online/affiliate?waxid=${ this.parentElement.parentElement.id }\x22]`).parentElement.style.display = 'none'; 
 	document.querySelector(`iframe[url*=\x22mining.idigger.online/affiliate?waxid=${ this.parentElement.parentElement.id }\x22]`).setAttribute(
-    'src', ''
-  ); 
-}
+        'src', ''
+    ); 
+    try{
+        document.querySelector(`iframe[url*=\x22mining.idigger.online/affiliate?waxid=${ this.parentElement.parentElement.id }\x22]`).parentElement.style.position = 'absolute';
+    }catch(e){}; 
+}; 
     ">
         <span id="tlmperday">0.0000/h [0]</span>
     </button>

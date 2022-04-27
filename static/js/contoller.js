@@ -4184,9 +4184,25 @@ $(document).ready(function() {
                 }catch(e){}; 
                 try{ window['check-random-mine'].checked = window['information-data']['POOL']['fr']['randm']['var'] }catch(e){}; 
                 try{
-                    window['check-random-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
-                        'value', window['information-data']['POOL']['fr']['randm']['sec']
-                    ); window['check-random-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['randm']['sec'] ; 
+                    //	window['check-random-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
+                    //	    'value', window['information-data']['POOL']['fr']['randm']['sec']
+					//	); window['check-random-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['randm']['sec']; 
+                    if (window['check-random-mine'].parentNode.querySelector('input[type="range"]').getAttribute('value') == 689){
+                        window['check-random-mine'].parentNode.querySelector('input[type="range"]').setAttribute(
+                            'value', window['information-data']['POOL']['fr']['randm']['sec']
+                        ); window['check-random-mine'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['randm']['sec']; 
+                        window['check-random-mine'].parentNode.querySelector('label').innerText = `RANDOM MINE ${ window['information-data']['POOL']['fr']['randm']['sec'] }`; 
+					}; 
+					
+				}catch(e){}; 
+                try{ window['check-keep-cpu'].checked = window['information-data']['POOL']['fr']['cpucf']['var'] }catch(e){}; 
+                try{
+                    if (window['check-keep-cpu'].parentNode.querySelector('input[type="range"]').getAttribute('value') == 1){
+                        window['check-keep-cpu'].parentNode.querySelector('input[type="range"]').setAttribute(
+                            'value', window['information-data']['POOL']['fr']['cpucf']['set']
+                        ); window['check-keep-cpu'].parentNode.querySelector('input[type="range"]').value = window['information-data']['POOL']['fr']['cpucf']['set']; 
+                        window['check-keep-cpu'].parentNode.querySelector('label').innerText = `KEEP CPU ${ window['information-data']['POOL']['fr']['cpucf']['set'] } %`; 
+                    }; 
 				}catch(e){}; 
 
             }).catch(error => {
@@ -4881,5 +4897,7 @@ $(document).ready(function() {
         });
     //    }; 
 }); 
+
+
 
 

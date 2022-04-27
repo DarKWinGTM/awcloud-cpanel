@@ -83,7 +83,7 @@
         "https://wax.greymass.com", 
         "https://wax.pink.gg", 
         "https://waxnode01.alcor.exchange", 
-        "https://wax.eosphere.io"
+        "https://api-wax-mainnet.wecan.dev"
     ], 
     "atomichub" : [
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 

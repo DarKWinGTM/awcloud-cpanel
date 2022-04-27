@@ -21,3 +21,4 @@ minified
 /node_modules
 /node_modules/*
 /static/log/*.txt
+proxies.*

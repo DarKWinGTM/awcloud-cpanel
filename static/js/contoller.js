@@ -373,11 +373,11 @@ $(document).ready(function() {
 	</div>
 	<div class="input-group fw-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.00 G 0.0 : WITH [0%] DEPO : W 0.0 F 0.0 G 0.0</div>
-		<button type="submit" class="btn btn-primary fw-withdraw" style="width: 20%; "">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="FWW" value="" step="5" min="5" max="100" aria-label="">
+		<button type="submit" class="btn btn-primary fw-withdraw" style="width: 20%; ">WITHDRAW</button>
 		<input type="number" class="form-control" placeholder="FWF" value="" step="5" min="5" max="100" aria-label="">
 		<input type="number" class="form-control" placeholder="FWG" value="" step="5" min="5" max="100" aria-label="">
-		<button type="submit" class="btn btn-primary fw-deposit" style="width: 20%; "">DEPOSIT</button>
+		<input type="number" class="form-control" placeholder="FWW" value="" step="5" min="5" max="100" aria-label="">
+		<button type="submit" class="btn btn-primary fw-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 	<div class="input-group fw-swap-fww-wax">
 		<div class="input-group-text" style="width: 248px;">MANUAL SELL FWW TO WAX</div>
@@ -447,11 +447,15 @@ $(document).ready(function() {
 		<button type="submit" class="btn btn-primary fw-breed-get" style="width: 60px; ">GET</button>
 	</div>
 	<div class="input-group fw-craft">
-		<div class="input-group-text" style="width: inherit; ">CRAFT</div>
-		<div class="input-group-text" style="width: 96px;">TOOL</div>
-		<select class="form-select" id="fw-craft-tools"><option value=""></option></select>
-		<div class="input-group-text" style="width: 96px;">PLOT</div>
-		<select class="form-select" id="fw-craft-plot"><option value=""></option></select>
+		<div class="input-group-text" style="width: inherit; display : none; ">CRAFT</div>
+		<div class="input-group-text" style="width: 96px;">CRAFT</div>
+		<select class="form-select" id="fw-craft-select">
+			<option mode="mintasset" value="Mining Excavator">Mining Excavator (4000 GOLD 24000 WOOD)</option>
+			<option mode="mintasset" value="Fishing Boat">Fishing Boat (3200 GOLD 19200 WOOD)</option>
+			<option mode="mintasset" value="Chainsaw">Chainsaw (3600 GOLD 21600 WOOD)</option>
+			<option mode="mintmbs" value="Bronze Member">Bronze Member (60 Farmers Coin 400 GOLD)</option>
+			<option mode="mintmbs" value="Silver Member">Silver Member (120 Farmers Coin 800 GOLD)</option>
+		</select>
 		<button type="submit" class="btn btn-primary fw-craft-get" style="width: 60px; ">GET</button>
 	</div>
 	<div class="input-group fw-withdraw-fww">
@@ -1557,6 +1561,248 @@ $(document).ready(function() {
 								); 
 							}); 
 							
+
+							document.querySelector(`th[id*="${WAXID}-fw-panel-monitor"] button.fw-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'FWF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] div.fw-withdraw-deposit').querySelector('input[placeholder*="FWF"]').value) || 0, 
+									'FWG' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] div.fw-withdraw-deposit').querySelector('input[placeholder*="FWG"]').value) || 0, 
+									'FWW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] div.fw-withdraw-deposit').querySelector('input[placeholder*="FWW"]').value) || 0, 
+									'FEE' 	: window['information-data']['DATA'][ this['var']['id'] ]['vers']['fw']['db']['power']['tax_limite'] || 5, 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/fw_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['FEE']
+										}&quantity=${
+											this['var']['db']['FWF']
+										}.0000,${
+											this['var']['db']['FWG']
+										}.0000,${
+											this['var']['db']['FWW']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`FARMERS WORLDS WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`FARMERS WORLDS WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`FARMERS WORLDS WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`FARMERS WORLDS WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`FARMERS WORLDS WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-fw-panel-monitor"] button.fw-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'FWF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] div.fw-withdraw-deposit').querySelector('input[placeholder*="FWF"]').value) || 0, 
+									'FWG' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] div.fw-withdraw-deposit').querySelector('input[placeholder*="FWG"]').value) || 0, 
+									'FWW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] div.fw-withdraw-deposit').querySelector('input[placeholder*="FWW"]').value) || 0, 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/fw_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['FWF']
+										}.0000,${
+											this['var']['db']['FWG']
+										}.0000,${
+											this['var']['db']['FWW']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`FARMERS WORLDS DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`FARMERS WORLDS DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`FARMERS WORLDS DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`FARMERS WORLDS DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`FARMERS WORLDS DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							//	<div class="input-group fw-withdraw-withdraw">
+							//		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.00 G 0.0 : WITH [0%] DEPO : W 0.0 F 0.0 G 0.0</div>
+							//		<button type="submit" class="btn btn-primary fw-withdraw" style="width: 20%; ">WITHDRAW</button>
+							//		<input type="number" class="form-control" placeholder="FWW" value="" step="5" min="5" max="100" aria-label="">
+							//		<input type="number" class="form-control" placeholder="FWF" value="" step="5" min="5" max="100" aria-label="">
+							//		<input type="number" class="form-control" placeholder="FWG" value="" step="5" min="5" max="100" aria-label="">
+							//		<button type="submit" class="btn btn-primary fw-deposit" style="width: 20%; ">DEPOSIT</button>
+							//	</div>
+
+
+							document.querySelector(`th[id*="${WAXID}-fw-panel-monitor"] button.fw-craft-get`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'mode' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] select#fw-craft-select option:checked').getAttribute('mode'), 
+									'value' : document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] select#fw-craft-select option:checked').value
+								}; 
+
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/fw_${
+											this['var']['db']['mode']
+										}?waxid=${
+											this['var']['id']
+										}&toolid=${
+											this['var']['db']['value']
+										}`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`FARMERS WORLDS CRAFT : DONE ${this['var']['db']['value']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`FARMERS WORLDS CRAFT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`FARMERS WORLDS CRAFT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`FARMERS WORLDS CRAFT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`FARMERS WORLDS CRAFT : ERROR ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							//	<div class="input-group fw-craft">
+							//		<div class="input-group-text" style="width: inherit; ">CRAFT</div>
+							//		<div class="input-group-text" style="width: 96px;">TOOL</div>
+							//		<select class="form-select" id="fw-craft-select">
+							//			<option mode="mintasset" value="Mining Excavator">Mining Excavator</option>
+							//			<option mode="mintasset" value="Fishing Boat">Fishing Boat</option>
+							//			<option mode="mintasset" value="Chainsaw">Chainsaw</option>
+							//			<option mode="mintmbs" value="Bronze Member">Bronze Member</option>
+							//			<option mode="mintmbs" value="Silver Member">Silver Member</option>
+							//		</select>
+							//		<button type="submit" class="btn btn-primary fw-craft-get" style="width: 60px; ">GET</button>
+							//	</div>
 							
 							
                             document.querySelector('table').querySelector('thead').appendChild(
@@ -4412,7 +4658,9 @@ $(document).ready(function() {
         }); 
 		
         document.querySelector('input[aria-label="KEY PRV ACTIVE"]').addEventListener('change', function (e) {
+			
 			document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey  = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').value; 
+
 			try{
 				if (
 					eosjs_ecc.isValidPrivate( document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PrivateKey ) == true

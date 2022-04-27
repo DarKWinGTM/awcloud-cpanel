@@ -17,7 +17,7 @@
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
-        "https://wax.hkeos.com/v2/history/get_transaction?id=", 
+        "https://wax.hivebp.io/v2/history/get_transaction?id=", 
         "https://api.wax.greeneosio.com/v2/history/get_transaction?id=", 
         "https://waxapi.ledgerwise.io/v2/history/get_transaction?id="
     ], 
@@ -82,8 +82,8 @@
         "https://waxnode02.alcor.exchange", 
         "https://wax.greymass.com", 
         "https://wax.pink.gg", 
-        "https://wax.eosrio.io", 
-        "https://wax.eosdac.io"
+        "https://waxnode01.alcor.exchange", 
+        "https://wax.eosphere.io"
     ], 
     "atomichub" : [
         "https://wax-atomic-api.eosphere.io/atomicassets/v1/assets?", 

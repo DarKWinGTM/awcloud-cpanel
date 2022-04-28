@@ -90,16 +90,14 @@
         "https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
         "https://atomic.tokengamer.io/atomicassets/v1/assets?", 
-        "http://aa.dapplica.io/atomicassets/v1/assets?", 
-        "http://api.niftylife.io/atomicassets/v1/assets?"
+        "http://aa.dapplica.io/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
         "https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
         "https://atomic.tokengamer.io/atomicassets/v1/assets?", 
-        "http://aa.dapplica.io/atomicassets/v1/assets?", 
-        "http://api.niftylife.io/atomicassets/v1/assets?"
+        "http://aa.dapplica.io/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

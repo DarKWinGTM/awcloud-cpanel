@@ -450,11 +450,13 @@ $(document).ready(function() {
 		<div class="input-group-text" style="width: inherit; display : none; ">CRAFT</div>
 		<div class="input-group-text" style="width: 96px;">CRAFT</div>
 		<select class="form-select" id="fw-craft-select">
-			<option mode="mintasset" value="Mining Excavator">Mining Excavator (4000 GOLD 24000 WOOD)</option>
-			<option mode="mintasset" value="Fishing Boat">Fishing Boat (3200 GOLD 19200 WOOD)</option>
-			<option mode="mintasset" value="Chainsaw">Chainsaw (3600 GOLD 21600 WOOD)</option>
-			<option mode="mintmbs" value="Bronze Member">Bronze Member (60 Farmers Coin 400 GOLD)</option>
-			<option mode="mintmbs" value="Silver Member">Silver Member (120 Farmers Coin 800 GOLD)</option>
+			<option mode="mintasset" value="Mining Excavator" gold="4000" coin="0,0,0" wood="24000">Mining Excavator (4000 GOLD 24000 WOOD)</option>
+			<option mode="mintasset" value="Fishing Boat" gold="3200" coin="0,0,0" wood="19200">Fishing Boat (3200 GOLD 19200 WOOD)</option>
+			<option mode="mintasset" value="Chainsaw" gold="3600" coin="0,0,0" wood="21600">Chainsaw (3600 GOLD 21600 WOOD)</option>
+			<option mode="mintmbs" value="Bronze Member" gold="400" coin="39,40,20" wood="0">Bronze Member (60 Farmers Coin 400 GOLD)</option>
+			<option mode="mintmbs" value="Silver Member" gold="800" coin="39,40,80" wood="0">Silver Member (120 Farmers Coin 800 GOLD)</option>
+			<option mode="mintmbs_fee_mine" value="Bronze Member" gold="400" coin="39,40,20" wood="0" disabled>Bronze Member FEE MINE 0.30 WAX PER Transact (60 Farmers Coin 400 GOLD)</option>
+			<option mode="mintmbs_fee_mine" value="Silver Member" gold="800" coin="39,40,80" wood="0">Silver Member FEE MINE 0.30 WAX PER Transact (120 Farmers Coin 800 GOLD)</option>
 		</select>
 		<button type="submit" class="btn btn-primary fw-craft-get" style="width: 60px; ">GET</button>
 	</div>
@@ -1728,11 +1730,16 @@ $(document).ready(function() {
 								}; 
 								this['var']['db'] = {
 									'mode' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] select#fw-craft-select option:checked').getAttribute('mode'), 
-									'value' : document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] select#fw-craft-select option:checked').value
+									'value' : document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] select#fw-craft-select option:checked').value, 
+									'gold' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] select#fw-craft-select option:checked').getAttribute('gold'), 
+									'wood' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] select#fw-craft-select option:checked').getAttribute('wood'), 
+									'coin' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"] select#fw-craft-select option:checked').getAttribute('coin')
 								}; 
 
 								if (
-									!$(this).attr('disabled')
+									!$(this).attr('disabled') && (
+										this['var']['db']['mode'] != 'mintmbs' && this['var']['db']['mode'] != 'mintmbs_fee_mine'
+									)
 								){
 									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
 									
@@ -1789,6 +1796,98 @@ $(document).ready(function() {
 											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
 										})(this); 
 									}); 
+								} else if(
+									!$(this).attr('disabled') && (
+										this['var']['db']['mode'] == 'mintmbs' || this['var']['db']['mode'] == 'mintmbs_fee_mine'
+									)
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+
+									fetch(`${
+									    window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+									}?owner=${
+									    this['var']['id']
+									}&collection_name=farmersworld&limit=200&template_id=260676&order=desc&sort=transferred`, {
+									    "headers": {
+									        'x-requested-with': 'XMLHttpRequest',
+									        'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+									    },
+									    "body": null,
+									    "method": "GET"
+									}).then(
+									    fwcoin => fwcoin.json()
+									).then(fwcoin => {
+										if((
+											this['var']['db']['value'] == 'Silver Member' && fwcoin['data'].length >= 120
+										) || (
+											this['var']['db']['value'] == 'Bronze Member' && fwcoin['data'].length >= 80
+										)){
+											fetch(
+												`/fw_${
+													this['var']['db']['mode']
+												}?waxid=${
+													this['var']['id']
+												}&toolid=${
+													`${ fwcoin['data'].map(a => a['asset_id']).splice(0, parseInt( this['var']['db']['coin'].split(',')[0] )) }|${ fwcoin['data'].map(a => a['asset_id']).splice(parseInt( this['var']['db']['coin'].split(',')[1] ), parseInt( this['var']['db']['coin'].split(',')[2] )) }|${ this['var']['db']['value'] }`
+												}`,
+												{method : 'GET'}
+											).then(
+												result => result.json()
+											).then(result => {
+												if(result['text'] != 'okay'){ throw result }else{
+													if (
+														result['code'] == 200
+													){
+														$.notify(
+															`FARMERS WORLDS CRAFT : DONE ${this['var']['db']['value']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+															"success", { position : "top" }
+														); 
+													}else{
+														try{
+															if(
+																result['data']['transaction'] && 
+																result['data']['transaction']['trx'] && 
+																result['data']['transaction']['trx']['error'] && 
+																result['data']['transaction']['trx']['error']['what']
+															){
+																$.notify(
+																	`FARMERS WORLDS CRAFT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+																); 
+															}else{
+																$.notify(
+																	`FARMERS WORLDS CRAFT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+																); 
+															}; 
+														}catch(e){
+															$.notify(
+																`FARMERS WORLDS CRAFT : WARNING ${this['var']['id']} - ${ result['text'] }`, 'warn'
+															); 
+														}; 
+													};
+													(function (input){
+														setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+													})(this); 
+												}; 
+											}).catch(error => {
+												$.notify(`FARMERS WORLDS CRAFT : ERROR CONNECTION FAILED ${error}`, "error", { position : "top" }); 
+												(function (input){
+													setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+												})(this); 
+											}); 
+										}else{
+											$.notify(
+												`FARMERS WORLDS CRAFT : WARNING ${this['var']['id']} - YOU DO NOT HAVE ENOUGH COIN OR GOLD`, 'error'
+											); 
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}
+									}).catch(error => {
+										$.notify(`FARMERS WORLDS CRAFT : LIST FARMER COIN FAILED ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									});
 								};
 							});
 							//	<div class="input-group fw-craft">

@@ -1921,20 +1921,42 @@ $(document).ready(function() {
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-ss-panel-monitor">
 	<div class="input-group ss-target-set">
 		<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [] : STAKED : 0.0000 </div>
-		<div class="input-group-text">
-			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
-				<label class="form-check-label">
-					<!--input type="checkbox" class="form-check-input ss-target-switch" value="0"-->
-					<!--span style="padding-left: 5;"></span-->
-				</label>
-			</div>
-		</div>
-		<div class="input-group-text" style="width: 248px;">PLANET TARGET<span style="visibility: hidden;">_</span><a href="https://starship.primatepirate.com/planetarium" target="_blank">ID</a></div>
-		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH" value="SS-TARGET-SWITCH" step="1" min="1" max="100000" aria-label="">
+		<div class="input-group-text" style="width: 170px;">PLANET TARGET<span style="visibility: hidden;">_</span><a href="https://starship.primatepirate.com/planetarium" target="_blank">ID</a></div>
+		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_00" value="SS-TARGET-SWITCH_00" step="1" min="1" max="100000" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_01" value="SS-TARGET-SWITCH_01" step="1" min="1" max="100000" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_02" value="SS-TARGET-SWITCH_02" step="1" min="1" max="100000" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_03" value="SS-TARGET-SWITCH_03" step="1" min="1" max="100000" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_04" value="SS-TARGET-SWITCH_04" step="1" min="1" max="100000" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_05" value="SS-TARGET-SWITCH_05" step="1" min="1" max="100000" aria-label="">
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 		<button type="submit" class="btn btn-primary ss-target-set" style="width: 60px; ">SET</button>
 	</div>
-</th>`.replace( /SS-TARGET-SWITCH/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'] )
+	<div class="input-group ss-feature">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input ss-feature-key-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+
+</th>`.replace(
+	/SS-TARGET-SWITCH_00/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[0]
+).replace(
+	/SS-TARGET-SWITCH_01/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[1]
+).replace(
+	/SS-TARGET-SWITCH_02/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[2]
+).replace(
+	/SS-TARGET-SWITCH_03/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[3]
+).replace(
+	/SS-TARGET-SWITCH_04/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[4]
+).replace(
+	/SS-TARGET-SWITCH_05/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[5]
+)
                                 })
                             ); 
                             document.querySelector('table').querySelector('thead').appendChild(
@@ -2750,7 +2772,19 @@ $(document).ready(function() {
 										
                                         $(this).prop( "disabled", true ); 
 										
-                                        fetch(`/vers/ss/set?waxid=${ this.parentElement.parentElement.id.split('-')[0] }&target=${ this.parentElement.querySelector('div.input-group.ss-target-set input').value }`, 
+                                        fetch(`/vers/ss/set?waxid=${ this.parentElement.parentElement.id.split('-')[0] }&target=${
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[0].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[1].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[2].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[3].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[4].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[5].value || '-1')
+										}`, 
 											{method : 'GET'}
 										).then(
                                             res => res.json()

@@ -60,10 +60,10 @@
         "https://api.waxsweden.org"
     ], 
     "gx_c_sigh" : [
-        "https://wax.greymass.com", 
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com", 
-        "https://api.waxsweden.org"
+        "https://api.wax.greeneosio.com", 
+        "https://wax.pink.gg", 
+        "https://api.wax.alohaeos.com"
     ], 
     "bl_c_sigh" : [
         "https://wax.eosphere.io", 

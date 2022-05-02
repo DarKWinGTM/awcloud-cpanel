@@ -1,40 +1,3 @@
-// LIST ALL NFT IN WAX ID
-//		fetch("https://wax.api.aa.atomichub.io/atomicmarket/v1/assets", {
-//		  "headers": {
-//		    "accept": "*/*",
-//		    "accept-language": "en-US,en;q=0.9",
-//		    "cache-control": "no-cache",
-//		    "content-type": "application/json",
-//		    "pragma": "no-cache",
-//		    "sec-ch-ua": "\"Chromium\";v=\"96\", \"Opera\";v=\"82\", \";Not A Brand\";v=\"99\"",
-//		    "sec-ch-ua-mobile": "?0",
-//		    "sec-ch-ua-platform": "\"Linux\"",
-//		    "sec-fetch-dest": "empty",
-//		    "sec-fetch-mode": "cors",
-//		    "sec-fetch-site": "same-site"
-//		  },
-//		  "referrer": "https://wax.atomichub.io/",
-//		  "referrerPolicy": "strict-origin-when-cross-origin",
-//		  "body": "{\"limit\":\"100\",\"order\":\"desc\",\"owner\":\"gj1xc.wam\",\"sort\":\"transferred\",\"page\":\"1\"}",
-//		  "method": "POST",
-//		  "mode": "cors",
-//		  "credentials": "omit"
-//		});
-
-//		        	<form action="#KEY" onsubmit="return false" class="row row-cols-auto needs-validation" style="margin-block-end: 0.2em;" validate disabled>
-//		        		<div class="input-group">
-//		        			<div class="input-group-text" id="basic-addon WAX" style="width: 72px;">
-//	                            <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
-//	                                <label class="form-check-label"><input type="checkbox" class="form-check-input masterKey-switch" value="0" ><span style="padding-left: 5;"></span></label>
-//	                            </div>
-//	                        </div>
-//		        			<div class="input-group-text" id="basic-addon WAX" style="width: 202px;"><a href="#WHAT_IS_MASTER_KEY">WHAT IS MASTER KEY ? (Active)</a></div>
-//		        			<input type="text" class="form-control" placeholder="PRV_K1_"   aria-label="KEY PRV ACTIVE" required>
-//		        			<input type="text" class="form-control" placeholder="KEY NAME"  aria-label="KEY TAG ACTIVE" style="max-width: 256px;"required disabled>
-//		        			<button type="submit" class="btn btn-primary key-add" style="width: 60px; " disabled>ADD</button>
-//		        			<button type="submit" class="btn btn-primary key-del" style="width: 60px; ">DEL</button>
-//		        		</div>
-//		        	</form>
 
 $(document).ready(function() {
     
@@ -80,6 +43,9 @@ $(document).ready(function() {
 			}, {
 				'headers' : {}, 
 				'url' : 'wax.eosdublin.io'
+			}, {
+				'headers' : {}, 
+				'url' : 'api.tokengamer.io'
 			}
 			//	{
 			//		'headers' : {}, 
@@ -5029,4 +4995,4 @@ $(document).ready(function() {
             //	}; 
         });
     //    }; 
-}); 
+});

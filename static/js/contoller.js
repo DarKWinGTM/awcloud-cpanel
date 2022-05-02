@@ -1887,6 +1887,16 @@ $(document).ready(function() {
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-ss-panel-monitor">
 	<div class="input-group ss-target-set">
 		<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [] : STAKED : 0.0000 </div>
+		<div class="input-group">
+			<div class="input-group-text" style="width: 170px;">SHIP LIST</div>
+			<input type="number" class="form-control" placeholder="SHIP 1" disabled="">
+			<input type="number" class="form-control" placeholder="SHIP 2" disabled="">
+			<input type="number" class="form-control" placeholder="SHIP 3" disabled="">
+			<input type="number" class="form-control" placeholder="SHIP 4" disabled="">
+			<input type="number" class="form-control" placeholder="SHIP 5" disabled="">
+			<input type="number" class="form-control" placeholder="SHIP 6" disabled="">
+			<div class="input-group-text" style="width: 60px;"></div>
+		</div>
 		<div class="input-group-text" style="width: 170px;">PLANET TARGET<span style="visibility: hidden;">_</span><a href="https://starship.primatepirate.com/planetarium" target="_blank">ID</a></div>
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_00" value="SS-TARGET-SWITCH_00" step="1" min="1" max="100000" aria-label="">
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_01" value="SS-TARGET-SWITCH_01" step="1" min="1" max="100000" aria-label="">

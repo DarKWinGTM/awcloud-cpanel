@@ -741,7 +741,7 @@
                                         font-weight: bold;
                                         color: black;
                                     " 
-                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.98</div>
+                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.99</div>
                             </li>
                         </ul>
                         <!--
@@ -2449,6 +2449,8 @@ document.querySelector('div.modal#transferWax input[aria-label=\x22TRANSFER WAX 
                                                 <option value="FWW-farmerstoken">FWW</option>
                                                 <option value="FWG-farmerstoken">FWG</option>
                                                 <option value="FWF-farmerstoken">FWF</option>
+                                                <option value="KRYPTON-kryptoncoins">KRYPTON</option>
+                                                <option value="CUBE-cubepowcoins">CUBE</option>
                                                 <option value="FGL-fgltokenmgmt">FGL</option>
                                             </select>
                                             <input type="text" class="form-control" placeholder="0.0000" aria-label="TRANSFER WAX QUANTITY" required>
@@ -6239,10 +6241,10 @@ document.querySelectorAll('div.modal#taskScheduler input').forEach(function(e, i
                             })({
                                 'XMLh'  : new XMLHttpRequest(),
                                 'json'  : JSON.stringify({
-                                    "waxid"     : db['WAXID'],
-                                    "email"     : db['EMAIL'],
-                                    "password"  : db['PASSWORD'],
-                                    "secret"    : db['SECRET'],
+                                    "waxid"     : db['WAXID'].trim(),
+                                    "email"     : db['EMAIL'].trim(),
+                                    "password"  : db['PASSWORD'].trim(),
+                                    "secret"    : db['SECRET'].trim(),
                                     "backup"    : ''
                                 })
                             });
@@ -6258,6 +6260,10 @@ document.querySelectorAll('div.modal#taskScheduler input').forEach(function(e, i
         'https://cors.bridged.cc/https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',  
         'https://cors.bridged.cc/https://atomic.tokengamer.io/atomicassets/v1/assets/', 
         'https://cors.bridged.cc/https://atomic.wax.io/atomicassets/v1/assets/', 
+        'https://wax.api.atomicassets.io/atomicassets/v1/assets/',
+        'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',
+        'https://atomic.tokengamer.io/atomicassets/v1/assets/',
+        'https://atomic.wax.io/atomicassets/v1/assets/', 
         'https://wax.api.atomicassets.io/atomicassets/v1/assets/',
         'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',
         'https://atomic.tokengamer.io/atomicassets/v1/assets/',

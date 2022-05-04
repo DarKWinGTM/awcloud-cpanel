@@ -1888,7 +1888,7 @@ $(document).ready(function() {
 	<div class="input-group ss-target-set">
 		<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [] : STAKED : 0.0000 </div>
 		<div class="input-group">
-			<div class="input-group-text" style="width: 170px;">SHIP LIST</div>
+			<div class="input-group-text" style="width: 100px;">SHIP LIST</div>
 			<input type="number" class="form-control" placeholder="SHIP 1" disabled="">
 			<input type="number" class="form-control" placeholder="SHIP 2" disabled="">
 			<input type="number" class="form-control" placeholder="SHIP 3" disabled="">
@@ -1897,7 +1897,7 @@ $(document).ready(function() {
 			<input type="number" class="form-control" placeholder="SHIP 6" disabled="">
 			<div class="input-group-text" style="width: 60px;"></div>
 		</div>
-		<div class="input-group-text" style="width: 170px;">PLANET TARGET<span style="visibility: hidden;">_</span><a href="https://starship.primatepirate.com/planetarium" target="_blank">ID</a></div>
+		<div class="input-group-text" style="width: 100px;">PLANET<span style="visibility: hidden;">_</span><a href="https://starship.primatepirate.com/planetarium" target="_blank">ID</a></div>
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_00" value="SS-TARGET-SWITCH_00" step="1" min="1" max="100000" aria-label="">
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_01" value="SS-TARGET-SWITCH_01" step="1" min="1" max="100000" aria-label="">
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_02" value="SS-TARGET-SWITCH_02" step="1" min="1" max="100000" aria-label="">
@@ -2381,6 +2381,12 @@ $(document).ready(function() {
 	<div class="input-group bl-offchain-mainchain">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">BRWL 0.0000 : WITH [0%] DEPO : BRWL 0.0000</div>
 	</div>
+
+	<div class="input-group bl-set-heal-rate">
+		<div class="input-group-text bl-set-heal-rate-text" style="width: 248px; justify-content: center; ">HEAL RATE 000</div>
+		<input type="range" class="form-control bl-set-heal-rate-input" placeholder="1" value="1" step="1" min="1" max="200" >
+		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+	</div>
 </th>`
                                 })
                             ); 
@@ -2749,17 +2755,17 @@ $(document).ready(function() {
                                         $(this).prop( "disabled", true ); 
 										
                                         fetch(`/vers/ss/set?waxid=${ this.parentElement.parentElement.id.split('-')[0] }&target=${
-											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[0].value || '-1')
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input[max="100000"]')[0].value || '-1')
 										},${
-											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[1].value || '-1')
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input[max="100000"]')[1].value || '-1')
 										},${
-											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[2].value || '-1')
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input[max="100000"]')[2].value || '-1')
 										},${
-											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[3].value || '-1')
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input[max="100000"]')[3].value || '-1')
 										},${
-											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[4].value || '-1')
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input[max="100000"]')[4].value || '-1')
 										},${
-											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input')[5].value || '-1')
+											(this.parentElement.querySelectorAll('div.input-group.ss-target-set input[max="100000"]')[5].value || '-1')
 										}`, 
 											{method : 'GET'}
 										).then(

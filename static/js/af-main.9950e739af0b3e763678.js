@@ -12507,7 +12507,7 @@
         function ud(t, e) {
             if (1 & t && (Er(0, "span", 16),
             lo(1),
-            Ta(2, "number"),Bo
+            Ta(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();

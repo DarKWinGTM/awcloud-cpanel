@@ -12305,6 +12305,10 @@
                     case 486824:
                         if (this.AxeLegendary)
                             return this.AxeLegendary.nft_name + " " + this.AxeLegendary.rarity
+                    case 497922:
+                        return 'Short Bow Common'
+                    case 497923:
+                        return 'Short Bow Uncommon'
                     }
                 }
                 getRarity(t) {
@@ -12312,10 +12316,12 @@
                     case 486820:
                     case 486825:
                     case 486831:
+                    case 497922:
                         return "common";
                     case 486821:
                     case 486826:
                     case 486832:
+                    case 497923:
                         return "uncommon";
                     case 486822:
                     case 486827:
@@ -12501,7 +12507,7 @@
         function ud(t, e) {
             if (1 & t && (Er(0, "span", 16),
             lo(1),
-            Ta(2, "number"),
+            Ta(2, "number"),Bo
             xr()),
             2 & t) {
                 const t = Rr();

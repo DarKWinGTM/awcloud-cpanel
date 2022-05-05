@@ -4195,13 +4195,13 @@ $(document).ready(function() {
 					    }; return arr.join(',')
 					})([]) != ''
                 ){
-                    document.querySelector('iframe[id*="fwMonitor"]').setAttribute(
-                        'src', '/?monitor=fw&waxid=' + (function (arr){
-						    for (WAXID in window['information-data']['DATA']){
-						        if( window['information-data']['DATA'][WAXID]['vers']['fw']['sw'] == true ){ arr.push(WAXID) }
-						    }; return arr.join(',')
-						})([])
-                    ); 
+                    //	document.querySelector('iframe[id*="fwMonitor"]').setAttribute(
+                    //	    'src', '/?monitor=fw&waxid=' + (function (arr){
+					//		    for (WAXID in window['information-data']['DATA']){
+					//		        if( window['information-data']['DATA'][WAXID]['vers']['fw']['sw'] == true ){ arr.push(WAXID) }
+					//		    }; return arr.join(',')
+					//		})([])
+                    //	); 
                     document.querySelector('iframe[id*="fwMonitor"]').setAttribute(
                         'url', '/?monitor=fw&waxid=' + (function (arr){
 						    for (WAXID in window['information-data']['DATA']){
@@ -4227,13 +4227,13 @@ $(document).ready(function() {
 					    }; return arr.join(',')
 					})([]) != ''
                 ){
-                    document.querySelector('iframe[id*="blMonitor"]').setAttribute(
-                        'src', '/bl-monitor?waxid=' + (function (arr){
-						    for (WAXID in window['information-data']['DATA']){
-						        if( window['information-data']['DATA'][WAXID]['vers']['bl']['sw'] == true ){ arr.push(WAXID) }
-						    }; return arr.join(',')
-						})([])
-                    ); 
+                    //	document.querySelector('iframe[id*="blMonitor"]').setAttribute(
+                    //	    'src', '/bl-monitor?waxid=' + (function (arr){
+					//		    for (WAXID in window['information-data']['DATA']){
+					//		        if( window['information-data']['DATA'][WAXID]['vers']['bl']['sw'] == true ){ arr.push(WAXID) }
+					//		    }; return arr.join(',')
+					//		})([])
+                    //	); 
                     document.querySelector('iframe[id*="blMonitor"]').setAttribute(
                         'url', '/bl-monitor?waxid=' + (function (arr){
 						    for (WAXID in window['information-data']['DATA']){
@@ -4244,38 +4244,38 @@ $(document).ready(function() {
 					//	document.querySelector('iframe[id*="blMonitor"]').parentElement.style.display= 'table-cell'; 
 					document.querySelector('iframe[id*="blMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="blMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 412 }`; 
                 }; 
-                //	if (
-                //	    window['information-data']['DATA'] && 
-                //	    Object.keys( window['information-data']['DATA'] ).length >= 1 && 
-				//		!document.querySelector('iframe[id*="afMonitor"]').getAttribute('url').match(
-                //	        (function (arr){
-				//			    for (WAXID in window['information-data']['DATA']){
-				//			        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
-				//			    }; return arr.join(',')
-				//			})([])
-                //	    ) && (function (arr){
-				//		    for (WAXID in window['information-data']['DATA']){
-				//		        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
-				//		    }; return arr.join(',')
-				//		})([]) != ''
-                //	){
-                //	    document.querySelector('iframe[id*="afMonitor"]').setAttribute(
-                //	        'src', '/af-monitor?waxid=' + (function (arr){
-				//			    for (WAXID in window['information-data']['DATA']){
-				//			        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
-				//			    }; return arr.join(',')
-				//			})([])
-                //	    ); 
-                //	    document.querySelector('iframe[id*="afMonitor"]').setAttribute(
-                //	        'url', '/af-monitor?waxid=' + (function (arr){
-				//			    for (WAXID in window['information-data']['DATA']){
-				//			        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
-				//			    }; return arr.join(',')
-				//			})([])
-                //	    ); 
-				//		//	document.querySelector('iframe[id*="afMonitor"]').parentElement.style.display= 'table-cell'; 
-				//		document.querySelector('iframe[id*="afMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="afMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 412 }`; 
-                //	}; 
+                if (
+                    window.hasOwnProperty('information-data') && window['information-data'].hasOwnProperty('DATA') && window['information-data']['DATA'] && 
+                    Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+					!document.querySelector('iframe[id*="afMonitor"]').getAttribute('url').match(
+                        (function (arr){
+						    for (WAXID in window['information-data']['DATA']){
+						        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
+						    }; return arr.join(',')
+						})([])
+                    ) && (function (arr){
+					    for (WAXID in window['information-data']['DATA']){
+					        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
+					    }; return arr.join(',')
+					})([]) != ''
+                ){
+                    //	document.querySelector('iframe[id*="afMonitor"]').setAttribute(
+                    //	    'src', '/?monitor=af&waxid=' + (function (arr){
+					//		    for (WAXID in window['information-data']['DATA']){
+					//		        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
+					//		    }; return arr.join(',')
+					//		})([])
+                    //	); 
+                    document.querySelector('iframe[id*="afMonitor"]').setAttribute(
+                        'url', '/?monitor=af&waxid=' + (function (arr){
+						    for (WAXID in window['information-data']['DATA']){
+						        if( window['information-data']['DATA'][WAXID]['vers']['af']['sw'] == true ){ arr.push(WAXID) }
+						    }; return arr.join(',')
+						})([])
+                    ); 
+					//	document.querySelector('iframe[id*="afMonitor"]').parentElement.style.display = 'table-cell'; 
+					document.querySelector('iframe[id*="afMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="afMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 480 }`; 
+                }; 
 				
                 try{ window['check-wax-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['wax'] }catch(e){}; 
                 try{

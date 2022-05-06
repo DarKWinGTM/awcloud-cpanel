@@ -5300,8 +5300,6 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             "value", event.relatedTarget.parentElement.parentElement.parentElement.id
                         );
 
-
-
                         document.querySelector('div[id*="gotBAN"] input[aria-label*="First Name"]').value = '';
                         document.querySelector('div[id*="gotBAN"] input[aria-label*="Last Name"]').value = '';
                         document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value = '';
@@ -5334,8 +5332,8 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             ) {
 
                                 document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').innerText = `Report : ${ event.relatedTarget.parentElement.parentElement.parentElement.id } - Ticket ID ${
-        result['text'].split('**-**')[0]
-      }`;
+                                  result['text'].split('**-**')[0]
+                                }`;
 
                                 document.querySelector('div[id*="gotBAN"] input[aria-label*="First Name"]').setAttribute(
                                     "value", result['text'].split('**-**')[1]
@@ -5446,16 +5444,16 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             $('div[id*="gotBAN"] button.btn.btn-primary.submit').prop('disabled', true);
 
                             fetch(`report/${
-        document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
-      }/delete?firstname=${
-        document.querySelector('div[id*="gotBAN"] input[aria-label*="First Name"]').value
-      }&lastname=${
-        document.querySelector('div[id*="gotBAN"] input[aria-label*="Last Name"]').value
-      }&email=${
-        encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value )
-      }&discord=${
-        encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Discord"]').value )
-      }&IssueType=&subject=&message=`, {
+                              document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                            }/delete?firstname=${
+                              document.querySelector('div[id*="gotBAN"] input[aria-label*="First Name"]').value
+                            }&lastname=${
+                              document.querySelector('div[id*="gotBAN"] input[aria-label*="Last Name"]').value
+                            }&email=${
+                              encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value )
+                            }&discord=${
+                              encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Discord"]').value )
+                            }&IssueType=&subject=&message=`, {
                                 "headers": {},
                                 "method": "GET",
                             }).then(
@@ -5549,36 +5547,36 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 if (Math.ceil(Math.random() * 100) >= 32) {
                                     if (!$(document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]')).attr('disabled')) {
                                         document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value = `${
-            document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value.split(/@|\+/gi)[0]
-          }+${
-            document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.random')['value'].split(' ').join('')
-          }@${
-            document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value.split(/@|\+/gi).splice(-1)[0]
-          }`;
+                                          document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value.split(/@|\+/gi)[0]
+                                        }+${
+                                          document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.random')['value'].split(' ').join('')
+                                        }@${
+                                          document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value.split(/@|\+/gi).splice(-1)[0]
+                                        }`;
                                     };
                                 } else {
                                     if (!$(document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]')).attr('disabled')) {
                                         document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value = `${
-            document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value.split(/@|\+/gi)[0]
-          }@${
-            document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value.split(/@|\+/gi).splice(-1)[0]
-          }`;
+                                          document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value.split(/@|\+/gi)[0]
+                                        }@${
+                                          document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value.split(/@|\+/gi).splice(-1)[0]
+                                        }`;
                                     };
                                 };
                                 //  RANDOM DISCORD USERNAME
                                 if (Math.ceil(Math.random() * 100) >= 16) {
                                     if (!$(document.querySelector('div[id*="gotBAN"] input[aria-label*="Discord"]')).attr('disabled')) {
                                         document.querySelector('div[id*="gotBAN"] input[aria-label*="Discord"]').value = `${
-            document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.random')['value'].split(' ').join('')
-          }#${
-            document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.random')['disid']
-          }`;
+                                          document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.random')['value'].split(' ').join('')
+                                        }#${
+                                          document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.random')['disid']
+                                        }`;
                                     };
                                 } else {
                                     if (!$(document.querySelector('div[id*="gotBAN"] input[aria-label*="Discord"]')).attr('disabled')) {
                                         document.querySelector('div[id*="gotBAN"] input[aria-label*="Discord"]').value = `${
-            document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.random')['value'].split(' ').join('')
-          }`;
+                                          document.querySelector('div[id*="gotBAN"] button.btn.btn-primary.random')['value'].split(' ').join('')
+                                        }`;
                                     };
                                 };
                                 //  RANDOM MESSAGE
@@ -5620,22 +5618,22 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                         $('div[id*="gotBAN"] button.btn.btn-primary.submit').prop('disabled', true);
 
                         fetch(`report/${
-      document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
-    }/post?firstname=${
-      document.querySelector('div[id*="gotBAN"] input[aria-label*="First Name"]').value
-    }&lastname=${
-      document.querySelector('div[id*="gotBAN"] input[aria-label*="Last Name"]').value
-    }&email=${
-      encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value )
-    }&discord=${
-      encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Discord"]').value )
-    }&IssueType=${
-      document.querySelector('div[id*="gotBAN"] select[aria-label*="Issue Type"]').value
-    }&subject=${
-      encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Subject"]').value )
-    }&message=${
-      encodeURIComponent( document.querySelector('div[id*="gotBAN"] textarea[aria-label*="Message"]').value )
-    }`, {
+                          document.querySelector('div.modal#gotBAN').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                        }/post?firstname=${
+                          document.querySelector('div[id*="gotBAN"] input[aria-label*="First Name"]').value
+                        }&lastname=${
+                          document.querySelector('div[id*="gotBAN"] input[aria-label*="Last Name"]').value
+                        }&email=${
+                          encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Email"]').value )
+                        }&discord=${
+                          encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Discord"]').value )
+                        }&IssueType=${
+                          document.querySelector('div[id*="gotBAN"] select[aria-label*="Issue Type"]').value
+                        }&subject=${
+                          encodeURIComponent( document.querySelector('div[id*="gotBAN"] input[aria-label*="Subject"]').value )
+                        }&message=${
+                          encodeURIComponent( document.querySelector('div[id*="gotBAN"] textarea[aria-label*="Message"]').value )
+                        }`, {
                             "headers": {},
                             "method": "GET",
                         }).then(

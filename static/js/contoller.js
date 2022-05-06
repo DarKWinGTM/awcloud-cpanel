@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     
     //	window.onload = function (){
@@ -2383,13 +2382,33 @@ $(document).ready(function() {
 	</div>
 
 	<div class="input-group bl-set-heal-rate">
-		<div class="input-group-text bl-set-heal-rate-text" style="width: 248px; justify-content: center; ">HEAL RATE 000</div>
-		<input type="range" class="form-control bl-set-heal-rate-input" placeholder="1" value="1" step="1" min="1" max="200" >
+		<div class="input-group-text bl-set-heal-rate-text" style="width: 248px; justify-content: center; ">HEAL RATE 0000</div>
+		<input type="range" class="form-control bl-set-heal-rate-input" placeholder="1" value="1" step="1" min="0" max="19999" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 </th>`
                                 })
                             ); 
+							document.querySelector(`th[id*="${ WAXID }-bl-panel-monitor"]`).querySelector('input.bl-set-heal-rate-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bl-panel-monitor"]').querySelector('input.bl-set-heal-rate-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-bl-panel-monitor"]'
+								).querySelector(
+									'div.bl-set-heal-rate-text'
+								).innerText = 'HEAL RATE  ' + ('0000' + parseInt(this['var']['db']['value'] / 100) ).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/bl/set?waxid=${ this['var']['id'] }&set_heal=${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -2514,12 +2533,11 @@ $(document).ready(function() {
 								
 							}); 
 							
-							
-							
                             try{
                                 window[WAXID].querySelector('input.pause_switch[type="checkbox"]').checked 	= !window['information-data']['DATA'][WAXID]['pause'] || false
                                 window[WAXID].querySelector('input.eco_switch[type="checkbox"]').checked 	= window['information-data']['DATA'][WAXID]['lmlw']
                                 window[WAXID].querySelector('input.resm_switch[type="checkbox"]').checked 	= window['information-data']['DATA'][WAXID]['resm']
+                                window[WAXID].querySelector('input.vpnp_switch[type="checkbox"]').checked 	= window['information-data']['DATA'][WAXID]['vpnp']
                                 //  (function (state){
                                 //      if (!state){
                                 //          return true
@@ -2561,7 +2579,7 @@ $(document).ready(function() {
                                                 })(this); 
                                             }; 
                                         }).catch(error => {
-                                            $.notify(`NOT : ${error}`, "error", { position : "top" }); 
+                                            $.notify(`NOT ${this.parentElement.parentElement.parentElement.parentElement.parentElement.id} : ${error}`, "error", { position : "top" }); 
                                             (function (checkbox){
                                                 setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); checkbox.checked = !checkbox.checked;
                                             })(this); 
@@ -2651,7 +2669,52 @@ $(document).ready(function() {
                                                 })(this); 
                                             }; 
                                         }).catch(error => {
-                                            $.notify(`RES MODE : ${ error['text'] }`, "error", { position : "top" }); 
+                                            $.notify(`RES MODE ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id } : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (checkbox){
+                                                setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); checkbox.checked = !checkbox.checked;
+                                            })(this); 
+                                        }); 
+                                    };
+                                    //  if (this.checked) {
+                                    //      console.log("Checkbox is checked..");
+                                    //  }else{
+                                    //      console.log("Checkbox is not checked..");
+                                    //  }; 
+                                });
+                                window[WAXID].querySelector('input.vpnp_switch[type="checkbox"]').addEventListener('change', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+                                        $(this).prop( "disabled", true ); $(this).attr('readonly', true);
+                                        
+                                        fetch(
+                                            `/vpnp?waxid=${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }&value=${ this.checked }`,
+                                            {method : 'GET'}
+                                        ).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            if(result['text'] != 'okay'){ throw result }else{
+                                                if (
+                                                    result['data'] == true
+                                                ){
+                                                    this.checked = true; 
+                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
+                                                        'VPN MODE ON', 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    this.checked = false; 
+                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
+                                                        'VPN MODE NO', 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`VPN MODE ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id } : ${ error['text'] }`, "error", { position : "top" }); 
                                             (function (checkbox){
                                                 setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); checkbox.checked = !checkbox.checked;
                                             })(this); 
@@ -3426,6 +3489,9 @@ $(document).ready(function() {
 								try{
 									window[WAXID].querySelector('input.resm_switch[type="checkbox"]').checked 	= window['information-data']['DATA'][WAXID]['resm']
 								}catch(e){}; 
+								try{
+									window[WAXID].querySelector('input.vpnp_switch[type="checkbox"]').checked 	= window['information-data']['DATA'][WAXID]['vpnp']
+								}catch(e){}; 
 								
 								try{
 									window['total'] = {
@@ -3948,7 +4014,18 @@ $(document).ready(function() {
 										
 										//	document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
 										//	document.querySelector(`th[id*="${ _WAXID }-bl-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
-										
+
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-bl-panel-monitor"]'
+											).querySelector(
+												'div.bl-set-heal-rate-text'
+											).innerText = 'HEAL RATE  ' + ('0000' + parseInt(window['information-data']['DATA'][_WAXID]['vers']['bl']['cf']['set_heal'] / 100) ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelector('input.bl-set-heal-rate-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['bl']['cf']['set_heal']; 
+										}catch(e){ }; 
+
 										//	window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'] = []; 
 										//	for (logs in window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['event']){
 										//		window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'][ logs ] = window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['event'][ logs ].replace(

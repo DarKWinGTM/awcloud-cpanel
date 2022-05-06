@@ -46,8 +46,9 @@ body {
     margin-left: -4px;
     /* padding-left: 28px; */
 }
-
-
+.bg-black {
+    display: none;
+}
 
 
 

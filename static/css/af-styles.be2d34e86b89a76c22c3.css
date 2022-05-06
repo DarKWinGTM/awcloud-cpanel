@@ -1,4 +1,5 @@
 /*! custom inspector !*/
+/* MY CUSTOM CSS */
 body {
     font-family: monospace !important;
     font-size: x-large !important;
@@ -48,6 +49,14 @@ body {
 }
 .bg-black {
     display: none;
+}
+
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+body::-webkit-scrollbar {
+    display: none; 
 }
 
 

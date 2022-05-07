@@ -300,7 +300,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-deposit-fwf-text" style="width: 248px;">DEPOSIT FWF 0000</div>
-		<input type="range" class="form-control fw-deposit-fwf-input" placeholder="50" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control fw-deposit-fwf-input" placeholder="50" value="50" step="5" min="0" max="3200" >
 	</div>
 	<div class="input-group fw-deposit-fwg">
 		<div class="input-group-text">
@@ -311,7 +311,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-deposit-fwg-text" style="width: 248px;">DEPOSIT FWG 0000</div>
-		<input type="range" class="form-control fw-deposit-fwg-input" placeholder="50" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control fw-deposit-fwg-input" placeholder="50" value="50" step="5" min="0" max="3200" >
 	</div>
 	<div class="input-group fw-swap-wax-fwf">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO SWAP WHEN HAVE NOT ENOUGH SUPPLY</div>
@@ -436,7 +436,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-withdraw-fww-text" style="width: 248px;">WITHDRAW FWW 0000</div>
-		<input type="range" class="form-control fw-withdraw-fww-input" placeholder="40" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control fw-withdraw-fww-input" placeholder="40" value="50" step="5" min="0" max="6400" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 	<div class="input-group fw-withdraw-fwf">
@@ -449,7 +449,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-withdraw-fwf-text" style="width: 248px;">WITHDRAW FWF 0000</div>
-		<input type="range" class="form-control fw-withdraw-fwf-input" placeholder="40" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control fw-withdraw-fwf-input" placeholder="40" value="50" step="5" min="0" max="6400" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 	<div class="input-group fw-withdraw-fwg">
@@ -462,7 +462,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text fw-withdraw-fwg-text" style="width: 248px;">WITHDRAW FWG 0000</div>
-		<input type="range" class="form-control fw-withdraw-fwg-input" placeholder="40" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control fw-withdraw-fwg-input" placeholder="40" value="50" step="5" min="0" max="6400" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 	<div class="input-group fw-feature">
@@ -2089,7 +2089,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text gx-deposit-gmo-text" style="width: 248px;">DEPOSIT GMO 0000</div>
-		<input type="range" class="form-control gx-deposit-gmo-input" placeholder="50" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control gx-deposit-gmo-input" placeholder="50" value="50" step="5" min="0" max="3200" >
 	</div>
 	<div class="input-group gx-deposit-gmp">
 		<div class="input-group-text">
@@ -2100,7 +2100,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="input-group-text gx-deposit-gmp-text" style="width: 248px;">DEPOSIT GMP 0000</div>
-		<input type="range" class="form-control gx-deposit-gmp-input" placeholder="50" value="50" step="5" min="0" max="3100" >
+		<input type="range" class="form-control gx-deposit-gmp-input" placeholder="50" value="50" step="5" min="0" max="3200" >
 	</div>
 	<div class="input-group gx-swap-wax-gmo">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO SWAP WHEN HAVE NOT ENOUGH SUPPLY</div>

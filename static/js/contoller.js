@@ -2653,14 +2653,14 @@ $(document).ready(function() {
                                                     result['data'] == true
                                                 ){
                                                     this.checked = true; 
-                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
-                                                        'RES MODE ON', 
+                                                    $.notify(
+                                                        `RES MODE ON ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
                                                         "success", { position : "top" }
                                                     ); 
                                                 }else{
                                                     this.checked = false; 
-                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
-                                                        'RES MODE NO', 
+                                                    $.notify(
+                                                        `RES MODE NO ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
                                                         "error", { position : "top" }
                                                     ); 
                                                 };
@@ -2698,14 +2698,14 @@ $(document).ready(function() {
                                                     result['data'] == true
                                                 ){
                                                     this.checked = true; 
-                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
-                                                        'VPN MODE ON', 
+                                                    $.notify(
+														`VPN MODE ON ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
                                                         "success", { position : "top" }
                                                     ); 
                                                 }else{
                                                     this.checked = false; 
-                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
-                                                        'VPN MODE NO', 
+                                                    $.notify(
+                                                        `VPN MODE NO ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
                                                         "error", { position : "top" }
                                                     ); 
                                                 };
@@ -2787,14 +2787,14 @@ $(document).ready(function() {
                                                     result['data'] == true
                                                 ){
                                                     this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
-                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
-                                                        'STARSHIP ON', 
+                                                    $.notify(
+                                                        `STARSHIP ON ${this.parentElement.parentElement.parentElement.parentElement.parentElement}`, 
                                                         "success", { position : "top" }
                                                     ); 
                                                 }else{
                                                     this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
-                                                    $( this.parentElement.parentElement.parentElement.parentElement.parentElement ).notify(
-                                                        'STARSHIP NO', 
+                                                    $.notify(
+                                                        `STARSHIP NO ${this.parentElement.parentElement.parentElement.parentElement.parentElement}`, 
                                                         "error", { position : "top" }
                                                     ); 
                                                 };

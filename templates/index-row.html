@@ -31,10 +31,10 @@
     <span class="" id="">UNSTAKE</span>
   </button
   -->
-    <button type="button" class="btn-primary btn-block text-nowrap" data-bs-toggle="modal" data-bs-target="#stakeWAX" onclick="window['stake-tab'].click()" style="display: inline-block; float: left; width: 100%;">
+    <button type="button" class="btn-primary btn-block text-nowrap" data-bs-toggle="modal" data-bs-target="#stakeWAX" onclick="(function (){ window['stake-tab'].click() })()" style="display: inline-block; float: left; width: 100%;">
         <span class="" id="">STAKE</span>
     </button>
-    <button type="button" class="btn-primary btn-block text-nowrap" data-bs-toggle="modal" data-bs-target="#stakeWAX" onclick="window['rent-safe-stake-tab'].click()" style="display: inline-block; float: left; width: 100%;">
+    <button type="button" class="btn-primary btn-block text-nowrap" data-bs-toggle="modal" data-bs-target="#stakeWAX" onclick="(function (){ window['rent-safe-stake-tab'].click() })()" style="display: inline-block; float: left; width: 100%;">
         <span class="" id="">RENT</span>
     </button>
 </td>
@@ -58,7 +58,7 @@
 <td style="width: 0 !important;">
     <button id="land" type="submit" class="btn-primary btn-block land text-nowrap" style="width: 100%;" disabled>{ LAND }</button>
     <button type="button" class="btn-primary btn-block text-nowrap" data-bs-toggle="modal" data-bs-target="#setLand" style="width: 100%;">SET LAND</button>
-    <button type="button" class="btn-primary btn-block text-nowrap" data-bs-toggle="modal" data-bs-target="#stakeWAX" onclick="window['free-stake-tab'].click()" style="display: inline-block; float: left; width: 100%;">
+    <button type="button" class="btn-primary btn-block text-nowrap" data-bs-toggle="modal" data-bs-target="#stakeWAX" onclick="(function (){ window['free-stake-tab'].click() })()" style="display: inline-block; float: left; width: 100%;">
         <span class="" id="">FREE</span>
     </button>
 </td>
@@ -191,7 +191,7 @@ if(
         </div>
     </div>
 
-    <div class="justify-content-center" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; ">
+    <div class="justify-content-center text-nowrap" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; ">
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input ss_switch" value="0"><span style="padding-left: 5; display:none;"></span>
@@ -216,6 +216,18 @@ if(
                 <img src="https://cdn.discordapp.com/icons/917907386201702490/9f768f9db1aa0e4ae2a1f3413237e903.png?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " />
             </label>
         </div>
+        <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input tl_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <img src="https://cdn.discordapp.com/icons/887046137847091240/15b970b47f76bf802373673ddb08bdc3.webp?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " />
+            </label>
+        </div>
+        <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input df_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <img src="https://cdn.discordapp.com/icons/810868177294721035/81e7e41e242b72894bdbb3926601264b.webp?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " />
+            </label>
+        </div>
     </div>
 
     <div class="justify-content-center" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; ">
@@ -228,7 +240,7 @@ if(
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input bl_switch" value="0"><span style="padding-left: 5; display:none;"></span>
-                <img src="https://icoholder.com/files/img/fc64de24d3a237c473a2d90b442dd72e.png" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " onmouseover="this.src='https://d9hhrg4mnvzow.cloudfront.net/www.bcbrawlers.com/bf9e048f-pfp-carousel-new2.gif';" onmouseout="this.src='https://icoholder.com/files/img/fc64de24d3a237c473a2d90b442dd72e.png';">
+                <img src="https://icoholder.com/files/img/fc64de24d3a237c473a2d90b442dd72e.png" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " onmouseover="this.src='https://d9hhrg4mnvzow.cloudfront.net/www.bcbrawlers.com/bf9e048f-pfp-carousel-new2.gif';" onmouseout="this.src='https://icoholder.com/files/img/fc64de24d3a237c473a2d90b442dd72e.png';"/>
             </label>
         </div>
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
@@ -239,8 +251,20 @@ if(
         </div>
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input mg_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <input type="checkbox" class="form-check-input cf_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
                 <img src="https://cdn.discordapp.com/icons/920771363130732604/c9e666525b1887865ba5744e78e1dd36.webp?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " />
+            </label>
+        </div>
+        <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input rp_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <img src="https://cdn.discordapp.com/icons/851840058020462602/a_00448a5abd9d698b239be8c9403a91a1.webp?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " onmouseover="this.src='https://cdn.discordapp.com/icons/851840058020462602/a_00448a5abd9d698b239be8c9403a91a1.gif?size=96';" onmouseout="this.src='https://cdn.discordapp.com/icons/851840058020462602/a_00448a5abd9d698b239be8c9403a91a1.webp?size=96';"/>
+            </label>
+        </div>
+        <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input dw_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <img src="https://cdn.discordapp.com/icons/952199754018861056/bdf9907e79a12993ff5fa6a891505818.webp?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " />
             </label>
         </div>
     </div>
@@ -254,8 +278,8 @@ if(
         </div>
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input re_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
-                <img src="https://cdn.discordapp.com/icons/939021797100253215/afd8a45d058c3173cafc9417a1e533a2.webp?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; ">
+                <input type="checkbox" class="form-check-input kc_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <img src="https://cdn.discordapp.com/icons/913783828651315250/e83b9089cf9116309f3e0bb6df153ee5.webp?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; ">
             </label>
         </div>
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
@@ -266,8 +290,20 @@ if(
         </div>
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input mg_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
-                <img src="https://res.cloudinary.com/djbg82jdy/image/upload/v1644534951/logo2_dhs7za_h5oxjv.png" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " />
+                <input type="checkbox" class="form-check-input sr_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <img src="https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/QmQeXQdpw2YstqcFWefBYiCtjvaQzhVKt5t8gdfZ4wUQmc?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " onmouseover="this.src='https://cdn.discordapp.com/icons/918204102868090900/a_cd9b501c91ea649d737ac313f41f0823.gif?size=96';" onmouseout="this.src='https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/QmQeXQdpw2YstqcFWefBYiCtjvaQzhVKt5t8gdfZ4wUQmc?size=96';"/>
+            </label>
+        </div>
+        <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input mw_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <img src="https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/QmQTBr1uWg1bhXAQKFXYUooP8bwVU4e5cc2BzjFXEtTzSW?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " />
+            </label>
+        </div>
+        <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input dh_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
+                <img src="https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/QmPArtsVzBd7acfU3DXQK549JYY3K3SJmqWoqfq2ZuADc1?size=96" alt="" style="height: 25px; width: 25px; margin-left: 5px; border-radius: 50%; " />
             </label>
         </div>
     </div>

@@ -1,3 +1,503 @@
-h1, ul, p.text-center {
+/* MY CUSTOM CSS */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+body::-webkit-scrollbar {
+    display: none; 
+}
+
+
+div#starships {
+    text-align: center;
+    place-content: center;
+}
+
+.col-sm-6.col-xl-4.mb-3 {
+    width: 33% !important;
+}
+
+.row>* {
+    padding-right: calc(var(--bs-gutter-x) * .1) !important;
+    padding-left: calc(var(--bs-gutter-x) * .1) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+.text-blue {
+    color: #00a5ff
+}
+
+.text-light-grey {
+    color: #ccc
+}
+
+.text-sm {
+    font-size: 14px
+}
+
+.text-bold {
+    font-weight: 700
+}
+
+body {
+    background: #333;
+    border-top: 3px solid #00a5ff;
+    color: #fff
+}
+
+.card {
+    background: #21262a;
+    color: #fff
+}
+
+.list-inline-item:not(:last-child) {
+    margin-right: 20px
+}
+
+.list-inline li a {
+    color: #999;
+    text-decoration: none
+}
+
+.list-inline li a:hover {
+    color: #fff;
+    text-decoration: underline
+}
+
+.databox {
+    min-height: 500px
+}
+
+.bg-common {
+    background-color: #333
+}
+
+.bg-uncommon {
+    background-color: #33ff57
+}
+
+.bg-rare {
+    background-color: #3362ff
+}
+
+.bg-epic {
+    background-color: #c733ff
+}
+
+.bg-legendary {
+    background-color: #ff9c33
+}
+
+.bg-mythic {
+    background-color: red
+}
+
+.bg-founder {
+    background-color: #00a5ff
+}
+
+.ship-common .card-header {
+    border-top: 5px solid #333
+}
+
+.ship-uncommon .card-header {
+    border-top: 5px solid #33ff57
+}
+
+.ship-rare .card-header {
+    border-top: 5px solid #3362ff
+}
+
+.ship-epic .card-header {
+    border-top: 5px solid #c733ff
+}
+
+.ship-legendary .card-header {
+    border-top: 5px solid #ff9c33
+}
+
+.ship-mythic .card-header {
+    border-top: 5px solid red
+}
+
+.ship-founder .card-header {
+    border-top: 5px solid #00a5ff
+}
+
+.stat-row {
+    font-size: 14px
+}
+
+span.stat {
+    color: #00a5ff;
+    font-weight: 700
+}
+
+span.uom {
+    color: #ccc;
+    font-size: 14px
+}
+
+.card.ship {
+    overflow: hidden
+}
+
+.card.ship>.card-header {
+    --angle: 0deg;
+    -webkit-animation: rotate 10s linear infinite;
+    animation: rotate 10s linear infinite;
+    border-width: 6px 0 0
+}
+
+.ship-common .card-header {
+    -o-border-image: linear-gradient(90deg,#333,#333 25%,#666 40%,#333 50%,#000 65%,#333 70%,#333) 1;
+    border-image: linear-gradient(90deg,#333,#333 25%,#666 40%,#333 50%,#000 65%,#333 70%,#333) 1
+}
+
+.ship-uncommon .card-header {
+    -o-border-image: linear-gradient(90deg,#33ff57,#33ff57 25%,#99ffab 40%,#33ff57 50%,#00cc24 65%,#33ff57 70%,#33ff57) 1;
+    border-image: linear-gradient(90deg,#33ff57,#33ff57 25%,#99ffab 40%,#33ff57 50%,#00cc24 65%,#33ff57 70%,#33ff57) 1
+}
+
+.ship-rare .card-header {
+    -o-border-image: linear-gradient(90deg,#3362ff,#3362ff 25%,#99b1ff 40%,#3362ff 50%,#002fcc 65%,#3362ff 70%,#3362ff) 1;
+    border-image: linear-gradient(90deg,#3362ff,#3362ff 25%,#99b1ff 40%,#3362ff 50%,#002fcc 65%,#3362ff 70%,#3362ff) 1
+}
+
+.ship-epic .card-header {
+    -o-border-image: linear-gradient(90deg,#c733ff,#c733ff 25%,#e399ff 40%,#c733ff 50%,#9400cc 65%,#c733ff 70%,#c733ff) 1;
+    border-image: linear-gradient(90deg,#c733ff,#c733ff 25%,#e399ff 40%,#c733ff 50%,#9400cc 65%,#c733ff 70%,#c733ff) 1
+}
+
+.ship-legendary .card-header {
+    -o-border-image: linear-gradient(90deg,#ff9c33,#ff9c33 25%,#ffce99 40%,#ff9c33 50%,#cc6900 65%,#ff9c33 70%,#ff9c33) 1;
+    border-image: linear-gradient(90deg,#ff9c33,#ff9c33 25%,#ffce99 40%,#ff9c33 50%,#cc6900 65%,#ff9c33 70%,#ff9c33) 1
+}
+
+.ship-mythic .card-header {
+    -o-border-image: linear-gradient(90deg,red,red 25%,#f66 40%,red 50%,#900 65%,red 70%,red) 1;
+    border-image: linear-gradient(90deg,red,red 25%,#f66 40%,red 50%,#900 65%,red 70%,red) 1
+}
+
+.ship-founder .card-header {
+    -o-border-image: linear-gradient(90deg,#00a5ff,#00a5ff 25%,#66c9ff 40%,#00a5ff 50%,#006399 65%,#00a5ff 70%,#00a5ff) 1;
+    border-image: linear-gradient(90deg,#00a5ff,#00a5ff 25%,#66c9ff 40%,#00a5ff 50%,#006399 65%,#00a5ff 70%,#00a5ff) 1
+}
+
+::-moz-selection {
+    background: #00a5ff;
+    color: #fff
+}
+
+::selection {
+    background: #00a5ff;
+    color: #fff
+}
+
+.progress {
+    position: relative
+}
+
+.progress span {
+    color: #000;
+    display: block;
+    font-weight: 700;
+    position: absolute;
+    width: 100%
+}
+
+.fade-enter-active,.fade-leave-active {
+    transition: opacity .5s ease
+}
+
+.fade-enter-from,.fade-leave-to {
+    opacity: 0
+}
+
+.updated-at {
+    bottom: -15px;
+    color: #ccc;
+    font-size: 12px;
+    position: absolute
+}
+
+.page-header .list-inline-item a,.page-header .list-inline-item a:hover {
+    text-decoration: none
+}
+
+.card-planet-rewards {
+    font-size: 24px;
+    text-align: center
+}
+
+.card-planet-rewards p {
+    margin: 0
+}
+
+.big-ass-number {
+    color: #00a5ff;
+    font-size: 32px;
+    font-weight: 700
+}
+
+.main-menu {
+    margin-top: 20px
+}
+
+.main-menu,.main-menu li a {
+    margin-bottom: 10px
+}
+
+.main-menu li.active a {
+    color: #fff;
+    display: inline-block;
+    position: relative
+}
+
+.main-menu li.active a:after {
+    border-bottom: 3px solid #00a5ff;
+    bottom: -5px;
+    content: "";
+    left: 0;
+    position: absolute;
+    width: 100%
+}
+
+.form-select.rarity-select {
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    outline: none
+}
+
+.form-select.rarity-select.bg-common,.form-select.rarity-select.bg-rare {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+    color: #fff
+}
+
+.form-select.rarity-select.bg-black {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23999' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+    color: #999;
+    font-weight: 400
+}
+
+.text-right {
+    text-align: right
+}
+
+tbody,td,tfoot,th,thead,tr {
+    border-color: #999!important
+}
+
+table.table.table-ship-builder {
+    margin-bottom: 0
+}
+
+table.table.table-ship-builder thead th {
+    color: #00a5ff
+}
+
+table.table.table-ship-builder tfoot tr th {
+    border-color: #666!important;
+    border-bottom: none
+}
+
+.notice {
+    border-radius: 5px;
+    padding: 5px 15px
+}
+
+.notice.notice-green {
+    background-color: #00cc24;
+    border: 2px solid #00991b;
+    color: #fff
+}
+
+.notice.notice-green p {
+    margin: 0
+}
+
+.notice.notice-green a {
+    color: #fff
+}
+
+.notice.notice-green.pulse {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: greenpulse;
+    animation-name: greenpulse
+}
+
+.notice.notice-orange {
+    background-color: #cc6900;
+    border: 2px solid #994f00;
+    color: #fff
+}
+
+.notice.notice-orange p {
+    margin: 0
+}
+
+.notice.notice-orange a {
+    color: #fff
+}
+
+.notice.notice-orange.pulse {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: orangepulse;
+    animation-name: orangepulse
+}
+
+@-webkit-keyframes greenpulse {
+    0% {
+        background-color: #33ff57
+    }
+
+    50% {
+        background-color: #00b320
+    }
+
+    to {
+        background-color: #33ff57
+    }
+}
+
+@keyframes greenpulse {
+    0% {
+        background-color: #33ff57
+    }
+
+    50% {
+        background-color: #00b320
+    }
+
+    to {
+        background-color: #33ff57
+    }
+}
+
+@-webkit-keyframes orangepulse {
+    0% {
+        background-color: #ff9c33
+    }
+
+    50% {
+        background-color: #b35c00
+    }
+
+    to {
+        background-color: #ff9c33
+    }
+}
+
+@keyframes orangepulse {
+    0% {
+        background-color: #ff9c33
+    }
+
+    50% {
+        background-color: #b35c00
+    }
+
+    to {
+        background-color: #ff9c33
+    }
+}
+
+select.form-select {
+    background-color: hsla(0,0%,100%,.15);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+    border: 1px solid hsla(0,0%,100%,.2);
+    color: #fff
+}
+
+.card.ship .tab-bar {
+    border-bottom: 1px solid #666;
+    display: flex;
+    margin: -4px 0 0;
+    padding: 0
+}
+
+.card.ship .tab-bar>li {
+    border-right: 1px solid #666;
+    cursor: pointer;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0
+}
+
+.card.ship .tab-bar>li:last-child {
+    border-right: none
+}
+
+.card.ship .tab-bar>li>a {
+    display: block;
+    font-weight: 700;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%
+}
+
+.card.ship .tab-bar>li>a:hover {
+    background: #333
+}
+
+.card.ship .tab-bar>li>a.current {
+    background: transparent;
+    color: #00a5ff;
+    cursor: default
+}
+
+.card.ship .tab-panels .panel {
+    padding: .5rem 1rem 0
+}
+
+.card.ship .countdown .icon,.card.ship .waiting .icon {
     display: none;
+    height: 27px;
+    position: relative;
+    width: 30px
+}
+
+.card.ship .countdown .icon span,.card.ship .waiting .icon span {
+    font-size: 22px;
+    position: absolute;
+    top: 9px
+}
+
+.card.ship .countdown .desc,.card.ship .countdown .timer,.card.ship .waiting .desc,.card.ship .waiting .timer {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700
+}
+
+.card.ship .waiting {
+    color: #888
+}
+
+.card.ship .waiting .desc {
+    font-size: 16px;
+    font-weight: 400
+}
+
+.card.ship .info {
+    color: #ccc;
+    font-size: 14px;
+    font-style: italic
 }

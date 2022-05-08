@@ -582,6 +582,16 @@ $(document).ready(function() {
 				<input type="text" class="form-control fw-auto-transfer-supply-farmer-coin-id-input" placeholder="xxxxx.wam" aria-label="AUTO TRANSFER SUPPLY TO ADDRESS" >
 			</div>
 		</div>
+		
+		<div class="input-group fw-unwear-tool">
+			<div class="input-group-text" style="width: inherit; display : none; ">UNWEAR</div>
+			<div class="input-group-text" style="width: 96px;">UNWEAR</div>
+			<select class="form-select" id="fw-unwear-tool-select">
+				<option value="Mining Excavator"></option>
+			</select>
+			<button type="submit" class="btn btn-primary fw-unwear-tool-get" style="width: 60px; ">GET</button>
+		</div>
+
 	</div>
 </th>`
                                 })
@@ -1877,11 +1887,20 @@ $(document).ready(function() {
     style       = "display: none; "
 	id 			= "${ WAXID }-ss-monitor"
 >
-    <iframe
-    url         = "https://starship-explorer.io/?user=${ WAXID }"
-    style       = "width : 100%; height : 3038px; filter: invert(0.95) contrast(1.0) saturate(0.6);"
-	loading 	= "lazy"
-    ></iframe>
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=starshipgame"
+		onmouseover = "this.setAttribute('style', 'width : 100%; height : 1024px; margin-top: -450px ; overflow: auto; margin-bottom: 30px; ') "
+		onmouseout 	= "this.setAttribute('style', 'width : 100%; height : 484px; margin-top : -450px; overflow : auto; opacity : 0.1; ') "
+		style       = "width: 100%; height: 484px; margin-top: -450px; overflow: auto; opacity: 0.1; "
+		loading 	= "lazy"
+    	></iframe>
+    	<iframe
+    	url         = "/ss-monitor?wallet=${ WAXID }"
+    	style       = "width : 100%; height : 1024px; margin-top: -38px; /* filter: invert(0.95) contrast(1.0) saturate(0.6); */"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-ss-panel-monitor">
 	<div class="input-group ss-target-set">
@@ -1917,8 +1936,6 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-
-
 </th>`.replace(
 	/SS-TARGET-SWITCH_00/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[0]
 ).replace(
@@ -3820,19 +3837,27 @@ $(document).ready(function() {
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['ss']["sw"] == true && 
 										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
-										!document.querySelector(`iframe[src*="starship-explorer.io/?user=${ _WAXID }"]`) 
+										!document.querySelector(`iframe[src*="ss-monitor?wallet=${ _WAXID }"]`) 
 									){
-										document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID }"]`).setAttribute(
-											'src', document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID }"]`).getAttribute('url')
+										document.querySelector(`iframe[url*="ss-monitor?wallet=${ _WAXID }"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="ss-monitor?wallet=${ _WAXID }"]`).getAttribute('url')
 										); 
-										document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
-										document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="ss-monitor?wallet=${ _WAXID }"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="ss-monitor?wallet=${ _WAXID }"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
 										
 									}; 
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['ss']["sw"] == true && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=starshipgame"]`) 
+									){
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=starshipgame"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=starshipgame"]`).getAttribute('url')
+										); 
+									}; 
+									if(
+										window['information-data']["DATA"][ _WAXID ]['vers']['ss']["sw"] == true && 
 										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
-										document.querySelector(`iframe[src*="starship-explorer.io/?user=${ _WAXID }"]`) 
+										document.querySelector(`iframe[src*="ss-monitor?wallet=${ _WAXID }"]`) 
 									){
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-ss-panel-monitor"]').querySelector('div.ss-target-set div').innerText 			= `${

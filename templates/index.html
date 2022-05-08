@@ -479,6 +479,7 @@
                                 color: black;
                                 border: 0px !important;
                                 border-radius: 1px !important;
+                                zoom: 0.8 !important;
                             "
                         >
                             <li 
@@ -500,6 +501,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "document.querySelector('iframe#iframeChart').setAttribute('src', document.querySelector('iframe#iframeChart').src)"
                                 ><img
@@ -527,6 +529,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "window.localStorage.clear(); document.querySelector('iframe#ssMonitor').setAttribute('src', document.querySelector('iframe#ssMonitor').getAttribute('url'))"
                                 ><img
@@ -554,6 +557,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "window.localStorage.clear(); document.querySelector('iframe#fwMonitor').setAttribute('src', document.querySelector('iframe#fwMonitor').getAttribute('url'))"
                                 ><img
@@ -581,6 +585,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "window.localStorage.clear(); document.querySelector('iframe#kqMonitor').setAttribute('src', document.querySelector('iframe#kqMonitor').getAttribute('url'))"
                                 ><img
@@ -608,6 +613,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "window.localStorage.clear(); document.querySelector('iframe#ccMonitor').setAttribute('src', document.querySelector('iframe#ccMonitor').getAttribute('url'))"
                                 ><img
@@ -635,6 +641,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "window.localStorage.clear(); document.querySelector('iframe#gmMonitor').setAttribute('src', document.querySelector('iframe#gmMonitor').getAttribute('url'))"
                                 ><img
@@ -662,6 +669,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "window.localStorage.clear(); document.querySelector('iframe#gxMonitor').setAttribute('src', document.querySelector('iframe#gxMonitor').getAttribute('url'))"
                                 ><img
@@ -689,6 +697,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "window.localStorage.clear(); document.querySelector('iframe#blMonitor').setAttribute('src', document.querySelector('iframe#blMonitor').getAttribute('url'))"
                                 ><img
@@ -716,6 +725,7 @@
                                     style           = "
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     "
                                     onclick         = "window.localStorage.clear(); document.querySelector('iframe#afMonitor').setAttribute('src', document.querySelector('iframe#afMonitor').getAttribute('url'))"
                                 ><img
@@ -740,6 +750,7 @@
                                     style            ="
                                         font-weight: bold;
                                         color: black;
+                                        font-size: large;
                                     " 
                                     onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.99</div>
                             </li>
@@ -849,10 +860,10 @@
 
                                         document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"][colspan="7"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-fw-panel-monitor"][colspan="2"]`).style.removeProperty("position");
-                                        document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position");
-                                        document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position");
-                                        document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("position");
-                                        document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("position");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-ss-monitor"][colspan="7"]`).style.removeProperty("position");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-ss-panel-monitor"][colspan="2"]`).style.removeProperty("position");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"][colspan="7"]`).style.removeProperty("position");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-kq-panel-monitor"][colspan="2"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"][colspan="7"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-panel-monitor"][colspan="2"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"][colspan="7"]`).style.removeProperty("position");
@@ -864,10 +875,10 @@
 
                                         document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"][colspan="7"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-fw-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
-                                        document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility");
-                                        document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility");
-                                        document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.removeProperty("visibility");
-                                        document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.removeProperty("visibility");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-ss-monitor"][colspan="7"]`).style.removeProperty("visibility");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-ss-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"][colspan="7"]`).style.removeProperty("visibility");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-kq-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"][colspan="7"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-bl-monitor"][colspan="7"]`).style.removeProperty("visibility");
@@ -891,8 +902,8 @@
 
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
-                                        document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
-                                        document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
+                                        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=starshipgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
+                                        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=starshipgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fgltokenmgmt"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
@@ -904,8 +915,8 @@
                                         
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
-                                        document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
-                                        document.querySelector(`iframe[url*="starship-explorer.io/?user=${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
+                                        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=starshipgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
+                                        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=starshipgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fgltokenmgmt"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
@@ -1256,17 +1267,22 @@ c-39.39-24.71-58.64-71.15-47.18-113.86c13.72-51.14,46.19-77.99,99.16-82.01C1129.
                                     <form action="#SENDNFT" onsubmit="(function (){ return false })()" class="row-cols-auto needs-validation" validate>
                                         <div class="input-group">
                                             <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">MEMO</div>
-                                            <input type="text" class="form-control" placeholder="MEMO" aria-label="SEND NFT MEMO">
+                                            <input type="text" class="form-control" placeholder="MEMO" aria-label="SEND NFT MEMO" style="width: 200px; ">
                                             <div class="input-group-text" id="basic-addon WAX" style="width: 76px;">TO</div>
-                                            <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="SEND NFT TO WAX ID" required>
+                                            <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="SEND NFT TO WAX ID" style="width: 228px; " required>
                                             <button type="submit" class="btn btn-primary nft send-nft">SEND NFT</button>
-                                            <select class="form-select nft send-all">
+                                            <select class="form-select nft send-all" style="width: 256px; ">
                                                 <option value="0" selected>None</option>
                                                 <option value="1">All In Bags</option>
                                                 <option value="2">All Account Bags</option>
                                                 <option value="17">FW Burn Crops</option>
                                                 <option value="18">FW Ware Item</option>
                                                 <option value="19">AF Ware Item</option>
+                                                <option value="20" name="Farmer Coin">FW Send Farmer Coin By Amount</option>
+                                                <option value="20" name="Corn">FW Send Corn By Amount</option>
+                                                <option value="20" name="Barley">FW Send Barley By Amount</option>
+                                                <option value="20" name="Corn Seed">FW Send Corn Seed By Amount</option>
+                                                <option value="20" name="Barley Seed">FW Send Barley Seed By Amount</option>
                                             </select>
                                             <script type="text/javascript">
 $('.form-select.nft.send-all').on('change', function() {
@@ -1275,6 +1291,15 @@ $('.form-select.nft.send-all').on('change', function() {
         case '0':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
                 e.checked = false
             })
@@ -1282,7 +1307,15 @@ $('.form-select.nft.send-all').on('change', function() {
         case '1':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-            //    document.querySelectorAll('label[for*="send-nft-"] img').forEach(function (e, i, a) { e.click() })
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
                 e.checked = true
             })
@@ -1290,6 +1323,15 @@ $('.form-select.nft.send-all').on('change', function() {
         case '2':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
                 e.checked = false
             })
@@ -1297,76 +1339,252 @@ $('.form-select.nft.send-all').on('change', function() {
         case '3':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '4':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '5':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '6':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '7':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '8':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '9':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '10':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '11':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '12':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '13':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '14':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '15':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '16':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = false;
+            if (document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('type') != 'text'){
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO';
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            }; 
             break;
         case '17':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'burn';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO'
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
             break;
         case '18':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO'
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'farmersworld';
             break;
         case '19':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'text');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('step');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('min');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').removeAttribute('max');
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = 'stake';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = 'MEMO'
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = 'ageoffarming';
+            break;
+        case '20':
+            document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+            document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'range');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('step', '1');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('min', '0');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('max', '500');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '0';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').addEventListener('change', function(e) {
+                document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
+                    e.checked = false
+                });
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('checker', '0'); 
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = '0'
+                document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
+                    if(
+                        
+                        e.parentElement.querySelector('img').getAttribute('data-asset-name') == $( $('.form-select.nft.send-all') ).find("option:selected")[0].getAttribute('name') && parseInt(
+                            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('checker')
+                        ) < parseInt(
+                            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value
+                        )
+                    ){
+                        document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute(
+                            'checker', parseInt(
+                                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('checker')
+                            ) + 1
+                        ); 
+                        document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').getAttribute('checker'); 
+                        e.checked = true
+                    };
+                });
+            });
             break;
     };
 });
@@ -1432,6 +1650,8 @@ document.querySelector('div.modal#boxNFT').addEventListener('shown.bs.modal', fu
     document.querySelector('div.modal#boxNFT button.btn.btn-primary.set-tool').disabled = true;
     //    document.querySelector('div.modal#boxNFT button.btn.btn-primary.send-nft').disabled = true; 
     document.querySelector('div.modal#boxNFT button.btn.btn-primary.claim-nft').disabled = true;
+    document.querySelector('div.modal#boxNFT select.form-select.nft.send-all').options[0].selected = true;
+    document.querySelector('div.modal#boxNFT select.form-select.nft.send-all').dispatchEvent(new Event('change'));
     fetch(`${
         window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
     }?owner=${
@@ -1471,16 +1691,17 @@ document.querySelector('div.modal#boxNFT').addEventListener('shown.bs.modal', fu
     >\
     <label class="custom-control-label" for="set-tool-${ asset['asset_id'] }">\
         <img\
-            src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] }&h=354"\
+            src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354"\
             alt                 = "#"\
             class               = "img-fluid"\
             style               = "\
-width           : 180px; \
-height          : auto; \
-border          : 5px solid rgb(141, 197, 63) !important; \
-border-radius   : 10px; \
-color           : #fff; \
+                width           : 180px; \
+                height          : auto; \
+                border          : 5px solid rgb(141, 197, 63) !important; \
+                border-radius   : 10px; \
+                color           : #fff; \
             "\
+            loading             = "lazy"\
             data-bs-toggle      ="tooltip"\
             data-bs-placement   ="top"\
             title               ="${ asset["asset_id"] }"\
@@ -1527,16 +1748,17 @@ color           : #fff; \
     >\
     <label class="custom-control-label" for="send-nft-${ asset['asset_id'] }">\
         <img\
-            src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] }&h=354"\
+            src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354"\
             alt                 = "#"\
             class               = "img-fluid"\
             style               = "\
-width           : 180px; \
-height          : auto; \
-border          : 5px solid rgb(141, 197, 63) !important; \
-border-radius   : 10px; \
-color           : #fff; \
+                width           : 180px; \
+                height          : auto; \
+                border          : 5px solid rgb(141, 197, 63) !important; \
+                border-radius   : 10px; \
+                color           : #fff; \
             "\
+            loading             = "lazy"\
             data-bs-toggle      = "tooltip"\
             data-bs-placement   = "top"\
             title               = "${ asset["schema"]["schema_name"] } ${ asset["template"]["template_id"] }-${ asset["asset_id"] } ${ asset["name"] }"\
@@ -1560,6 +1782,8 @@ color           : #fff; \
             };
         };
         tooltipTriggerRender();
+    }).catch(error => {
+        event.relatedTarget.click(); 
     });
 });
 //  document.querySelector('div.modal#boxNFT').addEventListener('hide.bs.modal', function () {
@@ -1572,111 +1796,107 @@ color           : #fff; \
                         <!-- SET TOOL FUNCTION -->
                         <!-- SET TOOL FUNCTION -->
                         <script>
-                            document.querySelector('div.modal#boxNFT')['settool'] = function() {
-
-                                console.log(Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id));
-                                console.log(Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id).join(','));
-
-                                $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', true);
-                                $.notify(
-                                    document.querySelector('div[id*="boxNFT"]').querySelector('.modal-header'),
-                                    `SET TOOL : PLEASE WAIT`, 'info'
-                                );
-
-                                fetch(`/settool?waxid=${ document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&toolid=${ Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id).join(',') }`, {
-                                    "headers": {},
-                                    "body": null,
-                                    "method": "GET",
-                                }).then(
-                                    result => result.json()
-                                ).then(result => {
-                                    if (result['code'] == 200) {
-                                        Swal.fire({
-                                            iconHtml: `
+document.querySelector('div.modal#boxNFT')['settool'] = function() {
+    console.log(Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id));
+    console.log(Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id).join(','));
+    $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', true);
+    $.notify(
+        document.querySelector('div[id*="boxNFT"]').querySelector('.modal-header'),
+        `SET TOOL : PLEASE WAIT`, 'info'
+    );
+    fetch(`/settool?waxid=${ document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&toolid=${ Array.from(document.querySelectorAll('input[class*="boxnft"]:checked')).map(e => e.id).join(',') }`, {
+        "headers": {},
+        "body": null,
+        "method": "GET",
+    }).then(
+        result => result.json()
+    ).then(result => {
+        if (result['code'] == 200) {
+            Swal.fire({
+                iconHtml: `
 <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
 </svg>
-                                            `,
-                                            customClass: {
-                                                icon: 'swalSuccess'
-                                            },
-                                            title: 'Done!',
-                                            html: `<div>SET TOOL DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
-                                        });
-                                        $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', true);
-                                    } else if (
-                                        result['data']['transaction'] &&
-                                        result['data']['transaction']['trx'] &&
-                                        result['data']['transaction']['trx']['code'] &&
-                                        result['data']['transaction']['trx']['error'] &&
-                                        result['data']['transaction']['trx']['error']['code'] &&
-                                        result['data']['transaction']['trx']['error']['details'] &&
-                                        result['data']['transaction']['trx']['error']['details'].length
-                                    ) {
-                                        Swal.fire({
-                                            iconHtml: `
+                `,
+                customClass: {
+                    icon: 'swalSuccess'
+                },
+                title: 'Done!',
+                html: `<div>SET TOOL DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
+            });
+            $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', true);
+        } else if (
+            result['data']['transaction'] &&
+            result['data']['transaction']['trx'] &&
+            result['data']['transaction']['trx']['code'] &&
+            result['data']['transaction']['trx']['error'] &&
+            result['data']['transaction']['trx']['error']['code'] &&
+            result['data']['transaction']['trx']['error']['details'] &&
+            result['data']['transaction']['trx']['error']['details'].length
+        ) {
+            Swal.fire({
+                iconHtml: `
 <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-                                            `,
-                                            customClass: {
-                                                icon: 'swalError'
-                                            },
-                                            title: 'Error!',
-                                            html: `<div>SET TOOL ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
-                                        });
-                                        $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
-                                    } else {
-                                        try {
-                                            if (
-                                                result['data']['transaction'] &&
-                                                result['data']['transaction']['trx'] &&
-                                                result['data']['transaction']['trx']['error'] &&
-                                                result['data']['transaction']['trx']['error']['what']
-                                            ) {
-                                                Swal.fire(
-                                                    'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
-                                                );
-                                            } else {
-                                                Swal.fire(
-                                                    'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                );
-                                            };
-                                            $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
-                                        } catch (e) {
-                                            Swal.fire({
-                                                iconHtml: `
+                `,
+                customClass: {
+                    icon: 'swalError'
+                },
+                title: 'Error!',
+                html: `<div>SET TOOL ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+            });
+            $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
+        } else {
+            try {
+                if (
+                    result['data']['transaction'] &&
+                    result['data']['transaction']['trx'] &&
+                    result['data']['transaction']['trx']['error'] &&
+                    result['data']['transaction']['trx']['error']['what']
+                ) {
+                    Swal.fire(
+                        'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                    );
+                } else {
+                    Swal.fire(
+                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                    );
+                };
+                $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
+            } catch (e) {
+                Swal.fire({
+                    iconHtml: `
 <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-                                                `,
-                                                customClass: {
-                                                    icon: 'swalError'
-                                                },
-                                                title: 'Error!',
-                                                html: `<div>SET TOOL ERROR</div><div>${ result['code'] }</div></div><div>${ result['text'] }</div>`,
-                                            });
-                                            $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
-                                        };
-                                    };
-                                }).catch(error => {
-                                    Swal.fire({
-                                        iconHtml: `
+                    `,
+                    customClass: {
+                        icon: 'swalError'
+                    },
+                    title: 'Error!',
+                    html: `<div>SET TOOL ERROR</div><div>${ result['code'] }</div></div><div>${ result['text'] }</div>`,
+                });
+                $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
+            };
+        };
+    }).catch(error => {
+        Swal.fire({
+            iconHtml: `
 <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-                                        `,
-                                        customClass: {
-                                            icon: 'swalError'
-                                        },
-                                        title: 'Error!',
-                                        text: `SET TOOL ERROR : CONNECTION FAILED ${ error }`,
-                                    });
-                                    $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
-                                });
-
-                            };
+            `,
+            customClass: {
+                icon: 'swalError'
+            },
+            title: 'Error!',
+            text: `SET TOOL ERROR : CONNECTION FAILED ${ error }`,
+        });
+        $(document.querySelector('div[id*="boxNFT"] button.btn.btn-primary.set-tool')).prop('disabled', false);
+    });
+};
                         </script>
                         <!-- SET TOOL FUNCTION -->
                         <!-- SET TOOL FUNCTION -->
@@ -1691,21 +1911,17 @@ color           : #fff; \
                         <!-- SEND NFT FUNCTION -->
                         <script>
                             document.querySelector('form[action="#SENDNFT"]').addEventListener('submit', function(e) {
-
                                 console.log(Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id));
                                 console.log(Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id).join(','));
-
                                 if (
                                     $("button.btn.btn-primary.send-nft").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.send-nft')
                                 ) {
-
                                     $("button.btn.btn-primary.send-nft").addClass('invisible');
                                     $("button.btn.btn-primary.send-nft").attr('readonly', true);
                                     $.notify(
                                         document.querySelector('div[id*="boxNFT"]').querySelector('.modal-header'),
                                         `SEND NFT : PLEASE WAIT`, 'info'
                                     );
-
                                     fetch(`/sendnft?waxid=${ document.querySelector('div.modal#boxNFT').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&to=${
                                         document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value
                                     }&memo=${
@@ -1718,7 +1934,7 @@ color           : #fff; \
                                         "method": "GET",
                                     }).then(
                                         result => {
-                                            if (result.redirected == true) {
+                                            if (result.redirected == true && result.status === 301) {
                                                 self.location = result.url
                                             } else {
                                                 return result.json()
@@ -1791,21 +2007,19 @@ color           : #fff; \
                                         });
                                         $("button.btn.btn-primary.send-nft").removeClass('invisible');
                                         $("button.btn.btn-primary.send-nft").attr('readonly', false);
-                                    });
-
+                                    }).finally(() => {
+                                        $('#boxNFT').modal('hide'); 
+                                    }); 
                                 } else if (
                                     $("button.btn.btn-primary.nft.send-all").is(":visible") && e.submitter == document.querySelector('button.btn.btn-primary.nft.send-all')
                                 ) {
-
                                     $('#boxNFT').modal('hide'); 
-
                                     window['information-task'] = {}; 
                                     for (TRFERNFT in window['information-data']['DATA'] ){
                                         $.notify(
                                             `SEND NFT : PLEASE WAIT ${ TRFERNFT } GET ASSET LIST`, 'info'
                                         ); 
                                         (function thiscode( DATA ){
-
                                             window['information-task'][ DATA['id'] ] = {
                                                 'sendnft' : {
                                                     'id'    : '', 
@@ -1865,7 +2079,13 @@ color           : #fff; \
                                                                       "body"          : null,
                                                                       "method"        : "GET",
                                                                     }).then(
-                                                                        result => { if( result.redirected == true ){ self.location = result.url }else{ return result.json() } }
+                                                                        result => {
+                                                                            if( result.redirected == true && result.status === 301 ){
+                                                                                self.location = result.url
+                                                                            }else{
+                                                                                return result.json()
+                                                                            }
+                                                                        }
                                                                     ).then(result => {
                                                                       if ( result['code'] == 200 ){
                                                                         $.notify(
@@ -1926,7 +2146,6 @@ color           : #fff; \
                                         }); 
                                     }; 
                                 };
-
                             });
                         </script>
                         <!-- SEND NFT FUNCTION -->
@@ -1934,9 +2153,6 @@ color           : #fff; \
                         <!-- SEND NFT FUNCTION -->
                         <!-- SEND NFT FUNCTION -->
                         <!-- SEND NFT FUNCTION -->
-
-
-
                     </div>
                 </div>
             </div>
@@ -1993,7 +2209,7 @@ color           : #fff; \
                                                 innerHTML: `\
 <div class="custom-control custom-checkbox image-checkbox" style="width: 256 !important;">\
     <img\
-        src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] }&h=354"\
+        src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354"\
         alt                 = "#"\
         class               = "img-fluid"\
         style               = "\
@@ -2003,8 +2219,10 @@ color           : #fff; \
             border-radius   : 10px; \
             color           : #fff; \
         "\
+        loading             = "lazy"\
         data-bs-toggle      = "tooltip"\
         data-bs-placement   = "top"\
+        loading             = "lazy"\
         title               = "${ asset["asset_id"] }"\
     >\
     <div\
@@ -2096,7 +2314,7 @@ color           : #fff; \
                                                     'div.custom-control.custom-checkbox.image-checkbox'
                                                 ).querySelector(
                                                     'img'
-                                                ).setAttribute("src", `https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] }&h=354`);
+                                                ).setAttribute("src", `https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354`);
 
                                                 document.querySelector(
                                                     'div.modal#setLand'
@@ -2450,6 +2668,15 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                         </div>
                                     </div>
 
+                                    <div>
+                                        <hr style="color: black;">
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary transfer" disabled>TRANSFER</button>
+                                        <button type="submit" class="btn btn-primary transferallto" disabled>TRANSFER ALL</button>
+                                    </div>
+
                                 </div>
                                 <div class="tab-pane" id="transfer-task" role="tabpanel" aria-labelledby="transfer-task-tab">
                                     
@@ -2545,11 +2772,6 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                     
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary transfer" disabled>TRANSFER</button>
-                            <button type="submit" class="btn btn-primary transferallto" disabled>TRANSFER ALL</button>
                         </div>
 
                         <script type="text/javascript">
@@ -2982,7 +3204,7 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                         "method": "GET",
                                     }).then(
                                         result => {
-                                            if (result.redirected == true) {
+                                            if (result.redirected == true && result.status === 301) {
                                                 self.location = result.url
                                             } else {
                                                 return result.json()
@@ -3091,7 +3313,7 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                                         "method": "GET",
                                                     }).then(
                                                         result => {
-                                                            if (result.redirected == true) {
+                                                            if (result.redirected == true && result.status === 301) {
                                                                 self.location = result.url
                                                             } else {
                                                                 return result.json()
@@ -3250,7 +3472,7 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                             "method": "GET",
                         }).then(
                             result => {
-                                if (result.redirected == true) {
+                                if (result.redirected == true && result.status === 301) {
                                     self.location = result.url
                                 } else {
                                     return result.json()
@@ -3863,7 +4085,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                         "method": "GET",
                     }).then(
                         result => {
-                            if (result.redirected == true) {
+                            if (result.redirected == true && result.status === 301) {
                                 self.location = result.url
                             } else {
                                 return result.json()

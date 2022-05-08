@@ -3428,6 +3428,17 @@ $(document).ready(function() {
 						//			}); 
 						//		}, 100 + Math.ceil(Math.random() * 4000)); 
                         //	})(WAXID); 
+
+						window[WAXID].querySelector('button.btn-primary.btn-block.text-nowrap[onclick*="free-stake-tab"]').addEventListener('click', function (){
+							window['free-stake-tab'].click()
+						}); 
+						window[WAXID].querySelector('button.btn-primary.btn-block.text-nowrap[onclick*="rent-safe-stake-tab"]').addEventListener('click', function (){
+							window['rent-safe-stake-tab'].click()
+						}); 
+						window[WAXID].querySelector('button.btn-primary.btn-block.text-nowrap[onclick*="stake-tab"]').addEventListener('click', function (){
+							window['stake-tab'].click()
+						}); 
+
                     }else{
 						
 						(function (_WAXID){

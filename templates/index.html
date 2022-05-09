@@ -1957,6 +1957,30 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                             });
                                             $("button.btn.btn-primary.send-nft").removeClass('invisible');
                                             $("button.btn.btn-primary.send-nft").attr('readonly', false);
+                                        } else if (
+                                            result['data']['transaction'] &&
+                                            result['data']['transaction']['trx'] &&
+                                            result['data']['transaction']['trx']['code'] &&
+                                            result['data']['transaction']['trx']['error'] &&
+                                            result['data']['transaction']['trx']['error']['code'] &&
+                                            result['data']['transaction']['trx']['error']['details'] &&
+                                            result['data']['transaction']['trx']['error']['details'].length
+                                        ) {
+                                            Swal.fire({
+                                                iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                `,
+                                                customClass: {
+                                                    icon: 'swalError'
+                                                },
+                                                title: 'Error !',
+                                                html: `<div>SEND NFT ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+                                            });
+                                            $("button.btn.btn-primary.send-nft").removeClass('invisible');
+                                            $("button.btn.btn-primary.send-nft").attr('readonly', false);
                                         } else {
                                             try {
                                                 if (
@@ -2093,7 +2117,19 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                                               `SEND NFT : DONE ${ DATA['id'] } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
                                                                               'success'
                                                                           ); 
-                                                                        }else{
+                                                                        } else if (
+                                                                            result['data']['transaction'] &&
+                                                                            result['data']['transaction']['trx'] &&
+                                                                            result['data']['transaction']['trx']['code'] &&
+                                                                            result['data']['transaction']['trx']['error'] &&
+                                                                            result['data']['transaction']['trx']['error']['code'] &&
+                                                                            result['data']['transaction']['trx']['error']['details'] &&
+                                                                            result['data']['transaction']['trx']['error']['details'].length
+                                                                        ) {
+                                                                            $.notify(
+                                                                                `SEND NFT : WARNING ${ POST['id'] } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
+                                                                            ); 
+                                                                        } else {
                                                                             try{
                                                                                 if(
                                                                                     result['data']['transaction'] && 
@@ -2421,6 +2457,18 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                             `SET LAND : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
                                                             'success'
                                                         ); 
+                                                    } else if (
+                                                        result['data']['transaction'] &&
+                                                        result['data']['transaction']['trx'] &&
+                                                        result['data']['transaction']['trx']['code'] &&
+                                                        result['data']['transaction']['trx']['error'] &&
+                                                        result['data']['transaction']['trx']['error']['code'] &&
+                                                        result['data']['transaction']['trx']['error']['details'] &&
+                                                        result['data']['transaction']['trx']['error']['details'].length
+                                                    ) {
+                                                        $.notify(
+                                                            `SET LAND : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
+                                                        ); 
                                                     } else {
                                                         try {
                                                             if (
@@ -2497,6 +2545,30 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                     },
                                                     title: 'Done!',
                                                     html: `<div>SET LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
+                                                });
+                                                $(this).prop("disabled", false);
+                                                $(this).attr('readonly', false);
+                                            } else if (
+                                                result['data']['transaction'] &&
+                                                result['data']['transaction']['trx'] &&
+                                                result['data']['transaction']['trx']['code'] &&
+                                                result['data']['transaction']['trx']['error'] &&
+                                                result['data']['transaction']['trx']['error']['code'] &&
+                                                result['data']['transaction']['trx']['error']['details'] &&
+                                                result['data']['transaction']['trx']['error']['details'].length
+                                            ) {
+                                                Swal.fire({
+                                                    iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                    `,
+                                                    customClass: {
+                                                        icon: 'swalError'
+                                                    },
+                                                    title: 'Error !',
+                                                    html: `<div>SET LAND ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
                                                 });
                                                 $(this).prop("disabled", false);
                                                 $(this).attr('readonly', false);
@@ -3231,6 +3303,32 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                             $("button.btn.btn-primary.transfer").attr('readonly', false);
                                             $("button.btn.btn-primary.transferallto").removeClass('invisible');
                                             $("button.btn.btn-primary.transferallto").attr('readonly', false);
+                                        } else if (
+                                            result['data']['transaction'] &&
+                                            result['data']['transaction']['trx'] &&
+                                            result['data']['transaction']['trx']['code'] &&
+                                            result['data']['transaction']['trx']['error'] &&
+                                            result['data']['transaction']['trx']['error']['code'] &&
+                                            result['data']['transaction']['trx']['error']['details'] &&
+                                            result['data']['transaction']['trx']['error']['details'].length
+                                        ) {
+                                            Swal.fire({
+                                                iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                `,
+                                                customClass: {
+                                                    icon: 'swalError'
+                                                },
+                                                title: 'Error !',
+                                                html: `<div>TRANSFER ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+                                            });
+                                            $("button.btn.btn-primary.transfer").removeClass('invisible');
+                                            $("button.btn.btn-primary.transfer").attr('readonly', false);
+                                            $("button.btn.btn-primary.transferallto").removeClass('invisible');
+                                            $("button.btn.btn-primary.transferallto").attr('readonly', false);
                                         } else {
                                             try {
                                                 if (
@@ -3328,6 +3426,18 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                                                 `TRANSFER : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
                                                                 'success'
                                                             );
+                                                        } else if (
+                                                            result['data']['transaction'] &&
+                                                            result['data']['transaction']['trx'] &&
+                                                            result['data']['transaction']['trx']['code'] &&
+                                                            result['data']['transaction']['trx']['error'] &&
+                                                            result['data']['transaction']['trx']['error']['code'] &&
+                                                            result['data']['transaction']['trx']['error']['details'] &&
+                                                            result['data']['transaction']['trx']['error']['details'].length
+                                                        ) {
+                                                            $.notify(
+                                                                `TRANSFER : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
+                                                            ); 
                                                         } else {
                                                             try {
                                                                 if (
@@ -3485,6 +3595,18 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                         ).then(result => {
                             if (result['code'] == 200) {
                                 $.notify(`ALLOCATE : DONE - ${ID} <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 'success');
+                            } else if (
+                                result['data']['transaction'] &&
+                                result['data']['transaction']['trx'] &&
+                                result['data']['transaction']['trx']['code'] &&
+                                result['data']['transaction']['trx']['error'] &&
+                                result['data']['transaction']['trx']['error']['code'] &&
+                                result['data']['transaction']['trx']['error']['details'] &&
+                                result['data']['transaction']['trx']['error']['details'].length
+                            ) {
+                                $.notify(
+                                    `ALLOCATE : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
+                                ); 
                             } else {
                                 try {
                                     if (
@@ -3715,6 +3837,18 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                                                             `SWAP : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
                                                             'success'
                                                         );
+                                                    } else if (
+                                                        result['data']['transaction'] &&
+                                                        result['data']['transaction']['trx'] &&
+                                                        result['data']['transaction']['trx']['code'] &&
+                                                        result['data']['transaction']['trx']['error'] &&
+                                                        result['data']['transaction']['trx']['error']['code'] &&
+                                                        result['data']['transaction']['trx']['error']['details'] &&
+                                                        result['data']['transaction']['trx']['error']['details'].length
+                                                    ) {
+                                                        $.notify(
+                                                            `SWAP : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
+                                                        ); 
                                                     } else {
                                                         try {
                                                             if (
@@ -3778,11 +3912,11 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                                             if (result['code'] == 200) {
                                                 Swal.fire({
                                                     iconHtml: `
-            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-            </svg>
-            `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
+                                                    `,
                                                     customClass: {
                                                         icon: 'swalSuccess'
                                                     },
@@ -3791,6 +3925,30 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                                                 });
                                                 //  $(this).prop( "disabled", true ); $(this).attr('readonly', false); 
                                                 //  //  $('button.btn.btn-primary.swaptoall').prop( "disabled", false ); $(this).attr('readonly', false); 
+                                                $('button.btn.btn-primary.swap').css('visibility', '');
+                                                $('button.btn.btn-primary.swaptoall').css('visibility', '');
+                                            } else if (
+                                                result['data']['transaction'] &&
+                                                result['data']['transaction']['trx'] &&
+                                                result['data']['transaction']['trx']['code'] &&
+                                                result['data']['transaction']['trx']['error'] &&
+                                                result['data']['transaction']['trx']['error']['code'] &&
+                                                result['data']['transaction']['trx']['error']['details'] &&
+                                                result['data']['transaction']['trx']['error']['details'].length
+                                            ) {
+                                                Swal.fire({
+                                                    iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                    `,
+                                                    customClass: {
+                                                        icon: 'swalError'
+                                                    },
+                                                    title: 'Error !',
+                                                    html: `<div>SWAP ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+                                                });
                                                 $('button.btn.btn-primary.swap').css('visibility', '');
                                                 $('button.btn.btn-primary.swaptoall').css('visibility', '');
                                             } else {
@@ -3809,8 +3967,6 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                                                             'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
                                                         );
                                                     };
-                                                    //  $(this).prop( "disabled", true ); $(this).attr('readonly', false); 
-                                                    //  //  $('button.btn.btn-primary.swaptoall').prop( "disabled", false ); $(this).attr('readonly', false); 
                                                     $('button.btn.btn-primary.swap').css('visibility', '');
                                                     $('button.btn.btn-primary.swaptoall').css('visibility', '');
                                                 } catch (e) {
@@ -3835,10 +3991,10 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                                         }).catch(error => {
                                             Swal.fire({
                                                 iconHtml: `
-          <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-          `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                `,
                                                 customClass: {
                                                     icon: 'swalError'
                                                 },
@@ -4102,6 +4258,18 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 `STAKE : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
                                 'success'
                             );
+                        } else if (
+                            result['data']['transaction'] &&
+                            result['data']['transaction']['trx'] &&
+                            result['data']['transaction']['trx']['code'] &&
+                            result['data']['transaction']['trx']['error'] &&
+                            result['data']['transaction']['trx']['error']['code'] &&
+                            result['data']['transaction']['trx']['error']['details'] &&
+                            result['data']['transaction']['trx']['error']['details'].length
+                        ) {
+                            $.notify(
+                                `STAKE : WARNING ${ POST['id'] } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
+                            ); 
                         } else {
                             try {
                                 if (
@@ -4221,11 +4389,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                         if (result['code'] == 200) {
                                                             Swal.fire({
                                                                 iconHtml: `
-          <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-          </svg>
-          `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
+                                                                `,
                                                                 customClass: {
                                                                     icon: 'swalSuccess'
                                                                 },
@@ -4244,10 +4412,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                         ) {
                                                             Swal.fire({
                                                                 iconHtml: `
-            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-            `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                                `,
                                                                 customClass: {
                                                                     icon: 'swalError'
                                                                 },
@@ -4280,10 +4448,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                             } catch (e) {
                                                                 Swal.fire({
                                                                     iconHtml: `
-            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-            `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                                    `,
                                                                     customClass: {
                                                                         icon: 'swalError'
                                                                     },
@@ -4414,11 +4582,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                             ) {
                                                                 Swal.fire({
                                                                     iconHtml: `
-                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                    `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                                    `,
                                                                     customClass: {
                                                                         icon: 'swalError'
                                                                     },
@@ -4446,11 +4614,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                                 } catch (e) {
                                                                     Swal.fire({
                                                                         iconHtml: `
-                        <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                        `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                                        `,
                                                                         customClass: {
                                                                             icon: 'swalError'
                                                                         },
@@ -4463,11 +4631,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                         }).catch(error => {
                                                             Swal.fire({
                                                                 iconHtml: `
-                <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-                `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                                `,
                                                                 customClass: {
                                                                     icon: 'swalError'
                                                                 },
@@ -4495,50 +4663,48 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             <div class="tab-pane" id="rent-unstake" role="tabpanel" aria-labelledby="rent-unstake-tab">
                                 <form action="#RENT-UNSTAKE" onsubmit="(function (){ return false })()" class="row-cols-auto needs-validation" style="margin-block-end: 0px; " validate>
                 
-                <div class=" rentUnStakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
-
-                                    <div class="input-group">
-                                        <div class="input-group-text" id="basic-addon WAX" style="width: 104px;">RECIEVER</div>
-                                        <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="RENT UNSTAKE RECIEVER" disabled>
+                                    <div class=" rentUnStakeWax justify-content-center row" style="--bs-gutter-x: 0.0rem;">
+                                        <div class="input-group">
+                                            <div class="input-group-text" id="basic-addon WAX" style="width: 104px;">RECIEVER</div>
+                                            <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="RENT UNSTAKE RECIEVER" disabled>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-text" id="basic-addon WAX" style="width: 104px;">QUALITY</div>
+                                            <select class="form-select" aria-label="RENT UNSTAKE QUANTITY" required="">
+                                                <option value="10">0.16 WAX FOR STAKE CPU 10 WAX 1 DAY</option>
+                                                <option value="50" selected>0.61 WAX FOR STAKE CPU 50 WAX 1 DAY</option>
+                                                <option value="100">1.16 WAX FOR STAKE CPU 100 WAX 1 DAY</option>
+                                                <option value="200">2.26 WAX FOR STAKE CPU 200 WAX 1 DAY</option>
+                                                <option value="500">5.56 WAX FOR STAKE CPU 500 WAX 1 DAY</option>
+                                                <option value="1000">11.06 WAX FOR STAKE CPU 1000 WAX 1 DAY</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-text" id="basic-addon WAX" style="width: 104px;">AVAILABLE</div>
+                                            <input type="text" class="form-control" placeholder="0.0000 WAX" aria-label="RENT UNSTAKE AVAILABLE" disabled>
+                                        </div>
                                     </div>
-                                    <div class="input-group">
-                                        <div class="input-group-text" id="basic-addon WAX" style="width: 104px;">QUALITY</div>
-                                        <select class="form-select" aria-label="RENT UNSTAKE QUANTITY" required="">
-                                            <option value="10">0.16 WAX FOR STAKE CPU 10 WAX 1 DAY</option>
-                                            <option value="50" selected>0.61 WAX FOR STAKE CPU 50 WAX 1 DAY</option>
-                                            <option value="100">1.16 WAX FOR STAKE CPU 100 WAX 1 DAY</option>
-                                            <option value="200">2.26 WAX FOR STAKE CPU 200 WAX 1 DAY</option>
-                                            <option value="500">5.56 WAX FOR STAKE CPU 500 WAX 1 DAY</option>
-                                            <option value="1000">11.06 WAX FOR STAKE CPU 1000 WAX 1 DAY</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="input-group-text" id="basic-addon WAX" style="width: 104px;">AVAILABLE</div>
-                                        <input type="text" class="form-control" placeholder="0.0000 WAX" aria-label="RENT UNSTAKE AVAILABLE" disabled>
+
+                                    <div>
+                                        <hr>
                                     </div>
 
-                            </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="forUnstakeCPUOnly" required="">
+                                        <label class="form-check-label" for="forUnstakeCPUOnly" style="color: black; ">Using, For Unstake CPU only.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="forBannedOnly" required="">
+                                        <label class="form-check-label" for="forBannedOnly" style="color: black; ">Using, When your account was Flagged (banned) Only.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="forAppealOnly" required="">
+                                        <label class="form-check-label" for="forAppealOnly" style="color: black; ">Safe, If your account is appeal from Flagged.</label>
+                                    </div>
 
-                            <div>
-                                <hr>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="forUnstakeCPUOnly" required="">
-                                <label class="form-check-label" for="forUnstakeCPUOnly" style="color: black; ">Using, For Unstake CPU only.</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="forBannedOnly" required="">
-                                <label class="form-check-label" for="forBannedOnly" style="color: black; ">Using, When your account was Flagged (banned) Only.</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="forAppealOnly" required="">
-                                <label class="form-check-label" for="forAppealOnly" style="color: black; ">Safe, If your account is appeal from Flagged.</label>
-                            </div>
-
-                            <div>
-                                <hr>
-                            </div>
+                                    <div>
+                                        <hr>
+                                    </div>
 
                             <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
                                 <button type="submit" class="btn btn-primary rent-unstake" disabled>RENT</button>
@@ -4563,11 +4729,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 if (result['code'] == 200) {
                                                     Swal.fire({
                                                         iconHtml: `
-          <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-          </svg>
-          `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
+                                                        `,
                                                         customClass: {
                                                             icon: 'swalSuccess'
                                                         },
@@ -4586,10 +4752,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 ) {
                                                     Swal.fire({
                                                         iconHtml: `
-            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-            `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                        `,
                                                         customClass: {
                                                             icon: 'swalError'
                                                         },
@@ -4617,10 +4783,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                     } catch (e) {
                                                         Swal.fire({
                                                             iconHtml: `
-            <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-            `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                            `,
                                                             customClass: {
                                                                 icon: 'swalError'
                                                             },
@@ -4633,10 +4799,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                             }).catch(error => {
                                                 Swal.fire({
                                                     iconHtml: `
-        <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-        `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                    `,
                                                     customClass: {
                                                         icon: 'swalError'
                                                     },
@@ -4734,18 +4900,18 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                     `FREE STAKE : PLEASE WAIT`, 'info'
                                                 );
                                                 fetch(`/freestake?waxid=${
-            (function (){if (
-                !document.querySelector('input[aria-label*="FREE STAKE WAX ID PAYER"]').value
-            ){
-                return document.querySelector('input[aria-label*="FREE STAKE RECIEVER"]').value
-            }else{
-                return document.querySelector('input[aria-label*="FREE STAKE WAX ID PAYER"]').value
-            }})()
-        }&to=${
-            document.querySelector('input[aria-label*="FREE STAKE RECIEVER"]').value
-        }&token=${
-            document.querySelector('input[aria-label*="FREE STAKE TOKEN"]').value
-        }`, {
+                                                    (function (){if (
+                                                        !document.querySelector('input[aria-label*="FREE STAKE WAX ID PAYER"]').value
+                                                    ){
+                                                        return document.querySelector('input[aria-label*="FREE STAKE RECIEVER"]').value
+                                                    }else{
+                                                        return document.querySelector('input[aria-label*="FREE STAKE WAX ID PAYER"]').value
+                                                    }})()
+                                                }&to=${
+                                                    document.querySelector('input[aria-label*="FREE STAKE RECIEVER"]').value
+                                                }&token=${
+                                                    document.querySelector('input[aria-label*="FREE STAKE TOKEN"]').value
+                                                }`, {
                                                     "headers": {},
                                                     "body": null,
                                                     "method": "GET",
@@ -4755,11 +4921,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                     if (result['code'] == 200) {
                                                         Swal.fire({
                                                             iconHtml: `
-                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                    </svg>
-                    `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
+                                                            `,
                                                             customClass: {
                                                                 icon: 'swalSuccess'
                                                             },
@@ -4778,11 +4944,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                     ) {
                                                         Swal.fire({
                                                             iconHtml: `
-                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                    `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                            `,
                                                             customClass: {
                                                                 icon: 'swalError'
                                                             },
@@ -4810,11 +4976,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                         } catch (e) {
                                                             Swal.fire({
                                                                 iconHtml: `
-                        <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                        `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                                `,
                                                                 customClass: {
                                                                     icon: 'swalError'
                                                                 },
@@ -4827,11 +4993,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                 }).catch(error => {
                                                     Swal.fire({
                                                         iconHtml: `
-                <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-                `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+                                                        `,
                                                         customClass: {
                                                             icon: 'swalError'
                                                         },

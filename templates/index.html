@@ -1934,7 +1934,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                         "method": "GET",
                                     }).then(
                                         result => {
-                                            if (result.redirected == true && result.status === 301) {
+                                            if (result.redirected == true) {
                                                 self.location = result.url
                                             } else {
                                                 return result.json()
@@ -1990,6 +1990,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                 });
                                                 $("button.btn.btn-primary.send-nft").removeClass('invisible');
                                                 $("button.btn.btn-primary.send-nft").attr('readonly', false);
+                                                setTimeout(function(){ window.location.reload(true)}, 15000); 
                                             };
                                         };
                                     }).catch(error => {
@@ -2080,41 +2081,42 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                                       "method"        : "GET",
                                                                     }).then(
                                                                         result => {
-                                                                            if( result.redirected == true && result.status === 301 ){
+                                                                            if( result.redirected == true ){
                                                                                 self.location = result.url
                                                                             }else{
                                                                                 return result.json()
                                                                             }
                                                                         }
                                                                     ).then(result => {
-                                                                      if ( result['code'] == 200 ){
-                                                                        $.notify(
-                                                                            `SEND NFT : DONE ${ DATA['id'] } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
-                                                                            'success'
-                                                                        ); 
-                                                                      }else{
-                                                                          try{
-                                                                            if(
-                                                                                result['data']['transaction'] && 
-                                                                                result['data']['transaction']['trx'] && 
-                                                                                result['data']['transaction']['trx']['error'] && 
-                                                                                result['data']['transaction']['trx']['error']['what']
-                                                                            ){
+                                                                        if ( result['code'] == 200 ){
+                                                                          $.notify(
+                                                                              `SEND NFT : DONE ${ DATA['id'] } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`, 
+                                                                              'success'
+                                                                          ); 
+                                                                        }else{
+                                                                            try{
+                                                                                if(
+                                                                                    result['data']['transaction'] && 
+                                                                                    result['data']['transaction']['trx'] && 
+                                                                                    result['data']['transaction']['trx']['error'] && 
+                                                                                    result['data']['transaction']['trx']['error']['what']
+                                                                                ){
+                                                                                    $.notify(
+                                                                                        `SEND NFT : WARNING ${ POST['id'] } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                                    ); 
+                                                                                }else{
+                                                                                    $.notify(
+                                                                                        `SEND NFT : WARNING ${ POST['id'] } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                                                                    ); 
+                                                                                }; 
+                                                                            }catch(e){
                                                                                 $.notify(
-                                                                                    `SEND NFT : WARNING ${ POST['id'] } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                                    `SEND NFT : ERROR ${ POST['id'] } - ${ result['text'] }`, 
+                                                                                    'error'
                                                                                 ); 
-                                                                            }else{
-                                                                                $.notify(
-                                                                                    `SEND NFT : WARNING ${ POST['id'] } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-                                                                                ); 
+                                                                                setTimeout(function(){ window.location.reload(true)}, 15000); 
                                                                             }; 
-                                                                          }catch(e){
-                                                                            $.notify(
-                                                                                `SEND NFT : ERROR ${ POST['id'] } - ${ result['text'] }`, 
-                                                                                'error'
-                                                                            ); 
-                                                                          }; 
-                                                                      }; 
+                                                                        }; 
                                                                     }).catch(error => {
                                                                         $.notify(
                                                                             `SEND NFT : CONNECTION FAILED ${ DATA['id'] } ${ error }`, 'error'
@@ -3204,7 +3206,7 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                         "method": "GET",
                                     }).then(
                                         result => {
-                                            if (result.redirected == true && result.status === 301) {
+                                            if (result.redirected == true) {
                                                 self.location = result.url
                                             } else {
                                                 return result.json()
@@ -3266,6 +3268,7 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                                 $("button.btn.btn-primary.transfer").attr('readonly', false);
                                                 $("button.btn.btn-primary.transferallto").removeClass('invisible');
                                                 $("button.btn.btn-primary.transferallto").attr('readonly', false);
+                                                setTimeout(function(){ window.location.reload(true)}, 15000); 
                                             };
                                         };
                                     }).catch(error => {
@@ -3313,7 +3316,7 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                                         "method": "GET",
                                                     }).then(
                                                         result => {
-                                                            if (result.redirected == true && result.status === 301) {
+                                                            if (result.redirected == true) {
                                                                 self.location = result.url
                                                             } else {
                                                                 return result.json()
@@ -3346,6 +3349,7 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                                                     `TRANSFER : ERROR ${ ID } - ${ result['text'] }`,
                                                                     'error'
                                                                 );
+                                                                setTimeout(function(){ window.location.reload(true)}, 15000); 
                                                             };
                                                         };
                                                     }).catch(error => {
@@ -3472,7 +3476,7 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                             "method": "GET",
                         }).then(
                             result => {
-                                if (result.redirected == true && result.status === 301) {
+                                if (result.redirected == true) {
                                     self.location = result.url
                                 } else {
                                     return result.json()
@@ -3495,6 +3499,7 @@ document.querySelector('form[action="#ALLOCATEWAX"]').addEventListener('submit',
                                     };
                                 } catch (e) {
                                     $.notify(`ALLOCATE : ERROR ${ID} - ${ result['text'] }`, 'error');
+                                    setTimeout(function(){ window.location.reload(true)}, 15000); 
                                 };
                             };
                         }).catch(error => {
@@ -4085,7 +4090,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                         "method": "GET",
                     }).then(
                         result => {
-                            if (result.redirected == true && result.status === 301) {
+                            if (result.redirected == true) {
                                 self.location = result.url
                             } else {
                                 return result.json()
@@ -4118,6 +4123,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                     `STAKE : ERROR ${ ID } - ${ result['text'] }`,
                                     'error'
                                 );
+                                setTimeout(function(){ window.location.reload(true)}, 15000); 
                             };
                         };
                     }).catch(error => {

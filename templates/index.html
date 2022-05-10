@@ -2715,6 +2715,7 @@ document.querySelector('div.modal#transferWax input[aria-label=\x22TRANSFER WAX 
                                                 <option value="5">Kucoin ( Risk )</option>
                                                 <option value="6">Huobi ( Risk )</option>
                                                 <option value="7">WEXC ( Risk )</option>
+                                                <option value="8">Alcor Dex Market</option>
                                             </select>
                                         </div>
         
@@ -3020,6 +3021,23 @@ document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(1
                                         document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', '');
                                         document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = '';
                                         document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'waxpwaxpwexc';
+                                        $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop('disabled', true);
+
+                                        document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1;
+                                        document.querySelectorAll('div.modal#transferWax label')[0].style.color = 'rgb(141, 197, 63)';
+                                        document.querySelectorAll('div.modal#transferWax input.form-check-input')[0].checked = true;
+                                        document.querySelectorAll('div.modal#transferWax label')[1].style.opacity = 1;
+                                        document.querySelectorAll('div.modal#transferWax label')[1].style.color = 'rgb(141, 197, 63)'
+                                        document.querySelectorAll('div.modal#transferWax input.form-check-input')[1].checked = true;
+                                        $('div[id*="transferWax"] button.btn.btn-primary.transfer').prop('disabled', false);
+                                        $('div[id*="transferWax"] button.btn.btn-primary.transferallto').prop('disabled', false);
+
+                                        break;
+
+                                        case '8':
+                                        document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').setAttribute('required', '');
+                                        document.querySelector('div.modal#transferWax [aria-label*="TRANSFER MEMO"]').value = '0.00000000 WAX@eosio.token';
+                                        document.querySelector('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').value = 'alcordexmain';
                                         $('div.modal#transferWax [aria-label*="TRANSFER TO WAX ID"]').prop('disabled', true);
 
                                         document.querySelectorAll('div.modal#transferWax label')[0].style.opacity = 1;

@@ -1554,7 +1554,7 @@ $('.form-select.nft.send-all').on('change', function() {
         case '20':
             document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             document.querySelector('button.btn.btn-primary.nft.send-all').disabled = true;
-            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'range');
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('type', 'number');
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('step', '1');
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('min', '0');
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').setAttribute('max', '500');
@@ -1563,6 +1563,7 @@ $('.form-select.nft.send-all').on('change', function() {
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = '0'
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').addEventListener('input', function(e) {
                 document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value; 
+                document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
             });
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').addEventListener('change', function(e) {
                 document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
@@ -1587,6 +1588,7 @@ $('.form-select.nft.send-all').on('change', function() {
                         e.checked = true
                     };
                 });
+                document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
             });
             break;
     };

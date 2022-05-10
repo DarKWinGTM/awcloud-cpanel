@@ -1,3 +1,25 @@
+/* MY CUSTOM CSS */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .App {
     width: 100vw;
     height: auto;
@@ -457,11 +479,11 @@ body {
 .showCards {
     float: inline-start;
     display: grid;
-    grid-template-columns: repeat(8,1fr);
-    grid-gap: 1px;
-    gap: 1px;
-    width: 99%;
-    max-width: fit-content;
+    grid-template-columns: repeat(6,1fr);
+    /* grid-gap: 1px; */
+    /* gap: 1px; */
+    width: 100%;
+    /* max-width: fit-content; */
 }
 
 @media (max-width: 1550px) {
@@ -606,7 +628,7 @@ body {
 }
 
 .accountsCard {
-    width: 95%;
+    width: 100%;
     word-break: keep-all;
     color: white !important;
     text-align: -webkit-center;

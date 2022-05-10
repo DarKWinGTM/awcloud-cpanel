@@ -1561,6 +1561,9 @@ $('.form-select.nft.send-all').on('change', function() {
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value = '0';
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT TO WAX ID"]').value = '';
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = '0'
+            document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').addEventListener('input', function(e) {
+                document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value; 
+            });
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').addEventListener('change', function(e) {
                 document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
                     e.checked = false

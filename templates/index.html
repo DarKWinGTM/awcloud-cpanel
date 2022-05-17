@@ -5522,7 +5522,25 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             });
                         }).catch(error => {});
 
-                        fetch("https://cors.bridged.cc/https://apius.reqbin.com/api/v1/requests", {
+                        //  fetch("https://cors.bridged.cc/https://apius.reqbin.com/api/v1/requests", {
+                        //      "headers"   : {
+                        //          "accept"                : "*/*",
+                        //          "accept-language"       : "en-US,en;q=0.9",
+                        //          "content-type"          : "application/json",
+                        //          'x-requested-with'      : 'XMLHttpRequest',
+                        //          'x-cors-grida-api-key'  : '61dbebf9-36c6-45c6-909e-323209a8116d'
+                        //      },
+                        //      "body"      : JSON.stringify({
+                        //          "id"                    : "",
+                        //          "name"                  : "",
+                        //          "errors"                : "",
+                        //          "json"                  : "{\"method\":\"GET\",\"url\":\"https://wax-stake.com/stake/\",\"apiNode\":\"US\",\"contentType\":\"\",\"content\":\"\",\"headers\":\"authority: wax-stake.com\\r\\nreferer: https://wax-stake.com/stake/\\r\\n\",\"errors\":\"\",\"curlCmd\":\"curl 'https://wax-stake.com/stake/' \\\\\\n  -H 'authority: wax-stake.com' \\\\\\n  -H 'referer: https://wax-stake.com/stake/' \\\\\\n  --compressed\",\"codeCmd\":\"\",\"lang\":\"\",\"auth\":{\"auth\":\"noAuth\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"customHeader\":\"\",\"encrypted\":\"\"},\"compare\":false,\"idnUrl\":\"https://wax-stake.com/stake/\"}",
+                        //          "deviceId"              : "",
+                        //          "sessionId"             : ""
+                        //      }),
+                        //      "method": "POST",
+                        //  })
+                        fetch("https://cors.bridged.cc/https://wax-stake.com/stake", {
                             "headers"   : {
                                 "accept"                : "*/*",
                                 "accept-language"       : "en-US,en;q=0.9",
@@ -5530,17 +5548,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 'x-requested-with'      : 'XMLHttpRequest',
                                 'x-cors-grida-api-key'  : '61dbebf9-36c6-45c6-909e-323209a8116d'
                             },
-                            "body"      : JSON.stringify({
-                                "id"                    : "",
-                                "name"                  : "",
-                                "errors"                : "",
-                                "json"                  : "{\"method\":\"GET\",\"url\":\"https://wax-stake.com/stake/\",\"apiNode\":\"US\",\"contentType\":\"\",\"content\":\"\",\"headers\":\"authority: wax-stake.com\\r\\nreferer: https://wax-stake.com/stake/\\r\\n\",\"errors\":\"\",\"curlCmd\":\"curl 'https://wax-stake.com/stake/' \\\\\\n  -H 'authority: wax-stake.com' \\\\\\n  -H 'referer: https://wax-stake.com/stake/' \\\\\\n  --compressed\",\"codeCmd\":\"\",\"lang\":\"\",\"auth\":{\"auth\":\"noAuth\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"customHeader\":\"\",\"encrypted\":\"\"},\"compare\":false,\"idnUrl\":\"https://wax-stake.com/stake/\"}",
-                                "deviceId"              : "",
-                                "sessionId"             : ""
-                            }),
-                            "method": "POST",
-                        }).then(result => result.json()).then(result => {
-                            for (rate of (new DOMParser()).parseFromString(result['Content'], 'text/html').querySelectorAll('a[onclick*="prepare("]')) {
+                            "method": "GET"
+                        }).then(result => result.text()).then(result => {
+                            //  for (rate of (new DOMParser()).parseFromString(result['Content'], 'text/html').querySelectorAll('a[onclick*="prepare("]')) {
+                            for (rate of (new DOMParser()).parseFromString(result, 'text/html').querySelectorAll('a[onclick*="prepare("]')) {
                                 if (rate.querySelector('h5').innerText.match('100 WAX')) {
                                     (function(home) {
                                         window['translate']("auto", "en", home.querySelector('p').innerText, function(translation) {
@@ -5612,16 +5623,19 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             };
 
                             document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
-                                'value', `${ parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
+                                //  'value', `${ parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
+                                'value', `${ parseFloat((new DOMParser()).parseFromString(result, 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
                             );
                             document.querySelector('div.modal#stakeWax input[aria-label="RENT SAFE STAKE AVAILABLE"]').setAttribute(
-                                'placeholder', `${ parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
+                                //  'placeholder', `${ parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
+                                'placeholder', `${ parseFloat((new DOMParser()).parseFromString(result, 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4) } WAX`
                             );
 
                             document.querySelectorAll('div.modal#stakeWax select[aria-label="RENT SAFE STAKE QUANTITY"] option[provider="playgambling"]').forEach(function(e, i, a) {
                                 if (
                                     parseFloat(parseFloat(e.value).toFixed(4)) > parseFloat(
-                                        parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4)
+                                        //  parseFloat((new DOMParser()).parseFromString(result['Content'], 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4)
+                                        parseFloat((new DOMParser()).parseFromString(result, 'text/html').querySelector('div.friends-suggestions > h4').innerText.match(/ \d{1,6} WAX /gi)[0].trim().split(' ')[0]).toFixed(4)
                                     )
                                 ) {
                                     $(e).prop('disabled', true)

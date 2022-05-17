@@ -284,10 +284,10 @@ $(document).ready(function() {
 		style 		= "width : 100%;height : 1408px; background: transparent; color: white; resize: none; border: 0 none;"
 	></textarea>
 	-->
-	<div style="overflow: auto; height: 1409px; ">
+	<div style="overflow: auto; height: 1448px; ">
     	<iframe
     	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=farmersworld"
-		style       = "width : 100%; height : 1859px; margin-top: -450px ;overflow: auto;"
+		style       = "width : 100%; height : 1898px; margin-top: -450px ;overflow: auto;"
 		></iframe>
 	</div>
 </th>
@@ -465,6 +465,19 @@ $(document).ready(function() {
 		</div>
 		<div class="input-group-text fw-withdraw-fwg-text" style="width: 248px;">WITHDRAW FWG 0000</div>
 		<input type="range" class="form-control fw-withdraw-fwg-input" placeholder="40" value="50" step="5" min="0" max="6400" >
+		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+	</div>
+	<div class="input-group fw-withdraw-fmc">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fw-withdraw-fmc-switch" value="0">
+					<!--span style="padding-left: 5;"></span-->
+				</label>
+			</div>
+		</div>
+		<div class="input-group-text fw-withdraw-fmc-text" style="width: 248px;">WITHDRAW FMC 0000</div>
+		<input type="range" class="form-control fw-withdraw-fmc-input" placeholder="40" value="50" step="5" min="0" max="6400" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 	<div class="input-group fw-feature">
@@ -978,6 +991,68 @@ $(document).ready(function() {
 								).querySelector(
 									'div.fw-withdraw-fwg-text'
 								).innerText = 'WITHDRAW FWG ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fwg-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fmc-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fmc-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fmc-text'
+								).innerText = 'WITHDRAW FWF ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fmc=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fmc-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fmc-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fmc-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fmc-text'
+								).innerText = 'WITHDRAW FWG ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fmc=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fmc-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fmc-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fmc-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
+								).querySelector(
+									'div.fw-withdraw-fmc-text'
+								).innerText = 'WITHDRAW FMC ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
 							
@@ -4066,6 +4141,10 @@ $(document).ready(function() {
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwg'][0]; 
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fwg-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwg'][1]; 
 										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fmc-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fmc'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-withdraw-fmc-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fmc'][1]; 
+										}catch(e){ }; 
 										
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fw-panel-monitor"]').querySelector('input.fw-auto-transfer-supply-corn-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_comp_cor'][0]; 
@@ -4195,6 +4274,13 @@ $(document).ready(function() {
 											).querySelector(
 												'div.fw-withdraw-fwg-text'
 											).innerText = 'WITHDRAW FWG ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fwg'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-fw-panel-monitor"]'
+											).querySelector(
+												'div.fw-withdraw-fmc-text'
+											).innerText = 'WITHDRAW FMC ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fw']['cf']['auto_with_fmc'][1] ).slice(-'0000'.length); 
 										}catch(e){ }; 
 										
 										try{

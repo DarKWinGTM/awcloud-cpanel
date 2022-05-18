@@ -98,7 +98,6 @@
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
-        "https://atomicassets.ledgerwise.io/atomicassets/v1/assets?", 
         "https://aa-api-wax.eosauthority.com/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
@@ -108,7 +107,6 @@
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
-        "https://atomicassets.ledgerwise.io/atomicassets/v1/assets?", 
         "https://aa-api-wax.eosauthority.com/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [

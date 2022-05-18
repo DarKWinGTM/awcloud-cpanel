@@ -880,7 +880,7 @@
                                 window['expand-all-history'].addEventListener('click', function(e) {
                                     for (_WAXID_ in window['information-data']['DATA']) {
 
-                                        if (window['information-data']['DATA'][_WAXID_]['pause'] = false){
+                                        if (window['information-data']['DATA'][_WAXID_]['pause'] == false){
                                             document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).parentElement.style.display = 'table-cell';
                                             document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).setAttribute(
                                                 'src', document.querySelector(`iframe[url*="mining.idigger.online/affiliate?waxid=${ _WAXID_ }"]`).getAttribute('url')

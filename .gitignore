@@ -10,6 +10,7 @@ source.py
 *.source.backup
 db.json
 awcloud.py
+awcloud-obf.py
 poetry.lock
 .breakpoints
 awcloud.build

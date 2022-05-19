@@ -3105,9 +3105,9 @@ $(document).ready(function() {
 								).querySelector(
 									'div.dw-set-mine-risk-text'
 								).innerText = 'MINE RISK ' + (function (v){
-									if(v = 1){
+									if(v == 1){
 										return 'SAFE'
-									}else if (v = 2){
+									}else if (v == 2){
 										return 'HIGH'
 									}else{
 										return 'RANDOM'
@@ -3133,9 +3133,9 @@ $(document).ready(function() {
 								).querySelector(
 									'div.dw-set-mine-risk-text'
 								).innerText = 'MINE RISK ' + (function (v){
-									if(v = 1){
+									if(v == 1){
 										return 'SAFE'
-									}else if (v = 2){
+									}else if (v == 2){
 										return 'HIGH'
 									}else{
 										return 'RANDOM'
@@ -5177,9 +5177,9 @@ $(document).ready(function() {
 											).querySelector(
 												'div.dw-set-mine-risk-text'
 											).innerText = 'MINE RISK ' + (function (v){
-												if(v = 1){
+												if(v == 1){
 													return 'SAFE'
-												}else if (v = 2){
+												}else if (v == 2){
 													return 'HIGH'
 												}else{
 													return 'RANDOM'

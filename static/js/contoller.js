@@ -3104,7 +3104,15 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-dw-panel-monitor"]'
 								).querySelector(
 									'div.dw-set-mine-risk-text'
-								).innerText = 'MINE RISK ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'MINE RISK ' + (function (v){
+									if(v = 1){
+										return 'SAFE'
+									}else if (v = 2){
+										return 'HIGH'
+									}else{
+										return 'RANDOM'
+									}
+								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
 									`/vers/dw/set?waxid=${ this['var']['id'] }&cfg_mine=time&value=${ this['var']['db']['value'] }`, 
@@ -3124,7 +3132,15 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-dw-panel-monitor"]'
 								).querySelector(
 									'div.dw-set-mine-risk-text'
-								).innerText = 'MINE RISK ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'MINE RISK ' + (function (v){
+									if(v = 1){
+										return 'SAFE'
+									}else if (v = 2){
+										return 'HIGH'
+									}else{
+										return 'RANDOM'
+									}
+								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
 							//	document.querySelector(`th[id*="${WAXID}-dw-panel-monitor"] button.dw-withdraw`).addEventListener('click', function(e) {
@@ -5160,7 +5176,15 @@ $(document).ready(function() {
 												'th[id*="' + _WAXID + '-dw-panel-monitor"]'
 											).querySelector(
 												'div.dw-set-mine-risk-text'
-											).innerText = 'MINE RISK ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] ).slice(-'0000'.length); 
+											).innerText = 'MINE RISK ' + (function (v){
+												if(v = 1){
+													return 'SAFE'
+												}else if (v = 2){
+													return 'HIGH'
+												}else{
+													return 'RANDOM'
+												}
+											})(window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk']); //	( '0000' + window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] ).slice(-'0000'.length); 
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('input.dw-set-mine-risk-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk']; 

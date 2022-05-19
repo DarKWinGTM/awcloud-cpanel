@@ -1010,7 +1010,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
 								).querySelector(
 									'div.fw-withdraw-fmc-text'
-								).innerText = 'WITHDRAW FWF ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'WITHDRAW FMC ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
 									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fmc=${ this['var']['db']['check'] }` + 
@@ -1032,7 +1032,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
 								).querySelector(
 									'div.fw-withdraw-fmc-text'
-								).innerText = 'WITHDRAW FWC ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'WITHDRAW FMC ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
 									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fmc=${ this['var']['db']['check'] }` + 

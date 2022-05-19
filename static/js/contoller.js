@@ -996,7 +996,7 @@ $(document).ready(function() {
 								
 							}); 
 							
-							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fwg-switch').addEventListener('change', function(e) {
+							document.querySelector(`th[id*="${ WAXID }-fw-panel-monitor"]`).querySelector('input.fw-withdraw-fmc-switch').addEventListener('change', function(e) {
 								this['var'] = {
 									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
 									'db' : {}

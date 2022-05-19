@@ -762,6 +762,34 @@
                                     style   = "height: 48px; width: 48px; margin-right: 10px; border-radius: 50%;"
                                 >SR</button>
                             </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
+                                    id              = "dw-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#dw-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "dw-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                        font-size: large;
+                                    "
+                                    onclick         = "window.localStorage.clear(); document.querySelector('iframe#dwMonitor').setAttribute('src', document.querySelector('iframe#dwMonitor').getAttribute('url'))"
+                                ><img
+                                    src     = "https://cdn.discordapp.com/icons/952199754018861056/bdf9907e79a12993ff5fa6a891505818.webp?size=96"
+                                    alt     = ""
+                                    style   = "height: 48px; width: 48px; margin-right: 10px; border-radius: 50%;"
+                                >DW</button>
+                            </li>
                             <li
                                 class   = "nav-item"
                                 role    = "presentation"
@@ -780,7 +808,7 @@
                                         color: black;
                                         font-size: large;
                                     " 
-                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.101</div>
+                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.102</div>
                             </li>
                         </ul>
                         <!--
@@ -808,6 +836,9 @@
                                 </div>
                                 <div class="tab-pane" id="sr-monitor" role="tabpanel" aria-labelledby="sr-monitor-tab">
                                     <iframe id="srMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
+                                </div>
+                                <div class="tab-pane" id="dw-monitor" role="tabpanel" aria-labelledby="dw-monitor-tab">
+                                    <iframe id="dwMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
                                 </div>
                             </div>
                         </th>

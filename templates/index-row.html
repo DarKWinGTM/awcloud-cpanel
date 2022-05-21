@@ -70,7 +70,7 @@
     <div class="row justify-content-md-center" style="display: none; ">
 
         <div class="col" style="text-align: -webkit-center;">
-            <img class="land_pic" src="https://ipfs.io/ipfs/QmP8iqsUnd3N8gTAe4sg69NWkJth1u8d85gwVwMPBpseB5" style="width: 52px; ">
+            <img class="land_pic" url="https://ipfs.io/ipfs/QmP8iqsUnd3N8gTAe4sg69NWkJth1u8d85gwVwMPBpseB5" style="width: 52px; ">
             <!--
             <div class="v-image v-responsive theme--dark" style="max-width: 42px; ">
                 <div class="v-responsive__sizer" style="padding-bottom: 8%;"></div>
@@ -78,7 +78,7 @@
             -->
         </div>
         <div class="col" style="text-align: -webkit-center;">
-            <img class="tool_pic-0000" src="https://ipfs.io/ipfs/QmaZjaHxcBNYLT2Ba6v3noSZEi3ubNPgCGZm8h8KHekMpr" style="width: 52px; ">
+            <img class="tool_pic-0000" url="https://ipfs.io/ipfs/QmaZjaHxcBNYLT2Ba6v3noSZEi3ubNPgCGZm8h8KHekMpr" style="width: 52px; ">
             <!--
             <div class="v-image v-responsive theme--dark" style="max-width: 42px; ">
                 <div class="v-responsive__sizer" style="padding-bottom: 8%;"></div>
@@ -86,7 +86,7 @@
             -->
         </div>
         <div class="col" style="text-align: -webkit-center;">
-            <img class="tool_pic-0001" src="https://ipfs.io/ipfs/QmYm1FG7LxhF3mFUaVmVEVqRztEmByVbHwL6ZWXwVY2dvb" style="width: 52px; ">
+            <img class="tool_pic-0001" url="https://ipfs.io/ipfs/QmYm1FG7LxhF3mFUaVmVEVqRztEmByVbHwL6ZWXwVY2dvb" style="width: 52px; ">
             <!--
             <div class="v-image v-responsive theme--dark" style="max-width: 42px; ">
                 <div class="v-responsive__sizer" style="padding-bottom: 8%;"></div>
@@ -94,7 +94,7 @@
             -->
         </div>
         <div class="col" style="text-align: -webkit-center;">
-            <img class="tool_pic-0002" src="https://ipfs.io/ipfs/QmdpDgCRsYPFXpvNN6PzBnNEx28RiuLgkHLkcR1Djedb8K" style="width: 52px; ">
+            <img class="tool_pic-0002" url="https://ipfs.io/ipfs/QmdpDgCRsYPFXpvNN6PzBnNEx28RiuLgkHLkcR1Djedb8K" style="width: 52px; ">
             <!--
             <div class="v-image v-responsive theme--dark" style="max-width: 42px; ">
                 <div class="v-responsive__sizer" style="padding-bottom: 8%;"></div>
@@ -134,8 +134,8 @@ if(
 </td>
 <td style="width: 308px; max-width: 308px; ">
     <span class="text-nowrap" id="state" style="display: inline-block; width: 240px !important;">
-        <pre class="overflow-hidden">---------LOADING---------</pre></span>
-
+        <pre class="overflow-hidden">---------LOADING---------</pre>
+    </span>
     <div class="text-nowrap" style="/*    display: inline-table; */">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#boxNFT">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-lg" viewBox="0 0 16 16">
@@ -160,10 +160,63 @@ if(
             </svg>
         </button>
     </div>
-
 </td>
-<td style="zoom : 1.00; ">
-    <div class="justify-content-center" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; ">
+<td
+    style="zoom : 1.00; "
+    onmouseover     = "
+this.querySelectorAll(`div.aw.account.info`).forEach(function (i){
+    i.style.visibility ='hidden';
+    i.style.opacity = '0'; 
+})
+this.querySelectorAll(`div.justify-content-center`).forEach(function (i){
+    i.style.opacity = '1'; 
+})
+    "
+    onmouseout     = "
+this.querySelectorAll(`div.aw.account.info`).forEach(function (i){
+    i.style.removeProperty('visibility');
+    i.style.opacity = '1'; 
+})
+this.querySelectorAll(`div.justify-content-center`).forEach(function (i){
+    i.style.opacity = '0.1'; 
+})
+        "
+>
+
+    <div class="row justify-center" style="padding-right: 75px; ">
+        <div class="col aw account info tool_01" style="">
+            <img class="" src="https://ipfs.io/ipfs/QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP" style="
+                zoom: 0.1;
+                position: absolute;
+            ">
+        </div>
+        <div class="col aw account info tool_02" style="">
+            <img class="" src="https://ipfs.io/ipfs/QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP" style="
+                zoom: 0.1;
+                position: absolute;
+            ">
+        </div>
+        <div class="col aw account info tool_03" style="">
+            <img class="" src="https://ipfs.io/ipfs/QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP" style="
+                zoom: 0.1;
+                position: absolute;
+            ">
+        </div>
+        <div class="col aw account info land" style="">
+            <img class="" src="https://ipfs.io/ipfs/QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP" style="
+                zoom: 0.1;
+                position: absolute;
+            ">
+        </div>
+        <div class="col aw account info avatar" style="">
+            <img class="" src="https://ipfs.io/ipfs/QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP" style="
+                zoom: 0.1;
+                position: absolute;
+            ">
+        </div>
+    </div>
+
+    <div class="justify-content-center" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; opacity: 0.1; ">
         <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input pause_switch" value="0" checked><span style="padding-left: 5;">I/O</span>
@@ -191,7 +244,7 @@ if(
         </div>
     </div>
 
-    <div class="justify-content-center text-nowrap" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; ">
+    <div class="justify-content-center text-nowrap" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; opacity: 0.1; ">
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input ss_switch" value="0"><span style="padding-left: 5; display:none;"></span>
@@ -230,7 +283,7 @@ if(
         </div>
     </div>
 
-    <div class="justify-content-center" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; ">
+    <div class="justify-content-center" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; opacity: 0.1; ">
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input gm_switch" value="0" disabled><span style="padding-left: 5; display:none;"></span>
@@ -269,7 +322,7 @@ if(
         </div>
     </div>
 
-    <div class="justify-content-center" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; ">
+    <div class="justify-content-center" style="/* margin-left: -12px; */ text-align: center; padding-top: 0px; opacity: 0.1; ">
         <div class="form-check-inline form-switch" style="margin-right: 0rem; /* visibility: hidden; */ ">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input cc_switch" value="0"><span style="padding-left: 5; display:none;"></span>

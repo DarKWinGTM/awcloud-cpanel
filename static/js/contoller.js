@@ -1982,6 +1982,9 @@ $(document).ready(function() {
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-ss-panel-monitor">
 	<div class="input-group ss-target-set">
 		<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [] : STAKED : 0.0000 </div>
+		<button type="submit" class="btn btn-primary ss-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="KYANITE" value="" step="5" min="5" max="100" aria-label="">
+		<button type="submit" class="btn btn-primary ss-deposit" style="width: 20%; ">DEPOSIT</button>
 		<div class="input-group">
 			<div class="input-group-text" style="width: 100px;">SHIP LIST</div>
 			<input type="number" class="form-control" placeholder="SHIP 1" disabled="">
@@ -2002,6 +2005,33 @@ $(document).ready(function() {
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 		<button type="submit" class="btn btn-primary ss-target-set" style="width: 60px; ">SET</button>
 	</div>
+
+	<div class="input-group ss-auto-c-nft">
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
+		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
+			<label class="form-check-label">
+				<input
+					type 			= "checkbox"
+					class 			= "form-check-input ss-auto-c-nft-switch"
+					value 			= "0"
+				>
+			</label>
+		</div>AUTO CLAIM NFT</div>
+	</div>
+
+	<div class="input-group ss-auto-s-b-s-s-w-k-i-e">
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
+		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
+			<label class="form-check-label">
+				<input
+					type 			= "checkbox"
+					class 			= "form-check-input ss-auto-s-b-s-s-w-k-i-e-switch"
+					value 			= "0"
+				>
+			</label>
+		</div>AUTO SWITCH PLANET BY SAME SECTOR, WHEN KYANITE IS EMPTY</div>
+	</div>
+
 	<div class="input-group ss-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -2009,6 +2039,18 @@ $(document).ready(function() {
 				<label class="form-check-label">
 					<input type="checkbox" class="form-check-input ss-feature-key-mine-switch" value="0" disabled>
 					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input ss-feature-eco-mine-switch" value="0">
+					<span style="padding-left: 5;">ECO MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input ss-feature-fee-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">FEE MINE</span>
 				</label>
 			</div>
 		</div>
@@ -2048,6 +2090,10 @@ $(document).ready(function() {
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-kq-panel-monitor">
 	<div class="input-group kq-offchain-mainchain">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">C 0.00 K 0.00 : WITH [0%] DEPO : C 0.00 K 0.00</div>
+		<button type="submit" class="btn btn-primary kq-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="KRYPTON" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="CUBE" value="" step="5" min="5" max="100" aria-label="">
+		<button type="submit" class="btn btn-primary kq-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 	<div class="input-group kq-score">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">000000 TEAM SORE : TEAM RANGE 000000</div>
@@ -2473,6 +2519,9 @@ $(document).ready(function() {
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-bl-panel-monitor">
 	<div class="input-group bl-offchain-mainchain">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">BRWL 0.0000 : WITH [0%] DEPO : BRWL 0.0000</div>
+		<button type="submit" class="btn btn-primary bl-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="BRWL" value="" step="5" min="5" max="100" aria-label="">
+		<button type="submit" class="btn btn-primary bl-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 
 	<div class="input-group bl-set-heal-rate">
@@ -2480,6 +2529,44 @@ $(document).ready(function() {
 		<input type="range" class="form-control bl-set-heal-rate-input" placeholder="1" value="1" step="1" min="0" max="19999" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
+
+	<div class="input-group bl-auto-switch-to-free-slot-when-over-round-season">
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
+		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
+			<label class="form-check-label">
+				<input
+					type 			= "checkbox"
+					class 			= "form-check-input bl-auto-switch-to-free-slot-when-over-round-switch"
+					value 			= "0"
+				>
+			</label>
+		</div>AUTO SWITCH TO FREE SLOT, WHEN OVER 16 ROUND</div>
+	</div>
+
+	<div class="input-group bl-feature">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input bl-feature-key-mine-switch" value="0">
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input bl-feature-eco-mine-switch" value="0">
+					<span style="padding-left: 5;">ECO MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input bl-feature-fee-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">FEE MINE</span>
+				</label>
+			</div>
+		</div>
+	</div>
+	
 </th>`
                                 })
                             ); 
@@ -2535,6 +2622,11 @@ $(document).ready(function() {
 	</div>
 	<div class="input-group af-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [5%] DEPO : W 0.0 F 0.0 S 0.0</div>
+		<button type="submit" class="btn btn-primary af-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="AOFW" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="AOFS" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="AOFF" value="" step="5" min="5" max="100" aria-label="">
+		<button type="submit" class="btn btn-primary af-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 	<div class="input-group af-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
@@ -3029,6 +3121,16 @@ $(document).ready(function() {
 		<input type="range" class="form-control dw-set-mine-risk-input" placeholder="1" value="1" step="1" min="1" max="3" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
+
+	<div class="input-group dw-custom-risk">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">SET CUSTOM RISK MINE</div>
+		<select class="form-select dw-custom-risk-select"style="max-width: 248px; ">
+			<option value="None">None</option>
+		</select>
+		<input type="range" class="form-control dw-custom-risk-input" placeholder="1" value="1" step="1" min="1" max="3">
+		<button type="submit" class="btn btn-primary dw-custom-risk-set" style="width: 60px; ">SET</button>
+	</div>
+	
 	<div class="input-group dw-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">I 0.0 D 0.0 S 0.0 : WITH [5%] DEPO : I 0.0 D 0.0 S 0.0</div>
 		<button type="submit" class="btn btn-primary dw-withdraw" style="width: 20%; ">WITHDRAW</button>
@@ -4338,7 +4440,6 @@ $(document).ready(function() {
 										window[_WAXID].querySelector('[id*="land"]').innerText           = `${ window['information-data']['DATA'][_WAXID]['land']['id'].replace(/(^)1099512/gi, '') } : ${ window['information-data']['DATA'][_WAXID]['land']['commission'].toFixed(2) }`
 									}; 
 								}catch(e){
-									
 								}; 
 								try{ window[_WAXID].querySelector('[id*="lasttlm"]').innerText           = `${ window['information-data']['DATA'][_WAXID]['last_mine']['mine'] }`}catch(e){}; 
 								try{ window[_WAXID].querySelector('[id*="lastcpu"]').innerText           = `${ window['information-data']['DATA'][_WAXID]['cpu']['last_cpu_usage'] }us`}catch(e){}; 
@@ -4346,7 +4447,52 @@ $(document).ready(function() {
 								try{ window[_WAXID].querySelector('[id*="state"]').className             = `${ window['information-data']['DATA'][_WAXID]['text'][ window['information-data']['DATA'][_WAXID]['text']['step'] ]['class'] }`}catch(e){}; 
 								try{ window[_WAXID].querySelector('[id*="state"]').innerText             = `${ window['information-data']['DATA'][_WAXID]['text'][ window['information-data']['DATA'][_WAXID]['text']['step'] ]['text'] }`}catch(e){}; 
 								try{ window[_WAXID].querySelector('[id*="maximumcooldown"]').innerText   = `${ parseInt( window['information-data']['DATA'][_WAXID]['maxdelay'] ) }/s`}catch(e){}; 
-								
+								try{
+									if(
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0001'] != '' && 
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0001'] != 'QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP' && 
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0001'] != window[_WAXID].querySelector('div.col.aw.account.info.tool_01 img').src.split('/').splice(-1)[0]
+									){
+										window[_WAXID].querySelector('div.col.aw.account.info.tool_01 img').src 	= `https://ipfs.io/ipfs/${window['information-data']['DATA'][_WAXID]['infodata']['tool0001']}`
+									}; 
+								}catch(e){};
+								try{
+									if(
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0002'] != '' && 
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0002'] != 'QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP' && 
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0002'] != window[_WAXID].querySelector('div.col.aw.account.info.tool_02 img').src.split('/').splice(-1)[0]
+									){
+										window[_WAXID].querySelector('div.col.aw.account.info.tool_02 img').src 	= `https://ipfs.io/ipfs/${window['information-data']['DATA'][_WAXID]['infodata']['tool0002']}`
+									}; 
+								}catch(e){};
+								try{
+									if(
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0003'] != '' && 
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0003'] != 'QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP' && 
+										window['information-data']['DATA'][_WAXID]['infodata']['tool0003'] != window[_WAXID].querySelector('div.col.aw.account.info.tool_03 img').src.split('/').splice(-1)[0]
+									){
+										window[_WAXID].querySelector('div.col.aw.account.info.tool_03 img').src 	= `https://ipfs.io/ipfs/${window['information-data']['DATA'][_WAXID]['infodata']['tool0003']}`
+									}; 
+								}catch(e){};
+								try{
+									if(
+										window['information-data']['DATA'][_WAXID]['infodata']['land_pic'] != '' && 
+										window['information-data']['DATA'][_WAXID]['infodata']['land_pic'] != 'QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP' && 
+										window['information-data']['DATA'][_WAXID]['infodata']['land_pic'] != window[_WAXID].querySelector('div.col.aw.account.info.land img').src.split('/').splice(-1)[0]
+									){
+										window[_WAXID].querySelector('div.col.aw.account.info.land img').src 	= `https://ipfs.io/ipfs/${window['information-data']['DATA'][_WAXID]['infodata']['land_pic']}`
+									}; 
+								}catch(e){}; 
+								//	try{
+								//		if(
+								//			window['information-data']['DATA'][_WAXID]['infodata']['avatarid'] != '' && 
+								//			window['information-data']['DATA'][_WAXID]['infodata']['avatarid'] != 'QmaUNXHeeFvMGD4vPCC3vpGTr77tJvBHjh1ndUm4J7o4tP' && 
+								//			window['information-data']['DATA'][_WAXID]['infodata']['avatarid'] != window[_WAXID].querySelector('col.aw.account.info.land img').src
+								//		){
+								//			window[_WAXID].querySelector('col.aw.account.info.avatar img').src 	= `https://ipfs.io/ipfs/${window['information-data']['DATA'][_WAXID]['infodata']['avatarid']}`
+								//		}; 
+								//	}catch(e){}; 
+
 								try{
 									//	window[_WAXID].querySelector('input[type="checkbox"]').checked = !window['information-data']['DATA'][_WAXID]['pause'] || false
 									window[WAXID].querySelector('input.pause_switch[type="checkbox"]').checked 	= !window['information-data']['DATA'][WAXID]['pause'] || false

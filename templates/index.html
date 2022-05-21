@@ -1630,6 +1630,7 @@ $('.form-select.nft.send-all').on('change', function() {
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').addEventListener('input', function(e) {
                 document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').parentElement.querySelectorAll('div')[0].innerText = document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').value; 
                 document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = true;
+                navigator.clipboard.writeText(JSON.stringify( Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id.split('-').splice(-1)[0]) )); 
             });
             document.querySelector('div.modal#boxNFT [aria-label*="SEND NFT MEMO"]').addEventListener('change', function(e) {
                 document.querySelectorAll('input.send-nft.custom-control-input').forEach(function(e, i, a) {
@@ -1655,6 +1656,10 @@ $('.form-select.nft.send-all').on('change', function() {
                     };
                 });
                 document.querySelector('button.btn.btn-primary.nft.send-nft').disabled = false;
+                navigator.clipboard.writeText(JSON.stringify( Array.from(document.querySelectorAll('input[class*="send-nft"]:checked')).map(e => e.id.split('-').splice(-1)[0]) )); 
+                $.notify(
+                    `ASSET ID WAS COPIES CLIPBOARD`, 'success'
+                ); 
             });
             break;
     };

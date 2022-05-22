@@ -5595,6 +5595,16 @@ $(document).ready(function() {
 														e[1]['durability']
 													}/${
 														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+													} ${
+														(function (r){
+															if(r == 1){
+																return 'SAFE'
+															}else if (r == 2){
+																return 'HIGH'
+															}else{
+																return 'RANDOM'
+															}
+														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
 													} NEXT ` + (new Date(
 														`${ Date( e[1]['next_mine'] ) }`
 													).toLocaleString(
@@ -5608,7 +5618,7 @@ $(document).ready(function() {
 															minute  : '2-digit', 
 															second  : '2-digit'
 														}
-													)); 
+													)).split(', ').splice(-1)[0]; 
 													option.value 	= e[0];
 													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
 												}); 
@@ -5624,6 +5634,16 @@ $(document).ready(function() {
 														e[1]['durability']
 													}/${
 														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+													} ${
+														(function (r){
+															if(r == 1){
+																return 'SAFE'
+															}else if (r == 2){
+																return 'HIGH'
+															}else{
+																return 'RANDOM'
+															}
+														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
 													} NEXT ` + (new Date(
 														`${ Date( e[1]['next_mine'] ) }`
 													).toLocaleString(
@@ -5637,7 +5657,7 @@ $(document).ready(function() {
 															minute  : '2-digit', 
 															second  : '2-digit'
 														}
-													)); 
+													)).split(', ').splice(-1)[0]; 
 													option.value 	= e[0];
 													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
 												}); 
@@ -5653,6 +5673,16 @@ $(document).ready(function() {
 														e[1]['durability']
 													}/${
 														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+													} ${
+														(function (r){
+															if(r == 1){
+																return 'SAFE'
+															}else if (r == 2){
+																return 'HIGH'
+															}else{
+																return 'RANDOM'
+															}
+														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
 													} NEXT ` + (new Date(
 														`${ Date( e[1]['next_mine'] ) }`
 													).toLocaleString(
@@ -5666,7 +5696,7 @@ $(document).ready(function() {
 															minute  : '2-digit', 
 															second  : '2-digit'
 														}
-													)); 
+													)).split(', ').splice(-1)[0]; 
 													option.value 	= e[0];
 													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
 												}); 

@@ -2514,7 +2514,7 @@ $(document).ready(function() {
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-bl-panel-monitor">
 	<div class="input-group bl-offchain-mainchain">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">BRWL 0.0000 : WITH [0%] DEPO : BRWL 0.0000</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">BRWL 0.0000 : WITH [8%] DEPO : BRWL 0.0000</div>
 		<button type="submit" class="btn btn-primary bl-withdraw" style="width: 20%; ">WITHDRAW</button>
 		<input type="number" class="form-control" placeholder="BRWL" value="" step="5" min="5" max="100" aria-label="">
 		<button type="submit" class="btn btn-primary bl-deposit" style="width: 20%; ">DEPOSIT</button>
@@ -2616,6 +2616,11 @@ $(document).ready(function() {
 		<input type="range" class="form-control af-set-mine-frequency-input" placeholder="1" value="1" step="1" min="1" max="8" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
+	<div class="input-group af-set-hunt-frequency">
+		<div class="input-group-text af-set-hunt-frequency-text" style="width: 248px; justify-content: center; ">HUNT FREQUENCY 0000</div>
+		<input type="range" class="form-control af-set-hunt-frequency-input" placeholder="1" value="1" step="1" min="1" max="8" >
+		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+	</div>
 	<div class="input-group af-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [5%] DEPO : W 0.0 F 0.0 S 0.0</div>
 		<button type="submit" class="btn btn-primary af-withdraw" style="width: 20%; ">WITHDRAW</button>
@@ -2714,6 +2719,191 @@ $(document).ready(function() {
 								).innerText = 'MINE FREQUENCY ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
+
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('input.af-set-hunt-frequency-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('input.af-set-hunt-frequency-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-af-panel-monitor"]'
+								).querySelector(
+									'div.af-set-hunt-frequency-text'
+								).innerText = 'HUNT FREQUENCY ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/af/set?waxid=${ this['var']['id'] }&cfg_mine=hunt&value=${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('input.af-set-hunt-frequency-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('input.af-set-hunt-frequency-input').value, 
+								}; console.debug( this['var'] );  
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-af-panel-monitor"]'
+								).querySelector(
+									'div.af-set-hunt-frequency-text'
+								).innerText = 'HUNT FREQUENCY ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							document.querySelector(`th[id*="${WAXID}-af-panel-monitor"] button.af-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'AOFF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"] div.af-withdraw-deposit').querySelector('input[placeholder*="AOFF"]').value) || 0, 
+									'AOFS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"] div.af-withdraw-deposit').querySelector('input[placeholder*="AOFS"]').value) || 0, 
+									'AOFW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"] div.af-withdraw-deposit').querySelector('input[placeholder*="AOFW"]').value) || 0, 
+									'FEE' 	: 5, 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/af_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['FEE']
+										}&quantity=${
+											this['var']['db']['AOFF']
+										}.0000,${
+											this['var']['db']['AOFS']
+										}.0000,${
+											this['var']['db']['AOFW']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`SAAR WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`AGE OF FARMING WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`AGE OF FARMING WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`AGE OF FARMING WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`AGE OF FARMING WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-af-panel-monitor"] button.af-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'AOFF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"] div.af-withdraw-deposit').querySelector('input[placeholder*="AOFF"]').value) || 0, 
+									'AOFS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"] div.af-withdraw-deposit').querySelector('input[placeholder*="AOFS"]').value) || 0, 
+									'AOFW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"] div.af-withdraw-deposit').querySelector('input[placeholder*="AOFW"]').value) || 0								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/af_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['AOFF']
+										}.0000,${
+											this['var']['db']['AOFS']
+										}.0000,${
+											this['var']['db']['AOFW']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`AGE OF FARMING DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`AGE OF FARMING DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`AGE OF FARMING DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`AGE OF FARMING DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`AGE OF FARMING DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -3079,14 +3269,6 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-
-
-
-
-
-
-
-
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -3119,12 +3301,13 @@ $(document).ready(function() {
 	</div>
 
 	<div class="input-group dw-custom-risk">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">SET CUSTOM RISK MINE</div>
+		<div class="input-group-text dw-custom-risk-text" style="width: inherit; justify-content: center; ">SET CUSTOM RISK MINE</div>
 		<select class="form-select dw-custom-risk-select"style="max-width: 248px; ">
 			<option value="None">None</option>
 		</select>
 		<input type="range" class="form-control dw-custom-risk-input" placeholder="1" value="1" step="1" min="1" max="3">
-		<button type="submit" class="btn btn-primary dw-custom-risk-set" style="width: 60px; ">SET</button>
+		<button type="submit" class="btn btn-primary dw-custom-risk-set" style="width: 10%; ">SET</button>
+		<button type="submit" class="btn btn-primary dw-custom-risk-del" style="width: 10%; ">DEL</button>
 	</div>
 	
 	<div class="input-group dw-withdraw-deposit">
@@ -3241,159 +3424,215 @@ $(document).ready(function() {
 								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
-							//	document.querySelector(`th[id*="${WAXID}-dw-panel-monitor"] button.dw-withdraw`).addEventListener('click', function(e) {
-							//		this['var'] = {
-							//			'id' : this.parentElement.parentElement.id.split('-')[0], 
-							//			'db' : {}
-							//		}; 
-							//		this['var']['db'] = {
-							//			'SRE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="SRE"]').value) || 0, 
-							//			'SRM' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="SRM"]').value) || 0, 
-							//			'SRW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="SRW"]').value) || 0, 
-							//			'FEE' 	: window['information-data']['DATA'][ this['var']['id'] ]['vers']['dw']['db']['equipped']['ftax']['withdrawal_tax'] || 5, 
-							//		}; 
-							//		
-							//		if (
-							//			!$(this).attr('disabled')
-							//		){
-							//			$(this).prop( "disabled", true ); $(this).attr('readonly', true);
-							//			
-							//			fetch(
-							//				`/dw_with?waxid=${
-							//					this['var']['id']
-							//				}&amount=${
-							//					this['var']['db']['FEE']
-							//				}&quantity=${
-							//					this['var']['db']['SRE']
-							//				}.0000,${
-							//					this['var']['db']['SRM']
-							//				}.0000,${
-							//					this['var']['db']['SRW']
-							//				}.0000,${
-							//					this['var']['db']['SRS']
-							//				}.0000`,
-							//				{method : 'GET'}
-							//			).then(
-							//				result => result.json()
-							//			).then(result => {
-							//				if(result['text'] != 'okay'){ throw result }else{
-							//					if (
-							//						result['code'] == 200
-							//					){
-							//						$.notify(
-							//							`SAAR WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
-							//							"success", { position : "top" }
-							//						); 
-							//					}else{
-							//						try{
-							//							if(
-							//								result['data']['transaction'] && 
-							//								result['data']['transaction']['trx'] && 
-							//								result['data']['transaction']['trx']['error'] && 
-							//								result['data']['transaction']['trx']['error']['what']
-							//							){
-							//								$.notify(
-							//									`SAAR WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
-							//								); 
-							//							}else{
-							//								$.notify(
-							//									`SAAR WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-							//								); 
-							//							}; 
-							//						}catch(e){
-							//							$.notify(
-							//								`SAAR WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
-							//								'error'
-							//							); 
-							//						}; 
-							//					};
-							//					(function (input){
-							//						setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
-							//					})(this); 
-							//				}; 
-							//			}).catch(error => {
-							//				$.notify(`SAAR WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
-							//				(function (input){
-							//					setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
-							//				})(this); 
-							//			}); 
-							//		};
-							//	});
-							//	document.querySelector(`th[id*="${WAXID}-dw-panel-monitor"] button.dw-deposit`).addEventListener('click', function(e) {
-							//		this['var'] = {
-							//			'id' : this.parentElement.parentElement.id.split('-')[0], 
-							//			'db' : {}
-							//		}; 
-							//		this['var']['db'] = {
-							//			'SRE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="SRE"]').value) || 0, 
-							//			'SRM' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="SRM"]').value) || 0, 
-							//			'SRW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="SRW"]').value) || 0, 
-							//		}; 
-							//		
-							//		if (
-							//			!$(this).attr('disabled')
-							//		){
-							//			$(this).prop( "disabled", true ); $(this).attr('readonly', true);
-							//			
-							//			fetch(
-							//				`/dw_depo?waxid=${
-							//					this['var']['id']
-							//				}&quantity=${
-							//					this['var']['db']['SRE']
-							//				}.0000,${
-							//					this['var']['db']['SRM']
-							//				}.0000,${
-							//					this['var']['db']['SRW']
-							//				}.0000,${
-							//					this['var']['db']['SRS']
-							//				}.0000`,
-							//				{method : 'GET'}
-							//			).then(
-							//				result => result.json()
-							//			).then(result => {
-							//				if(result['text'] != 'okay'){ throw result }else{
-							//					if (
-							//						result['code'] == 200
-							//					){
-							//						$.notify(
-							//							`SAAR DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
-							//							"success", { position : "top" }
-							//						); 
-							//					}else{
-							//						try{
-							//							if(
-							//								result['data']['transaction'] && 
-							//								result['data']['transaction']['trx'] && 
-							//								result['data']['transaction']['trx']['error'] && 
-							//								result['data']['transaction']['trx']['error']['what']
-							//							){
-							//								$.notify(
-							//									`SAAR DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
-							//								); 
-							//							}else{
-							//								$.notify(
-							//									`SAAR DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-							//								); 
-							//							}; 
-							//						}catch(e){
-							//							$.notify(
-							//								`SAAR DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
-							//								'error'
-							//							); 
-							//						}; 
-							//					};
-							//					(function (input){
-							//						setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
-							//					})(this); 
-							//				}; 
-							//			}).catch(error => {
-							//				$.notify(`SAAR DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
-							//				(function (input){
-							//					setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
-							//				})(this); 
-							//			}); 
-							//		};
-							//	});
+							document.querySelector(`th[id*="${ WAXID }-dw-panel-monitor"]`).querySelector('button.dw-custom-risk-set').addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"]').querySelector('input.dw-custom-risk-input').value, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select option:checked').value
+								}; console.debug( this['var'] );  
+								
+								if(
+									this['var']['db']['value'] != 'None'
+								){
+									fetch(
+										`/vers/dw/set?waxid=${ this['var']['id'] }&set_risk=${ this['var']['db']['value'] }-${ this['var']['db']['check'] }`, 
+										{method : 'GET'}
+									); 
+								}; 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-dw-panel-monitor"]`).querySelector('button.dw-custom-risk-del').addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"]').querySelector('input.dw-custom-risk-input').value, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select option:checked').value
+								}; console.debug( this['var'] );  
+								
+								if(
+									this['var']['db']['value'] != 'None'
+								){
+									fetch(
+										`/vers/dw/set?waxid=${ this['var']['id'] }&del_risk=${ this['var']['db']['value'] }`, 
+										{method : 'GET'}
+									); 
+								}; 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-dw-panel-monitor"]`).querySelector('input.dw-custom-risk-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"]').querySelector('input.dw-custom-risk-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-dw-panel-monitor"]'
+								).querySelector(
+									'div.dw-custom-risk-text'
+								).innerText = 'SET CUSTOM RISK ' + (function (v){
+									if(v == 1){
+										return 'SAFE'
+									}else if (v == 2){
+										return 'HIGH'
+									}else{
+										return 'RANDOM'
+									}
+								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+							}); 
+							document.querySelector(`th[id*="${WAXID}-dw-panel-monitor"] button.dw-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'DWI' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="DWI"]').value) || 0, 
+									'DWS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="DWS"]').value) || 0, 
+									'DWD' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="DWD"]').value) || 0, 
+									'FEE' 	: 5, 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/dw_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['FEE']
+										}&quantity=${
+											this['var']['db']['DWI']
+										}.0000,${
+											this['var']['db']['DWS']
+										}.0000,${
+											this['var']['db']['DWD']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`DIGGERS WORLD WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`DIGGERS WORLD WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`DIGGERS WORLD WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`DIGGERS WORLD WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`DIGGERS WORLD WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-dw-panel-monitor"] button.dw-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'DWI' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="DWI"]').value) || 0, 
+									'DWS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="DWS"]').value) || 0, 
+									'DWD' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"] div.dw-withdraw-deposit').querySelector('input[placeholder*="DWD"]').value) || 0								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/dw_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['DWI']
+										}.0000,${
+											this['var']['db']['DWS']
+										}.0000,${
+											this['var']['db']['DWD']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`DIGGERS WORLD DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`DIGGERS WORLD DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`DIGGERS WORLD DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`DIGGERS WORLD DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`DIGGERS WORLD DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
 
 
 
@@ -5080,7 +5319,7 @@ $(document).ready(function() {
 									try{
 										document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelector('div.bl-offchain-mainchain div').innerText 		= `BRWL ${
 											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bl']['db']['balance']['pre']['BRWL']).toFixed(4)
-										} : WITH [0%] DEPO : BRWL ${
+										} : WITH [8%] DEPO : BRWL ${
 											parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bl']['db']['balance']['has']['BRWL']).toFixed(4)
 										}`; 
 									}catch(e){ }; 
@@ -5123,6 +5362,16 @@ $(document).ready(function() {
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-set-mine-frequency-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['time']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-af-panel-monitor"]'
+											).querySelector(
+												'div.af-set-hunt-frequency-text'
+											).innerText = 'MINE FREQUENCY ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['hunt'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-set-hunt-frequency-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['hunt']; 
 										}catch(e){ }; 
 										//	try{
 										//		document.querySelector(
@@ -5329,6 +5578,100 @@ $(document).ready(function() {
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('input.dw-set-mine-risk-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk']; 
+										}catch(e){ }; 
+										try{
+											if (
+												document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelectorAll('select.dw-custom-risk-select option').length <= 1
+											){
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWD']['tool']).forEach( function (e){
+													var option 		= document.createElement("option");
+													option.text 	= `${
+														e[1]['asset_id']
+													} ${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+													} ${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
+													} ${
+														e[1]['durability']
+													}/${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+													} NEXT ` + (new Date(
+														`${ Date( e[1]['next_mine'] ) }`
+													).toLocaleString(
+														"en-US", {
+															timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+															year    : 'numeric', 
+															month   : '2-digit', 
+															day     : '2-digit', 
+															hour    : '2-digit', 
+															hour12  : false, 
+															minute  : '2-digit', 
+															second  : '2-digit'
+														}
+													)); 
+													option.value 	= e[0];
+													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+												}); 
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWI']['tool']).forEach( function (e){
+													var option 		= document.createElement("option");
+													option.text 	= `${
+														e[1]['asset_id']
+													} ${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+													} ${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
+													} ${
+														e[1]['durability']
+													}/${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+													} NEXT ` + (new Date(
+														`${ Date( e[1]['next_mine'] ) }`
+													).toLocaleString(
+														"en-US", {
+															timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+															year    : 'numeric', 
+															month   : '2-digit', 
+															day     : '2-digit', 
+															hour    : '2-digit', 
+															hour12  : false, 
+															minute  : '2-digit', 
+															second  : '2-digit'
+														}
+													)); 
+													option.value 	= e[0];
+													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+												}); 
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWS']['tool']).forEach( function (e){
+													var option 		= document.createElement("option");
+													option.text 	= `${
+														e[1]['asset_id']
+													} ${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+													} ${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
+													} ${
+														e[1]['durability']
+													}/${
+														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+													} NEXT ` + (new Date(
+														`${ Date( e[1]['next_mine'] ) }`
+													).toLocaleString(
+														"en-US", {
+															timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+															year    : 'numeric', 
+															month   : '2-digit', 
+															day     : '2-digit', 
+															hour    : '2-digit', 
+															hour12  : false, 
+															minute  : '2-digit', 
+															second  : '2-digit'
+														}
+													)); 
+													option.value 	= e[0];
+													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+												}); 
+												//	document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').value 		= window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['land'][0].toString(); 
+											}; 
 										}catch(e){ }; 
 
 										//	try{

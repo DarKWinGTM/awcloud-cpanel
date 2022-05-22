@@ -1981,7 +1981,7 @@ $(document).ready(function() {
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-ss-panel-monitor">
 	<div class="input-group ss-target-set">
-		<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [] : STAKED : 0.0000 </div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [10%] : STAKED : 0.0000 </div>
 		<button type="submit" class="btn btn-primary ss-withdraw" style="width: 20%; ">WITHDRAW</button>
 		<input type="number" class="form-control" placeholder="KYANITE" value="" step="5" min="5" max="100" aria-label="">
 		<button type="submit" class="btn btn-primary ss-deposit" style="width: 20%; ">DEPOSIT</button>
@@ -2073,8 +2073,6 @@ $(document).ready(function() {
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
-									
-
 <th
     colspan     = "7"
     style       = "display: none; "
@@ -2142,8 +2140,6 @@ $(document).ready(function() {
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
-									
-
 <th
     colspan     = "7"
     style       = "display: none; "
@@ -3403,7 +3399,6 @@ $(document).ready(function() {
 
 
 
-							
                             try{
                                 window[WAXID].querySelector('input.pause_switch[type="checkbox"]').checked 	= !window['information-data']['DATA'][WAXID]['pause'] || false
                                 window[WAXID].querySelector('input.eco_switch[type="checkbox"]').checked 	= window['information-data']['DATA'][WAXID]['lmlw']
@@ -5376,7 +5371,8 @@ $(document).ready(function() {
 							}, 2000 + Math.ceil(Math.random() * 16000)); 
 						})(WAXID); 
 						
-						document.querySelectorAll('button[data-bs-target*="#transferWax"], button[data-bs-target*="#allocateWax"], button[data-bs-target*="#swapTLM"], button[data-bs-target*="#setLand"], button[data-bs-target*="#gotBAN"], button[data-bs-target*="#taskScheduler"], button[data-bs-target*="#poolMineable"], button[data-bs-target*="#stakeWAX"], button[data-bs-target*="#boxNFT"]').forEach(function(i){
+						//	button[data-bs-target*="#boxNFT"]
+						document.querySelectorAll('button[data-bs-target*="#transferWax"], button[data-bs-target*="#allocateWax"], button[data-bs-target*="#swapTLM"], button[data-bs-target*="#setLand"], button[data-bs-target*="#gotBAN"], button[data-bs-target*="#taskScheduler"], button[data-bs-target*="#poolMineable"], button[data-bs-target*="#stakeWAX"]').forEach(function(i){
 							//   i.addEventListener('click', function(e) {
 							//      document.querySelector('button#collapse-all-history').click()
 							//   });

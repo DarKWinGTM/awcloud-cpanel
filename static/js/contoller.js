@@ -3893,13 +3893,13 @@ $(document).ready(function() {
                                                 ){
                                                     this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
                                                     $.notify(
-                                                        `STARSHIP ON ${this.parentElement.parentElement.parentElement.parentElement.parentElement}`, 
+                                                        `STARSHIP ON ${this.parentElement.parentElement.parentElement.parentElement.parentElement.id}`, 
                                                         "success", { position : "top" }
                                                     ); 
                                                 }else{
                                                     this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
                                                     $.notify(
-                                                        `STARSHIP NO ${this.parentElement.parentElement.parentElement.parentElement.parentElement}`, 
+                                                        `STARSHIP NO ${this.parentElement.parentElement.parentElement.parentElement.parentElement.id}`, 
                                                         "error", { position : "top" }
                                                     ); 
                                                 };
@@ -5368,7 +5368,7 @@ $(document).ready(function() {
 												'th[id*="' + _WAXID + '-af-panel-monitor"]'
 											).querySelector(
 												'div.af-set-hunt-frequency-text'
-											).innerText = 'MINE FREQUENCY ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['hunt'] ).slice(-'0000'.length); 
+											).innerText = 'HUNT FREQUENCY ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['hunt'] ).slice(-'0000'.length); 
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-set-hunt-frequency-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['hunt']; 

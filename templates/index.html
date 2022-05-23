@@ -845,15 +845,54 @@
                     </tr>
 
                     <tr>
-                        <th class="col-md text-nowrap" scope="col"># WAXID</th>
-                        <th class="col-md text-nowrap" scope="col">CPU</th>
-                        <th class="col-md text-nowrap" scope="col">STAKE</th>
-                        <th class="col-md text-nowrap" scope="col">WAX : TLM : SWAP</th>
-                        <th class="col-md text-nowrap" scope="col">LAND ID</th>
-                        <th class="col-md text-nowrap" scope="col">DELAY : LAST</th>
-                        <th class="col-md text-nowrap" scope="col">TLM : CPU : TLM/h</th>
-                        <th class="col-md text-nowrap" scope="col">STATE</th>
-                        <th class="col-md text-nowrap" scope="col">ACTIONS</th>
+                        <th class="col-md text-nowrap" scope="col" style="padding-bottom: 12px; -webkit-text-stroke: medium; "># WAXID</th>
+                        <th class="col-md text-nowrap" scope="col" style="padding-bottom: 12px; -webkit-text-stroke: medium; ">CPU</th>
+                        <th class="col-md text-nowrap" scope="col" style="padding-bottom: 12px; -webkit-text-stroke: medium; ">STAKE</th>
+                        <th class="col-md text-nowrap" scope="col" style="padding-bottom: 12px; -webkit-text-stroke: medium; ">WAX : TLM : SWAP</th>
+                        <th class="col-md text-nowrap" scope="col" style="padding-bottom: 12px; -webkit-text-stroke: medium; ">LAND ID</th>
+                        <th class="col-md text-nowrap" scope="col" style="padding-bottom: 12px; -webkit-text-stroke: medium; ">DELAY : LAST</th>
+                        <th class="col-md text-nowrap" scope="col" style="padding-bottom: 12px; -webkit-text-stroke: medium; ">TLM : CPU : TLM/h</th>
+                        <th class="col-md text-nowrap" scope="col" style="padding-bottom: 12px; -webkit-text-stroke: medium; ">STATE</th>
+                        <th class="col-md text-nowrap" scope="col">
+                            <button
+                                id          = "hide-action-panel"
+                                type        = "submit"
+                                class       = "btn btn-primary text-nowrap"
+                                style       = "width: 50%; "
+                                onclick     = "
+for (WAXID in window['information-data']['DATA']){
+    window[WAXID].querySelectorAll(`div.aw.account.info`).forEach(function (i){
+        i.style.removeProperty('visibility');
+        i.style.opacity = '1'; 
+    })
+    window[WAXID].querySelectorAll(`div.justify-content-center`).forEach(function (i){
+        i.style.opacity = '0.1'; 
+    }); 
+    try{ window[WAXID].querySelector('td[onmouseout*=\x22div.aw.account.info\x22]').removeAttribute('onmouseout') }catch(e){}; 
+    try{ window[WAXID].querySelector('td[onmouseover*=\x22div.aw.account.info\x22]').removeAttribute('onmouseover') }catch(e){}; 
+}; 
+                                "
+                            >HIDE ACTION PANEL</button>
+                            <button
+                                id          = "show-action-panel"
+                                type        = "submit"
+                                class       = "btn btn-primary text-nowrap"
+                                style       = "width: 50%; "
+                                onclick     = "
+for (WAXID in window['information-data']['DATA']){
+    window[WAXID].querySelectorAll(`div.aw.account.info`).forEach(function (i){
+        i.style.visibility ='hidden';
+        i.style.opacity = '0'; 
+    })
+    window[WAXID].querySelectorAll(`div.justify-content-center`).forEach(function (i){
+        i.style.opacity = '1'; 
+    }); 
+    try{ window[WAXID].querySelector('td[onmouseout*=\x22div.aw.account.info\x22]').removeAttribute('onmouseout') }catch(e){}; 
+    try{ window[WAXID].querySelector('td[onmouseover*=\x22div.aw.account.info\x22]').removeAttribute('onmouseover') }catch(e){}; 
+}; 
+                                "
+                            >SHOW ACTION PANEL</button>
+                        </th>
                     </tr>
                 </thead>
                 <thead>
@@ -4462,8 +4501,14 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                         </div>
                                         <div class="input-group">
                                             <div class="input-group-text" id="basic-addon WAX" style="width: 104px;">RESOURCE</div>
-                                            <input type="text" class="form-control" placeholder="CPU" aria-label="UNSTAKE RESOURCE" disabled>
+                                            <select class="form-select" aria-label="UNSTAKE RESOURCE" required="">
+                                                <option value="unstakecpu" selected="">CPU</option>
+                                                <option value="sellram">RAM</option>
+                                            </select>
                                         </div>
+
+
+                                        
 
                                     </div>
 
@@ -4489,15 +4534,53 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                         parseFloat(parseFloat(
                                                             document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value
                                                         ).toFixed(4)) > parseFloat(parseFloat(
-                                                            window['information-data']['DATA'][document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['cpu']['stake']['self']
+                                                            (function (){
+                                                                if(
+                                                                    document.querySelector('div.modal#stakeWax').querySelector('select[aria-label="UNSTAKE RESOURCE"]').selectedOptions[0].value == 'unstakecpu'
+                                                                ){
+                                                                    return window['information-data']['DATA'][
+                                                                        document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                                    ]['cpu']['stake']['self'];
+                                                                }else if (
+                                                                    document.querySelector('div.modal#stakeWax').querySelector('select[aria-label="UNSTAKE RESOURCE"]').selectedOptions[0].value == 'sellram'
+                                                                ){
+                                                                    return parseInt((
+                                                                        window['information-data']['DATA'][
+                                                                            document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                                        ]['ram']['total']['max'] - window['information-data']['DATA'][
+                                                                            document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                                        ]['ram']['total']['use']
+                                                                    ) * 0.95);
+                                                                }else{
+                                                                    return 0;
+                                                                }; 
+                                                            })()
                                                         ).toFixed(4)) || parseFloat(parseFloat(
                                                             document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value
                                                         )).toFixed(4) < 0 || document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value.match(/\+|\-|\*|\\/gi)
                                                     )
                                                 ) {
-                                                    document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value = window['information-data']['DATA'][
-                                                        document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
-                                                    ]['cpu']['stake']['self'];
+                                                    document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value = (function (){
+                                                        if(
+                                                            document.querySelector('div.modal#stakeWax').querySelector('select[aria-label="UNSTAKE RESOURCE"]').selectedOptions[0].value == 'unstakecpu'
+                                                        ){
+                                                            return window['information-data']['DATA'][
+                                                                document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                            ]['cpu']['stake']['self'];
+                                                        }else if (
+                                                            document.querySelector('div.modal#stakeWax').querySelector('select[aria-label="UNSTAKE RESOURCE"]').selectedOptions[0].value == 'sellram'
+                                                        ){
+                                                            return parseInt((
+                                                                window['information-data']['DATA'][
+                                                                    document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                                ]['ram']['total']['max'] - window['information-data']['DATA'][
+                                                                    document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                                ]['ram']['total']['use']
+                                                            ) * 0.95);
+                                                        }else{
+                                                            return 0;
+                                                        }; 
+                                                    })()
                                                 };
                                             });
 
@@ -4511,7 +4594,9 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                         `UNSTAKE : PLEASE WAIT`, 'info'
                                                     );
 
-                                                    fetch(`/unstakecpu?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&quantity=${ Number(document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value).toFixed(8) }`, {
+                                                    fetch(`/${
+                                                        document.querySelector('div.modal#stakeWax').querySelector('select[aria-label="UNSTAKE RESOURCE"]').selectedOptions[0].value
+                                                    }?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }&quantity=${ Number(document.querySelector('div.modal#stakeWax').querySelector('input[aria-label="UNSTAKE QUANTITY"]').value).toFixed(8) }`, {
                                                         "headers": {},
                                                         "body": null,
                                                         "method": "GET",
@@ -4596,10 +4681,10 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                     }).catch(error => {
                                                         Swal.fire({
                                                             iconHtml: `
-        <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-        `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                                                            `,
                                                             customClass: {
                                                                 icon: 'swalError'
                                                             },
@@ -4623,7 +4708,29 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                             `UNSTAKE : PLEASE WAIT ${ UNSTAKEC }`, 'info'
                                                         );
                                                         (function(ID) {
-                                                            fetch(`/unstakecpu?waxid=${ ID }&quantity=${ Number(window['information-data']['DATA'][ ID ]['cpu']['stake']['self']).toFixed(4) * ( Number(document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE QUANTITY MIGHT"]').value) / 100 ) }`, {
+                                                            fetch(`/${
+                                                                document.querySelector('div.modal#stakeWax').querySelector('select[aria-label="UNSTAKE RESOURCE"]').selectedOptions[0].value
+                                                            }?waxid=${ ID }&quantity=${
+                                                                (function  (){
+                                                                    if(
+                                                                        document.querySelector('div.modal#stakeWax').querySelector('select[aria-label="UNSTAKE RESOURCE"]').selectedOptions[0].value == 'unstakecpu'
+                                                                    ){
+                                                                        return Number(window['information-data']['DATA'][ ID ]['cpu']['stake']['self']).toFixed(4) * ( Number(document.querySelector('div.modal#stakeWax input[aria-label="UNSTAKE QUANTITY MIGHT"]').value) / 100 );
+                                                                    }else if (
+                                                                        document.querySelector('div.modal#stakeWax').querySelector('select[aria-label="UNSTAKE RESOURCE"]').selectedOptions[0].value == 'sellram'
+                                                                    ){
+                                                                        return parseInt((
+                                                                            window['information-data']['DATA'][
+                                                                                ID
+                                                                            ]['ram']['total']['max'] - window['information-data']['DATA'][
+                                                                                ID
+                                                                            ]['ram']['total']['use']
+                                                                        ) * 0.95);
+                                                                    }else{
+                                                                        return 0;
+                                                                    }; 
+                                                                })()
+                                                            }`, {
                                                                 "headers": {},
                                                                 "body": null,
                                                                 "method": "GET",
@@ -4637,12 +4744,24 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                                     );
                                                                 } else {
                                                                     try {
-                                                                        $.notify(
-                                                                            `UNSTAKE : FAIL ${ ID } - ${ result['text'] }`, 'warn'
-                                                                        );
+                                                                        if (
+                                                                            result['data']['transaction'] &&
+                                                                            result['data']['transaction']['trx'] &&
+                                                                            result['data']['transaction']['trx']['error'] &&
+                                                                            result['data']['transaction']['trx']['error']['what']
+                                                                        ) {
+                                                                            $.notify(
+                                                                                `UNSTAKE : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                            );
+                                                                        } else {
+                                                                            $.notify(
+                                                                                `UNSTAKE : WARNING ${ ID } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                                                            );
+                                                                        };
                                                                     } catch (e) {
                                                                         $.notify(
-                                                                            `UNSTAKE : ERROR ${ ID } - ${ result['text'] }`, 'error'
+                                                                            `UNSTAKE : ERROR ${ ID } - ${ result['text'] }`,
+                                                                            'error'
                                                                         );
                                                                     };
                                                                 };
@@ -4691,11 +4810,11 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                                             if (result['code'] == 200) {
                                                                 Swal.fire({
                                                                     iconHtml: `
-                    <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                    </svg>
-                    `,
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>
+                                                                    `,
                                                                     customClass: {
                                                                         icon: 'swalSuccess'
                                                                     },
@@ -4784,8 +4903,61 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                         <!-- REFUND -->
                                         <!-- REFUND -->
                                         <!-- REFUND -->
-                                        <button type="button" class="btn btn-primary refund_all" disabled>REFUND ALL</button>
+                                        <button type="button" class="btn btn-primary refundtoall">REFUND ALL</button>
                                         <script>
+                                            document.querySelector('div.modal#stakeWax button.btn.btn-primary.refundtoall').addEventListener(
+                                                "click",
+                                                function(e) {
+                                                    $('#stakeWax').modal('hide');
+                                                    for (REFUNDALL in window['information-data']['DATA']) {
+                                                        $.notify(
+                                                            `REFUND : PLEASE WAIT ${ REFUNDALL }`, 'info'
+                                                        );
+                                                        (function(ID) {
+                                                            fetch(`/refund?waxid=${ document.querySelector('div.modal#stakeWax').querySelector('div.modal-header').querySelector('h5').getAttribute("value") }`, {
+                                                                "headers": {},
+                                                                "body": null,
+                                                                "method": "GET",
+                                                            }).then(
+                                                                result => result.json()
+                                                            ).then(result => {
+                                                                if (result['code'] == 200) {
+                                                                    $.notify(
+                                                                        `REFUND : DONE ${ ID }`,
+                                                                        'success'
+                                                                    );
+                                                                } else {
+                                                                    try {
+                                                                        if (
+                                                                            result['data']['transaction'] &&
+                                                                            result['data']['transaction']['trx'] &&
+                                                                            result['data']['transaction']['trx']['error'] &&
+                                                                            result['data']['transaction']['trx']['error']['what']
+                                                                        ) {
+                                                                            $.notify(
+                                                                                `REFUND : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                            );
+                                                                        } else {
+                                                                            $.notify(
+                                                                                `REFUND : WARNING ${ ID } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                                                            );
+                                                                        };
+                                                                    } catch (e) {
+                                                                        $.notify(
+                                                                            `REFUND : ERROR ${ ID } - ${ result['text'] }`,
+                                                                            'error'
+                                                                        );
+                                                                    };
+                                                                };
+                                                            }).catch(error => {
+                                                                $.notify(
+                                                                    `REFUND : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                                                                );
+                                                            });
+                                                        })(REFUNDALL);
+                                                    };
+                                                }
+                                            );
                                         </script>
                                     </div>
 

@@ -3915,7 +3915,7 @@ $(document).ready(function() {
                                         }); 
                                     };
                                 }); 
-								document.querySelector(`th[id="${ WAXID }-ss-panel-monitor"]`).querySelector('div.input-group.ss-target-set button').addEventListener('click', function(e) {
+								document.querySelector(`th[id="${ WAXID }-ss-panel-monitor"]`).querySelector('div.input-group.ss-target-set button.ss-target-set').addEventListener('click', function(e) {
                                     if (
                                         !$(this).attr('disabled')
                                     ){

@@ -1113,7 +1113,7 @@ for (WAXID in window['information-data']['DATA']){
                         </div>
                         <div style="height: 3px;"></div>
                         <div class="input-group">
-                            <div class="input-group-text" style="width: inherit; justify-content: center; ">MASTER KEY FORCE CONTROLLER</div>
+                            <div class="input-group-text" style="width: inherit; justify-content: center; ">MASTER KEY KEEP CONTROLLER</div>
                         </div>
                         <div class="input-group">
                             <div class="input-group-text" style="width: 50%;display: inline-flex;">
@@ -1121,14 +1121,14 @@ for (WAXID in window['information-data']['DATA']){
 		                        	<label class="form-check-label">
 		                        		<input type="checkbox" class="form-check-input xxx-switch" value="0">
 		                        	</label>
-		                        </div>FORCE REGISTER NEW ACCOUNT BY MASTER KEY CPU,NET CONSUME
+		                        </div>KEEP REGISTER AW NEW ACCOUNT BY MASTER KEY CPU,NET CONSUME
                             </div>
                             <div class="input-group-text" style="width: 50%;display: inline-flex;">
 		                        <div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
 		                        	<label class="form-check-label">
 		                        		<input type="checkbox" class="form-check-input xxx-switch" value="0">
 		                        	</label>
-		                        </div>FORCE UNSTAKE, REFUND BY MASTER KEY CPU,NET CONSUME
+		                        </div>KEEP UNSTAKE, REFUND BY MASTER KEY CPU,NET CONSUME
                             </div>
                         </div>
 
@@ -2361,48 +2361,83 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <ul class="nav nav-tabs" id="SetLandTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="setland-main-tab" data-bs-toggle="tab" data-bs-target="#setland-main" type="button" role="tab" aria-controls="setland-main" aria-selected="true">MAIN</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="setland-register-tab" data-bs-toggle="tab" data-bs-target="#setland-register" type="button" role="tab" aria-controls="setland-register" aria-selected="false">REGISTER</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="setland-random-tab" data-bs-toggle="tab" data-bs-target="#setland-random" type="button" role="tab" aria-controls="setland-random" aria-selected="false">RANDOM</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="SetLandTabContent">
+                            <div class="tab-pane show active setLand" id="setland-main" role="tabpanel" aria-labelledby="setland-main-tab">
 
-                        <div class="setLand justify-content-center row" style="--bs-gutter-x: 0.0rem; ">
-                        </div>
-                        <script>
-                            document.querySelector('div.modal#setLand').addEventListener('shown.bs.modal', function(event) {
 
-                                document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value = '';
-                                document.querySelector('div.setLand.justify-content-center.row').innerHTML = '';
-                                document.querySelector('button.btn.btn-primary.set_land').disabled = true;
-                                document.querySelector('button.btn.btn-primary.set_landtoall').disabled = true;
 
-                                document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').innerText = `SET LAND : ${ event.relatedTarget.parentNode.parentNode.id }`
-                                document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.id);
-                                //    fetch(`https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/?asset_id=${window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"] }`, {
-                                fetch(`${
-                                    window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
-                                }?asset_id=${
-                                    window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"]
-                                }`, {
-                                    "headers": {
-                                        'x-requested-with': 'XMLHttpRequest',
-                                        'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
-                                    },
-                                    "body": null,
-                                    "method": "GET",
-                                }).then(
-                                    result => result.json()
-                                ).then(result => {
-                                    console.log(result);
-                                    for (asset of result['data']) {
-                                        event['createElement'] = document.createElement('div');
-                                        event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.id }`);
-                                        event['createElement'].setAttribute("style", "width: 256 !important;");
-                                        event['createElement'].setAttribute("value", asset['asset_id']);
-                                        event['createElement'].setAttribute("commission", asset['mutable_data']['commission']);
-                                        document.querySelector('div.modal#setLand').querySelector('div[commission*=""]');
-                                        // ipfs.niftylife.io/ipfs/
-                                        // cloudflare-ipfs.com/ipfs/
-                                        // ipfs.com/ipfs/
-                                        document.querySelector('div.modal#setLand').querySelector('div.setLand.justify-content-center.row').appendChild(
-                                            Object.assign(event['createElement'], {
-                                                innerHTML: `\
+                                <div class="justify-content-center row" style="--bs-gutter-x: 0.0rem; height : 486px !important; ">
+                                </div>
+                                <script>
+                                    document.querySelector('div.modal#setLand').addEventListener('shown.bs.modal', function(event) {
+        
+                                        document.querySelector('div.modal#setLand div.setLand div.justify-content-center.row').innerHTML = '';
+                                        document.querySelector('div.modal#setLand div.register div.justify-content-center.row').innerHTML = '';
+                                        document.querySelector('div.modal#setLand div.random div.justify-content-center.row').innerHTML = '';
+
+                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.get_land').parentNode.querySelector('input').value = '';
+                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_land').disabled = true;
+                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_landtoall').disabled = true;
+                                        document.querySelector('div.modal#setLand div.register button.btn.btn-primary.get_land').parentNode.querySelector('input').value = '';
+                                        document.querySelector('div.modal#setLand div.register button.btn.btn-primary.set_land').disabled = true;
+                                        document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').parentNode.querySelector('input').value = '';
+                                        document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').disabled = true;
+
+                                        if(
+                                            !window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['cfgs']['land_list'] == []
+                                        ){
+                                            for(RANDOM_LAND_ID of window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['cfgs']['land_list']) {
+                                                if(
+                                                    !$('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').includes(RANDOM_LAND_ID)
+                                                ){
+                                                    $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput(
+                                                        'add', RANDOM_LAND_ID
+                                                    );
+                                                }; 
+                                            }; 
+                                        }; 
+        
+                                        document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').innerText = `SET LAND : ${ event.relatedTarget.parentNode.parentNode.id }`
+                                        document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.id);
+        
+                                        fetch(`${
+                                            window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+                                        }?asset_id=${
+                                            window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['land']["id"]
+                                        }`, {
+                                            "headers": {
+                                                'x-requested-with': 'XMLHttpRequest',
+                                                'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+                                            },
+                                            "body": null,
+                                            "method": "GET",
+                                        }).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            console.log(result);
+                                            for (asset of result['data']) {
+                                                event['createElement'] = document.createElement('div');
+                                                event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.id }`);
+                                                event['createElement'].setAttribute("style", "width: 256 !important;");
+                                                event['createElement'].setAttribute("value", asset['asset_id']);
+                                                event['createElement'].setAttribute("commission", asset['mutable_data']['commission']);
+                                                // ipfs.niftylife.io/ipfs/
+                                                // cloudflare-ipfs.com/ipfs/
+                                                // ipfs.com/ipfs/
+                                                document.querySelector('div.modal#setLand div.setLand div.justify-content-center.row').appendChild(
+                                                    Object.assign(event['createElement'], {
+                                                        innerHTML: `\
 <div class="custom-control custom-checkbox image-checkbox" style="width: 256 !important;">\
     <img\
         src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354"\
@@ -2457,331 +2492,847 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
         "\
     >${ asset['owner'] }</div>\
 </div>      `
-                                            })
-                                        );
-
-                                    };
-
-                                    tooltipTriggerRender();
-                                });
-                            });
-                            //  document.querySelector('div.modal#setLand').addEventListener('hide.bs.modal', function () {
-                            //    document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value = ''
-                            //    document.querySelector('div.setLand.justify-content-center.row').innerHTML = '';
-                            //    document.querySelector('button.btn.btn-primary.set_land').disabled = true; 
-                            //    document.querySelector('button.btn.btn-primary.set_landtoall').disabled = true; 
-                            //  }); 
-                        </script>
-
-                    </div>
-                    <div class="modal-footer">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="1099512959648" aria-label="LAND ID" required>
-                            <button type="button" class="btn btn-primary get_land">GET LAND</button>
-                            <button type="button" class="btn btn-primary set_land" disabled>SET LAND</button>
-                            <button type="button" class="btn btn-primary set_landtoall" disabled>SET TO ALL</button>
-                        </div>
-                        <script>
-                            document.querySelector('button.btn.btn-primary.get_land').addEventListener(
-                                "click",
-                                function(e) {
-                                    try {
-                                        fetch(`${
-                                            window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
-                                        }?asset_id=${
-                                            document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
-                                        }`, {
-                                            "headers": {
-                                                'x-requested-with': 'XMLHttpRequest',
-                                                'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
-                                            },
-                                            "body": null,
-                                            "method": "GET",
-                                        }).then(
-                                            result => result.json()
-                                        ).then(result => {
-                                            console.log(result);
-                                            for (asset of result['data']) {
-                                                document.querySelector(
-                                                    'div.modal#setLand'
-                                                ).querySelector(
-                                                    'div.setLand.justify-content-center.row'
-                                                ).querySelector(
-                                                    'div.custom-control.custom-checkbox.image-checkbox'
-                                                ).querySelector(
-                                                    'img'
-                                                ).setAttribute("src", `https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354`);
-
-                                                document.querySelector(
-                                                    'div.modal#setLand'
-                                                ).querySelector(
-                                                    'div.setLand.justify-content-center.row'
-                                                ).querySelector(
-                                                    'div.custom-control.custom-checkbox.image-checkbox'
-                                                ).querySelectorAll('div')[0].innerText = `${ asset['data']['name'] }`;
-
-                                                document.querySelector(
-                                                    'div.modal#setLand'
-                                                ).querySelector(
-                                                    'div.setLand.justify-content-center.row'
-                                                ).querySelector(
-                                                    'div.custom-control.custom-checkbox.image-checkbox'
-                                                ).querySelectorAll('div')[1].innerText = `${ asset['asset_id'] }`;
-
-                                                //  document.querySelector(
-                                                //    'div.modal#setLand'
-                                                //  ).querySelector(
-                                                //    'div.setLand.justify-content-center.row'
-                                                //  ).querySelector(
-                                                //    'div.custom-control.custom-checkbox.image-checkbox'
-                                                //  ).querySelectorAll('div')[2].innerText = `${ ( Number( document.querySelector('div.modal#setLand').querySelector('div[commission]').getAttribute('commission') ) / 100).toFixed(2) } %`; 
-                                                // FIX COMMISSION NOT UPDATE FOUND BUG IN v0.0151.610
-                                                document.querySelector(
-                                                    'div.modal#setLand'
-                                                ).querySelector(
-                                                    'div.setLand.justify-content-center.row'
-                                                ).querySelector(
-                                                    'div.custom-control.custom-checkbox.image-checkbox'
-                                                ).querySelectorAll('div')[2].innerText = `${ ( Number( asset['data']['commission'] ) / 100).toFixed(2) } %`;
-
-                                                document.querySelector(
-                                                    'div.modal#setLand'
-                                                ).querySelector(
-                                                    'div.setLand.justify-content-center.row'
-                                                ).querySelector(
-                                                    'div.custom-control.custom-checkbox.image-checkbox'
-                                                ).querySelectorAll('div')[3].innerText = `X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }`;
-
-                                                document.querySelector(
-                                                    'div.modal#setLand'
-                                                ).querySelector(
-                                                    'div.setLand.justify-content-center.row'
-                                                ).querySelector(
-                                                    'div.custom-control.custom-checkbox.image-checkbox'
-                                                ).querySelectorAll('div')[4].innerText = `${ asset['owner'] }`;
-
+                                                    })
+                                                );
+                                                event['createElement'] = document.createElement('div');
+                                                event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.id }`);
+                                                event['createElement'].setAttribute("style", "width: 256 !important;");
+                                                event['createElement'].setAttribute("value", asset['asset_id']);
+                                                event['createElement'].setAttribute("commission", asset['mutable_data']['commission']);
+                                                document.querySelector('div.modal#setLand div.register div.justify-content-center.row').appendChild(
+                                                    Object.assign(event['createElement'], {
+                                                        innerHTML: `\
+<div class="custom-control custom-checkbox image-checkbox" style="width: 256 !important;">\
+    <img\
+        src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354"\
+        alt                 = "#"\
+        class               = "img-fluid"\
+        style               = "\
+            width           : 256px; \
+            height          : auto; \
+            border          : 5px solid rgb(141, 197, 63) !important; \
+            border-radius   : 10px; \
+            color           : #fff; \
+        "\
+        loading             = "lazy"\
+        data-bs-toggle      = "tooltip"\
+        data-bs-placement   = "top"\
+        loading             = "lazy"\
+        title               = "${ asset["asset_id"] }"\
+    >\
+    <div\
+        class="justify-content-center row text-nowrap"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['data']['name'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['asset_id'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ ( Number(event['createElement'].getAttribute("commission")) / 100).toFixed(2) } %</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['owner'] }</div>\
+</div>      `
+                                                    })
+                                                );
+                                                event['createElement'] = document.createElement('div');
+                                                event['createElement'].setAttribute("class", `col-md-3 ${ event.relatedTarget.parentNode.parentNode.id }`);
+                                                event['createElement'].setAttribute("style", "width: 256 !important;");
+                                                event['createElement'].setAttribute("value", asset['asset_id']);
+                                                event['createElement'].setAttribute("commission", asset['mutable_data']['commission']);
+                                                // ipfs.niftylife.io/ipfs/
+                                                // cloudflare-ipfs.com/ipfs/
+                                                // ipfs.com/ipfs/
+                                                document.querySelector('div.modal#setLand div.random div.justify-content-center.row').appendChild(
+                                                    Object.assign(event['createElement'], {
+                                                        innerHTML: `\
+<div class="custom-control custom-checkbox image-checkbox" style="width: 256 !important;">\
+    <img\
+        src                 = "https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354"\
+        alt                 = "#"\
+        class               = "img-fluid"\
+        style               = "\
+            width           : 256px; \
+            height          : auto; \
+            border          : 5px solid rgb(141, 197, 63) !important; \
+            border-radius   : 10px; \
+            color           : #fff; \
+        "\
+        loading             = "lazy"\
+        data-bs-toggle      = "tooltip"\
+        data-bs-placement   = "top"\
+        loading             = "lazy"\
+        title               = "${ asset["asset_id"] }"\
+    >\
+    <div\
+        class="justify-content-center row text-nowrap"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['data']['name'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['asset_id'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ ( Number(event['createElement'].getAttribute("commission")) / 100).toFixed(2) } %</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }</div>\
+    <div\
+        class="justify-content-center row"\
+        style = "\
+            color       : black; \
+            text-align  : center; \
+        "\
+    >${ asset['owner'] }</div>\
+</div>      `
+                                                    })
+                                                );
                                             };
-                                            document.querySelector('button.btn.btn-primary.set_land').setAttribute(
-                                                'value', document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value
-                                            );
-                                            document.querySelector('button.btn.btn-primary.set_land').disabled = false;
-                                            document.querySelector('button.btn.btn-primary.set_landtoall').disabled = false;
                                             tooltipTriggerRender();
-                                            $.notify(
-                                                document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
-                                                `LAND ID : ${ document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0] }`, 'info'
-                                            );
                                         });
-                                    } catch (e) {
-                                        document.querySelector('button.btn.btn-primary.set_land').setAttribute(
-                                            'value', ''
-                                        );
-                                        document.querySelector('button.btn.btn-primary.set_land').disabled = true;
-                                        document.querySelector('button.btn.btn-primary.set_landtoall').disabled = true;
-                                        tooltipTriggerRender();
-                                        $.notify(
-                                            document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
-                                            `LAND ID : INVALID `, 'warn'
-                                        );
-                                    };
-                                }, true
-                            );
-                            document.querySelector('button.btn.btn-primary.set_landtoall').addEventListener(
-                                "click",
-                                function(e) {
-                                    $('#setLand').modal('hide');
-                                    for (SLAWAXID in window['information-data']['DATA']) {
-                                        if (
-                                            window['information-data']['DATA'][SLAWAXID]['land']['id'] != document.querySelector('button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
-                                        ) {
-                                            $.notify(
-                                                `SET LAND : PLEASE WAIT ${ SLAWAXID }`, 'info'
-                                            );
-                                            (function(ID) {
-                                                fetch(`/setland?waxid=${
-                                                    ID
-                                                }&landid=${
-                                                    document.querySelector('button.btn.btn-primary.set_land').getAttribute('value')
-                                                }`, {
-                                                    "headers": {},
-                                                    "body": null,
-                                                    "method": "GET",
-                                                }).then(
-                                                    result => result.json()
-                                                ).then(result => {
-                                                    if (result['code'] == 200) {
+                                    });
+                                </script>
+                                <div class="modal-footer">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="1099512959648" aria-label="LAND ID" required>
+                                        <button type="button" class="btn btn-primary get_land">GET LAND</button>
+                                        <button type="button" class="btn btn-primary set_land" disabled>SET LAND</button>
+                                        <button type="button" class="btn btn-primary set_landtoall" disabled>SET TO ALL</button>
+                                    </div>
+                                    <script>
+                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.get_land').addEventListener(
+                                            "click",
+                                            function(e) {
+                                                try {
+                                                    fetch(`${
+                                                        window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+                                                    }?asset_id=${
+                                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
+                                                    }`, {
+                                                        "headers": {
+                                                            'x-requested-with': 'XMLHttpRequest',
+                                                            'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+                                                        },
+                                                        "body": null,
+                                                        "method": "GET",
+                                                    }).then(
+                                                        result => result.json()
+                                                    ).then(result => {
+                                                        console.log(result);
+                                                        for (asset of result['data']) {
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.setLand div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox img'
+                                                            ).setAttribute("src", `https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354`);
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.setLand div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[0].innerText = `${ asset['data']['name'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.setLand div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[1].innerText = `${ asset['asset_id'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.setLand div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[2].innerText = `${ ( Number( asset['data']['commission'] ) / 100).toFixed(2) } %`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.setLand div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[3].innerText = `X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.setLand div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[4].innerText = `${ asset['owner'] }`;
+                                                        
+                                                        };
+                                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_land').setAttribute(
+                                                            'value', document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.get_land').parentNode.querySelector('input').value
+                                                        );
+                                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_land').disabled = false;
+                                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_landtoall').disabled = false;
+                                                        tooltipTriggerRender();
                                                         $.notify(
-                                                            `SET LAND : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
-                                                            'success'
-                                                        ); 
-                                                    } else if (
-                                                        result['data']['transaction'] &&
-                                                        result['data']['transaction']['trx'] &&
-                                                        result['data']['transaction']['trx']['code'] &&
-                                                        result['data']['transaction']['trx']['error'] &&
-                                                        result['data']['transaction']['trx']['error']['code'] &&
-                                                        result['data']['transaction']['trx']['error']['details'] &&
-                                                        result['data']['transaction']['trx']['error']['details'].length
+                                                            document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                            `LAND ID : ${ document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0] }`, 'info'
+                                                        );
+                                                    });
+                                                } catch (e) {
+                                                    document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_land').setAttribute(
+                                                        'value', ''
+                                                    );
+                                                    document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_land').disabled = true;
+                                                    document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_landtoall').disabled = true;
+                                                    tooltipTriggerRender();
+                                                    $.notify(
+                                                        document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                        `LAND ID : INVALID `, 'warn'
+                                                    );
+                                                };
+                                            }, true
+                                        );
+                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_landtoall').addEventListener(
+                                            "click",
+                                            function(e) {
+                                                $('#setLand').modal('hide');
+                                                for (SLAWAXID in window['information-data']['DATA']) {
+                                                    if (
+                                                        window['information-data']['DATA'][SLAWAXID]['land']['id'] != document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
                                                     ) {
                                                         $.notify(
-                                                            `SET LAND : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
-                                                        ); 
+                                                            `SET LAND : PLEASE WAIT ${ SLAWAXID }`, 'info'
+                                                        );
+                                                        (function(ID) {
+                                                            fetch(`/setland?waxid=${
+                                                                ID
+                                                            }&landid=${
+                                                                document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_land').getAttribute('value')
+                                                            }`, {
+                                                                "headers": {},
+                                                                "body": null,
+                                                                "method": "GET",
+                                                            }).then(
+                                                                result => result.json()
+                                                            ).then(result => {
+                                                                if (result['code'] == 200) {
+                                                                    $.notify(
+                                                                        `SET LAND : DONE ${ ID } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+                                                                        'success'
+                                                                    ); 
+                                                                } else if (
+                                                                    result['data']['transaction'] &&
+                                                                    result['data']['transaction']['trx'] &&
+                                                                    result['data']['transaction']['trx']['code'] &&
+                                                                    result['data']['transaction']['trx']['error'] &&
+                                                                    result['data']['transaction']['trx']['error']['code'] &&
+                                                                    result['data']['transaction']['trx']['error']['details'] &&
+                                                                    result['data']['transaction']['trx']['error']['details'].length
+                                                                ) {
+                                                                    $.notify(
+                                                                        `SET LAND : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
+                                                                    ); 
+                                                                } else {
+                                                                    try {
+                                                                        if (
+                                                                            result['data']['transaction'] &&
+                                                                            result['data']['transaction']['trx'] &&
+                                                                            result['data']['transaction']['trx']['error'] &&
+                                                                            result['data']['transaction']['trx']['error']['what']
+                                                                        ) {
+                                                                            $.notify(
+                                                                                `SET LAND : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                                                                            );
+                                                                        } else {
+                                                                            $.notify(
+                                                                                `SET LAND : WARNING ${ ID } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                                                                            );
+                                                                        };
+                                                                    } catch (e) {
+                                                                        $.notify(
+                                                                            `SET LAND : ERROR ${ ID } - ${ result['text'] }`,
+                                                                            'error'
+                                                                        );
+                                                                    };
+                                                                };
+                                                            }).catch(error => {
+                                                                $.notify(
+                                                                    `SET LAND : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                                                                );
+                                                            });
+                                                        })(SLAWAXID);
                                                     } else {
-                                                        try {
-                                                            if (
-                                                                result['data']['transaction'] &&
-                                                                result['data']['transaction']['trx'] &&
-                                                                result['data']['transaction']['trx']['error'] &&
-                                                                result['data']['transaction']['trx']['error']['what']
-                                                            ) {
-                                                                $.notify(
-                                                                    `SET LAND : WARNING ${ ID } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
-                                                                );
-                                                            } else {
-                                                                $.notify(
-                                                                    `SET LAND : WARNING ${ ID } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-                                                                );
-                                                            };
-                                                        } catch (e) {
-                                                            $.notify(
-                                                                `SET LAND : ERROR ${ ID } - ${ result['text'] }`,
-                                                                'error'
-                                                            );
-                                                        };
+                                                        $.notify(
+                                                            `SET LAND : ALREADY ${ SLAWAXID }`, 'success'
+                                                        );
                                                     };
-                                                }).catch(error => {
-                                                    $.notify(
-                                                        `SET LAND : CONNECTION FAILED ${ ID } ${ error }`, 'error'
-                                                    );
-                                                });
-                                            })(SLAWAXID);
-                                        } else {
-                                            $.notify(
-                                                `SET LAND : ALREADY ${ SLAWAXID }`, 'success'
-                                            );
-                                        };
-                                    };
-                                }
-                            );
-                            document.querySelector('button.btn.btn-primary.set_land').addEventListener(
-                                "click",
-                                function(e) {
-
-                                    if (
-                                        !$(this).attr('disabled')
-                                    ) {
-
-                                        $(this).prop("disabled", true);
-                                        $(this).attr('readonly', true);
-                                        $.notify(
-                                            document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
-                                            `SET LAND : PLEASE WAIT`, 'info'
+                                                };
+                                            }
                                         );
-
-                                        fetch(`/setland?waxid=${
-                                            document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
-                                        }&landid=${
-                                            document.querySelector('button.btn.btn-primary.set_land').getAttribute('value')
-                                        }`, {
-                                            "headers": {},
-                                            "body": null,
-                                            "method": "GET",
-                                        }).then(
-                                            result => result.json()
-                                        ).then(result => {
-                                            if (result['code'] == 200) {
-                                                Swal.fire({
-                                                    iconHtml: `
+                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_land').addEventListener(
+                                            "click",
+                                            function(e) {
+                                            
+                                                if (
+                                                    !$(this).attr('disabled')
+                                                ) {
+                                                
+                                                    $(this).prop("disabled", true);
+                                                    $(this).attr('readonly', true);
+                                                    $.notify(
+                                                        document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                        `SET LAND : PLEASE WAIT`, 'info'
+                                                    );
+                                                
+                                                    fetch(`/setland?waxid=${
+                                                        document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                    }&landid=${
+                                                        document.querySelector('div.modal#setLand div.setLand button.btn.btn-primary.set_land').getAttribute('value')
+                                                    }`, {
+                                                        "headers": {},
+                                                        "body": null,
+                                                        "method": "GET",
+                                                    }).then(
+                                                        result => result.json()
+                                                    ).then(result => {
+                                                        if (result['code'] == 200) {
+                                                            Swal.fire({
+                                                                iconHtml: `
 <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-</svg>
-            `,
-                                                    customClass: {
-                                                        icon: 'swalSuccess'
-                                                    },
-                                                    title: 'Done!',
-                                                    html: `<div>SET LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
-                                                });
-                                                $(this).prop("disabled", false);
-                                                $(this).attr('readonly', false);
-                                            } else if (
-                                                result['data']['transaction'] &&
-                                                result['data']['transaction']['trx'] &&
-                                                result['data']['transaction']['trx']['code'] &&
-                                                result['data']['transaction']['trx']['error'] &&
-                                                result['data']['transaction']['trx']['error']['code'] &&
-                                                result['data']['transaction']['trx']['error']['details'] &&
-                                                result['data']['transaction']['trx']['error']['details'].length
-                                            ) {
-                                                Swal.fire({
-                                                    iconHtml: `
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>`,
+                                                                customClass: {
+                                                                    icon: 'swalSuccess'
+                                                                },
+                                                                title: 'Done!',
+                                                                html: `<div>SET LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
+                                                            });
+                                                            $(this).prop("disabled", false);
+                                                            $(this).attr('readonly', false);
+                                                        } else if (
+                                                            result['data']['transaction'] &&
+                                                            result['data']['transaction']['trx'] &&
+                                                            result['data']['transaction']['trx']['code'] &&
+                                                            result['data']['transaction']['trx']['error'] &&
+                                                            result['data']['transaction']['trx']['error']['code'] &&
+                                                            result['data']['transaction']['trx']['error']['details'] &&
+                                                            result['data']['transaction']['trx']['error']['details'].length
+                                                        ) {
+                                                            Swal.fire({
+                                                                iconHtml: `
 <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-</svg>
-                                                    `,
-                                                    customClass: {
-                                                        icon: 'swalError'
-                                                    },
-                                                    title: 'Error !',
-                                                    html: `<div>SET LAND ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
-                                                });
-                                                $(this).prop("disabled", false);
-                                                $(this).attr('readonly', false);
-                                            } else {
-                                                try {
-                                                    if (
-                                                        result['data']['transaction'] &&
-                                                        result['data']['transaction']['trx'] &&
-                                                        result['data']['transaction']['trx']['error'] &&
-                                                        result['data']['transaction']['trx']['error']['what']
-                                                    ) {
-                                                        Swal.fire(
-                                                            'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
-                                                        );
-                                                    } else {
-                                                        Swal.fire(
-                                                            'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                        );
-                                                    };
-                                                    $(this).prop("disabled", false);
-                                                    $(this).attr('readonly', false);
-                                                } catch (e) {
-                                                    Swal.fire({
-                                                        iconHtml: `
+</svg>`,
+                                                                customClass: {
+                                                                    icon: 'swalError'
+                                                                },
+                                                                title: 'Error !',
+                                                                html: `<div>SET LAND ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+                                                            });
+                                                            $(this).prop("disabled", false);
+                                                            $(this).attr('readonly', false);
+                                                        } else {
+                                                            try {
+                                                                if (
+                                                                    result['data']['transaction'] &&
+                                                                    result['data']['transaction']['trx'] &&
+                                                                    result['data']['transaction']['trx']['error'] &&
+                                                                    result['data']['transaction']['trx']['error']['what']
+                                                                ) {
+                                                                    Swal.fire(
+                                                                        'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                                    );
+                                                                } else {
+                                                                    Swal.fire(
+                                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                                    );
+                                                                };
+                                                                $(this).prop("disabled", false);
+                                                                $(this).attr('readonly', false);
+                                                            } catch (e) {
+                                                                Swal.fire({
+                                                                    iconHtml: `
 <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-              `,
-                                                        customClass: {
-                                                            icon: 'swalError'
-                                                        },
-                                                        title: 'Error!',
-                                                        html: `<div>SET LAND ERROR</div><div>${ result['text'] }</div>`,
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>`,
+                                                                    customClass: {
+                                                                        icon: 'swalError'
+                                                                    },
+                                                                    title: 'Error!',
+                                                                    html: `<div>SET LAND ERROR</div><div>${ result['text'] }</div>`,
+                                                                });
+                                                            };
+                                                        };
+                                                    }).catch(error => {
+                                                        Swal.fire({
+                                                            iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>`,
+                                                            customClass: {
+                                                                icon: 'swalError'
+                                                            },
+                                                            title: 'Error!',
+                                                            text: `SET LAND ERROR : CONNECTION FAILED ${ error }`,
+                                                        });
+                                                        $(this).prop("disabled", false);
+                                                        $(this).attr('readonly', false);
                                                     });
                                                 };
-                                            };
-                                        }).catch(error => {
-                                            Swal.fire({
-                                                iconHtml: `
+                                            }, true
+                                        );
+                                    </script>
+                                </div>
+
+
+
+                            </div>
+                            <div class="tab-pane register" id="setland-register" role="tabpanel" aria-labelledby="setland-register-tab">
+                                
+                                
+                                
+                                <div class="justify-content-center row" style="--bs-gutter-x: 0.0rem; height : 486px !important; ">
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="1099512959648" aria-label="LAND ID" required>
+                                        <button type="button" class="btn btn-primary get_land">GET LAND</button>
+                                        <button type="button" class="btn btn-primary set_land" disabled>SET LAND</button>
+                                    </div>
+                                    <script>
+                                        document.querySelector('div.modal#setLand div.register button.btn.btn-primary.get_land').addEventListener(
+                                            "click",
+                                            function(e) {
+                                                try {
+                                                    fetch(`${
+                                                        window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+                                                    }?asset_id=${
+                                                        document.querySelector('div.modal#setLand div.register button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
+                                                    }`, {
+                                                        "headers": {
+                                                            'x-requested-with': 'XMLHttpRequest',
+                                                            'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+                                                        },
+                                                        "body": null,
+                                                        "method": "GET",
+                                                    }).then(
+                                                        result => result.json()
+                                                    ).then(result => {
+                                                        console.log(result);
+                                                        for (asset of result['data']) {
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.register div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox img'
+                                                            ).setAttribute("src", `https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354`);
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.register div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[0].innerText = `${ asset['data']['name'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.register div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[1].innerText = `${ asset['asset_id'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.register div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[2].innerText = `${ ( Number( asset['data']['commission'] ) / 100).toFixed(2) } %`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.register div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[3].innerText = `X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.register div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[4].innerText = `${ asset['owner'] }`;
+                                                        
+                                                        };
+                                                        document.querySelector('div.modal#setLand div.register button.btn.btn-primary.set_land').setAttribute(
+                                                            'value', document.querySelector('div.modal#setLand div.register button.btn.btn-primary.get_land').parentNode.querySelector('input').value
+                                                        );
+                                                        document.querySelector('div.modal#setLand div.register button.btn.btn-primary.set_land').disabled = false;
+                                                        tooltipTriggerRender();
+                                                        $.notify(
+                                                            document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                            `LAND ID : ${ document.querySelector('div.modal#setLand div.register button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0] }`, 'info'
+                                                        );
+                                                    });
+                                                } catch (e) {
+                                                    document.querySelector('div.modal#setLand div.register button.btn.btn-primary.set_land').setAttribute(
+                                                        'value', ''
+                                                    );
+                                                    document.querySelector('div.modal#setLand div.register button.btn.btn-primary.set_land').disabled = true;
+                                                    tooltipTriggerRender();
+                                                    $.notify(
+                                                        document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                        `LAND ID : INVALID `, 'warn'
+                                                    );
+                                                };
+                                            }, true
+                                        );
+                                        document.querySelector('div.modal#setLand div.register button.btn.btn-primary.set_land').addEventListener(
+                                            "click",
+                                            function(e) {
+                                            
+                                                if (
+                                                    !$(this).attr('disabled')
+                                                ) {
+                                                
+                                                    $(this).prop("disabled", true);
+                                                    $(this).attr('readonly', true);
+                                                    $.notify(
+                                                        document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                        `REGISTER LAND : PLEASE WAIT`, 'info'
+                                                    );
+                                                
+                                                    fetch(`/cfg?waxid=${
+                                                        document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                    }&land_regi=${
+                                                        document.querySelector('div.modal#setLand div.register button.btn.btn-primary.set_land').getAttribute('value')
+                                                    }`, {
+                                                        "headers": {},
+                                                        "body": null,
+                                                        "method": "GET",
+                                                    }).then(
+                                                        result => result.json()
+                                                    ).then(result => {
+                                                        if (result['code'] == 200) {
+                                                            Swal.fire({
+                                                                iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>`,
+                                                                customClass: {
+                                                                    icon: 'swalSuccess'
+                                                                },
+                                                                title: 'Done!',
+                                                                html: `<div>REGISTER LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
+                                                            });
+                                                            $(this).prop("disabled", false);
+                                                            $(this).attr('readonly', false);
+                                                        } else if (
+                                                            result['data']['transaction'] &&
+                                                            result['data']['transaction']['trx'] &&
+                                                            result['data']['transaction']['trx']['code'] &&
+                                                            result['data']['transaction']['trx']['error'] &&
+                                                            result['data']['transaction']['trx']['error']['code'] &&
+                                                            result['data']['transaction']['trx']['error']['details'] &&
+                                                            result['data']['transaction']['trx']['error']['details'].length
+                                                        ) {
+                                                            Swal.fire({
+                                                                iconHtml: `
 <svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-          `,
-                                                customClass: {
-                                                    icon: 'swalError'
-                                                },
-                                                title: 'Error!',
-                                                text: `SET LAND ERROR : CONNECTION FAILED ${ error }`,
-                                            });
-                                            $(this).prop("disabled", false);
-                                            $(this).attr('readonly', false);
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>`,
+                                                                customClass: {
+                                                                    icon: 'swalError'
+                                                                },
+                                                                title: 'Error !',
+                                                                html: `<div>REGISTER LAND ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+                                                            });
+                                                            $(this).prop("disabled", false);
+                                                            $(this).attr('readonly', false);
+                                                        } else {
+                                                            try {
+                                                                if (
+                                                                    result['data']['transaction'] &&
+                                                                    result['data']['transaction']['trx'] &&
+                                                                    result['data']['transaction']['trx']['error'] &&
+                                                                    result['data']['transaction']['trx']['error']['what']
+                                                                ) {
+                                                                    Swal.fire(
+                                                                        'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                                    );
+                                                                } else {
+                                                                    Swal.fire(
+                                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                                    );
+                                                                };
+                                                                $(this).prop("disabled", false);
+                                                                $(this).attr('readonly', false);
+                                                            } catch (e) {
+                                                                Swal.fire({
+                                                                    iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>`,
+                                                                    customClass: {
+                                                                        icon: 'swalError'
+                                                                    },
+                                                                    title: 'Error!',
+                                                                    html: `<div>REGISTER LAND ERROR</div><div>${ result['text'] }</div>`,
+                                                                });
+                                                            };
+                                                        };
+                                                    }).catch(error => {
+                                                        Swal.fire({
+                                                            iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>`,
+                                                            customClass: {
+                                                                icon: 'swalError'
+                                                            },
+                                                            title: 'Error!',
+                                                            text: `REGISTER LAND ERROR : CONNECTION FAILED ${ error }`,
+                                                        });
+                                                        $(this).prop("disabled", false);
+                                                        $(this).attr('readonly', false);
+                                                    });
+                                                };
+                                            }, true
+                                        );
+                                    </script>
+                                </div>
+                                
+                                
+                                
+                            </div>
+                            <div class="tab-pane random" id="setland-random" role="tabpanel" aria-labelledby="setland-random-tab">
+                                
+                                
+                                
+                                <div class="justify-content-center row" style="--bs-gutter-x: 0.0rem; height : 486px !important; ">
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="input-group">
+                                        <div class="input-group-text" id="basic-addon WAX" style="width: 100%; ">LAND LIST FOR RANDOM LAND IN APL MODE</div>
+                                        <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="RANDOM LAND" data-role="tagsinput" oninput="$('div.modal#setLand div.random button.btn.btn-primary.set_land').prop( 'disabled', false ); " required="">
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="1099512959648" aria-label="LAND ID" required>
+                                        <button type="button" class="btn btn-primary get_land">GET LAND</button>
+                                        <button type="button" class="btn btn-primary set_land" disabled>SET LAND</button>
+                                    </div>
+                                    <script>
+                                        $('div.modal#setLand [aria-label*="RANDOM LAND"]').on('itemAdded', function(event) {
+                                            document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').setAttribute(
+                                                'value', $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').join(',')
+                                            );
+                                            document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').disabled = false;
+                                            tooltipTriggerRender();
                                         });
-                                    };
-                                }, true
-                            );
-                        </script>
+                                        document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').addEventListener(
+                                            "click",
+                                            function(e) {
+                                                try {
+                                                    fetch(`${
+                                                        window['atomichub'][Math.floor(Math.random() * window['atomichub'].length)]
+                                                    }?asset_id=${
+                                                        document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
+                                                    }`, {
+                                                        "headers": {
+                                                            'x-requested-with': 'XMLHttpRequest',
+                                                            'x-cors-grida-api-key': '61dbebf9-36c6-45c6-909e-323209a8116d'
+                                                        },
+                                                        "body": null,
+                                                        "method": "GET",
+                                                    }).then(
+                                                        result => result.json()
+                                                    ).then(result => {
+                                                        console.log(result);
+                                                        for (asset of result['data']) {
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.random div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox img'
+                                                            ).setAttribute("src", `https://images.weserv.nl/?url=https://cloudflare-ipfs.com/ipfs/${ asset["data"]["img"] || asset["data"]['img_body'] }&h=354`);
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.random div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[0].innerText = `${ asset['data']['name'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.random div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[1].innerText = `${ asset['asset_id'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.random div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[2].innerText = `${ ( Number( asset['data']['commission'] ) / 100).toFixed(2) } %`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.random div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[3].innerText = `X ${ asset['data']['x'] } : Y ${ asset['data']['y'] }`;
+                                                        
+                                                            document.querySelector(
+                                                                'div.modal#setLand div.random div.justify-content-center.row div.custom-control.custom-checkbox.image-checkbox'
+                                                            ).querySelectorAll('div')[4].innerText = `${ asset['owner'] }`;
+                                                        };
+                                                        if(
+                                                            !$('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').includes(
+                                                                document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
+                                                            ) && asset['collection']['name'] == 'Alien Worlds' && asset['schema']['schema_name'] == 'land.worlds'
+                                                        ){
+                                                            $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput(
+                                                                'add', document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0]
+                                                            );
+                                                            $.notify(
+                                                                document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                                `LAND ID : ${ document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0] }`, 'info'
+                                                            );
+                                                        }else{
+                                                            $.notify(
+                                                                document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                                `LAND ID : INVALID ${ document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').parentNode.querySelector('input').value.match(/1099512\d{6,6}/gi)[0] }`, 'warn'
+                                                            );
+                                                        }; 
+                                                    });
+                                                } catch (e) {
+                                                    document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').setAttribute(
+                                                        'value', ''
+                                                    );
+                                                    document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').disabled = true;
+                                                    tooltipTriggerRender();
+                                                    $.notify(
+                                                        document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                        `LAND ID : INVALID `, 'warn'
+                                                    );
+                                                };
+                                            }, true
+                                        );
+                                        document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').addEventListener(
+                                            "click",
+                                            function(e) {
+                                            
+                                                if (
+                                                    !$(this).attr('disabled')
+                                                ) {
+                                                
+                                                    $(this).prop("disabled", true);
+                                                    $(this).attr('readonly', true);
+                                                    $.notify(
+                                                        document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
+                                                        `RANDOM LAND : PLEASE WAIT`, 'info'
+                                                    );
+                                                
+                                                    fetch(`/cfg?waxid=${
+                                                        document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+                                                    }&land_list=${
+                                                        $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').join(',')
+                                                    }`, {
+                                                        "headers": {},
+                                                        "body": null,
+                                                        "method": "GET",
+                                                    }).then(
+                                                        result => result.json()
+                                                    ).then(result => {
+                                                        if (result['code'] == 200) {
+                                                            Swal.fire({
+                                                                iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+</svg>`,
+                                                                customClass: {
+                                                                    icon: 'swalSuccess'
+                                                                },
+                                                                title: 'Done!',
+                                                                html: `<div>RANDOM LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
+                                                            });
+                                                            $(this).prop("disabled", false);
+                                                            $(this).attr('readonly', false);
+                                                        } else if (
+                                                            result['data']['transaction'] &&
+                                                            result['data']['transaction']['trx'] &&
+                                                            result['data']['transaction']['trx']['code'] &&
+                                                            result['data']['transaction']['trx']['error'] &&
+                                                            result['data']['transaction']['trx']['error']['code'] &&
+                                                            result['data']['transaction']['trx']['error']['details'] &&
+                                                            result['data']['transaction']['trx']['error']['details'].length
+                                                        ) {
+                                                            Swal.fire({
+                                                                iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>`,
+                                                                customClass: {
+                                                                    icon: 'swalError'
+                                                                },
+                                                                title: 'Error !',
+                                                                html: `<div>RANDOM LAND ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+                                                            });
+                                                            $(this).prop("disabled", false);
+                                                            $(this).attr('readonly', false);
+                                                        } else {
+                                                            try {
+                                                                if (
+                                                                    result['data']['transaction'] &&
+                                                                    result['data']['transaction']['trx'] &&
+                                                                    result['data']['transaction']['trx']['error'] &&
+                                                                    result['data']['transaction']['trx']['error']['what']
+                                                                ) {
+                                                                    Swal.fire(
+                                                                        'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                                    );
+                                                                } else {
+                                                                    Swal.fire(
+                                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
+                                                                    );
+                                                                };
+                                                                $(this).prop("disabled", false);
+                                                                $(this).attr('readonly', false);
+                                                            } catch (e) {
+                                                                Swal.fire({
+                                                                    iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>`,
+                                                                    customClass: {
+                                                                        icon: 'swalError'
+                                                                    },
+                                                                    title: 'Error!',
+                                                                    html: `<div>RANDOM LAND ERROR</div><div>${ result['text'] }</div>`,
+                                                                });
+                                                            };
+                                                        };
+                                                    }).catch(error => {
+                                                        Swal.fire({
+                                                            iconHtml: `
+<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>`,
+                                                            customClass: {
+                                                                icon: 'swalError'
+                                                            },
+                                                            title: 'Error!',
+                                                            text: `RANDOM LAND ERROR : CONNECTION FAILED ${ error }`,
+                                                        });
+                                                        $(this).prop("disabled", false);
+                                                        $(this).attr('readonly', false);
+                                                    });
+                                                };
+                                            }, true
+                                        );
+                                    </script>
+                                </div>
+
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3708,7 +4259,7 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-text" id="basic-addon WAX" style="width: 100%; ">TO</div>
-                                    <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="ALLOCATE TO WAX ID" data-role="tagsinput" oninput="$('button.btn.btn-primary.allocate').prop( 'disabled', false ); " required>
+                                    <input type="text" class="form-control" placeholder="xxxxx.wam" aria-label="ALLOCATE TO WAX ID" data-role="tagsinput" oninput="$('button.btn.btn-primary.allocate-submit-button').prop( 'disabled', false ); " required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-text" id="basic-addon WAX" style="width: 96px;">MEMO</div>
@@ -3719,7 +4270,7 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                         </div>
 
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary allocate-submit-button">TRANSFER</button>
+                            <button type="submit" class="btn btn-primary allocate-submit-button" disabled>TRANSFER</button>
                         </div>
 
                         <script type="text/javascript">

@@ -26,6 +26,9 @@ $(document).ready(function() {
 			//	{
 			//		'headers' : {}, 
 			//		'url' : 'waxapi.ledgerwise.io'
+			//	}, {
+			//		'headers' : {}, 
+			//		'url' : 'hyperion.sentnl.io'
 			//	}, 
 			{
 				'headers' : {}, 
@@ -36,9 +39,6 @@ $(document).ready(function() {
 			}, {
 				'headers' : {}, 
 				'url' : 'wax.eosphere.io'
-			}, {
-				'headers' : {}, 
-				'url' : 'hyperion.sentnl.io'
 			}, {
 				'headers' : {}, 
 				'url' : 'wax.eosdublin.io'
@@ -4460,7 +4460,9 @@ $(document).ready(function() {
                         
                         (function thiscode(ID){
 							setTimeout(function(){
-								fetch(`https://api-wax.eosauthority.com/v1/chain/get_table_rows`, {
+								fetch(`https://${
+									(function (a) {return a[Math.floor((Math.random()*a.length))]})( window['waxserver']['endpoint'] )['url']
+								}/v1/chain/get_table_rows`, {
 									method  : 'POST',
 									body    : JSON.stringify({
 										"json"          : true, 

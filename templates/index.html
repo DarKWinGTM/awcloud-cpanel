@@ -7571,6 +7571,82 @@ document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-
                     });
                 }, 1000 + Math.ceil(Math.random() * 16000))
             })(TASKSCHE);
+            $.notify(
+                //  window[TASKSCHE],
+                `RANDOM TIME : PLEASE WAIT`, 'info'
+            );
+            (function(ID) {
+                setTimeout(function(){
+                    this['time'] = window['time-dialy-random'].checked;
+                    fetch(`/cfgs?waxid=${ ID }&time_dialy_random=${ this['time'] }`, {
+                        "headers"   : {},
+                        "body"      : null,
+                        "method"    : "GET",
+                    }).then(
+                        result => result.json()
+                    ).then(result => {
+                        if (result['code'] == 200) {
+                            $.notify(
+                                `RANDOM TIME : DONE ${ ID }`,
+                                'success'
+                            );
+                        } else {
+                            try {
+                                $.notify(
+                                    `RANDOM TIME : FAIL ${ ID } - ${ result['text'] }`, 'warn'
+                                );
+                            } catch (e) {
+                                $.notify(
+                                    `RANDOM TIME : ERROR  ${ ID }- ${ result['text'] }`,
+                                    'error'
+                                );
+                            };
+                        };
+                    }).catch(error => {
+                        $.notify(
+                            `RANDOM TIME : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                        );
+                    });
+                }, 1000 + Math.ceil(Math.random() * 16000))
+            })(TASKSCHE);
+            $.notify(
+                //  window[TASKSCHE],
+                `RANDOM DATE : PLEASE WAIT`, 'info'
+            );
+            (function(ID) {
+                setTimeout(function(){
+                    this['date'] = window['date-dialy-random'].checked;
+                    fetch(`/cfgs?waxid=${ ID }&date_dialy_random=${ this['date'] }`, {
+                        "headers"   : {},
+                        "body"      : null,
+                        "method"    : "GET",
+                    }).then(
+                        result => result.json()
+                    ).then(result => {
+                        if (result['code'] == 200) {
+                            $.notify(
+                                `RANDOM DATE : DONE ${ ID }`,
+                                'success'
+                            );
+                        } else {
+                            try {
+                                $.notify(
+                                    `RANDOM DATE : FAIL ${ ID } - ${ result['text'] }`, 'warn'
+                                );
+                            } catch (e) {
+                                $.notify(
+                                    `RANDOM DATE : ERROR  ${ ID }- ${ result['text'] }`,
+                                    'error'
+                                );
+                            };
+                        };
+                    }).catch(error => {
+                        $.notify(
+                            `RANDOM DATE : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                        );
+                    });
+                }, 1000 + Math.ceil(Math.random() * 16000))
+            })(TASKSCHE);
         };
     }
 );

@@ -3003,7 +3003,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                         `REGISTER LAND : PLEASE WAIT`, 'info'
                                                     );
                                                 
-                                                    fetch(`/cfg?waxid=${
+                                                    fetch(`/cfgs?waxid=${
                                                         document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
                                                     }&land_regi=${
                                                         document.querySelector('div.modal#setLand div.register button.btn.btn-primary.set_land').getAttribute('value')
@@ -3225,7 +3225,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                         `RANDOM LAND : PLEASE WAIT`, 'info'
                                                     );
                                                 
-                                                    fetch(`/cfg?waxid=${
+                                                    fetch(`/cfgs?waxid=${
                                                         document.querySelector('div.modal#setLand').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
                                                     }&land_list=${
                                                         $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').join(',')

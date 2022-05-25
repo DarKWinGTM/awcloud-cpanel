@@ -963,6 +963,8 @@ for (WAXID in window['information-data']['DATA']){
                                         document.querySelector(`th[id*="${ _WAXID_ }-fw-panel-monitor"][colspan="2"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-ss-monitor"][colspan="7"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-ss-panel-monitor"][colspan="2"]`).style.removeProperty("position");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-gx-monitor"][colspan="7"]`).style.removeProperty("position");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-gx-panel-monitor"][colspan="2"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"][colspan="7"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-panel-monitor"][colspan="2"]`).style.removeProperty("position");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"][colspan="7"]`).style.removeProperty("position");
@@ -978,6 +980,8 @@ for (WAXID in window['information-data']['DATA']){
                                         document.querySelector(`th[id*="${ _WAXID_ }-fw-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-ss-monitor"][colspan="7"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-ss-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-gx-monitor"][colspan="7"]`).style.removeProperty("visibility");
+                                        document.querySelector(`th[id*="${ _WAXID_ }-gx-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"][colspan="7"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
                                         document.querySelector(`th[id*="${ _WAXID_ }-cc-monitor"][colspan="7"]`).style.removeProperty("visibility");
@@ -1005,6 +1009,8 @@ for (WAXID in window['information-data']['DATA']){
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=starshipgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=starshipgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
+                                        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=galaxyminers"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
+                                        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=galaxyminers"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fgltokenmgmt"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
@@ -1020,6 +1026,8 @@ for (WAXID in window['information-data']['DATA']){
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=starshipgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=starshipgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
+                                        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=galaxyminers"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
+                                        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=galaxyminers"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
                                         document.querySelector(`th[id*="${ _WAXID_ }-kq-monitor"] textarea[id*="message-text ${ _WAXID_ }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
                                         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fgltokenmgmt"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
@@ -3091,13 +3099,18 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                         <input type="text" class="form-control" placeholder="1099512959648" aria-label="LAND ID" required>
                                         <button type="button" class="btn btn-primary get_land">GET LAND</button>
                                         <button type="button" class="btn btn-primary set_land" disabled>SET LAND</button>
+                                        <button type="button" class="btn btn-primary set_landtoall" disabled>SET TO ALL</button>
                                     </div>
                                     <script>
                                         $('div.modal#setLand [aria-label*="RANDOM LAND"]').on('itemAdded', function(event) {
                                             document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').setAttribute(
                                                 'value', $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').join(',')
                                             );
+                                            document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_landtoall').setAttribute(
+                                                'value', $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').join(',')
+                                            );
                                             document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').disabled = false;
+                                            document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_landtoall').disabled = false;
                                             tooltipTriggerRender();
                                         });
                                         document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').addEventListener(
@@ -3167,7 +3180,11 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                     document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').setAttribute(
                                                         'value', ''
                                                     );
+                                                    document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_landtoall').setAttribute(
+                                                        'value', ''
+                                                    );
                                                     document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').disabled = true;
+                                                    document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_landtoall').disabled = true;
                                                     tooltipTriggerRender();
                                                     $.notify(
                                                         document.querySelector('div[id*="setLand"]').querySelector('.modal-header'),
@@ -3175,6 +3192,52 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                     );
                                                 };
                                             }, true
+                                        );
+                                        document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_landtoall').addEventListener(
+                                            "click",
+                                            function(e) {
+                                                $('#setLand').modal('hide');
+                                                for (SLRWAXID in window['information-data']['DATA']) {
+                                                    $.notify(
+                                                        `SET LAND : PLEASE WAIT ${ SLRWAXID }`, 'info'
+                                                    );
+                                                    (function(ID) {
+                                                        fetch(`/cfgs?waxid=${
+                                                            ID
+                                                        }&land_regi=${
+                                                            $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').join(',')
+                                                        }`, {
+                                                            "headers": {},
+                                                            "body": null,
+                                                            "method": "GET",
+                                                        }).then(
+                                                            result => result.json()
+                                                        ).then(result => {
+                                                            if (result['code'] == 200) {
+                                                                $.notify(
+                                                                    `RANDOM LAND : DONE ${ ID } - ${ JSON.stringify(result) }`,
+                                                                    'success'
+                                                                ); 
+                                                            } else {
+                                                                try {
+                                                                    $.notify(
+                                                                        `RANDOM LAND : WARNING ${ ID } - ${ JSON.stringify(result) }`, 'warn'
+                                                                    );
+                                                                } catch (e) {
+                                                                    $.notify(
+                                                                        `RANDOM LAND : ERROR ${ ID } - ${ JSON.stringify(result) }`,
+                                                                        'error'
+                                                                    );
+                                                                };
+                                                            };
+                                                        }).catch(error => {
+                                                            $.notify(
+                                                                `RANDOM LAND : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                                                            );
+                                                        });
+                                                    })(SLRWAXID);
+                                                };
+                                            }
                                         );
                                         document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').addEventListener(
                                             "click",
@@ -4202,7 +4265,7 @@ document.querySelector('div.modal#allocateWax input[aria-label=\x22ALLOCATE WAX 
                         </div>
 
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary allocate-submit-button" disabled>TRANSFER</button>
+                            <button type="submit" class="btn btn-primary allocate-submit-button">TRANSFER</button>
                         </div>
 
                         <script type="text/javascript">
@@ -7034,96 +7097,96 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             <div class=" justify-content-center" style="--bs-gutter-x: 0.0rem; text-align: center; ">
                                 <div class=" form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="0" checked><span style="color: black; padding-left: 5;">00:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="0" checked><span style="color: black; padding-left: 5;">00:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="1" checked><span style="color: black; padding-left: 5;">01:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="1" checked><span style="color: black; padding-left: 5;">01:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="2" checked><span style="color: black; padding-left: 5;">02:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="2" checked><span style="color: black; padding-left: 5;">02:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="3" checked><span style="color: black; padding-left: 5;">03:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="3" checked><span style="color: black; padding-left: 5;">03:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="4" checked><span style="color: black; padding-left: 5;">04:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="4" checked><span style="color: black; padding-left: 5;">04:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="5" checked><span style="color: black; padding-left: 5;">05:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="5" checked><span style="color: black; padding-left: 5;">05:00</span>
                                     </label>
                                 </div>
                             </div>
                             <div class="justify-content-center" style="--bs-gutter-x: 0.0rem; text-align: center; ">
                                 <div class=" form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="6" checked><span style="color: black; padding-left: 5;">06:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="6" checked><span style="color: black; padding-left: 5;">06:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="7" checked><span style="color: black; padding-left: 5;">07:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="7" checked><span style="color: black; padding-left: 5;">07:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="8" checked><span style="color: black; padding-left: 5;">08:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="8" checked><span style="color: black; padding-left: 5;">08:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="9" checked><span style="color: black; padding-left: 5;">09:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="9" checked><span style="color: black; padding-left: 5;">09:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="10" checked><span style="color: black; padding-left: 5;">10:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="10" checked><span style="color: black; padding-left: 5;">10:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="11" checked><span style="color: black; padding-left: 5;">11:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="11" checked><span style="color: black; padding-left: 5;">11:00</span>
                                     </label>
                                 </div>
                             </div>
                             <div class="justify-content-center" style="--bs-gutter-x: 0.0rem; text-align: center; ">
                                 <div class=" form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="12" checked><span style="color: black; padding-left: 5;">12:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="12" checked><span style="color: black; padding-left: 5;">12:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="13" checked><span style="color: black; padding-left: 5;">13:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="13" checked><span style="color: black; padding-left: 5;">13:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="14" checked><span style="color: black; padding-left: 5;">14:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="14" checked><span style="color: black; padding-left: 5;">14:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="15" checked><span style="color: black; padding-left: 5;">15:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="15" checked><span style="color: black; padding-left: 5;">15:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="16" checked><span style="color: black; padding-left: 5;">16:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="16" checked><span style="color: black; padding-left: 5;">16:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="17" checked><span style="color: black; padding-left: 5;">17:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="17" checked><span style="color: black; padding-left: 5;">17:00</span>
                                     </label>
                                 </div>
                             </div>
@@ -7131,32 +7194,32 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
 
                                 <div class=" form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="18" checked><span style="color: black; padding-left: 5;">18:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="18" checked><span style="color: black; padding-left: 5;">18:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="19" checked><span style="color: black; padding-left: 5;">19:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="19" checked><span style="color: black; padding-left: 5;">19:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="20" checked><span style="color: black; padding-left: 5;">20:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="20" checked><span style="color: black; padding-left: 5;">20:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="21" checked><span style="color: black; padding-left: 5;">21:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="21" checked><span style="color: black; padding-left: 5;">21:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="22" checked><span style="color: black; padding-left: 5;">22:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="22" checked><span style="color: black; padding-left: 5;">22:00</span>
                                     </label>
                                 </div>
                                 <div class="form-check-inline form-switch">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="23" checked><span style="color: black; padding-left: 5;">23:00</span>
+                                        <input type="checkbox" class="form-check-input time" value="23" checked><span style="color: black; padding-left: 5;">23:00</span>
                                     </label>
                                 </div>
                             </div>
@@ -7165,23 +7228,23 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
 document.querySelector('div.modal#taskScheduler').addEventListener('shown.bs.modal', function(event) {
     document.querySelector('div.modal#taskScheduler').querySelector('div.modal-header').querySelector('h5').innerText = `Task Scheduler : ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`
     document.querySelector('div.modal#taskScheduler').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id);
-    //  document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-all').disabled = true; 
     for (time in window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['time']) {
         document.querySelector(`div.modal#taskScheduler input[value*="${ time }"]`).checked = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['time'][time];
-        //  console.debug(
-        //    document.querySelector(`div.modal#taskScheduler input[value*="${ time }"]`), time,
-        //    window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.parentNode.id ]['time'][time]
-        //  ); 
     };
+    for (date in window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['date']) {
+        document.querySelector(`div.modal#taskScheduler input[value*="${ date }"]`).checked = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['date'][date];
+    };
+    window['time-dialy-random'].checked = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['cfgs']['time_dialy_random'][0]; 
+    window['date-dialy-random'].checked = window['information-data']['DATA'][event.relatedTarget.parentNode.parentNode.parentNode.id]['cfgs']['date_dialy_random'][0]; 
 });
-document.querySelectorAll('div.modal#taskScheduler input').forEach(function(e, i, a) {
+document.querySelectorAll('div.modal#taskScheduler input.time').forEach(function(e, i, a) {
     e.addEventListener('change', function(c) {
         if (
             !$(this).attr('disabled')
         ) {
             $(this).prop("disabled", true);
             $(this).attr('readonly', true);
-            this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input'), time => `${time.value}:${time.checked}`).join(',');
+            this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input.time'), time => `${time.value}:${time.checked}`).join(',');
             this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
             fetch(
                 `/task_scheduler/set?waxid=${ this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal-title').getAttribute('value') }&time=${ this['time'] }&zone=${ this['zone'] }`, {
@@ -7223,56 +7286,294 @@ document.querySelectorAll('div.modal#taskScheduler input').forEach(function(e, i
 });
 //  Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input'), time => `${el.value}:${el.checked}`).join(','); 
                         </script>
+                        
+                        
+                        
+                        <div class="taskScheduler justify-content-center" style="--bs-gutter-x: 0.0rem; text-align: center; padding-bottom: 12px; ">
+                            <div class=" justify-content-center" style="--bs-gutter-x: 0.0rem; text-align: center; ">
+                                <div class=" form-check-inline form-switch">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input date" value="SUN" checked><span style="color: black; padding-left: 5;">SUN</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-inline form-switch">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input date" value="MON" checked><span style="color: black; padding-left: 5;">MON</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-inline form-switch">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input date" value="TUE" checked><span style="color: black; padding-left: 5;">TUE</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-inline form-switch">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input date" value="WED" checked><span style="color: black; padding-left: 5;">WED</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-inline form-switch">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input date" value="THU" checked><span style="color: black; padding-left: 5;">THU</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-inline form-switch">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input date" value="FRI" checked><span style="color: black; padding-left: 5;">FRI</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-inline form-switch">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input date" value="SAT" checked><span style="color: black; padding-left: 5;">SAT</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height: 5px;"></div><div style="color: black; padding-left: 6%;">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="time-dialy-random" style="margin-top: 0.18em;">
+                                <label style="margin-left: 1.0em; position: absolute;">RANDOM TIME MINE DIALY.</label>
+                                <script>
+window['time-dialy-random'].addEventListener('change', function(c) {
+    if (
+        !$(this).attr('disabled')
+    ) {
+        $(this).prop("disabled", true);
+        $(this).attr('readonly', true);
+        fetch(
+            `/cfgs?waxid=${
+                this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal-title').getAttribute('value')
+            }&time_dialy_random=${ this.checked }`, {
+                method: 'GET'
+            }
+        ).then(
+            result => result.json()
+        ).then(result => {
+            if (result['text'] != 'okay') {
+                throw result
+            } else {
+                if (
+                    result['code'] == 200
+                ) {
+                    $.notify(this, `DONE`, 'success');
+                } else {
+                    $.notify(this, `FAIL`, 'warn');
+                    this.checked = !this.checked;
+                };
+                (function(checkbox) {
+                    setTimeout(function() {
+                        $(checkbox).prop("disabled", false);
+                        $(this).attr('readonly', false);
+                    }, 2000);
+                })(this);
+            };
+        }).catch(error => {
+            $.notify(this, `NOT : ${error}`, 'error');
+            (function(checkbox) {
+                setTimeout(function() {
+                    $(checkbox).prop("disabled", false);
+                    $(this).attr('readonly', false);
+                }, 2000);
+                checkbox.checked = !checkbox.checked;
+            })(this);
+        });
+    };
+});
+                                </script>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="date-dialy-random" style="margin-top: 0.18em;">
+                                <label style="margin-left: 1.0em; position: absolute;">RANDOM DATE MINE DIALY.</label>
+                                <script>
+window['date-dialy-random'].addEventListener('change', function(c) {
+    if (
+        !$(this).attr('disabled')
+    ) {
+        $(this).prop("disabled", true);
+        $(this).attr('readonly', true);
+        fetch(
+            `/cfgs?waxid=${
+                this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal-title').getAttribute('value')
+            }&date_dialy_random=${ this.checked }`, {
+                method: 'GET'
+            }
+        ).then(
+            result => result.json()
+        ).then(result => {
+            if (result['text'] != 'okay') {
+                throw result
+            } else {
+                if (
+                    result['code'] == 200
+                ) {
+                    $.notify(this, `DONE`, 'success');
+                } else {
+                    $.notify(this, `FAIL`, 'warn');
+                    this.checked = !this.checked;
+                };
+                (function(checkbox) {
+                    setTimeout(function() {
+                        $(checkbox).prop("disabled", false);
+                        $(this).attr('readonly', false);
+                    }, 2000);
+                })(this);
+            };
+        }).catch(error => {
+            $.notify(this, `NOT : ${error}`, 'error');
+            (function(checkbox) {
+                setTimeout(function() {
+                    $(checkbox).prop("disabled", false);
+                    $(this).attr('readonly', false);
+                }, 2000);
+                checkbox.checked = !checkbox.checked;
+            })(this);
+        });
+    };
+});
+                                </script>
+                            </div>
+                        </div>
+                        <script>
+document.querySelectorAll('div.modal#taskScheduler input.date').forEach(function(e, i, a) {
+    e.addEventListener('change', function(c) {
+        if (
+            !$(this).attr('disabled')
+        ) {
+            $(this).prop("disabled", true);
+            $(this).attr('readonly', true);
+            this['date'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input.date'), date => `${date.value}:${date.checked}`).join(',');
+            this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            fetch(
+                `/date_scheduler/set?waxid=${ this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal-title').getAttribute('value') }&date=${ this['date'] }&zone=${ this['zone'] }`, {
+                    method: 'GET'
+                }
+            ).then(
+                result => result.json()
+            ).then(result => {
+                if (result['text'] != 'okay') {
+                    throw result
+                } else {
+                    if (
+                        result['code'] == 200
+                    ) {
+                        $.notify(this, `DONE`, 'success');
+                    } else {
+                        $.notify(this, `FAIL`, 'warn');
+                        this.checked = !this.checked;
+                    };
+                    (function(checkbox) {
+                        setTimeout(function() {
+                            $(checkbox).prop("disabled", false);
+                            $(this).attr('readonly', false);
+                        }, 2000);
+                    })(this);
+                };
+            }).catch(error => {
+                $.notify(this, `NOT : ${error}`, 'error');
+                (function(checkbox) {
+                    setTimeout(function() {
+                        $(checkbox).prop("disabled", false);
+                        $(this).attr('readonly', false);
+                    }, 2000);
+                    checkbox.checked = !checkbox.checked;
+                })(this);
+            });
+        };
+    });
+});
+                        </script>
+
+
+
+
                         <div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
                             <button type="button" class="btn btn-primary set-task-all">SET TASK ALL</button>
                             <script>
-                                document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-all').addEventListener(
-                                    "click",
-                                    function(e) {
-                                        $('#taskScheduler').modal('hide');
-                                        for (TASKSCHE in window['information-data']['DATA']) {
-                                            $.notify(
-                                                window[TASKSCHE],
-                                                `TASK SCHEDULER : PLEASE WAIT`, 'info'
-                                            );
-                                            (function(ID) {
-                                                setTimeout(function(){
-                                                    this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input'), time => `${time.value}:${time.checked}`).join(',');
-                                                    this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                                                    fetch(`/task_scheduler/set?waxid=${ ID }&time=${ this['time'] }&zone=${ this['zone'] }`, {
-                                                        "headers": {},
-                                                        "body": null,
-                                                        "method": "GET",
-                                                    }).then(
-                                                        result => result.json()
-                                                    ).then(result => {
-                                                        if (result['code'] == 200) {
-                                                            $.notify(
-                                                                `TASK SCHEDULER : DONE ${ ID }`,
-                                                                'success'
-                                                            );
-                                                        } else {
-                                                            try {
-                                                                $.notify(
-                                                                    `TASK SCHEDULER : FAIL ${ ID } - ${ result['text'] }`, 'warn'
-                                                                );
-                                                            } catch (e) {
-                                                                $.notify(
-                                                                    `TASK SCHEDULER : ERROR  ${ ID }- ${ result['text'] }`,
-                                                                    'error'
-                                                                );
-                                                            };
-                                                        };
-                                                    }).catch(error => {
-                                                        $.notify(
-                                                            `TASK SCHEDULER : CONNECTION FAILED ${ ID } ${ error }`, 'error'
-                                                        );
-                                                    });
-                                                }, 1000 + Math.ceil(Math.random() * 16000))
-                                            })(TASKSCHE);
-                                        };
-                                    }
+document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-all').addEventListener(
+    "click",
+    function(e) {
+        $('#taskScheduler').modal('hide');
+        for (TASKSCHE in window['information-data']['DATA']) {
+            $.notify(
+                //  window[TASKSCHE],
+                `TASK SCHEDULER : PLEASE WAIT`, 'info'
+            );
+            (function(ID) {
+                setTimeout(function(){
+                    this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input.time'), time => `${time.value}:${time.checked}`).join(',');
+                    this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                    fetch(`/task_scheduler/set?waxid=${ ID }&time=${ this['time'] }&zone=${ this['zone'] }`, {
+                        "headers": {},
+                        "body": null,
+                        "method": "GET",
+                    }).then(
+                        result => result.json()
+                    ).then(result => {
+                        if (result['code'] == 200) {
+                            $.notify(
+                                `TASK SCHEDULER : DONE ${ ID }`,
+                                'success'
+                            );
+                        } else {
+                            try {
+                                $.notify(
+                                    `TASK SCHEDULER : FAIL ${ ID } - ${ result['text'] }`, 'warn'
                                 );
+                            } catch (e) {
+                                $.notify(
+                                    `TASK SCHEDULER : ERROR  ${ ID }- ${ result['text'] }`,
+                                    'error'
+                                );
+                            };
+                        };
+                    }).catch(error => {
+                        $.notify(
+                            `TASK SCHEDULER : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                        );
+                    });
+                }, 1000 + Math.ceil(Math.random() * 16000))
+            })(TASKSCHE);
+            $.notify(
+                //  window[TASKSCHE],
+                `DATE SCHEDULER : PLEASE WAIT`, 'info'
+            );
+            (function(ID) {
+                setTimeout(function(){
+                    this['date'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input.date'), date => `${date.value}:${date.checked}`).join(',');
+                    this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                    fetch(`/date_scheduler/set?waxid=${ ID }&date=${ this['date'] }&zone=${ this['zone'] }`, {
+                        "headers": {},
+                        "body": null,
+                        "method": "GET",
+                    }).then(
+                        result => result.json()
+                    ).then(result => {
+                        if (result['code'] == 200) {
+                            $.notify(
+                                `DATE SCHEDULER : DONE ${ ID }`,
+                                'success'
+                            );
+                        } else {
+                            try {
+                                $.notify(
+                                    `DATE SCHEDULER : FAIL ${ ID } - ${ result['text'] }`, 'warn'
+                                );
+                            } catch (e) {
+                                $.notify(
+                                    `DATE SCHEDULER : ERROR  ${ ID }- ${ result['text'] }`,
+                                    'error'
+                                );
+                            };
+                        };
+                    }).catch(error => {
+                        $.notify(
+                            `DATE SCHEDULER : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                        );
+                    });
+                }, 1000 + Math.ceil(Math.random() * 16000))
+            })(TASKSCHE);
+        };
+    }
+);
                             </script>
                         </div>
                     </div>

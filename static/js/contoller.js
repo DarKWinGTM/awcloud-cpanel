@@ -41,9 +41,6 @@ $(document).ready(function() {
 				'url' : 'wax.eosphere.io'
 			}, {
 				'headers' : {}, 
-				'url' : 'wax.eosdublin.io'
-			}, {
-				'headers' : {}, 
 				'url' : 'api.tokengamer.io'
 			}
 			//	{
@@ -5887,7 +5884,9 @@ $(document).ready(function() {
 						})([])
                     ); 
 					//	document.querySelector('iframe[id*="fwMonitor"]').parentElement.style.display = 'table-cell'; 
-					document.querySelector('iframe[id*="fwMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="fwMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 480 }`; 
+					try{
+						document.querySelector('iframe[id*="fwMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="fwMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 480 }`; 
+					}catch(e){}; 
                 }; 
                 if (
                     window['information-data']['DATA'] && 
@@ -5919,7 +5918,9 @@ $(document).ready(function() {
 						})([])
                     ); 
 					//	document.querySelector('iframe[id*="blMonitor"]').parentElement.style.display= 'table-cell'; 
-					document.querySelector('iframe[id*="blMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="blMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 412 }`; 
+					try{
+						document.querySelector('iframe[id*="blMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="blMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 412 }`; 
+					}catch(e){}; 
                 }; 
                 if (
                     window.hasOwnProperty('information-data') && window['information-data'].hasOwnProperty('DATA') && window['information-data']['DATA'] && 
@@ -5951,7 +5952,9 @@ $(document).ready(function() {
 						})([])
                     ); 
 					//	document.querySelector('iframe[id*="afMonitor"]').parentElement.style.display = 'table-cell'; 
-					document.querySelector('iframe[id*="afMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="afMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 480 }`; 
+					try{
+						document.querySelector('iframe[id*="afMonitor"]').style.height = `${ ((new URL(window.location.href.split('#')[0] + document.querySelector('iframe[id*="afMonitor"]').getAttribute('src'))).searchParams.get("waxid").split(',').length / 5) * 480 }`; 
+					}catch(e){}; 
                 }; 
 				
                 try{ window['check-wax-pool-before-mine'].checked = window['information-data']['POOL']['fr']['check']['wax'] }catch(e){}; 

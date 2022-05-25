@@ -3025,49 +3025,15 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                                     icon: 'swalSuccess'
                                                                 },
                                                                 title: 'Done!',
-                                                                html: `<div>REGISTER LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
-                                                            });
-                                                            $(this).prop("disabled", false);
-                                                            $(this).attr('readonly', false);
-                                                        } else if (
-                                                            result['data']['transaction'] &&
-                                                            result['data']['transaction']['trx'] &&
-                                                            result['data']['transaction']['trx']['code'] &&
-                                                            result['data']['transaction']['trx']['error'] &&
-                                                            result['data']['transaction']['trx']['error']['code'] &&
-                                                            result['data']['transaction']['trx']['error']['details'] &&
-                                                            result['data']['transaction']['trx']['error']['details'].length
-                                                        ) {
-                                                            Swal.fire({
-                                                                iconHtml: `
-<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-</svg>`,
-                                                                customClass: {
-                                                                    icon: 'swalError'
-                                                                },
-                                                                title: 'Error !',
-                                                                html: `<div>REGISTER LAND ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+                                                                html: `<div>REGISTER LAND DONE</div><div>${ JSON.stringify(result) }</div>`,
                                                             });
                                                             $(this).prop("disabled", false);
                                                             $(this).attr('readonly', false);
                                                         } else {
                                                             try {
-                                                                if (
-                                                                    result['data']['transaction'] &&
-                                                                    result['data']['transaction']['trx'] &&
-                                                                    result['data']['transaction']['trx']['error'] &&
-                                                                    result['data']['transaction']['trx']['error']['what']
-                                                                ) {
-                                                                    Swal.fire(
-                                                                        'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
-                                                                    );
-                                                                } else {
-                                                                    Swal.fire(
-                                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                                    );
-                                                                };
+                                                                Swal.fire(
+                                                                    'Warning!', `<div>${ JSON.stringify(result) }</div>`, 'warning'
+                                                                );
                                                                 $(this).prop("disabled", false);
                                                                 $(this).attr('readonly', false);
                                                             } catch (e) {
@@ -3081,7 +3047,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                                         icon: 'swalError'
                                                                     },
                                                                     title: 'Error!',
-                                                                    html: `<div>REGISTER LAND ERROR</div><div>${ result['text'] }</div>`,
+                                                                    html: `<div>REGISTER LAND ERROR</div><div>${ JSON.stringify(result) }</div>`,
                                                                 });
                                                             };
                                                         };
@@ -3247,49 +3213,15 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                                     icon: 'swalSuccess'
                                                                 },
                                                                 title: 'Done!',
-                                                                html: `<div>RANDOM LAND DONE</div><div><a href="https://wax.eosx.io/tx/${ result['data']['transaction']['trx']['transaction_id'] }">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a></div>`,
-                                                            });
-                                                            $(this).prop("disabled", false);
-                                                            $(this).attr('readonly', false);
-                                                        } else if (
-                                                            result['data']['transaction'] &&
-                                                            result['data']['transaction']['trx'] &&
-                                                            result['data']['transaction']['trx']['code'] &&
-                                                            result['data']['transaction']['trx']['error'] &&
-                                                            result['data']['transaction']['trx']['error']['code'] &&
-                                                            result['data']['transaction']['trx']['error']['details'] &&
-                                                            result['data']['transaction']['trx']['error']['details'].length
-                                                        ) {
-                                                            Swal.fire({
-                                                                iconHtml: `
-<svg width="90" height="90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-</svg>`,
-                                                                customClass: {
-                                                                    icon: 'swalError'
-                                                                },
-                                                                title: 'Error !',
-                                                                html: `<div>RANDOM LAND ERROR</div><div>${ result['data']['transaction']['trx']['error']['code'] }</div><div>${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }</div>`,
+                                                                html: `<div>RANDOM LAND DONE</div><div>${ JSON.stringify(result) }</div>`,
                                                             });
                                                             $(this).prop("disabled", false);
                                                             $(this).attr('readonly', false);
                                                         } else {
                                                             try {
-                                                                if (
-                                                                    result['data']['transaction'] &&
-                                                                    result['data']['transaction']['trx'] &&
-                                                                    result['data']['transaction']['trx']['error'] &&
-                                                                    result['data']['transaction']['trx']['error']['what']
-                                                                ) {
                                                                     Swal.fire(
-                                                                        'Warning!', `<div>${ result['data']['transaction']['trx']['error']['what'] }</div>`, 'warning'
+                                                                        'Warning!', `<div>${ JSON.stringify(result) }</div>`, 'warning'
                                                                     );
-                                                                } else {
-                                                                    Swal.fire(
-                                                                        'Warning!', (Object.keys(result['data']['result']) || []).map(obj => '<div>' + result['data']['result'][obj].split(/:|-/gi)[2] + '</div>').join().replace(/,/gi, ''), 'warning'
-                                                                    );
-                                                                };
                                                                 $(this).prop("disabled", false);
                                                                 $(this).attr('readonly', false);
                                                             } catch (e) {
@@ -3303,7 +3235,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                                         icon: 'swalError'
                                                                     },
                                                                     title: 'Error!',
-                                                                    html: `<div>RANDOM LAND ERROR</div><div>${ result['text'] }</div>`,
+                                                                    html: `<div>RANDOM LAND ERROR</div><div>${ JSON.stringify(result) }</div>`,
                                                                 });
                                                             };
                                                         };

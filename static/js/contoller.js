@@ -2963,6 +2963,16 @@ $(document).ready(function() {
 				>
 			</label>
 		</div>AUTO MOVE AT GOOD LAND TO MINE</div>
+		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
+		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
+			<label class="form-check-label">
+				<input
+					type 			= "checkbox"
+					class 			= "form-check-input sr-auto-stop-mine-snow-storm-switch"
+					value 			= "0"
+				>
+			</label>
+		</div>AUTO STOP MINE WHEN SNOW STORM</div>
 	</div>
 	<div class="input-group sr-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
@@ -3104,12 +3114,23 @@ $(document).ready(function() {
 								this['var']['db'] = {
 									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-sr-panel-monitor"]').querySelector('input.sr-auto-move-at-good-land-to-mine-switch').checked, 
 								}; 
-
 								fetch(
 									`/vers/sr/set?waxid=${ this['var']['id'] }&fgpm=${ this['var']['db']['check'] }`, 
 									{method : 'GET'}
 								); 
-
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-sr-panel-monitor"]`).querySelector('input.sr-auto-stop-mine-snow-storm-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-sr-panel-monitor"]').querySelector('input.sr-auto-stop-mine-snow-storm-switch').checked, 
+								}; 
+								fetch(
+									`/vers/sr/set?waxid=${ this['var']['id'] }&smss=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
 							}); 
 							document.querySelector(`th[id*="${WAXID}-sr-panel-monitor"] button.sr-withdraw`).addEventListener('click', function(e) {
 								this['var'] = {
@@ -5439,6 +5460,9 @@ $(document).ready(function() {
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-sr-panel-monitor"]').querySelector('input.sr-auto-move-at-good-land-to-mine-switch').checked = window['information-data']['DATA'][_WAXID]['vers']['sr']['cf']['cfg_mine']['fgpm']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-sr-panel-monitor"]').querySelector('input.sr-auto-stop-mine-snow-storm-switch').checked = window['information-data']['DATA'][_WAXID]['vers']['sr']['cf']['cfg_mine']['smss']; 
 										}catch(e){ }; 
 										//	try{
 										//		document.querySelector('th[id*="' + _WAXID + '-sr-panel-monitor"]').querySelector('input.sr-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['sr']['cf']['fee_mine']; 

@@ -12190,7 +12190,36 @@
                             this.AxeLegendary && (this.TotalValueSTONE += -this.AxeLegendary.stone_repair_cost * this.ActionDay,
                             this.TotalValueWOOD += (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay,
                             this.TotalValueFOOD += -this.AxeLegendary.energy_cost / 5 * this.ActionDay,
-                            this.TotalValueWax += (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeLegendary.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeLegendary.energy_cost / 5 * this.ActionDay * this.ValueAOFF)
+                            this.TotalValueWax += (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeLegendary.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeLegendary.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
+                        case 497922:
+                            this.BowCommon && (this.TotalValueSTONE += -this.BowCommon.stone_repair_cost * this.ActionDay,
+                            this.TotalValueWOOD += -this.BowCommon.wood_repair_cost * this.ActionDay,
+                            this.TotalValueFOOD += -this.BowCommon.energy_cost / 5 * this.ActionDay,
+                            this.TotalValueWax += 0);
+                            break;
+                        case 497923:
+                            this.BowUncommon && (this.TotalValueSTONE += -this.BowUncommon.stone_repair_cost * this.ActionDay,
+                            this.TotalValueWOOD += -this.BowUncommon.wood_repair_cost * this.ActionDay,
+                            this.TotalValueFOOD += -this.BowUncommon.energy_cost / 5 * this.ActionDay,
+                            this.TotalValueWax += 0);
+                            break;
+                        case 497924:
+                            this.BowRare && (this.TotalValueSTONE += -this.BowRare.stone_repair_cost * this.ActionDay,
+                            this.TotalValueWOOD += -this.BowRare.wood_repair_cost * this.ActionDay,
+                            this.TotalValueFOOD += -this.BowRare.energy_cost / 5 * this.ActionDay,
+                            this.TotalValueWax += 0);
+                            break;
+                        case 497925:
+                            this.BowEpic && (this.TotalValueSTONE += -this.BowEpic.stone_repair_cost * this.ActionDay,
+                            this.TotalValueWOOD += -this.BowEpic.wood_repair_cost * this.ActionDay,
+                            this.TotalValueFOOD += -this.BowEpic.energy_cost / 5 * this.ActionDay,
+                            this.TotalValueWax += 0);
+                            break;
+                        case 497926:
+                            this.BowLegendary && (this.TotalValueSTONE += -this.BowLegendary.stone_repair_cost * this.ActionDay,
+                            this.TotalValueWOOD += -this.BowLegendary.wood_repair_cost * this.ActionDay,
+                            this.TotalValueFOOD += -this.BowLegendary.energy_cost / 5 * this.ActionDay,
+                            this.TotalValueWax += 0)
                         }
                     }
                     )
@@ -12255,7 +12284,22 @@
                         break;
                     case 486824:
                         if (this.AxeLegendary)
-                            return (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeLegendary.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeLegendary.energy_cost / 5 * this.ActionDay * this.ValueAOFF
+                            return (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeLegendary.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeLegendary.energy_cost / 5 * this.ActionDay * this.ValueAOFF;
+                        break;
+                    //    case 497922:
+                    //        return this.BowCommon.rewards;
+                    //        break;
+                    //    case 497923:
+                    //        return this.BowUncommon.rewards;
+                    //        break;
+                    //    case 497924:
+                    //        return this.BowRare.rewards;
+                    //        break;
+                    //    case 497925:
+                    //        return this.BowEpic.rewards;
+                    //        break;
+                    //    case 497926:
+                    //        return this.BowLegendary.rewards
                     }
                 }
                 getName(t) {
@@ -12304,11 +12348,17 @@
                             return this.AxeEpic.nft_name + " " + this.AxeEpic.rarity;
                     case 486824:
                         if (this.AxeLegendary)
-                            return this.AxeLegendary.nft_name + " " + this.AxeLegendary.rarity
+                            return this.AxeLegendary.nft_name + " " + this.AxeLegendary.rarity;
                     case 497922:
-                        return 'Short Bow Common'
+                        return 'Short Bow Common';
                     case 497923:
-                        return 'Short Bow Uncommon'
+                        return 'Short Bow Uncommon';
+                    case 497924:
+                        return 'Short Bow Rare';
+                    case 497925:
+                        return 'Short Bow Epic';
+                    case 497926:
+                        return 'Short Bow Legendary'
                     }
                 }
                 getRarity(t) {
@@ -12326,14 +12376,17 @@
                     case 486822:
                     case 486827:
                     case 486833:
+                    case 497924:
                         return "rare";
                     case 486823:
                     case 486830:
                     case 486834:
+                    case 497925:
                         return "epic";
                     case 486824:
                     case 486829:
                     case 486835:
+                    case 497926:
                         return "legendary"
                     }
                 }

@@ -3407,9 +3407,9 @@ $(document).ready(function() {
 									if(v == 1){
 										return 'SAFE'
 									}else if (v == 2){
-										return 'HIGH'
+										return 'RISK'
 									}else{
-										return 'RANDOM'
+										return 'HIGH'
 									}
 								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
@@ -3435,9 +3435,9 @@ $(document).ready(function() {
 									if(v == 1){
 										return 'SAFE'
 									}else if (v == 2){
-										return 'HIGH'
+										return 'RISK'
 									}else{
-										return 'RANDOM'
+										return 'HIGH'
 									}
 								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
@@ -3497,9 +3497,9 @@ $(document).ready(function() {
 									if(v == 1){
 										return 'SAFE'
 									}else if (v == 2){
-										return 'HIGH'
+										return 'RISK'
 									}else{
-										return 'RANDOM'
+										return 'HIGH'
 									}
 								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 							}); 
@@ -5593,9 +5593,9 @@ $(document).ready(function() {
 												if(v == 1){
 													return 'SAFE'
 												}else if (v == 2){
-													return 'HIGH'
+													return 'RISK'
 												}else{
-													return 'RANDOM'
+													return 'HIGH'
 												}
 											})(window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk']); //	( '0000' + window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] ).slice(-'0000'.length); 
 										}catch(e){ }; 
@@ -5622,10 +5622,10 @@ $(document).ready(function() {
 														(function (r){
 															if(r == 1){
 																return 'SAFE'
-															}else if (r == 2){
-																return 'HIGH'
+															}else if (v == 2){
+																return 'RISK'
 															}else{
-																return 'RANDOM'
+																return 'HIGH'
 															}
 														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
 													} NEXT ` + (new Date(
@@ -5661,10 +5661,10 @@ $(document).ready(function() {
 														(function (r){
 															if(r == 1){
 																return 'SAFE'
-															}else if (r == 2){
-																return 'HIGH'
+															}else if (v == 2){
+																return 'RISK'
 															}else{
-																return 'RANDOM'
+																return 'HIGH'
 															}
 														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
 													} NEXT ` + (new Date(
@@ -5700,10 +5700,10 @@ $(document).ready(function() {
 														(function (r){
 															if(r == 1){
 																return 'SAFE'
-															}else if (r == 2){
-																return 'HIGH'
+															}else if (v == 2){
+																return 'RISK'
 															}else{
-																return 'RANDOM'
+																return 'HIGH'
 															}
 														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
 													} NEXT ` + (new Date(

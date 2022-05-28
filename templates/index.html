@@ -2493,6 +2493,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                         document.querySelector('div.modal#setLand div.random button.btn.btn-primary.get_land').parentNode.querySelector('input').value = '';
                                         document.querySelector('div.modal#setLand div.random button.btn.btn-primary.set_land').disabled = true;
 
+                                        $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('removeAll');
                                         if(
                                             !window['information-data']['DATA'][ event.relatedTarget.parentNode.parentNode.id ]['cfgs']['land_list'] == []
                                         ){

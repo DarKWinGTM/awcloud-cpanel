@@ -3319,7 +3319,7 @@ $(document).ready(function() {
 	</div>
 
 	<div class="input-group dw-custom-risk">
-		<div class="input-group-text dw-custom-risk-text" style="width: inherit; justify-content: center; ">SET CUSTOM RISK MINE</div>
+		<div class="input-group-text dw-custom-risk-text" style="width: inherit; justify-content: center; ">SET CUSTOM MINE</div>
 		<select class="form-select dw-custom-risk-select"style="max-width: 248px; ">
 			<option value="None">None</option>
 		</select>
@@ -3493,7 +3493,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-dw-panel-monitor"]'
 								).querySelector(
 									'div.dw-custom-risk-text'
-								).innerText = 'SET CUSTOM RISK ' + (function (v){
+								).innerText = 'SET CUSTOM ' + (function (v){
 									if(v == 1){
 										return 'SAFE'
 									}else if (v == 2){
@@ -5622,7 +5622,7 @@ $(document).ready(function() {
 														(function (r){
 															if(r == 1){
 																return 'SAFE'
-															}else if (v == 2){
+															}else if (r == 2){
 																return 'RISK'
 															}else{
 																return 'HIGH'
@@ -5661,7 +5661,7 @@ $(document).ready(function() {
 														(function (r){
 															if(r == 1){
 																return 'SAFE'
-															}else if (v == 2){
+															}else if (r == 2){
 																return 'RISK'
 															}else{
 																return 'HIGH'
@@ -5700,7 +5700,7 @@ $(document).ready(function() {
 														(function (r){
 															if(r == 1){
 																return 'SAFE'
-															}else if (v == 2){
+															}else if (r == 2){
 																return 'RISK'
 															}else{
 																return 'HIGH'

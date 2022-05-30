@@ -421,8 +421,8 @@ $(document).ready(function() {
 			<option mode="mintasset" value="Chainsaw" gold="3600" coin="0,0,0" wood="21600">Chainsaw (3600 GOLD 21600 WOOD)</option>
 			<option mode="mintmbs" value="Bronze Member" gold="400" coin="40,41,20" wood="0">Bronze Member (60 Farmers Coin 400 GOLD)</option>
 			<option mode="mintmbs" value="Silver Member" gold="800" coin="40,41,80" wood="0">Silver Member (120 Farmers Coin 800 GOLD)</option>
-			<option mode="mintmbs_fee_mine" value="Bronze Member" gold="400" coin="40,41,20" wood="0" disabled>Bronze Member FEE MINE 0.30 WAX PER Transact (60 Farmers Coin 400 GOLD)</option>
-			<option mode="mintmbs_fee_mine" value="Silver Member" gold="800" coin="40,41,80" wood="0" disabled>Silver Member FEE MINE 0.30 WAX PER Transact (120 Farmers Coin 800 GOLD)</option>
+			<option mode="mintmbs_in_game" value="Bronze Member" gold="400" coin="40,41,20" wood="0">Bronze Member In-Game (60 Farmers Coin 400 GOLD)</option>
+			<option mode="mintmbs_in_game" value="Silver Member" gold="800" coin="40,41,80" wood="0">Silver Member In-Game (120 Farmers Coin 800 GOLD)</option>
 		</select>
 		<button type="submit" class="btn btn-primary fw-craft-get" style="width: 60px; ">GET</button>
 	</div>
@@ -1787,7 +1787,7 @@ $(document).ready(function() {
 
 								if (
 									!$(this).attr('disabled') && (
-										this['var']['db']['mode'] != 'mintmbs' && this['var']['db']['mode'] != 'mintmbs_fee_mine'
+										this['var']['db']['mode'] != 'mintmbs'
 									)
 								){
 									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
@@ -1847,7 +1847,7 @@ $(document).ready(function() {
 									}); 
 								} else if(
 									!$(this).attr('disabled') && (
-										this['var']['db']['mode'] == 'mintmbs' || this['var']['db']['mode'] == 'mintmbs_fee_mine'
+										this['var']['db']['mode'] == 'mintmbs'
 									)
 								){
 									$(this).prop( "disabled", true ); $(this).attr('readonly', true);

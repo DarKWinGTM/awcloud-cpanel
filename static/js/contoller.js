@@ -5607,121 +5607,133 @@ $(document).ready(function() {
 												document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelectorAll('select.dw-custom-risk-select option').length <= 1
 											){
 												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWD']['tool']).forEach( function (e){
-													var option 		= document.createElement("option");
-													option.text 	= `${
-														e[1]['asset_id']
-													} ${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
-													} ${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
-													} ${
-														e[1]['durability']
-													}/${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
-													} ${
-														(function (r){
-															if(r == 1){
-																return 'SAFE'
-															}else if (r == 2){
-																return 'RISK'
-															}else{
-																return 'HIGH'
-															}
-														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
-													} NEXT ` + (new Date(
-														`${ Date( e[1]['next_mine'] ) }`
-													).toLocaleString(
-														"en-US", {
-															timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
-															year    : 'numeric', 
-															month   : '2-digit', 
-															day     : '2-digit', 
-															hour    : '2-digit', 
-															hour12  : false, 
-															minute  : '2-digit', 
-															second  : '2-digit'
-														}
-													)).split(', ').splice(-1)[0]; 
-													option.value 	= e[0];
-													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWD']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option");
+														option.text 	= `${
+															e[1]['asset_id']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity'].substring(0, 4)
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
+														} ${
+															e[1]['durability']
+														}/${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+														} ${
+															(function (r){
+																if(r == 1){
+																	return 'SAFE'
+																}else if (r == 2){
+																	return 'RISK'
+																}else{
+																	return 'HIGH'
+																}
+															})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
+														} NEXT ` + (function (v){
+															return (new Date( e[1]['next_mine'] * 1000 ).toLocaleString(
+																"en-US", {
+																	timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+																	year    : 'numeric', 
+																	month   : '2-digit', 
+																	day     : '2-digit', 
+																	hour    : '2-digit', 
+																	hour12  : false, 
+																	minute  : '2-digit', 
+																	second  : '2-digit'
+																}
+															)).split(', ').splice(-1)[0]; 
+														})( e[1]['next_mine'] ); 
+														option.value 	= e[0];
+														document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+													}; 
 												}); 
 												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWI']['tool']).forEach( function (e){
-													var option 		= document.createElement("option");
-													option.text 	= `${
-														e[1]['asset_id']
-													} ${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
-													} ${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
-													} ${
-														e[1]['durability']
-													}/${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
-													} ${
-														(function (r){
-															if(r == 1){
-																return 'SAFE'
-															}else if (r == 2){
-																return 'RISK'
-															}else{
-																return 'HIGH'
-															}
-														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
-													} NEXT ` + (new Date(
-														`${ Date( e[1]['next_mine'] ) }`
-													).toLocaleString(
-														"en-US", {
-															timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
-															year    : 'numeric', 
-															month   : '2-digit', 
-															day     : '2-digit', 
-															hour    : '2-digit', 
-															hour12  : false, 
-															minute  : '2-digit', 
-															second  : '2-digit'
-														}
-													)).split(', ').splice(-1)[0]; 
-													option.value 	= e[0];
-													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWI']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option");
+														option.text 	= `${
+															e[1]['asset_id']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity'].substring(0, 4)
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
+														} ${
+															e[1]['durability']
+														}/${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+														} ${
+															(function (r){
+																if(r == 1){
+																	return 'SAFE'
+																}else if (r == 2){
+																	return 'RISK'
+																}else{
+																	return 'HIGH'
+																}
+															})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
+														} NEXT ` + (function (v){
+															return (new Date( e[1]['next_mine'] * 1000 ).toLocaleString(
+																"en-US", {
+																	timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+																	year    : 'numeric', 
+																	month   : '2-digit', 
+																	day     : '2-digit', 
+																	hour    : '2-digit', 
+																	hour12  : false, 
+																	minute  : '2-digit', 
+																	second  : '2-digit'
+																}
+															)).split(', ').splice(-1)[0]; 
+														})( e[1]['next_mine'] ); 
+														option.value 	= e[0];
+														document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+													}; 
 												}); 
 												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWS']['tool']).forEach( function (e){
-													var option 		= document.createElement("option");
-													option.text 	= `${
-														e[1]['asset_id']
-													} ${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
-													} ${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
-													} ${
-														e[1]['durability']
-													}/${
-														window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
-													} ${
-														(function (r){
-															if(r == 1){
-																return 'SAFE'
-															}else if (r == 2){
-																return 'RISK'
-															}else{
-																return 'HIGH'
-															}
-														})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
-													} NEXT ` + (new Date(
-														`${ Date( e[1]['next_mine'] ) }`
-													).toLocaleString(
-														"en-US", {
-															timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
-															year    : 'numeric', 
-															month   : '2-digit', 
-															day     : '2-digit', 
-															hour    : '2-digit', 
-															hour12  : false, 
-															minute  : '2-digit', 
-															second  : '2-digit'
-														}
-													)).split(', ').splice(-1)[0]; 
-													option.value 	= e[0];
-													document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['mine']['DWS']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option");
+														option.text 	= `${
+															e[1]['asset_id']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity'].substring(0, 4)
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['template_name']
+														} ${
+															e[1]['durability']
+														}/${
+															window['information-data']['DATA'][_WAXID]['vers']['dw']['db']['equipped']['info'][ e[1]['template_id'] ]['init_durability']
+														} ${
+															(function (r){
+																if(r == 1){
+																	return 'SAFE'
+																}else if (r == 2){
+																	return 'RISK'
+																}else{
+																	return 'HIGH'
+																}
+															})( window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['setr'][e[0]] || window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] )
+														} NEXT ` + (function (v){
+															return (new Date( e[1]['next_mine'] * 1000 ).toLocaleString(
+																"en-US", {
+																	timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+																	year    : 'numeric', 
+																	month   : '2-digit', 
+																	day     : '2-digit', 
+																	hour    : '2-digit', 
+																	hour12  : false, 
+																	minute  : '2-digit', 
+																	second  : '2-digit'
+																}
+															)).split(', ').splice(-1)[0]; 
+														})( e[1]['next_mine'] ); 
+														option.value 	= e[0];
+														document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').add(option);
+													}; 
 												}); 
 												//	document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('select.dw-custom-risk-select').value 		= window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['land'][0].toString(); 
 											}; 

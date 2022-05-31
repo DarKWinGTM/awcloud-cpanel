@@ -14,7 +14,7 @@
         t.exports = e
     }
     ,
-    582: (t,e,n)=>{
+    850: (t,e,n)=>{
         "use strict";
         function s(t) {
             return "function" == typeof t
@@ -50,8 +50,8 @@
             },
             complete() {}
         }
-          , l = (()=>Array.isArray || (t=>t && "number" == typeof t.length))();
-        function c(t) {
+          , c = (()=>Array.isArray || (t=>t && "number" == typeof t.length))();
+        function l(t) {
             return null !== t && "object" == typeof t
         }
         const h = (()=>{
@@ -96,12 +96,12 @@
                             e = a instanceof h ? d(a.errors) : [a]
                         }
                     }
-                    if (l(o)) {
+                    if (c(o)) {
                         let t = -1
                           , n = o.length;
                         for (; ++t < n; ) {
                             const n = o[t];
-                            if (c(n))
+                            if (l(n))
                                 try {
                                     n.unsubscribe()
                                 } catch (a) {
@@ -455,13 +455,13 @@
                 -1 !== n && e.splice(n, 1)
             }
         }
-        class A extends m {
+        class S extends m {
             constructor(t) {
                 super(t),
                 this.destination = t
             }
         }
-        let S = (()=>{
+        let A = (()=>{
             class t extends y {
                 constructor() {
                     super(),
@@ -472,7 +472,7 @@
                     this.thrownError = null
                 }
                 [p]() {
-                    return new A(this)
+                    return new S(this)
                 }
                 lift(t) {
                     const e = new O(this,this);
@@ -542,7 +542,7 @@
             t
         }
         )();
-        class O extends S {
+        class O extends A {
             constructor(t, e) {
                 super(),
                 this.destination = t,
@@ -610,8 +610,8 @@
         function V() {
             return "function" == typeof Symbol && Symbol.iterator ? Symbol.iterator : "@@iterator"
         }
-        const F = V()
-          , T = t=>t && "number" == typeof t.length && "function" != typeof t;
+        const T = V()
+          , F = t=>t && "number" == typeof t.length && "function" != typeof t;
         function P(t) {
             return !!t && "function" != typeof t.subscribe && "function" == typeof t.then
         }
@@ -625,7 +625,7 @@
                     return e.subscribe(t)
                 }
                 ;
-            if (T(t))
+            if (F(t))
                 return D(t);
             if (P(t))
                 return (t=>e=>(t.then(t=>{
@@ -634,10 +634,10 @@
                 }
                 , t=>e.error(t)).then(null, o),
                 e))(t);
-            if (t && "function" == typeof t[F])
+            if (t && "function" == typeof t[T])
                 return e = t,
                 t=>{
-                    const n = e[F]();
+                    const n = e[T]();
                     for (; ; ) {
                         let e;
                         try {
@@ -662,7 +662,7 @@
                 }
                 ;
             {
-                const e = c(t) ? "an invalid object" : `'${t}'`;
+                const e = l(t) ? "an invalid object" : `'${t}'`;
                 throw new TypeError(`You provided ${e} where a stream was expected. You can provide an Observable, Promise, Array, or Iterable.`)
             }
             var e, n
@@ -680,7 +680,7 @@
             }
             )
         }
-        function N(t, e) {
+        function W(t, e) {
             return e ? function(t, e) {
                 if (null != t) {
                     if (function(t) {
@@ -727,10 +727,10 @@
                             }
                             )
                         }(t, e);
-                    if (T(t))
+                    if (F(t))
                         return R(t, e);
                     if (function(t) {
-                        return t && "function" == typeof t[F]
+                        return t && "function" == typeof t[T]
                     }(t) || "string" == typeof t)
                         return function(t, e) {
                             if (!t)
@@ -743,7 +743,7 @@
                                 }
                                 ),
                                 s.add(e.schedule(()=>{
-                                    i = t[F](),
+                                    i = t[T](),
                                     s.add(e.schedule(function() {
                                         if (n.closed)
                                             return;
@@ -768,7 +768,7 @@
                 throw new TypeError((null !== t && typeof t || t) + " is not observable")
             }(t, e) : t instanceof y ? t : new y(I(t))
         }
-        class W extends m {
+        class N extends m {
             constructor(t) {
                 super(),
                 this.parent = t
@@ -809,11 +809,11 @@
             }
             return n
         }
-        function j(t, e, n=Number.POSITIVE_INFINITY) {
-            return "function" == typeof e ? s=>s.pipe(j((n,s)=>N(t(n, s)).pipe(k((t,i)=>e(n, t, s, i))), n)) : ("number" == typeof e && (n = e),
-            e=>e.lift(new B(t,n)))
+        function B(t, e, n=Number.POSITIVE_INFINITY) {
+            return "function" == typeof e ? s=>s.pipe(B((n,s)=>W(t(n, s)).pipe(k((t,i)=>e(n, t, s, i))), n)) : ("number" == typeof e && (n = e),
+            e=>e.lift(new j(t,n)))
         }
-        class B {
+        class j {
             constructor(t, e=Number.POSITIVE_INFINITY) {
                 this.project = t,
                 this.concurrent = e
@@ -847,7 +847,7 @@
                 this._innerSub(e)
             }
             _innerSub(t) {
-                const e = new W(this)
+                const e = new N(this)
                   , n = this.destination;
                 n.add(e);
                 const s = L(t, e);
@@ -877,28 +877,28 @@
             return C(s) ? (n = t.pop(),
             t.length > 1 && "number" == typeof t[t.length - 1] && (e = t.pop())) : "number" == typeof s && (e = t.pop()),
             null === n && 1 === t.length && t[0]instanceof y ? t[0] : function(t=Number.POSITIVE_INFINITY) {
-                return j(_, t)
+                return B(_, t)
             }(e)($(t, n))
         }
         function z() {
             return function(t) {
-                return t.lift(new q(t))
+                return t.lift(new X(t))
             }
         }
-        class q {
+        class X {
             constructor(t) {
                 this.connectable = t
             }
             call(t, e) {
                 const {connectable: n} = this;
                 n._refCount++;
-                const s = new X(t,n)
+                const s = new q(t,n)
                   , i = e.subscribe(s);
                 return s.closed || (s.connection = n.connect()),
                 i
             }
         }
-        class X extends m {
+        class q extends m {
             constructor(t, e) {
                 super(t),
                 this.connectable = e
@@ -920,7 +920,7 @@
                 !s || n && s !== n || s.unsubscribe()
             }
         }
-        class Q extends y {
+        class K extends y {
             constructor(t, e) {
                 super(),
                 this.source = t,
@@ -949,8 +949,8 @@
                 return z()(this)
             }
         }
-        const K = (()=>{
-            const t = Q.prototype;
+        const Q = (()=>{
+            const t = K.prototype;
             return {
                 operator: {
                     value: null
@@ -986,7 +986,7 @@
             }
         }
         )();
-        class Z extends A {
+        class Z extends S {
             constructor(t, e) {
                 super(t),
                 this.connectable = e
@@ -1013,7 +1013,7 @@
             }
         }
         function G() {
-            return new S
+            return new A
         }
         function Y(t) {
             for (let e in t)
@@ -1073,12 +1073,12 @@
         function at(t) {
             return "string" == typeof t ? t : null == t ? "" : String(t)
         }
-        function lt(t) {
+        function ct(t) {
             return "function" == typeof t ? t.name || t.toString() : "object" == typeof t && null != t && "function" == typeof t.type ? t.type.name || t.type.toString() : at(t)
         }
-        function ct(t, e) {
+        function lt(t, e) {
             const n = e ? ` in ${e}` : "";
-            throw new ot("201",`No provider for ${lt(t)} found${n}`)
+            throw new ot("201",`No provider for ${ct(t)} found${n}`)
         }
         function ht(t) {
             return {
@@ -1129,11 +1129,11 @@
             return bt = t,
             e
         }
-        function At(t, e, n) {
+        function St(t, e, n) {
             const s = dt(t);
-            return s && "root" == s.providedIn ? void 0 === s.value ? s.value = s.factory() : s.value : n & vt.Optional ? null : void 0 !== e ? e : void ct(tt(t), "Injector")
+            return s && "root" == s.providedIn ? void 0 === s.value ? s.value = s.factory() : s.value : n & vt.Optional ? null : void 0 !== e ? e : void lt(tt(t), "Injector")
         }
-        function St(t) {
+        function At(t) {
             return {
                 toString: t
             }.toString()
@@ -1154,8 +1154,8 @@
           , xt = "undefined" != typeof self && "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope && self
           , Dt = "undefined" != typeof global && global
           , Vt = kt || Dt || Et || xt
-          , Ft = {}
-          , Tt = []
+          , Tt = {}
+          , Ft = []
           , Pt = Y({
             "\u0275cmp": Y
         })
@@ -1165,10 +1165,10 @@
           , Rt = Y({
             "\u0275pipe": Y
         })
-          , Nt = Y({
+          , Wt = Y({
             "\u0275mod": Y
         })
-          , Wt = Y({
+          , Nt = Y({
             "\u0275loc": Y
         })
           , Mt = Y({
@@ -1177,9 +1177,9 @@
           , Lt = Y({
             __NG_ELEMENT_ID__: Y
         });
-        let jt = 0;
-        function Bt(t) {
-            return St(()=>{
+        let Bt = 0;
+        function jt(t) {
+            return At(()=>{
                 const e = {}
                   , n = {
                     type: t.type,
@@ -1201,13 +1201,13 @@
                     onPush: t.changeDetection === Ot.OnPush,
                     directiveDefs: null,
                     pipeDefs: null,
-                    selectors: t.selectors || Tt,
+                    selectors: t.selectors || Ft,
                     viewQuery: t.viewQuery || null,
                     features: t.features || null,
                     data: t.data || {},
                     encapsulation: t.encapsulation || Ct.Emulated,
                     id: "c",
-                    styles: t.styles || Tt,
+                    styles: t.styles || Ft,
                     _: null,
                     setInput: null,
                     schemas: t.schemas || null,
@@ -1216,9 +1216,9 @@
                   , s = t.directives
                   , i = t.features
                   , r = t.pipes;
-                return n.id += jt++,
-                n.inputs = qt(t.inputs, e),
-                n.outputs = qt(t.outputs),
+                return n.id += Bt++,
+                n.inputs = Xt(t.inputs, e),
+                n.outputs = Xt(t.outputs),
                 i && i.forEach(t=>t(n)),
                 n.directiveDefs = s ? ()=>("function" == typeof s ? s() : s).map(Ht) : null,
                 n.pipeDefs = r ? ()=>("function" == typeof r ? r() : r).map($t) : null,
@@ -1227,7 +1227,7 @@
             )
         }
         function Ht(t) {
-            return Kt(t) || function(t) {
+            return Qt(t) || function(t) {
                 return t[It] || null
             }(t)
         }
@@ -1238,13 +1238,13 @@
         }
         const Ut = {};
         function zt(t) {
-            return St(()=>{
+            return At(()=>{
                 const e = {
                     type: t.type,
-                    bootstrap: t.bootstrap || Tt,
-                    declarations: t.declarations || Tt,
-                    imports: t.imports || Tt,
-                    exports: t.exports || Tt,
+                    bootstrap: t.bootstrap || Ft,
+                    declarations: t.declarations || Ft,
+                    imports: t.imports || Ft,
+                    exports: t.exports || Ft,
                     transitiveCompileScopes: null,
                     schemas: t.schemas || null,
                     id: t.id || null
@@ -1254,9 +1254,9 @@
             }
             )
         }
-        function qt(t, e) {
+        function Xt(t, e) {
             if (null == t)
-                return Ft;
+                return Tt;
             const n = {};
             for (const s in t)
                 if (t.hasOwnProperty(s)) {
@@ -1269,8 +1269,8 @@
                 }
             return n
         }
-        const Xt = Bt;
-        function Qt(t) {
+        const qt = jt;
+        function Kt(t) {
             return {
                 type: t.type,
                 name: t.name,
@@ -1279,11 +1279,11 @@
                 onDestroy: t.type.prototype.ngOnDestroy || null
             }
         }
-        function Kt(t) {
+        function Qt(t) {
             return t[Pt] || null
         }
         function Zt(t, e) {
-            const n = t[Nt] || null;
+            const n = t[Wt] || null;
             if (!n && !0 === e)
                 throw new Error(`Type ${tt(t)} does not have '\u0275mod' property.`);
             return n
@@ -1322,18 +1322,18 @@
             }
         }
         function ae() {
-            return le
+            return ce
         }
-        function le(t) {
+        function ce(t) {
             return t.type.prototype.ngOnChanges && (t.setInput = he),
-            ce
+            le
         }
-        function ce() {
+        function le() {
             const t = ue(this)
               , e = null == t ? void 0 : t.current;
             if (e) {
                 const n = t.previous;
-                if (n === Ft)
+                if (n === Tt)
                     t.previous = e;
                 else
                     for (let t in e)
@@ -1346,14 +1346,14 @@
             const i = ue(t) || function(t, e) {
                 return t.__ngSimpleChanges__ = e
             }(t, {
-                previous: Ft,
+                previous: Tt,
                 current: null
             })
               , r = i.current || (i.current = {})
               , o = i.previous
               , a = this.declaredInputs[n]
-              , l = o[a];
-            r[a] = new oe(l && l.currentValue,e,o === Ft),
+              , c = o[a];
+            r[a] = new oe(c && c.currentValue,e,o === Tt),
             t[s] = e
         }
         function ue(t) {
@@ -1391,10 +1391,10 @@
         function we(t) {
             return 128 == (128 & t[2])
         }
-        function Ae(t, e) {
+        function Se(t, e) {
             return null == e ? null : t[e]
         }
-        function Se(t) {
+        function Ae(t) {
             t[18] = 0
         }
         function Oe(t, e) {
@@ -1407,7 +1407,7 @@
                 s = s[3]
         }
         const Ce = {
-            lFrame: qe(null),
+            lFrame: Xe(null),
             bindingsEnabled: !0,
             isInCheckNoChangesMode: !1
         };
@@ -1429,12 +1429,12 @@
         function Ve() {
             return Ce.lFrame.currentTNode
         }
-        function Fe(t, e) {
+        function Te(t, e) {
             const n = Ce.lFrame;
             n.currentTNode = t,
             n.isParent = e
         }
-        function Te() {
+        function Fe() {
             return Ce.lFrame.isParent
         }
         function Pe() {
@@ -1446,10 +1446,10 @@
         function Re() {
             return Ce.lFrame.bindingIndex
         }
-        function Ne() {
+        function We() {
             return Ce.lFrame.bindingIndex++
         }
-        function We(t) {
+        function Ne(t) {
             const e = Ce.lFrame
               , n = e.bindingIndex;
             return e.bindingIndex = e.bindingIndex + t,
@@ -1463,10 +1463,10 @@
         function Le(t) {
             Ce.lFrame.currentDirectiveIndex = t
         }
-        function je() {
+        function Be() {
             return Ce.lFrame.currentQueryIndex
         }
-        function Be(t) {
+        function je(t) {
             Ce.lFrame.currentQueryIndex = t
         }
         function He(t) {
@@ -1506,9 +1506,9 @@
         function ze() {
             const t = Ce.lFrame
               , e = null === t ? null : t.child;
-            return null === e ? qe(t) : e
+            return null === e ? Xe(t) : e
         }
-        function qe(t) {
+        function Xe(t) {
             const e = {
                 currentTNode: null,
                 isParent: !0,
@@ -1529,16 +1529,16 @@
             return null !== t && (t.child = e),
             e
         }
-        function Xe() {
+        function qe() {
             const t = Ce.lFrame;
             return Ce.lFrame = t.parent,
             t.currentTNode = null,
             t.lView = null,
             t
         }
-        const Qe = Xe;
-        function Ke() {
-            const t = Xe();
+        const Ke = qe;
+        function Qe() {
+            const t = qe();
             t.isParent = !0,
             t.tView = null,
             t.selectedIndex = -1,
@@ -1625,7 +1625,7 @@
                 this.injectImpl = n
             }
         }
-        function ln(t, e, n) {
+        function cn(t, e, n) {
             const s = pe(t);
             let i = 0;
             for (; i < n.length; ) {
@@ -1636,18 +1636,18 @@
                     i++;
                     const o = n[i++]
                       , a = n[i++]
-                      , l = n[i++];
-                    s ? t.setAttribute(e, a, l, o) : e.setAttributeNS(o, a, l)
+                      , c = n[i++];
+                    s ? t.setAttribute(e, a, c, o) : e.setAttributeNS(o, a, c)
                 } else {
                     const o = r
                       , a = n[++i];
-                    cn(o) ? s && t.setProperty(e, o, a) : s ? t.setAttribute(e, o, a) : e.setAttribute(o, a),
+                    ln(o) ? s && t.setProperty(e, o, a) : s ? t.setAttribute(e, o, a) : e.setAttribute(o, a),
                     i++
                 }
             }
             return i
         }
-        function cn(t) {
+        function ln(t) {
             return 64 === t.charCodeAt(0)
         }
         function hn(t, e) {
@@ -1770,7 +1770,7 @@
             }
             return on
         }
-        function An(t, e, n) {
+        function Sn(t, e, n) {
             !function(t, e, n) {
                 let s;
                 "string" == typeof n ? s = n.charCodeAt(0) || 0 : n.hasOwnProperty(Lt) && (s = n[Lt]),
@@ -1779,10 +1779,10 @@
                 e.data[t + (i >> 5)] |= 1 << i
             }(t, e, n)
         }
-        function Sn(t, e, n) {
+        function An(t, e, n) {
             if (n & vt.Optional)
                 return t;
-            ct(e, "NodeInjector")
+            lt(e, "NodeInjector")
         }
         function On(t, e, n, s) {
             if (n & vt.Optional && void 0 === s && (s = null),
@@ -1790,12 +1790,12 @@
                 const i = t[9]
                   , r = wt(void 0);
                 try {
-                    return i ? i.get(e, s, n & vt.Optional) : At(e, s, n & vt.Optional)
+                    return i ? i.get(e, s, n & vt.Optional) : St(e, s, n & vt.Optional)
                 } finally {
                     wt(r)
                 }
             }
-            return Sn(s, e, n)
+            return An(s, e, n)
         }
         function Cn(t, e, n, s=vt.Default, i) {
             if (null !== t) {
@@ -1807,32 +1807,32 @@
                 }(n);
                 if ("function" == typeof r) {
                     if (!$e(e, t, s))
-                        return s & vt.Host ? Sn(i, n, s) : On(e, n, s, i);
+                        return s & vt.Host ? An(i, n, s) : On(e, n, s, i);
                     try {
                         const t = r(s);
                         if (null != t || s & vt.Optional)
                             return t;
-                        ct(n)
+                        lt(n)
                     } finally {
-                        Qe()
+                        Ke()
                     }
                 } else if ("number" == typeof r) {
                     let i = null
                       , o = bn(t, e)
                       , a = on
-                      , l = s & vt.Host ? e[16][6] : null;
+                      , c = s & vt.Host ? e[16][6] : null;
                     for ((-1 === o || s & vt.SkipSelf) && (a = -1 === o ? wn(t, e) : e[o + 8],
-                    a !== on && Tn(s, !1) ? (i = e[1],
+                    a !== on && Fn(s, !1) ? (i = e[1],
                     o = pn(a),
                     e = mn(a, e)) : o = -1); -1 !== o; ) {
                         const t = e[1];
-                        if (Fn(r, o, t.data)) {
-                            const t = xn(o, e, n, i, s, l);
+                        if (Tn(r, o, t.data)) {
+                            const t = xn(o, e, n, i, s, c);
                             if (t !== kn)
                                 return t
                         }
                         a = e[o + 8],
-                        a !== on && Tn(s, e[1].data[o + 8] === l) && Fn(r, o, e) ? (i = t,
+                        a !== on && Fn(s, e[1].data[o + 8] === c) && Tn(r, o, e) ? (i = t,
                         o = pn(a),
                         e = mn(a, e)) : o = -1
                     }
@@ -1847,25 +1847,25 @@
         function xn(t, e, n, s, i, r) {
             const o = e[1]
               , a = o.data[t + 8]
-              , l = Dn(a, o, n, null == s ? ne(a) && fn : s != o && 0 != (3 & a.type), i & vt.Host && r === a);
-            return null !== l ? Vn(e, o, l, a) : kn
+              , c = Dn(a, o, n, null == s ? ne(a) && fn : s != o && 0 != (3 & a.type), i & vt.Host && r === a);
+            return null !== c ? Vn(e, o, c, a) : kn
         }
         function Dn(t, e, n, s, i) {
             const r = t.providerIndexes
               , o = e.data
               , a = 1048575 & r
-              , l = t.directiveStart
-              , c = r >> 20
-              , h = i ? a + c : t.directiveEnd;
-            for (let u = s ? a : a + c; u < h; u++) {
+              , c = t.directiveStart
+              , l = r >> 20
+              , h = i ? a + l : t.directiveEnd;
+            for (let u = s ? a : a + l; u < h; u++) {
                 const t = o[u];
-                if (u < l && n === t || u >= l && t.type === n)
+                if (u < c && n === t || u >= c && t.type === n)
                     return u
             }
             if (i) {
-                const t = o[l];
+                const t = o[c];
                 if (t && ie(t) && t.type === n)
-                    return l
+                    return c
             }
             return null
         }
@@ -1876,17 +1876,17 @@
                 const o = i;
                 o.resolving && function(t, e) {
                     throw new ot("200",`Circular dependency in DI detected for ${t}`)
-                }(lt(r[n]));
+                }(ct(r[n]));
                 const a = gn(o.canSeeViewProviders);
                 o.resolving = !0;
-                const l = o.injectImpl ? wt(o.injectImpl) : null;
+                const c = o.injectImpl ? wt(o.injectImpl) : null;
                 $e(t, s, vt.Default);
                 try {
                     i = t[n] = o.factory(void 0, r, t, s),
                     e.firstCreatePass && n >= s.directiveStart && function(t, e, n) {
                         const {ngOnChanges: s, ngOnInit: i, ngDoCheck: r} = e.type.prototype;
                         if (s) {
-                            const s = le(e);
+                            const s = ce(e);
                             (n.preOrderHooks || (n.preOrderHooks = [])).push(t, s),
                             (n.preOrderCheckHooks || (n.preOrderCheckHooks = [])).push(t, s)
                         }
@@ -1895,18 +1895,18 @@
                         (n.preOrderCheckHooks || (n.preOrderCheckHooks = [])).push(t, r))
                     }(n, r[n], e)
                 } finally {
-                    null !== l && wt(l),
+                    null !== c && wt(c),
                     gn(a),
                     o.resolving = !1,
-                    Qe()
+                    Ke()
                 }
             }
             return i
         }
-        function Fn(t, e, n) {
+        function Tn(t, e, n) {
             return !!(n[e + (t >> 5)] & 1 << t)
         }
-        function Tn(t, e) {
+        function Fn(t, e) {
             return !(t & vt.Self || t & vt.Host && e)
         }
         class Pn {
@@ -1919,7 +1919,7 @@
             }
         }
         function In(t) {
-            return St(()=>{
+            return At(()=>{
                 const e = t.prototype.constructor
                   , n = e[Mt] || Rn(e)
                   , s = Object.prototype;
@@ -1941,9 +1941,9 @@
             }
             : re(t)
         }
-        const Nn = "__parameters__";
-        function Wn(t, e, n) {
-            return St(()=>{
+        const Wn = "__parameters__";
+        function Nn(t, e, n) {
+            return At(()=>{
                 const s = function(t) {
                     return function(...e) {
                         if (t) {
@@ -1961,9 +1961,9 @@
                     return n.annotation = e,
                     n;
                     function n(t, n, s) {
-                        const i = t.hasOwnProperty(Nn) ? t[Nn] : Object.defineProperty(t, Nn, {
+                        const i = t.hasOwnProperty(Wn) ? t[Wn] : Object.defineProperty(t, Wn, {
                             value: []
-                        })[Nn];
+                        })[Wn];
                         for (; i.length <= s; )
                             i.push(null);
                         return (i[s] = i[s] || []).push(e),
@@ -2001,10 +2001,10 @@
             }
             return e
         }
-        function jn(t, e) {
-            t.forEach(t=>Array.isArray(t) ? jn(t, e) : e(t))
+        function Bn(t, e) {
+            t.forEach(t=>Array.isArray(t) ? Bn(t, e) : e(t))
         }
-        function Bn(t, e, n) {
+        function jn(t, e, n) {
             e >= t.length ? t.push(n) : t.splice(e, 0, n)
         }
         function Hn(t, e) {
@@ -2050,10 +2050,10 @@
                 return ~(i << 1)
             }(t, e)
         }
-        const qn = {}
-          , Xn = /\n/gm
-          , Qn = "__source"
-          , Kn = Y({
+        const Xn = {}
+          , qn = /\n/gm
+          , Kn = "__source"
+          , Qn = Y({
             provide: String,
             useValue: Y
         });
@@ -2066,7 +2066,7 @@
         function Yn(t, e=vt.Default) {
             if (void 0 === Zn)
                 throw new Error("inject() must be called from an injection context");
-            return null === Zn ? At(t, void 0, e) : Zn.get(t, e & vt.Optional ? null : void 0, e)
+            return null === Zn ? St(t, void 0, e) : Zn.get(t, e & vt.Optional ? null : void 0, e)
         }
         function Jn(t, e=vt.Default) {
             return (bt || Yn)(it(t), e)
@@ -2096,11 +2096,11 @@
             t.prototype.__NG_DI_FLAG__ = e,
             t
         }
-        const ss = ns(Wn("Inject", t=>({
+        const ss = ns(Nn("Inject", t=>({
             token: t
         })), -1)
-          , is = ns(Wn("Optional"), 8)
-          , rs = ns(Wn("SkipSelf"), 4);
+          , is = ns(Nn("Optional"), 8)
+          , rs = ns(Nn("SkipSelf"), 4);
         function os(t) {
             return t instanceof class {
                 constructor(t) {
@@ -2115,13 +2115,13 @@
         function as(t, e) {
             t.__ngContext__ = e
         }
-        function ls(t) {
+        function cs(t) {
             const e = function(t) {
                 return t.__ngContext__ || null
             }(t);
             return e ? Array.isArray(e) ? e : e.lView : null
         }
-        function cs(t) {
+        function ls(t) {
             return t.ngDebugContext
         }
         function hs(t) {
@@ -2145,7 +2145,7 @@
                 n && s(this._console, "ERROR CONTEXT", n)
             }
             _findContext(t) {
-                return t ? cs(t) ? cs(t) : this._findContext(hs(t)) : null
+                return t ? ls(t) ? ls(t) : this._findContext(hs(t)) : null
             }
             _findOriginalError(t) {
                 let e = hs(t);
@@ -2198,15 +2198,15 @@
                     r !== fe(n) && ws(e, t, s, r, i);
                     for (let o = Yt; o < n.length; o++) {
                         const i = n[o];
-                        Ns(i[1], i, t, e, s, r)
+                        Ws(i[1], i, t, e, s, r)
                     }
                 }(e, t, r, n, i)
             }
         }
-        function As(t, e, n) {
+        function Ss(t, e, n) {
             return pe(t) ? t.createElement(e, n) : null === n ? t.createElement(e) : t.createElementNS(n, e)
         }
-        function Ss(t, e) {
+        function As(t, e) {
             const n = t[9]
               , s = n.indexOf(e)
               , i = e[3];
@@ -2221,10 +2221,10 @@
               , s = t[n];
             if (s) {
                 const r = s[17];
-                null !== r && r !== t && Ss(r, s),
+                null !== r && r !== t && As(r, s),
                 e > 0 && (t[n - 1][4] = s[4]);
                 const o = Hn(t, Yt + e);
-                Ns(s[1], i = s, i[11], 2, null, null),
+                Ws(s[1], i = s, i[11], 2, null, null),
                 i[0] = null,
                 i[6] = null;
                 const a = o[19];
@@ -2239,7 +2239,7 @@
         function Cs(t, e) {
             if (!(256 & e[2])) {
                 const n = e[11];
-                pe(n) && n.destroyNode && Ns(t, e, n, 3, null, null),
+                pe(n) && n.destroyNode && Ws(t, e, n, 3, null, null),
                 function(t) {
                     let e = t[13];
                     if (!e)
@@ -2301,8 +2301,8 @@
                                 const t = n[r + 1]
                                   , o = "function" == typeof t ? t(e) : fe(e[t])
                                   , a = s[i = n[r + 2]]
-                                  , l = n[r + 3];
-                                "boolean" == typeof l ? o.removeEventListener(n[r], a, l) : l >= 0 ? s[i = l]() : s[i = -l].unsubscribe(),
+                                  , c = n[r + 3];
+                                "boolean" == typeof c ? o.removeEventListener(n[r], a, c) : c >= 0 ? s[i = c]() : s[i = -c].unsubscribe(),
                                 r += 2
                             } else {
                                 const t = s[i = n[r + 1]];
@@ -2318,7 +2318,7 @@
                 1 === e[1].type && pe(e[11]) && e[11].destroy();
                 const n = e[17];
                 if (null !== n && te(e[3])) {
-                    n !== e[3] && Ss(n, e);
+                    n !== e[3] && As(n, e);
                     const s = e[19];
                     null !== s && s.detachView(t)
                 }
@@ -2336,7 +2336,7 @@
         function Vs(t, e) {
             return pe(t) ? t.parentNode(e) : e.parentNode
         }
-        function Fs(t, e, n, s) {
+        function Ts(t, e, n, s) {
             const i = function(t, e, n) {
                 return function(t, e, n) {
                     let s = e;
@@ -2365,7 +2365,7 @@
                 else
                     Ds(r, i, n, o, !1)
         }
-        function Ts(t, e) {
+        function Fs(t, e) {
             if (null !== e) {
                 const n = e.type;
                 if (3 & n)
@@ -2375,7 +2375,7 @@
                 if (8 & n) {
                     const n = e.child;
                     if (null !== n)
-                        return Ts(t, n);
+                        return Fs(t, n);
                     {
                         const n = t[e.index];
                         return te(n) ? Is(-1, n) : fe(n)
@@ -2385,7 +2385,7 @@
                     return gs(e, t)() || fe(t[e.index]);
                 {
                     const n = Ps(t, e);
-                    return null !== n ? Array.isArray(n) ? n[0] : Ts(_s(t[16]), n) : Ts(t, e.next)
+                    return null !== n ? Array.isArray(n) ? n[0] : Fs(_s(t[16]), n) : Fs(t, e.next)
                 }
             }
             return null
@@ -2399,40 +2399,40 @@
                 const t = e[n]
                   , s = t[1].firstChild;
                 if (null !== s)
-                    return Ts(t, s)
+                    return Fs(t, s)
             }
             return e[7]
         }
         function Rs(t, e, n, s, i, r, o) {
             for (; null != n; ) {
                 const a = s[n.index]
-                  , l = n.type;
+                  , c = n.type;
                 if (o && 0 === e && (a && as(fe(a), s),
                 n.flags |= 4),
                 64 != (64 & n.flags))
-                    if (8 & l)
+                    if (8 & c)
                         Rs(t, e, n.child, s, i, r, !1),
                         ws(e, t, i, a, r);
-                    else if (32 & l) {
+                    else if (32 & c) {
                         const o = gs(n, s);
-                        let l;
-                        for (; l = o(); )
-                            ws(e, t, i, l, r);
+                        let c;
+                        for (; c = o(); )
+                            ws(e, t, i, c, r);
                         ws(e, t, i, a, r)
                     } else
-                        16 & l ? Ws(t, e, s, n, i, r) : ws(e, t, i, a, r);
+                        16 & c ? Ns(t, e, s, n, i, r) : ws(e, t, i, a, r);
                 n = o ? n.projectionNext : n.next
             }
         }
-        function Ns(t, e, n, s, i, r) {
+        function Ws(t, e, n, s, i, r) {
             Rs(n, s, t.firstChild, e, i, r, !1)
         }
-        function Ws(t, e, n, s, i, r) {
+        function Ns(t, e, n, s, i, r) {
             const o = n[16]
               , a = o[6].projection[s.projection];
             if (Array.isArray(a))
-                for (let l = 0; l < a.length; l++)
-                    ws(e, t, i, a[l], r);
+                for (let c = 0; c < a.length; c++)
+                    ws(e, t, i, a[c], r);
             else
                 Rs(t, e, a, o[3], i, r, !0)
         }
@@ -2442,7 +2442,7 @@
         function Ls(t, e, n) {
             pe(t) ? "" === n ? t.removeAttribute(e, "class") : t.setAttribute(e, "class", n) : e.className = n
         }
-        function js(t, e, n) {
+        function Bs(t, e, n) {
             let s = t.length;
             for (; ; ) {
                 const i = t.indexOf(e, n);
@@ -2456,14 +2456,14 @@
                 n = i + 1
             }
         }
-        const Bs = "ng-template";
+        const js = "ng-template";
         function Hs(t, e, n) {
             let s = 0;
             for (; s < t.length; ) {
                 let i = t[s++];
                 if (n && "class" === i) {
                     if (i = t[s],
-                    -1 !== js(i.toLowerCase(), e, 0))
+                    -1 !== Bs(i.toLowerCase(), e, 0))
                         return !0
                 } else if (1 === i) {
                     for (; s < t.length && "string" == typeof (i = t[s++]); )
@@ -2475,10 +2475,10 @@
             return !1
         }
         function $s(t) {
-            return 4 === t.type && t.value !== Bs
+            return 4 === t.type && t.value !== js
         }
         function Us(t, e, n) {
-            return e === (4 !== t.type || n ? t.value : Bs)
+            return e === (4 !== t.type || n ? t.value : js)
         }
         function zs(t, e, n) {
             let s = 4;
@@ -2492,59 +2492,59 @@
             }(i);
             let o = !1;
             for (let a = 0; a < e.length; a++) {
-                const l = e[a];
-                if ("number" != typeof l) {
+                const c = e[a];
+                if ("number" != typeof c) {
                     if (!o)
                         if (4 & s) {
                             if (s = 2 | 1 & s,
-                            "" !== l && !Us(t, l, n) || "" === l && 1 === e.length) {
-                                if (qs(s))
+                            "" !== c && !Us(t, c, n) || "" === c && 1 === e.length) {
+                                if (Xs(s))
                                     return !1;
                                 o = !0
                             }
                         } else {
-                            const c = 8 & s ? l : e[++a];
+                            const l = 8 & s ? c : e[++a];
                             if (8 & s && null !== t.attrs) {
-                                if (!Hs(t.attrs, c, n)) {
-                                    if (qs(s))
+                                if (!Hs(t.attrs, l, n)) {
+                                    if (Xs(s))
                                         return !1;
                                     o = !0
                                 }
                                 continue
                             }
-                            const h = Xs(8 & s ? "class" : l, i, $s(t), n);
+                            const h = qs(8 & s ? "class" : c, i, $s(t), n);
                             if (-1 === h) {
-                                if (qs(s))
+                                if (Xs(s))
                                     return !1;
                                 o = !0;
                                 continue
                             }
-                            if ("" !== c) {
+                            if ("" !== l) {
                                 let t;
                                 t = h > r ? "" : i[h + 1].toLowerCase();
                                 const e = 8 & s ? t : null;
-                                if (e && -1 !== js(e, c, 0) || 2 & s && c !== t) {
-                                    if (qs(s))
+                                if (e && -1 !== Bs(e, l, 0) || 2 & s && l !== t) {
+                                    if (Xs(s))
                                         return !1;
                                     o = !0
                                 }
                             }
                         }
                 } else {
-                    if (!o && !qs(s) && !qs(l))
+                    if (!o && !Xs(s) && !Xs(c))
                         return !1;
-                    if (o && qs(l))
+                    if (o && Xs(c))
                         continue;
                     o = !1,
-                    s = l | 1 & s
+                    s = c | 1 & s
                 }
             }
-            return qs(s) || o
+            return Xs(s) || o
         }
-        function qs(t) {
+        function Xs(t) {
             return 0 == (1 & t)
         }
-        function Xs(t, e, n, s) {
+        function qs(t, e, n, s) {
             if (null === e)
                 return -1;
             let i = 0;
@@ -2588,13 +2588,13 @@
                 return -1
             }(e, t)
         }
-        function Qs(t, e, n=!1) {
+        function Ks(t, e, n=!1) {
             for (let s = 0; s < e.length; s++)
                 if (zs(t, e[s], n))
                     return !0;
             return !1
         }
-        function Ks(t, e) {
+        function Qs(t, e) {
             return t ? ":not(" + e.trim() + ")" : e
         }
         function Zs(t) {
@@ -2612,13 +2612,13 @@
                     } else
                         8 & s ? i += "." + o : 4 & s && (i += " " + o);
                 else
-                    "" === i || qs(o) || (e += Ks(r, i),
+                    "" === i || Xs(o) || (e += Qs(r, i),
                     i = ""),
                     s = o,
-                    r = r || !qs(s);
+                    r = r || !Xs(s);
                 n++
             }
-            return "" !== i && (e += Ks(r, i)),
+            return "" !== i && (e += Qs(r, i)),
             e
         }
         const Gs = {};
@@ -2662,32 +2662,32 @@
                       , r = n[s + 1];
                     if (-1 !== r) {
                         const n = t.data[r];
-                        Be(i),
+                        je(i),
                         n.contentQueries(2, e[r], r)
                     }
                 }
         }
-        function ai(t, e, n, s, i, r, o, a, l, c) {
+        function ai(t, e, n, s, i, r, o, a, c, l) {
             const h = e.blueprint.slice();
             return h[0] = i,
             h[2] = 140 | s,
-            Se(h),
+            Ae(h),
             h[3] = h[15] = t,
             h[8] = n,
             h[10] = o || t && t[10],
             h[11] = a || t && t[11],
-            h[12] = l || t && t[12] || null,
-            h[9] = c || t && t[9] || null,
+            h[12] = c || t && t[12] || null,
+            h[9] = l || t && t[9] || null,
             h[6] = r,
             h[16] = 2 == e.type ? t[16] : h,
             h
         }
-        function li(t, e, n, s, i) {
+        function ci(t, e, n, s, i) {
             let r = t.data[e];
             if (null === r)
                 r = function(t, e, n, s, i) {
                     const r = Ve()
-                      , o = Te()
+                      , o = Fe()
                       , a = t.data[e] = function(t, e, n, s, i, r) {
                         return {
                             type: n,
@@ -2739,10 +2739,10 @@
                 }();
                 r.injectorIndex = null === t ? -1 : t.injectorIndex
             }
-            return Fe(r, !0),
+            return Te(r, !0),
             r
         }
-        function ci(t, e, n, s) {
+        function li(t, e, n, s) {
             if (0 === n)
                 return -1;
             const i = e.length;
@@ -2772,7 +2772,7 @@
                 s
             } finally {
                 e[2] &= -5,
-                Ke()
+                Qe()
             }
         }
         function ui(t, e, n, s) {
@@ -2782,7 +2782,7 @@
             Ue(e);
             const r = Pe();
             try {
-                Se(e),
+                Ae(e),
                 Ce.lFrame.bindingIndex = t.bindingStartIndex,
                 null !== n && pi(t, e, n, 2, s);
                 const o = 3 == (3 & i);
@@ -2849,10 +2849,10 @@
                 const a = t.components;
                 null !== a && function(t, e) {
                     for (let n = 0; n < e.length; n++)
-                        Ti(t, e[n])
+                        Fi(t, e[n])
                 }(e, a);
-                const l = t.viewQuery;
-                if (null !== l && Li(2, l, s),
+                const c = t.viewQuery;
+                if (null !== c && Li(2, c, s),
                 !r)
                     if (o) {
                         const n = t.viewCheckHooks;
@@ -2867,7 +2867,7 @@
                 1024 & e[2] && (e[2] &= -1025,
                 Oe(e[3], -1))
             } finally {
-                Ke()
+                Qe()
             }
         }
         function di(t, e, n, s) {
@@ -2904,10 +2904,10 @@
                     const s = t.data[a]
                       , r = ie(s);
                     r && xi(e, n, s);
-                    const l = Vn(e, t, a, n);
-                    as(l, e),
-                    null !== o && Di(0, a - i, l, s, 0, o),
-                    r && (ve(n.index, e)[8] = l)
+                    const c = Vn(e, t, a, n);
+                    as(c, e),
+                    null !== o && Di(0, a - i, c, s, 0, o),
+                    r && (ve(n.index, e)[8] = c)
                 }
             }(t, e, n, _e(n, e)),
             128 == (128 & n.flags) && function(t, e, n) {
@@ -2921,7 +2921,7 @@
                         const s = t.data[n]
                           , i = e[n];
                         Le(n),
-                        null === s.hostBindings && 0 === s.hostVars && null === s.hostAttrs || Si(s, i)
+                        null === s.hostBindings && 0 === s.hostVars && null === s.hostAttrs || Ai(s, i)
                     }
                 } finally {
                     Ge(-1),
@@ -2944,7 +2944,7 @@
             const e = t.tView;
             return null === e || e.incompleteFirstPass ? t.tView = _i(1, null, t.template, t.decls, t.vars, t.directiveDefs, t.pipeDefs, t.viewQuery, t.schemas, t.consts) : e
         }
-        function _i(t, e, n, s, i, r, o, a, l, c) {
+        function _i(t, e, n, s, i, r, o, a, c, l) {
             const h = Gt + s
               , u = h + i
               , d = function(t, e) {
@@ -2953,7 +2953,7 @@
                     n.push(s < t ? null : Gs);
                 return n
             }(h, u)
-              , p = "function" == typeof c ? c() : c;
+              , p = "function" == typeof l ? l() : l;
             return d[1] = {
                 type: t,
                 blueprint: d,
@@ -2982,13 +2982,13 @@
                 directiveRegistry: "function" == typeof r ? r() : r,
                 pipeRegistry: "function" == typeof o ? o() : o,
                 firstChild: null,
-                schemas: l,
+                schemas: c,
                 consts: p,
                 incompleteFirstPass: !1
             }
         }
         function yi(t, e, n, s) {
-            const i = Bi(e);
+            const i = ji(e);
             null === n ? i.push(s) : (i.push(n),
             t.firstCreatePass && Hi(t).push(s, i.length - 1))
         }
@@ -3001,16 +3001,16 @@
             return n
         }
         function bi(t, e, n, s, i, r, o, a) {
-            const l = _e(e, n);
-            let c, h = e.inputs;
+            const c = _e(e, n);
+            let l, h = e.inputs;
             var u;
-            !a && null != h && (c = h[s]) ? (Ui(t, n, c, s, i),
+            !a && null != h && (l = h[s]) ? (Ui(t, n, l, s, i),
             ne(e) && function(t, e) {
                 const n = ve(e, t);
                 16 & n[2] || (n[2] |= 64)
             }(n, e.index)) : 3 & e.type && (s = "class" === (u = s) ? "className" : "for" === u ? "htmlFor" : "formaction" === u ? "formAction" : "innerHtml" === u ? "innerHTML" : "readonly" === u ? "readOnly" : "tabindex" === u ? "tabIndex" : u,
             i = null != o ? o(i, e.value || "", s) : i,
-            pe(r) ? r.setProperty(l, s, i) : cn(s) || (l.setProperty ? l.setProperty(s, i) : l[s] = i))
+            pe(r) ? r.setProperty(c, s, i) : ln(s) || (c.setProperty ? c.setProperty(s, i) : c[s] = i))
         }
         function wi(t, e, n, s) {
             let i = !1;
@@ -3021,8 +3021,8 @@
                     if (s)
                         for (let r = 0; r < s.length; r++) {
                             const o = s[r];
-                            Qs(n, o.selectors, !1) && (i || (i = []),
-                            An(yn(n, e), t, o.type),
+                            Ks(n, o.selectors, !1) && (i || (i = []),
+                            Sn(yn(n, e), t, o.type),
                             ie(o) ? (Oi(t, n),
                             i.unshift(o)) : i.push(o))
                         }
@@ -3040,20 +3040,20 @@
                     }
                     let s = !1
                       , a = !1
-                      , l = ci(t, e, r.length, null);
+                      , c = li(t, e, r.length, null);
                     for (let i = 0; i < r.length; i++) {
-                        const c = r[i];
-                        n.mergedAttrs = hn(n.mergedAttrs, c.hostAttrs),
-                        Ei(t, n, e, l, c),
-                        Ci(l, c, o),
-                        null !== c.contentQueries && (n.flags |= 8),
-                        null === c.hostBindings && null === c.hostAttrs && 0 === c.hostVars || (n.flags |= 128);
-                        const h = c.type.prototype;
+                        const l = r[i];
+                        n.mergedAttrs = hn(n.mergedAttrs, l.hostAttrs),
+                        Ei(t, n, e, c, l),
+                        Ci(c, l, o),
+                        null !== l.contentQueries && (n.flags |= 8),
+                        null === l.hostBindings && null === l.hostAttrs && 0 === l.hostVars || (n.flags |= 128);
+                        const h = l.type.prototype;
                         !s && (h.ngOnChanges || h.ngOnInit || h.ngDoCheck) && ((t.preOrderHooks || (t.preOrderHooks = [])).push(n.index),
                         s = !0),
                         a || !h.ngOnChanges && !h.ngDoCheck || ((t.preOrderCheckHooks || (t.preOrderCheckHooks = [])).push(n.index),
                         a = !0),
-                        l++
+                        c++
                     }
                     !function(t, e) {
                         const n = e.directiveEnd
@@ -3062,13 +3062,13 @@
                           , r = [];
                         let o = null
                           , a = null;
-                        for (let l = e.directiveStart; l < n; l++) {
-                            const t = s[l]
+                        for (let c = e.directiveStart; c < n; c++) {
+                            const t = s[c]
                               , n = t.inputs
-                              , c = null === i || $s(e) ? null : Vi(n, i);
-                            r.push(c),
-                            o = vi(n, l, o),
-                            a = vi(t.outputs, l, a)
+                              , l = null === i || $s(e) ? null : Vi(n, i);
+                            r.push(l),
+                            o = vi(n, c, o),
+                            a = vi(t.outputs, c, a)
                         }
                         null !== o && (o.hasOwnProperty("class") && (e.flags |= 16),
                         o.hasOwnProperty("style") && (e.flags |= 32)),
@@ -3092,7 +3092,7 @@
             return n.mergedAttrs = hn(n.mergedAttrs, n.attrs),
             i
         }
-        function Ai(t, e, n, s, i, r) {
+        function Si(t, e, n, s, i, r) {
             const o = r.hostBindings;
             if (o) {
                 let n = t.hostBindingOpCodes;
@@ -3111,7 +3111,7 @@
                 n.push(s, i, o)
             }
         }
-        function Si(t, e) {
+        function Ai(t, e) {
             null !== t.hostBindings && t.hostBindings(1, e)
         }
         function Oi(t, e) {
@@ -3138,7 +3138,7 @@
               , o = new an(r,ie(i),null);
             t.blueprint[s] = o,
             n[s] = o,
-            Ai(t, e, 0, s, ci(t, n, i.hostVars, Gs), i)
+            Si(t, e, 0, s, li(t, n, i.hostVars, Gs), i)
         }
         function xi(t, e, n) {
             const s = _e(e, t)
@@ -3178,10 +3178,10 @@
             }
             return n
         }
-        function Fi(t, e, n, s) {
+        function Ti(t, e, n, s) {
             return new Array(t,!0,!1,e,null,0,s,n,null,null)
         }
-        function Ti(t, e) {
+        function Fi(t, e) {
             const n = ve(e, t);
             if (we(n)) {
                 const t = n[1];
@@ -3219,7 +3219,7 @@
             t[14] = e,
             e
         }
-        function Ni(t) {
+        function Wi(t) {
             for (; t; ) {
                 t[2] |= 64;
                 const e = _s(t);
@@ -3229,7 +3229,7 @@
             }
             return null
         }
-        function Wi(t, e, n) {
+        function Ni(t, e, n) {
             const s = e[10];
             s.begin && s.begin();
             try {
@@ -3245,18 +3245,18 @@
             !function(t) {
                 for (let e = 0; e < t.components.length; e++) {
                     const n = t.components[e]
-                      , s = ls(n)
+                      , s = cs(n)
                       , i = s[1];
                     di(i, s, i.template, n)
                 }
             }(t[8])
         }
         function Li(t, e, n) {
-            Be(0),
+            je(0),
             e(t, n)
         }
-        const ji = (()=>Promise.resolve(null))();
-        function Bi(t) {
+        const Bi = (()=>Promise.resolve(null))();
+        function ji(t) {
             return t[7] || (t[7] = [])
         }
         function Hi(t) {
@@ -3271,9 +3271,9 @@
             for (let r = 0; r < n.length; ) {
                 const o = n[r++]
                   , a = n[r++]
-                  , l = e[o]
-                  , c = t.data[o];
-                null !== c.setInput ? c.setInput(l, i, s, a) : l[a] = i
+                  , c = e[o]
+                  , l = t.data[o];
+                null !== l.setInput ? l.setInput(c, i, s, a) : c[a] = i
             }
         }
         function zi(t, e, n) {
@@ -3282,7 +3282,7 @@
                 pe(t) ? t.setValue(e, n) : e.textContent = n
             }(t[11], s, n)
         }
-        function qi(t, e, n) {
+        function Xi(t, e, n) {
             let s = n ? t.styles : null
               , i = n ? t.classes : null
               , r = 0;
@@ -3294,10 +3294,10 @@
             n ? t.styles = s : t.stylesWithoutHost = s,
             n ? t.classes = i : t.classesWithoutHost = i
         }
-        const Xi = new Mn("INJECTOR",-1);
-        class Qi {
-            get(t, e=qn) {
-                if (e === qn) {
+        const qi = new Mn("INJECTOR",-1);
+        class Ki {
+            get(t, e=Xn) {
+                if (e === Xn) {
                     const e = new Error(`NullInjectorError: No provider for ${tt(t)}!`);
                     throw e.name = "NullInjectorError",
                     e
@@ -3305,12 +3305,12 @@
                 return e
             }
         }
-        const Ki = new Mn("Set Injector scope.")
+        const Qi = new Mn("Set Injector scope.")
           , Zi = {}
           , Gi = {};
         let Yi;
         function Ji() {
-            return void 0 === Yi && (Yi = new Qi),
+            return void 0 === Yi && (Yi = new Ki),
             Yi
         }
         function tr(t, e=null, n=null, s) {
@@ -3324,10 +3324,10 @@
                 this.onDestroy = new Set,
                 this._destroyed = !1;
                 const i = [];
-                e && jn(e, n=>this.processProvider(n, t, e)),
-                jn([t], t=>this.processInjectorType(t, [], i)),
-                this.records.set(Xi, ir(void 0, this));
-                const r = this.records.get(Ki);
+                e && Bn(e, n=>this.processProvider(n, t, e)),
+                Bn([t], t=>this.processInjectorType(t, [], i)),
+                this.records.set(qi, ir(void 0, this));
+                const r = this.records.get(Qi);
                 this.scope = null != r ? r.value : null,
                 this.source = s || ("object" == typeof t ? null : tt(t))
             }
@@ -3345,7 +3345,7 @@
                     this.injectorDefTypes.clear()
                 }
             }
-            get(t, e=qn, n=vt.Default) {
+            get(t, e=Xn, n=vt.Default) {
                 this.assertNotDestroyed();
                 const s = Gn(this);
                 try {
@@ -3359,7 +3359,7 @@
                         if (null != e)
                             return this.hydrate(t, e)
                     }
-                    return (n & vt.Self ? Ji() : this.parent).get(t, e = n & vt.Optional && e === qn ? null : e)
+                    return (n & vt.Self ? Ji() : this.parent).get(t, e = n & vt.Optional && e === Xn ? null : e)
                 } catch (r) {
                     if ("NullInjectorError" === r.name) {
                         if ((r.ngTempTokenPath = r.ngTempTokenPath || []).unshift(tt(t)),
@@ -3367,7 +3367,7 @@
                             throw r;
                         return function(t, e, n, s) {
                             const i = t.ngTempTokenPath;
-                            throw e[Qn] && i.unshift(e[Qn]),
+                            throw e[Kn] && i.unshift(e[Kn]),
                             t.message = function(t, e, n, s=null) {
                                 t = t && "\n" === t.charAt(0) && "\u0275" == t.charAt(1) ? t.substr(2) : t;
                                 let i = tt(e);
@@ -3382,7 +3382,7 @@
                                         }
                                     i = `{${t.join(", ")}}`
                                 }
-                                return `${n}${s ? "(" + s + ")" : ""}[${i}]: ${t.replace(Xn, "\n  ")}`
+                                return `${n}${s ? "(" + s + ")" : ""}[${i}]: ${t.replace(qn, "\n  ")}`
                             }("\n" + t.message, i, n, s),
                             t.ngTokenPath = i,
                             t.ngTempTokenPath = null,
@@ -3421,7 +3421,7 @@
                     let t;
                     n.push(r);
                     try {
-                        jn(s.imports, s=>{
+                        Bn(s.imports, s=>{
                             this.processInjectorType(s, e, n) && (void 0 === t && (t = []),
                             t.push(s))
                         }
@@ -3430,16 +3430,16 @@
                     if (void 0 !== t)
                         for (let e = 0; e < t.length; e++) {
                             const {ngModule: n, providers: s} = t[e];
-                            jn(s, t=>this.processProvider(t, n, s || Tt))
+                            Bn(s, t=>this.processProvider(t, n, s || Ft))
                         }
                 }
                 this.injectorDefTypes.add(r);
                 const a = re(r) || (()=>new r);
                 this.records.set(r, ir(a, Zi));
-                const l = s.providers;
-                if (null != l && !o) {
+                const c = s.providers;
+                if (null != c && !o) {
                     const e = t;
-                    jn(l, t=>this.processProvider(t, e, l))
+                    Bn(c, t=>this.processProvider(t, e, c))
                 }
                 return void 0 !== i && void 0 !== t.providers
             }
@@ -3544,7 +3544,7 @@
             }
         }
         function rr(t) {
-            return null !== t && "object" == typeof t && Kn in t
+            return null !== t && "object" == typeof t && Qn in t
         }
         function or(t) {
             return "function" == typeof t
@@ -3558,25 +3558,25 @@
                 name: n
             }, e, t, n)
         };
-        let lr = (()=>{
+        let cr = (()=>{
             class t {
                 static create(t, e) {
                     return Array.isArray(t) ? ar(t, e, "") : ar(t.providers, t.parent, t.name || "")
                 }
             }
-            return t.THROW_IF_NOT_FOUND = qn,
-            t.NULL = new Qi,
+            return t.THROW_IF_NOT_FOUND = Xn,
+            t.NULL = new Ki,
             t.\u0275prov = ht({
                 token: t,
                 providedIn: "any",
-                factory: ()=>Jn(Xi)
+                factory: ()=>Jn(qi)
             }),
             t.__NG_ELEMENT_ID__ = -1,
             t
         }
         )();
-        function cr(t, e) {
-            Je(ls(t)[1], De())
+        function lr(t, e) {
+            Je(cs(t)[1], De())
         }
         function hr(t) {
             let e = Object.getPrototypeOf(t.type.prototype).constructor
@@ -3633,7 +3633,7 @@
             }(s)
         }
         function ur(t) {
-            return t === Ft ? {} : t === Tt ? [] : t
+            return t === Tt ? {} : t === Ft ? [] : t
         }
         function dr(t, e) {
             const n = t.viewQuery;
@@ -3703,30 +3703,30 @@
             const i = br(t, e, n);
             return br(t, e + 1, s) || i
         }
-        function Ar(t, e, n, s) {
-            return br(t, Ne(), n) ? e + at(n) + s : Gs
+        function Sr(t, e, n, s) {
+            return br(t, We(), n) ? e + at(n) + s : Gs
         }
-        function Sr(t, e, n, s, i, r, o, a) {
-            const l = Ee()
-              , c = xe()
+        function Ar(t, e, n, s, i, r, o, a) {
+            const c = Ee()
+              , l = xe()
               , h = t + Gt
-              , u = c.firstCreatePass ? function(t, e, n, s, i, r, o, a, l) {
-                const c = e.consts
-                  , h = li(e, t, 4, o || null, Ae(c, a));
-                wi(e, n, h, Ae(c, l)),
+              , u = l.firstCreatePass ? function(t, e, n, s, i, r, o, a, c) {
+                const l = e.consts
+                  , h = ci(e, t, 4, o || null, Se(l, a));
+                wi(e, n, h, Se(l, c)),
                 Je(e, h);
-                const u = h.tViews = _i(2, h, s, i, r, e.directiveRegistry, e.pipeRegistry, null, e.schemas, c);
+                const u = h.tViews = _i(2, h, s, i, r, e.directiveRegistry, e.pipeRegistry, null, e.schemas, l);
                 return null !== e.queries && (e.queries.template(e, h),
                 u.queries = e.queries.embeddedTView(h)),
                 h
-            }(h, c, l, e, n, s, i, r, o) : c.data[h];
-            Fe(u, !1);
-            const d = l[11].createComment("");
-            Fs(c, l, d, u),
-            as(d, l),
-            Ri(l, l[h] = Fi(d, l, d, u)),
-            se(u) && mi(c, l, u),
-            null != o && fi(l, u, a)
+            }(h, l, c, e, n, s, i, r, o) : l.data[h];
+            Te(u, !1);
+            const d = c[11].createComment("");
+            Ts(l, c, d, u),
+            as(d, c),
+            Ri(c, c[h] = Ti(d, c, d, u)),
+            se(u) && mi(l, c, u),
+            null != o && fi(c, u, a)
         }
         function Or(t, e=vt.Default) {
             const n = Ee();
@@ -3734,7 +3734,7 @@
         }
         function Cr(t, e, n) {
             const s = Ee();
-            return br(s, Ne(), e) && bi(xe(), Ye(), s, t, e, s[11], n, !1),
+            return br(s, We(), e) && bi(xe(), Ye(), s, t, e, s[11], n, !1),
             Cr
         }
         function kr(t, e, n, s, i) {
@@ -3746,27 +3746,27 @@
               , r = xe()
               , o = Gt + t
               , a = i[11]
-              , l = i[o] = As(a, e, Ce.lFrame.currentNamespace)
-              , c = r.firstCreatePass ? function(t, e, n, s, i, r, o) {
+              , c = i[o] = Ss(a, e, Ce.lFrame.currentNamespace)
+              , l = r.firstCreatePass ? function(t, e, n, s, i, r, o) {
                 const a = e.consts
-                  , l = li(e, t, 2, i, Ae(a, r));
-                return wi(e, n, l, Ae(a, o)),
-                null !== l.attrs && qi(l, l.attrs, !1),
-                null !== l.mergedAttrs && qi(l, l.mergedAttrs, !0),
-                null !== e.queries && e.queries.elementStart(e, l),
-                l
+                  , c = ci(e, t, 2, i, Se(a, r));
+                return wi(e, n, c, Se(a, o)),
+                null !== c.attrs && Xi(c, c.attrs, !1),
+                null !== c.mergedAttrs && Xi(c, c.mergedAttrs, !0),
+                null !== e.queries && e.queries.elementStart(e, c),
+                c
             }(o, r, i, 0, e, n, s) : r.data[o];
-            Fe(c, !0);
-            const h = c.mergedAttrs;
-            null !== h && ln(a, l, h);
-            const u = c.classes;
-            null !== u && Ls(a, l, u);
-            const d = c.styles;
-            null !== d && Ms(a, l, d),
-            64 != (64 & c.flags) && Fs(r, i, l, c),
-            0 === Ce.lFrame.elementDepthCount && as(l, i),
+            Te(l, !0);
+            const h = l.mergedAttrs;
+            null !== h && cn(a, c, h);
+            const u = l.classes;
+            null !== u && Ls(a, c, u);
+            const d = l.styles;
+            null !== d && Ms(a, c, d),
+            64 != (64 & l.flags) && Ts(r, i, c, l),
+            0 === Ce.lFrame.elementDepthCount && as(c, i),
             Ce.lFrame.elementDepthCount++,
-            se(c) && (mi(r, i, c),
+            se(l) && (mi(r, i, l),
             function(t, e, n) {
                 if (ee(e)) {
                     const s = e.directiveEnd;
@@ -3775,13 +3775,13 @@
                         e.contentQueries && e.contentQueries(1, n[i], i)
                     }
                 }
-            }(r, c, i)),
-            null !== s && fi(i, c)
+            }(r, l, i)),
+            null !== s && fi(i, l)
         }
         function xr() {
             let t = De();
-            Te() ? Ce.lFrame.isParent = !1 : (t = t.parent,
-            Fe(t, !1));
+            Fe() ? Ce.lFrame.isParent = !1 : (t = t.parent,
+            Te(t, !1));
             const e = t;
             Ce.lFrame.elementDepthCount--;
             const n = xe();
@@ -3801,17 +3801,17 @@
         function Vr(t) {
             return !!t && "function" == typeof t.then
         }
-        const Fr = function(t) {
+        const Tr = function(t) {
             return !!t && "function" == typeof t.subscribe
         };
-        function Tr(t, e, n, s) {
+        function Fr(t, e, n, s) {
             const i = Ee()
               , r = xe()
               , o = De();
             return function(t, e, n, s, i, r, o, a) {
-                const l = se(s)
-                  , c = t.firstCreatePass && Hi(t)
-                  , h = Bi(e);
+                const c = se(s)
+                  , l = t.firstCreatePass && Hi(t)
+                  , h = ji(e);
                 let u = !0;
                 if (3 & s.type || a) {
                     const d = _e(s, e)
@@ -3820,7 +3820,7 @@
                       , f = a ? t=>a(fe(t[s.index])) : s.index;
                     if (pe(n)) {
                         let o = null;
-                        if (!a && l && (o = function(t, e, n, s) {
+                        if (!a && c && (o = function(t, e, n, s) {
                             const i = t.cleanup;
                             if (null != i)
                                 for (let r = 0; r < i.length - 1; r += 2) {
@@ -3842,13 +3842,13 @@
                             r = Ir(s, e, 0, r, !1);
                             const t = n.listen(p, i, r);
                             h.push(r, t),
-                            c && c.push(i, f, m, m + 1)
+                            l && l.push(i, f, m, m + 1)
                         }
                     } else
                         r = Ir(s, e, 0, r, !0),
                         p.addEventListener(i, r, o),
                         h.push(r),
-                        c && c.push(i, f, m, o)
+                        l && l.push(i, f, m, o)
                 } else
                     r = Ir(s, e, 0, r, !1);
                 const d = s.outputs;
@@ -3860,11 +3860,11 @@
                             const t = e[p[n]][p[n + 1]].subscribe(r)
                               , o = h.length;
                             h.push(r, t),
-                            c && c.push(i, s.index, o, -(o + 1))
+                            l && l.push(i, s.index, o, -(o + 1))
                         }
                 }
             }(r, i, i[11], o, t, e, !!n, s),
-            Tr
+            Fr
         }
         function Pr(t, e, n, s) {
             try {
@@ -3879,12 +3879,12 @@
                 if (r === Function)
                     return s;
                 const o = 2 & t.flags ? ve(t.index, e) : e;
-                0 == (32 & e[2]) && Ni(o);
+                0 == (32 & e[2]) && Wi(o);
                 let a = Pr(e, 0, s, r)
-                  , l = n.__ngNextListenerFn__;
-                for (; l; )
-                    a = Pr(e, 0, l, r) && a,
-                    l = l.__ngNextListenerFn__;
+                  , c = n.__ngNextListenerFn__;
+                for (; c; )
+                    a = Pr(e, 0, c, r) && a,
+                    c = c.__ngNextListenerFn__;
                 return i && !1 === a && (r.preventDefault(),
                 r.returnValue = !1),
                 a
@@ -3900,101 +3900,101 @@
                 }(t, Ce.lFrame.contextLView))[8]
             }(t)
         }
-        function Nr(t, e, n) {
-            return Wr(t, "", e, "", n),
-            Nr
-        }
-        function Wr(t, e, n, s, i) {
-            const r = Ee()
-              , o = Ar(r, e, n, s);
-            return o !== Gs && bi(xe(), Ye(), r, t, o, r[11], i, !1),
+        function Wr(t, e, n) {
+            return Nr(t, "", e, "", n),
             Wr
+        }
+        function Nr(t, e, n, s, i) {
+            const r = Ee()
+              , o = Sr(r, e, n, s);
+            return o !== Gs && bi(xe(), Ye(), r, t, o, r[11], i, !1),
+            Nr
         }
         function Mr(t, e, n, s, i) {
             const r = t[n + 1]
               , o = null === e;
             let a = s ? ei(r) : si(r)
-              , l = !1;
-            for (; 0 !== a && (!1 === l || o); ) {
+              , c = !1;
+            for (; 0 !== a && (!1 === c || o); ) {
                 const n = t[a + 1];
-                Lr(t[a], e) && (l = !0,
+                Lr(t[a], e) && (c = !0,
                 t[a + 1] = s ? ri(n) : ni(n)),
                 a = s ? ei(n) : si(n)
             }
-            l && (t[n + 1] = s ? ni(r) : ri(r))
+            c && (t[n + 1] = s ? ni(r) : ri(r))
         }
         function Lr(t, e) {
             return null === t || null == e || (Array.isArray(t) ? t[1] : t) === e || !(!Array.isArray(t) || "string" != typeof e) && zn(t, e) >= 0
         }
-        const jr = {
+        const Br = {
             textEnd: 0,
             key: 0,
             keyEnd: 0,
             value: 0,
             valueEnd: 0
         };
-        function Br(t) {
-            return t.substring(jr.key, jr.keyEnd)
+        function jr(t) {
+            return t.substring(Br.key, Br.keyEnd)
         }
         function Hr(t) {
-            return t.substring(jr.value, jr.valueEnd)
+            return t.substring(Br.value, Br.valueEnd)
         }
         function $r(t, e) {
-            const n = jr.textEnd;
-            return n === e ? -1 : (e = jr.keyEnd = function(t, e, n) {
+            const n = Br.textEnd;
+            return n === e ? -1 : (e = Br.keyEnd = function(t, e, n) {
                 for (; e < n && t.charCodeAt(e) > 32; )
                     e++;
                 return e
-            }(t, jr.key = e, n),
-            qr(t, e, n))
+            }(t, Br.key = e, n),
+            Xr(t, e, n))
         }
         function Ur(t, e) {
-            const n = jr.textEnd;
-            let s = jr.key = qr(t, e, n);
-            return n === s ? -1 : (s = jr.keyEnd = function(t, e, n) {
+            const n = Br.textEnd;
+            let s = Br.key = Xr(t, e, n);
+            return n === s ? -1 : (s = Br.keyEnd = function(t, e, n) {
                 let s;
                 for (; e < n && (45 === (s = t.charCodeAt(e)) || 95 === s || (-33 & s) >= 65 && (-33 & s) <= 90 || s >= 48 && s <= 57); )
                     e++;
                 return e
             }(t, s, n),
-            s = Xr(t, s, n),
-            s = jr.value = qr(t, s, n),
-            s = jr.valueEnd = function(t, e, n) {
+            s = qr(t, s, n),
+            s = Br.value = Xr(t, s, n),
+            s = Br.valueEnd = function(t, e, n) {
                 let s = -1
                   , i = -1
                   , r = -1
                   , o = e
                   , a = o;
                 for (; o < n; ) {
-                    const l = t.charCodeAt(o++);
-                    if (59 === l)
+                    const c = t.charCodeAt(o++);
+                    if (59 === c)
                         return a;
-                    34 === l || 39 === l ? a = o = Qr(t, l, o, n) : e === o - 4 && 85 === r && 82 === i && 76 === s && 40 === l ? a = o = Qr(t, 41, o, n) : l > 32 && (a = o),
+                    34 === c || 39 === c ? a = o = Kr(t, c, o, n) : e === o - 4 && 85 === r && 82 === i && 76 === s && 40 === c ? a = o = Kr(t, 41, o, n) : c > 32 && (a = o),
                     r = i,
                     i = s,
-                    s = -33 & l
+                    s = -33 & c
                 }
                 return a
             }(t, s, n),
-            Xr(t, s, n))
+            qr(t, s, n))
         }
         function zr(t) {
-            jr.key = 0,
-            jr.keyEnd = 0,
-            jr.value = 0,
-            jr.valueEnd = 0,
-            jr.textEnd = t.length
+            Br.key = 0,
+            Br.keyEnd = 0,
+            Br.value = 0,
+            Br.valueEnd = 0,
+            Br.textEnd = t.length
         }
-        function qr(t, e, n) {
+        function Xr(t, e, n) {
             for (; e < n && t.charCodeAt(e) <= 32; )
                 e++;
             return e
         }
-        function Xr(t, e, n, s) {
-            return (e = qr(t, e, n)) < n && e++,
+        function qr(t, e, n, s) {
+            return (e = Xr(t, e, n)) < n && e++,
             e
         }
-        function Qr(t, e, n, s) {
+        function Kr(t, e, n, s) {
             let i = -1
               , r = n;
             for (; r < s; ) {
@@ -4005,36 +4005,36 @@
             }
             throw new Error
         }
-        function Kr(t, e) {
+        function Qr(t, e) {
             return function(t, e, n, s) {
                 const i = Ee()
                   , r = xe()
-                  , o = We(2);
+                  , o = Ne(2);
                 r.firstUpdatePass && to(r, t, o, true),
                 e !== Gs && br(i, o, e) && io(r, r.data[Ze()], i, i[11], t, i[o + 1] = function(t, e) {
                     return null == t || "object" == typeof t && (t = tt(os(t))),
                     t
                 }(e), true, o)
             }(t, e),
-            Kr
+            Qr
         }
         function Zr(t, e) {
             for (let n = function(t) {
                 return zr(t),
-                Ur(t, qr(t, 0, jr.textEnd))
+                Ur(t, Xr(t, 0, Br.textEnd))
             }(e); n >= 0; n = Ur(e, n))
-                so(t, Br(e), Hr(e))
+                so(t, jr(e), Hr(e))
         }
         function Gr(t, e) {
             for (let n = function(t) {
                 return zr(t),
-                $r(t, qr(t, 0, jr.textEnd))
+                $r(t, Xr(t, 0, Br.textEnd))
             }(e); n >= 0; n = $r(e, n))
-                $n(t, Br(e), !0)
+                $n(t, jr(e), !0)
         }
         function Yr(t, e, n, s) {
             const i = xe()
-              , r = We(2);
+              , r = Ne(2);
             i.firstUpdatePass && to(i, null, r, s);
             const o = Ee();
             if (n !== Gs && br(o, r, n)) {
@@ -4045,29 +4045,29 @@
                     kr(i, a, o, n, s)
                 } else
                     !function(t, e, n, s, i, r, o, a) {
-                        i === Gs && (i = Tt);
-                        let l = 0
-                          , c = 0
+                        i === Gs && (i = Ft);
+                        let c = 0
+                          , l = 0
                           , h = 0 < i.length ? i[0] : null
                           , u = 0 < r.length ? r[0] : null;
                         for (; null !== h || null !== u; ) {
-                            const d = l < i.length ? i[l + 1] : void 0
-                              , p = c < r.length ? r[c + 1] : void 0;
+                            const d = c < i.length ? i[c + 1] : void 0
+                              , p = l < r.length ? r[l + 1] : void 0;
                             let m, f = null;
-                            h === u ? (l += 2,
-                            c += 2,
+                            h === u ? (c += 2,
+                            l += 2,
                             d !== p && (f = u,
-                            m = p)) : null === u || null !== h && h < u ? (l += 2,
-                            f = h) : (c += 2,
+                            m = p)) : null === u || null !== h && h < u ? (c += 2,
+                            f = h) : (l += 2,
                             f = u,
                             m = p),
                             null !== f && io(t, e, n, s, f, m, o, a),
-                            h = l < i.length ? i[l] : null,
-                            u = c < r.length ? r[c] : null
+                            h = c < i.length ? i[c] : null,
+                            u = l < r.length ? r[l] : null
                         }
                     }(i, a, o, o[11], o[r + 1], o[r + 1] = function(t, e, n) {
                         if (null == n || "" === n)
-                            return Tt;
+                            return Ft;
                         const s = []
                           , i = os(n);
                         if (Array.isArray(i))
@@ -4130,17 +4130,17 @@
                 function(t, e, n, s, i, r) {
                     let o = r ? e.classBindings : e.styleBindings
                       , a = ei(o)
-                      , l = si(o);
+                      , c = si(o);
                     t[s] = n;
-                    let c, h = !1;
+                    let l, h = !1;
                     if (Array.isArray(n)) {
                         const t = n;
-                        c = t[1],
-                        (null === c || zn(t, c) > 0) && (h = !0)
+                        l = t[1],
+                        (null === l || zn(t, l) > 0) && (h = !0)
                     } else
-                        c = n;
+                        l = n;
                     if (i)
-                        if (0 !== l) {
+                        if (0 !== c) {
                             const e = ei(t[a + 1]);
                             t[s + 1] = ti(e, a),
                             0 !== e && (t[e + 1] = ii(t[e + 1], s)),
@@ -4150,17 +4150,17 @@
                             0 !== a && (t[a + 1] = ii(t[a + 1], s)),
                             a = s;
                     else
-                        t[s + 1] = ti(l, 0),
-                        0 === a ? a = s : t[l + 1] = ii(t[l + 1], s),
-                        l = s;
+                        t[s + 1] = ti(c, 0),
+                        0 === a ? a = s : t[c + 1] = ii(t[c + 1], s),
+                        c = s;
                     h && (t[s + 1] = ni(t[s + 1])),
-                    Mr(t, c, s, !0),
-                    Mr(t, c, s, !1),
+                    Mr(t, l, s, !0),
+                    Mr(t, l, s, !1),
                     function(t, e, n, s, i) {
                         const r = i ? t.residualClasses : t.residualStyles;
                         null != r && "string" == typeof e && zn(r, e) >= 0 && (n[s + 1] = ri(n[s + 1]))
-                    }(e, c, t, s, r),
-                    o = ti(a, l),
+                    }(e, l, t, s, r),
+                    o = ti(a, c),
                     r ? e.classBindings = o : e.styleBindings = o
                 }(i, r, e, n, o, s)
             }
@@ -4193,9 +4193,9 @@
         function io(t, e, n, s, i, r, o, a) {
             if (!(3 & e.type))
                 return;
-            const l = t.data
-              , c = l[a + 1];
-            oo(1 == (1 & c) ? ro(l, e, n, i, si(c), o) : void 0) || (oo(r) || 2 == (2 & c) && (r = ro(l, null, n, i, a, o)),
+            const c = t.data
+              , l = c[a + 1];
+            oo(1 == (1 & l) ? ro(c, e, n, i, si(l), o) : void 0) || (oo(r) || 2 == (2 & l) && (r = ro(c, null, n, i, a, o)),
             function(t, e, n, s, i) {
                 const r = pe(t);
                 if (e)
@@ -4219,11 +4219,11 @@
             for (; i > 0; ) {
                 const e = t[i]
                   , r = Array.isArray(e)
-                  , l = r ? e[1] : e
-                  , c = null === l;
+                  , c = r ? e[1] : e
+                  , l = null === c;
                 let h = n[i + 1];
-                h === Gs && (h = c ? Tt : void 0);
-                let u = c ? Un(h, s) : l === s ? h : void 0;
+                h === Gs && (h = l ? Ft : void 0);
+                let u = l ? Un(h, s) : c === s ? h : void 0;
                 if (r && !oo(u) && (u = Un(e, s)),
                 oo(u) && (a = u,
                 o))
@@ -4243,24 +4243,24 @@
         function ao(t, e) {
             return 0 != (t.flags & (e ? 16 : 32))
         }
-        function lo(t, e="") {
+        function co(t, e="") {
             const n = Ee()
               , s = xe()
               , i = t + Gt
-              , r = s.firstCreatePass ? li(s, i, 1, e, null) : s.data[i]
+              , r = s.firstCreatePass ? ci(s, i, 1, e, null) : s.data[i]
               , o = n[i] = function(t, e) {
                 return pe(t) ? t.createText(e) : t.createTextNode(e)
             }(n[11], e);
-            Fs(s, n, o, r),
-            Fe(r, !1)
+            Ts(s, n, o, r),
+            Te(r, !1)
         }
-        function co(t) {
+        function lo(t) {
             return ho("", t, ""),
-            co
+            lo
         }
         function ho(t, e, n) {
             const s = Ee()
-              , i = Ar(s, t, e, n);
+              , i = Sr(s, t, e, n);
             return i !== Gs && zi(s, Ze(), i),
             ho
         }
@@ -4268,7 +4268,7 @@
             const r = Ee()
               , o = function(t, e, n, s, i, r) {
                 const o = wr(t, Re(), n, i);
-                return We(2),
+                return Ne(2),
                 o ? e + at(n) + s + at(i) + r : Gs
             }(r, t, e, n, s, i);
             return o !== Gs && zi(r, Ze(), o),
@@ -4336,29 +4336,29 @@
             }(n, e),
             "string" == typeof t && (bo = t.toLowerCase().replace(/_/g, "-"))
         }
-        function Ao(t, e, n, s, i) {
+        function So(t, e, n, s, i) {
             if (t = it(t),
             Array.isArray(t))
                 for (let r = 0; r < t.length; r++)
-                    Ao(t[r], e, n, s, i);
+                    So(t[r], e, n, s, i);
             else {
                 const r = xe()
                   , o = Ee();
                 let a = or(t) ? t : it(t.provide)
-                  , l = sr(t);
-                const c = De()
-                  , h = 1048575 & c.providerIndexes
-                  , u = c.directiveStart
-                  , d = c.providerIndexes >> 20;
+                  , c = sr(t);
+                const l = De()
+                  , h = 1048575 & l.providerIndexes
+                  , u = l.directiveStart
+                  , d = l.providerIndexes >> 20;
                 if (or(t) || !t.multi) {
-                    const s = new an(l,i,Or)
+                    const s = new an(c,i,Or)
                       , p = Co(a, e, i ? h : h + d, u);
-                    -1 === p ? (An(yn(c, o), r, a),
-                    So(r, t, e.length),
+                    -1 === p ? (Sn(yn(l, o), r, a),
+                    Ao(r, t, e.length),
                     e.push(a),
-                    c.directiveStart++,
-                    c.directiveEnd++,
-                    i && (c.providerIndexes += 1048576),
+                    l.directiveStart++,
+                    l.directiveEnd++,
+                    i && (l.providerIndexes += 1048576),
                     n.push(s),
                     o.push(s)) : (n[p] = s,
                     o[p] = s)
@@ -4368,7 +4368,7 @@
                       , f = p >= 0 && n[p]
                       , g = m >= 0 && n[m];
                     if (i && !g || !i && !f) {
-                        An(yn(c, o), r, a);
+                        Sn(yn(l, o), r, a);
                         const h = function(t, e, n, s, i) {
                             const r = new an(t,n,Or);
                             return r.multi = [],
@@ -4376,22 +4376,22 @@
                             r.componentProviders = 0,
                             Oo(r, i, s && !n),
                             r
-                        }(i ? Eo : ko, n.length, i, s, l);
+                        }(i ? Eo : ko, n.length, i, s, c);
                         !i && g && (n[m].providerFactory = h),
-                        So(r, t, e.length, 0),
+                        Ao(r, t, e.length, 0),
                         e.push(a),
-                        c.directiveStart++,
-                        c.directiveEnd++,
-                        i && (c.providerIndexes += 1048576),
+                        l.directiveStart++,
+                        l.directiveEnd++,
+                        i && (l.providerIndexes += 1048576),
                         n.push(h),
                         o.push(h)
                     } else
-                        So(r, t, p > -1 ? p : m, Oo(n[i ? m : p], l, !i && s));
+                        Ao(r, t, p > -1 ? p : m, Oo(n[i ? m : p], c, !i && s));
                     !i && s && g && n[m].componentProviders++
                 }
             }
         }
-        function So(t, e, n, s) {
+        function Ao(t, e, n, s) {
             const i = or(e);
             if (i || e.useClass) {
                 const r = (e.useClass || e).prototype.ngOnDestroy;
@@ -4445,15 +4445,15 @@
                     const s = xe();
                     if (s.firstCreatePass) {
                         const i = ie(t);
-                        Ao(n, s.data, s.blueprint, i, !0),
-                        Ao(e, s.data, s.blueprint, i, !1)
+                        So(n, s.data, s.blueprint, i, !0),
+                        So(e, s.data, s.blueprint, i, !1)
                     }
                 }(n, s ? s(t) : t, e)
             }
         }
         class Vo {
         }
-        class Fo {
+        class To {
             resolveComponentFactory(t) {
                 throw function(t) {
                     const e = Error(`No component factory found for ${tt(t)}. Did you add it to @NgModule.entryComponents?`);
@@ -4462,21 +4462,21 @@
                 }(t)
             }
         }
-        let To = (()=>{
+        let Fo = (()=>{
             class t {
             }
-            return t.NULL = new Fo,
+            return t.NULL = new To,
             t
         }
         )();
         function Po(...t) {}
         function Io(t, e) {
-            return new No(_e(t, e))
+            return new Wo(_e(t, e))
         }
         const Ro = function() {
             return Io(De(), Ee())
         };
-        let No = (()=>{
+        let Wo = (()=>{
             class t {
                 constructor(t) {
                     this.nativeElement = t
@@ -4486,26 +4486,26 @@
             t
         }
         )();
-        function Wo(t) {
-            return t instanceof No ? t.nativeElement : t
+        function No(t) {
+            return t instanceof Wo ? t.nativeElement : t
         }
         class Mo {
         }
         let Lo = (()=>{
             class t {
             }
-            return t.__NG_ELEMENT_ID__ = ()=>jo(),
+            return t.__NG_ELEMENT_ID__ = ()=>Bo(),
             t
         }
         )();
-        const jo = function() {
+        const Bo = function() {
             const t = Ee()
               , e = ve(De().index, t);
             return function(t) {
                 return t[11]
             }(Jt(e) ? e : t)
         };
-        let Bo = (()=>{
+        let jo = (()=>{
             class t {
             }
             return t.\u0275prov = ht({
@@ -4531,11 +4531,11 @@
                 return yr(t)
             }
             create(t) {
-                return new qo(t)
+                return new Xo(t)
             }
         }
         const zo = (t,e)=>e;
-        class qo {
+        class Xo {
             constructor(t) {
                 this.length = 0,
                 this._linkedRecords = null,
@@ -4683,7 +4683,7 @@
                 this._remove(t)),
                 null !== (t = null === this._unlinkedRecords ? null : this._unlinkedRecords.get(n, null)) ? (Object.is(t.item, e) || this._addIdentityChange(t, e),
                 this._reinsertAfter(t, i, s)) : null !== (t = null === this._linkedRecords ? null : this._linkedRecords.get(n, s)) ? (Object.is(t.item, e) || this._addIdentityChange(t, e),
-                this._moveAfter(t, i, s)) : t = this._addAfter(new Xo(e,n), i, s),
+                this._moveAfter(t, i, s)) : t = this._addAfter(new qo(e,n), i, s),
                 t
             }
             _verifyReinsertion(t, e, n, s) {
@@ -4732,7 +4732,7 @@
                 t._prev = e,
                 null === s ? this._itTail = t : s._prev = t,
                 null === e ? this._itHead = t : e._next = t,
-                null === this._linkedRecords && (this._linkedRecords = new Ko),
+                null === this._linkedRecords && (this._linkedRecords = new Qo),
                 this._linkedRecords.put(t),
                 t.currentIndex = n,
                 t
@@ -4753,7 +4753,7 @@
                 t
             }
             _addToRemovals(t) {
-                return null === this._unlinkedRecords && (this._unlinkedRecords = new Ko),
+                return null === this._unlinkedRecords && (this._unlinkedRecords = new Qo),
                 this._unlinkedRecords.put(t),
                 t.currentIndex = null,
                 t._nextRemoved = null,
@@ -4768,7 +4768,7 @@
                 t
             }
         }
-        class Xo {
+        class qo {
             constructor(t, e) {
                 this.item = t,
                 this.trackById = e,
@@ -4786,7 +4786,7 @@
                 this._nextIdentityChange = null
             }
         }
-        class Qo {
+        class Ko {
             constructor() {
                 this._head = null,
                 this._tail = null
@@ -4814,14 +4814,14 @@
                 null === this._head
             }
         }
-        class Ko {
+        class Qo {
             constructor() {
                 this.map = new Map
             }
             put(t) {
                 const e = t.trackById;
                 let n = this.map.get(e);
-                n || (n = new Qo,
+                n || (n = new Ko,
                 this.map.set(e, n)),
                 n.add(t)
             }
@@ -5165,7 +5165,7 @@
                 yi(this._lView[1], this._lView, null, t)
             }
             markForCheck() {
-                Ni(this._cdRefInjectingView || this._lView)
+                Wi(this._cdRefInjectingView || this._lView)
             }
             detach() {
                 this._lView[2] &= -129
@@ -5174,13 +5174,13 @@
                 this._lView[2] |= 128
             }
             detectChanges() {
-                Wi(this._lView[1], this._lView, this.context)
+                Ni(this._lView[1], this._lView, this.context)
             }
             checkNoChanges() {
                 !function(t, e, n) {
                     Ie(!0);
                     try {
-                        Wi(t, e, n)
+                        Ni(t, e, n)
                     } finally {
                         Ie(!1)
                     }
@@ -5194,7 +5194,7 @@
             detachFromAppRef() {
                 var t;
                 this._appRef = null,
-                Ns(this._lView[1], t = this._lView, t[11], 2, null, null)
+                Ws(this._lView[1], t = this._lView, t[11], 2, null, null)
             }
             attachToAppRef(t) {
                 if (this._attachedToViewContainer)
@@ -5225,8 +5225,8 @@
             }
         }
         const aa = [new Go]
-          , la = new ea([new Uo])
-          , ca = new sa(aa)
+          , ca = new ea([new Uo])
+          , la = new sa(aa)
           , ha = function() {
             return ma(De(), Ee())
         };
@@ -5262,7 +5262,7 @@
         class fa {
         }
         const ga = function() {
-            return Aa(De(), Ee())
+            return Sa(De(), Ee())
         };
         let _a = (()=>{
             class t {
@@ -5340,7 +5340,7 @@
                       , r = n.length;
                     s > 0 && (n[i - 1][4] = e),
                     s < r - Yt ? (e[4] = n[i],
-                    Bn(n, Yt + s, e)) : (n.push(e),
+                    jn(n, Yt + s, e)) : (n.push(e),
                     e[4] = null),
                     e[3] = n;
                     const o = e[17];
@@ -5355,14 +5355,14 @@
                 }(s, n, r, i);
                 const o = Is(i, r)
                   , a = n[11]
-                  , l = Vs(a, r[7]);
-                return null !== l && function(t, e, n, s, i, r) {
+                  , c = Vs(a, r[7]);
+                return null !== c && function(t, e, n, s, i, r) {
                     s[0] = i,
                     s[6] = e,
-                    Ns(t, s, n, 1, i, r)
-                }(s, r[6], a, n, l, o),
+                    Ws(t, s, n, 1, i, r)
+                }(s, r[6], a, n, c, o),
                 t.attachToViewContainerRef(),
-                Bn(wa(r), i, t),
+                jn(wa(r), i, t),
                 t
             }
             move(t, e) {
@@ -5394,7 +5394,7 @@
         function wa(t) {
             return t[8] || (t[8] = [])
         }
-        function Aa(t, e) {
+        function Sa(t, e) {
             let n;
             const s = e[t.index];
             if (te(s))
@@ -5411,19 +5411,19 @@
                         return pe(t) ? t.nextSibling(e) : e.nextSibling
                     }(n, s), !1)
                 }
-                e[t.index] = n = Fi(s, e, i, t),
+                e[t.index] = n = Ti(s, e, i, t),
                 Ri(e, n)
             }
             return new va(n,t,e)
         }
-        const Sa = {};
-        class Oa extends To {
+        const Aa = {};
+        class Oa extends Fo {
             constructor(t) {
                 super(),
                 this.ngModule = t
             }
             resolveComponentFactory(t) {
-                const e = Kt(t);
+                const e = Qt(t);
                 return new Ea(e,this.ngModule)
             }
         }
@@ -5460,30 +5460,30 @@
                 const i = (s = s || this.ngModule) ? function(t, e) {
                     return {
                         get: (n,s,i)=>{
-                            const r = t.get(n, Sa, i);
-                            return r !== Sa || s === Sa ? r : e.get(n, s, i)
+                            const r = t.get(n, Aa, i);
+                            return r !== Aa || s === Aa ? r : e.get(n, s, i)
                         }
                     }
                 }(t, s.injector) : t
                   , r = i.get(Mo, me)
-                  , o = i.get(Bo, null)
+                  , o = i.get(jo, null)
                   , a = r.createRenderer(null, this.componentDef)
-                  , l = this.componentDef.selectors[0][0] || "div"
-                  , c = n ? function(t, e, n) {
+                  , c = this.componentDef.selectors[0][0] || "div"
+                  , l = n ? function(t, e, n) {
                     if (pe(t))
                         return t.selectRootElement(e, n === Ct.ShadowDom);
                     let s = "string" == typeof e ? t.querySelector(e) : e;
                     return s.textContent = "",
                     s
-                }(a, n, this.componentDef.encapsulation) : As(r.createRenderer(null, this.componentDef), l, function(t) {
+                }(a, n, this.componentDef.encapsulation) : Ss(r.createRenderer(null, this.componentDef), c, function(t) {
                     const e = t.toLowerCase();
                     return "svg" === e ? "http://www.w3.org/2000/svg" : "math" === e ? "http://www.w3.org/1998/MathML/" : null
-                }(l))
+                }(c))
                   , h = this.componentDef.onPush ? 576 : 528
                   , u = {
                     components: [],
                     scheduler: ps,
-                    clean: ji,
+                    clean: Bi,
                     playerHandler: null,
                     flags: 0
                 }
@@ -5495,23 +5495,23 @@
                     const t = function(t, e, n, s, i, r) {
                         const o = n[1];
                         n[20] = t;
-                        const a = li(o, 20, 2, "#host", null)
-                          , l = a.mergedAttrs = e.hostAttrs;
-                        null !== l && (qi(a, l, !0),
-                        null !== t && (ln(i, t, l),
+                        const a = ci(o, 20, 2, "#host", null)
+                          , c = a.mergedAttrs = e.hostAttrs;
+                        null !== c && (Xi(a, c, !0),
+                        null !== t && (cn(i, t, c),
                         null !== a.classes && Ls(i, t, a.classes),
                         null !== a.styles && Ms(i, t, a.styles)));
-                        const c = s.createRenderer(t, e)
-                          , h = ai(n, gi(e), null, e.onPush ? 64 : 16, n[20], a, s, c, null, null);
-                        return o.firstCreatePass && (An(yn(a, n), o, e.type),
+                        const l = s.createRenderer(t, e)
+                          , h = ai(n, gi(e), null, e.onPush ? 64 : 16, n[20], a, s, l, null, null);
+                        return o.firstCreatePass && (Sn(yn(a, n), o, e.type),
                         Oi(o, a),
                         ki(a, n.length, 1)),
                         Ri(n, h),
                         n[20] = h
-                    }(c, this.componentDef, p, r, a);
-                    if (c)
+                    }(l, this.componentDef, p, r, a);
+                    if (l)
                         if (n)
-                            ln(a, c, ["ng-version", $o.full]);
+                            cn(a, l, ["ng-version", $o.full]);
                         else {
                             const {attrs: t, classes: e} = function(t) {
                                 const e = []
@@ -5523,7 +5523,7 @@
                                     if ("string" == typeof r)
                                         2 === i ? "" !== r && e.push(r, t[++s]) : 8 === i && n.push(r);
                                     else {
-                                        if (!qs(i))
+                                        if (!Xs(i))
                                             break;
                                         i = r
                                     }
@@ -5534,8 +5534,8 @@
                                     classes: n
                                 }
                             }(this.componentDef.selectors[0]);
-                            t && ln(a, c, t),
-                            e && e.length > 0 && Ls(a, c, e.join(" "))
+                            t && cn(a, l, t),
+                            e && e.length > 0 && Ls(a, l, e.join(" "))
                         }
                     if (f = ye(d, Gt),
                     void 0 !== e) {
@@ -5550,7 +5550,7 @@
                           , o = function(t, e, n) {
                             const s = De();
                             t.firstCreatePass && (n.providersResolver && n.providersResolver(n),
-                            Ei(t, s, e, ci(t, e, 1, null), n));
+                            Ei(t, s, e, li(t, e, 1, null), n));
                             const i = Vn(e, t, s.directiveStart, s);
                             as(i, e);
                             const r = _e(s, e);
@@ -5566,13 +5566,13 @@
                         }
                         const a = De();
                         return !r.firstCreatePass || null === e.hostBindings && null === e.hostAttrs || (Ge(a.index),
-                        Ai(n[1], a, 0, a.directiveStart, a.directiveEnd, e),
-                        Si(e, o)),
+                        Si(n[1], a, 0, a.directiveStart, a.directiveEnd, e),
+                        Ai(e, o)),
                         o
-                    }(t, this.componentDef, p, u, [cr]),
+                    }(t, this.componentDef, p, u, [lr]),
                     hi(d, p, null)
                 } finally {
-                    Ke()
+                    Qe()
                 }
                 return new xa(this.componentType,m,Io(f, p),p,f)
             }
@@ -5609,21 +5609,21 @@
                 this.destroyCbs = [],
                 this.componentFactoryResolver = new Oa(this);
                 const n = Zt(t)
-                  , s = t[Wt] || null;
+                  , s = t[Nt] || null;
                 s && wo(s),
                 this._bootstrapComponents = ms(n.bootstrap),
                 this._r3Injector = tr(t, e, [{
                     provide: fa,
                     useValue: this
                 }, {
-                    provide: To,
+                    provide: Fo,
                     useValue: this.componentFactoryResolver
                 }], tt(t)),
                 this._r3Injector._resolveInjectorDefTypes(),
                 this.instance = this.get(t)
             }
-            get(t, e=lr.THROW_IF_NOT_FOUND, n=vt.Default) {
-                return t === lr || t === fa || t === Xi ? this : this._r3Injector.get(t, e, n)
+            get(t, e=cr.THROW_IF_NOT_FOUND, n=vt.Default) {
+                return t === cr || t === fa || t === qi ? this : this._r3Injector.get(t, e, n)
             }
             destroy() {
                 const t = this._r3Injector;
@@ -5635,7 +5635,7 @@
                 this.destroyCbs.push(t)
             }
         }
-        class Fa extends class {
+        class Ta extends class {
         }
         {
             constructor(t) {
@@ -5662,7 +5662,7 @@
                 return new Va(this.moduleType,t)
             }
         }
-        function Ta(t, e) {
+        function Fa(t, e) {
             const n = xe();
             let s;
             const i = t + Gt;
@@ -5725,7 +5725,7 @@
                 setTimeout(t, void 0, e)
             }
         }
-        const Ra = class extends S {
+        const Ra = class extends A {
             constructor(t=!1) {
                 super(),
                 this.__isAsync = t
@@ -5737,30 +5737,30 @@
                 var s, i, r;
                 let o = t
                   , a = e || (()=>null)
-                  , l = n;
+                  , c = n;
                 if (t && "object" == typeof t) {
                     const e = t;
                     o = null === (s = e.next) || void 0 === s ? void 0 : s.bind(e),
                     a = null === (i = e.error) || void 0 === i ? void 0 : i.bind(e),
-                    l = null === (r = e.complete) || void 0 === r ? void 0 : r.bind(e)
+                    c = null === (r = e.complete) || void 0 === r ? void 0 : r.bind(e)
                 }
                 this.__isAsync && (a = Ia(a),
                 o && (o = Ia(o)),
-                l && (l = Ia(l)));
-                const c = super.subscribe({
+                c && (c = Ia(c)));
+                const l = super.subscribe({
                     next: o,
                     error: a,
-                    complete: l
+                    complete: c
                 });
-                return t instanceof u && t.add(c),
-                c
+                return t instanceof u && t.add(l),
+                l
             }
         }
         ;
-        function Na() {
+        function Wa() {
             return this._results[gr()]()
         }
-        class Wa {
+        class Na {
             constructor(t=!1) {
                 this._emitDistinctChangesOnly = t,
                 this.dirty = !0,
@@ -5771,8 +5771,8 @@
                 this.first = void 0,
                 this.last = void 0;
                 const e = gr()
-                  , n = Wa.prototype;
-                n[e] || (n[e] = Na)
+                  , n = Na.prototype;
+                n[e] || (n[e] = Wa)
             }
             get changes() {
                 return this._changes || (this._changes = new Ra)
@@ -5876,14 +5876,14 @@
                     null !== Za(t, e).matches && this.queries[e].setDirty()
             }
         }
-        class ja {
+        class Ba {
             constructor(t, e, n=null) {
                 this.predicate = t,
                 this.flags = e,
                 this.read = n
             }
         }
-        class Ba {
+        class ja {
             constructor(t=[]) {
                 this.queries = t
             }
@@ -5903,7 +5903,7 @@
                     i && (i.indexInDeclarationView = n,
                     null !== e ? e.push(i) : e = [i])
                 }
-                return null !== e ? new Ba(e) : null
+                return null !== e ? new ja(e) : null
             }
             template(t, e) {
                 for (let n = 0; n < this.queries.length; n++)
@@ -5967,7 +5967,7 @@
                 if (null !== n) {
                     const s = this.metadata.read;
                     if (null !== s)
-                        if (s === No || s === _a || s === ua && 4 & e.type)
+                        if (s === Wo || s === _a || s === ua && 4 & e.type)
                             this.addMatch(e.index, -2);
                         else {
                             const n = Dn(e, t, s, !1, !1);
@@ -5993,7 +5993,7 @@
             return -1 === n ? function(t, e) {
                 return 11 & t.type ? Io(t, e) : 4 & t.type ? ma(t, e) : null
             }(e, t) : -2 === n ? function(t, e, n) {
-                return n === No ? Io(e, t) : n === ua ? ma(e, t) : n === _a ? Aa(e, t) : void 0
+                return n === Wo ? Io(e, t) : n === ua ? ma(e, t) : n === _a ? Sa(e, t) : void 0
             }(t, e, s) : Vn(t, t[1], n, e)
         }
         function za(t, e, n, s) {
@@ -6010,7 +6010,7 @@
             }
             return i.matches
         }
-        function qa(t, e, n, s) {
+        function Xa(t, e, n, s) {
             const i = t.queries.getByIndex(n)
               , r = i.matches;
             if (null !== r) {
@@ -6024,13 +6024,13 @@
                           , o = e[-n];
                         for (let t = Yt; t < o.length; t++) {
                             const e = o[t];
-                            e[17] === e[3] && qa(e[1], e, i, s)
+                            e[17] === e[3] && Xa(e[1], e, i, s)
                         }
                         if (null !== o[9]) {
                             const t = o[9];
                             for (let e = 0; e < t.length; e++) {
                                 const n = t[e];
-                                qa(n[1], n, i, s)
+                                Xa(n[1], n, i, s)
                             }
                         }
                     }
@@ -6038,41 +6038,41 @@
             }
             return s
         }
-        function Xa(t) {
+        function qa(t) {
             const e = Ee()
               , n = xe()
-              , s = je();
-            Be(s + 1);
+              , s = Be();
+            je(s + 1);
             const i = Za(n, s);
             if (t.dirty && be(e) === (2 == (2 & i.metadata.flags))) {
                 if (null === i.matches)
                     t.reset([]);
                 else {
-                    const r = i.crossesNgTemplate ? qa(n, e, s, []) : za(n, e, i, s);
-                    t.reset(r, Wo),
+                    const r = i.crossesNgTemplate ? Xa(n, e, s, []) : za(n, e, i, s);
+                    t.reset(r, No),
                     t.notifyOnChanges()
                 }
                 return !0
             }
             return !1
         }
-        function Qa(t, e, n) {
+        function Ka(t, e, n) {
             const s = xe();
             s.firstCreatePass && (function(t, e, n) {
-                null === t.queries && (t.queries = new Ba),
+                null === t.queries && (t.queries = new ja),
                 t.queries.track(new Ha(e,-1))
-            }(s, new ja(t,e,n)),
+            }(s, new Ba(t,e,n)),
             2 == (2 & e) && (s.staticViewQueries = !0)),
             function(t, e, n) {
-                const s = new Wa(4 == (4 & n));
+                const s = new Na(4 == (4 & n));
                 yi(t, e, s, s.destroy),
                 null === e[19] && (e[19] = new La),
                 e[19].queries.push(new Ma(s))
             }(s, Ee(), e)
         }
-        function Ka() {
+        function Qa() {
             return t = Ee(),
-            e = je(),
+            e = Be(),
             t[19].queries[e].queryList;
             var t, e
         }
@@ -6108,7 +6108,7 @@
                             const e = this.appInits[n]();
                             if (Vr(e))
                                 t.push(e);
-                            else if (Fr(e)) {
+                            else if (Tr(e)) {
                                 const n = new Promise((t,n)=>{
                                     e.subscribe({
                                         complete: t,
@@ -6142,20 +6142,20 @@
         }
         )();
         const Ja = new Mn("AppId")
-          , tl = {
+          , tc = {
             provide: Ja,
             useFactory: function() {
-                return `${el()}${el()}${el()}`
+                return `${ec()}${ec()}${ec()}`
             },
             deps: []
         };
-        function el() {
+        function ec() {
             return String.fromCharCode(97 + Math.floor(25 * Math.random()))
         }
-        const nl = new Mn("Platform Initializer")
-          , sl = new Mn("Platform ID")
-          , il = new Mn("appBootstrapListener");
-        let rl = (()=>{
+        const nc = new Mn("Platform Initializer")
+          , sc = new Mn("Platform ID")
+          , ic = new Mn("appBootstrapListener");
+        let rc = (()=>{
             class t {
                 log(t) {
                     console.log(t)
@@ -6175,42 +6175,42 @@
             t
         }
         )();
-        const ol = new Mn("LocaleId")
-          , al = new Mn("DefaultCurrencyCode");
-        class ll {
+        const oc = new Mn("LocaleId")
+          , ac = new Mn("DefaultCurrencyCode");
+        class cc {
             constructor(t, e) {
                 this.ngModuleFactory = t,
                 this.componentFactories = e
             }
         }
-        const cl = function(t) {
-            return new Fa(t)
+        const lc = function(t) {
+            return new Ta(t)
         }
-          , hl = cl
-          , ul = function(t) {
-            return Promise.resolve(cl(t))
+          , hc = lc
+          , uc = function(t) {
+            return Promise.resolve(lc(t))
         }
-          , dl = function(t) {
-            const e = cl(t)
+          , dc = function(t) {
+            const e = lc(t)
               , n = ms(Zt(t).declarations).reduce((t,e)=>{
-                const n = Kt(e);
+                const n = Qt(e);
                 return n && t.push(new Ea(n)),
                 t
             }
             , []);
-            return new ll(e,n)
+            return new cc(e,n)
         }
-          , pl = dl
-          , ml = function(t) {
-            return Promise.resolve(dl(t))
+          , pc = dc
+          , mc = function(t) {
+            return Promise.resolve(dc(t))
         };
-        let fl = (()=>{
+        let fc = (()=>{
             class t {
                 constructor() {
-                    this.compileModuleSync = hl,
-                    this.compileModuleAsync = ul,
-                    this.compileModuleAndAllComponentsSync = pl,
-                    this.compileModuleAndAllComponentsAsync = ml
+                    this.compileModuleSync = hc,
+                    this.compileModuleAsync = uc,
+                    this.compileModuleAndAllComponentsSync = pc,
+                    this.compileModuleAndAllComponentsAsync = mc
                 }
                 clearCache() {}
                 clearCacheFor(t) {}
@@ -6227,14 +6227,14 @@
             t
         }
         )();
-        const gl = (()=>Promise.resolve(0))();
-        function _l(t) {
-            "undefined" == typeof Zone ? gl.then(()=>{
+        const gc = (()=>Promise.resolve(0))();
+        function _c(t) {
+            "undefined" == typeof Zone ? gc.then(()=>{
                 t && t.apply(null, null)
             }
             ) : Zone.current.scheduleMicroTask("scheduleMicrotask", t)
         }
-        class yl {
+        class yc {
             constructor({enableLongStackTrace: t=!1, shouldCoalesceEventChangeDetection: e=!1, shouldCoalesceRunChangeDetection: n=!1}) {
                 if (this.hasPendingMacrotasks = !1,
                 this.hasPendingMicrotasks = !1,
@@ -6274,9 +6274,9 @@
                             t.isCheckStableRunning || -1 !== t.lastRequestAnimationFrameId || (t.lastRequestAnimationFrameId = t.nativeRequestAnimationFrame.call(Vt, ()=>{
                                 t.fakeTopEventTask || (t.fakeTopEventTask = Zone.root.scheduleEventTask("fakeTopEventTask", ()=>{
                                     t.lastRequestAnimationFrameId = -1,
-                                    wl(t),
+                                    wc(t),
                                     t.isCheckStableRunning = !0,
-                                    bl(t),
+                                    bc(t),
                                     t.isCheckStableRunning = !1
                                 }
                                 , void 0, ()=>{}
@@ -6285,7 +6285,7 @@
                                 t.fakeTopEventTask.invoke()
                             }
                             ),
-                            wl(t))
+                            wc(t))
                         }(t)
                     }
                     ;
@@ -6296,29 +6296,29 @@
                         },
                         onInvokeTask: (n,s,i,r,o,a)=>{
                             try {
-                                return Al(t),
+                                return Sc(t),
                                 n.invokeTask(i, r, o, a)
                             } finally {
                                 (t.shouldCoalesceEventChangeDetection && "eventTask" === r.type || t.shouldCoalesceRunChangeDetection) && e(),
-                                Sl(t)
+                                Ac(t)
                             }
                         }
                         ,
-                        onInvoke: (n,s,i,r,o,a,l)=>{
+                        onInvoke: (n,s,i,r,o,a,c)=>{
                             try {
-                                return Al(t),
-                                n.invoke(i, r, o, a, l)
+                                return Sc(t),
+                                n.invoke(i, r, o, a, c)
                             } finally {
                                 t.shouldCoalesceRunChangeDetection && e(),
-                                Sl(t)
+                                Ac(t)
                             }
                         }
                         ,
                         onHasTask: (e,n,s,i)=>{
                             e.hasTask(s, i),
                             n === s && ("microTask" == i.change ? (t._hasPendingMicrotasks = i.microTask,
-                            wl(t),
-                            bl(t)) : "macroTask" == i.change && (t.hasPendingMacrotasks = i.macroTask))
+                            wc(t),
+                            bc(t)) : "macroTask" == i.change && (t.hasPendingMacrotasks = i.macroTask))
                         }
                         ,
                         onHandleError: (e,n,s,i)=>(e.handleError(s, i),
@@ -6331,11 +6331,11 @@
                 return !0 === Zone.current.get("isAngularZone")
             }
             static assertInAngularZone() {
-                if (!yl.isInAngularZone())
+                if (!yc.isInAngularZone())
                     throw new Error("Expected to be in Angular Zone, but it is not!")
             }
             static assertNotInAngularZone() {
-                if (yl.isInAngularZone())
+                if (yc.isInAngularZone())
                     throw new Error("Expected to not be in Angular Zone, but it is!")
             }
             run(t, e, n) {
@@ -6343,7 +6343,7 @@
             }
             runTask(t, e, n, s) {
                 const i = this._inner
-                  , r = i.scheduleEventTask("NgZoneEvent: " + s, t, vl, Po, Po);
+                  , r = i.scheduleEventTask("NgZoneEvent: " + s, t, vc, Po, Po);
                 try {
                     return i.runTask(r, e, n)
                 } finally {
@@ -6357,8 +6357,8 @@
                 return this._outer.run(t)
             }
         }
-        const vl = {};
-        function bl(t) {
+        const vc = {};
+        function bc(t) {
             if (0 == t._nesting && !t.hasPendingMicrotasks && !t.isStable)
                 try {
                     t._nesting++,
@@ -6373,19 +6373,19 @@
                         }
                 }
         }
-        function wl(t) {
+        function wc(t) {
             t.hasPendingMicrotasks = !!(t._hasPendingMicrotasks || (t.shouldCoalesceEventChangeDetection || t.shouldCoalesceRunChangeDetection) && -1 !== t.lastRequestAnimationFrameId)
         }
-        function Al(t) {
+        function Sc(t) {
             t._nesting++,
             t.isStable && (t.isStable = !1,
             t.onUnstable.emit(null))
         }
-        function Sl(t) {
+        function Ac(t) {
             t._nesting--,
-            bl(t)
+            bc(t)
         }
-        class Ol {
+        class Oc {
             constructor() {
                 this.hasPendingMicrotasks = !1,
                 this.hasPendingMacrotasks = !1,
@@ -6408,7 +6408,7 @@
                 return t.apply(e, n)
             }
         }
-        let Cl = (()=>{
+        let Cc = (()=>{
             class t {
                 constructor(t) {
                     this._ngZone = t,
@@ -6433,8 +6433,8 @@
                     this._ngZone.runOutsideAngular(()=>{
                         this._ngZone.onStable.subscribe({
                             next: ()=>{
-                                yl.assertNotInAngularZone(),
-                                _l(()=>{
+                                yc.assertNotInAngularZone(),
+                                _c(()=>{
                                     this._isZoneStable = !0,
                                     this._runCallbacksIfReady()
                                 }
@@ -6461,7 +6461,7 @@
                 }
                 _runCallbacksIfReady() {
                     if (this.isStable())
-                        _l(()=>{
+                        _c(()=>{
                             for (; 0 !== this._callbacks.length; ) {
                                 let t = this._callbacks.pop();
                                 clearTimeout(t.timeoutId),
@@ -6511,7 +6511,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(yl))
+                return new (e || t)(Jn(yc))
             }
             ,
             t.\u0275prov = ht({
@@ -6521,11 +6521,11 @@
             t
         }
         )()
-          , kl = (()=>{
+          , kc = (()=>{
             class t {
                 constructor() {
                     this._applications = new Map,
-                    Dl.addToWindow(this)
+                    Dc.addToWindow(this)
                 }
                 registerApplication(t, e) {
                     this._applications.set(t, e)
@@ -6546,7 +6546,7 @@
                     return Array.from(this._applications.keys())
                 }
                 findTestabilityInTree(t, e=!0) {
-                    return Dl.findTestabilityInTree(this, t, e)
+                    return Dc.findTestabilityInTree(this, t, e)
                 }
             }
             return t.\u0275fac = function(e) {
@@ -6560,24 +6560,24 @@
             t
         }
         )();
-        class El {
+        class Ec {
             addToWindow(t) {}
             findTestabilityInTree(t, e, n) {
                 return null
             }
         }
-        let xl, Dl = new El, Vl = !0, Fl = !1;
-        function Tl() {
-            return Fl = !0,
-            Vl
+        let xc, Dc = new Ec, Vc = !0, Tc = !1;
+        function Fc() {
+            return Tc = !0,
+            Vc
         }
-        const Pl = new Mn("AllowMultipleToken");
-        function Il(t, e, n=[]) {
+        const Pc = new Mn("AllowMultipleToken");
+        function Ic(t, e, n=[]) {
             const s = `Platform: ${e}`
               , i = new Mn(s);
             return (e=[])=>{
-                let r = Rl();
-                if (!r || r.injector.get(Pl, !1))
+                let r = Rc();
+                if (!r || r.injector.get(Pc, !1))
                     if (t)
                         t(n.concat(e).concat({
                             provide: i,
@@ -6588,22 +6588,22 @@
                             provide: i,
                             useValue: !0
                         }, {
-                            provide: Ki,
+                            provide: Qi,
                             useValue: "platform"
                         });
                         !function(t) {
-                            if (xl && !xl.destroyed && !xl.injector.get(Pl, !1))
+                            if (xc && !xc.destroyed && !xc.injector.get(Pc, !1))
                                 throw new Error("There can be only one platform. Destroy the previous one to create a new one.");
-                            xl = t.get(Nl);
-                            const e = t.get(nl, null);
+                            xc = t.get(Wc);
+                            const e = t.get(nc, null);
                             e && e.forEach(t=>t())
-                        }(lr.create({
+                        }(cr.create({
                             providers: t,
                             name: s
                         }))
                     }
                 return function(t) {
-                    const e = Rl();
+                    const e = Rc();
                     if (!e)
                         throw new Error("No platform exists!");
                     if (!e.injector.get(t, null))
@@ -6612,10 +6612,10 @@
                 }(i)
             }
         }
-        function Rl() {
-            return xl && !xl.destroyed ? xl : null
+        function Rc() {
+            return xc && !xc.destroyed ? xc : null
         }
-        let Nl = (()=>{
+        let Wc = (()=>{
             class t {
                 constructor(t) {
                     this._injector = t,
@@ -6626,8 +6626,8 @@
                 bootstrapModuleFactory(t, e) {
                     const n = function(t, e) {
                         let n;
-                        return n = "noop" === t ? new Ol : ("zone.js" === t ? void 0 : t) || new yl({
-                            enableLongStackTrace: Tl(),
+                        return n = "noop" === t ? new Oc : ("zone.js" === t ? void 0 : t) || new yc({
+                            enableLongStackTrace: Fc(),
                             shouldCoalesceEventChangeDetection: !!(null == e ? void 0 : e.ngZoneEventCoalescing),
                             shouldCoalesceRunChangeDetection: !!(null == e ? void 0 : e.ngZoneRunCoalescing)
                         }),
@@ -6637,11 +6637,11 @@
                         ngZoneRunCoalescing: e && e.ngZoneRunCoalescing || !1
                     })
                       , s = [{
-                        provide: yl,
+                        provide: yc,
                         useValue: n
                     }];
                     return n.run(()=>{
-                        const e = lr.create({
+                        const e = cr.create({
                             providers: s,
                             parent: this.injector,
                             name: t.moduleType.name
@@ -6657,7 +6657,7 @@
                                 }
                             });
                             i.onDestroy(()=>{
-                                Ll(this._modules, i),
+                                Lc(this._modules, i),
                                 t.unsubscribe()
                             }
                             )
@@ -6678,7 +6678,7 @@
                         }(r, n, ()=>{
                             const t = i.injector.get(Ya);
                             return t.runInitializers(),
-                            t.donePromise.then(()=>(wo(i.injector.get(ol, vo) || vo),
+                            t.donePromise.then(()=>(wo(i.injector.get(oc, vo) || vo),
                             this._moduleDoBootstrap(i),
                             i))
                         }
@@ -6687,14 +6687,14 @@
                     )
                 }
                 bootstrapModule(t, e=[]) {
-                    const n = Wl({}, e);
+                    const n = Nc({}, e);
                     return function(t, e, n) {
-                        const s = new Fa(n);
+                        const s = new Ta(n);
                         return Promise.resolve(s)
                     }(0, 0, t).then(t=>this.bootstrapModuleFactory(t, n))
                 }
                 _moduleDoBootstrap(t) {
-                    const e = t.injector.get(Ml);
+                    const e = t.injector.get(Mc);
                     if (t._bootstrapComponents.length > 0)
                         t._bootstrapComponents.forEach(t=>e.bootstrap(t));
                     else {
@@ -6722,7 +6722,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(lr))
+                return new (e || t)(Jn(cr))
             }
             ,
             t.\u0275prov = ht({
@@ -6732,10 +6732,10 @@
             t
         }
         )();
-        function Wl(t, e) {
-            return Array.isArray(e) ? e.reduce(Wl, t) : Object.assign(Object.assign({}, t), e)
+        function Nc(t, e) {
+            return Array.isArray(e) ? e.reduce(Nc, t) : Object.assign(Object.assign({}, t), e)
         }
-        let Ml = (()=>{
+        let Mc = (()=>{
             class t {
                 constructor(t, e, n, s, i) {
                     this._zone = t,
@@ -6770,8 +6770,8 @@
                         let e;
                         this._zone.runOutsideAngular(()=>{
                             e = this._zone.onStable.subscribe(()=>{
-                                yl.assertNotInAngularZone(),
-                                _l(()=>{
+                                yc.assertNotInAngularZone(),
+                                _c(()=>{
                                     this._stable || this._zone.hasPendingMacrotasks || this._zone.hasPendingMicrotasks || (this._stable = !0,
                                     t.next(!0))
                                 }
@@ -6781,7 +6781,7 @@
                         }
                         );
                         const n = this._zone.onUnstable.subscribe(()=>{
-                            yl.assertInAngularZone(),
+                            yc.assertInAngularZone(),
                             this._stable && (this._stable = !1,
                             this._zone.runOutsideAngular(()=>{
                                 t.next(!1)
@@ -6803,7 +6803,7 @@
                                 return e
                             }
                             ;
-                            const s = Object.create(t, K);
+                            const s = Object.create(t, Q);
                             return s.source = t,
                             s.subjectFactory = n,
                             s
@@ -6820,14 +6820,14 @@
                     n = t instanceof Vo ? t : this._componentFactoryResolver.resolveComponentFactory(t),
                     this.componentTypes.push(n.componentType);
                     const s = n.isBoundToModule ? void 0 : this._injector.get(fa)
-                      , i = n.create(lr.NULL, [], e || n.selector, s)
+                      , i = n.create(cr.NULL, [], e || n.selector, s)
                       , r = i.location.nativeElement
-                      , o = i.injector.get(Cl, null)
-                      , a = o && i.injector.get(kl);
+                      , o = i.injector.get(Cc, null)
+                      , a = o && i.injector.get(kc);
                     return o && a && a.registerApplication(r, o),
                     i.onDestroy(()=>{
                         this.detachView(i.hostView),
-                        Ll(this.components, i),
+                        Lc(this.components, i),
                         a && a.unregisterApplication(r)
                     }
                     ),
@@ -6854,14 +6854,14 @@
                 }
                 detachView(t) {
                     const e = t;
-                    Ll(this._views, e),
+                    Lc(this._views, e),
                     e.detachFromAppRef()
                 }
                 _loadComponent(t) {
                     this.attachView(t.hostView),
                     this.tick(),
                     this.components.push(t),
-                    this._injector.get(il, []).concat(this._bootstrapListeners).forEach(e=>e(t))
+                    this._injector.get(ic, []).concat(this._bootstrapListeners).forEach(e=>e(t))
                 }
                 ngOnDestroy() {
                     this._views.slice().forEach(t=>t.destroy()),
@@ -6872,7 +6872,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(yl),Jn(lr),Jn(ds),Jn(To),Jn(Ya))
+                return new (e || t)(Jn(yc),Jn(cr),Jn(ds),Jn(Fo),Jn(Ya))
             }
             ,
             t.\u0275prov = ht({
@@ -6882,30 +6882,30 @@
             t
         }
         )();
-        function Ll(t, e) {
+        function Lc(t, e) {
             const n = t.indexOf(e);
             n > -1 && t.splice(n, 1)
         }
-        const jl = Il(null, "core", [{
-            provide: sl,
+        const Bc = Ic(null, "core", [{
+            provide: sc,
             useValue: "unknown"
         }, {
-            provide: Nl,
-            deps: [lr]
+            provide: Wc,
+            deps: [cr]
         }, {
-            provide: kl,
+            provide: kc,
             deps: []
         }, {
-            provide: rl,
+            provide: rc,
             deps: []
         }])
-          , Bl = [{
-            provide: Ml,
-            useClass: Ml,
-            deps: [yl, lr, ds, To, Ya]
+          , jc = [{
+            provide: Mc,
+            useClass: Mc,
+            deps: [yc, cr, ds, Fo, Ya]
         }, {
             provide: ka,
-            deps: [yl],
+            deps: [yc],
             useFactory: function(t) {
                 let e = [];
                 return t.onStable.subscribe(()=>{
@@ -6922,55 +6922,55 @@
             useClass: Ya,
             deps: [[new is, Ga]]
         }, {
-            provide: fl,
-            useClass: fl,
+            provide: fc,
+            useClass: fc,
             deps: []
-        }, tl, {
+        }, tc, {
             provide: ea,
-            useFactory: function() {
-                return la
-            },
-            deps: []
-        }, {
-            provide: sa,
             useFactory: function() {
                 return ca
             },
             deps: []
         }, {
-            provide: ol,
+            provide: sa,
+            useFactory: function() {
+                return la
+            },
+            deps: []
+        }, {
+            provide: oc,
             useFactory: function(t) {
                 return wo(t = t || "undefined" != typeof $localize && $localize.locale || vo),
                 t
             },
-            deps: [[new ss(ol), new is, new rs]]
+            deps: [[new ss(oc), new is, new rs]]
         }, {
-            provide: al,
+            provide: ac,
             useValue: "USD"
         }];
-        let Hl = (()=>{
+        let Hc = (()=>{
             class t {
                 constructor(t) {}
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Ml))
+                return new (e || t)(Jn(Mc))
             }
             ,
             t.\u0275mod = zt({
                 type: t
             }),
             t.\u0275inj = ut({
-                providers: Bl
+                providers: jc
             }),
             t
         }
         )()
-          , $l = null;
-        function Ul() {
-            return $l
+          , $c = null;
+        function Uc() {
+            return $c
         }
-        const zl = new Mn("DocumentToken");
-        let ql = (()=>{
+        const zc = new Mn("DocumentToken");
+        let Xc = (()=>{
             class t {
                 historyGo(t) {
                     throw new Error("Not implemented")
@@ -6981,18 +6981,18 @@
             }
             ,
             t.\u0275prov = ht({
-                factory: Xl,
+                factory: qc,
                 token: t,
                 providedIn: "platform"
             }),
             t
         }
         )();
-        function Xl() {
-            return Jn(Ql)
+        function qc() {
+            return Jn(Kc)
         }
-        let Ql = (()=>{
-            class t extends ql {
+        let Kc = (()=>{
+            class t extends Xc {
                 constructor(t) {
                     super(),
                     this._doc = t,
@@ -7003,15 +7003,15 @@
                     this._history = window.history
                 }
                 getBaseHrefFromDOM() {
-                    return Ul().getBaseHref(this._doc)
+                    return Uc().getBaseHref(this._doc)
                 }
                 onPopState(t) {
-                    const e = Ul().getGlobalEventTarget(this._doc, "window");
+                    const e = Uc().getGlobalEventTarget(this._doc, "window");
                     return e.addEventListener("popstate", t, !1),
                     ()=>e.removeEventListener("popstate", t)
                 }
                 onHashChange(t) {
-                    const e = Ul().getGlobalEventTarget(this._doc, "window");
+                    const e = Uc().getGlobalEventTarget(this._doc, "window");
                     return e.addEventListener("hashchange", t, !1),
                     ()=>e.removeEventListener("hashchange", t)
                 }
@@ -7040,10 +7040,10 @@
                     this.location.pathname = t
                 }
                 pushState(t, e, n) {
-                    Kl() ? this._history.pushState(t, e, n) : this.location.hash = n
+                    Qc() ? this._history.pushState(t, e, n) : this.location.hash = n
                 }
                 replaceState(t, e, n) {
-                    Kl() ? this._history.replaceState(t, e, n) : this.location.hash = n
+                    Qc() ? this._history.replaceState(t, e, n) : this.location.hash = n
                 }
                 forward() {
                     this._history.forward()
@@ -7059,24 +7059,24 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl))
+                return new (e || t)(Jn(zc))
             }
             ,
             t.\u0275prov = ht({
-                factory: Zl,
+                factory: Zc,
                 token: t,
                 providedIn: "platform"
             }),
             t
         }
         )();
-        function Kl() {
+        function Qc() {
             return !!window.history.pushState
         }
-        function Zl() {
-            return new Ql(Jn(zl))
+        function Zc() {
+            return new Kc(Jn(zc))
         }
-        function Gl(t, e) {
+        function Gc(t, e) {
             if (0 == t.length)
                 return e;
             if (0 == e.length)
@@ -7086,15 +7086,15 @@
             e.startsWith("/") && n++,
             2 == n ? t + e.substring(1) : 1 == n ? t + e : t + "/" + e
         }
-        function Yl(t) {
+        function Yc(t) {
             const e = t.match(/#|\?|$/)
               , n = e && e.index || t.length;
             return t.slice(0, n - ("/" === t[n - 1] ? 1 : 0)) + t.slice(n)
         }
-        function Jl(t) {
+        function Jc(t) {
             return t && "?" !== t[0] ? "?" + t : t
         }
-        let tc = (()=>{
+        let tl = (()=>{
             class t {
                 historyGo(t) {
                     throw new Error("Not implemented")
@@ -7105,20 +7105,20 @@
             }
             ,
             t.\u0275prov = ht({
-                factory: ec,
+                factory: el,
                 token: t,
                 providedIn: "root"
             }),
             t
         }
         )();
-        function ec(t) {
-            const e = Jn(zl).location;
-            return new sc(Jn(ql),e && e.origin || "")
+        function el(t) {
+            const e = Jn(zc).location;
+            return new sl(Jn(Xc),e && e.origin || "")
         }
-        const nc = new Mn("appBaseHref");
-        let sc = (()=>{
-            class t extends tc {
+        const nl = new Mn("appBaseHref");
+        let sl = (()=>{
+            class t extends tl {
                 constructor(t, e) {
                     if (super(),
                     this._platformLocation = t,
@@ -7139,19 +7139,19 @@
                     return this._baseHref
                 }
                 prepareExternalUrl(t) {
-                    return Gl(this._baseHref, t)
+                    return Gc(this._baseHref, t)
                 }
                 path(t=!1) {
-                    const e = this._platformLocation.pathname + Jl(this._platformLocation.search)
+                    const e = this._platformLocation.pathname + Jc(this._platformLocation.search)
                       , n = this._platformLocation.hash;
                     return n && t ? `${e}${n}` : e
                 }
                 pushState(t, e, n, s) {
-                    const i = this.prepareExternalUrl(n + Jl(s));
+                    const i = this.prepareExternalUrl(n + Jc(s));
                     this._platformLocation.pushState(t, e, i)
                 }
                 replaceState(t, e, n, s) {
-                    const i = this.prepareExternalUrl(n + Jl(s));
+                    const i = this.prepareExternalUrl(n + Jc(s));
                     this._platformLocation.replaceState(t, e, i)
                 }
                 forward() {
@@ -7166,7 +7166,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(ql),Jn(nc, 8))
+                return new (e || t)(Jn(Xc),Jn(nl, 8))
             }
             ,
             t.\u0275prov = ht({
@@ -7176,7 +7176,7 @@
             t
         }
         )()
-          , ic = (()=>{
+          , il = (()=>{
             class t {
                 constructor(t, e) {
                     this._subject = new Ra,
@@ -7184,7 +7184,7 @@
                     this._platformStrategy = t;
                     const n = this._platformStrategy.getBaseHref();
                     this._platformLocation = e,
-                    this._baseHref = Yl(oc(n)),
+                    this._baseHref = Yc(ol(n)),
                     this._platformStrategy.onPopState(t=>{
                         this._subject.emit({
                             url: this.path(!0),
@@ -7202,12 +7202,12 @@
                     return this._platformLocation.getState()
                 }
                 isCurrentPathEqualTo(t, e="") {
-                    return this.path() == this.normalize(t + Jl(e))
+                    return this.path() == this.normalize(t + Jc(e))
                 }
                 normalize(e) {
                     return t.stripTrailingSlash(function(t, e) {
                         return t && e.startsWith(t) ? e.substring(t.length) : e
-                    }(this._baseHref, oc(e)))
+                    }(this._baseHref, ol(e)))
                 }
                 prepareExternalUrl(t) {
                     return t && "/" !== t[0] && (t = "/" + t),
@@ -7215,11 +7215,11 @@
                 }
                 go(t, e="", n=null) {
                     this._platformStrategy.pushState(n, "", t, e),
-                    this._notifyUrlChangeListeners(this.prepareExternalUrl(t + Jl(e)), n)
+                    this._notifyUrlChangeListeners(this.prepareExternalUrl(t + Jc(e)), n)
                 }
                 replaceState(t, e="", n=null) {
                     this._platformStrategy.replaceState(n, "", t, e),
-                    this._notifyUrlChangeListeners(this.prepareExternalUrl(t + Jl(e)), n)
+                    this._notifyUrlChangeListeners(this.prepareExternalUrl(t + Jc(e)), n)
                 }
                 forward() {
                     this._platformStrategy.forward()
@@ -7250,34 +7250,34 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(tc),Jn(ql))
+                return new (e || t)(Jn(tl),Jn(Xc))
             }
             ,
-            t.normalizeQueryParams = Jl,
-            t.joinWithSlash = Gl,
-            t.stripTrailingSlash = Yl,
+            t.normalizeQueryParams = Jc,
+            t.joinWithSlash = Gc,
+            t.stripTrailingSlash = Yc,
             t.\u0275prov = ht({
-                factory: rc,
+                factory: rl,
                 token: t,
                 providedIn: "root"
             }),
             t
         }
         )();
-        function rc() {
-            return new ic(Jn(tc),Jn(ql))
+        function rl() {
+            return new il(Jn(tl),Jn(Xc))
         }
-        function oc(t) {
+        function ol(t) {
             return t.replace(/\/index.html$/, "")
         }
-        var ac = function(t) {
+        var al = function(t) {
             return t[t.Decimal = 0] = "Decimal",
             t[t.Percent = 1] = "Percent",
             t[t.Currency = 2] = "Currency",
             t[t.Scientific = 3] = "Scientific",
             t
         }({})
-          , lc = function(t) {
+          , cl = function(t) {
             return t[t.Zero = 0] = "Zero",
             t[t.One = 1] = "One",
             t[t.Two = 2] = "Two",
@@ -7286,7 +7286,7 @@
             t[t.Other = 5] = "Other",
             t
         }({})
-          , cc = function(t) {
+          , ll = function(t) {
             return t[t.Decimal = 0] = "Decimal",
             t[t.Group = 1] = "Group",
             t[t.List = 2] = "List",
@@ -7303,30 +7303,30 @@
             t[t.CurrencyGroup = 13] = "CurrencyGroup",
             t
         }({});
-        function hc(t, e) {
+        function hl(t, e) {
             const n = go(t)
               , s = n[yo.NumberSymbols][e];
             if (void 0 === s) {
-                if (e === cc.CurrencyDecimal)
-                    return n[yo.NumberSymbols][cc.Decimal];
-                if (e === cc.CurrencyGroup)
-                    return n[yo.NumberSymbols][cc.Group]
+                if (e === ll.CurrencyDecimal)
+                    return n[yo.NumberSymbols][ll.Decimal];
+                if (e === ll.CurrencyGroup)
+                    return n[yo.NumberSymbols][ll.Group]
             }
             return s
         }
-        const uc = /^(\d+)?\.((\d+)(-(\d+))?)?$/
-          , dc = "."
-          , pc = "0";
-        function mc(t) {
+        const ul = /^(\d+)?\.((\d+)(-(\d+))?)?$/
+          , dl = "."
+          , pl = "0";
+        function ml(t) {
             const e = parseInt(t);
             if (isNaN(e))
                 throw new Error("Invalid integer literal when parsing " + t);
             return e
         }
-        class fc {
+        class fl {
         }
-        let gc = (()=>{
-            class t extends fc {
+        let gl = (()=>{
+            class t extends fl {
                 constructor(t) {
                     super(),
                     this.locale = t
@@ -7335,15 +7335,15 @@
                     switch (function(t) {
                         return go(t)[yo.PluralCase]
                     }(e || this.locale)(t)) {
-                    case lc.Zero:
+                    case cl.Zero:
                         return "zero";
-                    case lc.One:
+                    case cl.One:
                         return "one";
-                    case lc.Two:
+                    case cl.Two:
                         return "two";
-                    case lc.Few:
+                    case cl.Few:
                         return "few";
-                    case lc.Many:
+                    case cl.Many:
                         return "many";
                     default:
                         return "other"
@@ -7351,7 +7351,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(ol))
+                return new (e || t)(Jn(oc))
             }
             ,
             t.\u0275prov = ht({
@@ -7361,7 +7361,7 @@
             t
         }
         )();
-        function _c(t, e) {
+        function _l(t, e) {
             e = encodeURIComponent(e);
             for (const n of t.split(";")) {
                 const t = n.indexOf("=")
@@ -7371,7 +7371,7 @@
             }
             return null
         }
-        let yc = (()=>{
+        let yl = (()=>{
             class t {
                 constructor(t, e, n, s) {
                     this._iterableDiffers = t,
@@ -7437,10 +7437,10 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(ea),Or(sa),Or(No),Or(Lo))
+                return new (e || t)(Or(ea),Or(sa),Or(Wo),Or(Lo))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["", "ngClass", ""]],
                 inputs: {
@@ -7451,7 +7451,7 @@
             t
         }
         )();
-        class vc {
+        class vl {
             constructor(t, e, n, s) {
                 this.$implicit = t,
                 this.ngForOf = e,
@@ -7471,7 +7471,7 @@
                 return !this.even
             }
         }
-        let bc = (()=>{
+        let bl = (()=>{
             class t {
                 constructor(t, e, n) {
                     this._viewContainer = t,
@@ -7516,15 +7516,15 @@
                     const e = [];
                     t.forEachOperation((t,n,s)=>{
                         if (null == t.previousIndex) {
-                            const n = this._viewContainer.createEmbeddedView(this._template, new vc(null,this._ngForOf,-1,-1), null === s ? void 0 : s)
-                              , i = new wc(t,n);
+                            const n = this._viewContainer.createEmbeddedView(this._template, new vl(null,this._ngForOf,-1,-1), null === s ? void 0 : s)
+                              , i = new wl(t,n);
                             e.push(i)
                         } else if (null == s)
                             this._viewContainer.remove(null === n ? void 0 : n);
                         else if (null !== n) {
                             const i = this._viewContainer.get(n);
                             this._viewContainer.move(i, s);
-                            const r = new wc(t,i);
+                            const r = new wl(t,i);
                             e.push(r)
                         }
                     }
@@ -7553,7 +7553,7 @@
                 return new (e || t)(Or(_a),Or(ua),Or(ea))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["", "ngFor", "", "ngForOf", ""]],
                 inputs: {
@@ -7565,17 +7565,17 @@
             t
         }
         )();
-        class wc {
+        class wl {
             constructor(t, e) {
                 this.record = t,
                 this.view = e
             }
         }
-        let Ac = (()=>{
+        let Sl = (()=>{
             class t {
                 constructor(t, e) {
                     this._viewContainer = t,
-                    this._context = new Sc,
+                    this._context = new Al,
                     this._thenTemplateRef = null,
                     this._elseTemplateRef = null,
                     this._thenViewRef = null,
@@ -7587,13 +7587,13 @@
                     this._updateView()
                 }
                 set ngIfThen(t) {
-                    Oc("ngIfThen", t),
+                    Ol("ngIfThen", t),
                     this._thenTemplateRef = t,
                     this._thenViewRef = null,
                     this._updateView()
                 }
                 set ngIfElse(t) {
-                    Oc("ngIfElse", t),
+                    Ol("ngIfElse", t),
                     this._elseTemplateRef = t,
                     this._elseViewRef = null,
                     this._updateView()
@@ -7613,7 +7613,7 @@
                 return new (e || t)(Or(_a),Or(ua))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["", "ngIf", ""]],
                 inputs: {
@@ -7625,17 +7625,17 @@
             t
         }
         )();
-        class Sc {
+        class Al {
             constructor() {
                 this.$implicit = null,
                 this.ngIf = null
             }
         }
-        function Oc(t, e) {
+        function Ol(t, e) {
             if (e && !e.createEmbeddedView)
                 throw new Error(`${t} must be a TemplateRef, but received '${tt(e)}'.`)
         }
-        let Cc = (()=>{
+        let Cl = (()=>{
             class t {
                 constructor(t) {
                     this._locale = t
@@ -7650,21 +7650,21 @@
                         return function(t, e, n) {
                             return function(t, e, n, s, i, r, o=!1) {
                                 let a = ""
-                                  , l = !1;
+                                  , c = !1;
                                 if (isFinite(t)) {
-                                    let c = function(t) {
+                                    let l = function(t) {
                                         let e, n, s, i, r, o = Math.abs(t) + "", a = 0;
-                                        for ((n = o.indexOf(dc)) > -1 && (o = o.replace(dc, "")),
+                                        for ((n = o.indexOf(dl)) > -1 && (o = o.replace(dl, "")),
                                         (s = o.search(/e/i)) > 0 ? (n < 0 && (n = s),
                                         n += +o.slice(s + 1),
                                         o = o.substring(0, s)) : n < 0 && (n = o.length),
-                                        s = 0; o.charAt(s) === pc; s++)
+                                        s = 0; o.charAt(s) === pl; s++)
                                             ;
                                         if (s === (r = o.length))
                                             e = [0],
                                             n = 1;
                                         else {
-                                            for (r--; o.charAt(r) === pc; )
+                                            for (r--; o.charAt(r) === pl; )
                                                 r--;
                                             for (n -= s,
                                             e = [],
@@ -7681,27 +7681,27 @@
                                             integerLen: n
                                         }
                                     }(t);
-                                    o && (c = function(t) {
+                                    o && (l = function(t) {
                                         if (0 === t.digits[0])
                                             return t;
                                         const e = t.digits.length - t.integerLen;
                                         return t.exponent ? t.exponent += 2 : (0 === e ? t.digits.push(0, 0) : 1 === e && t.digits.push(0),
                                         t.integerLen += 2),
                                         t
-                                    }(c));
+                                    }(l));
                                     let h = e.minInt
                                       , u = e.minFrac
                                       , d = e.maxFrac;
                                     if (r) {
-                                        const t = r.match(uc);
+                                        const t = r.match(ul);
                                         if (null === t)
                                             throw new Error(`${r} is not a valid digit info`);
                                         const e = t[1]
                                           , n = t[3]
                                           , s = t[5];
-                                        null != e && (h = mc(e)),
-                                        null != n && (u = mc(n)),
-                                        null != s ? d = mc(s) : null != n && u > d && (d = u)
+                                        null != e && (h = ml(e)),
+                                        null != n && (u = ml(n)),
+                                        null != s ? d = ml(s) : null != n && u > d && (d = u)
                                     }
                                     !function(t, e, n) {
                                         if (e > n)
@@ -7734,21 +7734,21 @@
                                                 s[o - 1]++;
                                         for (; i < Math.max(0, r); i++)
                                             s.push(0);
-                                        let l = 0 !== r;
-                                        const c = e + t.integerLen
+                                        let c = 0 !== r;
+                                        const l = e + t.integerLen
                                           , h = s.reduceRight(function(t, e, n, s) {
                                             return s[n] = (e += t) < 10 ? e : e - 10,
-                                            l && (0 === s[n] && n >= c ? s.pop() : l = !1),
+                                            c && (0 === s[n] && n >= l ? s.pop() : c = !1),
                                             e >= 10 ? 1 : 0
                                         }, 0);
                                         h && (s.unshift(h),
                                         t.integerLen++)
-                                    }(c, u, d);
-                                    let p = c.digits
-                                      , m = c.integerLen;
-                                    const f = c.exponent;
+                                    }(l, u, d);
+                                    let p = l.digits
+                                      , m = l.integerLen;
+                                    const f = l.exponent;
                                     let g = [];
-                                    for (l = p.every(t=>!t); m < h; m++)
+                                    for (c = p.every(t=>!t); m < h; m++)
                                         p.unshift(0);
                                     for (; m < 0; m++)
                                         p.unshift(0);
@@ -7758,12 +7758,12 @@
                                     for (p.length >= e.lgSize && _.unshift(p.splice(-e.lgSize, p.length).join("")); p.length > e.gSize; )
                                         _.unshift(p.splice(-e.gSize, p.length).join(""));
                                     p.length && _.unshift(p.join("")),
-                                    a = _.join(hc(n, s)),
-                                    g.length && (a += hc(n, i) + g.join("")),
-                                    f && (a += hc(n, cc.Exponential) + "+" + f)
+                                    a = _.join(hl(n, s)),
+                                    g.length && (a += hl(n, i) + g.join("")),
+                                    f && (a += hl(n, ll.Exponential) + "+" + f)
                                 } else
-                                    a = hc(n, cc.Infinity);
-                                return a = t < 0 && !l ? e.negPre + a + e.negSuf : e.posPre + a + e.posSuf,
+                                    a = hl(n, ll.Infinity);
+                                return a = t < 0 && !c ? e.negPre + a + e.negSuf : e.posPre + a + e.posSuf,
                                 a
                             }(t, function(t, e="-") {
                                 const n = {
@@ -7780,17 +7780,17 @@
                                   , s = t.split(";")
                                   , i = s[0]
                                   , r = s[1]
-                                  , o = -1 !== i.indexOf(dc) ? i.split(dc) : [i.substring(0, i.lastIndexOf(pc) + 1), i.substring(i.lastIndexOf(pc) + 1)]
+                                  , o = -1 !== i.indexOf(dl) ? i.split(dl) : [i.substring(0, i.lastIndexOf(pl) + 1), i.substring(i.lastIndexOf(pl) + 1)]
                                   , a = o[0]
-                                  , l = o[1] || "";
+                                  , c = o[1] || "";
                                 n.posPre = a.substr(0, a.indexOf("#"));
-                                for (let h = 0; h < l.length; h++) {
-                                    const t = l.charAt(h);
-                                    t === pc ? n.minFrac = n.maxFrac = h + 1 : "#" === t ? n.maxFrac = h + 1 : n.posSuf += t
+                                for (let h = 0; h < c.length; h++) {
+                                    const t = c.charAt(h);
+                                    t === pl ? n.minFrac = n.maxFrac = h + 1 : "#" === t ? n.maxFrac = h + 1 : n.posSuf += t
                                 }
-                                const c = a.split(",");
-                                if (n.gSize = c[1] ? c[1].length : 0,
-                                n.lgSize = c[2] || c[1] ? (c[2] || c[1]).length : 0,
+                                const l = a.split(",");
+                                if (n.gSize = l[1] ? l[1].length : 0,
+                                n.lgSize = l[2] || l[1] ? (l[2] || l[1]).length : 0,
                                 r) {
                                     const t = i.length - n.posPre.length - n.posSuf.length
                                       , e = r.indexOf("#");
@@ -7802,7 +7802,7 @@
                                 return n
                             }(function(t, e) {
                                 return go(t)[yo.NumberFormats][e]
-                            }(e, ac.Decimal), hc(e, cc.MinusSign)), e, cc.Group, cc.Decimal, n)
+                            }(e, al.Decimal), hl(e, ll.MinusSign)), e, ll.Group, ll.Decimal, n)
                         }(function(t) {
                             if ("string" == typeof t && !isNaN(Number(t) - parseFloat(t)))
                                 return Number(t);
@@ -7818,10 +7818,10 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(ol, 16))
+                return new (e || t)(Or(oc, 16))
             }
             ,
-            t.\u0275pipe = Qt({
+            t.\u0275pipe = Kt({
                 name: "number",
                 type: t,
                 pure: !0
@@ -7829,7 +7829,7 @@
             t
         }
         )()
-          , kc = (()=>{
+          , kl = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -7841,16 +7841,16 @@
             }),
             t.\u0275inj = ut({
                 providers: [{
-                    provide: fc,
-                    useClass: gc
+                    provide: fl,
+                    useClass: gl
                 }]
             }),
             t
         }
         )();
-        class Ec {
+        class El {
         }
-        class xc extends class extends class {
+        class xl extends class extends class {
         }
         {
             constructor() {
@@ -7861,8 +7861,8 @@
         {
             static makeCurrent() {
                 var t;
-                t = new xc,
-                $l || ($l = t)
+                t = new xl,
+                $c || ($c = t)
             }
             onAndCancel(t, e, n) {
                 return t.addEventListener(e, n, !1),
@@ -7895,46 +7895,46 @@
                 return "window" === e ? window : "document" === e ? t : "body" === e ? t.body : null
             }
             getBaseHref(t) {
-                const e = (Vc = Vc || document.querySelector("base"),
-                Vc ? Vc.getAttribute("href") : null);
+                const e = (Vl = Vl || document.querySelector("base"),
+                Vl ? Vl.getAttribute("href") : null);
                 return null == e ? null : function(t) {
-                    Dc = Dc || document.createElement("a"),
-                    Dc.setAttribute("href", t);
-                    const e = Dc.pathname;
+                    Dl = Dl || document.createElement("a"),
+                    Dl.setAttribute("href", t);
+                    const e = Dl.pathname;
                     return "/" === e.charAt(0) ? e : `/${e}`
                 }(e)
             }
             resetBaseElement() {
-                Vc = null
+                Vl = null
             }
             getUserAgent() {
                 return window.navigator.userAgent
             }
             getCookie(t) {
-                return _c(document.cookie, t)
+                return _l(document.cookie, t)
             }
         }
-        let Dc, Vc = null;
-        const Fc = new Mn("TRANSITION_ID")
-          , Tc = [{
+        let Dl, Vl = null;
+        const Tl = new Mn("TRANSITION_ID")
+          , Fl = [{
             provide: Ga,
             useFactory: function(t, e, n) {
                 return ()=>{
                     n.get(Ya).donePromise.then(()=>{
-                        const n = Ul();
+                        const n = Uc();
                         Array.prototype.slice.apply(e.querySelectorAll("style[ng-transition]")).filter(e=>e.getAttribute("ng-transition") === t).forEach(t=>n.remove(t))
                     }
                     )
                 }
             },
-            deps: [Fc, zl, lr],
+            deps: [Tl, zc, cr],
             multi: !0
         }];
-        class Pc {
+        class Pl {
             static init() {
                 var t;
-                t = new Pc,
-                Dl = t
+                t = new Pl,
+                Dc = t
             }
             addToWindow(t) {
                 Vt.getAngularTestability = (e,n=!0)=>{
@@ -7966,10 +7966,10 @@
                 if (null == e)
                     return null;
                 const s = t.getTestability(e);
-                return null != s ? s : n ? Ul().isShadowRoot(e) ? this.findTestabilityInTree(t, e.host, !0) : this.findTestabilityInTree(t, e.parentElement, !0) : null
+                return null != s ? s : n ? Uc().isShadowRoot(e) ? this.findTestabilityInTree(t, e.host, !0) : this.findTestabilityInTree(t, e.parentElement, !0) : null
             }
         }
-        let Ic = (()=>{
+        let Il = (()=>{
             class t {
                 build() {
                     return new XMLHttpRequest
@@ -7986,8 +7986,8 @@
             t
         }
         )();
-        const Rc = new Mn("EventManagerPlugins");
-        let Nc = (()=>{
+        const Rl = new Mn("EventManagerPlugins");
+        let Wl = (()=>{
             class t {
                 constructor(t, e) {
                     this._zone = e,
@@ -8019,7 +8019,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Rc),Jn(yl))
+                return new (e || t)(Jn(Rl),Jn(yc))
             }
             ,
             t.\u0275prov = ht({
@@ -8029,18 +8029,18 @@
             t
         }
         )();
-        class Wc {
+        class Nl {
             constructor(t) {
                 this._doc = t
             }
             addGlobalEventListener(t, e, n) {
-                const s = Ul().getGlobalEventTarget(this._doc, t);
+                const s = Uc().getGlobalEventTarget(this._doc, t);
                 if (!s)
                     throw new Error(`Unsupported event target ${s} for event ${e}`);
                 return this.addEventListener(s, e, n)
             }
         }
-        let Mc = (()=>{
+        let Ml = (()=>{
             class t {
                 constructor() {
                     this._stylesSet = new Set
@@ -8070,8 +8070,8 @@
             t
         }
         )()
-          , Lc = (()=>{
-            class t extends Mc {
+          , Ll = (()=>{
+            class t extends Ml {
                 constructor(t) {
                     super(),
                     this._doc = t,
@@ -8093,7 +8093,7 @@
                 }
                 removeHost(t) {
                     const e = this._hostNodes.get(t);
-                    e && e.forEach(jc),
+                    e && e.forEach(Bl),
                     this._hostNodes.delete(t)
                 }
                 onStylesAdded(t) {
@@ -8103,11 +8103,11 @@
                     )
                 }
                 ngOnDestroy() {
-                    this._hostNodes.forEach(t=>t.forEach(jc))
+                    this._hostNodes.forEach(t=>t.forEach(Bl))
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl))
+                return new (e || t)(Jn(zc))
             }
             ,
             t.\u0275prov = ht({
@@ -8117,26 +8117,26 @@
             t
         }
         )();
-        function jc(t) {
-            Ul().remove(t)
+        function Bl(t) {
+            Uc().remove(t)
         }
-        const Bc = {
+        const jl = {
             svg: "http://www.w3.org/2000/svg",
             xhtml: "http://www.w3.org/1999/xhtml",
             xlink: "http://www.w3.org/1999/xlink",
             xml: "http://www.w3.org/XML/1998/namespace",
             xmlns: "http://www.w3.org/2000/xmlns/"
         }
-          , Hc = /%COMP%/g;
-        function $c(t, e, n) {
+          , Hl = /%COMP%/g;
+        function $l(t, e, n) {
             for (let s = 0; s < e.length; s++) {
                 let i = e[s];
-                Array.isArray(i) ? $c(t, i, n) : (i = i.replace(Hc, t),
+                Array.isArray(i) ? $l(t, i, n) : (i = i.replace(Hl, t),
                 n.push(i))
             }
             return n
         }
-        function Uc(t) {
+        function Ul(t) {
             return e=>{
                 if ("__ngUnwrap__" === e)
                     return t;
@@ -8144,14 +8144,14 @@
                 e.returnValue = !1)
             }
         }
-        let zc = (()=>{
+        let zl = (()=>{
             class t {
                 constructor(t, e, n) {
                     this.eventManager = t,
                     this.sharedStylesHost = e,
                     this.appId = n,
                     this.rendererByCompId = new Map,
-                    this.defaultRenderer = new qc(t)
+                    this.defaultRenderer = new Xl(t)
                 }
                 createRenderer(t, e) {
                     if (!t || !e)
@@ -8160,17 +8160,17 @@
                     case Ct.Emulated:
                         {
                             let n = this.rendererByCompId.get(e.id);
-                            return n || (n = new Xc(this.eventManager,this.sharedStylesHost,e,this.appId),
+                            return n || (n = new ql(this.eventManager,this.sharedStylesHost,e,this.appId),
                             this.rendererByCompId.set(e.id, n)),
                             n.applyToHost(t),
                             n
                         }
                     case 1:
                     case Ct.ShadowDom:
-                        return new Qc(this.eventManager,this.sharedStylesHost,t,e);
+                        return new Kl(this.eventManager,this.sharedStylesHost,t,e);
                     default:
                         if (!this.rendererByCompId.has(e.id)) {
-                            const t = $c(e.id, e.styles, []);
+                            const t = $l(e.id, e.styles, []);
                             this.sharedStylesHost.addStyles(t),
                             this.rendererByCompId.set(e.id, this.defaultRenderer)
                         }
@@ -8181,7 +8181,7 @@
                 end() {}
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Nc),Jn(Lc),Jn(Ja))
+                return new (e || t)(Jn(Wl),Jn(Ll),Jn(Ja))
             }
             ,
             t.\u0275prov = ht({
@@ -8191,14 +8191,14 @@
             t
         }
         )();
-        class qc {
+        class Xl {
             constructor(t) {
                 this.eventManager = t,
                 this.data = Object.create(null)
             }
             destroy() {}
             createElement(t, e) {
-                return e ? document.createElementNS(Bc[e] || e, t) : document.createElement(t)
+                return e ? document.createElementNS(jl[e] || e, t) : document.createElement(t)
             }
             createComment(t) {
                 return document.createComment(t)
@@ -8231,14 +8231,14 @@
             setAttribute(t, e, n, s) {
                 if (s) {
                     e = s + ":" + e;
-                    const i = Bc[s];
+                    const i = jl[s];
                     i ? t.setAttributeNS(i, e, n) : t.setAttribute(e, n)
                 } else
                     t.setAttribute(e, n)
             }
             removeAttribute(t, e, n) {
                 if (n) {
-                    const s = Bc[n];
+                    const s = jl[n];
                     s ? t.removeAttributeNS(s, e) : t.removeAttribute(`${n}:${e}`)
                 } else
                     t.removeAttribute(e)
@@ -8262,17 +8262,17 @@
                 t.nodeValue = e
             }
             listen(t, e, n) {
-                return "string" == typeof t ? this.eventManager.addGlobalEventListener(t, e, Uc(n)) : this.eventManager.addEventListener(t, e, Uc(n))
+                return "string" == typeof t ? this.eventManager.addGlobalEventListener(t, e, Ul(n)) : this.eventManager.addEventListener(t, e, Ul(n))
             }
         }
-        class Xc extends qc {
+        class ql extends Xl {
             constructor(t, e, n, s) {
                 super(t),
                 this.component = n;
-                const i = $c(s + "-" + n.id, n.styles, []);
+                const i = $l(s + "-" + n.id, n.styles, []);
                 e.addStyles(i),
-                this.contentAttr = "_ngcontent-%COMP%".replace(Hc, s + "-" + n.id),
-                this.hostAttr = "_nghost-%COMP%".replace(Hc, s + "-" + n.id)
+                this.contentAttr = "_ngcontent-%COMP%".replace(Hl, s + "-" + n.id),
+                this.hostAttr = "_nghost-%COMP%".replace(Hl, s + "-" + n.id)
             }
             applyToHost(t) {
                 super.setAttribute(t, this.hostAttr, "")
@@ -8283,7 +8283,7 @@
                 n
             }
         }
-        class Qc extends qc {
+        class Kl extends Xl {
             constructor(t, e, n, s) {
                 super(t),
                 this.sharedStylesHost = e,
@@ -8292,7 +8292,7 @@
                     mode: "open"
                 }),
                 this.sharedStylesHost.addHost(this.shadowRoot);
-                const i = $c(s.id, s.styles, []);
+                const i = $l(s.id, s.styles, []);
                 for (let r = 0; r < i.length; r++) {
                     const t = document.createElement("style");
                     t.textContent = i[r],
@@ -8318,8 +8318,8 @@
                 return this.nodeOrShadowRoot(super.parentNode(this.nodeOrShadowRoot(t)))
             }
         }
-        let Kc = (()=>{
-            class t extends Wc {
+        let Ql = (()=>{
+            class t extends Nl {
                 constructor(t) {
                     super(t)
                 }
@@ -8335,7 +8335,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl))
+                return new (e || t)(Jn(zc))
             }
             ,
             t.\u0275prov = ht({
@@ -8345,8 +8345,8 @@
             t
         }
         )();
-        const Zc = ["alt", "control", "meta", "shift"]
-          , Gc = {
+        const Zl = ["alt", "control", "meta", "shift"]
+          , Gl = {
             "\b": "Backspace",
             "\t": "Tab",
             "\x7f": "Delete",
@@ -8361,7 +8361,7 @@
             Scroll: "ScrollLock",
             Win: "OS"
         }
-          , Yc = {
+          , Yl = {
             A: "1",
             B: "2",
             C: "3",
@@ -8379,14 +8379,14 @@
             "`": "0",
             "\x90": "NumLock"
         }
-          , Jc = {
+          , Jl = {
             alt: t=>t.altKey,
             control: t=>t.ctrlKey,
             meta: t=>t.metaKey,
             shift: t=>t.shiftKey
         };
         let th = (()=>{
-            class t extends Wc {
+            class t extends Nl {
                 constructor(t) {
                     super(t)
                 }
@@ -8396,7 +8396,7 @@
                 addEventListener(e, n, s) {
                     const i = t.parseEventName(n)
                       , r = t.eventCallback(i.fullKey, s, this.manager.getZone());
-                    return this.manager.getZone().runOutsideAngular(()=>Ul().onAndCancel(e, i.domEventName, r))
+                    return this.manager.getZone().runOutsideAngular(()=>Uc().onAndCancel(e, i.domEventName, r))
                 }
                 static parseEventName(e) {
                     const n = e.toLowerCase().split(".")
@@ -8405,7 +8405,7 @@
                         return null;
                     const i = t._normalizeKey(n.pop());
                     let r = "";
-                    if (Zc.forEach(t=>{
+                    if (Zl.forEach(t=>{
                         const e = n.indexOf(t);
                         e > -1 && (n.splice(e, 1),
                         r += t + ".")
@@ -8428,15 +8428,15 @@
                             null == e)
                                 return "Unidentified";
                             e.startsWith("U+") && (e = String.fromCharCode(parseInt(e.substring(2), 16)),
-                            3 === t.location && Yc.hasOwnProperty(e) && (e = Yc[e]))
+                            3 === t.location && Yl.hasOwnProperty(e) && (e = Yl[e]))
                         }
-                        return Gc[e] || e
+                        return Gl[e] || e
                     }(t);
                     return n = n.toLowerCase(),
                     " " === n ? n = "space" : "." === n && (n = "dot"),
-                    Zc.forEach(s=>{
+                    Zl.forEach(s=>{
                         s != n && (0,
-                        Jc[s])(t) && (e += s + ".")
+                        Jl[s])(t) && (e += s + ".")
                     }
                     ),
                     e += n,
@@ -8457,7 +8457,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl))
+                return new (e || t)(Jn(zc))
             }
             ,
             t.\u0275prov = ht({
@@ -8467,18 +8467,18 @@
             t
         }
         )();
-        const eh = Il(jl, "browser", [{
-            provide: sl,
+        const eh = Ic(Bc, "browser", [{
+            provide: sc,
             useValue: "browser"
         }, {
-            provide: nl,
+            provide: nc,
             useValue: function() {
-                xc.makeCurrent(),
-                Pc.init()
+                xl.makeCurrent(),
+                Pl.init()
             },
             multi: !0
         }, {
-            provide: zl,
+            provide: zc,
             useFactory: function() {
                 return function(t) {
                     de = t
@@ -8488,7 +8488,7 @@
             deps: []
         }])
           , nh = [[], {
-            provide: Ki,
+            provide: Qi,
             useValue: "root"
         }, {
             provide: ds,
@@ -8497,40 +8497,40 @@
             },
             deps: []
         }, {
-            provide: Rc,
-            useClass: Kc,
+            provide: Rl,
+            useClass: Ql,
             multi: !0,
-            deps: [zl, yl, sl]
+            deps: [zc, yc, sc]
         }, {
-            provide: Rc,
+            provide: Rl,
             useClass: th,
             multi: !0,
-            deps: [zl]
+            deps: [zc]
         }, [], {
-            provide: zc,
-            useClass: zc,
-            deps: [Nc, Lc, Ja]
+            provide: zl,
+            useClass: zl,
+            deps: [Wl, Ll, Ja]
         }, {
             provide: Mo,
-            useExisting: zc
+            useExisting: zl
         }, {
-            provide: Mc,
-            useExisting: Lc
+            provide: Ml,
+            useExisting: Ll
         }, {
-            provide: Lc,
-            useClass: Lc,
-            deps: [zl]
+            provide: Ll,
+            useClass: Ll,
+            deps: [zc]
         }, {
-            provide: Cl,
-            useClass: Cl,
-            deps: [yl]
+            provide: Cc,
+            useClass: Cc,
+            deps: [yc]
         }, {
-            provide: Nc,
-            useClass: Nc,
-            deps: [Rc, yl]
+            provide: Wl,
+            useClass: Wl,
+            deps: [Rl, yc]
         }, {
-            provide: Ec,
-            useClass: Ic,
+            provide: El,
+            useClass: Il,
             deps: []
         }, []];
         let sh = (()=>{
@@ -8546,9 +8546,9 @@
                             provide: Ja,
                             useValue: e.appId
                         }, {
-                            provide: Fc,
+                            provide: Tl,
                             useExisting: Ja
-                        }, Tc]
+                        }, Fl]
                     }
                 }
             }
@@ -8561,7 +8561,7 @@
             }),
             t.\u0275inj = ut({
                 providers: nh,
-                imports: [kc, Hl]
+                imports: [kl, Hc]
             }),
             t
         }
@@ -8581,7 +8581,7 @@
                 return this
             }
         }
-        class lh extends ah {
+        class ch extends ah {
             constructor(t, e) {
                 super(t, e),
                 this.scheduler = t,
@@ -8643,7 +8643,7 @@
                 this.delay = null
             }
         }
-        let ch = (()=>{
+        let lh = (()=>{
             class t {
                 constructor(e, n=t.now) {
                     this.SchedulerAction = e,
@@ -8657,8 +8657,8 @@
             t
         }
         )();
-        class hh extends ch {
-            constructor(t, e=ch.now) {
+        class hh extends lh {
+            constructor(t, e=lh.now) {
                 super(t, ()=>hh.delegate && hh.delegate !== this ? hh.delegate.now() : e()),
                 this.actions = [],
                 this.active = !1,
@@ -8685,9 +8685,9 @@
                 }
             }
         }
-        const uh = new hh(lh);
+        const uh = new hh(ch);
         function dh(t) {
-            return !l(t) && t - parseFloat(t) + 1 >= 0
+            return !c(t) && t - parseFloat(t) + 1 >= 0
         }
         function ph(t=0, e=uh) {
             return (!dh(t) || t < 0) && (t = 0),
@@ -8873,12 +8873,12 @@
                 Array.from(this.normalizedNames.keys()).forEach(e=>t(this.normalizedNames.get(e), this.headers.get(e)))
             }
         }
-        class Ah {
+        class Sh {
             encodeKey(t) {
-                return Sh(t)
+                return Ah(t)
             }
             encodeValue(t) {
-                return Sh(t)
+                return Ah(t)
             }
             decodeKey(t) {
                 return decodeURIComponent(t)
@@ -8887,7 +8887,7 @@
                 return decodeURIComponent(t)
             }
         }
-        function Sh(t) {
+        function Ah(t) {
             return encodeURIComponent(t).replace(/%40/gi, "@").replace(/%3A/gi, ":").replace(/%24/gi, "$").replace(/%2C/gi, ",").replace(/%3B/gi, ";").replace(/%2B/gi, "+").replace(/%3D/gi, "=").replace(/%3F/gi, "?").replace(/%2F/gi, "/")
         }
         function Oh(t) {
@@ -8897,7 +8897,7 @@
             constructor(t={}) {
                 if (this.updates = null,
                 this.cloneFrom = null,
-                this.encoder = t.encoder || new Ah,
+                this.encoder = t.encoder || new Sh,
                 t.fromString) {
                     if (t.fromObject)
                         throw new Error("Cannot specify both fromString and fromObject.");
@@ -9109,14 +9109,14 @@
                   , r = void 0 !== t.body ? t.body : this.body
                   , o = void 0 !== t.withCredentials ? t.withCredentials : this.withCredentials
                   , a = void 0 !== t.reportProgress ? t.reportProgress : this.reportProgress;
-                let l = t.headers || this.headers
-                  , c = t.params || this.params;
+                let c = t.headers || this.headers
+                  , l = t.params || this.params;
                 const h = null !== (e = t.context) && void 0 !== e ? e : this.context;
-                return void 0 !== t.setHeaders && (l = Object.keys(t.setHeaders).reduce((e,n)=>e.set(n, t.setHeaders[n]), l)),
-                t.setParams && (c = Object.keys(t.setParams).reduce((e,n)=>e.set(n, t.setParams[n]), c)),
+                return void 0 !== t.setHeaders && (c = Object.keys(t.setHeaders).reduce((e,n)=>e.set(n, t.setHeaders[n]), c)),
+                t.setParams && (l = Object.keys(t.setParams).reduce((e,n)=>e.set(n, t.setParams[n]), l)),
                 new Vh(n,s,r,{
-                    params: c,
-                    headers: l,
+                    params: l,
+                    headers: c,
                     context: h,
                     reportProgress: a,
                     responseType: i,
@@ -9124,7 +9124,7 @@
                 })
             }
         }
-        var Fh = function(t) {
+        var Th = function(t) {
             return t[t.Sent = 0] = "Sent",
             t[t.UploadProgress = 1] = "UploadProgress",
             t[t.ResponseHeader = 2] = "ResponseHeader",
@@ -9133,7 +9133,7 @@
             t[t.User = 5] = "User",
             t
         }({});
-        class Th {
+        class Fh {
             constructor(t, e=200, n="OK") {
                 this.headers = t.headers || new wh,
                 this.status = void 0 !== t.status ? t.status : e,
@@ -9142,10 +9142,10 @@
                 this.ok = this.status >= 200 && this.status < 300
             }
         }
-        class Ph extends Th {
+        class Ph extends Fh {
             constructor(t={}) {
                 super(t),
-                this.type = Fh.ResponseHeader
+                this.type = Th.ResponseHeader
             }
             clone(t={}) {
                 return new Ph({
@@ -9156,10 +9156,10 @@
                 })
             }
         }
-        class Ih extends Th {
+        class Ih extends Fh {
             constructor(t={}) {
                 super(t),
-                this.type = Fh.Response,
+                this.type = Th.Response,
                 this.body = void 0 !== t.body ? t.body : null
             }
             clone(t={}) {
@@ -9172,7 +9172,7 @@
                 })
             }
         }
-        class Rh extends Th {
+        class Rh extends Fh {
             constructor(t) {
                 super(t, 0, "Unknown Error"),
                 this.name = "HttpErrorResponse",
@@ -9181,7 +9181,7 @@
                 this.error = t.error || null
             }
         }
-        function Nh(t, e) {
+        function Wh(t, e) {
             return {
                 body: e,
                 headers: t.headers,
@@ -9193,7 +9193,7 @@
                 withCredentials: t.withCredentials
             }
         }
-        let Wh = (()=>{
+        let Nh = (()=>{
             class t {
                 constructor(t) {
                     this.handler = t
@@ -9217,7 +9217,7 @@
                             withCredentials: n.withCredentials
                         })
                     }
-                    const i = fh(s).pipe(j(t=>this.handler.handle(t), void 0, 1));
+                    const i = fh(s).pipe(B(t=>this.handler.handle(t), void 0, 1));
                     if (t instanceof Vh || "events" === n.observe)
                         return i;
                     const r = i.pipe(gh(t=>t instanceof Ih));
@@ -9275,13 +9275,13 @@
                     return this.request("OPTIONS", t, e)
                 }
                 patch(t, e, n={}) {
-                    return this.request("PATCH", t, Nh(n, e))
+                    return this.request("PATCH", t, Wh(n, e))
                 }
                 post(t, e, n={}) {
-                    return this.request("POST", t, Nh(n, e))
+                    return this.request("POST", t, Wh(n, e))
                 }
                 put(t, e, n={}) {
-                    return this.request("PUT", t, Nh(n, e))
+                    return this.request("PUT", t, Wh(n, e))
                 }
             }
             return t.\u0275fac = function(e) {
@@ -9305,7 +9305,7 @@
             }
         }
         const Lh = new Mn("HTTP_INTERCEPTORS");
-        let jh = (()=>{
+        let Bh = (()=>{
             class t {
                 intercept(t, e) {
                     return e.handle(t)
@@ -9322,7 +9322,7 @@
             t
         }
         )();
-        const Bh = /^\)\]\}',?\n/;
+        const jh = /^\)\]\}',?\n/;
         let Hh = (()=>{
             class t {
                 constructor(t) {
@@ -9366,33 +9366,33 @@
                         }
                           , o = ()=>{
                             let {headers: s, status: i, statusText: o, url: a} = r()
-                              , l = null;
-                            204 !== i && (l = void 0 === n.response ? n.responseText : n.response),
-                            0 === i && (i = l ? 200 : 0);
-                            let c = i >= 200 && i < 300;
-                            if ("json" === t.responseType && "string" == typeof l) {
-                                const t = l;
-                                l = l.replace(Bh, "");
+                              , c = null;
+                            204 !== i && (c = void 0 === n.response ? n.responseText : n.response),
+                            0 === i && (i = c ? 200 : 0);
+                            let l = i >= 200 && i < 300;
+                            if ("json" === t.responseType && "string" == typeof c) {
+                                const t = c;
+                                c = c.replace(jh, "");
                                 try {
-                                    l = "" !== l ? JSON.parse(l) : null
+                                    c = "" !== c ? JSON.parse(c) : null
                                 } catch (h) {
-                                    l = t,
-                                    c && (c = !1,
-                                    l = {
+                                    c = t,
+                                    l && (l = !1,
+                                    c = {
                                         error: h,
-                                        text: l
+                                        text: c
                                     })
                                 }
                             }
-                            c ? (e.next(new Ih({
-                                body: l,
+                            l ? (e.next(new Ih({
+                                body: c,
                                 headers: s,
                                 status: i,
                                 statusText: o,
                                 url: a || void 0
                             })),
                             e.complete()) : e.error(new Rh({
-                                error: l,
+                                error: c,
                                 headers: s,
                                 status: i,
                                 statusText: o,
@@ -9410,12 +9410,12 @@
                             e.error(i)
                         }
                         ;
-                        let l = !1;
-                        const c = s=>{
-                            l || (e.next(r()),
-                            l = !0);
+                        let c = !1;
+                        const l = s=>{
+                            c || (e.next(r()),
+                            c = !0);
                             let i = {
-                                type: Fh.DownloadProgress,
+                                type: Th.DownloadProgress,
                                 loaded: s.loaded
                             };
                             s.lengthComputable && (i.total = s.total),
@@ -9424,7 +9424,7 @@
                         }
                           , h = t=>{
                             let n = {
-                                type: Fh.UploadProgress,
+                                type: Th.UploadProgress,
                                 loaded: t.loaded
                             };
                             t.lengthComputable && (n.total = t.total),
@@ -9435,18 +9435,18 @@
                         n.addEventListener("error", a),
                         n.addEventListener("timeout", a),
                         n.addEventListener("abort", a),
-                        t.reportProgress && (n.addEventListener("progress", c),
+                        t.reportProgress && (n.addEventListener("progress", l),
                         null !== s && n.upload && n.upload.addEventListener("progress", h)),
                         n.send(s),
                         e.next({
-                            type: Fh.Sent
+                            type: Th.Sent
                         }),
                         ()=>{
                             n.removeEventListener("error", a),
                             n.removeEventListener("abort", a),
                             n.removeEventListener("load", o),
                             n.removeEventListener("timeout", a),
-                            t.reportProgress && (n.removeEventListener("progress", c),
+                            t.reportProgress && (n.removeEventListener("progress", l),
                             null !== s && n.upload && n.upload.removeEventListener("progress", h)),
                             n.readyState !== n.DONE && n.abort()
                         }
@@ -9455,7 +9455,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Ec))
+                return new (e || t)(Jn(El))
             }
             ,
             t.\u0275prov = ht({
@@ -9469,7 +9469,7 @@
           , Uh = new Mn("XSRF_HEADER_NAME");
         class zh {
         }
-        let qh = (()=>{
+        let Xh = (()=>{
             class t {
                 constructor(t, e, n) {
                     this.doc = t,
@@ -9484,13 +9484,13 @@
                         return null;
                     const t = this.doc.cookie || "";
                     return t !== this.lastCookieString && (this.parseCount++,
-                    this.lastToken = _c(t, this.cookieName),
+                    this.lastToken = _l(t, this.cookieName),
                     this.lastCookieString = t),
                     this.lastToken
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl),Jn(sl),Jn($h))
+                return new (e || t)(Jn(zc),Jn(sc),Jn($h))
             }
             ,
             t.\u0275prov = ht({
@@ -9500,7 +9500,7 @@
             t
         }
         )()
-          , Xh = (()=>{
+          , qh = (()=>{
             class t {
                 constructor(t, e) {
                     this.tokenService = t,
@@ -9528,7 +9528,7 @@
             t
         }
         )()
-          , Qh = (()=>{
+          , Kh = (()=>{
             class t {
                 constructor(t, e) {
                     this.backend = t,
@@ -9544,7 +9544,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(bh),Jn(lr))
+                return new (e || t)(Jn(bh),Jn(cr))
             }
             ,
             t.\u0275prov = ht({
@@ -9554,14 +9554,14 @@
             t
         }
         )()
-          , Kh = (()=>{
+          , Qh = (()=>{
             class t {
                 static disable() {
                     return {
                         ngModule: t,
                         providers: [{
-                            provide: Xh,
-                            useClass: jh
+                            provide: qh,
+                            useClass: Bh
                         }]
                     }
                 }
@@ -9586,13 +9586,13 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                providers: [Xh, {
+                providers: [qh, {
                     provide: Lh,
-                    useExisting: Xh,
+                    useExisting: qh,
                     multi: !0
                 }, {
                     provide: zh,
-                    useClass: qh
+                    useClass: Xh
                 }, {
                     provide: $h,
                     useValue: "XSRF-TOKEN"
@@ -9615,14 +9615,14 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                providers: [Wh, {
+                providers: [Nh, {
                     provide: vh,
-                    useClass: Qh
+                    useClass: Kh
                 }, Hh, {
                     provide: bh,
                     useExisting: Hh
                 }],
-                imports: [[Kh.withOptions({
+                imports: [[Qh.withOptions({
                     cookieName: "XSRF-TOKEN",
                     headerName: "X-XSRF-TOKEN"
                 })]]
@@ -9718,7 +9718,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Wh))
+                return new (e || t)(Jn(Nh))
             }
             ,
             t.\u0275prov = ht({
@@ -9847,6 +9847,54 @@
                 setStoneSpearLegendary(t) {
                     this._stoneSpearLegendary = t
                 }
+                getBowCommon() {
+                    return this._bowCommon
+                }
+                setBowCommon(t) {
+                    this._bowCommon = t
+                }
+                getBowUncommon() {
+                    return this._bowUncommon
+                }
+                setBowUncommon(t) {
+                    this._bowUncommon = t
+                }
+                getBowRare() {
+                    return this._bowRare
+                }
+                setBowRare(t) {
+                    this._bowRare = t
+                }
+                getBowEpic() {
+                    return this._bowEpic
+                }
+                setBowEpic(t) {
+                    this._bowEpic = t
+                }
+                getBowLegendary() {
+                    return this._bowLegendary
+                }
+                setBowLegendary(t) {
+                    this._bowLegendary = t
+                }
+                getSkinTentCommon() {
+                    return this._skinTentCommon
+                }
+                setSkinTentCommon(t) {
+                    this._skinTentCommon = t
+                }
+                getSkinTentUncommon() {
+                    return this._skinTentUncommon
+                }
+                setSkinTentUncommon(t) {
+                    this._skinTentUncommon = t
+                }
+                getSkinTentRare() {
+                    return this._skinTentRare
+                }
+                setSkinTentRare(t) {
+                    this._skinTentRare = t
+                }
             }
             return t.\u0275fac = function(e) {
                 return new (e || t)
@@ -9868,7 +9916,7 @@
                 return new (e || t)
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-header"]],
                 inputs: {
@@ -9888,29 +9936,29 @@
                     Er(4, "div", 3),
                     Er(5, "div", 4),
                     Er(6, "strong", 5),
-                    lo(7),
-                    Ta(8, "number"),
+                    co(7),
+                    Fa(8, "number"),
                     xr(),
                     xr(),
                     Er(9, "div", 6),
                     Dr(10, "img", 7),
                     Er(11, "strong", 8),
-                    lo(12),
-                    Ta(13, "number"),
+                    co(12),
+                    Fa(13, "number"),
                     xr(),
                     xr(),
                     Er(14, "div", 9),
                     Dr(15, "img", 10),
                     Er(16, "strong", 11),
-                    lo(17),
-                    Ta(18, "number"),
+                    co(17),
+                    Fa(18, "number"),
                     xr(),
                     xr(),
                     Er(19, "div", 12),
                     Dr(20, "img", 13),
                     Er(21, "strong", 14),
-                    lo(22),
-                    Ta(23, "number"),
+                    co(22),
+                    Fa(23, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -9927,7 +9975,7 @@
                     Ys(5),
                     ho(" ", Pa(23, 13, e.ValueAOFF, "1.3-4"), ""))
                 },
-                pipes: [Cc],
+                pipes: [Cl],
                 styles: [".fw_topBox[_ngcontent-%COMP%]{border:1px solid #e94d40;min-width:65px;font-size:.75em}.p-1[_ngcontent-%COMP%]{padding:.25rem!important}.m-0[_ngcontent-%COMP%]{margin:0!important}.token_FWF[_ngcontent-%COMP%]{color:#d27f12!important;border:2px solid #c57b0a}.token_FWW[_ngcontent-%COMP%]{color:#653404!important;border:2px solid #5e3a03}.token_FWG[_ngcontent-%COMP%]{color:#868686!important;border:2px solid #868686}.fw_fee_unk[_ngcontent-%COMP%]{background-color:#414141!important}.fw_fee_5[_ngcontent-%COMP%], .fw_fee_unk[_ngcontent-%COMP%]{padding:5px;color:#fff}.fw_fee_5[_ngcontent-%COMP%]{background-color:#008c38!important}.fw_fee_6[_ngcontent-%COMP%]{background-color:#9aad00!important}.fw_fee_6[_ngcontent-%COMP%], .fw_fee_7[_ngcontent-%COMP%]{padding:5px;color:#fff}.fw_fee_7[_ngcontent-%COMP%]{background-color:#da4600!important}.fw_fee_8[_ngcontent-%COMP%]{padding:5px;background-color:red!important;color:#fff}"]
             }),
             t
@@ -9942,11 +9990,11 @@
                 let r = 0
                   , o = 0;
                 for (let a = 0; a < s; a++) {
-                    const l = N(t[a]);
-                    let c = !1;
-                    n.add(l.subscribe({
+                    const c = W(t[a]);
+                    let l = !1;
+                    n.add(c.subscribe({
                         next: t=>{
-                            c || (c = !0,
+                            l || (l = !0,
                             o++),
                             i[a] = t
                         }
@@ -9954,7 +10002,7 @@
                         error: t=>n.error(t),
                         complete: ()=>{
                             r++,
-                            r !== s && c || (o === s && n.next(e ? e.reduce((t,e,n)=>(t[e] = i[n],
+                            r !== s && l || (o === s && n.next(e ? e.reduce((t,e,n)=>(t[e] = i[n],
                             t), {}) : i),
                             n.complete())
                         }
@@ -9986,10 +10034,10 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(Lo),Or(No))
+                return new (e || t)(Or(Lo),Or(Wo))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t
             }),
             t
@@ -10004,7 +10052,7 @@
                     return (e || (e = In(t)))(n || t)
                 }
             }(),
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 features: [hr]
             }),
@@ -10025,7 +10073,7 @@
                     this._compositionMode = n,
                     this._composing = !1,
                     null == this._compositionMode && (this._compositionMode = !function() {
-                        const t = Ul() ? Ul().getUserAgent() : "";
+                        const t = Uc() ? Uc().getUserAgent() : "";
                         return /android (\d+)/.test(t.toLowerCase())
                     }())
                 }
@@ -10044,14 +10092,14 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(Lo),Or(No),Or(ru, 8))
+                return new (e || t)(Or(Lo),Or(Wo),Or(ru, 8))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["input", "formControlName", "", 3, "type", "checkbox"], ["textarea", "formControlName", ""], ["input", "formControl", "", 3, "type", "checkbox"], ["textarea", "formControl", ""], ["input", "ngModel", "", 3, "type", "checkbox"], ["textarea", "ngModel", ""], ["", "ngDefaultControl", ""]],
                 hostBindings: function(t, e) {
-                    1 & t && Tr("input", function(t) {
+                    1 & t && Fr("input", function(t) {
                         return e._handleInput(t.target.value)
                     })("blur", function() {
                         return e.onTouched()
@@ -10067,13 +10115,13 @@
         }
         )();
         const au = new Mn("NgValidators")
-          , lu = new Mn("NgAsyncValidators");
-        function cu(t) {
+          , cu = new Mn("NgAsyncValidators");
+        function lu(t) {
             return null != t
         }
         function hu(t) {
-            const e = Vr(t) ? N(t) : t;
-            return Fr(e),
+            const e = Vr(t) ? W(t) : t;
+            return Tr(e),
             e
         }
         function uu(t) {
@@ -10096,7 +10144,7 @@
             return null != t ? function(t) {
                 if (!t)
                     return null;
-                const e = t.filter(cu);
+                const e = t.filter(lu);
                 return 0 == e.length ? null : function(t) {
                     return uu(du(t, e))
                 }
@@ -10106,21 +10154,21 @@
             return null != t ? function(t) {
                 if (!t)
                     return null;
-                const e = t.filter(cu);
+                const e = t.filter(lu);
                 return 0 == e.length ? null : function(t) {
                     return function(...t) {
                         if (1 === t.length) {
                             const e = t[0];
-                            if (l(e))
+                            if (c(e))
                                 return tu(e, null);
-                            if (c(e) && Object.getPrototypeOf(e) === Object.prototype) {
+                            if (l(e) && Object.getPrototypeOf(e) === Object.prototype) {
                                 const t = Object.keys(e);
                                 return tu(t.map(t=>e[t]), t)
                             }
                         }
                         if ("function" == typeof t[t.length - 1]) {
                             const e = t.pop();
-                            return tu(t = 1 === t.length && l(t[0]) ? t[0] : t, null).pipe(k(t=>e(...t)))
+                            return tu(t = 1 === t.length && c(t[0]) ? t[0] : t, null).pipe(k(t=>e(...t)))
                         }
                         return tu(t, null)
                     }(du(t, e).map(hu)).pipe(k(uu))
@@ -10217,7 +10265,7 @@
                 return new (e || t)
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t
             }),
             t
@@ -10238,7 +10286,7 @@
                     return (e || (e = In(t)))(n || t)
                 }
             }(),
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 features: [hr]
             }),
@@ -10272,12 +10320,12 @@
                 return new (e || t)(Or(vu, 2))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["", "formControlName", ""], ["", "ngModel", ""], ["", "formControl", ""]],
                 hostVars: 14,
                 hostBindings: function(t, e) {
-                    2 & t && Kr("ng-untouched", e.is("untouched"))("ng-touched", e.is("touched"))("ng-pristine", e.is("pristine"))("ng-dirty", e.is("dirty"))("ng-valid", e.is("valid"))("ng-invalid", e.is("invalid"))("ng-pending", e.is("pending"))
+                    2 & t && Qr("ng-untouched", e.is("untouched"))("ng-touched", e.is("touched"))("ng-pristine", e.is("pristine"))("ng-dirty", e.is("dirty"))("ng-valid", e.is("valid"))("ng-invalid", e.is("invalid"))("ng-pending", e.is("pending"))
                 },
                 features: [hr]
             }),
@@ -10290,7 +10338,7 @@
             }
             )
         }
-        function Au(t, e) {
+        function Su(t, e) {
             t._pendingDirty && t.markAsDirty(),
             t.setValue(t._pendingValue, {
                 emitModelToViewChange: !1
@@ -10298,7 +10346,7 @@
             e.viewToModelUpdate(t._pendingValue),
             t._pendingChange = !1
         }
-        function Su(t, e) {
+        function Au(t, e) {
             const n = t.indexOf(e);
             n > -1 && t.splice(n, 1)
         }
@@ -10307,18 +10355,18 @@
           , ku = "PENDING"
           , Eu = "DISABLED";
         function xu(t) {
-            return (Tu(t) ? t.validators : t) || null
+            return (Fu(t) ? t.validators : t) || null
         }
         function Du(t) {
             return Array.isArray(t) ? mu(t) : t || null
         }
         function Vu(t, e) {
-            return (Tu(e) ? e.asyncValidators : t) || null
-        }
-        function Fu(t) {
-            return Array.isArray(t) ? fu(t) : t || null
+            return (Fu(e) ? e.asyncValidators : t) || null
         }
         function Tu(t) {
+            return Array.isArray(t) ? fu(t) : t || null
+        }
+        function Fu(t) {
             return null != t && !Array.isArray(t) && "object" == typeof t
         }
         class Pu {
@@ -10333,7 +10381,7 @@
                 this._rawValidators = t,
                 this._rawAsyncValidators = e,
                 this._composedValidatorFn = Du(this._rawValidators),
-                this._composedAsyncValidatorFn = Fu(this._rawAsyncValidators)
+                this._composedAsyncValidatorFn = Tu(this._rawAsyncValidators)
             }
             get validator() {
                 return this._composedValidatorFn
@@ -10380,7 +10428,7 @@
             }
             setAsyncValidators(t) {
                 this._rawAsyncValidators = t,
-                this._composedAsyncValidatorFn = Fu(t)
+                this._composedAsyncValidatorFn = Tu(t)
             }
             clearValidators() {
                 this.validator = null
@@ -10530,7 +10578,7 @@
                         return null;
                     let s = t;
                     return e.forEach(t=>{
-                        s = s instanceof Ru ? s.controls.hasOwnProperty(t) ? s.controls[t] : null : s instanceof Nu && s.at(t) || null
+                        s = s instanceof Ru ? s.controls.hasOwnProperty(t) ? s.controls[t] : null : s instanceof Wu && s.at(t) || null
                     }
                     ),
                     s
@@ -10585,7 +10633,7 @@
                 this._onCollectionChange = t
             }
             _setUpdateStrategy(t) {
-                Tu(t) && null != t.updateOn && (this._updateOn = t.updateOn)
+                Fu(t) && null != t.updateOn && (this._updateOn = t.updateOn)
             }
             _parentMarkedDirty(t) {
                 return !t && !(!this._parent || !this._parent.dirty) && !this._parent._anyControlsDirty()
@@ -10629,13 +10677,13 @@
                 this._onChange.push(t)
             }
             _unregisterOnChange(t) {
-                Su(this._onChange, t)
+                Au(this._onChange, t)
             }
             registerOnDisabledChange(t) {
                 this._onDisabledChange.push(t)
             }
             _unregisterOnDisabledChange(t) {
-                Su(this._onDisabledChange, t)
+                Au(this._onDisabledChange, t)
             }
             _forEachChild(t) {}
             _syncPendingControls() {
@@ -10807,7 +10855,7 @@
                 )
             }
         }
-        class Nu extends Pu {
+        class Wu extends Pu {
             constructor(t, e, n) {
                 super(xu(e), Vu(n, e)),
                 this.controls = t,
@@ -10950,7 +10998,7 @@
                 t._registerOnCollectionChange(this._onCollectionChange)
             }
         }
-        const Wu = {
+        const Nu = {
             provide: vu,
             useExisting: st(()=>Lu)
         }
@@ -11035,7 +11083,7 @@
                             t._pendingValue = n,
                             t._pendingChange = !0,
                             t._pendingDirty = !0,
-                            "change" === t.updateOn && Au(t, e)
+                            "change" === t.updateOn && Su(t, e)
                         }
                         )
                     }(t, e),
@@ -11054,7 +11102,7 @@
                     function(t, e) {
                         e.valueAccessor.registerOnTouched(()=>{
                             t._pendingTouched = !0,
-                            "blur" === t.updateOn && t._pendingChange && Au(t, e),
+                            "blur" === t.updateOn && t._pendingChange && Su(t, e),
                             "submit" !== t.updateOn && t.markAsTouched()
                         }
                         )
@@ -11103,10 +11151,10 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(yu, 9),Or(au, 10),Or(lu, 10),Or(su, 10))
+                return new (e || t)(Or(yu, 9),Or(au, 10),Or(cu, 10),Or(su, 10))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["", "ngModel", "", 3, "formControlName", "", 3, "formControl", ""]],
                 inputs: {
@@ -11119,12 +11167,12 @@
                     update: "ngModelChange"
                 },
                 exportAs: ["ngModel"],
-                features: [Do([Wu]), hr, ae]
+                features: [Do([Nu]), hr, ae]
             }),
             t
         }
         )()
-          , ju = (()=>{
+          , Bu = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -11138,7 +11186,7 @@
             t
         }
         )();
-        const Bu = {
+        const ju = {
             provide: su,
             useExisting: st(()=>$u),
             multi: !0
@@ -11193,11 +11241,11 @@
                     return (e || (e = In(t)))(n || t)
                 }
             }(),
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["select", "formControlName", "", 3, "multiple", ""], ["select", "formControl", "", 3, "multiple", ""], ["select", "ngModel", "", 3, "multiple", ""]],
                 hostBindings: function(t, e) {
-                    1 & t && Tr("change", function(t) {
+                    1 & t && Fr("change", function(t) {
                         return e.onChange(t.target.value)
                     })("blur", function() {
                         return e.onTouched()
@@ -11206,7 +11254,7 @@
                 inputs: {
                     compareWith: "compareWith"
                 },
-                features: [Do([Bu]), hr]
+                features: [Do([ju]), hr]
             }),
             t
         }
@@ -11237,10 +11285,10 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(No),Or(Lo),Or($u, 9))
+                return new (e || t)(Or(Wo),Or(Lo),Or($u, 9))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["option"]],
                 inputs: {
@@ -11253,15 +11301,15 @@
         )();
         const zu = {
             provide: su,
-            useExisting: st(()=>Xu),
+            useExisting: st(()=>qu),
             multi: !0
         };
-        function qu(t, e) {
+        function Xu(t, e) {
             return null == t ? `${e}` : ("string" == typeof e && (e = `'${e}'`),
             e && "object" == typeof e && (e = "Object"),
             `${t}: ${e}`.slice(0, 50))
         }
-        let Xu = (()=>{
+        let qu = (()=>{
             class t extends nu {
                 constructor() {
                     super(...arguments),
@@ -11335,11 +11383,11 @@
                     return (e || (e = In(t)))(n || t)
                 }
             }(),
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["select", "multiple", "", "formControlName", ""], ["select", "multiple", "", "formControl", ""], ["select", "multiple", "", "ngModel", ""]],
                 hostBindings: function(t, e) {
-                    1 & t && Tr("change", function(t) {
+                    1 & t && Fr("change", function(t) {
                         return e.onChange(t.target)
                     })("blur", function() {
                         return e.onTouched()
@@ -11353,7 +11401,7 @@
             t
         }
         )()
-          , Qu = (()=>{
+          , Ku = (()=>{
             class t {
                 constructor(t, e, n) {
                     this._element = t,
@@ -11363,12 +11411,12 @@
                 }
                 set ngValue(t) {
                     null != this._select && (this._value = t,
-                    this._setElementValue(qu(this.id, t)),
+                    this._setElementValue(Xu(this.id, t)),
                     this._select.writeValue(this._select.value))
                 }
                 set value(t) {
                     this._select ? (this._value = t,
-                    this._setElementValue(qu(this.id, t)),
+                    this._setElementValue(Xu(this.id, t)),
                     this._select.writeValue(this._select.value)) : this._setElementValue(t)
                 }
                 _setElementValue(t) {
@@ -11383,10 +11431,10 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(No),Or(Lo),Or(Xu, 9))
+                return new (e || t)(Or(Wo),Or(Lo),Or(qu, 9))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["option"]],
                 inputs: {
@@ -11397,7 +11445,7 @@
             t
         }
         )()
-          , Ku = (()=>{
+          , Qu = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -11408,7 +11456,7 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[ju]]
+                imports: [[Bu]]
             }),
             t
         }
@@ -11424,20 +11472,20 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [Ku]
+                imports: [Qu]
             }),
             t
         }
         )();
         function Gu(t, e) {
             if (1 & t && (Er(0, "option", 13),
-            lo(1),
+            co(1),
             xr()),
             2 & t) {
                 const t = e.$implicit;
                 Cr("ngValue", t),
                 Ys(1),
-                co(t)
+                lo(t)
             }
         }
         let Yu = (()=>{
@@ -11463,7 +11511,7 @@
                 return new (e || t)(Or(Yh))
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-menu"]],
                 inputs: {
@@ -11473,42 +11521,42 @@
                 },
                 decls: 33,
                 vars: 2,
-                consts: [[1, "row", "alert", "alert-info", "m-0", "mwm-box", 2, "display", "none"], [1, "col-sm-12"], [2, "text-align", "center"], [1, "d-inline-block", "w-100"], [1, "d-inline-block", "w-50"], [1, ""], [1, "d-inline-block", "w-25"], [3, "ngModel", "ngModelChange"], [3, "ngValue", 4, "ngFor", "ngForOf"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aoff.png", 2, "height", "16px"], [2, "text-align", "end", "font-size", "xx-small"], ["href", "https://www.ageoffarming.io/", "target", "_blank"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/bannerAoF.png", 2, "width", "320px"], [3, "ngValue"]],
+                consts: [[1, "row", "alert", "alert-info", "m-0", "mwm-box", 2, "display", "none"], [1, "col-sm-12"], [2, "text-align", "center"], [1, "d-inline-block", "w-100"], [1, "d-inline-block", "w-50"], [1, ""], [1, "d-inline-block", "w-25"], [3, "ngModel", "ngModelChange"], [3, "ngValue", 4, "ngFor", "ngForOf"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aoff.png", 2, "height", "16px"], [2, "text-align", "end", "font-size", "xx-small"], ["href", "https://discord.gg/kb7zhhqR3K", "target", "_blank"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/bannerDov.gif", 2, "width", "320px"], [3, "ngValue"]],
                 template: function(t, e) {
                     1 & t && (Er(0, "div", 0),
                     Er(1, "div", 1),
                     Er(2, "div", 2),
-                    lo(3, "Game Info:"),
+                    co(3, "Game Info:"),
                     xr(),
                     Dr(4, "br"),
                     Er(5, "div", 3),
                     Er(6, "div", 4),
                     Er(7, "span", 5),
-                    lo(8, "Mining 1 hours per day:"),
+                    co(8, "Mining 1 hours per day:"),
                     xr(),
                     xr(),
                     Er(9, "div", 6),
                     Er(10, "select", 7),
-                    Tr("ngModelChange", function(t) {
+                    Fr("ngModelChange", function(t) {
                         return e.selectedLevel = t
                     })("ngModelChange", function() {
                         return e.change()
                     }),
-                    Sr(11, Gu, 2, 2, "option", 8),
+                    Ar(11, Gu, 2, 2, "option", 8),
                     xr(),
                     xr(),
                     Er(12, "div", 6),
-                    lo(13, "\xa0/ 24h"),
+                    co(13, "\xa0/ 24h"),
                     xr(),
                     xr(),
                     Dr(14, "br"),
                     Er(15, "div", 1),
-                    lo(16, " 1 "),
+                    co(16, " 1 "),
                     Dr(17, "img", 9),
-                    lo(18, " = 5 Energy "),
+                    co(18, " = 5 Energy "),
                     xr(),
                     Er(19, "div", 10),
-                    lo(20, " release 19/04/2022 "),
+                    co(20, " release 19/04/2022 "),
                     xr(),
                     xr(),
                     xr(),
@@ -11516,13 +11564,13 @@
                     Er(22, "div", 0),
                     Er(23, "small"),
                     Er(24, "p"),
-                    lo(25, "PROMO : "),
+                    co(25, "PROMO : "),
                     Dr(26, "br"),
                     xr(),
                     Er(27, "a", 11),
                     Dr(28, "img", 12),
                     Dr(29, "br"),
-                    lo(30, " More Info here"),
+                    co(30, " More Info here "),
                     xr(),
                     Dr(31, "br"),
                     Dr(32, "br"),
@@ -11533,7 +11581,7 @@
                     Ys(1),
                     Cr("ngForOf", e.levels))
                 },
-                directives: [$u, bu, Lu, bc, Uu, Qu],
+                directives: [$u, bu, Lu, bl, Uu, Ku],
                 styles: [".badge.md[_ngcontent-%COMP%]{color:#000;padding:3px;font-size:15px}.img-fluid[_ngcontent-%COMP%]{max-width:100%;height:160px}.badge.sm[_ngcontent-%COMP%]{padding:3px;font-size:12px}.grey.darken-2[_ngcontent-%COMP%]{background-color:#616161!important}.gradbg-cyan[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#5b81a5,#19e4ff)!important}.badge.ssm[_ngcontent-%COMP%]{padding:2px;font-size:10px}.gradbg-lime2[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#4e9f34,#c4de00)!important}.gradbg-red[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#6d091e,tomato)!important}.badge[_ngcontent-%COMP%]{color:#000!important;border-radius:.125rem;box-shadow:0 2px 5px 0 #00000029,0 2px 10px 0 #0000001f;display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:initial;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.w-50[_ngcontent-%COMP%]{width:50%!important}.w-10[_ngcontent-%COMP%]{width:10%!important}.w-20[_ngcontent-%COMP%]{width:20%!important}.w-40[_ngcontent-%COMP%]{width:40%!important}.w-45[_ngcontent-%COMP%]{width:45%!important}.text-left[_ngcontent-%COMP%]{text-align:left!important}.text-right[_ngcontent-%COMP%]{text-align:right!important}"]
             }),
             t
@@ -11544,7 +11592,7 @@
                 constructor(t) {
                     this.http = t,
                     this.urlApiAtomicHub = "https://wax-atomic-api.eosphere.io/atomicmarket/v2/sales?collection_name=galaxyminerx&order=asc&schema_name=tools&sort=price&symbol=WAX&data:text.rarity=",
-                    this.urlv2 = "https://wax-atomic-api.eosphere.io/atomicmarket/v2/sales?collection_name=ageoffarming&schema_name=tools&order=asc&sort=price&symbol=WAX&state=1",
+                    this.urlv2 = "https://wax-atomic-api.eosphere.io/atomicmarket/v2/sales?collection_name=ageoffarming&schema_name=resources&order=asc&sort=price&symbol=WAX&state=1",
                     this.url = "https://wax-atomic-api.eosphere.io/atomicmarket/v2/sales?collection_name=ageoffarming&schema_name=tools&order=asc&sort=price&symbol=WAX&state=1",
                     this.urlspace = "https://wax-atomic-api.eosphere.io/atomicmarket/v2/sales?collection_name=funnycatgame&order=asc&schema_name=space.cats&sort=price&symbol=WAX&state=1",
                     this.urldata = "https://atomic2.hivebp.io/atomicassets/v1/templates/spacecraftxc/",
@@ -11592,7 +11640,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Wh))
+                return new (e || t)(Jn(Nh))
             }
             ,
             t.\u0275prov = ht({
@@ -11608,14 +11656,14 @@
                 const t = Ee();
                 Er(0, "div", 8),
                 Er(1, "button", 16),
-                Tr("click", function() {
+                Fr("click", function() {
                     const e = (n = t,
                     Ce.lFrame.contextLView = n,
                     n[8]).$implicit;
                     var n;
                     return Rr(2).viewAccount(e)
                 }),
-                lo(2),
+                co(2),
                 xr(),
                 xr()
             }
@@ -11627,7 +11675,7 @@
         }
         function ed(t, e) {
             if (1 & t && (Er(0, "div"),
-            Sr(1, td, 3, 1, "div", 15),
+            Ar(1, td, 3, 1, "div", 15),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -11636,28 +11684,50 @@
             }
         }
         function nd(t, e) {
+            if (1 & t && (Er(0, "span", 54),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr().$implicit;
+                Cr("ngClass", t.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
+                Ys(1),
+                ho(" ", Pa(2, 2, t.daily, "1.0-2"), " \uffe6")
+            }
+        }
+        function sd(t, e) {
+            if (1 & t && (Er(0, "span", 43),
+            co(1),
+            Fa(2, "number"),
+            Fa(3, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr().$implicit;
+                Ys(1),
+                uo(" ", Pa(2, 2, t.daily / 10, "1.0-2"), " ~ ", Pa(3, 5, 8 * t.daily / 10, "1.0-2"), " % ")
+            }
+        }
+        function id(t, e) {
             if (1 & t && (Er(0, "div"),
             Er(1, "div"),
             Er(2, "div", 49),
             Er(3, "span"),
-            lo(4),
+            co(4),
             xr(),
             xr(),
             Er(5, "div", 50),
             Er(6, "span", 51),
-            lo(7),
+            co(7),
             xr(),
             xr(),
             Er(8, "div", 49),
             Er(9, "span", 31),
-            lo(10),
+            co(10),
             xr(),
             xr(),
             Er(11, "div", 49),
-            Er(12, "span", 52),
-            lo(13),
-            Ta(14, "number"),
-            xr(),
+            Ar(12, nd, 3, 5, "span", 52),
+            Ar(13, sd, 4, 8, "span", 53),
             xr(),
             xr(),
             xr()),
@@ -11668,23 +11738,23 @@
                 "badge ssm grey lighten-2 ",
                 n = t.rarity,
                 "",
-                Yr($n, Gr, Ar(Ee(), "badge ssm grey lighten-2 ", n, ""), !0),
+                Yr($n, Gr, Sr(Ee(), "badge ssm grey lighten-2 ", n, ""), !0),
                 Ys(1),
-                co(t.name),
+                lo(t.name),
                 Ys(2),
                 Cr("ngClass", "00:00:00" === s.getTimer(t.timer) ? "gradbg-red" : ""),
                 Ys(1),
-                co(s.getTimer(t.timer)),
+                lo(s.getTimer(t.timer)),
                 Ys(3),
                 uo("", t.durability_cost, " / ", t.durability_max, ""),
                 Ys(2),
-                Cr("ngClass", t.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
+                Cr("ngIf", 497922 != t.template_id && 497923 != t.template_id && 497924 != t.template_id && 497925 != t.template_id && 497926 != t.template_id),
                 Ys(1),
-                ho(" ", Pa(14, 10, t.daily, "1.0-2"), " \uffe6")
+                Cr("ngIf", 497922 == t.template_id || 497923 == t.template_id || 497924 == t.template_id || 497925 == t.template_id || 497926 == t.template_id)
             }
             var n
         }
-        function sd(t, e) {
+        function rd(t, e) {
             if (1 & t && (Er(0, "div", 17),
             Dr(1, "br"),
             Er(2, "div", 18),
@@ -11692,29 +11762,29 @@
             Er(4, "div", 20),
             Er(5, "div", 21),
             Er(6, "span", 22),
-            lo(7),
+            co(7),
             xr(),
             xr(),
             Er(8, "div", 23),
-            lo(9, "Balance: "),
+            co(9, "Balance: "),
             Er(10, "span", 24),
-            lo(11),
-            Ta(12, "number"),
+            co(11),
+            Fa(12, "number"),
             xr(),
             xr(),
             Er(13, "div", 23),
-            lo(14, "Staking"),
+            co(14, "Staking"),
             Dr(15, "br"),
             Er(16, "span", 25),
-            lo(17),
-            Ta(18, "number"),
+            co(17),
+            Fa(18, "number"),
             xr(),
             xr(),
             Dr(19, "br"),
             Er(20, "div", 23),
             Er(21, "span", 26),
-            lo(22),
-            Ta(23, "number"),
+            co(22),
+            Fa(23, "number"),
             xr(),
             xr(),
             xr(),
@@ -11725,57 +11795,57 @@
             Er(27, "div", 29),
             Er(28, "div", 30),
             Er(29, "span", 31),
-            lo(30, "Tokens:"),
+            co(30, "Tokens:"),
             xr(),
             xr(),
             Er(31, "div", 30),
             Er(32, "span", 32),
-            lo(33, "InGame:"),
+            co(33, "InGame:"),
             xr(),
             xr(),
             Er(34, "div", 33),
             Er(35, "span", 32),
-            lo(36, "Daily Cost/Mine:"),
+            co(36, "Daily Cost/Mine:"),
             xr(),
             xr(),
             Dr(37, "br"),
             Er(38, "div", 34),
             Er(39, "div", 35),
             Er(40, "span", 31),
-            lo(41),
-            Ta(42, "number"),
+            co(41),
+            Fa(42, "number"),
             xr(),
             xr(),
             Er(43, "div", 35),
             Er(44, "span", 31),
-            lo(45),
-            Ta(46, "number"),
+            co(45),
+            Fa(46, "number"),
             xr(),
             xr(),
             Er(47, "div", 35),
             Er(48, "span", 31),
-            lo(49),
-            Ta(50, "number"),
+            co(49),
+            Fa(50, "number"),
             xr(),
             xr(),
             xr(),
             Er(51, "div", 34),
             Er(52, "div", 35),
             Er(53, "span", 32),
-            lo(54),
-            Ta(55, "number"),
+            co(54),
+            Fa(55, "number"),
             xr(),
             xr(),
             Er(56, "div", 35),
             Er(57, "span", 32),
-            lo(58),
-            Ta(59, "number"),
+            co(58),
+            Fa(59, "number"),
             xr(),
             xr(),
             Er(60, "div", 35),
             Er(61, "span", 32),
-            lo(62),
-            Ta(63, "number"),
+            co(62),
+            Fa(63, "number"),
             xr(),
             xr(),
             xr(),
@@ -11793,30 +11863,30 @@
             Er(71, "div", 34),
             Er(72, "div", 40),
             Er(73, "span", 41),
-            lo(74),
-            Ta(75, "number"),
+            co(74),
+            Fa(75, "number"),
             xr(),
             xr(),
             Er(76, "div", 40),
             Er(77, "span", 41),
-            lo(78),
-            Ta(79, "number"),
+            co(78),
+            Fa(79, "number"),
             xr(),
             xr(),
             Er(80, "div", 40),
             Er(81, "span", 41),
-            lo(82),
-            Ta(83, "number"),
+            co(82),
+            Fa(83, "number"),
             xr(),
             xr(),
             xr(),
             Er(84, "div"),
             Er(85, "div", 42),
             Er(86, "span", 43),
-            lo(87, "Energy:"),
+            co(87, "Energy:"),
             xr(),
             Er(88, "span", 44),
-            lo(89),
+            co(89),
             xr(),
             xr(),
             Dr(90, "div", 45),
@@ -11825,20 +11895,20 @@
             Er(92, "div", 46),
             Er(93, "div", 42),
             Er(94, "span", 43),
-            lo(95, "MINING"),
+            co(95, "MINING"),
             xr(),
             xr(),
             Er(96, "div", 45),
             Er(97, "span", 43),
-            lo(98, "Daily Profit:"),
+            co(98, "Daily Profit:"),
             xr(),
             Er(99, "span", 47),
-            lo(100),
-            Ta(101, "number"),
+            co(100),
+            Fa(101, "number"),
             xr(),
             xr(),
             xr(),
-            Sr(102, nd, 15, 13, "div", 48),
+            Ar(102, id, 14, 10, "div", 48),
             xr(),
             xr(),
             xr(),
@@ -11846,7 +11916,7 @@
             2 & t) {
                 const t = Rr();
                 Ys(7),
-                co(t.accountWamID),
+                lo(t.accountWamID),
                 Ys(4),
                 ho("", Pa(12, 25, t.accountWaxAlcor, "1.2-2"), " \uffe6"),
                 Ys(6),
@@ -11857,32 +11927,32 @@
                 n = "width:",
                 s = t.CPU,
                 i = "%; background-color: rgb(250, 0, 0);",
-                Yr(so, Zr, Ar(Ee(), n, s, i), !1),
-                Nr("aria-valuenow", t.CPU),
+                Yr(so, Zr, Sr(Ee(), n, s, i), !1),
+                Wr("aria-valuenow", t.CPU),
                 Ys(16),
-                co(Pa(42, 34, t.accountWOODAlcor, "1.4-4")),
+                lo(Pa(42, 34, t.accountWOODAlcor, "1.4-4")),
                 Ys(4),
-                co(Pa(46, 37, t.accountSTONEAlcor, "1.4-4")),
+                lo(Pa(46, 37, t.accountSTONEAlcor, "1.4-4")),
                 Ys(4),
-                co(Pa(50, 40, t.accountFOODAlcor, "1.4-4")),
+                lo(Pa(50, 40, t.accountFOODAlcor, "1.4-4")),
                 Ys(5),
-                co(Pa(55, 43, t.accountWOOD, "1.4-4")),
+                lo(Pa(55, 43, t.accountWOOD, "1.4-4")),
                 Ys(4),
-                co(Pa(59, 46, t.accountSTONE, "1.4-4")),
+                lo(Pa(59, 46, t.accountSTONE, "1.4-4")),
                 Ys(4),
-                co(Pa(63, 49, t.accountFOOD, "1.4-4")),
+                lo(Pa(63, 49, t.accountFOOD, "1.4-4")),
                 Ys(11),
                 Cr("ngClass", t.TotalValueWOOD >= 0 ? "gradbg-lime2" : "gradbg-red"),
                 Ys(1),
-                co(Pa(75, 52, t.TotalValueWOOD, "1.0-0")),
+                lo(Pa(75, 52, t.TotalValueWOOD, "1.0-0")),
                 Ys(3),
                 Cr("ngClass", t.TotalValueSTONE >= 0 ? "gradbg-lime2" : "gradbg-red"),
                 Ys(1),
-                co(Pa(79, 55, t.TotalValueSTONE, "1.0-0")),
+                lo(Pa(79, 55, t.TotalValueSTONE, "1.0-0")),
                 Ys(3),
                 Cr("ngClass", t.TotalValueFOOD >= 0 ? "gradbg-lime2" : "gradbg-red"),
                 Ys(1),
-                co(Pa(83, 58, t.TotalValueFOOD, "1.0-0")),
+                lo(Pa(83, 58, t.TotalValueFOOD, "1.0-0")),
                 Ys(7),
                 uo("", t.accountNRJ, " / ", t.accountMaxNRJ, ""),
                 Ys(10),
@@ -11894,7 +11964,7 @@
             }
             var n, s, i
         }
-        let id = (()=>{
+        let od = (()=>{
             class t {
                 constructor(t, e, n) {
                     this.shareDataService = t,
@@ -11922,6 +11992,11 @@
                     this.accountWamID = ((new URL(window.location.href)).searchParams.get("waxid") || localStorage.getItem("listAccountWamID")),
                     this.accountWamID && this.viewAccount(this.accountWamID.split(",")[0]),
                     ((new URL(window.location.href)).searchParams.get("waxid") || localStorage.getItem("listAccountWamID")) && ((new URL(window.location.href)).searchParams.get("waxid") || localStorage.getItem("listAccountWamID")).split(",").forEach( t=>this.listAccountWamID.push(t) ),
+                    this.BowCommon = this.shareDataService.getBowCommon(),
+                    this.BowUncommon = this.shareDataService.getBowUncommon(),
+                    this.BowRare = this.shareDataService.getBowRare(),
+                    this.BowEpic = this.shareDataService.getBowEpic(),
+                    this.BowLegendary = this.shareDataService.getBowLegendary(),
                     this.SpearCommon = this.shareDataService.getStoneSpearCommon(),
                     this.SpearunCommon = this.shareDataService.getStoneSpearUncommon(),
                     this.Spearrare = this.shareDataService.getStoneSpearRare(),
@@ -12046,6 +12121,11 @@
                         this.AxeRare = this.shareDataService.getStoneAxeRare(),
                         this.AxeEpic = this.shareDataService.getStoneAxeEpic(),
                         this.AxeLegendary = this.shareDataService.getStoneAxeLegendary(),
+                        this.BowCommon = this.shareDataService.getBowCommon(),
+                        this.BowUncommon = this.shareDataService.getBowUncommon(),
+                        this.BowRare = this.shareDataService.getBowRare(),
+                        this.BowEpic = this.shareDataService.getBowEpic(),
+                        this.BowLegendary = this.shareDataService.getBowLegendary(),
                         this.villageois.forEach(t=>{
                             let e = this.listeItemAccount.filter(e=>{
                                 if (e.last_claimed == t)
@@ -12166,31 +12246,32 @@
                             this.AxeCommon && (this.TotalValueSTONE += -this.AxeCommon.stone_repair_cost * this.ActionDay,
                             this.TotalValueWOOD += (this.AxeCommon.rewards - this.AxeCommon.wood_repair_cost) * this.ActionDay,
                             this.TotalValueFOOD += -this.AxeCommon.energy_cost / 5 * this.ActionDay,
-                            this.TotalValueWax += (this.AxeCommon.rewards - this.AxeCommon.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeCommon.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeCommon.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
+                            this.TotalValueWax += (this.AxeCommon.rewards - this.AxeCommon.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeCommon.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeCommon.energy_cost / 5 * this.ActionDay * this.ValueAOFF));
                             break;
                         case 486821:
                             this.AxeUncommon && (this.TotalValueSTONE += -this.AxeUncommon.stone_repair_cost * this.ActionDay,
                             this.TotalValueWOOD += (this.AxeUncommon.rewards - this.AxeUncommon.wood_repair_cost) * this.ActionDay,
                             this.TotalValueFOOD += -this.AxeUncommon.energy_cost / 5 * this.ActionDay,
-                            this.TotalValueWax += (this.AxeUncommon.rewards - this.AxeUncommon.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeUncommon.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeUncommon.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
+                            this.TotalValueWax += (this.AxeUncommon.rewards - this.AxeUncommon.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeUncommon.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeUncommon.energy_cost / 5 * this.ActionDay * this.ValueAOFF));
                             break;
                         case 486822:
                             this.AxeRare && (this.TotalValueSTONE += -this.AxeRare.stone_repair_cost * this.ActionDay,
                             this.TotalValueWOOD += (this.AxeRare.rewards - this.AxeRare.wood_repair_cost) * this.ActionDay,
                             this.TotalValueFOOD += -this.AxeRare.energy_cost / 5 * this.ActionDay,
-                            this.TotalValueWax += (this.AxeRare.rewards - this.AxeRare.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeRare.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeRare.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
+                            this.TotalValueWax += (this.AxeRare.rewards - this.AxeRare.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeRare.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeRare.energy_cost / 5 * this.ActionDay * this.ValueAOFF));
                             break;
                         case 486823:
                             this.AxeEpic && (this.TotalValueSTONE += -this.AxeEpic.stone_repair_cost * this.ActionDay,
                             this.TotalValueWOOD += (this.AxeEpic.rewards - this.AxeEpic.wood_repair_cost) * this.ActionDay,
                             this.TotalValueFOOD += -this.AxeEpic.energy_cost / 5 * this.ActionDay,
-                            this.TotalValueWax += (this.AxeEpic.rewards - this.AxeEpic.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeEpic.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeEpic.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
+                            this.TotalValueWax += (this.AxeEpic.rewards - this.AxeEpic.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeEpic.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeEpic.energy_cost / 5 * this.ActionDay * this.ValueAOFF));
                             break;
                         case 486824:
                             this.AxeLegendary && (this.TotalValueSTONE += -this.AxeLegendary.stone_repair_cost * this.ActionDay,
                             this.TotalValueWOOD += (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay,
                             this.TotalValueFOOD += -this.AxeLegendary.energy_cost / 5 * this.ActionDay,
-                            this.TotalValueWax += (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeLegendary.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeLegendary.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
+                            this.TotalValueWax += (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeLegendary.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeLegendary.energy_cost / 5 * this.ActionDay * this.ValueAOFF));
+                            break;
                         case 497922:
                             this.BowCommon && (this.TotalValueSTONE += -this.BowCommon.stone_repair_cost * this.ActionDay,
                             this.TotalValueWOOD += -this.BowCommon.wood_repair_cost * this.ActionDay,
@@ -12268,38 +12349,43 @@
                         break;
                     case 486820:
                         if (this.AxeCommon)
-                            return (this.AxeCommon.rewards - this.AxeCommon.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeCommon.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeCommon.energy_cost / 5 * this.ActionDay * this.ValueAOFF;
+                            return (this.AxeCommon.rewards - this.AxeCommon.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeCommon.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeCommon.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
                         break;
                     case 486821:
                         if (this.AxeUncommon)
-                            return (this.AxeUncommon.rewards - this.AxeUncommon.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeUncommon.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeUncommon.energy_cost / 5 * this.ActionDay * this.ValueAOFF;
+                            return (this.AxeUncommon.rewards - this.AxeUncommon.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeUncommon.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeUncommon.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
                         break;
                     case 486822:
                         if (this.AxeRare)
-                            return (this.AxeRare.rewards - this.AxeRare.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeRare.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeRare.energy_cost / 5 * this.ActionDay * this.ValueAOFF;
+                            return (this.AxeRare.rewards - this.AxeRare.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeRare.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeRare.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
                         break;
                     case 486823:
                         if (this.AxeEpic)
-                            return (this.AxeEpic.rewards - this.AxeEpic.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeEpic.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeEpic.energy_cost / 5 * this.ActionDay * this.ValueAOFF;
+                            return (this.AxeEpic.rewards - this.AxeEpic.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeEpic.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeEpic.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
                         break;
                     case 486824:
                         if (this.AxeLegendary)
-                            return (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay * this.ValueAOFW - this.AxeLegendary.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeLegendary.energy_cost / 5 * this.ActionDay * this.ValueAOFF;
+                            return (this.AxeLegendary.rewards - this.AxeLegendary.wood_repair_cost) * this.ActionDay * this.ValueAOFW - (this.AxeLegendary.stone_repair_cost * this.ActionDay * this.ValueAOFS + this.AxeLegendary.energy_cost / 5 * this.ActionDay * this.ValueAOFF);
                         break;
-                    //    case 497922:
-                    //        return this.BowCommon.rewards;
-                    //        break;
-                    //    case 497923:
-                    //        return this.BowUncommon.rewards;
-                    //        break;
-                    //    case 497924:
-                    //        return this.BowRare.rewards;
-                    //        break;
-                    //    case 497925:
-                    //        return this.BowEpic.rewards;
-                    //        break;
-                    //    case 497926:
-                    //        return this.BowLegendary.rewards
+                    case 497922:
+                        if (this.BowCommon)
+                            return this.BowCommon.rewards;
+                        break;
+                    case 497923:
+                        if (this.BowUncommon)
+                            return this.BowUncommon.rewards;
+                        break;
+                    case 497924:
+                        if (this.BowRare)
+                            return this.BowRare.rewards;
+                        break;
+                    case 497925:
+                        if (this.BowEpic)
+                            return this.BowEpic.rewards;
+                        break;
+                    case 497926:
+                        if (this.BowLegendary)
+                            return this.BowLegendary.rewards
                     }
                 }
                 getName(t) {
@@ -12350,15 +12436,20 @@
                         if (this.AxeLegendary)
                             return this.AxeLegendary.nft_name + " " + this.AxeLegendary.rarity;
                     case 497922:
-                        return 'Short Bow Common';
+                        if (this.BowCommon)
+                            return this.BowCommon.nft_name + " " + this.BowCommon.rarity;
                     case 497923:
-                        return 'Short Bow Uncommon';
+                        if (this.BowUncommon)
+                            return this.BowUncommon.nft_name + " " + this.BowUncommon.rarity;
                     case 497924:
-                        return 'Short Bow Rare';
+                        if (this.BowRare)
+                            return this.BowRare.nft_name + " " + this.BowRare.rarity;
                     case 497925:
-                        return 'Short Bow Epic';
+                        if (this.BowEpic)
+                            return this.BowEpic.nft_name + " " + this.BowEpic.rarity;
                     case 497926:
-                        return 'Short Bow Legendary'
+                        if (this.BowLegendary)
+                            return this.BowLegendary.nft_name + " " + this.BowLegendary.rarity
                     }
                 }
                 getRarity(t) {
@@ -12410,7 +12501,7 @@
                 return new (e || t)(Or(Yh),Or(Ju),Or(Gh))
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-account"]],
                 inputs: {
@@ -12422,7 +12513,7 @@
                 features: [ae],
                 decls: 26,
                 vars: 3,
-                consts: [[1, "container"], [1, "row"], [1, "col-md-6"], [1, "row", "alert", "alert-info", "m-0", "mwm-box"], [2, "text-align", "center"], [1, "card-header-title", "mb-0"], [1, "md-form", "mb-0", "mt-1"], [1, "small"], [1, "d-inline-block", "w-10", 2, "margin-top", "-42px"], ["type", "text", "id", "PandaWamID", 1, "form-control", "c-white", 3, "ngModel", "ngModelChange"], [1, "btn", "btn-sm", "gradbg-lime2", "px-2", "waves-light", 3, "click"], [1, "btn", "btn-sm", "gradbg-red", "px-2", "waves-light", 3, "click"], [1, "m-1"], [4, "ngIf"], ["class", "col-sm-12 mb-4 px-2 text-center", "style", "margin: auto;", 4, "ngIf"], ["class", "d-inline-block w-10", 4, "ngFor", "ngForOf"], [1, "badge", "sm", "mr-2", "my-1", 3, "click"], [1, "col-sm-12", "mb-4", "px-2", "text-center", 2, "margin", "auto"], [1, "card", "card-cascade", "wider"], [1, "view", "view-cascade", "gradient-card-header", "gradbg-grey"], [1, "mb-0"], [1, "d-inline-block", "w-50"], [1, "badge", "gradbg-cyan", "l-font"], [1, "d-inline-block", "w-25", "sss-font"], [1, "badge", "orange", "darken-2", "ss-font"], [1, "badge", "orange", "darken-2"], [1, "badge", "cpu_25"], [1, "progress", 2, "height", "5px", "border", "black 1px solid"], ["role", "progressbar", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", 3, "aria-valuenow"], [1, "sss-font", "mt-2"], [1, "d-inline-block", "w-25", "vtop", "text-right"], [1, "badge", "ssm", "mr-2"], [1, "badge", "sm", "mr-2"], [1, "d-inline-block", "w-50", "vtop", "text-right"], [1, "d-inline-block", "w-25", "vtop"], [1, "d-inline-block", "w-100", "text-right", "vtop"], [1, "d-inline-block", "w-100", "text-center", "vtop"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aofw.png", 1, "d-inline-block", 2, "height", "20px"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aofs.png", 1, "d-inline-block", 2, "height", "20px"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aoff.png", 1, "d-inline-block", 2, "height", "20px"], [1, "d-inline-block", "w-100", "text-left", "vtop"], [1, "ml-2", "badge", "sm", 3, "ngClass"], [1, "d-inline-block", "w-50", "text-left"], [1, "badge", "sm", "grey", "darken-1"], [1, "badge", "sm", "ml-2", 2, "background-color", "rgb(118, 160, 21)"], [1, "d-inline-block", "w-50", "text-right"], [1, "d-inline-block", "w-100", "vtop"], [1, "badge", "md", 3, "ngClass"], [4, "ngFor", "ngForOf"], [1, "d-inline-block", "w-25", "text-right"], [1, "d-inline-block", "w-25", "text-center"], [1, "badge", "ssm", "mr-2", 3, "ngClass"], [1, "badge", "sm", 3, "ngClass"]],
+                consts: [[1, "container"], [1, "row"], [1, "col-md-6"], [1, "row", "alert", "alert-info", "m-0", "mwm-box"], [2, "text-align", "center"], [1, "card-header-title", "mb-0"], [1, "md-form", "mb-0", "mt-1"], [1, "small"], [1, "d-inline-block", "w-10"], ["type", "text", "id", "PandaWamID", 1, "form-control", "c-white", 3, "ngModel", "ngModelChange"], [1, "btn", "btn-sm", "gradbg-lime2", "px-2", "waves-light", 3, "click"], [1, "btn", "btn-sm", "gradbg-red", "px-2", "waves-light", 3, "click"], [1, "m-1"], [4, "ngIf"], ["class", "col-sm-12 mb-4 px-2 text-center", "style", "margin: auto;", 4, "ngIf"], ["class", "d-inline-block w-10", 4, "ngFor", "ngForOf"], [1, "badge", "sm", "mr-2", "my-1", 3, "click"], [1, "col-sm-12", "mb-4", "px-2", "text-center", 2, "margin", "auto"], [1, "card", "card-cascade", "wider"], [1, "view", "view-cascade", "gradient-card-header", "gradbg-grey"], [1, "mb-0"], [1, "d-inline-block", "w-50"], [1, "badge", "gradbg-cyan", "l-font"], [1, "d-inline-block", "w-25", "sss-font"], [1, "badge", "orange", "darken-2", "ss-font"], [1, "badge", "orange", "darken-2"], [1, "badge", "cpu_25"], [1, "progress", 2, "height", "5px", "border", "black 1px solid"], ["role", "progressbar", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", 3, "aria-valuenow"], [1, "sss-font", "mt-2"], [1, "d-inline-block", "w-25", "vtop", "text-right"], [1, "badge", "ssm", "mr-2"], [1, "badge", "sm", "mr-2"], [1, "d-inline-block", "w-50", "vtop", "text-right"], [1, "d-inline-block", "w-25", "vtop"], [1, "d-inline-block", "w-100", "text-right", "vtop"], [1, "d-inline-block", "w-100", "text-center", "vtop"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aofw.png", 1, "d-inline-block", 2, "height", "20px"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aofs.png", 1, "d-inline-block", 2, "height", "20px"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aoff.png", 1, "d-inline-block", 2, "height", "20px"], [1, "d-inline-block", "w-100", "text-left", "vtop"], [1, "ml-2", "badge", "sm", 3, "ngClass"], [1, "d-inline-block", "w-50", "text-left"], [1, "badge", "sm", "grey", "darken-1"], [1, "badge", "sm", "ml-2", 2, "background-color", "rgb(118, 160, 21)"], [1, "d-inline-block", "w-50", "text-right"], [1, "d-inline-block", "w-100", "vtop"], [1, "badge", "md", 3, "ngClass"], [4, "ngFor", "ngForOf"], [1, "d-inline-block", "w-25", "text-right"], [1, "d-inline-block", "w-25", "text-center"], [1, "badge", "ssm", "mr-2", 3, "ngClass"], ["class", "badge sm", 3, "ngClass", 4, "ngIf"], ["class", "badge sm grey darken-1", 4, "ngIf"], [1, "badge", "sm", 3, "ngClass"]],
                 template: function(t, e) {
                     1 & t && (Er(0, "div", 0),
                     Er(1, "div", 1),
@@ -12431,46 +12522,46 @@
                     Er(4, "div", 3),
                     Er(5, "div", 4),
                     Er(6, "h4", 5),
-                    lo(7, "Checking Accounts"),
+                    co(7, ""),
                     xr(),
                     Er(8, "div", 6),
-                    Er(9, "label"),
-                    // lo(10, "Enter your wax ids "),
+                    Er(9, "div"),
+                    co(10, ""),
                     Dr(11, "br"),
                     Er(12, "span", 7),
-                    // lo(13, "(Ex: xxxx1.wam)"),
+                    co(13, "(Ex: xxxx1.wam)"),
                     xr(),
                     xr(),
                     Er(14, "div", 8),
                     Dr(15, "br"),
                     Er(16, "input", 9),
-                    Tr("ngModelChange", function(t) {
+                    Fr("ngModelChange", function(t) {
                         return e.AddAccountWamID = t
                     }),
                     xr(),
                     xr(),
                     Er(17, "div", 8),
                     Er(18, "button", 10),
-                    Tr("click", function() {
+                    Fr("click", function() {
                         return e.sendAccount(e.AddAccountWamID)
                     }),
-                    lo(19, "Add "),
+                    co(19, "Add "),
                     xr(),
                     Er(20, "button", 11),
-                    Tr("click", function() {
+                    Fr("click", function() {
                         return e.clear()
                     }),
-                    lo(21, "Clear All "),
+                    co(21, "Clear All "),
                     xr(),
                     xr(),
                     Dr(22, "hr", 12),
-                    Sr(23, ed, 2, 1, "div", 13),
+                    Ar(23, ed, 2, 1, "div", 13),
                     xr(),
                     xr(),
                     xr(),
                     xr(),
                     Er(24, "div", 2),
-                    Sr(25, sd, 103, 64, "div", 14),
+                    Ar(25, rd, 103, 64, "div", 14),
                     xr(),
                     xr(),
                     xr()),
@@ -12481,17 +12572,17 @@
                     Ys(2),
                     Cr("ngIf", e.showAccount && e.accountWamID))
                 },
-                directives: [ou, bu, Lu, Ac, bc, yc],
-                pipes: [Cc],
+                directives: [ou, bu, Lu, Sl, bl, yl],
+                pipes: [Cl],
                 styles: [".gradbg-cyan[_ngcontent-%COMP%]{color:#000;background:linear-gradient(40deg,#5b81a5,#19e4ff)!important}.gradbg-lime2[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#4e9f34,#c4de00)!important}.gradbg-red[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#b60e2c,#e00919)!important}.grey.darken-1[_ngcontent-%COMP%]{background-color:#757575!important}.grey.lighten-2[_ngcontent-%COMP%]{background-color:#e0e0e0!important}.common[_ngcontent-%COMP%]{color:#868686!important;border:3px solid #868686}.uncommon[_ngcontent-%COMP%]{color:#4e9f34!important;border:3px solid #4e9f34}.rare[_ngcontent-%COMP%]{color:#0d1d54!important;border:3px solid #0d1d54}.epic[_ngcontent-%COMP%]{color:#731173!important;border:3px solid #731173}.legendary[_ngcontent-%COMP%]{color:#f3d339!important;border:3px solid #f3d339}.orange[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#d27f12,#c57b0a)!important}.gradbg-dark-green[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#163805,#76a015)!important}.l-font[_ngcontent-%COMP%]{font-size:large}.badge.md[_ngcontent-%COMP%]{padding:4px;font-size:16px}.badge[_ngcontent-%COMP%]{color:#000;border-radius:.125rem;box-shadow:0 2px 5px 0 #00000029,0 2px 10px 0 #0000001f;display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:initial;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.sss-font[_ngcontent-%COMP%]{color:#000;font-size:.75em}.badge.sm[_ngcontent-%COMP%]{padding:3px;font-size:12px}.card.card-cascade.wider[_ngcontent-%COMP%]   .view.view-cascade[_ngcontent-%COMP%]{z-index:2}.card.card-cascade[_ngcontent-%COMP%]   .view.view-cascade.gradient-card-header[_ngcontent-%COMP%]{padding:1.6rem 1rem 1rem;color:#fff;text-align:center}.card.card-cascade[_ngcontent-%COMP%]   .view.view-cascade[_ngcontent-%COMP%]{border-radius:.25rem;box-shadow:0 5px 11px 0 #0000002e,0 4px 15px 0 #00000026}.gradbg-grey[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#d7f2fb,#d7f2fb)!important}"]
             }),
             t
         }
         )();
-        function rd(t, e) {
+        function ad(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12500,10 +12591,10 @@
                 ho("", Pa(2, 2, t.legendary.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function od(t, e) {
+        function cd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12511,10 +12602,10 @@
                 ho("", Pa(2, 1, t.legendary.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function ad(t, e) {
+        function ld(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12523,10 +12614,10 @@
                 ho("", Pa(2, 2, t.epic.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function ld(t, e) {
+        function hd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12534,10 +12625,10 @@
                 ho("", Pa(2, 1, t.epic.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function cd(t, e) {
+        function ud(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12546,10 +12637,10 @@
                 ho("", Pa(2, 2, t.rare.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function hd(t, e) {
+        function dd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12557,10 +12648,10 @@
                 ho("", Pa(2, 1, t.rare.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function ud(t, e) {
+        function pd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12569,10 +12660,10 @@
                 ho("", Pa(2, 2, t.uncommon.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function dd(t, e) {
+        function md(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12580,10 +12671,10 @@
                 ho("", Pa(2, 1, t.uncommon.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function pd(t, e) {
+        function fd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12592,10 +12683,10 @@
                 ho("", Pa(2, 2, t.common.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function md(t, e) {
+        function gd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -12603,7 +12694,7 @@
                 ho("", Pa(2, 1, t.common.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        let fd = (()=>{
+        let _d = (()=>{
             class t {
                 constructor(t, e, n) {
                     this.ageoffarmingService = t,
@@ -12620,23 +12711,23 @@
                     this.shareDataService.change.subscribe(t=>{
                         this.ActionDay = t;
                         let e = this.shareDataService.getStoneAxeCommon();
-                        this.common.daily = this.ActionDay * e.rewards * this.ValueAOFW.Value - (this.ActionDay * e.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * e.stone_repair_cost * this.ValueAOFS + this.ActionDay * e.energy_cost / 5 * this.ValueAOFF),
+                        this.common.daily = this.ActionDay * (e.rewards - e.wood_repair_cost) * this.ValueAOFW.Value - (this.ActionDay * e.stone_repair_cost * this.ValueAOFS + this.ActionDay * e.energy_cost / 5 * this.ValueAOFF),
                         this.common.production = e.rewards * this.ActionDay,
                         this.common.roi = this.getroi(this.common.atomic, this.common.craftCost, this.common.daily);
                         let n = this.shareDataService.getStoneAxeUncommon();
-                        this.uncommon.daily = this.ActionDay * n.rewards * this.ValueAOFW.Value - (this.ActionDay * n.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * n.stone_repair_cost * this.ValueAOFS + this.ActionDay * n.energy_cost / 5 * this.ValueAOFF),
+                        this.uncommon.daily = this.ActionDay * (n.rewards - n.wood_repair_cost) * this.ValueAOFW.Value - (this.ActionDay * n.stone_repair_cost * this.ValueAOFS + this.ActionDay * n.energy_cost / 5 * this.ValueAOFF),
                         this.uncommon.production = n.rewards * this.ActionDay,
                         this.uncommon.roi = this.getroi(this.uncommon.atomic, this.uncommon.craftCost, this.uncommon.daily);
                         let s = this.shareDataService.getStoneAxeRare();
-                        this.rare.daily = this.ActionDay * s.rewards * this.ValueAOFW.Value - (this.ActionDay * s.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * s.stone_repair_cost * this.ValueAOFS + this.ActionDay * s.energy_cost / 5 * this.ValueAOFF),
+                        this.rare.daily = this.ActionDay * (s.rewards - s.wood_repair_cost) * this.ValueAOFW.Value - (this.ActionDay * s.stone_repair_cost * this.ValueAOFS + this.ActionDay * s.energy_cost / 5 * this.ValueAOFF),
                         this.rare.production = s.rewards * this.ActionDay,
                         this.rare.roi = this.getroi(this.rare.atomic, this.rare.craftCost, this.rare.daily);
                         let i = this.shareDataService.getStoneAxeEpic();
-                        this.epic.daily = this.ActionDay * i.rewards * this.ValueAOFW.Value - (this.ActionDay * i.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * i.stone_repair_cost * this.ValueAOFS + this.ActionDay * i.energy_cost / 5 * this.ValueAOFF),
+                        this.epic.daily = this.ActionDay * (i.rewards - i.wood_repair_cost) * this.ValueAOFW.Value - (this.ActionDay * i.stone_repair_cost * this.ValueAOFS + this.ActionDay * i.energy_cost / 5 * this.ValueAOFF),
                         this.epic.production = i.rewards * this.ActionDay,
                         this.epic.roi = this.getroi(this.epic.atomic, this.epic.craftCost, this.epic.daily);
                         let r = this.shareDataService.getStoneAxeLegendary();
-                        this.legendary.daily = this.ActionDay * r.rewards * this.ValueAOFW.Value - (this.ActionDay * r.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * r.stone_repair_cost * this.ValueAOFS + this.ActionDay * r.energy_cost / 5 * this.ValueAOFF),
+                        this.legendary.daily = this.ActionDay * (r.rewards - r.wood_repair_cost) * this.ValueAOFW.Value - (this.ActionDay * r.stone_repair_cost * this.ValueAOFS + this.ActionDay * r.energy_cost / 5 * this.ValueAOFF),
                         this.legendary.production = r.rewards * this.ActionDay,
                         this.legendary.roi = this.getroi(this.legendary.atomic, this.legendary.craftCost, this.legendary.daily)
                     }
@@ -12699,7 +12790,7 @@
                     this.common.craftCost = t.wood_craft_cost * this.ValueAOFW.Value + t.stone_craft_cost * this.ValueAOFS,
                     this.common.priceResourceWOOD = t.wood_craft_cost * this.ValueAOFW.Value,
                     this.common.priceResourceSTONE = t.stone_craft_cost * this.ValueAOFS,
-                    this.common.daily = this.ActionDay * t.rewards * this.ValueAOFW.Value - (this.ActionDay * t.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * t.stone_repair_cost * this.ValueAOFS + this.ActionDay * t.energy_cost / 5 * this.ValueAOFF),
+                    this.common.daily = this.ActionDay * (t.rewards - t.wood_repair_cost) * this.ValueAOFW.Value - (+this.ActionDay * t.stone_repair_cost * this.ValueAOFS + this.ActionDay * t.energy_cost / 5 * this.ValueAOFF),
                     this.common.roi = this.getroi(this.common.atomic, this.common.craftCost, this.common.daily));
                     let e = this.shareDataService.getStoneAxeUncommon();
                     e && (this.uncommon.resourceWOOD = e.wood_craft_cost + this.common.resourceWOOD,
@@ -12708,7 +12799,7 @@
                     this.uncommon.craftCost = this.uncommon.resourceWOOD * this.ValueAOFW.Value + this.uncommon.resourceSTONE * this.ValueAOFS,
                     this.uncommon.priceResourceWOOD = this.uncommon.resourceWOOD * this.ValueAOFW.Value,
                     this.uncommon.priceResourceSTONE = this.uncommon.resourceSTONE * this.ValueAOFS,
-                    this.uncommon.daily = this.ActionDay * e.rewards * this.ValueAOFW.Value - (this.ActionDay * e.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * e.stone_repair_cost * this.ValueAOFS + this.ActionDay * e.energy_cost / 5 * this.ValueAOFF),
+                    this.uncommon.daily = this.ActionDay * (e.rewards - e.wood_repair_cost) * this.ValueAOFW.Value - (+this.ActionDay * e.stone_repair_cost * this.ValueAOFS + this.ActionDay * e.energy_cost / 5 * this.ValueAOFF),
                     this.uncommon.roi = this.getroi(this.uncommon.atomic, this.uncommon.craftCost, this.uncommon.daily));
                     let n = this.shareDataService.getStoneAxeRare();
                     n && (this.rare.resourceWOOD = n.wood_craft_cost + this.uncommon.resourceWOOD,
@@ -12717,7 +12808,7 @@
                     this.rare.craftCost = this.rare.resourceWOOD * this.ValueAOFW.Value + this.rare.resourceSTONE * this.ValueAOFS,
                     this.rare.priceResourceWOOD = this.rare.resourceWOOD * this.ValueAOFW.Value,
                     this.rare.priceResourceSTONE = this.rare.resourceSTONE * this.ValueAOFS,
-                    this.rare.daily = this.ActionDay * n.rewards * this.ValueAOFW.Value - (this.ActionDay * n.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * n.stone_repair_cost * this.ValueAOFS + this.ActionDay * n.energy_cost / 5 * this.ValueAOFF),
+                    this.rare.daily = this.ActionDay * (n.rewards - n.wood_repair_cost) * this.ValueAOFW.Value - (+this.ActionDay * n.stone_repair_cost * this.ValueAOFS + this.ActionDay * n.energy_cost / 5 * this.ValueAOFF),
                     this.rare.roi = this.getroi(this.rare.atomic, this.rare.craftCost, this.rare.daily));
                     let s = this.shareDataService.getStoneAxeEpic();
                     s && (this.epic.resourceWOOD = s.wood_craft_cost + this.rare.resourceWOOD,
@@ -12726,7 +12817,7 @@
                     this.epic.craftCost = this.epic.resourceWOOD * this.ValueAOFW.Value + this.epic.resourceSTONE * this.ValueAOFS,
                     this.epic.priceResourceWOOD = this.epic.resourceWOOD * this.ValueAOFW.Value,
                     this.epic.priceResourceSTONE = this.epic.resourceSTONE * this.ValueAOFS,
-                    this.epic.daily = this.ActionDay * s.rewards * this.ValueAOFW.Value - (this.ActionDay * s.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * s.stone_repair_cost * this.ValueAOFS + this.ActionDay * s.energy_cost / 5 * this.ValueAOFF),
+                    this.epic.daily = this.ActionDay * (s.rewards - s.wood_repair_cost) * this.ValueAOFW.Value - (+this.ActionDay * s.stone_repair_cost * this.ValueAOFS + this.ActionDay * s.energy_cost / 5 * this.ValueAOFF),
                     this.epic.roi = this.getroi(this.epic.atomic, this.epic.craftCost, this.epic.daily));
                     let i = this.shareDataService.getStoneAxeLegendary();
                     i && (this.legendary.resourceWOOD = i.wood_craft_cost + this.epic.resourceWOOD,
@@ -12735,7 +12826,7 @@
                     this.legendary.craftCost = this.legendary.resourceWOOD * this.ValueAOFW.Value + this.legendary.resourceSTONE * this.ValueAOFS,
                     this.legendary.priceResourceWOOD = this.legendary.resourceWOOD * this.ValueAOFW.Value,
                     this.legendary.priceResourceSTONE = this.legendary.resourceSTONE * this.ValueAOFS,
-                    this.legendary.daily = this.ActionDay * i.rewards * this.ValueAOFW.Value - (this.ActionDay * i.wood_repair_cost * this.ValueAOFW.Value + this.ActionDay * i.stone_repair_cost * this.ValueAOFS + this.ActionDay * i.energy_cost / 5 * this.ValueAOFF),
+                    this.legendary.daily = this.ActionDay * (i.rewards - i.wood_repair_cost) * this.ValueAOFW.Value - (+this.ActionDay * i.stone_repair_cost * this.ValueAOFS + this.ActionDay * i.energy_cost / 5 * this.ValueAOFF),
                     this.legendary.roi = this.getroi(this.legendary.atomic, this.legendary.craftCost, this.legendary.daily))
                 }
                 getroi(t, e, n) {
@@ -12749,7 +12840,7 @@
                 return new (e || t)(Or(Gh),Or(Ju),Or(Yh))
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-wood"]],
                 inputs: {
@@ -12768,30 +12859,30 @@
                     Dr(2, "div"),
                     Er(3, "div", 2),
                     Dr(4, "img", 3),
-                    lo(5, " WOOD "),
+                    co(5, " WOOD "),
                     Dr(6, "img", 3),
                     Dr(7, "br"),
                     Er(8, "span", 4),
-                    lo(9),
-                    Ta(10, "number"),
+                    co(9),
+                    Fa(10, "number"),
                     xr(),
                     Dr(11, "br"),
-                    lo(12),
-                    Ta(13, "number"),
+                    co(12),
+                    Fa(13, "number"),
                     Er(14, "span", 5),
-                    lo(15),
-                    Ta(16, "number"),
+                    co(15),
+                    Fa(16, "number"),
                     xr(),
                     Dr(17, "br"),
-                    lo(18),
-                    Ta(19, "number"),
+                    co(18),
+                    Fa(19, "number"),
                     Er(20, "span", 5),
-                    lo(21),
-                    Ta(22, "number"),
+                    co(21),
+                    Fa(22, "number"),
                     xr(),
                     Dr(23, "br"),
                     Er(24, "a", 6),
-                    lo(25, " Click to open Alcor Exchange "),
+                    co(25, " Click to open Alcor Exchange "),
                     xr(),
                     xr(),
                     Dr(26, "div"),
@@ -12803,69 +12894,69 @@
                     Er(31, "div", 11),
                     Er(32, "div", 12),
                     Er(33, "span", 13),
-                    lo(34),
-                    Ta(35, "number"),
+                    co(34),
+                    Fa(35, "number"),
                     xr(),
                     Dr(36, "img", 14),
                     xr(),
                     Er(37, "div", 12),
                     Er(38, "span", 13),
-                    lo(39),
-                    Ta(40, "number"),
+                    co(39),
+                    Fa(40, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(41, "div", 11),
                     Er(42, "div", 12),
                     Er(43, "span", 13),
-                    lo(44),
-                    Ta(45, "number"),
+                    co(44),
+                    Fa(45, "number"),
                     xr(),
                     Dr(46, "img", 15),
                     xr(),
                     Er(47, "div", 12),
                     Er(48, "span", 13),
-                    lo(49),
-                    Ta(50, "number"),
+                    co(49),
+                    Fa(50, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(51, "div", 11),
                     Er(52, "div", 12),
                     Er(53, "span", 4),
-                    lo(54, "Craft ￦"),
+                    co(54, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(55, "div", 12),
                     Er(56, "span", 16),
-                    lo(57),
-                    Ta(58, "number"),
+                    co(57),
+                    Fa(58, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(59, "div", 11),
                     Er(60, "div", 12),
                     Er(61, "span", 4),
-                    lo(62, "Craft $"),
+                    co(62, "Craft $"),
                     xr(),
                     xr(),
                     Er(63, "div", 12),
                     Er(64, "span", 17),
-                    lo(65),
-                    Ta(66, "number"),
+                    co(65),
+                    Fa(66, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(67, "div", 11),
                     Er(68, "div", 12),
                     Er(69, "span", 13),
-                    lo(70, "Minted :"),
+                    co(70, "Minted :"),
                     xr(),
                     xr(),
                     Er(71, "div", 12),
                     Er(72, "span", 13),
-                    lo(73),
-                    Ta(74, "number"),
+                    co(73),
+                    Fa(74, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -12875,9 +12966,9 @@
                     Dr(77, "video", 20),
                     Er(78, "div", 21),
                     Er(79, "span", 22),
-                    lo(80, "Buy "),
+                    co(80, "Buy "),
                     Dr(81, "BR"),
-                    lo(82),
+                    co(82),
                     xr(),
                     xr(),
                     xr(),
@@ -12886,59 +12977,59 @@
                     Er(84, "div", 11),
                     Er(85, "div", 23),
                     Er(86, "span", 4),
-                    lo(87, "Daily :"),
+                    co(87, "Daily :"),
                     xr(),
                     xr(),
                     Er(88, "div", 23),
                     Er(89, "span", 24),
-                    lo(90),
-                    Ta(91, "number"),
+                    co(90),
+                    Fa(91, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(92, "div", 11),
                     Er(93, "div", 23),
                     Er(94, "span", 13),
-                    lo(95, "ROI :"),
+                    co(95, "ROI :"),
                     xr(),
                     xr(),
                     Er(96, "div", 23),
                     Er(97, "span", 13),
-                    lo(98),
-                    Ta(99, "number"),
+                    co(98),
+                    Fa(99, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(100, "div", 11),
                     Er(101, "div", 23),
                     Er(102, "span", 4),
-                    lo(103, "Atomic :"),
+                    co(103, "Atomic :"),
                     xr(),
                     xr(),
                     Er(104, "div", 23),
-                    Sr(105, rd, 3, 5, "span", 25),
+                    Ar(105, ad, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(106, "div", 11),
                     Er(107, "div", 23),
                     Er(108, "span", 4),
-                    lo(109, "Atomic $:"),
+                    co(109, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(110, "div", 23),
-                    Sr(111, od, 3, 4, "span", 26),
+                    Ar(111, cd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(112, "div", 11),
                     Er(113, "div", 23),
                     Er(114, "span", 13),
-                    lo(115, "Wood Daily *:"),
+                    co(115, "Wood Daily *:"),
                     xr(),
                     xr(),
                     Er(116, "div", 23),
                     Er(117, "span", 13),
-                    lo(118),
-                    Ta(119, "number"),
+                    co(118),
+                    Fa(119, "number"),
                     Dr(120, "img", 27),
                     xr(),
                     xr(),
@@ -12949,69 +13040,69 @@
                     Er(123, "div", 11),
                     Er(124, "div", 12),
                     Er(125, "span", 13),
-                    lo(126),
-                    Ta(127, "number"),
+                    co(126),
+                    Fa(127, "number"),
                     xr(),
                     Dr(128, "img", 14),
                     xr(),
                     Er(129, "div", 12),
                     Er(130, "span", 13),
-                    lo(131),
-                    Ta(132, "number"),
+                    co(131),
+                    Fa(132, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(133, "div", 11),
                     Er(134, "div", 12),
                     Er(135, "span", 13),
-                    lo(136),
-                    Ta(137, "number"),
+                    co(136),
+                    Fa(137, "number"),
                     xr(),
                     Dr(138, "img", 15),
                     xr(),
                     Er(139, "div", 12),
                     Er(140, "span", 13),
-                    lo(141),
-                    Ta(142, "number"),
+                    co(141),
+                    Fa(142, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(143, "div", 11),
                     Er(144, "div", 12),
                     Er(145, "span", 4),
-                    lo(146, "Craft ￦"),
+                    co(146, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(147, "div", 12),
                     Er(148, "span", 16),
-                    lo(149),
-                    Ta(150, "number"),
+                    co(149),
+                    Fa(150, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(151, "div", 11),
                     Er(152, "div", 12),
                     Er(153, "span", 4),
-                    lo(154, "Craft $"),
+                    co(154, "Craft $"),
                     xr(),
                     xr(),
                     Er(155, "div", 12),
                     Er(156, "span", 17),
-                    lo(157),
-                    Ta(158, "number"),
+                    co(157),
+                    Fa(158, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(159, "div", 11),
                     Er(160, "div", 12),
                     Er(161, "span", 13),
-                    lo(162, "Minted :"),
+                    co(162, "Minted :"),
                     xr(),
                     xr(),
                     Er(163, "div", 12),
                     Er(164, "span", 13),
-                    lo(165),
-                    Ta(166, "number"),
+                    co(165),
+                    Fa(166, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -13021,9 +13112,9 @@
                     Dr(169, "video", 29),
                     Er(170, "div", 21),
                     Er(171, "span", 22),
-                    lo(172, "Buy "),
+                    co(172, "Buy "),
                     Dr(173, "BR"),
-                    lo(174),
+                    co(174),
                     xr(),
                     xr(),
                     xr(),
@@ -13032,59 +13123,59 @@
                     Er(176, "div", 11),
                     Er(177, "div", 23),
                     Er(178, "span", 4),
-                    lo(179, "Daily :"),
+                    co(179, "Daily :"),
                     xr(),
                     xr(),
                     Er(180, "div", 23),
                     Er(181, "span", 24),
-                    lo(182),
-                    Ta(183, "number"),
+                    co(182),
+                    Fa(183, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(184, "div", 11),
                     Er(185, "div", 23),
                     Er(186, "span", 13),
-                    lo(187, "ROI :"),
+                    co(187, "ROI :"),
                     xr(),
                     xr(),
                     Er(188, "div", 23),
                     Er(189, "span", 13),
-                    lo(190),
-                    Ta(191, "number"),
+                    co(190),
+                    Fa(191, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(192, "div", 11),
                     Er(193, "div", 23),
                     Er(194, "span", 4),
-                    lo(195, "Atomic :"),
+                    co(195, "Atomic :"),
                     xr(),
                     xr(),
                     Er(196, "div", 23),
-                    Sr(197, ad, 3, 5, "span", 25),
+                    Ar(197, ld, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(198, "div", 11),
                     Er(199, "div", 23),
                     Er(200, "span", 4),
-                    lo(201, "Atomic $:"),
+                    co(201, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(202, "div", 23),
-                    Sr(203, ld, 3, 4, "span", 26),
+                    Ar(203, hd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(204, "div", 11),
                     Er(205, "div", 23),
                     Er(206, "span", 13),
-                    lo(207, "Wood Daily *:"),
+                    co(207, "Wood Daily *:"),
                     xr(),
                     xr(),
                     Er(208, "div", 23),
                     Er(209, "span", 13),
-                    lo(210),
-                    Ta(211, "number"),
+                    co(210),
+                    Fa(211, "number"),
                     Dr(212, "img", 27),
                     xr(),
                     xr(),
@@ -13095,69 +13186,69 @@
                     Er(215, "div", 11),
                     Er(216, "div", 12),
                     Er(217, "span", 13),
-                    lo(218),
-                    Ta(219, "number"),
+                    co(218),
+                    Fa(219, "number"),
                     xr(),
                     Dr(220, "img", 14),
                     xr(),
                     Er(221, "div", 12),
                     Er(222, "span", 13),
-                    lo(223),
-                    Ta(224, "number"),
+                    co(223),
+                    Fa(224, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(225, "div", 11),
                     Er(226, "div", 12),
                     Er(227, "span", 13),
-                    lo(228),
-                    Ta(229, "number"),
+                    co(228),
+                    Fa(229, "number"),
                     xr(),
                     Dr(230, "img", 15),
                     xr(),
                     Er(231, "div", 12),
                     Er(232, "span", 13),
-                    lo(233),
-                    Ta(234, "number"),
+                    co(233),
+                    Fa(234, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(235, "div", 11),
                     Er(236, "div", 12),
                     Er(237, "span", 4),
-                    lo(238, "Craft ￦"),
+                    co(238, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(239, "div", 12),
                     Er(240, "span", 16),
-                    lo(241),
-                    Ta(242, "number"),
+                    co(241),
+                    Fa(242, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(243, "div", 11),
                     Er(244, "div", 12),
                     Er(245, "span", 4),
-                    lo(246, "Craft $"),
+                    co(246, "Craft $"),
                     xr(),
                     xr(),
                     Er(247, "div", 12),
                     Er(248, "span", 17),
-                    lo(249),
-                    Ta(250, "number"),
+                    co(249),
+                    Fa(250, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(251, "div", 11),
                     Er(252, "div", 12),
                     Er(253, "span", 13),
-                    lo(254, "Minted :"),
+                    co(254, "Minted :"),
                     xr(),
                     xr(),
                     Er(255, "div", 12),
                     Er(256, "span", 13),
-                    lo(257),
-                    Ta(258, "number"),
+                    co(257),
+                    Fa(258, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -13167,9 +13258,9 @@
                     Dr(261, "img", 31),
                     Er(262, "div", 21),
                     Er(263, "span", 22),
-                    lo(264, "Buy "),
+                    co(264, "Buy "),
                     Dr(265, "BR"),
-                    lo(266),
+                    co(266),
                     xr(),
                     xr(),
                     xr(),
@@ -13178,59 +13269,59 @@
                     Er(268, "div", 11),
                     Er(269, "div", 23),
                     Er(270, "span", 4),
-                    lo(271, "Daily :"),
+                    co(271, "Daily :"),
                     xr(),
                     xr(),
                     Er(272, "div", 23),
                     Er(273, "span", 24),
-                    lo(274),
-                    Ta(275, "number"),
+                    co(274),
+                    Fa(275, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(276, "div", 11),
                     Er(277, "div", 23),
                     Er(278, "span", 13),
-                    lo(279, "ROI :"),
+                    co(279, "ROI :"),
                     xr(),
                     xr(),
                     Er(280, "div", 23),
                     Er(281, "span", 13),
-                    lo(282),
-                    Ta(283, "number"),
+                    co(282),
+                    Fa(283, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(284, "div", 11),
                     Er(285, "div", 23),
                     Er(286, "span", 4),
-                    lo(287, "Atomic :"),
+                    co(287, "Atomic :"),
                     xr(),
                     xr(),
                     Er(288, "div", 23),
-                    Sr(289, cd, 3, 5, "span", 25),
+                    Ar(289, ud, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(290, "div", 11),
                     Er(291, "div", 23),
                     Er(292, "span", 4),
-                    lo(293, "Atomic $:"),
+                    co(293, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(294, "div", 23),
-                    Sr(295, hd, 3, 4, "span", 26),
+                    Ar(295, dd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(296, "div", 11),
                     Er(297, "div", 23),
                     Er(298, "span", 13),
-                    lo(299, "Wood Daily *:"),
+                    co(299, "Wood Daily *:"),
                     xr(),
                     xr(),
                     Er(300, "div", 23),
                     Er(301, "span", 13),
-                    lo(302),
-                    Ta(303, "number"),
+                    co(302),
+                    Fa(303, "number"),
                     Dr(304, "img", 27),
                     xr(),
                     xr(),
@@ -13241,69 +13332,69 @@
                     Er(307, "div", 11),
                     Er(308, "div", 12),
                     Er(309, "span", 13),
-                    lo(310),
-                    Ta(311, "number"),
+                    co(310),
+                    Fa(311, "number"),
                     xr(),
                     Dr(312, "img", 14),
                     xr(),
                     Er(313, "div", 12),
                     Er(314, "span", 13),
-                    lo(315),
-                    Ta(316, "number"),
+                    co(315),
+                    Fa(316, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(317, "div", 11),
                     Er(318, "div", 12),
                     Er(319, "span", 13),
-                    lo(320),
-                    Ta(321, "number"),
+                    co(320),
+                    Fa(321, "number"),
                     xr(),
                     Dr(322, "img", 15),
                     xr(),
                     Er(323, "div", 12),
                     Er(324, "span", 13),
-                    lo(325),
-                    Ta(326, "number"),
+                    co(325),
+                    Fa(326, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(327, "div", 11),
                     Er(328, "div", 12),
                     Er(329, "span", 4),
-                    lo(330, "Craft ￦"),
+                    co(330, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(331, "div", 12),
                     Er(332, "span", 16),
-                    lo(333),
-                    Ta(334, "number"),
+                    co(333),
+                    Fa(334, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(335, "div", 11),
                     Er(336, "div", 12),
                     Er(337, "span", 4),
-                    lo(338, "Craft $"),
+                    co(338, "Craft $"),
                     xr(),
                     xr(),
                     Er(339, "div", 12),
                     Er(340, "span", 17),
-                    lo(341),
-                    Ta(342, "number"),
+                    co(341),
+                    Fa(342, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(343, "div", 11),
                     Er(344, "div", 12),
                     Er(345, "span", 13),
-                    lo(346, "Minted :"),
+                    co(346, "Minted :"),
                     xr(),
                     xr(),
                     Er(347, "div", 12),
                     Er(348, "span", 13),
-                    lo(349),
-                    Ta(350, "number"),
+                    co(349),
+                    Fa(350, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -13313,9 +13404,9 @@
                     Dr(353, "img", 33),
                     Er(354, "div", 21),
                     Er(355, "span", 22),
-                    lo(356, "Buy "),
+                    co(356, "Buy "),
                     Dr(357, "BR"),
-                    lo(358),
+                    co(358),
                     xr(),
                     xr(),
                     xr(),
@@ -13324,59 +13415,59 @@
                     Er(360, "div", 11),
                     Er(361, "div", 23),
                     Er(362, "span", 4),
-                    lo(363, "Daily :"),
+                    co(363, "Daily :"),
                     xr(),
                     xr(),
                     Er(364, "div", 23),
                     Er(365, "span", 24),
-                    lo(366),
-                    Ta(367, "number"),
+                    co(366),
+                    Fa(367, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(368, "div", 11),
                     Er(369, "div", 23),
                     Er(370, "span", 13),
-                    lo(371, "ROI :"),
+                    co(371, "ROI :"),
                     xr(),
                     xr(),
                     Er(372, "div", 23),
                     Er(373, "span", 13),
-                    lo(374),
-                    Ta(375, "number"),
+                    co(374),
+                    Fa(375, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(376, "div", 11),
                     Er(377, "div", 23),
                     Er(378, "span", 4),
-                    lo(379, "Atomic :"),
+                    co(379, "Atomic :"),
                     xr(),
                     xr(),
                     Er(380, "div", 23),
-                    Sr(381, ud, 3, 5, "span", 25),
+                    Ar(381, pd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(382, "div", 11),
                     Er(383, "div", 23),
                     Er(384, "span", 4),
-                    lo(385, "Atomic $:"),
+                    co(385, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(386, "div", 23),
-                    Sr(387, dd, 3, 4, "span", 26),
+                    Ar(387, md, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(388, "div", 11),
                     Er(389, "div", 23),
                     Er(390, "span", 13),
-                    lo(391, "Wood Daily *:"),
+                    co(391, "Wood Daily *:"),
                     xr(),
                     xr(),
                     Er(392, "div", 23),
                     Er(393, "span", 13),
-                    lo(394),
-                    Ta(395, "number"),
+                    co(394),
+                    Fa(395, "number"),
                     Dr(396, "img", 27),
                     xr(),
                     xr(),
@@ -13387,69 +13478,69 @@
                     Er(399, "div", 11),
                     Er(400, "div", 12),
                     Er(401, "span", 13),
-                    lo(402),
-                    Ta(403, "number"),
+                    co(402),
+                    Fa(403, "number"),
                     xr(),
                     Dr(404, "img", 14),
                     xr(),
                     Er(405, "div", 12),
                     Er(406, "span", 13),
-                    lo(407),
-                    Ta(408, "number"),
+                    co(407),
+                    Fa(408, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(409, "div", 11),
                     Er(410, "div", 12),
                     Er(411, "span", 13),
-                    lo(412),
-                    Ta(413, "number"),
+                    co(412),
+                    Fa(413, "number"),
                     xr(),
                     Dr(414, "img", 15),
                     xr(),
                     Er(415, "div", 12),
                     Er(416, "span", 13),
-                    lo(417),
-                    Ta(418, "number"),
+                    co(417),
+                    Fa(418, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(419, "div", 11),
                     Er(420, "div", 12),
                     Er(421, "span", 4),
-                    lo(422, "Craft ￦"),
+                    co(422, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(423, "div", 12),
                     Er(424, "span", 16),
-                    lo(425),
-                    Ta(426, "number"),
+                    co(425),
+                    Fa(426, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(427, "div", 11),
                     Er(428, "div", 12),
                     Er(429, "span", 4),
-                    lo(430, "Craft $"),
+                    co(430, "Craft $"),
                     xr(),
                     xr(),
                     Er(431, "div", 12),
                     Er(432, "span", 17),
-                    lo(433),
-                    Ta(434, "number"),
+                    co(433),
+                    Fa(434, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(435, "div", 11),
                     Er(436, "div", 12),
                     Er(437, "span", 13),
-                    lo(438, "Minted :"),
+                    co(438, "Minted :"),
                     xr(),
                     xr(),
                     Er(439, "div", 12),
                     Er(440, "span", 13),
-                    lo(441),
-                    Ta(442, "number"),
+                    co(441),
+                    Fa(442, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -13459,9 +13550,9 @@
                     Dr(445, "img", 35),
                     Er(446, "div", 21),
                     Er(447, "span", 22),
-                    lo(448, "Buy "),
+                    co(448, "Buy "),
                     Dr(449, "BR"),
-                    lo(450),
+                    co(450),
                     xr(),
                     xr(),
                     xr(),
@@ -13470,59 +13561,59 @@
                     Er(452, "div", 11),
                     Er(453, "div", 23),
                     Er(454, "span", 4),
-                    lo(455, "Daily :"),
+                    co(455, "Daily :"),
                     xr(),
                     xr(),
                     Er(456, "div", 23),
                     Er(457, "span", 24),
-                    lo(458),
-                    Ta(459, "number"),
+                    co(458),
+                    Fa(459, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(460, "div", 11),
                     Er(461, "div", 23),
                     Er(462, "span", 13),
-                    lo(463, "ROI :"),
+                    co(463, "ROI :"),
                     xr(),
                     xr(),
                     Er(464, "div", 23),
                     Er(465, "span", 13),
-                    lo(466),
-                    Ta(467, "number"),
+                    co(466),
+                    Fa(467, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(468, "div", 11),
                     Er(469, "div", 23),
                     Er(470, "span", 4),
-                    lo(471, "Atomic :"),
+                    co(471, "Atomic :"),
                     xr(),
                     xr(),
                     Er(472, "div", 23),
-                    Sr(473, pd, 3, 5, "span", 25),
+                    Ar(473, fd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(474, "div", 11),
                     Er(475, "div", 23),
                     Er(476, "span", 4),
-                    lo(477, "Atomic $:"),
+                    co(477, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(478, "div", 23),
-                    Sr(479, md, 3, 4, "span", 26),
+                    Ar(479, gd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(480, "div", 11),
                     Er(481, "div", 23),
                     Er(482, "span", 13),
-                    lo(483, "Wood Daily *:"),
+                    co(483, "Wood Daily *:"),
                     xr(),
                     xr(),
                     Er(484, "div", 23),
                     Er(485, "span", 13),
-                    lo(486),
-                    Ta(487, "number"),
+                    co(486),
+                    Fa(487, "number"),
                     Dr(488, "img", 27),
                     xr(),
                     xr(),
@@ -13548,11 +13639,11 @@
                     Ys(1),
                     ho(" ", Pa(22, 94, e.ValueAOFW.Value_W, "1.2-2"), " %"),
                     Ys(13),
-                    co(Pa(35, 97, e.legendary.resourceWOOD, "1.0-0")),
+                    lo(Pa(35, 97, e.legendary.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(40, 100, e.legendary.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(45, 103, e.legendary.resourceSTONE, "1.0-0")),
+                    lo(Pa(45, 103, e.legendary.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(50, 106, e.legendary.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -13562,9 +13653,9 @@
                     Ys(8),
                     ho("", Pa(66, 112, e.legendary.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(74, 115, e.legendary.minted, "1.0-0")),
+                    lo(Pa(74, 115, e.legendary.minted, "1.0-0")),
                     Ys(9),
-                    co(e.legendary.totalSold),
+                    lo(e.legendary.totalSold),
                     Ys(7),
                     Cr("ngClass", e.legendary.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -13578,11 +13669,11 @@
                     Ys(7),
                     ho("", Pa(119, 124, e.legendary.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(127, 127, e.epic.resourceWOOD, "1.0-0")),
+                    lo(Pa(127, 127, e.epic.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(132, 130, e.epic.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(137, 133, e.epic.resourceSTONE, "1.0-0")),
+                    lo(Pa(137, 133, e.epic.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(142, 136, e.epic.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -13592,9 +13683,9 @@
                     Ys(8),
                     ho("", Pa(158, 142, e.epic.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(166, 145, e.epic.minted, "1.0-0")),
+                    lo(Pa(166, 145, e.epic.minted, "1.0-0")),
                     Ys(9),
-                    co(e.epic.totalSold),
+                    lo(e.epic.totalSold),
                     Ys(7),
                     Cr("ngClass", e.epic.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -13608,11 +13699,11 @@
                     Ys(7),
                     ho("", Pa(211, 154, e.epic.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(219, 157, e.rare.resourceWOOD, "1.0-0")),
+                    lo(Pa(219, 157, e.rare.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(224, 160, e.rare.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(229, 163, e.rare.resourceSTONE, "1.0-0")),
+                    lo(Pa(229, 163, e.rare.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(234, 166, e.rare.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -13622,9 +13713,9 @@
                     Ys(8),
                     ho("", Pa(250, 172, e.rare.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(258, 175, e.rare.minted, "1.0-0")),
+                    lo(Pa(258, 175, e.rare.minted, "1.0-0")),
                     Ys(9),
-                    co(e.rare.totalSold),
+                    lo(e.rare.totalSold),
                     Ys(7),
                     Cr("ngClass", e.rare.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -13638,11 +13729,11 @@
                     Ys(7),
                     ho("", Pa(303, 184, e.rare.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(311, 187, e.uncommon.resourceWOOD, "1.0-0")),
+                    lo(Pa(311, 187, e.uncommon.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(316, 190, e.uncommon.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(321, 193, e.uncommon.resourceSTONE, "1.0-0")),
+                    lo(Pa(321, 193, e.uncommon.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(326, 196, e.uncommon.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -13652,9 +13743,9 @@
                     Ys(8),
                     ho("", Pa(342, 202, e.uncommon.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(350, 205, e.uncommon.minted, "1.0-0")),
+                    lo(Pa(350, 205, e.uncommon.minted, "1.0-0")),
                     Ys(9),
-                    co(e.uncommon.totalSold),
+                    lo(e.uncommon.totalSold),
                     Ys(7),
                     Cr("ngClass", e.uncommon.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -13668,11 +13759,11 @@
                     Ys(7),
                     ho("", Pa(395, 214, e.uncommon.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(403, 217, e.common.resourceWOOD, "1.0-0")),
+                    lo(Pa(403, 217, e.common.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(408, 220, e.common.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(413, 223, e.common.resourceSTONE, "1.0-0")),
+                    lo(Pa(413, 223, e.common.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(418, 226, e.common.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -13682,9 +13773,9 @@
                     Ys(8),
                     ho("", Pa(434, 232, e.common.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(442, 235, e.common.minted, "1.0-0")),
+                    lo(Pa(442, 235, e.common.minted, "1.0-0")),
                     Ys(9),
-                    co(e.common.totalSold),
+                    lo(e.common.totalSold),
                     Ys(7),
                     Cr("ngClass", e.common.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -13698,17 +13789,17 @@
                     Ys(7),
                     ho("", Pa(487, 244, e.common.production, "1.0-0"), " "))
                 },
-                directives: [yc, Ac],
-                pipes: [Cc],
+                directives: [yl, Sl],
+                pipes: [Cl],
                 styles: [".img-fluid[_ngcontent-%COMP%], .video-fluid[_ngcontent-%COMP%]{max-width:100%}.badge.sm[_ngcontent-%COMP%]{padding:3px;font-size:12px}.grey.darken-2[_ngcontent-%COMP%]{background-color:#616161!important}.gradbg-cyan[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#5b81a5,#19e4ff)!important}.badge.ssm[_ngcontent-%COMP%]{padding:2px;font-size:10px}.gradbg-lime2[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#4e9f34,#c4de00)!important}.gradbg-red[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#6d091e,tomato)!important}.badge[_ngcontent-%COMP%]{color:#000!important;border-radius:.125rem;box-shadow:0 2px 5px 0 #00000029,0 2px 10px 0 #0000001f;display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:initial;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.w-50[_ngcontent-%COMP%]{width:50%!important}.w-10[_ngcontent-%COMP%]{width:10%!important}.w-20[_ngcontent-%COMP%]{width:20%!important}.w-40[_ngcontent-%COMP%]{width:40%!important}.w-45[_ngcontent-%COMP%]{width:45%!important}.text-left[_ngcontent-%COMP%]{text-align:left!important}.text-right[_ngcontent-%COMP%]{text-align:right!important}"]
             }),
             t
         }
         )();
-        function gd(t, e) {
+        function yd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13717,10 +13808,10 @@
                 ho("", Pa(2, 2, t.legendary.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function _d(t, e) {
+        function vd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13728,10 +13819,10 @@
                 ho("", Pa(2, 1, t.legendary.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function yd(t, e) {
+        function bd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13740,10 +13831,10 @@
                 ho("", Pa(2, 2, t.epic.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function vd(t, e) {
+        function wd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13751,10 +13842,10 @@
                 ho("", Pa(2, 1, t.epic.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function bd(t, e) {
+        function Sd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13763,10 +13854,10 @@
                 ho("", Pa(2, 2, t.rare.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function wd(t, e) {
+        function Ad(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13774,10 +13865,10 @@
                 ho("", Pa(2, 1, t.rare.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function Ad(t, e) {
+        function Od(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13786,10 +13877,10 @@
                 ho("", Pa(2, 2, t.uncommon.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function Sd(t, e) {
+        function Cd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13797,10 +13888,10 @@
                 ho("", Pa(2, 1, t.uncommon.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function Od(t, e) {
+        function kd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13809,10 +13900,10 @@
                 ho("", Pa(2, 2, t.common.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function Cd(t, e) {
+        function Ed(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -13820,7 +13911,7 @@
                 ho("", Pa(2, 1, t.common.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        let kd = (()=>{
+        let xd = (()=>{
             class t {
                 constructor(t, e, n) {
                     this.ageoffarmingService = t,
@@ -13966,7 +14057,7 @@
                 return new (e || t)(Or(Gh),Or(Ju),Or(Yh))
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-stone"]],
                 inputs: {
@@ -13985,30 +14076,30 @@
                     Dr(2, "div"),
                     Er(3, "div", 2),
                     Dr(4, "img", 3),
-                    lo(5, " STONE "),
+                    co(5, " STONE "),
                     Dr(6, "img", 3),
                     Dr(7, "br"),
                     Er(8, "span", 4),
-                    lo(9),
-                    Ta(10, "number"),
+                    co(9),
+                    Fa(10, "number"),
                     xr(),
                     Dr(11, "br"),
-                    lo(12),
-                    Ta(13, "number"),
+                    co(12),
+                    Fa(13, "number"),
                     Er(14, "span", 5),
-                    lo(15),
-                    Ta(16, "number"),
+                    co(15),
+                    Fa(16, "number"),
                     xr(),
                     Dr(17, "br"),
-                    lo(18),
-                    Ta(19, "number"),
+                    co(18),
+                    Fa(19, "number"),
                     Er(20, "span", 5),
-                    lo(21),
-                    Ta(22, "number"),
+                    co(21),
+                    Fa(22, "number"),
                     xr(),
                     Dr(23, "br"),
                     Er(24, "a", 6),
-                    lo(25, " Click to open Alcor Exchange "),
+                    co(25, " Click to open Alcor Exchange "),
                     xr(),
                     xr(),
                     Dr(26, "div"),
@@ -14020,69 +14111,69 @@
                     Er(31, "div", 11),
                     Er(32, "div", 12),
                     Er(33, "span", 13),
-                    lo(34),
-                    Ta(35, "number"),
+                    co(34),
+                    Fa(35, "number"),
                     xr(),
                     Dr(36, "img", 14),
                     xr(),
                     Er(37, "div", 12),
                     Er(38, "span", 13),
-                    lo(39),
-                    Ta(40, "number"),
+                    co(39),
+                    Fa(40, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(41, "div", 11),
                     Er(42, "div", 12),
                     Er(43, "span", 13),
-                    lo(44),
-                    Ta(45, "number"),
+                    co(44),
+                    Fa(45, "number"),
                     xr(),
                     Dr(46, "img", 15),
                     xr(),
                     Er(47, "div", 12),
                     Er(48, "span", 13),
-                    lo(49),
-                    Ta(50, "number"),
+                    co(49),
+                    Fa(50, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(51, "div", 11),
                     Er(52, "div", 12),
                     Er(53, "span", 4),
-                    lo(54, "Craft ￦"),
+                    co(54, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(55, "div", 12),
                     Er(56, "span", 16),
-                    lo(57),
-                    Ta(58, "number"),
+                    co(57),
+                    Fa(58, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(59, "div", 11),
                     Er(60, "div", 12),
                     Er(61, "span", 4),
-                    lo(62, "Craft $"),
+                    co(62, "Craft $"),
                     xr(),
                     xr(),
                     Er(63, "div", 12),
                     Er(64, "span", 17),
-                    lo(65),
-                    Ta(66, "number"),
+                    co(65),
+                    Fa(66, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(67, "div", 11),
                     Er(68, "div", 12),
                     Er(69, "span", 13),
-                    lo(70, "Minted :"),
+                    co(70, "Minted :"),
                     xr(),
                     xr(),
                     Er(71, "div", 12),
                     Er(72, "span", 13),
-                    lo(73),
-                    Ta(74, "number"),
+                    co(73),
+                    Fa(74, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -14092,9 +14183,9 @@
                     Dr(77, "video", 20),
                     Er(78, "div", 21),
                     Er(79, "span", 22),
-                    lo(80, "Buy "),
+                    co(80, "Buy "),
                     Dr(81, "BR"),
-                    lo(82),
+                    co(82),
                     xr(),
                     xr(),
                     xr(),
@@ -14103,59 +14194,59 @@
                     Er(84, "div", 11),
                     Er(85, "div", 23),
                     Er(86, "span", 4),
-                    lo(87, "Daily :"),
+                    co(87, "Daily :"),
                     xr(),
                     xr(),
                     Er(88, "div", 23),
                     Er(89, "span", 24),
-                    lo(90),
-                    Ta(91, "number"),
+                    co(90),
+                    Fa(91, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(92, "div", 11),
                     Er(93, "div", 23),
                     Er(94, "span", 13),
-                    lo(95, "ROI :"),
+                    co(95, "ROI :"),
                     xr(),
                     xr(),
                     Er(96, "div", 23),
                     Er(97, "span", 13),
-                    lo(98),
-                    Ta(99, "number"),
+                    co(98),
+                    Fa(99, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(100, "div", 11),
                     Er(101, "div", 23),
                     Er(102, "span", 4),
-                    lo(103, "Atomic :"),
+                    co(103, "Atomic :"),
                     xr(),
                     xr(),
                     Er(104, "div", 23),
-                    Sr(105, gd, 3, 5, "span", 25),
+                    Ar(105, yd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(106, "div", 11),
                     Er(107, "div", 23),
                     Er(108, "span", 4),
-                    lo(109, "Atomic $:"),
+                    co(109, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(110, "div", 23),
-                    Sr(111, _d, 3, 4, "span", 26),
+                    Ar(111, vd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(112, "div", 11),
                     Er(113, "div", 23),
                     Er(114, "span", 13),
-                    lo(115, "Stone Daily *:"),
+                    co(115, "Stone Daily *:"),
                     xr(),
                     xr(),
                     Er(116, "div", 23),
                     Er(117, "span", 13),
-                    lo(118),
-                    Ta(119, "number"),
+                    co(118),
+                    Fa(119, "number"),
                     Dr(120, "img", 27),
                     xr(),
                     xr(),
@@ -14166,69 +14257,69 @@
                     Er(123, "div", 11),
                     Er(124, "div", 12),
                     Er(125, "span", 13),
-                    lo(126),
-                    Ta(127, "number"),
+                    co(126),
+                    Fa(127, "number"),
                     xr(),
                     Dr(128, "img", 14),
                     xr(),
                     Er(129, "div", 12),
                     Er(130, "span", 13),
-                    lo(131),
-                    Ta(132, "number"),
+                    co(131),
+                    Fa(132, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(133, "div", 11),
                     Er(134, "div", 12),
                     Er(135, "span", 13),
-                    lo(136),
-                    Ta(137, "number"),
+                    co(136),
+                    Fa(137, "number"),
                     xr(),
                     Dr(138, "img", 15),
                     xr(),
                     Er(139, "div", 12),
                     Er(140, "span", 13),
-                    lo(141),
-                    Ta(142, "number"),
+                    co(141),
+                    Fa(142, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(143, "div", 11),
                     Er(144, "div", 12),
                     Er(145, "span", 4),
-                    lo(146, "Craft ￦"),
+                    co(146, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(147, "div", 12),
                     Er(148, "span", 16),
-                    lo(149),
-                    Ta(150, "number"),
+                    co(149),
+                    Fa(150, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(151, "div", 11),
                     Er(152, "div", 12),
                     Er(153, "span", 4),
-                    lo(154, "Craft $"),
+                    co(154, "Craft $"),
                     xr(),
                     xr(),
                     Er(155, "div", 12),
                     Er(156, "span", 17),
-                    lo(157),
-                    Ta(158, "number"),
+                    co(157),
+                    Fa(158, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(159, "div", 11),
                     Er(160, "div", 12),
                     Er(161, "span", 13),
-                    lo(162, "Minted :"),
+                    co(162, "Minted :"),
                     xr(),
                     xr(),
                     Er(163, "div", 12),
                     Er(164, "span", 13),
-                    lo(165),
-                    Ta(166, "number"),
+                    co(165),
+                    Fa(166, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -14238,9 +14329,9 @@
                     Dr(169, "video", 29),
                     Er(170, "div", 21),
                     Er(171, "span", 22),
-                    lo(172, "Buy "),
+                    co(172, "Buy "),
                     Dr(173, "BR"),
-                    lo(174),
+                    co(174),
                     xr(),
                     xr(),
                     xr(),
@@ -14249,59 +14340,59 @@
                     Er(176, "div", 11),
                     Er(177, "div", 23),
                     Er(178, "span", 4),
-                    lo(179, "Daily :"),
+                    co(179, "Daily :"),
                     xr(),
                     xr(),
                     Er(180, "div", 23),
                     Er(181, "span", 24),
-                    lo(182),
-                    Ta(183, "number"),
+                    co(182),
+                    Fa(183, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(184, "div", 11),
                     Er(185, "div", 23),
                     Er(186, "span", 13),
-                    lo(187, "ROI :"),
+                    co(187, "ROI :"),
                     xr(),
                     xr(),
                     Er(188, "div", 23),
                     Er(189, "span", 13),
-                    lo(190),
-                    Ta(191, "number"),
+                    co(190),
+                    Fa(191, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(192, "div", 11),
                     Er(193, "div", 23),
                     Er(194, "span", 4),
-                    lo(195, "Atomic :"),
+                    co(195, "Atomic :"),
                     xr(),
                     xr(),
                     Er(196, "div", 23),
-                    Sr(197, yd, 3, 5, "span", 25),
+                    Ar(197, bd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(198, "div", 11),
                     Er(199, "div", 23),
                     Er(200, "span", 4),
-                    lo(201, "Atomic $:"),
+                    co(201, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(202, "div", 23),
-                    Sr(203, vd, 3, 4, "span", 26),
+                    Ar(203, wd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(204, "div", 11),
                     Er(205, "div", 23),
                     Er(206, "span", 13),
-                    lo(207, "Stone Daily *:"),
+                    co(207, "Stone Daily *:"),
                     xr(),
                     xr(),
                     Er(208, "div", 23),
                     Er(209, "span", 13),
-                    lo(210),
-                    Ta(211, "number"),
+                    co(210),
+                    Fa(211, "number"),
                     Dr(212, "img", 27),
                     xr(),
                     xr(),
@@ -14312,69 +14403,69 @@
                     Er(215, "div", 11),
                     Er(216, "div", 12),
                     Er(217, "span", 13),
-                    lo(218),
-                    Ta(219, "number"),
+                    co(218),
+                    Fa(219, "number"),
                     xr(),
                     Dr(220, "img", 14),
                     xr(),
                     Er(221, "div", 12),
                     Er(222, "span", 13),
-                    lo(223),
-                    Ta(224, "number"),
+                    co(223),
+                    Fa(224, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(225, "div", 11),
                     Er(226, "div", 12),
                     Er(227, "span", 13),
-                    lo(228),
-                    Ta(229, "number"),
+                    co(228),
+                    Fa(229, "number"),
                     xr(),
                     Dr(230, "img", 15),
                     xr(),
                     Er(231, "div", 12),
                     Er(232, "span", 13),
-                    lo(233),
-                    Ta(234, "number"),
+                    co(233),
+                    Fa(234, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(235, "div", 11),
                     Er(236, "div", 12),
                     Er(237, "span", 4),
-                    lo(238, "Craft ￦"),
+                    co(238, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(239, "div", 12),
                     Er(240, "span", 16),
-                    lo(241),
-                    Ta(242, "number"),
+                    co(241),
+                    Fa(242, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(243, "div", 11),
                     Er(244, "div", 12),
                     Er(245, "span", 4),
-                    lo(246, "Craft $"),
+                    co(246, "Craft $"),
                     xr(),
                     xr(),
                     Er(247, "div", 12),
                     Er(248, "span", 17),
-                    lo(249),
-                    Ta(250, "number"),
+                    co(249),
+                    Fa(250, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(251, "div", 11),
                     Er(252, "div", 12),
                     Er(253, "span", 13),
-                    lo(254, "Minted :"),
+                    co(254, "Minted :"),
                     xr(),
                     xr(),
                     Er(255, "div", 12),
                     Er(256, "span", 13),
-                    lo(257),
-                    Ta(258, "number"),
+                    co(257),
+                    Fa(258, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -14384,9 +14475,9 @@
                     Dr(261, "img", 31),
                     Er(262, "div", 21),
                     Er(263, "span", 22),
-                    lo(264, "Buy "),
+                    co(264, "Buy "),
                     Dr(265, "BR"),
-                    lo(266),
+                    co(266),
                     xr(),
                     xr(),
                     xr(),
@@ -14395,59 +14486,59 @@
                     Er(268, "div", 11),
                     Er(269, "div", 23),
                     Er(270, "span", 4),
-                    lo(271, "Daily :"),
+                    co(271, "Daily :"),
                     xr(),
                     xr(),
                     Er(272, "div", 23),
                     Er(273, "span", 24),
-                    lo(274),
-                    Ta(275, "number"),
+                    co(274),
+                    Fa(275, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(276, "div", 11),
                     Er(277, "div", 23),
                     Er(278, "span", 13),
-                    lo(279, "ROI :"),
+                    co(279, "ROI :"),
                     xr(),
                     xr(),
                     Er(280, "div", 23),
                     Er(281, "span", 13),
-                    lo(282),
-                    Ta(283, "number"),
+                    co(282),
+                    Fa(283, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(284, "div", 11),
                     Er(285, "div", 23),
                     Er(286, "span", 4),
-                    lo(287, "Atomic :"),
+                    co(287, "Atomic :"),
                     xr(),
                     xr(),
                     Er(288, "div", 23),
-                    Sr(289, bd, 3, 5, "span", 25),
+                    Ar(289, Sd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(290, "div", 11),
                     Er(291, "div", 23),
                     Er(292, "span", 4),
-                    lo(293, "Atomic $:"),
+                    co(293, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(294, "div", 23),
-                    Sr(295, wd, 3, 4, "span", 26),
+                    Ar(295, Ad, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(296, "div", 11),
                     Er(297, "div", 23),
                     Er(298, "span", 13),
-                    lo(299, "Stone Daily *:"),
+                    co(299, "Stone Daily *:"),
                     xr(),
                     xr(),
                     Er(300, "div", 23),
                     Er(301, "span", 13),
-                    lo(302),
-                    Ta(303, "number"),
+                    co(302),
+                    Fa(303, "number"),
                     Dr(304, "img", 27),
                     xr(),
                     xr(),
@@ -14458,69 +14549,69 @@
                     Er(307, "div", 11),
                     Er(308, "div", 12),
                     Er(309, "span", 13),
-                    lo(310),
-                    Ta(311, "number"),
+                    co(310),
+                    Fa(311, "number"),
                     xr(),
                     Dr(312, "img", 14),
                     xr(),
                     Er(313, "div", 12),
                     Er(314, "span", 13),
-                    lo(315),
-                    Ta(316, "number"),
+                    co(315),
+                    Fa(316, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(317, "div", 11),
                     Er(318, "div", 12),
                     Er(319, "span", 13),
-                    lo(320),
-                    Ta(321, "number"),
+                    co(320),
+                    Fa(321, "number"),
                     xr(),
                     Dr(322, "img", 15),
                     xr(),
                     Er(323, "div", 12),
                     Er(324, "span", 13),
-                    lo(325),
-                    Ta(326, "number"),
+                    co(325),
+                    Fa(326, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(327, "div", 11),
                     Er(328, "div", 12),
                     Er(329, "span", 4),
-                    lo(330, "Craft ￦"),
+                    co(330, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(331, "div", 12),
                     Er(332, "span", 16),
-                    lo(333),
-                    Ta(334, "number"),
+                    co(333),
+                    Fa(334, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(335, "div", 11),
                     Er(336, "div", 12),
                     Er(337, "span", 4),
-                    lo(338, "Craft $"),
+                    co(338, "Craft $"),
                     xr(),
                     xr(),
                     Er(339, "div", 12),
                     Er(340, "span", 17),
-                    lo(341),
-                    Ta(342, "number"),
+                    co(341),
+                    Fa(342, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(343, "div", 11),
                     Er(344, "div", 12),
                     Er(345, "span", 13),
-                    lo(346, "Minted :"),
+                    co(346, "Minted :"),
                     xr(),
                     xr(),
                     Er(347, "div", 12),
                     Er(348, "span", 13),
-                    lo(349),
-                    Ta(350, "number"),
+                    co(349),
+                    Fa(350, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -14530,9 +14621,9 @@
                     Dr(353, "img", 33),
                     Er(354, "div", 21),
                     Er(355, "span", 22),
-                    lo(356, "Buy "),
+                    co(356, "Buy "),
                     Dr(357, "BR"),
-                    lo(358),
+                    co(358),
                     xr(),
                     xr(),
                     xr(),
@@ -14541,59 +14632,59 @@
                     Er(360, "div", 11),
                     Er(361, "div", 23),
                     Er(362, "span", 4),
-                    lo(363, "Daily :"),
+                    co(363, "Daily :"),
                     xr(),
                     xr(),
                     Er(364, "div", 23),
                     Er(365, "span", 24),
-                    lo(366),
-                    Ta(367, "number"),
+                    co(366),
+                    Fa(367, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(368, "div", 11),
                     Er(369, "div", 23),
                     Er(370, "span", 13),
-                    lo(371, "ROI :"),
+                    co(371, "ROI :"),
                     xr(),
                     xr(),
                     Er(372, "div", 23),
                     Er(373, "span", 13),
-                    lo(374),
-                    Ta(375, "number"),
+                    co(374),
+                    Fa(375, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(376, "div", 11),
                     Er(377, "div", 23),
                     Er(378, "span", 4),
-                    lo(379, "Atomic :"),
+                    co(379, "Atomic :"),
                     xr(),
                     xr(),
                     Er(380, "div", 23),
-                    Sr(381, Ad, 3, 5, "span", 25),
+                    Ar(381, Od, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(382, "div", 11),
                     Er(383, "div", 23),
                     Er(384, "span", 4),
-                    lo(385, "Atomic $:"),
+                    co(385, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(386, "div", 23),
-                    Sr(387, Sd, 3, 4, "span", 26),
+                    Ar(387, Cd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(388, "div", 11),
                     Er(389, "div", 23),
                     Er(390, "span", 13),
-                    lo(391, "Stone Daily *:"),
+                    co(391, "Stone Daily *:"),
                     xr(),
                     xr(),
                     Er(392, "div", 23),
                     Er(393, "span", 13),
-                    lo(394),
-                    Ta(395, "number"),
+                    co(394),
+                    Fa(395, "number"),
                     Dr(396, "img", 27),
                     xr(),
                     xr(),
@@ -14604,69 +14695,69 @@
                     Er(399, "div", 11),
                     Er(400, "div", 12),
                     Er(401, "span", 13),
-                    lo(402),
-                    Ta(403, "number"),
+                    co(402),
+                    Fa(403, "number"),
                     xr(),
                     Dr(404, "img", 14),
                     xr(),
                     Er(405, "div", 12),
                     Er(406, "span", 13),
-                    lo(407),
-                    Ta(408, "number"),
+                    co(407),
+                    Fa(408, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(409, "div", 11),
                     Er(410, "div", 12),
                     Er(411, "span", 13),
-                    lo(412),
-                    Ta(413, "number"),
+                    co(412),
+                    Fa(413, "number"),
                     xr(),
                     Dr(414, "img", 15),
                     xr(),
                     Er(415, "div", 12),
                     Er(416, "span", 13),
-                    lo(417),
-                    Ta(418, "number"),
+                    co(417),
+                    Fa(418, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(419, "div", 11),
                     Er(420, "div", 12),
                     Er(421, "span", 4),
-                    lo(422, "Craft ￦"),
+                    co(422, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(423, "div", 12),
                     Er(424, "span", 16),
-                    lo(425),
-                    Ta(426, "number"),
+                    co(425),
+                    Fa(426, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(427, "div", 11),
                     Er(428, "div", 12),
                     Er(429, "span", 4),
-                    lo(430, "Craft $"),
+                    co(430, "Craft $"),
                     xr(),
                     xr(),
                     Er(431, "div", 12),
                     Er(432, "span", 17),
-                    lo(433),
-                    Ta(434, "number"),
+                    co(433),
+                    Fa(434, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(435, "div", 11),
                     Er(436, "div", 12),
                     Er(437, "span", 13),
-                    lo(438, "Minted :"),
+                    co(438, "Minted :"),
                     xr(),
                     xr(),
                     Er(439, "div", 12),
                     Er(440, "span", 13),
-                    lo(441),
-                    Ta(442, "number"),
+                    co(441),
+                    Fa(442, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -14676,9 +14767,9 @@
                     Dr(445, "img", 35),
                     Er(446, "div", 21),
                     Er(447, "span", 22),
-                    lo(448, "Buy "),
+                    co(448, "Buy "),
                     Dr(449, "BR"),
-                    lo(450),
+                    co(450),
                     xr(),
                     xr(),
                     xr(),
@@ -14687,59 +14778,59 @@
                     Er(452, "div", 11),
                     Er(453, "div", 23),
                     Er(454, "span", 4),
-                    lo(455, "Daily :"),
+                    co(455, "Daily :"),
                     xr(),
                     xr(),
                     Er(456, "div", 23),
                     Er(457, "span", 24),
-                    lo(458),
-                    Ta(459, "number"),
+                    co(458),
+                    Fa(459, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(460, "div", 11),
                     Er(461, "div", 23),
                     Er(462, "span", 13),
-                    lo(463, "ROI :"),
+                    co(463, "ROI :"),
                     xr(),
                     xr(),
                     Er(464, "div", 23),
                     Er(465, "span", 13),
-                    lo(466),
-                    Ta(467, "number"),
+                    co(466),
+                    Fa(467, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(468, "div", 11),
                     Er(469, "div", 23),
                     Er(470, "span", 4),
-                    lo(471, "Atomic :"),
+                    co(471, "Atomic :"),
                     xr(),
                     xr(),
                     Er(472, "div", 23),
-                    Sr(473, Od, 3, 5, "span", 25),
+                    Ar(473, kd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(474, "div", 11),
                     Er(475, "div", 23),
                     Er(476, "span", 4),
-                    lo(477, "Atomic $:"),
+                    co(477, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(478, "div", 23),
-                    Sr(479, Cd, 3, 4, "span", 26),
+                    Ar(479, Ed, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(480, "div", 11),
                     Er(481, "div", 23),
                     Er(482, "span", 13),
-                    lo(483, "Stone Daily *:"),
+                    co(483, "Stone Daily *:"),
                     xr(),
                     xr(),
                     Er(484, "div", 23),
                     Er(485, "span", 13),
-                    lo(486),
-                    Ta(487, "number"),
+                    co(486),
+                    Fa(487, "number"),
                     Dr(488, "img", 27),
                     xr(),
                     xr(),
@@ -14765,11 +14856,11 @@
                     Ys(1),
                     ho(" ", Pa(22, 94, e.ValueAOFS.Value_W, "1.2-2"), " %"),
                     Ys(13),
-                    co(Pa(35, 97, e.legendary.resourceWOOD, "1.0-0")),
+                    lo(Pa(35, 97, e.legendary.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(40, 100, e.legendary.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(45, 103, e.legendary.resourceSTONE, "1.0-0")),
+                    lo(Pa(45, 103, e.legendary.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(50, 106, e.legendary.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -14779,9 +14870,9 @@
                     Ys(8),
                     ho("", Pa(66, 112, e.legendary.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(74, 115, e.legendary.minted, "1.0-0")),
+                    lo(Pa(74, 115, e.legendary.minted, "1.0-0")),
                     Ys(9),
-                    co(e.legendary.totalSold),
+                    lo(e.legendary.totalSold),
                     Ys(7),
                     Cr("ngClass", e.legendary.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -14795,11 +14886,11 @@
                     Ys(7),
                     ho("", Pa(119, 124, e.legendary.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(127, 127, e.epic.resourceWOOD, "1.0-0")),
+                    lo(Pa(127, 127, e.epic.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(132, 130, e.epic.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(137, 133, e.epic.resourceSTONE, "1.0-0")),
+                    lo(Pa(137, 133, e.epic.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(142, 136, e.epic.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -14809,9 +14900,9 @@
                     Ys(8),
                     ho("", Pa(158, 142, e.epic.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(166, 145, e.epic.minted, "1.0-0")),
+                    lo(Pa(166, 145, e.epic.minted, "1.0-0")),
                     Ys(9),
-                    co(e.epic.totalSold),
+                    lo(e.epic.totalSold),
                     Ys(7),
                     Cr("ngClass", e.epic.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -14825,11 +14916,11 @@
                     Ys(7),
                     ho("", Pa(211, 154, e.epic.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(219, 157, e.rare.resourceWOOD, "1.0-0")),
+                    lo(Pa(219, 157, e.rare.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(224, 160, e.rare.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(229, 163, e.rare.resourceSTONE, "1.0-0")),
+                    lo(Pa(229, 163, e.rare.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(234, 166, e.rare.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -14839,9 +14930,9 @@
                     Ys(8),
                     ho("", Pa(250, 172, e.rare.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(258, 175, e.rare.minted, "1.0-0")),
+                    lo(Pa(258, 175, e.rare.minted, "1.0-0")),
                     Ys(9),
-                    co(e.rare.totalSold),
+                    lo(e.rare.totalSold),
                     Ys(7),
                     Cr("ngClass", e.rare.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -14855,11 +14946,11 @@
                     Ys(7),
                     ho("", Pa(303, 184, e.rare.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(311, 187, e.uncommon.resourceWOOD, "1.0-0")),
+                    lo(Pa(311, 187, e.uncommon.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(316, 190, e.uncommon.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(321, 193, e.uncommon.resourceSTONE, "1.0-0")),
+                    lo(Pa(321, 193, e.uncommon.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(326, 196, e.uncommon.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -14869,9 +14960,9 @@
                     Ys(8),
                     ho("", Pa(342, 202, e.uncommon.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(350, 205, e.uncommon.minted, "1.0-0")),
+                    lo(Pa(350, 205, e.uncommon.minted, "1.0-0")),
                     Ys(9),
-                    co(e.uncommon.totalSold),
+                    lo(e.uncommon.totalSold),
                     Ys(7),
                     Cr("ngClass", e.uncommon.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -14885,11 +14976,11 @@
                     Ys(7),
                     ho("", Pa(395, 214, e.uncommon.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(403, 217, e.common.resourceWOOD, "1.0-0")),
+                    lo(Pa(403, 217, e.common.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(408, 220, e.common.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(413, 223, e.common.resourceSTONE, "1.0-0")),
+                    lo(Pa(413, 223, e.common.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(418, 226, e.common.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -14899,9 +14990,9 @@
                     Ys(8),
                     ho("", Pa(434, 232, e.common.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(442, 235, e.common.minted, "1.0-0")),
+                    lo(Pa(442, 235, e.common.minted, "1.0-0")),
                     Ys(9),
-                    co(e.common.totalSold),
+                    lo(e.common.totalSold),
                     Ys(7),
                     Cr("ngClass", e.common.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -14915,17 +15006,17 @@
                     Ys(7),
                     ho("", Pa(487, 244, e.common.production, "1.0-0"), " "))
                 },
-                directives: [yc, Ac],
-                pipes: [Cc],
+                directives: [yl, Sl],
+                pipes: [Cl],
                 styles: [".img-fluid[_ngcontent-%COMP%], .video-fluid[_ngcontent-%COMP%]{max-width:100%}.badge.sm[_ngcontent-%COMP%]{padding:3px;font-size:12px}.grey.darken-2[_ngcontent-%COMP%]{background-color:#616161!important}.gradbg-cyan[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#5b81a5,#19e4ff)!important}.badge.ssm[_ngcontent-%COMP%]{padding:2px;font-size:10px}.gradbg-lime2[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#4e9f34,#c4de00)!important}.gradbg-red[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#6d091e,tomato)!important}.badge[_ngcontent-%COMP%]{color:#000!important;border-radius:.125rem;box-shadow:0 2px 5px 0 #00000029,0 2px 10px 0 #0000001f;display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:initial;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.w-50[_ngcontent-%COMP%]{width:50%!important}.w-10[_ngcontent-%COMP%]{width:10%!important}.w-20[_ngcontent-%COMP%]{width:20%!important}.w-40[_ngcontent-%COMP%]{width:40%!important}.w-45[_ngcontent-%COMP%]{width:45%!important}.text-left[_ngcontent-%COMP%]{text-align:left!important}.text-right[_ngcontent-%COMP%]{text-align:right!important}"]
             }),
             t
         }
         )();
-        function Ed(t, e) {
+        function Dd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -14934,10 +15025,10 @@
                 ho("", Pa(2, 2, t.legendary.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function xd(t, e) {
+        function Vd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -14945,10 +15036,10 @@
                 ho("", Pa(2, 1, t.legendary.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function Dd(t, e) {
+        function Td(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -14957,10 +15048,10 @@
                 ho("", Pa(2, 2, t.epic.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function Vd(t, e) {
+        function Fd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -14968,10 +15059,10 @@
                 ho("", Pa(2, 1, t.epic.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function Fd(t, e) {
+        function Pd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -14980,10 +15071,10 @@
                 ho("", Pa(2, 2, t.rare.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function Td(t, e) {
+        function Id(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -14991,10 +15082,10 @@
                 ho("", Pa(2, 1, t.rare.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function Pd(t, e) {
+        function Rd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -15003,10 +15094,10 @@
                 ho("", Pa(2, 2, t.uncommon.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function Id(t, e) {
+        function Wd(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -15014,10 +15105,10 @@
                 ho("", Pa(2, 1, t.uncommon.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        function Rd(t, e) {
+        function Nd(t, e) {
             if (1 & t && (Er(0, "span", 16),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -15026,10 +15117,10 @@
                 ho("", Pa(2, 2, t.common.atomic, "1.0-2"), " \uffe6")
             }
         }
-        function Nd(t, e) {
+        function Md(t, e) {
             if (1 & t && (Er(0, "span", 17),
-            lo(1),
-            Ta(2, "number"),
+            co(1),
+            Fa(2, "number"),
             xr()),
             2 & t) {
                 const t = Rr();
@@ -15037,7 +15128,7 @@
                 ho("", Pa(2, 1, t.common.atomic * t.ValueWAX, "1.0-2"), " $")
             }
         }
-        let Wd = (()=>{
+        let Ld = (()=>{
             class t {
                 constructor(t, e, n) {
                     this.ageoffarmingService = t,
@@ -15183,7 +15274,7 @@
                 return new (e || t)(Or(Gh),Or(Ju),Or(Yh))
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-food"]],
                 inputs: {
@@ -15202,30 +15293,30 @@
                     Dr(2, "div"),
                     Er(3, "div", 2),
                     Dr(4, "img", 3),
-                    lo(5, " FOOD "),
+                    co(5, " FOOD "),
                     Dr(6, "img", 3),
                     Dr(7, "br"),
                     Er(8, "span", 4),
-                    lo(9),
-                    Ta(10, "number"),
+                    co(9),
+                    Fa(10, "number"),
                     xr(),
                     Dr(11, "br"),
-                    lo(12),
-                    Ta(13, "number"),
+                    co(12),
+                    Fa(13, "number"),
                     Er(14, "span", 5),
-                    lo(15),
-                    Ta(16, "number"),
+                    co(15),
+                    Fa(16, "number"),
                     xr(),
                     Dr(17, "br"),
-                    lo(18),
-                    Ta(19, "number"),
+                    co(18),
+                    Fa(19, "number"),
                     Er(20, "span", 5),
-                    lo(21),
-                    Ta(22, "number"),
+                    co(21),
+                    Fa(22, "number"),
                     xr(),
                     Dr(23, "br"),
                     Er(24, "a", 6),
-                    lo(25, " Click to open Alcor Exchange "),
+                    co(25, " Click to open Alcor Exchange "),
                     xr(),
                     xr(),
                     Dr(26, "div"),
@@ -15237,69 +15328,69 @@
                     Er(31, "div", 11),
                     Er(32, "div", 12),
                     Er(33, "span", 13),
-                    lo(34),
-                    Ta(35, "number"),
+                    co(34),
+                    Fa(35, "number"),
                     xr(),
                     Dr(36, "img", 14),
                     xr(),
                     Er(37, "div", 12),
                     Er(38, "span", 13),
-                    lo(39),
-                    Ta(40, "number"),
+                    co(39),
+                    Fa(40, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(41, "div", 11),
                     Er(42, "div", 12),
                     Er(43, "span", 13),
-                    lo(44),
-                    Ta(45, "number"),
+                    co(44),
+                    Fa(45, "number"),
                     xr(),
                     Dr(46, "img", 15),
                     xr(),
                     Er(47, "div", 12),
                     Er(48, "span", 13),
-                    lo(49),
-                    Ta(50, "number"),
+                    co(49),
+                    Fa(50, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(51, "div", 11),
                     Er(52, "div", 12),
                     Er(53, "span", 4),
-                    lo(54, "Craft ￦"),
+                    co(54, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(55, "div", 12),
                     Er(56, "span", 16),
-                    lo(57),
-                    Ta(58, "number"),
+                    co(57),
+                    Fa(58, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(59, "div", 11),
                     Er(60, "div", 12),
                     Er(61, "span", 4),
-                    lo(62, "Craft $"),
+                    co(62, "Craft $"),
                     xr(),
                     xr(),
                     Er(63, "div", 12),
                     Er(64, "span", 17),
-                    lo(65),
-                    Ta(66, "number"),
+                    co(65),
+                    Fa(66, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(67, "div", 11),
                     Er(68, "div", 12),
                     Er(69, "span", 13),
-                    lo(70, "Minted :"),
+                    co(70, "Minted :"),
                     xr(),
                     xr(),
                     Er(71, "div", 12),
                     Er(72, "span", 13),
-                    lo(73),
-                    Ta(74, "number"),
+                    co(73),
+                    Fa(74, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -15309,9 +15400,9 @@
                     Dr(77, "video", 20),
                     Er(78, "div", 21),
                     Er(79, "span", 22),
-                    lo(80, "Buy "),
+                    co(80, "Buy "),
                     Dr(81, "BR"),
-                    lo(82),
+                    co(82),
                     xr(),
                     xr(),
                     xr(),
@@ -15320,59 +15411,59 @@
                     Er(84, "div", 11),
                     Er(85, "div", 23),
                     Er(86, "span", 4),
-                    lo(87, "Daily :"),
+                    co(87, "Daily :"),
                     xr(),
                     xr(),
                     Er(88, "div", 23),
                     Er(89, "span", 24),
-                    lo(90),
-                    Ta(91, "number"),
+                    co(90),
+                    Fa(91, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(92, "div", 11),
                     Er(93, "div", 23),
                     Er(94, "span", 13),
-                    lo(95, "ROI :"),
+                    co(95, "ROI :"),
                     xr(),
                     xr(),
                     Er(96, "div", 23),
                     Er(97, "span", 13),
-                    lo(98),
-                    Ta(99, "number"),
+                    co(98),
+                    Fa(99, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(100, "div", 11),
                     Er(101, "div", 23),
                     Er(102, "span", 4),
-                    lo(103, "Atomic :"),
+                    co(103, "Atomic :"),
                     xr(),
                     xr(),
                     Er(104, "div", 23),
-                    Sr(105, Ed, 3, 5, "span", 25),
+                    Ar(105, Dd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(106, "div", 11),
                     Er(107, "div", 23),
                     Er(108, "span", 4),
-                    lo(109, "Atomic $:"),
+                    co(109, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(110, "div", 23),
-                    Sr(111, xd, 3, 4, "span", 26),
+                    Ar(111, Vd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(112, "div", 11),
                     Er(113, "div", 23),
                     Er(114, "span", 13),
-                    lo(115, "Food Daily *:"),
+                    co(115, "Food Daily *:"),
                     xr(),
                     xr(),
                     Er(116, "div", 23),
                     Er(117, "span", 13),
-                    lo(118),
-                    Ta(119, "number"),
+                    co(118),
+                    Fa(119, "number"),
                     Dr(120, "img", 27),
                     xr(),
                     xr(),
@@ -15383,69 +15474,69 @@
                     Er(123, "div", 11),
                     Er(124, "div", 12),
                     Er(125, "span", 13),
-                    lo(126),
-                    Ta(127, "number"),
+                    co(126),
+                    Fa(127, "number"),
                     xr(),
                     Dr(128, "img", 14),
                     xr(),
                     Er(129, "div", 12),
                     Er(130, "span", 13),
-                    lo(131),
-                    Ta(132, "number"),
+                    co(131),
+                    Fa(132, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(133, "div", 11),
                     Er(134, "div", 12),
                     Er(135, "span", 13),
-                    lo(136),
-                    Ta(137, "number"),
+                    co(136),
+                    Fa(137, "number"),
                     xr(),
                     Dr(138, "img", 15),
                     xr(),
                     Er(139, "div", 12),
                     Er(140, "span", 13),
-                    lo(141),
-                    Ta(142, "number"),
+                    co(141),
+                    Fa(142, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(143, "div", 11),
                     Er(144, "div", 12),
                     Er(145, "span", 4),
-                    lo(146, "Craft ￦"),
+                    co(146, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(147, "div", 12),
                     Er(148, "span", 16),
-                    lo(149),
-                    Ta(150, "number"),
+                    co(149),
+                    Fa(150, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(151, "div", 11),
                     Er(152, "div", 12),
                     Er(153, "span", 4),
-                    lo(154, "Craft $"),
+                    co(154, "Craft $"),
                     xr(),
                     xr(),
                     Er(155, "div", 12),
                     Er(156, "span", 17),
-                    lo(157),
-                    Ta(158, "number"),
+                    co(157),
+                    Fa(158, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(159, "div", 11),
                     Er(160, "div", 12),
                     Er(161, "span", 13),
-                    lo(162, "Minted :"),
+                    co(162, "Minted :"),
                     xr(),
                     xr(),
                     Er(163, "div", 12),
                     Er(164, "span", 13),
-                    lo(165),
-                    Ta(166, "number"),
+                    co(165),
+                    Fa(166, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -15455,9 +15546,9 @@
                     Dr(169, "video", 29),
                     Er(170, "div", 21),
                     Er(171, "span", 22),
-                    lo(172, "Buy "),
+                    co(172, "Buy "),
                     Dr(173, "BR"),
-                    lo(174),
+                    co(174),
                     xr(),
                     xr(),
                     xr(),
@@ -15466,59 +15557,59 @@
                     Er(176, "div", 11),
                     Er(177, "div", 23),
                     Er(178, "span", 4),
-                    lo(179, "Daily :"),
+                    co(179, "Daily :"),
                     xr(),
                     xr(),
                     Er(180, "div", 23),
                     Er(181, "span", 24),
-                    lo(182),
-                    Ta(183, "number"),
+                    co(182),
+                    Fa(183, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(184, "div", 11),
                     Er(185, "div", 23),
                     Er(186, "span", 13),
-                    lo(187, "ROI :"),
+                    co(187, "ROI :"),
                     xr(),
                     xr(),
                     Er(188, "div", 23),
                     Er(189, "span", 13),
-                    lo(190),
-                    Ta(191, "number"),
+                    co(190),
+                    Fa(191, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(192, "div", 11),
                     Er(193, "div", 23),
                     Er(194, "span", 4),
-                    lo(195, "Atomic :"),
+                    co(195, "Atomic :"),
                     xr(),
                     xr(),
                     Er(196, "div", 23),
-                    Sr(197, Dd, 3, 5, "span", 25),
+                    Ar(197, Td, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(198, "div", 11),
                     Er(199, "div", 23),
                     Er(200, "span", 4),
-                    lo(201, "Atomic $:"),
+                    co(201, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(202, "div", 23),
-                    Sr(203, Vd, 3, 4, "span", 26),
+                    Ar(203, Fd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(204, "div", 11),
                     Er(205, "div", 23),
                     Er(206, "span", 13),
-                    lo(207, "Food Daily *:"),
+                    co(207, "Food Daily *:"),
                     xr(),
                     xr(),
                     Er(208, "div", 23),
                     Er(209, "span", 13),
-                    lo(210),
-                    Ta(211, "number"),
+                    co(210),
+                    Fa(211, "number"),
                     Dr(212, "img", 27),
                     xr(),
                     xr(),
@@ -15529,69 +15620,69 @@
                     Er(215, "div", 11),
                     Er(216, "div", 12),
                     Er(217, "span", 13),
-                    lo(218),
-                    Ta(219, "number"),
+                    co(218),
+                    Fa(219, "number"),
                     xr(),
                     Dr(220, "img", 14),
                     xr(),
                     Er(221, "div", 12),
                     Er(222, "span", 13),
-                    lo(223),
-                    Ta(224, "number"),
+                    co(223),
+                    Fa(224, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(225, "div", 11),
                     Er(226, "div", 12),
                     Er(227, "span", 13),
-                    lo(228),
-                    Ta(229, "number"),
+                    co(228),
+                    Fa(229, "number"),
                     xr(),
                     Dr(230, "img", 15),
                     xr(),
                     Er(231, "div", 12),
                     Er(232, "span", 13),
-                    lo(233),
-                    Ta(234, "number"),
+                    co(233),
+                    Fa(234, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(235, "div", 11),
                     Er(236, "div", 12),
                     Er(237, "span", 4),
-                    lo(238, "Craft ￦"),
+                    co(238, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(239, "div", 12),
                     Er(240, "span", 16),
-                    lo(241),
-                    Ta(242, "number"),
+                    co(241),
+                    Fa(242, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(243, "div", 11),
                     Er(244, "div", 12),
                     Er(245, "span", 4),
-                    lo(246, "Craft $"),
+                    co(246, "Craft $"),
                     xr(),
                     xr(),
                     Er(247, "div", 12),
                     Er(248, "span", 17),
-                    lo(249),
-                    Ta(250, "number"),
+                    co(249),
+                    Fa(250, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(251, "div", 11),
                     Er(252, "div", 12),
                     Er(253, "span", 13),
-                    lo(254, "Minted :"),
+                    co(254, "Minted :"),
                     xr(),
                     xr(),
                     Er(255, "div", 12),
                     Er(256, "span", 13),
-                    lo(257),
-                    Ta(258, "number"),
+                    co(257),
+                    Fa(258, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -15601,9 +15692,9 @@
                     Dr(261, "img", 31),
                     Er(262, "div", 21),
                     Er(263, "span", 22),
-                    lo(264, "Buy "),
+                    co(264, "Buy "),
                     Dr(265, "BR"),
-                    lo(266),
+                    co(266),
                     xr(),
                     xr(),
                     xr(),
@@ -15612,59 +15703,59 @@
                     Er(268, "div", 11),
                     Er(269, "div", 23),
                     Er(270, "span", 4),
-                    lo(271, "Daily :"),
+                    co(271, "Daily :"),
                     xr(),
                     xr(),
                     Er(272, "div", 23),
                     Er(273, "span", 24),
-                    lo(274),
-                    Ta(275, "number"),
+                    co(274),
+                    Fa(275, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(276, "div", 11),
                     Er(277, "div", 23),
                     Er(278, "span", 13),
-                    lo(279, "ROI :"),
+                    co(279, "ROI :"),
                     xr(),
                     xr(),
                     Er(280, "div", 23),
                     Er(281, "span", 13),
-                    lo(282),
-                    Ta(283, "number"),
+                    co(282),
+                    Fa(283, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(284, "div", 11),
                     Er(285, "div", 23),
                     Er(286, "span", 4),
-                    lo(287, "Atomic :"),
+                    co(287, "Atomic :"),
                     xr(),
                     xr(),
                     Er(288, "div", 23),
-                    Sr(289, Fd, 3, 5, "span", 25),
+                    Ar(289, Pd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(290, "div", 11),
                     Er(291, "div", 23),
                     Er(292, "span", 4),
-                    lo(293, "Atomic $:"),
+                    co(293, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(294, "div", 23),
-                    Sr(295, Td, 3, 4, "span", 26),
+                    Ar(295, Id, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(296, "div", 11),
                     Er(297, "div", 23),
                     Er(298, "span", 13),
-                    lo(299, "Food Daily *:"),
+                    co(299, "Food Daily *:"),
                     xr(),
                     xr(),
                     Er(300, "div", 23),
                     Er(301, "span", 13),
-                    lo(302),
-                    Ta(303, "number"),
+                    co(302),
+                    Fa(303, "number"),
                     Dr(304, "img", 27),
                     xr(),
                     xr(),
@@ -15675,69 +15766,69 @@
                     Er(307, "div", 11),
                     Er(308, "div", 12),
                     Er(309, "span", 13),
-                    lo(310),
-                    Ta(311, "number"),
+                    co(310),
+                    Fa(311, "number"),
                     xr(),
                     Dr(312, "img", 14),
                     xr(),
                     Er(313, "div", 12),
                     Er(314, "span", 13),
-                    lo(315),
-                    Ta(316, "number"),
+                    co(315),
+                    Fa(316, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(317, "div", 11),
                     Er(318, "div", 12),
                     Er(319, "span", 13),
-                    lo(320),
-                    Ta(321, "number"),
+                    co(320),
+                    Fa(321, "number"),
                     xr(),
                     Dr(322, "img", 15),
                     xr(),
                     Er(323, "div", 12),
                     Er(324, "span", 13),
-                    lo(325),
-                    Ta(326, "number"),
+                    co(325),
+                    Fa(326, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(327, "div", 11),
                     Er(328, "div", 12),
                     Er(329, "span", 4),
-                    lo(330, "Craft ￦"),
+                    co(330, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(331, "div", 12),
                     Er(332, "span", 16),
-                    lo(333),
-                    Ta(334, "number"),
+                    co(333),
+                    Fa(334, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(335, "div", 11),
                     Er(336, "div", 12),
                     Er(337, "span", 4),
-                    lo(338, "Craft $"),
+                    co(338, "Craft $"),
                     xr(),
                     xr(),
                     Er(339, "div", 12),
                     Er(340, "span", 17),
-                    lo(341),
-                    Ta(342, "number"),
+                    co(341),
+                    Fa(342, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(343, "div", 11),
                     Er(344, "div", 12),
                     Er(345, "span", 13),
-                    lo(346, "Minted :"),
+                    co(346, "Minted :"),
                     xr(),
                     xr(),
                     Er(347, "div", 12),
                     Er(348, "span", 13),
-                    lo(349),
-                    Ta(350, "number"),
+                    co(349),
+                    Fa(350, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -15747,9 +15838,9 @@
                     Dr(353, "img", 33),
                     Er(354, "div", 21),
                     Er(355, "span", 22),
-                    lo(356, "Buy "),
+                    co(356, "Buy "),
                     Dr(357, "BR"),
-                    lo(358),
+                    co(358),
                     xr(),
                     xr(),
                     xr(),
@@ -15758,59 +15849,59 @@
                     Er(360, "div", 11),
                     Er(361, "div", 23),
                     Er(362, "span", 4),
-                    lo(363, "Daily :"),
+                    co(363, "Daily :"),
                     xr(),
                     xr(),
                     Er(364, "div", 23),
                     Er(365, "span", 24),
-                    lo(366),
-                    Ta(367, "number"),
+                    co(366),
+                    Fa(367, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(368, "div", 11),
                     Er(369, "div", 23),
                     Er(370, "span", 13),
-                    lo(371, "ROI :"),
+                    co(371, "ROI :"),
                     xr(),
                     xr(),
                     Er(372, "div", 23),
                     Er(373, "span", 13),
-                    lo(374),
-                    Ta(375, "number"),
+                    co(374),
+                    Fa(375, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(376, "div", 11),
                     Er(377, "div", 23),
                     Er(378, "span", 4),
-                    lo(379, "Atomic :"),
+                    co(379, "Atomic :"),
                     xr(),
                     xr(),
                     Er(380, "div", 23),
-                    Sr(381, Pd, 3, 5, "span", 25),
+                    Ar(381, Rd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(382, "div", 11),
                     Er(383, "div", 23),
                     Er(384, "span", 4),
-                    lo(385, "Atomic $:"),
+                    co(385, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(386, "div", 23),
-                    Sr(387, Id, 3, 4, "span", 26),
+                    Ar(387, Wd, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(388, "div", 11),
                     Er(389, "div", 23),
                     Er(390, "span", 13),
-                    lo(391, "Food Daily *:"),
+                    co(391, "Food Daily *:"),
                     xr(),
                     xr(),
                     Er(392, "div", 23),
                     Er(393, "span", 13),
-                    lo(394),
-                    Ta(395, "number"),
+                    co(394),
+                    Fa(395, "number"),
                     Dr(396, "img", 27),
                     xr(),
                     xr(),
@@ -15821,69 +15912,69 @@
                     Er(399, "div", 11),
                     Er(400, "div", 12),
                     Er(401, "span", 13),
-                    lo(402),
-                    Ta(403, "number"),
+                    co(402),
+                    Fa(403, "number"),
                     xr(),
                     Dr(404, "img", 14),
                     xr(),
                     Er(405, "div", 12),
                     Er(406, "span", 13),
-                    lo(407),
-                    Ta(408, "number"),
+                    co(407),
+                    Fa(408, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(409, "div", 11),
                     Er(410, "div", 12),
                     Er(411, "span", 13),
-                    lo(412),
-                    Ta(413, "number"),
+                    co(412),
+                    Fa(413, "number"),
                     xr(),
                     Dr(414, "img", 15),
                     xr(),
                     Er(415, "div", 12),
                     Er(416, "span", 13),
-                    lo(417),
-                    Ta(418, "number"),
+                    co(417),
+                    Fa(418, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(419, "div", 11),
                     Er(420, "div", 12),
                     Er(421, "span", 4),
-                    lo(422, "Craft ￦"),
+                    co(422, "Craft ￦"),
                     xr(),
                     xr(),
                     Er(423, "div", 12),
                     Er(424, "span", 16),
-                    lo(425),
-                    Ta(426, "number"),
+                    co(425),
+                    Fa(426, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(427, "div", 11),
                     Er(428, "div", 12),
                     Er(429, "span", 4),
-                    lo(430, "Craft $"),
+                    co(430, "Craft $"),
                     xr(),
                     xr(),
                     Er(431, "div", 12),
                     Er(432, "span", 17),
-                    lo(433),
-                    Ta(434, "number"),
+                    co(433),
+                    Fa(434, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(435, "div", 11),
                     Er(436, "div", 12),
                     Er(437, "span", 13),
-                    lo(438, "Minted :"),
+                    co(438, "Minted :"),
                     xr(),
                     xr(),
                     Er(439, "div", 12),
                     Er(440, "span", 13),
-                    lo(441),
-                    Ta(442, "number"),
+                    co(441),
+                    Fa(442, "number"),
                     xr(),
                     xr(),
                     xr(),
@@ -15893,9 +15984,9 @@
                     Dr(445, "img", 35),
                     Er(446, "div", 21),
                     Er(447, "span", 22),
-                    lo(448, "Buy "),
+                    co(448, "Buy "),
                     Dr(449, "BR"),
-                    lo(450),
+                    co(450),
                     xr(),
                     xr(),
                     xr(),
@@ -15904,59 +15995,59 @@
                     Er(452, "div", 11),
                     Er(453, "div", 23),
                     Er(454, "span", 4),
-                    lo(455, "Daily :"),
+                    co(455, "Daily :"),
                     xr(),
                     xr(),
                     Er(456, "div", 23),
                     Er(457, "span", 24),
-                    lo(458),
-                    Ta(459, "number"),
+                    co(458),
+                    Fa(459, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(460, "div", 11),
                     Er(461, "div", 23),
                     Er(462, "span", 13),
-                    lo(463, "ROI :"),
+                    co(463, "ROI :"),
                     xr(),
                     xr(),
                     Er(464, "div", 23),
                     Er(465, "span", 13),
-                    lo(466),
-                    Ta(467, "number"),
+                    co(466),
+                    Fa(467, "number"),
                     xr(),
                     xr(),
                     xr(),
                     Er(468, "div", 11),
                     Er(469, "div", 23),
                     Er(470, "span", 4),
-                    lo(471, "Atomic :"),
+                    co(471, "Atomic :"),
                     xr(),
                     xr(),
                     Er(472, "div", 23),
-                    Sr(473, Rd, 3, 5, "span", 25),
+                    Ar(473, Nd, 3, 5, "span", 25),
                     xr(),
                     xr(),
                     Er(474, "div", 11),
                     Er(475, "div", 23),
                     Er(476, "span", 4),
-                    lo(477, "Atomic $:"),
+                    co(477, "Atomic $:"),
                     xr(),
                     xr(),
                     Er(478, "div", 23),
-                    Sr(479, Nd, 3, 4, "span", 26),
+                    Ar(479, Md, 3, 4, "span", 26),
                     xr(),
                     xr(),
                     Er(480, "div", 11),
                     Er(481, "div", 23),
                     Er(482, "span", 13),
-                    lo(483, "Food Daily *:"),
+                    co(483, "Food Daily *:"),
                     xr(),
                     xr(),
                     Er(484, "div", 23),
                     Er(485, "span", 13),
-                    lo(486),
-                    Ta(487, "number"),
+                    co(486),
+                    Fa(487, "number"),
                     Dr(488, "img", 27),
                     xr(),
                     xr(),
@@ -15982,11 +16073,11 @@
                     Ys(1),
                     ho(" ", Pa(22, 94, e.ValueAOFF.Value_W, "1.2-2"), " %"),
                     Ys(13),
-                    co(Pa(35, 97, e.legendary.resourceWOOD, "1.0-0")),
+                    lo(Pa(35, 97, e.legendary.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(40, 100, e.legendary.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(45, 103, e.legendary.resourceSTONE, "1.0-0")),
+                    lo(Pa(45, 103, e.legendary.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(50, 106, e.legendary.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -15996,9 +16087,9 @@
                     Ys(8),
                     ho("", Pa(66, 112, e.legendary.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(74, 115, e.legendary.minted, "1.0-0")),
+                    lo(Pa(74, 115, e.legendary.minted, "1.0-0")),
                     Ys(9),
-                    co(e.legendary.totalSold),
+                    lo(e.legendary.totalSold),
                     Ys(7),
                     Cr("ngClass", e.legendary.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -16012,11 +16103,11 @@
                     Ys(7),
                     ho("", Pa(119, 124, e.legendary.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(127, 127, e.epic.resourceWOOD, "1.0-0")),
+                    lo(Pa(127, 127, e.epic.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(132, 130, e.epic.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(137, 133, e.epic.resourceSTONE, "1.0-0")),
+                    lo(Pa(137, 133, e.epic.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(142, 136, e.epic.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -16026,9 +16117,9 @@
                     Ys(8),
                     ho("", Pa(158, 142, e.epic.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(166, 145, e.epic.minted, "1.0-0")),
+                    lo(Pa(166, 145, e.epic.minted, "1.0-0")),
                     Ys(9),
-                    co(e.epic.totalSold),
+                    lo(e.epic.totalSold),
                     Ys(7),
                     Cr("ngClass", e.epic.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -16042,11 +16133,11 @@
                     Ys(7),
                     ho("", Pa(211, 154, e.epic.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(219, 157, e.rare.resourceWOOD, "1.0-0")),
+                    lo(Pa(219, 157, e.rare.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(224, 160, e.rare.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(229, 163, e.rare.resourceSTONE, "1.0-0")),
+                    lo(Pa(229, 163, e.rare.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(234, 166, e.rare.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -16056,9 +16147,9 @@
                     Ys(8),
                     ho("", Pa(250, 172, e.rare.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(258, 175, e.rare.minted, "1.0-0")),
+                    lo(Pa(258, 175, e.rare.minted, "1.0-0")),
                     Ys(9),
-                    co(e.rare.totalSold),
+                    lo(e.rare.totalSold),
                     Ys(7),
                     Cr("ngClass", e.rare.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -16072,11 +16163,11 @@
                     Ys(7),
                     ho("", Pa(303, 184, e.rare.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(311, 187, e.uncommon.resourceWOOD, "1.0-0")),
+                    lo(Pa(311, 187, e.uncommon.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(316, 190, e.uncommon.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(321, 193, e.uncommon.resourceSTONE, "1.0-0")),
+                    lo(Pa(321, 193, e.uncommon.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(326, 196, e.uncommon.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -16086,9 +16177,9 @@
                     Ys(8),
                     ho("", Pa(342, 202, e.uncommon.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(350, 205, e.uncommon.minted, "1.0-0")),
+                    lo(Pa(350, 205, e.uncommon.minted, "1.0-0")),
                     Ys(9),
-                    co(e.uncommon.totalSold),
+                    lo(e.uncommon.totalSold),
                     Ys(7),
                     Cr("ngClass", e.uncommon.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -16102,11 +16193,11 @@
                     Ys(7),
                     ho("", Pa(395, 214, e.uncommon.production, "1.0-0"), " "),
                     Ys(8),
-                    co(Pa(403, 217, e.common.resourceWOOD, "1.0-0")),
+                    lo(Pa(403, 217, e.common.resourceWOOD, "1.0-0")),
                     Ys(5),
                     ho("", Pa(408, 220, e.common.priceResourceWOOD, "1.0-4"), " \uffe6"),
                     Ys(5),
-                    co(Pa(413, 223, e.common.resourceSTONE, "1.0-0")),
+                    lo(Pa(413, 223, e.common.resourceSTONE, "1.0-0")),
                     Ys(5),
                     ho("", Pa(418, 226, e.common.priceResourceSTONE, "1.0-4"), " \uffe6"),
                     Ys(7),
@@ -16116,9 +16207,9 @@
                     Ys(8),
                     ho("", Pa(434, 232, e.common.craftCost * e.ValueWAX, "1.0-2"), " $"),
                     Ys(8),
-                    co(Pa(442, 235, e.common.minted, "1.0-0")),
+                    lo(Pa(442, 235, e.common.minted, "1.0-0")),
                     Ys(9),
-                    co(e.common.totalSold),
+                    lo(e.common.totalSold),
                     Ys(7),
                     Cr("ngClass", e.common.daily >= 0 ? "gradbg-lime2" : "gradbg-red"),
                     Ys(1),
@@ -16132,14 +16223,1692 @@
                     Ys(7),
                     ho("", Pa(487, 244, e.common.production, "1.0-0"), " "))
                 },
-                directives: [yc, Ac],
-                pipes: [Cc],
+                directives: [yl, Sl],
+                pipes: [Cl],
+                styles: [".img-fluid[_ngcontent-%COMP%], .video-fluid[_ngcontent-%COMP%]{max-width:100%}.badge.sm[_ngcontent-%COMP%]{padding:3px;font-size:12px}.grey.darken-2[_ngcontent-%COMP%]{background-color:#616161!important}.gradbg-cyan[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#5b81a5,#19e4ff)!important}.badge.ssm[_ngcontent-%COMP%]{padding:2px;font-size:10px}.gradbg-lime2[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#4e9f34,#c4de00)!important}.gradbg-red[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#6d091e,tomato)!important}.badge[_ngcontent-%COMP%]{color:#000!important;border-radius:.125rem;box-shadow:0 2px 5px 0 #00000029,0 2px 10px 0 #0000001f;display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:initial;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.w-50[_ngcontent-%COMP%]{width:50%!important}.w-10[_ngcontent-%COMP%]{width:10%!important}.w-20[_ngcontent-%COMP%]{width:20%!important}.w-40[_ngcontent-%COMP%]{width:40%!important}.w-45[_ngcontent-%COMP%]{width:45%!important}.text-left[_ngcontent-%COMP%]{text-align:left!important}.text-right[_ngcontent-%COMP%]{text-align:right!important}"]
+            }),
+            t
+        }
+        )();
+        function Bd(t, e) {
+            if (1 & t && (Er(0, "span", 18),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Cr("ngClass", t.legendary.craftCost < t.legendary.atomic ? "grey darken-2" : "gradbg-cyan"),
+                Ys(1),
+                ho("", Pa(2, 2, t.legendary.atomic, "1.0-2"), " \uffe6")
+            }
+        }
+        function jd(t, e) {
+            if (1 & t && (Er(0, "span", 19),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Ys(1),
+                ho("", Pa(2, 1, t.legendary.atomic * t.ValueWAX, "1.0-2"), " $")
+            }
+        }
+        function Hd(t, e) {
+            if (1 & t && (Er(0, "span", 18),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Cr("ngClass", t.epic.craftCost < t.epic.atomic ? "grey darken-2" : "gradbg-cyan"),
+                Ys(1),
+                ho("", Pa(2, 2, t.epic.atomic, "1.0-2"), " \uffe6")
+            }
+        }
+        function $d(t, e) {
+            if (1 & t && (Er(0, "span", 19),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Ys(1),
+                ho("", Pa(2, 1, t.epic.atomic * t.ValueWAX, "1.0-2"), " $")
+            }
+        }
+        function Ud(t, e) {
+            if (1 & t && (Er(0, "span", 18),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Cr("ngClass", t.rare.craftCost < t.rare.atomic ? "grey darken-2" : "gradbg-cyan"),
+                Ys(1),
+                ho("", Pa(2, 2, t.rare.atomic, "1.0-2"), " \uffe6")
+            }
+        }
+        function zd(t, e) {
+            if (1 & t && (Er(0, "span", 19),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Ys(1),
+                ho("", Pa(2, 1, t.rare.atomic * t.ValueWAX, "1.0-2"), " $")
+            }
+        }
+        function Xd(t, e) {
+            if (1 & t && (Er(0, "span", 18),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Cr("ngClass", t.uncommon.craftCost < t.uncommon.atomic ? "grey darken-2" : "gradbg-cyan"),
+                Ys(1),
+                ho("", Pa(2, 2, t.uncommon.atomic, "1.0-2"), " \uffe6")
+            }
+        }
+        function qd(t, e) {
+            if (1 & t && (Er(0, "span", 19),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Ys(1),
+                ho("", Pa(2, 1, t.uncommon.atomic * t.ValueWAX, "1.0-2"), " $")
+            }
+        }
+        function Kd(t, e) {
+            if (1 & t && (Er(0, "span", 18),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Cr("ngClass", t.common.craftCost < t.common.atomic ? "grey darken-2" : "gradbg-cyan"),
+                Ys(1),
+                ho("", Pa(2, 2, t.common.atomic, "1.0-2"), " \uffe6")
+            }
+        }
+        function Qd(t, e) {
+            if (1 & t && (Er(0, "span", 19),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Ys(1),
+                ho("", Pa(2, 1, t.common.atomic * t.ValueWAX, "1.0-2"), " $")
+            }
+        }
+        let Zd = (()=>{
+            class t {
+                constructor(t, e, n) {
+                    this.ageoffarmingService = t,
+                    this.atomicHubService = e,
+                    this.shareDataService = n,
+                    this.legendary = new ih,
+                    this.epic = new ih,
+                    this.rare = new ih,
+                    this.uncommon = new ih,
+                    this.common = new ih,
+                    this.skin = new ih,
+                    this.ActionDay = 24
+                }
+                ngOnInit() {
+                    this.atomicHubService.getItemsDataSalesApiV3bis("497928").then(t=>{
+                        t.data[0] && (this.skin.atomic = this.getPrice(t),
+                        this.skin.minted = t.data[0].assets[0].template.issued_supply,
+                        this.skin.lastSold = t.data[0].last_sold,
+                        this.skin.totalSold = t.data.length)
+                    }
+                    ),
+                    this.atomicHubService.getItemsDataSalesApiV3("497922").then(t=>{
+                        t.data[0] && (this.common.atomic = this.getPrice(t),
+                        this.common.minted = t.data[0].assets[0].template.issued_supply,
+                        this.common.lastSold = t.data[0].last_sold,
+                        this.common.totalSold = t.data.length)
+                    }
+                    ),
+                    this.atomicHubService.getItemsDataSalesApiV3("497923").then(t=>{
+                        t.data[0] && (this.uncommon.atomic = this.getPrice(t),
+                        this.uncommon.minted = t.data[0].assets[0].template.issued_supply,
+                        this.uncommon.lastSold = t.data[0].last_sold,
+                        this.uncommon.totalSold = t.data.length)
+                    }
+                    ),
+                    this.atomicHubService.getItemsDataSalesApiV3("497924").then(t=>{
+                        t.data[0] && (this.rare.atomic = this.getPrice(t),
+                        this.rare.minted = t.data[0].assets[0].template.issued_supply,
+                        this.rare.lastSold = t.data[0].last_sold,
+                        this.rare.totalSold = t.data.length)
+                    }
+                    ),
+                    this.atomicHubService.getItemsDataSalesApiV3("497925").then(t=>{
+                        t.data[0] && (this.epic.atomic = this.getPrice(t),
+                        this.epic.minted = t.data[0].assets[0].template.issued_supply,
+                        this.epic.lastSold = t.data[0].last_sold,
+                        this.epic.totalSold = t.data.length)
+                    }
+                    ),
+                    this.atomicHubService.getItemsDataSalesApiV3("497926").then(t=>{
+                        t.data[0] && (this.legendary.atomic = this.getPrice(t),
+                        this.legendary.minted = t.data[0].assets[0].template.issued_supply,
+                        this.legendary.lastSold = t.data[0].last_sold,
+                        this.legendary.totalSold = t.data.length)
+                    }
+                    )
+                }
+                ngOnChanges() {
+                    let t = this.shareDataService.getBowCommon();
+                    t && (this.common.resourceWOOD = t.wood_craft_cost,
+                    this.common.resourceSTONE = t.stone_craft_cost,
+                    this.common.production = t.rewards,
+                    this.common.craftCost = t.wood_craft_cost * this.ValueAOFW + t.stone_craft_cost * this.ValueAOFS,
+                    this.common.priceResourceWOOD = t.wood_craft_cost * this.ValueAOFW,
+                    this.common.priceResourceSTONE = t.stone_craft_cost * this.ValueAOFS);
+                    let e = this.shareDataService.getBowUncommon();
+                    e && (this.uncommon.resourceWOOD = e.wood_craft_cost + this.common.resourceWOOD,
+                    this.uncommon.resourceSTONE = e.stone_craft_cost + this.common.resourceSTONE,
+                    this.uncommon.production = e.rewards,
+                    this.uncommon.craftCost = this.uncommon.resourceWOOD * this.ValueAOFW + this.uncommon.resourceSTONE * this.ValueAOFS,
+                    this.uncommon.priceResourceWOOD = this.uncommon.resourceWOOD * this.ValueAOFW,
+                    this.uncommon.priceResourceSTONE = this.uncommon.resourceSTONE * this.ValueAOFS);
+                    let n = this.shareDataService.getBowRare();
+                    n && (this.rare.resourceWOOD = n.wood_craft_cost + this.uncommon.resourceWOOD,
+                    this.rare.resourceSTONE = n.stone_craft_cost + this.uncommon.resourceSTONE,
+                    this.rare.production = n.rewards,
+                    this.rare.craftCost = this.rare.resourceWOOD * this.ValueAOFW + this.rare.resourceSTONE * this.ValueAOFS,
+                    this.rare.priceResourceWOOD = this.rare.resourceWOOD * this.ValueAOFW,
+                    this.rare.priceResourceSTONE = this.rare.resourceSTONE * this.ValueAOFS);
+                    let s = this.shareDataService.getBowEpic();
+                    s && (this.epic.resourceWOOD = s.wood_craft_cost + this.rare.resourceWOOD,
+                    this.epic.resourceSTONE = s.stone_craft_cost + this.rare.resourceSTONE,
+                    this.epic.production = s.rewards,
+                    this.epic.craftCost = this.epic.resourceWOOD * this.ValueAOFW + this.epic.resourceSTONE * this.ValueAOFS,
+                    this.epic.priceResourceWOOD = this.epic.resourceWOOD * this.ValueAOFW,
+                    this.epic.priceResourceSTONE = this.epic.resourceSTONE * this.ValueAOFS);
+                    let i = this.shareDataService.getBowLegendary();
+                    i && (this.legendary.resourceWOOD = i.wood_craft_cost + this.epic.resourceWOOD,
+                    this.legendary.resourceSTONE = i.stone_craft_cost + this.epic.resourceSTONE,
+                    this.legendary.production = i.rewards,
+                    this.legendary.craftCost = this.legendary.resourceWOOD * this.ValueAOFW + this.legendary.resourceSTONE * this.ValueAOFS,
+                    this.legendary.priceResourceWOOD = this.legendary.resourceWOOD * this.ValueAOFW,
+                    this.legendary.priceResourceSTONE = this.legendary.resourceSTONE * this.ValueAOFS)
+                }
+                getroi(t, e, n) {
+                    return t && t < e ? t / n : e / n
+                }
+                getPrice(t) {
+                    return "USD" === t.data[0].listing_symbol ? t.data[0].listing_price / 100 / this.ValueWAX : t.data[0].listing_price / 1e8
+                }
+            }
+            return t.\u0275fac = function(e) {
+                return new (e || t)(Or(Gh),Or(Ju),Or(Yh))
+            }
+            ,
+            t.\u0275cmp = jt({
+                type: t,
+                selectors: [["app-bow"]],
+                inputs: {
+                    ValueAOFF: "ValueAOFF",
+                    ValueAOFS: "ValueAOFS",
+                    ValueAOFW: "ValueAOFW",
+                    ValueWAX: "ValueWAX"
+                },
+                features: [ae],
+                decls: 408,
+                vars: 205,
+                consts: [[1, "card", "card-cascade", "narrower", 2, "background-color", "wheat"], [1, "view", "view-cascade", "gradient-card-header", "blue-gradient", "narrower", "py-2", "mx-4", "mb-3", "d-flex", "justify-content-between", "align-items-center"], [1, "badge", "sm", "grey", "darken-2"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/skin.png", 2, "height", "20px"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&order=asc&schema_name=resources&sort=price&symbol=WAX&template_id=497928", 1, "keychainify-checked"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/Animal%20Skins.png", 1, "img-fluid2"], [1, "d-block", "mt-1"], [1, "badge", "grey", "darken-3", "ssm", 2, "min-width", "15px"], [1, ""], [1, "d-block", 2, "margin-left", "20px", "margin-right", "20px"], [1, "d-block", "mt-3"], [1, "d-inline-block", "w-45"], [1, "d-block", "fw_craft"], [1, "d-inline-block", "w-50", "text-left"], [1, "badge", "ssm"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aofw.png", 2, "height", "16px"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aofs.png", 2, "height", "16px"], [1, "badge", "sm"], [1, "badge", "md", 3, "ngClass"], [1, "badge", "md"], [1, "d-inline-block", "w-10", 2, "line-height", "10px", "text-align", "center"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&data:text.rarity=Legendary&match=bow&order=asc&sort=price&symbol=WAX", 1, "keychainify-checked"], ["autoplay", "true", "muted", "true", "src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/short_bow_Legendary.mp4", 1, "video-fluid"], [1, "d-inline-block", "w-50", "text-right"], ["class", "badge md", 3, "ngClass", 4, "ngIf"], ["class", "badge md", 4, "ngIf"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/skin.png", 2, "height", "16px"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&data:text.rarity=Epic&match=bow&order=asc&sort=price&symbol=WAX", 1, "keychainify-checked"], ["autoplay", "true", "muted", "true", "src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/short_bow_Epic.mp4", 1, "video-fluid"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&data:text.rarity=Rare&match=bow&order=asc&sort=price&symbol=WAX", 1, "keychainify-checked"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/short_bow_rare.png", 1, "img-fluid"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&data:text.rarity=Uncommon&match=bow&order=asc&sort=price&symbol=WAX", 1, "keychainify-checked"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/short_bow_uncommon.png", 1, "img-fluid"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&data:text.rarity=Common&match=bow&order=asc&sort=price&symbol=WAX", 1, "keychainify-checked"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/short_bow_common.png", 1, "img-fluid"]],
+                template: function(t, e) {
+                    1 & t && (Er(0, "div", 0),
+                    Er(1, "div", 1),
+                    Dr(2, "div"),
+                    Er(3, "div", 2),
+                    Dr(4, "img", 3),
+                    co(5, " Skin "),
+                    Dr(6, "img", 3),
+                    Dr(7, "br"),
+                    Er(8, "a", 4),
+                    Dr(9, "img", 5),
+                    Er(10, "div", 6),
+                    Er(11, "span", 7),
+                    co(12, "Buy "),
+                    Dr(13, "BR"),
+                    co(14),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(15, "br"),
+                    co(16),
+                    Fa(17, "number"),
+                    Dr(18, "br"),
+                    xr(),
+                    Dr(19, "div"),
+                    xr(),
+                    Er(20, "div", 8),
+                    Er(21, "div", 9),
+                    Er(22, "div", 10),
+                    Er(23, "div", 11),
+                    Er(24, "div", 12),
+                    Er(25, "div", 13),
+                    Er(26, "span", 14),
+                    co(27),
+                    Fa(28, "number"),
+                    xr(),
+                    Dr(29, "img", 15),
+                    xr(),
+                    Er(30, "div", 13),
+                    Er(31, "span", 14),
+                    co(32),
+                    Fa(33, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(34, "div", 12),
+                    Er(35, "div", 13),
+                    Er(36, "span", 14),
+                    co(37),
+                    Fa(38, "number"),
+                    xr(),
+                    Dr(39, "img", 16),
+                    xr(),
+                    Er(40, "div", 13),
+                    Er(41, "span", 14),
+                    co(42),
+                    Fa(43, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(44, "div", 12),
+                    Er(45, "div", 13),
+                    Er(46, "span", 17),
+                    co(47, "Craft ￦"),
+                    xr(),
+                    xr(),
+                    Er(48, "div", 13),
+                    Er(49, "span", 18),
+                    co(50),
+                    Fa(51, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(52, "div", 12),
+                    Er(53, "div", 13),
+                    Er(54, "span", 17),
+                    co(55, "Craft $:"),
+                    xr(),
+                    xr(),
+                    Er(56, "div", 13),
+                    Er(57, "span", 19),
+                    co(58),
+                    Fa(59, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(60, "div", 12),
+                    Er(61, "div", 13),
+                    Er(62, "span", 14),
+                    co(63, "Minted :"),
+                    xr(),
+                    xr(),
+                    Er(64, "div", 13),
+                    Er(65, "span", 14),
+                    co(66),
+                    Fa(67, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(68, "div", 20),
+                    Er(69, "a", 21),
+                    Dr(70, "video", 22),
+                    Er(71, "div", 6),
+                    Er(72, "span", 7),
+                    co(73, "Buy "),
+                    Dr(74, "BR"),
+                    co(75),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(76, "div", 11),
+                    Er(77, "div", 12),
+                    Er(78, "div", 23),
+                    Er(79, "span", 17),
+                    co(80, "Atomic :"),
+                    xr(),
+                    xr(),
+                    Er(81, "div", 23),
+                    Ar(82, Bd, 3, 5, "span", 24),
+                    xr(),
+                    xr(),
+                    Er(83, "div", 12),
+                    Er(84, "div", 23),
+                    Er(85, "span", 17),
+                    co(86, "Atomic $:"),
+                    xr(),
+                    xr(),
+                    Er(87, "div", 23),
+                    Ar(88, jd, 3, 4, "span", 25),
+                    xr(),
+                    xr(),
+                    Er(89, "div", 12),
+                    Er(90, "div", 23),
+                    Er(91, "span", 14),
+                    co(92, " Skin *:"),
+                    xr(),
+                    xr(),
+                    Er(93, "div", 23),
+                    Er(94, "span", 14),
+                    co(95),
+                    Fa(96, "number"),
+                    Fa(97, "number"),
+                    Dr(98, "img", 26),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(99, "hr"),
+                    Er(100, "div", 11),
+                    Er(101, "div", 12),
+                    Er(102, "div", 13),
+                    Er(103, "span", 14),
+                    co(104),
+                    Fa(105, "number"),
+                    xr(),
+                    Dr(106, "img", 15),
+                    xr(),
+                    Er(107, "div", 13),
+                    Er(108, "span", 14),
+                    co(109),
+                    Fa(110, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(111, "div", 12),
+                    Er(112, "div", 13),
+                    Er(113, "span", 14),
+                    co(114),
+                    Fa(115, "number"),
+                    xr(),
+                    Dr(116, "img", 16),
+                    xr(),
+                    Er(117, "div", 13),
+                    Er(118, "span", 14),
+                    co(119),
+                    Fa(120, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(121, "div", 12),
+                    Er(122, "div", 13),
+                    Er(123, "span", 17),
+                    co(124, "Craft ￦"),
+                    xr(),
+                    xr(),
+                    Er(125, "div", 13),
+                    Er(126, "span", 18),
+                    co(127),
+                    Fa(128, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(129, "div", 12),
+                    Er(130, "div", 13),
+                    Er(131, "span", 17),
+                    co(132, "Craft $"),
+                    xr(),
+                    xr(),
+                    Er(133, "div", 13),
+                    Er(134, "span", 19),
+                    co(135),
+                    Fa(136, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(137, "div", 12),
+                    Er(138, "div", 13),
+                    Er(139, "span", 14),
+                    co(140, "Minted :"),
+                    xr(),
+                    xr(),
+                    Er(141, "div", 13),
+                    Er(142, "span", 14),
+                    co(143),
+                    Fa(144, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(145, "div", 20),
+                    Er(146, "a", 27),
+                    Dr(147, "video", 28),
+                    Er(148, "div", 6),
+                    Er(149, "span", 7),
+                    co(150, "Buy "),
+                    Dr(151, "BR"),
+                    co(152),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(153, "div", 11),
+                    Er(154, "div", 12),
+                    Er(155, "div", 23),
+                    Er(156, "span", 17),
+                    co(157, "Atomic :"),
+                    xr(),
+                    xr(),
+                    Er(158, "div", 23),
+                    Ar(159, Hd, 3, 5, "span", 24),
+                    xr(),
+                    xr(),
+                    Er(160, "div", 12),
+                    Er(161, "div", 23),
+                    Er(162, "span", 17),
+                    co(163, "Atomic $:"),
+                    xr(),
+                    xr(),
+                    Er(164, "div", 23),
+                    Ar(165, $d, 3, 4, "span", 25),
+                    xr(),
+                    xr(),
+                    Er(166, "div", 12),
+                    Er(167, "div", 23),
+                    Er(168, "span", 14),
+                    co(169, " Skin *:"),
+                    xr(),
+                    xr(),
+                    Er(170, "div", 23),
+                    Er(171, "span", 14),
+                    co(172),
+                    Fa(173, "number"),
+                    Fa(174, "number"),
+                    Dr(175, "img", 26),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(176, "hr"),
+                    Er(177, "div", 11),
+                    Er(178, "div", 12),
+                    Er(179, "div", 13),
+                    Er(180, "span", 14),
+                    co(181),
+                    Fa(182, "number"),
+                    xr(),
+                    Dr(183, "img", 15),
+                    xr(),
+                    Er(184, "div", 13),
+                    Er(185, "span", 14),
+                    co(186),
+                    Fa(187, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(188, "div", 12),
+                    Er(189, "div", 13),
+                    Er(190, "span", 14),
+                    co(191),
+                    Fa(192, "number"),
+                    xr(),
+                    Dr(193, "img", 16),
+                    xr(),
+                    Er(194, "div", 13),
+                    Er(195, "span", 14),
+                    co(196),
+                    Fa(197, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(198, "div", 12),
+                    Er(199, "div", 13),
+                    Er(200, "span", 17),
+                    co(201, "Craft ￦"),
+                    xr(),
+                    xr(),
+                    Er(202, "div", 13),
+                    Er(203, "span", 18),
+                    co(204),
+                    Fa(205, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(206, "div", 12),
+                    Er(207, "div", 13),
+                    Er(208, "span", 17),
+                    co(209, "Craft $"),
+                    xr(),
+                    xr(),
+                    Er(210, "div", 13),
+                    Er(211, "span", 19),
+                    co(212),
+                    Fa(213, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(214, "div", 12),
+                    Er(215, "div", 13),
+                    Er(216, "span", 14),
+                    co(217, "Minted :"),
+                    xr(),
+                    xr(),
+                    Er(218, "div", 13),
+                    Er(219, "span", 14),
+                    co(220),
+                    Fa(221, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(222, "div", 20),
+                    Er(223, "a", 29),
+                    Dr(224, "img", 30),
+                    Er(225, "div", 6),
+                    Er(226, "span", 7),
+                    co(227, "Buy "),
+                    Dr(228, "BR"),
+                    co(229),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(230, "div", 11),
+                    Er(231, "div", 12),
+                    Er(232, "div", 23),
+                    Er(233, "span", 17),
+                    co(234, "Atomic :"),
+                    xr(),
+                    xr(),
+                    Er(235, "div", 23),
+                    Ar(236, Ud, 3, 5, "span", 24),
+                    xr(),
+                    xr(),
+                    Er(237, "div", 12),
+                    Er(238, "div", 23),
+                    Er(239, "span", 17),
+                    co(240, "Atomic $:"),
+                    xr(),
+                    xr(),
+                    Er(241, "div", 23),
+                    Ar(242, zd, 3, 4, "span", 25),
+                    xr(),
+                    xr(),
+                    Er(243, "div", 12),
+                    Er(244, "div", 23),
+                    Er(245, "span", 14),
+                    co(246, " Skin *:"),
+                    xr(),
+                    xr(),
+                    Er(247, "div", 23),
+                    Er(248, "span", 14),
+                    co(249),
+                    Fa(250, "number"),
+                    Fa(251, "number"),
+                    Dr(252, "img", 26),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(253, "hr"),
+                    Er(254, "div", 11),
+                    Er(255, "div", 12),
+                    Er(256, "div", 13),
+                    Er(257, "span", 14),
+                    co(258),
+                    Fa(259, "number"),
+                    xr(),
+                    Dr(260, "img", 15),
+                    xr(),
+                    Er(261, "div", 13),
+                    Er(262, "span", 14),
+                    co(263),
+                    Fa(264, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(265, "div", 12),
+                    Er(266, "div", 13),
+                    Er(267, "span", 14),
+                    co(268),
+                    Fa(269, "number"),
+                    xr(),
+                    Dr(270, "img", 16),
+                    xr(),
+                    Er(271, "div", 13),
+                    Er(272, "span", 14),
+                    co(273),
+                    Fa(274, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(275, "div", 12),
+                    Er(276, "div", 13),
+                    Er(277, "span", 17),
+                    co(278, "Craft ￦"),
+                    xr(),
+                    xr(),
+                    Er(279, "div", 13),
+                    Er(280, "span", 18),
+                    co(281),
+                    Fa(282, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(283, "div", 12),
+                    Er(284, "div", 13),
+                    Er(285, "span", 17),
+                    co(286, "Craft $"),
+                    xr(),
+                    xr(),
+                    Er(287, "div", 13),
+                    Er(288, "span", 19),
+                    co(289),
+                    Fa(290, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(291, "div", 12),
+                    Er(292, "div", 13),
+                    Er(293, "span", 14),
+                    co(294, "Minted :"),
+                    xr(),
+                    xr(),
+                    Er(295, "div", 13),
+                    Er(296, "span", 14),
+                    co(297),
+                    Fa(298, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(299, "div", 20),
+                    Er(300, "a", 31),
+                    Dr(301, "img", 32),
+                    Er(302, "div", 6),
+                    Er(303, "span", 7),
+                    co(304, "Buy "),
+                    Dr(305, "BR"),
+                    co(306),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(307, "div", 11),
+                    Er(308, "div", 12),
+                    Er(309, "div", 23),
+                    Er(310, "span", 17),
+                    co(311, "Atomic :"),
+                    xr(),
+                    xr(),
+                    Er(312, "div", 23),
+                    Ar(313, Xd, 3, 5, "span", 24),
+                    xr(),
+                    xr(),
+                    Er(314, "div", 12),
+                    Er(315, "div", 23),
+                    Er(316, "span", 17),
+                    co(317, "Atomic $:"),
+                    xr(),
+                    xr(),
+                    Er(318, "div", 23),
+                    Ar(319, qd, 3, 4, "span", 25),
+                    xr(),
+                    xr(),
+                    Er(320, "div", 12),
+                    Er(321, "div", 23),
+                    Er(322, "span", 14),
+                    co(323, " Skin *:"),
+                    xr(),
+                    xr(),
+                    Er(324, "div", 23),
+                    Er(325, "span", 14),
+                    co(326),
+                    Fa(327, "number"),
+                    Fa(328, "number"),
+                    Dr(329, "img", 26),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(330, "hr"),
+                    Er(331, "div", 11),
+                    Er(332, "div", 12),
+                    Er(333, "div", 13),
+                    Er(334, "span", 14),
+                    co(335),
+                    Fa(336, "number"),
+                    xr(),
+                    Dr(337, "img", 15),
+                    xr(),
+                    Er(338, "div", 13),
+                    Er(339, "span", 14),
+                    co(340),
+                    Fa(341, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(342, "div", 12),
+                    Er(343, "div", 13),
+                    Er(344, "span", 14),
+                    co(345),
+                    Fa(346, "number"),
+                    xr(),
+                    Dr(347, "img", 16),
+                    xr(),
+                    Er(348, "div", 13),
+                    Er(349, "span", 14),
+                    co(350),
+                    Fa(351, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(352, "div", 12),
+                    Er(353, "div", 13),
+                    Er(354, "span", 17),
+                    co(355, "Craft ￦"),
+                    xr(),
+                    xr(),
+                    Er(356, "div", 13),
+                    Er(357, "span", 18),
+                    co(358),
+                    Fa(359, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(360, "div", 12),
+                    Er(361, "div", 13),
+                    Er(362, "span", 17),
+                    co(363, "Craft $"),
+                    xr(),
+                    xr(),
+                    Er(364, "div", 13),
+                    Er(365, "span", 19),
+                    co(366),
+                    Fa(367, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(368, "div", 12),
+                    Er(369, "div", 13),
+                    Er(370, "span", 14),
+                    co(371, "Minted :"),
+                    xr(),
+                    xr(),
+                    Er(372, "div", 13),
+                    Er(373, "span", 14),
+                    co(374),
+                    Fa(375, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(376, "div", 20),
+                    Er(377, "a", 33),
+                    Dr(378, "img", 34),
+                    Er(379, "div", 6),
+                    Er(380, "span", 7),
+                    co(381, "Buy "),
+                    Dr(382, "BR"),
+                    co(383),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(384, "div", 11),
+                    Er(385, "div", 12),
+                    Er(386, "div", 23),
+                    Er(387, "span", 17),
+                    co(388, "Atomic :"),
+                    xr(),
+                    xr(),
+                    Er(389, "div", 23),
+                    Ar(390, Kd, 3, 5, "span", 24),
+                    xr(),
+                    xr(),
+                    Er(391, "div", 12),
+                    Er(392, "div", 23),
+                    Er(393, "span", 17),
+                    co(394, "Atomic $:"),
+                    xr(),
+                    xr(),
+                    Er(395, "div", 23),
+                    Ar(396, Qd, 3, 4, "span", 25),
+                    xr(),
+                    xr(),
+                    Er(397, "div", 12),
+                    Er(398, "div", 23),
+                    Er(399, "span", 14),
+                    co(400, " Skin *:"),
+                    xr(),
+                    xr(),
+                    Er(401, "div", 23),
+                    Er(402, "span", 14),
+                    co(403),
+                    Fa(404, "number"),
+                    Fa(405, "number"),
+                    Dr(406, "img", 26),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(407, "br"),
+                    xr(),
+                    xr(),
+                    xr()),
+                    2 & t && (Ys(14),
+                    lo(e.skin.totalSold),
+                    Ys(2),
+                    ho(" Price :", Pa(17, 67, e.skin.atomic, "1.0-2"), " \uffe6 "),
+                    Ys(11),
+                    lo(Pa(28, 70, e.legendary.resourceWOOD, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(33, 73, e.legendary.priceResourceWOOD, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(38, 76, e.legendary.resourceSTONE, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(43, 79, e.legendary.priceResourceSTONE, "1.0-4"), " \uffe6"),
+                    Ys(7),
+                    Cr("ngClass", e.legendary.craftCost > e.legendary.atomic ? "grey darken-2" : "gradbg-cyan"),
+                    Ys(1),
+                    ho("", Pa(51, 82, e.legendary.craftCost, "1.0-2"), " \uffe6"),
+                    Ys(8),
+                    ho("", Pa(59, 85, e.legendary.craftCost * e.ValueWAX, "1.0-2"), " $"),
+                    Ys(8),
+                    lo(Pa(67, 88, e.legendary.minted, "1.0-0")),
+                    Ys(9),
+                    lo(e.legendary.totalSold),
+                    Ys(7),
+                    Cr("ngIf", e.legendary.atomic),
+                    Ys(6),
+                    Cr("ngIf", e.legendary.atomic),
+                    Ys(7),
+                    uo(" ", Pa(96, 91, e.legendary.production / 10, "1.0-2"), " - ", Pa(97, 94, 8 * e.legendary.production / 10, "1.0-2"), " % "),
+                    Ys(9),
+                    lo(Pa(105, 97, e.epic.resourceWOOD, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(110, 100, e.epic.priceResourceWOOD, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(115, 103, e.epic.resourceSTONE, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(120, 106, e.epic.priceResourceSTONE, "1.0-4"), " \uffe6"),
+                    Ys(7),
+                    Cr("ngClass", e.epic.craftCost > e.epic.atomic ? "grey darken-2" : "gradbg-cyan"),
+                    Ys(1),
+                    ho("", Pa(128, 109, e.epic.craftCost, "1.0-2"), " \uffe6"),
+                    Ys(8),
+                    ho("", Pa(136, 112, e.epic.craftCost * e.ValueWAX, "1.0-2"), " $"),
+                    Ys(8),
+                    lo(Pa(144, 115, e.epic.minted, "1.0-0")),
+                    Ys(9),
+                    lo(e.epic.totalSold),
+                    Ys(7),
+                    Cr("ngIf", e.epic.atomic),
+                    Ys(6),
+                    Cr("ngIf", e.epic.atomic),
+                    Ys(7),
+                    uo(" ", Pa(173, 118, e.epic.production / 10, "1.0-2"), " - ", Pa(174, 121, 8 * e.epic.production / 10, "1.0-2"), " % "),
+                    Ys(9),
+                    lo(Pa(182, 124, e.rare.resourceWOOD, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(187, 127, e.rare.priceResourceWOOD, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(192, 130, e.rare.resourceSTONE, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(197, 133, e.rare.priceResourceSTONE, "1.0-4"), " \uffe6"),
+                    Ys(7),
+                    Cr("ngClass", e.rare.craftCost > e.rare.atomic ? "grey darken-2" : "gradbg-cyan"),
+                    Ys(1),
+                    ho("", Pa(205, 136, e.rare.craftCost, "1.0-2"), " \uffe6"),
+                    Ys(8),
+                    ho("", Pa(213, 139, e.rare.craftCost * e.ValueWAX, "1.0-2"), " $"),
+                    Ys(8),
+                    lo(Pa(221, 142, e.rare.minted, "1.0-0")),
+                    Ys(9),
+                    lo(e.rare.totalSold),
+                    Ys(7),
+                    Cr("ngIf", e.rare.atomic),
+                    Ys(6),
+                    Cr("ngIf", e.rare.atomic),
+                    Ys(7),
+                    uo(" ", Pa(250, 145, e.rare.production / 10, "1.0-2"), " - ", Pa(251, 148, 8 * e.rare.production / 10, "1.0-2"), " % "),
+                    Ys(9),
+                    lo(Pa(259, 151, e.uncommon.resourceWOOD, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(264, 154, e.uncommon.priceResourceWOOD, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(269, 157, e.uncommon.resourceSTONE, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(274, 160, e.uncommon.priceResourceSTONE, "1.0-4"), " \uffe6"),
+                    Ys(7),
+                    Cr("ngClass", e.uncommon.craftCost > e.uncommon.atomic ? "grey darken-2" : "gradbg-cyan"),
+                    Ys(1),
+                    ho("", Pa(282, 163, e.uncommon.craftCost, "1.0-2"), " \uffe6"),
+                    Ys(8),
+                    ho("", Pa(290, 166, e.uncommon.craftCost * e.ValueWAX, "1.0-2"), " $"),
+                    Ys(8),
+                    lo(Pa(298, 169, e.uncommon.minted, "1.0-0")),
+                    Ys(9),
+                    lo(e.uncommon.totalSold),
+                    Ys(7),
+                    Cr("ngIf", e.uncommon.atomic),
+                    Ys(6),
+                    Cr("ngIf", e.uncommon.atomic),
+                    Ys(7),
+                    uo(" ", Pa(327, 172, e.uncommon.production / 10, "1.0-2"), " - ", Pa(328, 175, 8 * e.uncommon.production / 10, "1.0-2"), " % "),
+                    Ys(9),
+                    lo(Pa(336, 178, e.common.resourceWOOD, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(341, 181, e.common.priceResourceWOOD, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(346, 184, e.common.resourceSTONE, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(351, 187, e.common.priceResourceSTONE, "1.0-4"), " \uffe6"),
+                    Ys(7),
+                    Cr("ngClass", e.common.craftCost > e.common.atomic ? "grey darken-2" : "gradbg-cyan"),
+                    Ys(1),
+                    ho("", Pa(359, 190, e.common.craftCost, "1.0-2"), " \uffe6"),
+                    Ys(8),
+                    ho("", Pa(367, 193, e.common.craftCost * e.ValueWAX, "1.0-2"), " $"),
+                    Ys(8),
+                    lo(Pa(375, 196, e.common.minted, "1.0-0")),
+                    Ys(9),
+                    lo(e.common.totalSold),
+                    Ys(7),
+                    Cr("ngIf", e.common.atomic),
+                    Ys(6),
+                    Cr("ngIf", e.common.atomic),
+                    Ys(7),
+                    uo(" ", Pa(404, 199, e.common.production / 10, "1.0-2"), " - ", Pa(405, 202, 8 * e.common.production / 10, "1.0-2"), " % "))
+                },
+                directives: [yl, Sl],
+                pipes: [Cl],
+                styles: [".img-fluid[_ngcontent-%COMP%], .img-fluid2[_ngcontent-%COMP%]{max-width:100%}.img-fluid2[_ngcontent-%COMP%]{height:60px}.video-fluid[_ngcontent-%COMP%]{max-width:100%}.badge.sm[_ngcontent-%COMP%]{padding:3px;font-size:12px}.grey.darken-2[_ngcontent-%COMP%]{background-color:#616161!important}.gradbg-cyan[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#5b81a5,#19e4ff)!important}.badge.ssm[_ngcontent-%COMP%]{padding:2px;font-size:10px}.gradbg-lime2[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#4e9f34,#c4de00)!important}.gradbg-red[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#6d091e,tomato)!important}.badge[_ngcontent-%COMP%]{color:#000!important;border-radius:.125rem;box-shadow:0 2px 5px 0 #00000029,0 2px 10px 0 #0000001f;display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:initial;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.w-50[_ngcontent-%COMP%]{width:50%!important}.w-10[_ngcontent-%COMP%]{width:10%!important}.w-20[_ngcontent-%COMP%]{width:20%!important}.w-40[_ngcontent-%COMP%]{width:40%!important}.w-45[_ngcontent-%COMP%]{width:45%!important}.text-left[_ngcontent-%COMP%]{text-align:left!important}.text-right[_ngcontent-%COMP%]{text-align:right!important}"]
+            }),
+            t
+        }
+        )();
+        function Gd(t, e) {
+            if (1 & t && (Er(0, "span", 14),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Cr("ngClass", t.rare.craftCost < t.rare.atomic ? "grey darken-2" : "gradbg-cyan"),
+                Ys(1),
+                ho("", Pa(2, 2, t.rare.atomic, "1.0-2"), " \uffe6")
+            }
+        }
+        function Yd(t, e) {
+            if (1 & t && (Er(0, "span", 15),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Ys(1),
+                ho("", Pa(2, 1, t.rare.atomic * t.ValueWAX, "1.0-2"), " $")
+            }
+        }
+        function Jd(t, e) {
+            if (1 & t && (Er(0, "span", 14),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Cr("ngClass", t.uncommon.craftCost < t.uncommon.atomic ? "grey darken-2" : "gradbg-cyan"),
+                Ys(1),
+                ho("", Pa(2, 2, t.uncommon.atomic, "1.0-2"), " \uffe6")
+            }
+        }
+        function tp(t, e) {
+            if (1 & t && (Er(0, "span", 15),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Ys(1),
+                ho("", Pa(2, 1, t.uncommon.atomic * t.ValueWAX, "1.0-2"), " $")
+            }
+        }
+        function ep(t, e) {
+            if (1 & t && (Er(0, "span", 14),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Cr("ngClass", t.common.craftCost < t.common.atomic ? "grey darken-2" : "gradbg-cyan"),
+                Ys(1),
+                ho("", Pa(2, 2, t.common.atomic, "1.0-2"), " \uffe6")
+            }
+        }
+        function np(t, e) {
+            if (1 & t && (Er(0, "span", 15),
+            co(1),
+            Fa(2, "number"),
+            xr()),
+            2 & t) {
+                const t = Rr();
+                Ys(1),
+                ho("", Pa(2, 1, t.common.atomic * t.ValueWAX, "1.0-2"), " $")
+            }
+        }
+        let sp = (()=>{
+            class t {
+                constructor(t, e, n) {
+                    this.ageoffarmingService = t,
+                    this.atomicHubService = e,
+                    this.shareDataService = n,
+                    this.legendary = new ih,
+                    this.epic = new ih,
+                    this.rare = new ih,
+                    this.uncommon = new ih,
+                    this.common = new ih,
+                    this.skin = new ih,
+                    this.ActionDay = 24
+                }
+                ngOnInit() {
+                    this.atomicHubService.getItemsDataSalesApiV3bis("497928").then(t=>{
+                        t.data[0] && (this.skin.atomic = this.getPrice(t),
+                        this.skin.minted = t.data[0].assets[0].template.issued_supply,
+                        this.skin.lastSold = t.data[0].last_sold,
+                        this.skin.totalSold = t.data.length,
+                        this.common.craftCost = this.common.resourceWOOD * this.ValueAOFW + this.common.resourceSTONE * this.ValueAOFS + this.common.resourceSKIN * this.skin.atomic,
+                        this.uncommon.craftCost = this.uncommon.resourceWOOD * this.ValueAOFW + this.uncommon.resourceSTONE * this.ValueAOFS + this.uncommon.resourceSKIN * this.skin.atomic,
+                        this.rare.craftCost = this.rare.resourceWOOD * this.ValueAOFW + this.rare.resourceSTONE * this.ValueAOFS + this.rare.resourceSKIN * this.skin.atomic)
+                    }
+                    ),
+                    this.atomicHubService.getItemsDataSalesApiV3("497919").then(t=>{
+                        t.data[0] && (this.common.atomic = this.getPrice(t),
+                        this.common.minted = t.data[0].assets[0].template.issued_supply,
+                        this.common.lastSold = t.data[0].last_sold,
+                        this.common.totalSold = t.data.length)
+                    }
+                    ),
+                    this.atomicHubService.getItemsDataSalesApiV3("497920").then(t=>{
+                        t.data[0] && (this.uncommon.atomic = this.getPrice(t),
+                        this.uncommon.minted = t.data[0].assets[0].template.issued_supply,
+                        this.uncommon.lastSold = t.data[0].last_sold,
+                        this.uncommon.totalSold = t.data.length)
+                    }
+                    ),
+                    this.atomicHubService.getItemsDataSalesApiV3("497921").then(t=>{
+                        t.data[0] && (this.rare.atomic = this.getPrice(t),
+                        this.rare.minted = t.data[0].assets[0].template.issued_supply,
+                        this.rare.lastSold = t.data[0].last_sold,
+                        this.rare.totalSold = t.data.length)
+                    }
+                    )
+                }
+                ngOnChanges() {
+                    let t = this.shareDataService.getSkinTentCommon();
+                    t && (this.common.resourceWOOD = t.wood_craft_cost,
+                    this.common.resourceSTONE = t.stone_craft_cost,
+                    this.common.resourceSKIN = t.leather_craft_cost,
+                    this.common.production = t.rewards,
+                    this.common.craftCost = t.wood_craft_cost * this.ValueAOFW + t.stone_craft_cost * this.ValueAOFS + this.common.resourceSKIN * this.skin.atomic,
+                    this.common.priceResourceWOOD = t.wood_craft_cost * this.ValueAOFW,
+                    this.common.priceResourceSTONE = t.stone_craft_cost * this.ValueAOFS);
+                    let e = this.shareDataService.getSkinTentUncommon();
+                    e && (this.uncommon.resourceWOOD = e.wood_craft_cost + this.common.resourceWOOD,
+                    this.uncommon.resourceSTONE = e.stone_craft_cost + this.common.resourceSTONE,
+                    this.uncommon.resourceSKIN = e.leather_craft_cost + this.common.resourceSKIN,
+                    this.uncommon.production = e.rewards,
+                    this.uncommon.craftCost = this.uncommon.resourceWOOD * this.ValueAOFW + this.uncommon.resourceSTONE * this.ValueAOFS + this.uncommon.resourceSKIN * this.skin.atomic,
+                    this.uncommon.priceResourceWOOD = this.uncommon.resourceWOOD * this.ValueAOFW,
+                    this.uncommon.priceResourceSTONE = this.uncommon.resourceSTONE * this.ValueAOFS);
+                    let n = this.shareDataService.getSkinTentRare();
+                    n && (this.rare.resourceWOOD = n.wood_craft_cost + this.uncommon.resourceWOOD,
+                    this.rare.resourceSTONE = n.stone_craft_cost + this.uncommon.resourceSTONE,
+                    this.rare.resourceSKIN = n.leather_craft_cost + this.uncommon.resourceSKIN,
+                    this.rare.production = n.rewards,
+                    this.rare.craftCost = this.rare.resourceWOOD * this.ValueAOFW + this.rare.resourceSTONE * this.ValueAOFS + this.rare.resourceSKIN * this.skin.atomic,
+                    this.rare.priceResourceWOOD = this.rare.resourceWOOD * this.ValueAOFW,
+                    this.rare.priceResourceSTONE = this.rare.resourceSTONE * this.ValueAOFS)
+                }
+                getPrice(t) {
+                    return "USD" === t.data[0].listing_symbol ? t.data[0].listing_price / 100 / this.ValueWAX : t.data[0].listing_price / 1e8
+                }
+            }
+            return t.\u0275fac = function(e) {
+                return new (e || t)(Or(Gh),Or(Ju),Or(Yh))
+            }
+            ,
+            t.\u0275cmp = jt({
+                type: t,
+                selectors: [["app-tent"]],
+                inputs: {
+                    ValueAOFF: "ValueAOFF",
+                    ValueAOFS: "ValueAOFS",
+                    ValueAOFW: "ValueAOFW",
+                    ValueWAX: "ValueWAX"
+                },
+                features: [ae],
+                decls: 265,
+                vars: 132,
+                consts: [[1, "card", "card-cascade", "narrower", 2, "background-color", "wheat"], [1, "view", "view-cascade", "gradient-card-header", "blue-gradient", "narrower", "py-2", "mx-4", "mb-3", "d-flex", "justify-content-between", "align-items-center"], [1, "badge", "sm", "grey", "darken-2"], [1, ""], [1, "d-block", 2, "margin-left", "20px", "margin-right", "20px"], [1, "d-block", "mt-3"], [1, "d-inline-block", "w-45"], [1, "d-block", "fw_craft"], [1, "d-inline-block", "w-50", "text-left"], [1, "badge", "ssm"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aofw.png", 2, "height", "16px"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/aofs.png", 2, "height", "16px"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/coins/skin.png", 2, "height", "16px"], [1, "badge", "sm"], [1, "badge", "md", 3, "ngClass"], [1, "badge", "md"], [1, "d-inline-block", "w-10", 2, "line-height", "10px", "text-align", "center"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&data:text.rarity=Rare&order=asc&schema_name=buildings&sort=price&symbol=WAX", 1, "keychainify-checked"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/skin_tent_rare.png", 1, "img-fluid"], [1, "d-block", "mt-1"], [1, "badge", "grey", "darken-3", "ssm", 2, "min-width", "15px"], [1, "d-inline-block", "w-50", "text-right"], ["class", "badge md", 3, "ngClass", 4, "ngIf"], ["class", "badge md", 4, "ngIf"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&data:text.rarity=Uncommon&order=asc&schema_name=buildings&sort=price&symbol=WAX", 1, "keychainify-checked"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/skin_tent_uncommon.png", 1, "img-fluid"], ["target", "_blank", "href", "https://wax.atomichub.io/market?collection_name=ageoffarming&data:text.rarity=Common&order=asc&schema_name=buildings&sort=price&symbol=WAX", 1, "keychainify-checked"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/game/skin_tent_common.png", 1, "img-fluid"]],
+                template: function(t, e) {
+                    1 & t && (Er(0, "div", 0),
+                    Er(1, "div", 1),
+                    Dr(2, "div"),
+                    Er(3, "div", 2),
+                    co(4, " Tent "),
+                    Dr(5, "br"),
+                    xr(),
+                    Dr(6, "div"),
+                    xr(),
+                    Er(7, "div", 3),
+                    Er(8, "div", 4),
+                    Er(9, "div", 5),
+                    Er(10, "div", 6),
+                    Er(11, "div", 7),
+                    Er(12, "div", 8),
+                    Er(13, "span", 9),
+                    co(14),
+                    Fa(15, "number"),
+                    xr(),
+                    Dr(16, "img", 10),
+                    xr(),
+                    Er(17, "div", 8),
+                    Er(18, "span", 9),
+                    co(19),
+                    Fa(20, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(21, "div", 7),
+                    Er(22, "div", 8),
+                    Er(23, "span", 9),
+                    co(24),
+                    Fa(25, "number"),
+                    xr(),
+                    Dr(26, "img", 11),
+                    xr(),
+                    Er(27, "div", 8),
+                    Er(28, "span", 9),
+                    co(29),
+                    Fa(30, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(31, "div", 7),
+                    Er(32, "div", 8),
+                    Er(33, "span", 9),
+                    co(34),
+                    Fa(35, "number"),
+                    xr(),
+                    Dr(36, "img", 12),
+                    xr(),
+                    Er(37, "div", 8),
+                    Er(38, "span", 9),
+                    co(39),
+                    Fa(40, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(41, "div", 7),
+                    Er(42, "div", 8),
+                    Er(43, "span", 13),
+                    co(44, "Craft ￦"),
+                    xr(),
+                    xr(),
+                    Er(45, "div", 8),
+                    Er(46, "span", 14),
+                    co(47),
+                    Fa(48, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(49, "div", 7),
+                    Er(50, "div", 8),
+                    Er(51, "span", 13),
+                    co(52, "Craft $"),
+                    xr(),
+                    xr(),
+                    Er(53, "div", 8),
+                    Er(54, "span", 15),
+                    co(55),
+                    Fa(56, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(57, "div", 7),
+                    Er(58, "div", 8),
+                    Er(59, "span", 9),
+                    co(60, "Minted :"),
+                    xr(),
+                    xr(),
+                    Er(61, "div", 8),
+                    Er(62, "span", 9),
+                    co(63),
+                    Fa(64, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(65, "div", 16),
+                    Er(66, "a", 17),
+                    Dr(67, "img", 18),
+                    Er(68, "div", 19),
+                    Er(69, "span", 20),
+                    co(70, "Buy "),
+                    Dr(71, "BR"),
+                    co(72),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(73, "div", 6),
+                    Er(74, "div", 7),
+                    Er(75, "div", 21),
+                    Er(76, "span", 13),
+                    co(77, "Atomic :"),
+                    xr(),
+                    xr(),
+                    Er(78, "div", 21),
+                    Ar(79, Gd, 3, 5, "span", 22),
+                    xr(),
+                    xr(),
+                    Er(80, "div", 7),
+                    Er(81, "div", 21),
+                    Er(82, "span", 13),
+                    co(83, "Atomic $:"),
+                    xr(),
+                    xr(),
+                    Er(84, "div", 21),
+                    Ar(85, Yd, 3, 4, "span", 23),
+                    xr(),
+                    xr(),
+                    Er(86, "div", 7),
+                    Er(87, "div", 21),
+                    Er(88, "span", 9),
+                    co(89, " People *:"),
+                    xr(),
+                    xr(),
+                    Er(90, "div", 21),
+                    Er(91, "span", 9),
+                    co(92),
+                    Fa(93, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(94, "hr"),
+                    Er(95, "div", 6),
+                    Er(96, "div", 7),
+                    Er(97, "div", 8),
+                    Er(98, "span", 9),
+                    co(99),
+                    Fa(100, "number"),
+                    xr(),
+                    Dr(101, "img", 10),
+                    xr(),
+                    Er(102, "div", 8),
+                    Er(103, "span", 9),
+                    co(104),
+                    Fa(105, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(106, "div", 7),
+                    Er(107, "div", 8),
+                    Er(108, "span", 9),
+                    co(109),
+                    Fa(110, "number"),
+                    xr(),
+                    Dr(111, "img", 11),
+                    xr(),
+                    Er(112, "div", 8),
+                    Er(113, "span", 9),
+                    co(114),
+                    Fa(115, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(116, "div", 7),
+                    Er(117, "div", 8),
+                    Er(118, "span", 9),
+                    co(119),
+                    Fa(120, "number"),
+                    xr(),
+                    Dr(121, "img", 12),
+                    xr(),
+                    Er(122, "div", 8),
+                    Er(123, "span", 9),
+                    co(124),
+                    Fa(125, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(126, "div", 7),
+                    Er(127, "div", 8),
+                    Er(128, "span", 13),
+                    co(129, "Craft ￦"),
+                    xr(),
+                    xr(),
+                    Er(130, "div", 8),
+                    Er(131, "span", 14),
+                    co(132),
+                    Fa(133, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(134, "div", 7),
+                    Er(135, "div", 8),
+                    Er(136, "span", 13),
+                    co(137, "Craft $"),
+                    xr(),
+                    xr(),
+                    Er(138, "div", 8),
+                    Er(139, "span", 15),
+                    co(140),
+                    Fa(141, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(142, "div", 7),
+                    Er(143, "div", 8),
+                    Er(144, "span", 9),
+                    co(145, "Minted :"),
+                    xr(),
+                    xr(),
+                    Er(146, "div", 8),
+                    Er(147, "span", 9),
+                    co(148),
+                    Fa(149, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(150, "div", 16),
+                    Er(151, "a", 24),
+                    Dr(152, "img", 25),
+                    Er(153, "div", 19),
+                    Er(154, "span", 20),
+                    co(155, "Buy "),
+                    Dr(156, "BR"),
+                    co(157),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(158, "div", 6),
+                    Er(159, "div", 7),
+                    Er(160, "div", 21),
+                    Er(161, "span", 13),
+                    co(162, "Atomic :"),
+                    xr(),
+                    xr(),
+                    Er(163, "div", 21),
+                    Ar(164, Jd, 3, 5, "span", 22),
+                    xr(),
+                    xr(),
+                    Er(165, "div", 7),
+                    Er(166, "div", 21),
+                    Er(167, "span", 13),
+                    co(168, "Atomic $:"),
+                    xr(),
+                    xr(),
+                    Er(169, "div", 21),
+                    Ar(170, tp, 3, 4, "span", 23),
+                    xr(),
+                    xr(),
+                    Er(171, "div", 7),
+                    Er(172, "div", 21),
+                    Er(173, "span", 9),
+                    co(174, " People *:"),
+                    xr(),
+                    xr(),
+                    Er(175, "div", 21),
+                    Er(176, "span", 9),
+                    co(177),
+                    Fa(178, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(179, "hr"),
+                    Er(180, "div", 6),
+                    Er(181, "div", 7),
+                    Er(182, "div", 8),
+                    Er(183, "span", 9),
+                    co(184),
+                    Fa(185, "number"),
+                    xr(),
+                    Dr(186, "img", 10),
+                    xr(),
+                    Er(187, "div", 8),
+                    Er(188, "span", 9),
+                    co(189),
+                    Fa(190, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(191, "div", 7),
+                    Er(192, "div", 8),
+                    Er(193, "span", 9),
+                    co(194),
+                    Fa(195, "number"),
+                    xr(),
+                    Dr(196, "img", 11),
+                    xr(),
+                    Er(197, "div", 8),
+                    Er(198, "span", 9),
+                    co(199),
+                    Fa(200, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(201, "div", 7),
+                    Er(202, "div", 8),
+                    Er(203, "span", 9),
+                    co(204),
+                    Fa(205, "number"),
+                    xr(),
+                    Dr(206, "img", 12),
+                    xr(),
+                    Er(207, "div", 8),
+                    Er(208, "span", 9),
+                    co(209),
+                    Fa(210, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(211, "div", 7),
+                    Er(212, "div", 8),
+                    Er(213, "span", 13),
+                    co(214, "Craft ￦"),
+                    xr(),
+                    xr(),
+                    Er(215, "div", 8),
+                    Er(216, "span", 14),
+                    co(217),
+                    Fa(218, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(219, "div", 7),
+                    Er(220, "div", 8),
+                    Er(221, "span", 13),
+                    co(222, "Craft $"),
+                    xr(),
+                    xr(),
+                    Er(223, "div", 8),
+                    Er(224, "span", 15),
+                    co(225),
+                    Fa(226, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(227, "div", 7),
+                    Er(228, "div", 8),
+                    Er(229, "span", 9),
+                    co(230, "Minted :"),
+                    xr(),
+                    xr(),
+                    Er(231, "div", 8),
+                    Er(232, "span", 9),
+                    co(233),
+                    Fa(234, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(235, "div", 16),
+                    Er(236, "a", 26),
+                    Dr(237, "img", 27),
+                    Er(238, "div", 19),
+                    Er(239, "span", 20),
+                    co(240, "Buy "),
+                    Dr(241, "BR"),
+                    co(242),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Er(243, "div", 6),
+                    Er(244, "div", 7),
+                    Er(245, "div", 21),
+                    Er(246, "span", 13),
+                    co(247, "Atomic :"),
+                    xr(),
+                    xr(),
+                    Er(248, "div", 21),
+                    Ar(249, ep, 3, 5, "span", 22),
+                    xr(),
+                    xr(),
+                    Er(250, "div", 7),
+                    Er(251, "div", 21),
+                    Er(252, "span", 13),
+                    co(253, "Atomic $:"),
+                    xr(),
+                    xr(),
+                    Er(254, "div", 21),
+                    Ar(255, np, 3, 4, "span", 23),
+                    xr(),
+                    xr(),
+                    Er(256, "div", 7),
+                    Er(257, "div", 21),
+                    Er(258, "span", 9),
+                    co(259, " People *:"),
+                    xr(),
+                    xr(),
+                    Er(260, "div", 21),
+                    Er(261, "span", 9),
+                    co(262),
+                    Fa(263, "number"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(264, "br"),
+                    xr(),
+                    xr(),
+                    xr()),
+                    2 & t && (Ys(14),
+                    lo(Pa(15, 42, e.rare.resourceWOOD, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(20, 45, e.rare.priceResourceWOOD, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(25, 48, e.rare.resourceSTONE, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(30, 51, e.rare.priceResourceSTONE, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(35, 54, e.rare.resourceSKIN, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(40, 57, e.rare.resourceSKIN * e.skin.atomic, "1.0-4"), " \uffe6"),
+                    Ys(7),
+                    Cr("ngClass", e.rare.craftCost > e.rare.atomic ? "grey darken-2" : "gradbg-cyan"),
+                    Ys(1),
+                    ho("", Pa(48, 60, e.rare.craftCost, "1.0-2"), " \uffe6"),
+                    Ys(8),
+                    ho("", Pa(56, 63, e.rare.craftCost * e.ValueWAX, "1.0-2"), " $"),
+                    Ys(8),
+                    lo(Pa(64, 66, e.rare.minted, "1.0-0")),
+                    Ys(9),
+                    lo(e.rare.totalSold),
+                    Ys(7),
+                    Cr("ngIf", e.rare.atomic),
+                    Ys(6),
+                    Cr("ngIf", e.rare.atomic),
+                    Ys(7),
+                    ho(" ", Pa(93, 69, e.rare.production / 10, "1.0-2"), " "),
+                    Ys(7),
+                    lo(Pa(100, 72, e.uncommon.resourceWOOD, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(105, 75, e.uncommon.priceResourceWOOD, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(110, 78, e.uncommon.resourceSTONE, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(115, 81, e.uncommon.priceResourceSTONE, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(120, 84, e.uncommon.resourceSKIN, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(125, 87, e.uncommon.resourceSKIN * e.skin.atomic, "1.0-4"), " \uffe6"),
+                    Ys(7),
+                    Cr("ngClass", e.uncommon.craftCost > e.uncommon.atomic ? "grey darken-2" : "gradbg-cyan"),
+                    Ys(1),
+                    ho("", Pa(133, 90, e.uncommon.craftCost, "1.0-2"), " \uffe6"),
+                    Ys(8),
+                    ho("", Pa(141, 93, e.uncommon.craftCost * e.ValueWAX, "1.0-2"), " $"),
+                    Ys(8),
+                    lo(Pa(149, 96, e.uncommon.minted, "1.0-0")),
+                    Ys(9),
+                    lo(e.uncommon.totalSold),
+                    Ys(7),
+                    Cr("ngIf", e.uncommon.atomic),
+                    Ys(6),
+                    Cr("ngIf", e.uncommon.atomic),
+                    Ys(7),
+                    ho(" ", Pa(178, 99, e.uncommon.production / 10, "1.0-2"), " "),
+                    Ys(7),
+                    lo(Pa(185, 102, e.common.resourceWOOD, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(190, 105, e.common.priceResourceWOOD, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(195, 108, e.common.resourceSTONE, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(200, 111, e.common.priceResourceSTONE, "1.0-4"), " \uffe6"),
+                    Ys(5),
+                    lo(Pa(205, 114, e.common.resourceSKIN, "1.0-0")),
+                    Ys(5),
+                    ho("", Pa(210, 117, e.common.resourceSKIN * e.skin.atomic, "1.0-4"), " \uffe6"),
+                    Ys(7),
+                    Cr("ngClass", e.common.craftCost > e.common.atomic ? "grey darken-2" : "gradbg-cyan"),
+                    Ys(1),
+                    ho("", Pa(218, 120, e.common.craftCost, "1.0-2"), " \uffe6"),
+                    Ys(8),
+                    ho("", Pa(226, 123, e.common.craftCost * e.ValueWAX, "1.0-2"), " $"),
+                    Ys(8),
+                    lo(Pa(234, 126, e.common.minted, "1.0-0")),
+                    Ys(9),
+                    lo(e.common.totalSold),
+                    Ys(7),
+                    Cr("ngIf", e.common.atomic),
+                    Ys(6),
+                    Cr("ngIf", e.common.atomic),
+                    Ys(7),
+                    ho(" ", Pa(263, 129, e.common.production / 10, "1.0-2"), " "))
+                },
+                directives: [yl, Sl],
+                pipes: [Cl],
                 styles: [".img-fluid[_ngcontent-%COMP%], .video-fluid[_ngcontent-%COMP%]{max-width:100%}.badge.sm[_ngcontent-%COMP%]{padding:3px;font-size:12px}.grey.darken-2[_ngcontent-%COMP%]{background-color:#616161!important}.gradbg-cyan[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#5b81a5,#19e4ff)!important}.badge.ssm[_ngcontent-%COMP%]{padding:2px;font-size:10px}.gradbg-lime2[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#4e9f34,#c4de00)!important}.gradbg-red[_ngcontent-%COMP%]{color:#fff;background:linear-gradient(40deg,#6d091e,tomato)!important}.badge[_ngcontent-%COMP%]{color:#000!important;border-radius:.125rem;box-shadow:0 2px 5px 0 #00000029,0 2px 10px 0 #0000001f;display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:initial;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.w-50[_ngcontent-%COMP%]{width:50%!important}.w-10[_ngcontent-%COMP%]{width:10%!important}.w-20[_ngcontent-%COMP%]{width:20%!important}.w-40[_ngcontent-%COMP%]{width:40%!important}.w-45[_ngcontent-%COMP%]{width:45%!important}.text-left[_ngcontent-%COMP%]{text-align:left!important}.text-right[_ngcontent-%COMP%]{text-align:right!important}"]
             }),
             t
         }
         )()
-          , Md = (()=>{
+          , ip = (()=>{
             class t {
                 constructor() {}
                 ngOnInit() {}
@@ -16148,7 +17917,7 @@
                 return new (e || t)
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-home"]],
                 inputs: {
@@ -16157,9 +17926,9 @@
                     ValueAOFS: "ValueAOFS",
                     ValueWAX: "ValueWAX"
                 },
-                decls: 40,
-                vars: 16,
-                consts: [[1, "gradiant"], [1, "p-5", "text-center", "bg-image", "ads", 2, "min-height", "150px", "margin-top", "48px"], [1, "mask", 2, "background-color", "rgba(0, 0, 0, 0.6)"], [1, "row", "justify-content-center", "align-items-center"], [1, "col-md-4", "col-12"], ["href", "https://metasourcecards.com/castles/craft", "target", "_blank"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/bannerCastle.png", 2, "width", "320px"], [1, "col-12", "col-md-2", "text-white"], ["href", "https://play.ageoffarming.io/"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_AOF.webp", "width", "150"], ["href", "https://discord.com/invite/SxCFBgkerC", "target", "_blank"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/bannerGM2.png", 2, "width", "320px"], [1, "container"], [1, "row"], [1, "col-md-4"], [1, "col-md-8"], [3, "ValueWAX", "ValueAOFF", "ValueAOFS", "ValueAOFW"]],
+                decls: 53,
+                vars: 24,
+                consts: [[1, "gradiant"], [1, "p-5", "text-center", "bg-image", "ads", 2, "min-height", "150px", "margin-top", "48px"], [1, "mask", 2, "background-color", "rgba(0, 0, 0, 0.6)"], [1, "row", "justify-content-center", "align-items-center"], [1, "col-md-4", "col-12"], ["href", "https://discord.gg/boxmazeworld", "target", "_blank"], ["src", "./assets/img/bannerBoxMazeWorld1.png", 2, "width", "320px"], [1, "col-12", "col-md-2", "text-white"], ["href", "https://play.ageoffarming.io/"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_AOF.webp", "width", "150"], ["href", "https://saar.game/", "target", "_blank"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/bannerSaaR2.png", 2, "width", "320px"], [1, "container"], [1, "row"], [1, "col-md-4"], [1, "col-md-8"], [3, "ValueWAX", "ValueAOFF", "ValueAOFS", "ValueAOFW"], [1, "col-md-2"]],
                 template: function(t, e) {
                     1 & t && (Er(0, "main", 0),
                     Er(1, "div", 1),
@@ -16169,7 +17938,7 @@
                     Er(5, "a", 5),
                     Dr(6, "img", 6),
                     Dr(7, "br"),
-                    lo(8, " More Info here "),
+                    co(8, " More Info here "),
                     xr(),
                     xr(),
                     Er(9, "div", 7),
@@ -16181,7 +17950,7 @@
                     Er(13, "a", 10),
                     Dr(14, "img", 11),
                     Dr(15, "br"),
-                    lo(16, " More Info here "),
+                    co(16, " More Info here "),
                     xr(),
                     xr(),
                     xr(),
@@ -16218,7 +17987,26 @@
                     xr(),
                     xr(),
                     Dr(38, "br"),
-                    Dr(39, "br"),
+                    Er(39, "div", 12),
+                    Er(40, "div", 13),
+                    Er(41, "div", 17),
+                    Dr(42, "br"),
+                    xr(),
+                    Er(43, "div", 14),
+                    Dr(44, "br"),
+                    Dr(45, "app-bow", 16),
+                    xr(),
+                    Er(46, "div", 14),
+                    Dr(47, "br"),
+                    Dr(48, "app-tent", 16),
+                    xr(),
+                    Er(49, "div", 17),
+                    Dr(50, "br"),
+                    xr(),
+                    xr(),
+                    xr(),
+                    Dr(51, "br"),
+                    Dr(52, "br"),
                     xr()),
                     2 & t && (Ys(24),
                     Cr("ValueWAX", e.ValueWAX)("ValueAOFF", e.ValueAOFF.Value)("ValueAOFS", e.ValueAOFS.Value)("ValueAOFW", e.ValueAOFW.Value),
@@ -16227,15 +18015,19 @@
                     Ys(3),
                     Cr("ValueWAX", e.ValueWAX)("ValueAOFF", e.ValueAOFF.Value)("ValueAOFS", e.ValueAOFS)("ValueAOFW", e.ValueAOFW.Value),
                     Ys(3),
-                    Cr("ValueWAX", e.ValueWAX)("ValueAOFF", e.ValueAOFF)("ValueAOFS", e.ValueAOFS.Value)("ValueAOFW", e.ValueAOFW.Value))
+                    Cr("ValueWAX", e.ValueWAX)("ValueAOFF", e.ValueAOFF)("ValueAOFS", e.ValueAOFS.Value)("ValueAOFW", e.ValueAOFW.Value),
+                    Ys(8),
+                    Cr("ValueWAX", e.ValueWAX)("ValueAOFF", e.ValueAOFF.Value)("ValueAOFS", e.ValueAOFS.Value)("ValueAOFW", e.ValueAOFW.Value),
+                    Ys(3),
+                    Cr("ValueWAX", e.ValueWAX)("ValueAOFF", e.ValueAOFF.Value)("ValueAOFS", e.ValueAOFS.Value)("ValueAOFW", e.ValueAOFW.Value))
                 },
-                directives: [Yu, id, fd, kd, Wd],
+                directives: [Yu, od, _d, xd, Ld, Zd, sp],
                 styles: [".gradiant[_ngcontent-%COMP%]{background-repeat:no-repeat;background-size:cover}@media screen and (max-width:1023px){.ads[_ngcontent-%COMP%]{height:430px}}"]
             }),
             t
         }
         )()
-          , Ld = (()=>{
+          , rp = (()=>{
             class t {
                 constructor() {}
                 ngOnInit() {}
@@ -16244,12 +18036,12 @@
                 return new (e || t)
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-footer"]],
-                decls: 159,
+                decls: 177,
                 vars: 0,
-                consts: [[1, "bg-black", "text-center", "text-lg-start"], [1, "container", "p-4", "pb-0"], [1, "row"], [1, "col-md-12", "col-12", "mb-4", "mb-md-0"], [1, "form-outline", "mb-2", "text-center"], [1, "badge", "md"], [1, "col-md-2", "col-12", "text-center"], ["href", "https://play.farmersworld.io/?ref=2vzh4.wam", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_farmersworld.png", "width", "100"], ["href", "https://farmersworld.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://game.nftpanda.space?2vzh4.wam", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_panda.png", "width", "75"], ["href", "https://panda.f12key.shadysapy.fr/", 1, "text-dark"], ["href", "https://warspace.io/", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/Logo.webp", "width", "75"], ["href", "https://warspace.f12key.shadysapy.fr/", 1, "text-dark"], ["href", "https://thedefimining.io/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo-defimining.png", "width", "100"], ["href", "https://defimining.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://play.goldmand.io/?ref=h1ubc.wam", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_goldmand.png", "width", "150"], ["href", "https://goldmand.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://spacecraftx.io/home?ref=2vzh4.wam", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo.png", "width", "100"], ["href", "https://spacescraftx.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://spacecraftx.io/home?ref=2vzh4.wam", 1, "text-dark"], ["href", "https://galaxyminers.io/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_galaxyminers.png", "width", "100"], ["href", "https://galaxyminer.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://play.cryptofarms.me/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_cryptoFarm.png", "width", "75"], ["href", "https://cryptofarms.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://playseafarmers.com/", "target", "_blank", 1, "text-dark"], ["src", "assets/img/logo_seafarmers.jpeg", "width", "75"], ["href", "https://seafarmers.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://metasourcecards.com/castles", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/castles-logo.png", "width", "65"], ["href", "https://castles.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://sailorsworld.io/play", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_sailorsworld.png", "width", "100"], ["href", "https://sailorsworld.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://dawnofvictory.io/staking/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_DOV.png", "width", "100"], ["href", "https://dovx.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://funnycat.io/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_funnycat.png", "width", "100"], ["href", "https://funnycat.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://www.ageoffarming.io/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_AOF.webp", "width", "80"], ["href", "https://ageoffarming.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], [1, "text-center", "p-3", 2, "background-color", "rgba(0, 0, 0, 0.2)"], ["href", "https://twitter.com/F12keyAdvisor", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo-twitter.png", "width", "40"], ["href", "https://discord.gg/VmQkKtrdED", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/QTTlogo.png", "width", "150"]],
+                consts: [[1, "bg-black", "text-center", "text-lg-start"], [1, "container", "p-4", "pb-0"], [1, "row"], [1, "col-md-12", "col-12", "mb-4", "mb-md-0"], [1, "form-outline", "mb-2", "text-center"], [1, "badge", "md"], [1, "col-md-2", "col-12", "text-center"], ["href", "https://play.farmersworld.io/?ref=2vzh4.wam", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_farmersworld.png", "width", "100"], ["href", "https://farmersworld.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://game.nftpanda.space?2vzh4.wam", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_panda.png", "width", "75"], ["href", "https://panda.f12key.shadysapy.fr/", 1, "text-dark"], ["href", "https://warspace.io/", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/Logo.webp", "width", "75"], ["href", "https://warspace.f12key.shadysapy.fr/", 1, "text-dark"], ["href", "https://thedefimining.io/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo-defimining.png", "width", "100"], ["href", "https://defimining.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://play.goldmand.io/?ref=h1ubc.wam", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_goldmand.png", "width", "150"], ["href", "https://goldmand.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://spacecraftx.io/home?ref=2vzh4.wam", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo.png", "width", "100"], ["href", "https://spacescraftx.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://spacecraftx.io/home?ref=2vzh4.wam", 1, "text-dark"], ["href", "https://galaxyminers.io/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_galaxyminers.png", "width", "100"], ["href", "https://galaxyminer.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://play.cryptofarms.me/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_cryptoFarm.png", "width", "75"], ["href", "https://cryptofarms.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://playseafarmers.com/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_seafarmers.jpeg", "width", "75"], ["href", "https://seafarmers.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://metasourcecards.com/castles", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/castles-logo.png", "width", "65"], ["href", "https://castles.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://sailorsworld.io/play", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_sailorsworld.png", "width", "100"], ["href", "https://sailorsworld.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://dawnofvictory.io/staking/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_DOV.png", "width", "100"], ["href", "https://dovx.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://play.diggersworld.io/?ref=h1ubc.wam", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_diggerworld.png", "width", "75"], ["href", "https://diggersworld.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://play.diggersworld.io/?ref=h1ubc.wam", 1, "text-dark"], ["href", "https://funnycat.io/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_funnycat.png", "width", "100"], ["href", "https://funnycat.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://www.ageoffarming.io/", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_AOF.webp", "width", "80"], ["href", "https://ageoffarming.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], ["href", "https://desertfarm.io/?ref=h1ubc.wam", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo_DesertFarm.png", "width", "75"], ["href", "https://desertfarm.f12key.shadysapy.fr/", "target", "_blank", 1, "text-dark"], [1, "text-center", "p-3", 2, "background-color", "rgba(0, 0, 0, 0.2)"], ["href", "https://twitter.com/F12keyAdvisor", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/logo-twitter.png", "width", "40"], ["href", "https://discord.gg/VmQkKtrdED", "target", "_blank", 1, "text-dark"], ["src", "https://ageoffarming.f12key.shadysapy.fr/assets/img/QTTlogo.png", "width", "150"]],
                 template: function(t, e) {
                     1 & t && (Er(0, "footer", 0),
                     Er(1, "div", 1),
@@ -16257,20 +18049,20 @@
                     Er(3, "div", 3),
                     Er(4, "div", 4),
                     Er(5, "span"),
-                    lo(6, " For Donations it is at this Address: "),
+                    co(6, " For Donations it is at this Address: "),
                     Er(7, "span", 5),
                     Er(8, "b"),
-                    lo(9, "2vzh4.wam"),
+                    co(9, "2vzh4.wam"),
                     xr(),
                     xr(),
                     Dr(10, "br"),
-                    lo(11, " Thank you very much for the donations,"),
+                    co(11, " Thank you very much for the donations,"),
                     Dr(12, "br"),
-                    lo(13, " it supports the dev and the future development "),
+                    co(13, " it supports the dev and the future development "),
                     xr(),
                     Dr(14, "br"),
                     Dr(15, "br"),
-                    lo(16, " All Games with F12key: "),
+                    co(16, " All Games with F12key: "),
                     xr(),
                     xr(),
                     xr(),
@@ -16280,9 +18072,9 @@
                     Dr(20, "img", 8),
                     xr(),
                     Dr(21, "br"),
-                    lo(22, " Tools : "),
+                    co(22, " Tools : "),
                     Er(23, "a", 9),
-                    lo(24, " Links tools "),
+                    co(24, " Links tools "),
                     xr(),
                     Dr(25, "br"),
                     xr(),
@@ -16291,14 +18083,14 @@
                     Dr(28, "img", 11),
                     xr(),
                     Dr(29, "br"),
-                    lo(30, " Tools : "),
+                    co(30, " Tools : "),
                     Er(31, "a", 12),
-                    lo(32, " Links tools "),
+                    co(32, " Links tools "),
                     xr(),
                     Dr(33, "br"),
-                    lo(34, " Referral : "),
+                    co(34, " Referral : "),
                     Er(35, "a", 10),
-                    lo(36, " Links "),
+                    co(36, " Links "),
                     xr(),
                     xr(),
                     Er(37, "div", 6),
@@ -16306,9 +18098,9 @@
                     Dr(39, "img", 14),
                     xr(),
                     Dr(40, "br"),
-                    lo(41, " Tools : "),
+                    co(41, " Tools : "),
                     Er(42, "a", 15),
-                    lo(43, " Links tools "),
+                    co(43, " Links tools "),
                     xr(),
                     Dr(44, "br"),
                     xr(),
@@ -16317,9 +18109,9 @@
                     Dr(47, "img", 17),
                     xr(),
                     Dr(48, "br"),
-                    lo(49, " Tools : "),
+                    co(49, " Tools : "),
                     Er(50, "a", 18),
-                    lo(51, " Links tools "),
+                    co(51, " Links tools "),
                     xr(),
                     Dr(52, "br"),
                     xr(),
@@ -16329,14 +18121,14 @@
                     xr(),
                     Dr(56, "br"),
                     Dr(57, "br"),
-                    lo(58, " Tools : "),
+                    co(58, " Tools : "),
                     Er(59, "a", 21),
-                    lo(60, " Links tools "),
+                    co(60, " Links tools "),
                     xr(),
                     Dr(61, "br"),
-                    lo(62, " Referral : "),
+                    co(62, " Referral : "),
                     Er(63, "a", 19),
-                    lo(64, " Links "),
+                    co(64, " Links "),
                     xr(),
                     xr(),
                     Er(65, "div", 6),
@@ -16344,14 +18136,14 @@
                     Dr(67, "img", 23),
                     xr(),
                     Dr(68, "br"),
-                    lo(69, " Tools : "),
+                    co(69, " Tools : "),
                     Er(70, "a", 24),
-                    lo(71, " Links tools "),
+                    co(71, " Links tools "),
                     xr(),
                     Dr(72, "br"),
-                    lo(73, " Referral : "),
+                    co(73, " Referral : "),
                     Er(74, "a", 25),
-                    lo(75, " Links "),
+                    co(75, " Links "),
                     xr(),
                     xr(),
                     xr(),
@@ -16361,9 +18153,9 @@
                     Dr(79, "img", 27),
                     xr(),
                     Dr(80, "br"),
-                    lo(81, " Tools : "),
+                    co(81, " Tools : "),
                     Er(82, "a", 28),
-                    lo(83, " Links tools "),
+                    co(83, " Links tools "),
                     xr(),
                     Dr(84, "br"),
                     xr(),
@@ -16372,9 +18164,9 @@
                     Dr(87, "img", 30),
                     xr(),
                     Dr(88, "br"),
-                    lo(89, " Tools : "),
+                    co(89, " Tools : "),
                     Er(90, "a", 31),
-                    lo(91, " Links tools "),
+                    co(91, " Links tools "),
                     xr(),
                     Dr(92, "br"),
                     xr(),
@@ -16383,9 +18175,9 @@
                     Dr(95, "img", 33),
                     xr(),
                     Dr(96, "br"),
-                    lo(97, " Tools : "),
+                    co(97, " Tools : "),
                     Er(98, "a", 34),
-                    lo(99, " Links tools "),
+                    co(99, " Links tools "),
                     xr(),
                     Dr(100, "br"),
                     xr(),
@@ -16394,9 +18186,9 @@
                     Dr(103, "img", 36),
                     xr(),
                     Dr(104, "br"),
-                    lo(105, " Tools : "),
+                    co(105, " Tools : "),
                     Er(106, "a", 37),
-                    lo(107, " Links tools "),
+                    co(107, " Links tools "),
                     xr(),
                     Dr(108, "br"),
                     xr(),
@@ -16406,9 +18198,9 @@
                     Dr(112, "img", 39),
                     xr(),
                     Dr(113, "br"),
-                    lo(114, " Tools : "),
+                    co(114, " Tools : "),
                     Er(115, "a", 40),
-                    lo(116, " Links tools "),
+                    co(116, " Links tools "),
                     xr(),
                     Dr(117, "br"),
                     xr(),
@@ -16418,55 +18210,80 @@
                     Dr(121, "img", 42),
                     xr(),
                     Dr(122, "br"),
-                    lo(123, " Tools : "),
+                    co(123, " Tools : "),
                     Er(124, "a", 43),
-                    lo(125, " Links tools "),
+                    co(125, " Links tools "),
                     xr(),
                     Dr(126, "br"),
                     xr(),
                     xr(),
                     Er(127, "div", 2),
                     Dr(128, "div", 6),
-                    Dr(129, "div", 6),
-                    Er(130, "div", 6),
-                    Er(131, "a", 44),
-                    Dr(132, "img", 45),
+                    Er(129, "div", 6),
+                    Er(130, "a", 44),
+                    Dr(131, "img", 45),
                     xr(),
-                    Dr(133, "br"),
-                    lo(134, " Tools : "),
-                    Er(135, "a", 46),
-                    lo(136, " Links tools "),
+                    Dr(132, "br"),
+                    co(133, " Tools : "),
+                    Er(134, "a", 46),
+                    co(135, " Links tools "),
                     xr(),
-                    Dr(137, "br"),
+                    Dr(136, "br"),
+                    co(137, " Referral : "),
+                    Er(138, "a", 47),
+                    co(139, " Links "),
                     xr(),
-                    Er(138, "div", 6),
-                    Er(139, "a", 47),
-                    Dr(140, "img", 48),
+                    Dr(140, "br"),
                     xr(),
-                    Dr(141, "br"),
-                    lo(142, " Tools : "),
-                    Er(143, "a", 49),
-                    lo(144, " Links tools "),
+                    Er(141, "div", 6),
+                    Er(142, "a", 48),
+                    Dr(143, "img", 49),
                     xr(),
-                    Dr(145, "br"),
+                    Dr(144, "br"),
+                    co(145, " Tools : "),
+                    Er(146, "a", 50),
+                    co(147, " Links tools "),
                     xr(),
-                    Dr(146, "div", 6),
-                    Dr(147, "div", 6),
+                    Dr(148, "br"),
                     xr(),
-                    xr(),
-                    Er(148, "div", 50),
-                    lo(149, " \xa9 2021 2022 Copyright By "),
-                    Er(150, "span", 5),
-                    lo(151, "Shadysapy"),
+                    Er(149, "div", 6),
+                    Er(150, "a", 51),
+                    Dr(151, "img", 52),
                     xr(),
                     Dr(152, "br"),
-                    Er(153, "a", 51),
-                    Dr(154, "img", 52),
+                    co(153, " Tools : "),
+                    Er(154, "a", 53),
+                    co(155, " Links tools "),
                     xr(),
-                    Dr(155, "br"),
-                    lo(156, " Partnership : "),
-                    Er(157, "a", 53),
-                    Dr(158, "img", 54),
+                    Dr(156, "br"),
+                    xr(),
+                    Er(157, "div", 6),
+                    Er(158, "a", 54),
+                    Dr(159, "img", 55),
+                    xr(),
+                    Dr(160, "br"),
+                    co(161, " Tools : "),
+                    Er(162, "a", 56),
+                    co(163, " Links tools "),
+                    xr(),
+                    Dr(164, "br"),
+                    xr(),
+                    Dr(165, "div", 6),
+                    xr(),
+                    xr(),
+                    Er(166, "div", 57),
+                    co(167, " \xa9 2021 2022 Copyright By "),
+                    Er(168, "span", 5),
+                    co(169, "Shadysapy"),
+                    xr(),
+                    Dr(170, "br"),
+                    Er(171, "a", 58),
+                    Dr(172, "img", 59),
+                    xr(),
+                    Dr(173, "br"),
+                    co(174, " Partnership : "),
+                    Er(175, "a", 60),
+                    Dr(176, "img", 61),
                     xr(),
                     xr(),
                     xr())
@@ -16476,7 +18293,7 @@
             t
         }
         )()
-          , jd = (()=>{
+          , op = (()=>{
             class t {
                 constructor(t, e) {
                     this.ageoffarmingService = t,
@@ -16489,6 +18306,14 @@
                 ngOnInit() {
                     this.ageoffarmingService.getConfigsItem().then(t=>{
                         t.rows.forEach(t=>{
+                            "Short Bow" == t.nft_name && "common" == t.rarity && this.shareDataService.setBowCommon(t),
+                            "Short Bow" == t.nft_name && "uncommon" == t.rarity && this.shareDataService.setBowUncommon(t),
+                            "Short Bow" == t.nft_name && "rare" == t.rarity && this.shareDataService.setBowRare(t),
+                            "Short Bow" == t.nft_name && "epic" == t.rarity && this.shareDataService.setBowEpic(t),
+                            "Short Bow" == t.nft_name && "legendary" == t.rarity && this.shareDataService.setBowLegendary(t),
+                            "Small Tent" == t.nft_name && "common" == t.rarity && this.shareDataService.setSkinTentCommon(t),
+                            "Medium Tent" == t.nft_name && "uncommon" == t.rarity && this.shareDataService.setSkinTentUncommon(t),
+                            "Large Tent" == t.nft_name && "rare" == t.rarity && this.shareDataService.setSkinTentRare(t),
                             "Stone Axe" == t.nft_name && "common" == t.rarity && this.shareDataService.setStoneAxeCommon(t),
                             "Stone Axe" == t.nft_name && "uncommon" == t.rarity && this.shareDataService.setStoneAxeUncommon(t),
                             "Stone Axe" == t.nft_name && "rare" == t.rarity && this.shareDataService.setStoneAxeRare(t),
@@ -16580,7 +18405,7 @@
                 return new (e || t)(Or(Gh),Or(Yh))
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["app-root"]],
                 decls: 3,
@@ -16594,23 +18419,23 @@
                     Ys(1),
                     Cr("ValueAOFW", e.ValueAOFW)("ValueAOFF", e.ValueAOFF)("ValueAOFS", e.ValueAOFS)("ValueWAX", e.ValueWAX))
                 },
-                directives: [Jh, Md, Ld],
+                directives: [Jh, ip, rp],
                 styles: [""]
             }),
             t
         }
         )();
-        function Bd(t, e, n, i) {
+        function ap(t, e, n, i) {
             return s(n) && (i = n,
             n = void 0),
-            i ? Bd(t, e, n).pipe(k(t=>l(t) ? i(...t) : i(t))) : new y(s=>{
-                Hd(t, e, function(t) {
+            i ? ap(t, e, n).pipe(k(t=>c(t) ? i(...t) : i(t))) : new y(s=>{
+                cp(t, e, function(t) {
                     s.next(arguments.length > 1 ? Array.prototype.slice.call(arguments) : t)
                 }, s, n)
             }
             )
         }
-        function Hd(t, e, n, s, i) {
+        function cp(t, e, n, s, i) {
             let r;
             if (function(t) {
                 return t && "function" == typeof t.addEventListener && "function" == typeof t.removeEventListener
@@ -16634,11 +18459,11 @@
                 if (!t || !t.length)
                     throw new TypeError("Invalid event target");
                 for (let r = 0, o = t.length; r < o; r++)
-                    Hd(t[r], e, n, s, i)
+                    cp(t[r], e, n, s, i)
             }
             s.add(r)
         }
-        const $d = (()=>{
+        const lp = (()=>{
             function t() {
                 return Error.call(this),
                 this.message = "argument out of range",
@@ -16649,21 +18474,21 @@
             t
         }
         )()
-          , Ud = new y(t=>t.complete());
-        function zd(t) {
-            return e=>0 === t ? Ud : e.lift(new qd(t))
+          , hp = new y(t=>t.complete());
+        function up(t) {
+            return e=>0 === t ? hp : e.lift(new dp(t))
         }
-        class qd {
+        class dp {
             constructor(t) {
                 if (this.total = t,
                 this.total < 0)
-                    throw new $d
+                    throw new lp
             }
             call(t, e) {
-                return e.subscribe(new Xd(t,this.total))
+                return e.subscribe(new pp(t,this.total))
             }
         }
-        class Xd extends m {
+        class pp extends m {
             constructor(t, e) {
                 super(t),
                 this.total = e,
@@ -16677,7 +18502,7 @@
                 this.unsubscribe()))
             }
         }
-        let Qd = (()=>{
+        let mp = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -16691,15 +18516,15 @@
             t
         }
         )();
-        function Kd(t) {
+        function fp(t) {
             return Array.isArray(t) ? t : [t]
         }
-        function Zd(t) {
+        function gp(t) {
             return null == t ? "" : "string" == typeof t ? t : `${t}px`
         }
         new Mn("MdbAccordionItemBodyDirective"),
         new Mn("MdbAccordionItemHeaderDirective");
-        let Gd = (()=>{
+        let _p = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -16710,26 +18535,26 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, Qd]]
+                imports: [[kl, mp]]
             }),
             t
         }
         )();
-        function Yd(t) {
-            return e=>e.lift(new Jd(t))
+        function yp(t) {
+            return e=>e.lift(new vp(t))
         }
-        class Jd {
+        class vp {
             constructor(t) {
                 this.notifier = t
             }
             call(t, e) {
-                const n = new tp(t)
-                  , s = L(this.notifier, new W(n));
+                const n = new bp(t)
+                  , s = L(this.notifier, new N(n));
                 return s && !n.seenValue ? (n.add(s),
                 e.subscribe(n)) : n
             }
         }
-        class tp extends M {
+        class bp extends M {
             constructor(t) {
                 super(t),
                 this.seenValue = !1
@@ -16740,7 +18565,7 @@
             }
             notifyComplete() {}
         }
-        let ep, np = (()=>{
+        let wp, Sp = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -16751,11 +18576,11 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc]]
+                imports: [[kl]]
             }),
             t
         }
-        )(), sp = (()=>{
+        )(), Ap = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -16766,20 +18591,20 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, Zu]]
+                imports: [[kl, Zu]]
             }),
             t
         }
         )();
-        class ip {
+        class Op {
             constructor(t) {
                 this.durationSelector = t
             }
             call(t, e) {
-                return e.subscribe(new rp(t,this.durationSelector))
+                return e.subscribe(new Cp(t,this.durationSelector))
             }
         }
-        class rp extends M {
+        class Cp extends M {
             constructor(t, e) {
                 super(t),
                 this.durationSelector = e,
@@ -16796,7 +18621,7 @@
                     } catch (e) {
                         return this.destination.error(e)
                     }
-                    const s = L(n, new W(this));
+                    const s = L(n, new N(this));
                     !s || s.closed ? this.clearThrottle() : this.add(this.throttled = s)
                 }
             }
@@ -16816,7 +18641,7 @@
                 this.clearThrottle()
             }
         }
-        function op(t) {
+        function kp(t) {
             const {index: e, period: n, subscriber: s} = t;
             if (s.next(e),
             !s.closed) {
@@ -16826,14 +18651,14 @@
                 this.schedule(t, n)
             }
         }
-        function ap(t, e=uh) {
+        function Ep(t, e=uh) {
             return n = ()=>function(t=0, e, n) {
                 let s = -1;
                 return dh(e) ? s = Number(e) < 1 ? 1 : Number(e) : C(e) && (n = e),
                 C(n) || (n = uh),
                 new y(e=>{
                     const i = dh(t) ? t : +t - n.now();
-                    return n.schedule(op, i, {
+                    return n.schedule(kp, i, {
                         index: 0,
                         period: s,
                         subscriber: e
@@ -16842,24 +18667,24 @@
                 )
             }(t, e),
             function(t) {
-                return t.lift(new ip(n))
+                return t.lift(new Op(n))
             }
             ;
             var n
         }
         try {
-            ep = "undefined" != typeof Intl && Intl.v8BreakIterator
-        } catch (D_) {
-            ep = !1
+            wp = "undefined" != typeof Intl && Intl.v8BreakIterator
+        } catch (Q_) {
+            wp = !1
         }
-        let lp, cp = (()=>{
+        let xp, Dp = (()=>{
             class t {
                 constructor(t) {
                     this._platformId = t,
                     this.isBrowser = this._platformId ? "browser" === this._platformId : "object" == typeof document && !!document,
                     this.EDGE = this.isBrowser && /(edge)/i.test(navigator.userAgent),
                     this.TRIDENT = this.isBrowser && /(msie|trident)/i.test(navigator.userAgent),
-                    this.BLINK = this.isBrowser && !(!window.chrome && !ep) && "undefined" != typeof CSS && !this.EDGE && !this.TRIDENT,
+                    this.BLINK = this.isBrowser && !(!window.chrome && !wp) && "undefined" != typeof CSS && !this.EDGE && !this.TRIDENT,
                     this.WEBKIT = this.isBrowser && /AppleWebKit/i.test(navigator.userAgent) && !this.BLINK && !this.EDGE && !this.TRIDENT,
                     this.IOS = this.isBrowser && /iPad|iPhone|iPod/.test(navigator.userAgent) && !("MSStream"in window),
                     this.FIREFOX = this.isBrowser && /(firefox|minefield)/i.test(navigator.userAgent),
@@ -16868,19 +18693,19 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(sl))
+                return new (e || t)(Jn(sc))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(sl))
+                    return new t(Jn(sc))
                 },
                 token: t,
                 providedIn: "root"
             }),
             t
         }
-        )(), hp = (()=>{
+        )(), Vp = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -16894,27 +18719,27 @@
             t
         }
         )();
-        function up() {
-            if (null == lp) {
+        function Tp() {
+            if (null == xp) {
                 if ("object" != typeof document || !document || "function" != typeof Element || !Element)
-                    return lp = !1,
-                    lp;
+                    return xp = !1,
+                    xp;
                 if ("scrollBehavior"in document.documentElement.style)
-                    lp = !0;
+                    xp = !0;
                 else {
                     const t = Element.prototype.scrollTo;
-                    lp = !!t && !/\{\s*\[native code\]\s*\}/.test(t.toString())
+                    xp = !!t && !/\{\s*\[native code\]\s*\}/.test(t.toString())
                 }
             }
-            return lp
+            return xp
         }
-        const dp = new Mn("cdk-dir-doc",{
+        const Fp = new Mn("cdk-dir-doc",{
             providedIn: "root",
             factory: function() {
-                return ts(zl)
+                return ts(zc)
             }
         });
-        let pp = (()=>{
+        let Pp = (()=>{
             class t {
                 constructor(t) {
                     if (this.value = "ltr",
@@ -16930,12 +18755,12 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(dp, 8))
+                return new (e || t)(Jn(Fp, 8))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(dp, 8))
+                    return new t(Jn(Fp, 8))
                 },
                 token: t,
                 providedIn: "root"
@@ -16943,7 +18768,7 @@
             t
         }
         )()
-          , mp = (()=>{
+          , Ip = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -16957,12 +18782,12 @@
             t
         }
         )()
-          , fp = (()=>{
+          , Rp = (()=>{
             class t {
                 constructor(t, e, n) {
                     this._ngZone = t,
                     this._platform = e,
-                    this._scrolled = new S,
+                    this._scrolled = new A,
                     this._globalSubscription = null,
                     this._scrolledCount = 0,
                     this.scrollContainers = new Map,
@@ -16979,7 +18804,7 @@
                 scrolled(t=20) {
                     return this._platform.isBrowser ? new y(e=>{
                         this._globalSubscription || this._addGlobalListener();
-                        const n = t > 0 ? this._scrolled.pipe(ap(t)).subscribe(e) : this._scrolled.subscribe(e);
+                        const n = t > 0 ? this._scrolled.pipe(Ep(t)).subscribe(e) : this._scrolled.subscribe(e);
                         return this._scrolledCount++,
                         ()=>{
                             n.unsubscribe(),
@@ -17010,7 +18835,7 @@
                     return this._document.defaultView || window
                 }
                 _scrollableContainsElement(t, e) {
-                    let n = (i = e)instanceof No ? i.nativeElement : i
+                    let n = (i = e)instanceof Wo ? i.nativeElement : i
                       , s = t.getElementRef().nativeElement;
                     var i;
                     do {
@@ -17020,7 +18845,7 @@
                     return !1
                 }
                 _addGlobalListener() {
-                    this._globalSubscription = this._ngZone.runOutsideAngular(()=>Bd(this._getWindow().document, "scroll").subscribe(()=>this._scrolled.next()))
+                    this._globalSubscription = this._ngZone.runOutsideAngular(()=>ap(this._getWindow().document, "scroll").subscribe(()=>this._scrolled.next()))
                 }
                 _removeGlobalListener() {
                     this._globalSubscription && (this._globalSubscription.unsubscribe(),
@@ -17028,12 +18853,12 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(yl),Jn(cp),Jn(zl, 8))
+                return new (e || t)(Jn(yc),Jn(Dp),Jn(zc, 8))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(yl),Jn(cp),Jn(zl, 8))
+                    return new t(Jn(yc),Jn(Dp),Jn(zc, 8))
                 },
                 token: t,
                 providedIn: "root"
@@ -17041,11 +18866,11 @@
             t
         }
         )()
-          , gp = (()=>{
+          , Wp = (()=>{
             class t {
                 constructor(t, e, n) {
                     this._platform = t,
-                    this._change = new S,
+                    this._change = new A,
                     this._changeListener = t=>{
                         this._change.next(t)
                     }
@@ -17106,7 +18931,7 @@
                     }
                 }
                 change(t=20) {
-                    return t > 0 ? this._change.pipe(ap(t)) : this._change
+                    return t > 0 ? this._change.pipe(Ep(t)) : this._change
                 }
                 _getWindow() {
                     return this._document.defaultView || window
@@ -17123,12 +18948,12 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(cp),Jn(yl),Jn(zl, 8))
+                return new (e || t)(Jn(Dp),Jn(yc),Jn(zc, 8))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(cp),Jn(yl),Jn(zl, 8))
+                    return new t(Jn(Dp),Jn(yc),Jn(zc, 8))
                 },
                 token: t,
                 providedIn: "root"
@@ -17136,7 +18961,7 @@
             t
         }
         )()
-          , _p = (()=>{
+          , Np = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -17150,7 +18975,7 @@
             t
         }
         )()
-          , yp = (()=>{
+          , Mp = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -17161,12 +18986,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[mp, hp, _p], mp, _p]
+                imports: [[Ip, Vp, Np], Ip, Np]
             }),
             t
         }
         )();
-        class vp {
+        class Lp {
             attach(t) {
                 return this._attachedHost = t,
                 t.attach(this)
@@ -17183,7 +19008,7 @@
                 this._attachedHost = t
             }
         }
-        class bp extends vp {
+        class Bp extends Lp {
             constructor(t, e, n, s) {
                 super(),
                 this.component = t,
@@ -17192,7 +19017,7 @@
                 this.componentFactoryResolver = s
             }
         }
-        class wp extends vp {
+        class jp extends Lp {
             constructor(t, e, n) {
                 super(),
                 this.templateRef = t,
@@ -17211,13 +19036,13 @@
                 super.detach()
             }
         }
-        class Ap extends vp {
+        class Hp extends Lp {
             constructor(t) {
                 super(),
-                this.element = t instanceof No ? t.nativeElement : t
+                this.element = t instanceof Wo ? t.nativeElement : t
             }
         }
-        class Sp {
+        class $p {
             constructor() {
                 this._isDisposed = !1,
                 this.attachDomPortal = null
@@ -17226,9 +19051,9 @@
                 return !!this._attachedPortal
             }
             attach(t) {
-                return t instanceof bp ? (this._attachedPortal = t,
-                this.attachComponentPortal(t)) : t instanceof wp ? (this._attachedPortal = t,
-                this.attachTemplatePortal(t)) : this.attachDomPortal && t instanceof Ap ? (this._attachedPortal = t,
+                return t instanceof Bp ? (this._attachedPortal = t,
+                this.attachComponentPortal(t)) : t instanceof jp ? (this._attachedPortal = t,
+                this.attachTemplatePortal(t)) : this.attachDomPortal && t instanceof Hp ? (this._attachedPortal = t,
                 this.attachDomPortal(t)) : void 0
             }
             detach() {
@@ -17249,7 +19074,7 @@
                 this._disposeFn = null)
             }
         }
-        class Op extends Sp {
+        class Up extends $p {
             constructor(t, e, n, s, i) {
                 super(),
                 this.outletElement = t,
@@ -17306,8 +19131,8 @@
                 return t.hostView.rootNodes[0]
             }
         }
-        let Cp = (()=>{
-            class t extends Sp {
+        let zp = (()=>{
+            class t extends $p {
                 constructor(t, e, n) {
                     super(),
                     this._componentFactoryResolver = t,
@@ -17375,10 +19200,10 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(To),Or(_a),Or(zl))
+                return new (e || t)(Or(Fo),Or(_a),Or(zc))
             }
             ,
-            t.\u0275dir = Xt({
+            t.\u0275dir = qt({
                 type: t,
                 selectors: [["", "cdkPortalOutlet", ""]],
                 inputs: {
@@ -17393,7 +19218,7 @@
             t
         }
         )()
-          , kp = (()=>{
+          , Xp = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -17407,8 +19232,8 @@
             t
         }
         )();
-        const Ep = up();
-        class xp {
+        const qp = Tp();
+        class Kp {
             constructor(t, e) {
                 this._viewportRuler = t,
                 this._previousHTMLStyles = {
@@ -17425,8 +19250,8 @@
                     this._previousScrollPosition = this._viewportRuler.getViewportScrollPosition(),
                     this._previousHTMLStyles.left = t.style.left || "",
                     this._previousHTMLStyles.top = t.style.top || "",
-                    t.style.left = Zd(-this._previousScrollPosition.left),
-                    t.style.top = Zd(-this._previousScrollPosition.top),
+                    t.style.left = gp(-this._previousScrollPosition.left),
+                    t.style.top = gp(-this._previousScrollPosition.top),
                     t.classList.add("cdk-global-scrollblock"),
                     this._isEnabled = !0
                 }
@@ -17442,9 +19267,9 @@
                     e.left = this._previousHTMLStyles.left,
                     e.top = this._previousHTMLStyles.top,
                     t.classList.remove("cdk-global-scrollblock"),
-                    Ep && (e.scrollBehavior = n.scrollBehavior = "auto"),
+                    qp && (e.scrollBehavior = n.scrollBehavior = "auto"),
                     window.scroll(this._previousScrollPosition.left, this._previousScrollPosition.top),
-                    Ep && (e.scrollBehavior = s,
+                    qp && (e.scrollBehavior = s,
                     n.scrollBehavior = i)
                 }
             }
@@ -17456,7 +19281,7 @@
                 return t.scrollHeight > e.height || t.scrollWidth > e.width
             }
         }
-        class Dp {
+        class Qp {
             constructor(t, e, n, s) {
                 this._scrollDispatcher = t,
                 this._ngZone = e,
@@ -17491,18 +19316,18 @@
                 this._overlayRef = null
             }
         }
-        class Vp {
+        class Zp {
             enable() {}
             disable() {}
             attach() {}
         }
-        function Fp(t, e) {
+        function Gp(t, e) {
             return e.some(e=>t.bottom < e.top || t.top > e.bottom || t.right < e.left || t.left > e.right)
         }
-        function Tp(t, e) {
+        function Yp(t, e) {
             return e.some(e=>t.top < e.top || t.bottom > e.bottom || t.left < e.left || t.right > e.right)
         }
-        class Pp {
+        class Jp {
             constructor(t, e, n, s) {
                 this._scrollDispatcher = t,
                 this._viewportRuler = e,
@@ -17519,7 +19344,7 @@
                     this._config && this._config.autoClose) {
                         const t = this._overlayRef.overlayElement.getBoundingClientRect()
                           , {width: e, height: n} = this._viewportRuler.getViewportSize();
-                        Fp(t, [{
+                        Gp(t, [{
                             width: e,
                             height: n,
                             bottom: n,
@@ -17541,26 +19366,26 @@
                 this._overlayRef = null
             }
         }
-        let Ip = (()=>{
+        let tm = (()=>{
             class t {
                 constructor(t, e, n, s) {
                     this._scrollDispatcher = t,
                     this._viewportRuler = e,
                     this._ngZone = n,
-                    this.noop = ()=>new Vp,
-                    this.close = t=>new Dp(this._scrollDispatcher,this._ngZone,this._viewportRuler,t),
-                    this.block = ()=>new xp(this._viewportRuler,this._document),
-                    this.reposition = t=>new Pp(this._scrollDispatcher,this._viewportRuler,this._ngZone,t),
+                    this.noop = ()=>new Zp,
+                    this.close = t=>new Qp(this._scrollDispatcher,this._ngZone,this._viewportRuler,t),
+                    this.block = ()=>new Kp(this._viewportRuler,this._document),
+                    this.reposition = t=>new Jp(this._scrollDispatcher,this._viewportRuler,this._ngZone,t),
                     this._document = s
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(fp),Jn(gp),Jn(yl),Jn(zl))
+                return new (e || t)(Jn(Rp),Jn(Wp),Jn(yc),Jn(zc))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(fp),Jn(gp),Jn(yl),Jn(zl))
+                    return new t(Jn(Rp),Jn(Wp),Jn(yc),Jn(zc))
                 },
                 token: t,
                 providedIn: "root"
@@ -17568,9 +19393,9 @@
             t
         }
         )();
-        class Rp {
+        class em {
             constructor(t) {
-                if (this.scrollStrategy = new Vp,
+                if (this.scrollStrategy = new Zp,
                 this.panelClass = "",
                 this.hasBackdrop = !1,
                 this.backdropClass = "cdk-overlay-dark-backdrop",
@@ -17582,7 +19407,7 @@
                 }
             }
         }
-        class Np {
+        class nm {
             constructor(t, e, n, s, i) {
                 this.offsetX = n,
                 this.offsetY = s,
@@ -17593,13 +19418,13 @@
                 this.overlayY = e.overlayY
             }
         }
-        class Wp {
+        class sm {
             constructor(t, e) {
                 this.connectionPair = t,
                 this.scrollableViewProperties = e
             }
         }
-        let Mp = (()=>{
+        let im = (()=>{
             class t {
                 constructor(t) {
                     this._attachedOverlays = [],
@@ -17619,12 +19444,12 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl))
+                return new (e || t)(Jn(zc))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(zl))
+                    return new t(Jn(zc))
                 },
                 token: t,
                 providedIn: "root"
@@ -17632,8 +19457,8 @@
             t
         }
         )()
-          , Lp = (()=>{
-            class t extends Mp {
+          , rm = (()=>{
+            class t extends im {
                 constructor(t) {
                     super(t),
                     this._keydownListener = t=>{
@@ -17656,12 +19481,12 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl))
+                return new (e || t)(Jn(zc))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(zl))
+                    return new t(Jn(zc))
                 },
                 token: t,
                 providedIn: "root"
@@ -17669,8 +19494,8 @@
             t
         }
         )()
-          , jp = (()=>{
-            class t extends Mp {
+          , om = (()=>{
+            class t extends im {
                 constructor(t, e) {
                     super(t),
                     this._platform = e,
@@ -17714,12 +19539,12 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl),Jn(cp))
+                return new (e || t)(Jn(zc),Jn(Dp))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(zl),Jn(cp))
+                    return new t(Jn(zc),Jn(Dp))
                 },
                 token: t,
                 providedIn: "root"
@@ -17727,8 +19552,8 @@
             t
         }
         )();
-        const Bp = "undefined" != typeof __karma__ && !!__karma__ || "undefined" != typeof jasmine && !!jasmine || "undefined" != typeof jest && !!jest || "undefined" != typeof Mocha && !!Mocha;
-        let Hp = (()=>{
+        const am = "undefined" != typeof __karma__ && !!__karma__ || "undefined" != typeof jasmine && !!jasmine || "undefined" != typeof jest && !!jest || "undefined" != typeof Mocha && !!Mocha;
+        let cm = (()=>{
             class t {
                 constructor(t, e) {
                     this._platform = e,
@@ -17744,25 +19569,25 @@
                 }
                 _createContainer() {
                     const t = "cdk-overlay-container";
-                    if (this._platform.isBrowser || Bp) {
+                    if (this._platform.isBrowser || am) {
                         const e = this._document.querySelectorAll(`.${t}[platform="server"], .${t}[platform="test"]`);
                         for (let t = 0; t < e.length; t++)
                             e[t].parentNode.removeChild(e[t])
                     }
                     const e = this._document.createElement("div");
                     e.classList.add(t),
-                    Bp ? e.setAttribute("platform", "test") : this._platform.isBrowser || e.setAttribute("platform", "server"),
+                    am ? e.setAttribute("platform", "test") : this._platform.isBrowser || e.setAttribute("platform", "server"),
                     this._document.body.appendChild(e),
                     this._containerElement = e
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl),Jn(cp))
+                return new (e || t)(Jn(zc),Jn(Dp))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(zl),Jn(cp))
+                    return new t(Jn(zc),Jn(Dp))
                 },
                 token: t,
                 providedIn: "root"
@@ -17770,8 +19595,8 @@
             t
         }
         )();
-        class $p {
-            constructor(t, e, n, s, i, r, o, a, l) {
+        class lm {
+            constructor(t, e, n, s, i, r, o, a, c) {
                 this._portalOutlet = t,
                 this._host = e,
                 this._pane = n,
@@ -17780,15 +19605,15 @@
                 this._keyboardDispatcher = r,
                 this._document = o,
                 this._location = a,
-                this._outsideClickDispatcher = l,
+                this._outsideClickDispatcher = c,
                 this._backdropElement = null,
-                this._backdropClick = new S,
-                this._attachments = new S,
-                this._detachments = new S,
+                this._backdropClick = new A,
+                this._attachments = new A,
+                this._detachments = new A,
                 this._locationChanges = u.EMPTY,
                 this._backdropClickHandler = t=>this._backdropClick.next(t),
-                this._keydownEvents = new S,
-                this._outsidePointerEvents = new S,
+                this._keydownEvents = new A,
+                this._outsidePointerEvents = new A,
                 s.scrollStrategy && (this._scrollStrategy = s.scrollStrategy,
                 this._scrollStrategy.attach(this)),
                 this._positionStrategy = s.positionStrategy
@@ -17810,7 +19635,7 @@
                 this._updateElementSize(),
                 this._updateElementDirection(),
                 this._scrollStrategy && this._scrollStrategy.enable(),
-                this._ngZone.onStable.pipe(zd(1)).subscribe(()=>{
+                this._ngZone.onStable.pipe(up(1)).subscribe(()=>{
                     this.hasAttached() && this.updatePosition()
                 }
                 ),
@@ -17920,12 +19745,12 @@
                 if (!this._pane)
                     return;
                 const t = this._pane.style;
-                t.width = Zd(this._config.width),
-                t.height = Zd(this._config.height),
-                t.minWidth = Zd(this._config.minWidth),
-                t.minHeight = Zd(this._config.minHeight),
-                t.maxWidth = Zd(this._config.maxWidth),
-                t.maxHeight = Zd(this._config.maxHeight)
+                t.width = gp(this._config.width),
+                t.height = gp(this._config.height),
+                t.minWidth = gp(this._config.minWidth),
+                t.minHeight = gp(this._config.minHeight),
+                t.maxWidth = gp(this._config.maxWidth),
+                t.maxHeight = gp(this._config.maxHeight)
             }
             _togglePointerEvents(t) {
                 this._pane.style.pointerEvents = t ? "" : "none"
@@ -17971,14 +19796,14 @@
             }
             _toggleClasses(t, e, n) {
                 const s = t.classList;
-                Kd(e).forEach(t=>{
+                fp(e).forEach(t=>{
                     t && (n ? s.add(t) : s.remove(t))
                 }
                 )
             }
             _detachContentWhenStable() {
                 this._ngZone.runOutsideAngular(()=>{
-                    const t = this._ngZone.onStable.pipe(Yd(U(this._attachments, this._detachments))).subscribe(()=>{
+                    const t = this._ngZone.onStable.pipe(yp(U(this._attachments, this._detachments))).subscribe(()=>{
                         this._pane && this._host && 0 !== this._pane.children.length || (this._pane && this._config.panelClass && this._toggleClasses(this._pane, this._config.panelClass, !1),
                         this._host && this._host.parentElement && (this._previousHostParent = this._host.parentElement,
                         this._previousHostParent.removeChild(this._host)),
@@ -17994,9 +19819,9 @@
                 t.detach && t.detach())
             }
         }
-        const Up = "cdk-overlay-connected-position-bounding-box"
-          , zp = /([A-Za-z%]+)$/;
-        class qp {
+        const hm = "cdk-overlay-connected-position-bounding-box"
+          , um = /([A-Za-z%]+)$/;
+        class dm {
             constructor(t, e, n, s, i) {
                 this._viewportRuler = e,
                 this._document = n,
@@ -18014,7 +19839,7 @@
                 this._viewportMargin = 0,
                 this._scrollables = [],
                 this._preferredPositions = [],
-                this._positionChanges = new S,
+                this._positionChanges = new A,
                 this._resizeSubscription = u.EMPTY,
                 this._offsetX = 0,
                 this._offsetY = 0,
@@ -18027,7 +19852,7 @@
             }
             attach(t) {
                 this._validatePositions(),
-                t.hostElement.classList.add(Up),
+                t.hostElement.classList.add(hm),
                 this._overlayRef = t,
                 this._boundingBox = t.hostElement,
                 this._pane = t.overlayElement,
@@ -18060,17 +19885,17 @@
                 for (let r of this._preferredPositions) {
                     let o = this._getOriginPoint(t, r)
                       , a = this._getOverlayPoint(o, e, r)
-                      , l = this._getOverlayFit(a, e, n, r);
-                    if (l.isCompletelyWithinViewport)
+                      , c = this._getOverlayFit(a, e, n, r);
+                    if (c.isCompletelyWithinViewport)
                         return this._isPushed = !1,
                         void this._applyPosition(r, o);
-                    this._canFitWithFlexibleDimensions(l, a, n) ? s.push({
+                    this._canFitWithFlexibleDimensions(c, a, n) ? s.push({
                         position: r,
                         origin: o,
                         overlayRect: e,
                         boundingBoxRect: this._calculateBoundingBoxRect(o, r)
-                    }) : (!i || i.overlayFit.visibleArea < l.visibleArea) && (i = {
-                        overlayFit: l,
+                    }) : (!i || i.overlayFit.visibleArea < c.visibleArea) && (i = {
+                        overlayFit: c,
                         overlayPoint: a,
                         originPoint: o,
                         position: r,
@@ -18100,7 +19925,7 @@
                 this._resizeSubscription.unsubscribe()
             }
             dispose() {
-                this._isDisposed || (this._boundingBox && Xp(this._boundingBox.style, {
+                this._isDisposed || (this._boundingBox && pm(this._boundingBox.style, {
                     top: "",
                     left: "",
                     right: "",
@@ -18111,7 +19936,7 @@
                     justifyContent: ""
                 }),
                 this._pane && this._resetOverlayElementStyles(),
-                this._overlayRef && this._overlayRef.hostElement.classList.remove(Up),
+                this._overlayRef && this._overlayRef.hostElement.classList.remove(hm),
                 this.detach(),
                 this._positionChanges.complete(),
                 this._overlayRef = this._boundingBox = null,
@@ -18198,16 +20023,16 @@
                 }
             }
             _getOverlayFit(t, e, n, s) {
-                const i = Kp(e);
+                const i = fm(e);
                 let {x: r, y: o} = t
                   , a = this._getOffset(s, "x")
-                  , l = this._getOffset(s, "y");
+                  , c = this._getOffset(s, "y");
                 a && (r += a),
-                l && (o += l);
-                let c = 0 - o
+                c && (o += c);
+                let l = 0 - o
                   , h = o + i.height - n.height
                   , u = this._subtractOverflows(i.width, 0 - r, r + i.width - n.width)
-                  , d = this._subtractOverflows(i.height, c, h)
+                  , d = this._subtractOverflows(i.height, l, h)
                   , p = u * d;
                 return {
                     visibleArea: p,
@@ -18220,8 +20045,8 @@
                 if (this._hasFlexibleDimensions) {
                     const s = n.bottom - e.y
                       , i = n.right - e.x
-                      , r = Qp(this._overlayRef.getConfig().minHeight)
-                      , o = Qp(this._overlayRef.getConfig().minWidth)
+                      , r = mm(this._overlayRef.getConfig().minHeight)
+                      , o = mm(this._overlayRef.getConfig().minWidth)
                       , a = t.fitsInViewportHorizontally || null != o && o <= i;
                     return (t.fitsInViewportVertically || null != r && r <= s) && a
                 }
@@ -18233,22 +20058,22 @@
                         x: t.x + this._previousPushAmount.x,
                         y: t.y + this._previousPushAmount.y
                     };
-                const s = Kp(e)
+                const s = fm(e)
                   , i = this._viewportRect
                   , r = Math.max(t.x + s.width - i.width, 0)
                   , o = Math.max(t.y + s.height - i.height, 0)
                   , a = Math.max(i.top - n.top - t.y, 0)
-                  , l = Math.max(i.left - n.left - t.x, 0);
-                let c = 0
+                  , c = Math.max(i.left - n.left - t.x, 0);
+                let l = 0
                   , h = 0;
-                return c = s.width <= i.width ? l || -r : t.x < this._viewportMargin ? i.left - n.left - t.x : 0,
+                return l = s.width <= i.width ? c || -r : t.x < this._viewportMargin ? i.left - n.left - t.x : 0,
                 h = s.height <= i.height ? a || -o : t.y < this._viewportMargin ? i.top - n.top - t.y : 0,
                 this._previousPushAmount = {
-                    x: c,
+                    x: l,
                     y: h
                 },
                 {
-                    x: t.x + c,
+                    x: t.x + l,
                     y: t.y + h
                 }
             }
@@ -18260,7 +20085,7 @@
                 this._lastPosition = t,
                 this._positionChanges.observers.length) {
                     const e = this._getScrollVisibility()
-                      , n = new Wp(t,e);
+                      , n = new sm(t,e);
                     this._positionChanges.next(n)
                 }
                 this._isInitialRender = !1
@@ -18277,7 +20102,7 @@
             _calculateBoundingBoxRect(t, e) {
                 const n = this._viewportRect
                   , s = this._isRtl();
-                let i, r, o, a, l, c;
+                let i, r, o, a, c, l;
                 if ("top" === e.overlayY)
                     r = t.y,
                     i = n.height - r + this._viewportMargin;
@@ -18292,23 +20117,23 @@
                     i > s && !this._isInitialRender && !this._growAfterOpen && (r = t.y - s / 2)
                 }
                 if ("end" === e.overlayX && !s || "start" === e.overlayX && s)
-                    c = n.width - t.x + this._viewportMargin,
+                    l = n.width - t.x + this._viewportMargin,
                     a = t.x - this._viewportMargin;
                 else if ("start" === e.overlayX && !s || "end" === e.overlayX && s)
-                    l = t.x,
+                    c = t.x,
                     a = n.right - t.x;
                 else {
                     const e = Math.min(n.right - t.x + n.left, t.x)
                       , s = this._lastBoundingBoxSize.width;
                     a = 2 * e,
-                    l = t.x - e,
-                    a > s && !this._isInitialRender && !this._growAfterOpen && (l = t.x - s / 2)
+                    c = t.x - e,
+                    a > s && !this._isInitialRender && !this._growAfterOpen && (c = t.x - s / 2)
                 }
                 return {
                     top: r,
-                    left: l,
+                    left: c,
                     bottom: o,
-                    right: c,
+                    right: l,
                     width: a,
                     height: i
                 }
@@ -18325,22 +20150,22 @@
                 else {
                     const t = this._overlayRef.getConfig().maxHeight
                       , i = this._overlayRef.getConfig().maxWidth;
-                    s.height = Zd(n.height),
-                    s.top = Zd(n.top),
-                    s.bottom = Zd(n.bottom),
-                    s.width = Zd(n.width),
-                    s.left = Zd(n.left),
-                    s.right = Zd(n.right),
+                    s.height = gp(n.height),
+                    s.top = gp(n.top),
+                    s.bottom = gp(n.bottom),
+                    s.width = gp(n.width),
+                    s.left = gp(n.left),
+                    s.right = gp(n.right),
                     s.alignItems = "center" === e.overlayX ? "center" : "end" === e.overlayX ? "flex-end" : "flex-start",
                     s.justifyContent = "center" === e.overlayY ? "center" : "bottom" === e.overlayY ? "flex-end" : "flex-start",
-                    t && (s.maxHeight = Zd(t)),
-                    i && (s.maxWidth = Zd(i))
+                    t && (s.maxHeight = gp(t)),
+                    i && (s.maxWidth = gp(i))
                 }
                 this._lastBoundingBoxSize = n,
-                Xp(this._boundingBox.style, s)
+                pm(this._boundingBox.style, s)
             }
             _resetBoundingBoxStyles() {
-                Xp(this._boundingBox.style, {
+                pm(this._boundingBox.style, {
                     top: "0",
                     left: "0",
                     right: "0",
@@ -18352,7 +20177,7 @@
                 })
             }
             _resetOverlayElementStyles() {
-                Xp(this._pane.style, {
+                pm(this._pane.style, {
                     top: "",
                     left: "",
                     bottom: "",
@@ -18368,19 +20193,19 @@
                   , r = this._overlayRef.getConfig();
                 if (s) {
                     const s = this._viewportRuler.getViewportScrollPosition();
-                    Xp(n, this._getExactOverlayY(e, t, s)),
-                    Xp(n, this._getExactOverlayX(e, t, s))
+                    pm(n, this._getExactOverlayY(e, t, s)),
+                    pm(n, this._getExactOverlayX(e, t, s))
                 } else
                     n.position = "static";
                 let o = ""
                   , a = this._getOffset(e, "x")
-                  , l = this._getOffset(e, "y");
+                  , c = this._getOffset(e, "y");
                 a && (o += `translateX(${a}px) `),
-                l && (o += `translateY(${l}px)`),
+                c && (o += `translateY(${c}px)`),
                 n.transform = o.trim(),
-                r.maxHeight && (s ? n.maxHeight = Zd(r.maxHeight) : i && (n.maxHeight = "")),
-                r.maxWidth && (s ? n.maxWidth = Zd(r.maxWidth) : i && (n.maxWidth = "")),
-                Xp(this._pane.style, n)
+                r.maxHeight && (s ? n.maxHeight = gp(r.maxHeight) : i && (n.maxHeight = "")),
+                r.maxWidth && (s ? n.maxWidth = gp(r.maxWidth) : i && (n.maxWidth = "")),
+                pm(this._pane.style, n)
             }
             _getExactOverlayY(t, e, n) {
                 let s = {
@@ -18391,7 +20216,7 @@
                 this._isPushed && (i = this._pushOverlayOnScreen(i, this._overlayRect, n));
                 let r = this._overlayContainer.getContainerElement().getBoundingClientRect().top;
                 return i.y -= r,
-                "bottom" === t.overlayY ? s.bottom = this._document.documentElement.clientHeight - (i.y + this._overlayRect.height) + "px" : s.top = Zd(i.y),
+                "bottom" === t.overlayY ? s.bottom = this._document.documentElement.clientHeight - (i.y + this._overlayRect.height) + "px" : s.top = gp(i.y),
                 s
             }
             _getExactOverlayX(t, e, n) {
@@ -18401,7 +20226,7 @@
                 }, r = this._getOverlayPoint(e, this._overlayRect, t);
                 return this._isPushed && (r = this._pushOverlayOnScreen(r, this._overlayRect, n)),
                 s = this._isRtl() ? "end" === t.overlayX ? "left" : "right" : "end" === t.overlayX ? "right" : "left",
-                "right" === s ? i.right = this._document.documentElement.clientWidth - (r.x + this._overlayRect.width) + "px" : i.left = Zd(r.x),
+                "right" === s ? i.right = this._document.documentElement.clientWidth - (r.x + this._overlayRect.width) + "px" : i.left = gp(r.x),
                 i
             }
             _getScrollVisibility() {
@@ -18409,10 +20234,10 @@
                   , e = this._pane.getBoundingClientRect()
                   , n = this._scrollables.map(t=>t.getElementRef().nativeElement.getBoundingClientRect());
                 return {
-                    isOriginClipped: Tp(t, n),
-                    isOriginOutsideView: Fp(t, n),
-                    isOverlayClipped: Tp(e, n),
-                    isOverlayOutsideView: Fp(e, n)
+                    isOriginClipped: Yp(t, n),
+                    isOriginOutsideView: Gp(t, n),
+                    isOverlayClipped: Yp(e, n),
+                    isOverlayOutsideView: Gp(e, n)
                 }
             }
             _subtractOverflows(t, ...e) {
@@ -18442,7 +20267,7 @@
             }
             _validatePositions() {}
             _addPanelClasses(t) {
-                this._pane && Kd(t).forEach(t=>{
+                this._pane && fp(t).forEach(t=>{
                     "" !== t && -1 === this._appliedPanelClasses.indexOf(t) && (this._appliedPanelClasses.push(t),
                     this._pane.classList.add(t))
                 }
@@ -18457,7 +20282,7 @@
             }
             _getOriginRect() {
                 const t = this._origin;
-                if (t instanceof No)
+                if (t instanceof Wo)
                     return t.nativeElement.getBoundingClientRect();
                 if (t instanceof Element)
                     return t.getBoundingClientRect();
@@ -18473,19 +20298,19 @@
                 }
             }
         }
-        function Xp(t, e) {
+        function pm(t, e) {
             for (let n in e)
                 e.hasOwnProperty(n) && (t[n] = e[n]);
             return t
         }
-        function Qp(t) {
+        function mm(t) {
             if ("number" != typeof t && null != t) {
-                const [e,n] = t.split(zp);
+                const [e,n] = t.split(um);
                 return n && "px" !== n ? null : parseFloat(e)
             }
             return t || null
         }
-        function Kp(t) {
+        function fm(t) {
             return {
                 top: Math.floor(t.top),
                 right: Math.floor(t.right),
@@ -18495,10 +20320,10 @@
                 height: Math.floor(t.height)
             }
         }
-        class Zp {
+        class gm {
             constructor(t, e, n, s, i, r, o) {
                 this._preferredPositions = [],
-                this._positionStrategy = new qp(n,s,i,r,o).withFlexibleDimensions(!1).withPush(!1).withViewportMargin(0),
+                this._positionStrategy = new dm(n,s,i,r,o).withFlexibleDimensions(!1).withPush(!1).withViewportMargin(0),
                 this.withFallbackPosition(t, e),
                 this.onPositionChange = this._positionStrategy.positionChanges
             }
@@ -18527,7 +20352,7 @@
                 this._positionStrategy.withScrollableContainers(t)
             }
             withFallbackPosition(t, e, n, s) {
-                const i = new Np(t,e,n,s);
+                const i = new nm(t,e,n,s);
                 return this._preferredPositions.push(i),
                 this._positionStrategy.withPositions(this._preferredPositions),
                 this
@@ -18558,8 +20383,8 @@
                 this
             }
         }
-        const Gp = "cdk-global-overlay-wrapper";
-        class Yp {
+        const _m = "cdk-global-overlay-wrapper";
+        class ym {
             constructor() {
                 this._cssPosition = "static",
                 this._topOffset = "",
@@ -18580,7 +20405,7 @@
                 this._height && !e.height && t.updateSize({
                     height: this._height
                 }),
-                t.hostElement.classList.add(Gp),
+                t.hostElement.classList.add(_m),
                 this._isDisposed = !1
             }
             top(t="") {
@@ -18637,14 +20462,14 @@
                   , n = this._overlayRef.getConfig()
                   , {width: s, height: i, maxWidth: r, maxHeight: o} = n
                   , a = !("100%" !== s && "100vw" !== s || r && "100%" !== r && "100vw" !== r)
-                  , l = !("100%" !== i && "100vh" !== i || o && "100%" !== o && "100vh" !== o);
+                  , c = !("100%" !== i && "100vh" !== i || o && "100%" !== o && "100vh" !== o);
                 t.position = this._cssPosition,
                 t.marginLeft = a ? "0" : this._leftOffset,
-                t.marginTop = l ? "0" : this._topOffset,
+                t.marginTop = c ? "0" : this._topOffset,
                 t.marginBottom = this._bottomOffset,
                 t.marginRight = this._rightOffset,
                 a ? e.justifyContent = "flex-start" : "center" === this._justifyContent ? e.justifyContent = "center" : "rtl" === this._overlayRef.getConfig().direction ? "flex-start" === this._justifyContent ? e.justifyContent = "flex-end" : "flex-end" === this._justifyContent && (e.justifyContent = "flex-start") : e.justifyContent = this._justifyContent,
-                e.alignItems = l ? "flex-start" : this._alignItems
+                e.alignItems = c ? "flex-start" : this._alignItems
             }
             dispose() {
                 if (this._isDisposed || !this._overlayRef)
@@ -18652,13 +20477,13 @@
                 const t = this._overlayRef.overlayElement.style
                   , e = this._overlayRef.hostElement
                   , n = e.style;
-                e.classList.remove(Gp),
+                e.classList.remove(_m),
                 n.justifyContent = n.alignItems = t.marginTop = t.marginBottom = t.marginLeft = t.marginRight = t.position = "",
                 this._overlayRef = null,
                 this._isDisposed = !0
             }
         }
-        let Jp = (()=>{
+        let vm = (()=>{
             class t {
                 constructor(t, e, n, s) {
                     this._viewportRuler = t,
@@ -18667,22 +20492,22 @@
                     this._overlayContainer = s
                 }
                 global() {
-                    return new Yp
+                    return new ym
                 }
                 connectedTo(t, e, n) {
-                    return new Zp(e,n,t,this._viewportRuler,this._document,this._platform,this._overlayContainer)
+                    return new gm(e,n,t,this._viewportRuler,this._document,this._platform,this._overlayContainer)
                 }
                 flexibleConnectedTo(t) {
-                    return new qp(t,this._viewportRuler,this._document,this._platform,this._overlayContainer)
+                    return new dm(t,this._viewportRuler,this._document,this._platform,this._overlayContainer)
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(gp),Jn(zl),Jn(cp),Jn(Hp))
+                return new (e || t)(Jn(Wp),Jn(zc),Jn(Dp),Jn(cm))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(gp),Jn(zl),Jn(cp),Jn(Hp))
+                    return new t(Jn(Wp),Jn(zc),Jn(Dp),Jn(cm))
                 },
                 token: t,
                 providedIn: "root"
@@ -18690,10 +20515,10 @@
             t
         }
         )()
-          , tm = 0
-          , em = (()=>{
+          , bm = 0
+          , wm = (()=>{
             class t {
-                constructor(t, e, n, s, i, r, o, a, l, c, h) {
+                constructor(t, e, n, s, i, r, o, a, c, l, h) {
                     this.scrollStrategies = t,
                     this._overlayContainer = e,
                     this._componentFactoryResolver = n,
@@ -18702,24 +20527,24 @@
                     this._injector = r,
                     this._ngZone = o,
                     this._document = a,
-                    this._directionality = l,
-                    this._location = c,
+                    this._directionality = c,
+                    this._location = l,
                     this._outsideClickDispatcher = h
                 }
                 create(t) {
                     const e = this._createHostElement()
                       , n = this._createPaneElement(e)
                       , s = this._createPortalOutlet(n)
-                      , i = new Rp(t);
+                      , i = new em(t);
                     return i.direction = i.direction || this._directionality.value,
-                    new $p(s,e,n,i,this._ngZone,this._keyboardDispatcher,this._document,this._location,this._outsideClickDispatcher)
+                    new lm(s,e,n,i,this._ngZone,this._keyboardDispatcher,this._document,this._location,this._outsideClickDispatcher)
                 }
                 position() {
                     return this._positionBuilder
                 }
                 _createPaneElement(t) {
                     const e = this._document.createElement("div");
-                    return e.id = "cdk-overlay-" + tm++,
+                    return e.id = "cdk-overlay-" + bm++,
                     e.classList.add("cdk-overlay-pane"),
                     t.appendChild(e),
                     e
@@ -18730,12 +20555,12 @@
                     t
                 }
                 _createPortalOutlet(t) {
-                    return this._appRef || (this._appRef = this._injector.get(Ml)),
-                    new Op(t,this._componentFactoryResolver,this._appRef,this._injector,this._document)
+                    return this._appRef || (this._appRef = this._injector.get(Mc)),
+                    new Up(t,this._componentFactoryResolver,this._appRef,this._injector,this._document)
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Ip),Jn(Hp),Jn(To),Jn(Jp),Jn(Lp),Jn(lr),Jn(yl),Jn(zl),Jn(pp),Jn(ic),Jn(jp))
+                return new (e || t)(Jn(tm),Jn(cm),Jn(Fo),Jn(vm),Jn(rm),Jn(cr),Jn(yc),Jn(zc),Jn(Pp),Jn(il),Jn(om))
             }
             ,
             t.\u0275prov = ht({
@@ -18745,14 +20570,14 @@
             t
         }
         )();
-        const nm = {
+        const Sm = {
             provide: new Mn("cdk-connected-overlay-scroll-strategy"),
-            deps: [em],
+            deps: [wm],
             useFactory: function(t) {
                 return ()=>t.scrollStrategies.reposition()
             }
         };
-        let sm = (()=>{
+        let Am = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -18763,33 +20588,33 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                providers: [em, nm],
-                imports: [[mp, kp, yp], yp]
+                providers: [wm, Sm],
+                imports: [[Ip, Xp, Mp], Mp]
             }),
             t
         }
         )();
-        class im {
+        class Om {
         }
-        const rm = "*";
-        function om(t, e=null) {
+        const Cm = "*";
+        function km(t, e=null) {
             return {
                 type: 2,
                 steps: t,
                 options: e
             }
         }
-        function am(t) {
+        function Em(t) {
             return {
                 type: 6,
                 styles: t,
                 offset: null
             }
         }
-        function lm(t) {
+        function xm(t) {
             Promise.resolve(null).then(t)
         }
-        class cm {
+        class Dm {
             constructor(t=0, e=0) {
                 this._onDoneFns = [],
                 this._onStartFns = [],
@@ -18825,7 +20650,7 @@
                 this._started = !0
             }
             triggerMicrotask() {
-                lm(()=>this._onFinish())
+                xm(()=>this._onFinish())
             }
             _onStart() {
                 this._onStartFns.forEach(t=>t()),
@@ -18858,7 +20683,7 @@
                 e.length = 0
             }
         }
-        class hm {
+        class Vm {
             constructor(t) {
                 this._onDoneFns = [],
                 this._onStartFns = [],
@@ -18873,7 +20698,7 @@
                   , n = 0
                   , s = 0;
                 const i = this.players.length;
-                0 == i ? lm(()=>this._onFinish()) : this.players.forEach(t=>{
+                0 == i ? xm(()=>this._onFinish()) : this.players.forEach(t=>{
                     t.onDone(()=>{
                         ++e == i && this._onFinish()
                     }
@@ -18970,7 +20795,7 @@
                 e.length = 0
             }
         }
-        let um = (()=>{
+        let Tm = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -18981,12 +20806,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, sm]]
+                imports: [[kl, Am]]
             }),
             t
         }
         )()
-          , dm = (()=>{
+          , Fm = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -18997,12 +20822,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, Zu]]
+                imports: [[kl, Zu]]
             }),
             t
         }
         )()
-          , pm = (()=>{
+          , Pm = (()=>{
             class t {
                 constructor(t) {
                     this._platform = t
@@ -19021,19 +20846,19 @@
                     const e = function(t) {
                         try {
                             return t.frameElement
-                        } catch (D_) {
+                        } catch (Q_) {
                             return null
                         }
                     }((n = t).ownerDocument && n.ownerDocument.defaultView || window);
                     var n;
                     if (e) {
-                        if (-1 === fm(e))
+                        if (-1 === Rm(e))
                             return !1;
                         if (!this.isVisible(e))
                             return !1
                     }
                     let s = t.nodeName.toLowerCase()
-                      , i = fm(t);
+                      , i = Rm(t);
                     return t.hasAttribute("contenteditable") ? -1 !== i : "iframe" !== s && "object" !== s && !(this._platform.WEBKIT && this._platform.IOS && !function(t) {
                         let e = t.nodeName.toLowerCase()
                           , n = "input" === e && t.type;
@@ -19053,17 +20878,17 @@
                             return function(t) {
                                 return "a" == t.nodeName.toLowerCase()
                             }(t) && t.hasAttribute("href")
-                        }(t) || t.hasAttribute("contenteditable") || mm(t))
+                        }(t) || t.hasAttribute("contenteditable") || Im(t))
                     }(t) && !this.isDisabled(t) && ((null == e ? void 0 : e.ignoreVisibility) || this.isVisible(t))
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(cp))
+                return new (e || t)(Jn(Dp))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(cp))
+                    return new t(Jn(Dp))
                 },
                 token: t,
                 providedIn: "root"
@@ -19071,19 +20896,19 @@
             t
         }
         )();
-        function mm(t) {
+        function Im(t) {
             if (!t.hasAttribute("tabindex") || void 0 === t.tabIndex)
                 return !1;
             let e = t.getAttribute("tabindex");
             return "-32768" != e && !(!e || isNaN(parseInt(e, 10)))
         }
-        function fm(t) {
-            if (!mm(t))
+        function Rm(t) {
+            if (!Im(t))
                 return null;
             const e = parseInt(t.getAttribute("tabindex") || "", 10);
             return isNaN(e) ? -1 : e
         }
-        class gm extends class {
+        class Wm extends class {
             constructor(t, e, n, s, i=!1) {
                 this._element = t,
                 this._checker = e,
@@ -19215,7 +21040,7 @@
                 this._toggleAnchorTabIndex(t, this._endAnchor))
             }
             _executeOnStable(t) {
-                this._ngZone.isStable ? t() : this._ngZone.onStable.pipe(zd(1)).subscribe(t)
+                this._ngZone.isStable ? t() : this._ngZone.onStable.pipe(up(1)).subscribe(t)
             }
         }
         {
@@ -19245,12 +21070,12 @@
                 this.toggleAnchors(!1)
             }
         }
-        const _m = new Mn("FOCUS_TRAP_INERT_STRATEGY")
-          , ym = "undefined" != typeof Element && !!Element.prototype.closest;
-        function vm(t, e) {
+        const Nm = new Mn("FOCUS_TRAP_INERT_STRATEGY")
+          , Mm = "undefined" != typeof Element && !!Element.prototype.closest;
+        function Lm(t, e) {
             return t.matches ? t.matches(e) : t.msMatchesSelector(e)
         }
-        class bm {
+        class Bm {
             constructor() {
                 this._listener = null
             }
@@ -19275,9 +21100,9 @@
                     let n = t;
                     for (; null != n && !(n instanceof Element); )
                         n = n.parentNode;
-                    return n && (ym ? n.closest(e) : function(t, e) {
+                    return n && (Mm ? n.closest(e) : function(t, e) {
                         let n = t;
-                        for (; null != n && !(n instanceof Element && vm(n, "div.cdk-overlay-pane")); )
+                        for (; null != n && !(n instanceof Element && Lm(n, "div.cdk-overlay-pane")); )
                             n = n.parentNode;
                         return n || null
                     }(n))
@@ -19287,7 +21112,7 @@
                 )
             }
         }
-        let wm = (()=>{
+        let jm = (()=>{
             class t {
                 constructor() {
                     this._focusTrapStack = []
@@ -19321,14 +21146,14 @@
             t
         }
         )()
-          , Am = (()=>{
+          , Hm = (()=>{
             class t {
                 constructor(t, e, n, s, i) {
                     this._checker = t,
                     this._ngZone = e,
                     this._focusTrapManager = n,
                     this._document = s,
-                    this._inertStrategy = i || new bm
+                    this._inertStrategy = i || new Bm
                 }
                 create(t, e={
                     defer: !1
@@ -19337,16 +21162,16 @@
                     return n = "boolean" == typeof e ? {
                         defer: e
                     } : e,
-                    new gm(t,this._checker,this._ngZone,this._document,this._focusTrapManager,this._inertStrategy,n)
+                    new Wm(t,this._checker,this._ngZone,this._document,this._focusTrapManager,this._inertStrategy,n)
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(pm),Jn(yl),Jn(wm),Jn(zl),Jn(_m, 8))
+                return new (e || t)(Jn(Pm),Jn(yc),Jn(jm),Jn(zc),Jn(Nm, 8))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(pm),Jn(yl),Jn(wm),Jn(zl),Jn(_m, 8))
+                    return new t(Jn(Pm),Jn(yc),Jn(jm),Jn(zc),Jn(Nm, 8))
                 },
                 token: t,
                 providedIn: "root"
@@ -19354,10 +21179,10 @@
             t
         }
         )();
-        const Sm = "cdk-high-contrast-black-on-white"
-          , Om = "cdk-high-contrast-white-on-black"
-          , Cm = "cdk-high-contrast-active";
-        let km = (()=>{
+        const $m = "cdk-high-contrast-black-on-white"
+          , Um = "cdk-high-contrast-white-on-black"
+          , zm = "cdk-high-contrast-active";
+        let Xm = (()=>{
             class t {
                 constructor(t, e) {
                     this._platform = t,
@@ -19385,24 +21210,24 @@
                 _applyBodyHighContrastModeCssClasses() {
                     if (!this._hasCheckedHighContrastMode && this._platform.isBrowser && this._document.body) {
                         const t = this._document.body.classList;
-                        t.remove(Cm),
-                        t.remove(Sm),
-                        t.remove(Om),
+                        t.remove(zm),
+                        t.remove($m),
+                        t.remove(Um),
                         this._hasCheckedHighContrastMode = !0;
                         const e = this.getHighContrastMode();
-                        1 === e ? (t.add(Cm),
-                        t.add(Sm)) : 2 === e && (t.add(Cm),
-                        t.add(Om))
+                        1 === e ? (t.add(zm),
+                        t.add($m)) : 2 === e && (t.add(zm),
+                        t.add(Um))
                     }
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(cp),Jn(zl))
+                return new (e || t)(Jn(Dp),Jn(zc))
             }
             ,
             t.\u0275prov = ht({
                 factory: function() {
-                    return new t(Jn(cp),Jn(zl))
+                    return new t(Jn(Dp),Jn(zc))
                 },
                 token: t,
                 providedIn: "root"
@@ -19410,9 +21235,9 @@
             t
         }
         )();
-        const Em = ["dialog"];
-        function xm(t, e) {}
-        class Dm {
+        const qm = ["dialog"];
+        function Km(t, e) {}
+        class Qm {
             constructor() {
                 this.animation = !0,
                 this.backdrop = !0,
@@ -19423,11 +21248,11 @@
                 this.data = null
             }
         }
-        class Vm {
+        class Zm {
             constructor(t, e) {
                 this._overlayRef = t,
                 this._container = e,
-                this.onClose$ = new S,
+                this.onClose$ = new A,
                 this.onClose = this.onClose$.asObservable()
             }
             close(t) {
@@ -19442,15 +21267,15 @@
                 , this._container.MODAL_TRANSITION)
             }
         }
-        let Fm = (()=>{
+        let Gm = (()=>{
             class t {
                 constructor(t, e, n, s) {
                     this._document = t,
                     this._elementRef = e,
                     this._renderer = n,
                     this._focusTrapFactory = s,
-                    this._destroy$ = new S,
-                    this.backdropClick$ = new S,
+                    this._destroy$ = new A,
+                    this.backdropClick$ = new A,
                     this.BACKDROP_TRANSITION = 150,
                     this.MODAL_TRANSITION = 200,
                     this.modal = !0
@@ -19475,14 +21300,14 @@
                     , this.BACKDROP_TRANSITION) : this._focusTrap.focusInitialElementWhenReady()
                 }
                 ngAfterViewInit() {
-                    this._config.ignoreBackdropClick || Bd(this._elementRef.nativeElement, "click").pipe(gh(t=>{
+                    this._config.ignoreBackdropClick || ap(this._elementRef.nativeElement, "click").pipe(gh(t=>{
                         const e = t.target
                           , n = this.modalDialog.nativeElement
                           , s = e !== n
                           , i = !n.contains(e);
                         return s && i
                     }
-                    ), Yd(this._destroy$)).subscribe(t=>{
+                    ), yp(this._destroy$)).subscribe(t=>{
                         this.backdropClick$.next(t)
                     }
                     )
@@ -19525,24 +21350,24 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Or(zl),Or(No),Or(Lo),Or(Am))
+                return new (e || t)(Or(zc),Or(Wo),Or(Lo),Or(Hm))
             }
             ,
-            t.\u0275cmp = Bt({
+            t.\u0275cmp = jt({
                 type: t,
                 selectors: [["mdb-modal-container"]],
                 viewQuery: function(t, e) {
-                    if (1 & t && (Qa(Cp, 7),
-                    Qa(Em, 7)),
+                    if (1 & t && (Ka(zp, 7),
+                    Ka(qm, 7)),
                     2 & t) {
                         let t;
-                        Xa(t = Ka()) && (e._portalOutlet = t.first),
-                        Xa(t = Ka()) && (e.modalDialog = t.first)
+                        qa(t = Qa()) && (e._portalOutlet = t.first),
+                        qa(t = Qa()) && (e.modalDialog = t.first)
                     }
                 },
                 hostVars: 4,
                 hostBindings: function(t, e) {
-                    2 & t && Kr("modal", e.modal)("fade", e.hasAnimation)
+                    2 & t && Qr("modal", e.modal)("fade", e.hasAnimation)
                 },
                 decls: 4,
                 vars: 2,
@@ -19550,18 +21375,18 @@
                 template: function(t, e) {
                     1 & t && (Er(0, "div", null, 0),
                     Er(2, "div", 1),
-                    Sr(3, xm, 0, 0, "ng-template", 2),
+                    Ar(3, Km, 0, 0, "ng-template", 2),
                     xr(),
                     xr()),
                     2 & t && Yr($n, Gr, "modal-dialog" + (e._config.modalClass ? " " + e._config.modalClass : ""), !0)
                 },
-                directives: [Cp],
+                directives: [zp],
                 encapsulation: 2
             }),
             t
         }
         )()
-          , Tm = (()=>{
+          , Ym = (()=>{
             class t {
                 constructor(t, e, n, s) {
                     this._document = t,
@@ -19570,7 +21395,7 @@
                     this._cfr = s
                 }
                 open(t, e) {
-                    const n = new Dm;
+                    const n = new Qm;
                     e = e ? Object.assign(n, e) : n;
                     const s = this._createOverlay(e)
                       , i = this._createContainer(s, e)
@@ -19583,7 +21408,7 @@
                     return this._overlay.create(e)
                 }
                 _getOverlayConfig(t) {
-                    return new Rp({
+                    return new em({
                         positionStrategy: this._overlay.position().global(),
                         scrollStrategy: this._overlay.scrollStrategies.noop(),
                         hasBackdrop: t.backdrop,
@@ -19591,50 +21416,50 @@
                     })
                 }
                 _createContainer(t, e) {
-                    const n = new bp(Fm,null,this._injector,this._cfr)
+                    const n = new Bp(Gm,null,this._injector,this._cfr)
                       , s = t.attach(n);
                     return s.instance._config = e,
                     s.instance
                 }
                 _createContent(t, e, n, s) {
-                    const i = new Vm(n,e);
+                    const i = new Zm(n,e);
                     if (t instanceof ua)
-                        e.attachTemplatePortal(new wp(t,null,{
+                        e.attachTemplatePortal(new jp(t,null,{
                             $implicit: s.data,
                             modalRef: i
                         }));
                     else {
                         const n = this._createInjector(s, i, e)
-                          , r = e.attachComponentPortal(new bp(t,s.viewContainerRef,n));
+                          , r = e.attachComponentPortal(new Bp(t,s.viewContainerRef,n));
                         s.data && Object.assign(r.instance, Object.assign({}, s.data))
                     }
                     return i
                 }
                 _createInjector(t, e, n) {
-                    return lr.create({
+                    return cr.create({
                         parent: t && t.viewContainerRef && t.viewContainerRef.injector || this._injector,
                         providers: [{
-                            provide: Fm,
+                            provide: Gm,
                             useValue: n
                         }, {
-                            provide: Vm,
+                            provide: Zm,
                             useValue: e
                         }]
                     })
                 }
                 _registerListeners(t, e, n) {
-                    n.backdropClick$.pipe(zd(1)).subscribe(()=>{
+                    n.backdropClick$.pipe(up(1)).subscribe(()=>{
                         t.close()
                     }
                     ),
-                    e.keyboard && Bd(n._elementRef.nativeElement, "keydown").pipe(gh(t=>"Escape" === t.key), zd(1)).subscribe(()=>{
+                    e.keyboard && ap(n._elementRef.nativeElement, "keydown").pipe(gh(t=>"Escape" === t.key), up(1)).subscribe(()=>{
                         t.close()
                     }
                     )
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl),Jn(em),Jn(lr),Jn(To))
+                return new (e || t)(Jn(zc),Jn(wm),Jn(cr),Jn(Fo))
             }
             ,
             t.\u0275prov = ht({
@@ -19644,7 +21469,7 @@
             t
         }
         )()
-          , Pm = (()=>{
+          , Jm = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19655,13 +21480,13 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                providers: [Tm],
-                imports: [[sm, kp]]
+                providers: [Ym],
+                imports: [[Am, Xp]]
             }),
             t
         }
         )()
-          , Im = (()=>{
+          , tf = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19672,12 +21497,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, sm]]
+                imports: [[kl, Am]]
             }),
             t
         }
         )()
-          , Rm = (()=>{
+          , ef = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19688,12 +21513,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, Zu]]
+                imports: [[kl, Zu]]
             }),
             t
         }
         )()
-          , Nm = (()=>{
+          , nf = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19704,12 +21529,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, Zu]]
+                imports: [[kl, Zu]]
             }),
             t
         }
         )()
-          , Wm = (()=>{
+          , sf = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19725,11 +21550,11 @@
             t
         }
         )()
-          , Mm = (()=>{
+          , rf = (()=>{
             class t {
                 constructor() {
                     this.scrollSpys = [],
-                    this.activeSubject = new S,
+                    this.activeSubject = new A,
                     this.active$ = this.activeSubject
                 }
                 addScrollspy(t) {
@@ -19779,7 +21604,7 @@
             t
         }
         )()
-          , Lm = (()=>{
+          , of = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19790,14 +21615,14 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                providers: [Mm]
+                providers: [rf]
             }),
             t
         }
         )();
         new Mn("MdbTabContentDirective"),
         new Mn("MdbTabTitleDirective");
-        let jm = (()=>{
+        let af = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19808,12 +21633,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, kp]]
+                imports: [[kl, Xp]]
             }),
             t
         }
         )()
-          , Bm = (()=>{
+          , cf = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19824,12 +21649,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc, sm]]
+                imports: [[kl, Am]]
             }),
             t
         }
         )()
-          , Hm = (()=>{
+          , lf = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -19840,36 +21665,36 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[kc]]
+                imports: [[kl]]
             }),
             t
         }
         )();
-        function $m() {
+        function hf() {
             return "undefined" != typeof window && void 0 !== window.document
         }
-        function Um() {
+        function uf() {
             return "undefined" != typeof process && "[object process]" === {}.toString.call(process)
         }
-        function zm(t) {
+        function df(t) {
             switch (t.length) {
             case 0:
-                return new cm;
+                return new Dm;
             case 1:
                 return t[0];
             default:
-                return new hm(t)
+                return new Vm(t)
             }
         }
-        function qm(t, e, n, s, i={}, r={}) {
+        function pf(t, e, n, s, i={}, r={}) {
             const o = []
               , a = [];
-            let l = -1
-              , c = null;
+            let c = -1
+              , l = null;
             if (s.forEach(t=>{
                 const n = t.offset
-                  , s = n == l
-                  , h = s && c || {};
+                  , s = n == c
+                  , h = s && l || {};
                 Object.keys(t).forEach(n=>{
                     let s = n
                       , a = t[n];
@@ -19879,7 +21704,7 @@
                         case "!":
                             a = i[n];
                             break;
-                        case rm:
+                        case Cm:
                             a = r[n];
                             break;
                         default:
@@ -19889,8 +21714,8 @@
                 }
                 ),
                 s || a.push(h),
-                c = h,
-                l = n
+                l = h,
+                c = n
             }
             ),
             o.length) {
@@ -19899,26 +21724,26 @@
             }
             return a
         }
-        function Xm(t, e, n, s) {
+        function mf(t, e, n, s) {
             switch (e) {
             case "start":
-                t.onStart(()=>s(n && Qm(n, "start", t)));
+                t.onStart(()=>s(n && ff(n, "start", t)));
                 break;
             case "done":
-                t.onDone(()=>s(n && Qm(n, "done", t)));
+                t.onDone(()=>s(n && ff(n, "done", t)));
                 break;
             case "destroy":
-                t.onDestroy(()=>s(n && Qm(n, "destroy", t)))
+                t.onDestroy(()=>s(n && ff(n, "destroy", t)))
             }
         }
-        function Qm(t, e, n) {
+        function ff(t, e, n) {
             const s = n.totalTime
-              , i = Km(t.element, t.triggerName, t.fromState, t.toState, e || t.phaseName, null == s ? t.totalTime : s, !!n.disabled)
+              , i = gf(t.element, t.triggerName, t.fromState, t.toState, e || t.phaseName, null == s ? t.totalTime : s, !!n.disabled)
               , r = t._data;
             return null != r && (i._data = r),
             i
         }
-        function Km(t, e, n, s, i="", r=0, o) {
+        function gf(t, e, n, s, i="", r=0, o) {
             return {
                 element: t,
                 triggerName: e,
@@ -19929,22 +21754,22 @@
                 disabled: !!o
             }
         }
-        function Zm(t, e, n) {
+        function _f(t, e, n) {
             let s;
             return t instanceof Map ? (s = t.get(e),
             s || t.set(e, s = n)) : (s = t[e],
             s || (s = t[e] = n)),
             s
         }
-        function Gm(t) {
+        function yf(t) {
             const e = t.indexOf(":");
             return [t.substring(1, e), t.substr(e + 1)]
         }
-        let Ym = (t,e)=>!1
-          , Jm = (t,e)=>!1
-          , tf = (t,e,n)=>[];
-        const ef = Um();
-        (ef || "undefined" != typeof Element) && (Ym = $m() ? (t,e)=>{
+        let vf = (t,e)=>!1
+          , bf = (t,e)=>!1
+          , wf = (t,e,n)=>[];
+        const Sf = uf();
+        (Sf || "undefined" != typeof Element) && (vf = hf() ? (t,e)=>{
             for (; e && e !== document.documentElement; ) {
                 if (e === t)
                     return !0;
@@ -19953,17 +21778,17 @@
             return !1
         }
         : (t,e)=>t.contains(e),
-        Jm = (()=>{
-            if (ef || Element.prototype.matches)
+        bf = (()=>{
+            if (Sf || Element.prototype.matches)
                 return (t,e)=>t.matches(e);
             {
                 const t = Element.prototype
                   , e = t.matchesSelector || t.mozMatchesSelector || t.msMatchesSelector || t.oMatchesSelector || t.webkitMatchesSelector;
-                return e ? (t,n)=>e.apply(t, [n]) : Jm
+                return e ? (t,n)=>e.apply(t, [n]) : bf
             }
         }
         )(),
-        tf = (t,e,n)=>{
+        wf = (t,e,n)=>{
             let s = [];
             if (n) {
                 const n = t.querySelectorAll(e);
@@ -19976,22 +21801,22 @@
             return s
         }
         );
-        let nf = null
-          , sf = !1;
-        function rf(t) {
-            nf || (nf = ("undefined" != typeof document ? document.body : null) || {},
-            sf = !!nf.style && "WebkitAppearance"in nf.style);
+        let Af = null
+          , Of = !1;
+        function Cf(t) {
+            Af || (Af = ("undefined" != typeof document ? document.body : null) || {},
+            Of = !!Af.style && "WebkitAppearance"in Af.style);
             let e = !0;
-            return nf.style && !function(t) {
+            return Af.style && !function(t) {
                 return "ebkit" == t.substring(1, 6)
-            }(t) && (e = t in nf.style,
-            !e && sf) && (e = "Webkit" + t.charAt(0).toUpperCase() + t.substr(1)in nf.style),
+            }(t) && (e = t in Af.style,
+            !e && Of) && (e = "Webkit" + t.charAt(0).toUpperCase() + t.substr(1)in Af.style),
             e
         }
-        const of = Jm
-          , af = Ym
-          , lf = tf;
-        function cf(t) {
+        const kf = bf
+          , Ef = vf
+          , xf = wf;
+        function Df(t) {
             const e = {};
             return Object.keys(t).forEach(n=>{
                 const s = n.replace(/([a-z])([A-Z])/g, "$1-$2");
@@ -20000,25 +21825,25 @@
             ),
             e
         }
-        let hf = (()=>{
+        let Vf = (()=>{
             class t {
                 validateStyleProperty(t) {
-                    return rf(t)
+                    return Cf(t)
                 }
                 matchesElement(t, e) {
-                    return of(t, e)
+                    return kf(t, e)
                 }
                 containsElement(t, e) {
-                    return af(t, e)
+                    return Ef(t, e)
                 }
                 query(t, e, n) {
-                    return lf(t, e, n)
+                    return xf(t, e, n)
                 }
                 computeStyle(t, e, n) {
                     return n || ""
                 }
                 animate(t, e, n, s, i, r=[], o) {
-                    return new cm(n,s)
+                    return new Dm(n,s)
                 }
             }
             return t.\u0275fac = function(e) {
@@ -20032,26 +21857,26 @@
             t
         }
         )()
-          , uf = (()=>{
+          , Tf = (()=>{
             class t {
             }
-            return t.NOOP = new hf,
+            return t.NOOP = new Vf,
             t
         }
         )();
-        const df = "ng-enter"
-          , pf = "ng-leave"
-          , mf = "ng-trigger"
-          , ff = ".ng-trigger"
-          , gf = "ng-animating"
-          , _f = ".ng-animating";
-        function yf(t) {
+        const Ff = "ng-enter"
+          , Pf = "ng-leave"
+          , If = "ng-trigger"
+          , Rf = ".ng-trigger"
+          , Wf = "ng-animating"
+          , Nf = ".ng-animating";
+        function Mf(t) {
             if ("number" == typeof t)
                 return t;
             const e = t.match(/^(-?[\.\d]+)(m?s)/);
-            return !e || e.length < 2 ? 0 : vf(parseFloat(e[1]), e[2])
+            return !e || e.length < 2 ? 0 : Lf(parseFloat(e[1]), e[2])
         }
-        function vf(t, e) {
+        function Lf(t, e) {
             switch (e) {
             case "s":
                 return 1e3 * t;
@@ -20059,7 +21884,7 @@
                 return t
             }
         }
-        function bf(t, e, n) {
+        function Bf(t, e, n) {
             return t.hasOwnProperty("duration") ? t : function(t, e, n) {
                 let s, i = 0, r = "";
                 if ("string" == typeof t) {
@@ -20071,9 +21896,9 @@
                             delay: 0,
                             easing: ""
                         };
-                    s = vf(parseFloat(n[1]), n[2]);
+                    s = Lf(parseFloat(n[1]), n[2]);
                     const o = n[3];
-                    null != o && (i = vf(parseFloat(o), n[4]));
+                    null != o && (i = Lf(parseFloat(o), n[4]));
                     const a = n[5];
                     a && (r = a)
                 } else
@@ -20094,68 +21919,68 @@
                 }
             }(t, e, n)
         }
-        function wf(t, e={}) {
+        function jf(t, e={}) {
             return Object.keys(t).forEach(n=>{
                 e[n] = t[n]
             }
             ),
             e
         }
-        function Af(t, e, n={}) {
+        function Hf(t, e, n={}) {
             if (e)
                 for (let s in t)
                     n[s] = t[s];
             else
-                wf(t, n);
+                jf(t, n);
             return n
         }
-        function Sf(t, e, n) {
+        function $f(t, e, n) {
             return n ? e + ":" + n + ";" : ""
         }
-        function Of(t) {
+        function Uf(t) {
             let e = "";
             for (let n = 0; n < t.style.length; n++) {
                 const s = t.style.item(n);
-                e += Sf(0, s, t.style.getPropertyValue(s))
+                e += $f(0, s, t.style.getPropertyValue(s))
             }
             for (const n in t.style)
-                t.style.hasOwnProperty(n) && !n.startsWith("_") && (e += Sf(0, n.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase(), t.style[n]));
+                t.style.hasOwnProperty(n) && !n.startsWith("_") && (e += $f(0, n.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase(), t.style[n]));
             t.setAttribute("style", e)
         }
-        function Cf(t, e, n) {
+        function zf(t, e, n) {
             t.style && (Object.keys(e).forEach(s=>{
-                const i = Pf(s);
+                const i = Jf(s);
                 n && !n.hasOwnProperty(s) && (n[s] = t.style[i]),
                 t.style[i] = e[s]
             }
             ),
-            Um() && Of(t))
+            uf() && Uf(t))
         }
-        function kf(t, e) {
+        function Xf(t, e) {
             t.style && (Object.keys(e).forEach(e=>{
-                const n = Pf(e);
+                const n = Jf(e);
                 t.style[n] = ""
             }
             ),
-            Um() && Of(t))
+            uf() && Uf(t))
         }
-        function Ef(t) {
-            return Array.isArray(t) ? 1 == t.length ? t[0] : om(t) : t
+        function qf(t) {
+            return Array.isArray(t) ? 1 == t.length ? t[0] : km(t) : t
         }
-        const xf = new RegExp("{{\\s*(.+?)\\s*}}","g");
-        function Df(t) {
+        const Kf = new RegExp("{{\\s*(.+?)\\s*}}","g");
+        function Qf(t) {
             let e = [];
             if ("string" == typeof t) {
                 let n;
-                for (; n = xf.exec(t); )
+                for (; n = Kf.exec(t); )
                     e.push(n[1]);
-                xf.lastIndex = 0
+                Kf.lastIndex = 0
             }
             return e
         }
-        function Vf(t, e, n) {
+        function Zf(t, e, n) {
             const s = t.toString()
-              , i = s.replace(xf, (t,s)=>{
+              , i = s.replace(Kf, (t,s)=>{
                 let i = e[s];
                 return e.hasOwnProperty(s) || (n.push(`Please provide a value for the animation param ${s}`),
                 i = ""),
@@ -20164,7 +21989,7 @@
             );
             return i == s ? t : i
         }
-        function Ff(t) {
+        function Gf(t) {
             const e = [];
             let n = t.next();
             for (; !n.done; )
@@ -20172,14 +21997,14 @@
                 n = t.next();
             return e
         }
-        const Tf = /-+([a-z0-9])/g;
-        function Pf(t) {
-            return t.replace(Tf, (...t)=>t[1].toUpperCase())
+        const Yf = /-+([a-z0-9])/g;
+        function Jf(t) {
+            return t.replace(Yf, (...t)=>t[1].toUpperCase())
         }
-        function If(t, e) {
+        function tg(t, e) {
             return 0 === t || 0 === e
         }
-        function Rf(t, e, n) {
+        function eg(t, e, n) {
             const s = Object.keys(n);
             if (s.length && e.length) {
                 let r = e[0]
@@ -20193,13 +22018,13 @@
                     for (var i = 1; i < e.length; i++) {
                         let n = e[i];
                         o.forEach(function(e) {
-                            n[e] = Wf(t, e)
+                            n[e] = sg(t, e)
                         })
                     }
             }
             return e
         }
-        function Nf(t, e, n) {
+        function ng(t, e, n) {
             switch (e.type) {
             case 7:
                 return t.visitTrigger(e, n);
@@ -20231,11 +22056,11 @@
                 throw new Error(`Unable to resolve animation metadata node #${e.type}`)
             }
         }
-        function Wf(t, e) {
+        function sg(t, e) {
             return window.getComputedStyle(t)[e]
         }
-        const Mf = "*";
-        function Lf(t, e) {
+        const ig = "*";
+        function rg(t, e) {
             const n = [];
             return "string" == typeof t ? t.split(/\s*,\s*/).forEach(t=>function(t, e, n) {
                 if (":" == t[0]) {
@@ -20265,36 +22090,36 @@
                 const i = s[1]
                   , r = s[2]
                   , o = s[3];
-                e.push(Hf(i, o)),
-                "<" != r[0] || i == Mf && o == Mf || e.push(Hf(o, i))
+                e.push(cg(i, o)),
+                "<" != r[0] || i == ig && o == ig || e.push(cg(o, i))
             }(t, n, e)) : n.push(t),
             n
         }
-        const jf = new Set(["true", "1"])
-          , Bf = new Set(["false", "0"]);
-        function Hf(t, e) {
-            const n = jf.has(t) || Bf.has(t)
-              , s = jf.has(e) || Bf.has(e);
+        const og = new Set(["true", "1"])
+          , ag = new Set(["false", "0"]);
+        function cg(t, e) {
+            const n = og.has(t) || ag.has(t)
+              , s = og.has(e) || ag.has(e);
             return (i,r)=>{
-                let o = t == Mf || t == i
-                  , a = e == Mf || e == r;
-                return !o && n && "boolean" == typeof i && (o = i ? jf.has(t) : Bf.has(t)),
-                !a && s && "boolean" == typeof r && (a = r ? jf.has(e) : Bf.has(e)),
+                let o = t == ig || t == i
+                  , a = e == ig || e == r;
+                return !o && n && "boolean" == typeof i && (o = i ? og.has(t) : ag.has(t)),
+                !a && s && "boolean" == typeof r && (a = r ? og.has(e) : ag.has(e)),
                 o && a
             }
         }
-        const $f = new RegExp("s*:selfs*,?","g");
-        function Uf(t, e, n) {
-            return new zf(t).build(e, n)
+        const lg = new RegExp("s*:selfs*,?","g");
+        function hg(t, e, n) {
+            return new ug(t).build(e, n)
         }
-        class zf {
+        class ug {
             constructor(t) {
                 this._driver = t
             }
             build(t, e) {
-                const n = new qf(e);
+                const n = new dg(e);
                 return this._resetContextStyleTimingState(n),
-                Nf(this, Ef(t), n)
+                ng(this, qf(t), n)
             }
             _resetContextStyleTimingState(t) {
                 t.currentQuerySelector = "",
@@ -20345,10 +22170,10 @@
                     const i = new Set
                       , r = s || {};
                     if (n.styles.forEach(t=>{
-                        if (Xf(t)) {
+                        if (pg(t)) {
                             const e = t;
                             Object.keys(e).forEach(t=>{
-                                Df(e[t]).forEach(t=>{
+                                Qf(e[t]).forEach(t=>{
                                     r.hasOwnProperty(t) || i.add(t)
                                 }
                                 )
@@ -20358,7 +22183,7 @@
                     }
                     ),
                     i.size) {
-                        const n = Ff(i.values());
+                        const n = Gf(i.values());
                         e.errors.push(`state("${t.name}", ...) must define default values for all the following style substitutions: ${n.join(", ")}`)
                     }
                 }
@@ -20374,21 +22199,21 @@
             visitTransition(t, e) {
                 e.queryCount = 0,
                 e.depCount = 0;
-                const n = Nf(this, Ef(t.animation), e);
+                const n = ng(this, qf(t.animation), e);
                 return {
                     type: 1,
-                    matchers: Lf(t.expr, e.errors),
+                    matchers: rg(t.expr, e.errors),
                     animation: n,
                     queryCount: e.queryCount,
                     depCount: e.depCount,
-                    options: Qf(t.options)
+                    options: mg(t.options)
                 }
             }
             visitSequence(t, e) {
                 return {
                     type: 2,
-                    steps: t.steps.map(t=>Nf(this, t, e)),
-                    options: Qf(t.options)
+                    steps: t.steps.map(t=>ng(this, t, e)),
+                    options: mg(t.options)
                 }
             }
             visitGroup(t, e) {
@@ -20396,7 +22221,7 @@
                 let s = 0;
                 const i = t.steps.map(t=>{
                     e.currentTime = n;
-                    const i = Nf(this, t, e);
+                    const i = ng(this, t, e);
                     return s = Math.max(s, e.currentTime),
                     i
                 }
@@ -20405,7 +22230,7 @@
                 {
                     type: 3,
                     steps: i,
-                    options: Qf(t.options)
+                    options: mg(t.options)
                 }
             }
             visitAnimate(t, e) {
@@ -20414,20 +22239,20 @@
                     if (t.hasOwnProperty("duration"))
                         n = t;
                     else if ("number" == typeof t)
-                        return Kf(bf(t, e).duration, 0, "");
+                        return fg(Bf(t, e).duration, 0, "");
                     const s = t;
                     if (s.split(/\s+/).some(t=>"{" == t.charAt(0) && "{" == t.charAt(1))) {
-                        const t = Kf(0, 0, "");
+                        const t = fg(0, 0, "");
                         return t.dynamic = !0,
                         t.strValue = s,
                         t
                     }
-                    return n = n || bf(s, e),
-                    Kf(n.duration, n.delay, n.easing)
+                    return n = n || Bf(s, e),
+                    fg(n.duration, n.delay, n.easing)
                 }(t.timings, e.errors);
                 let s;
                 e.currentAnimateTimings = n;
-                let i = t.styles ? t.styles : am({});
+                let i = t.styles ? t.styles : Em({});
                 if (5 == i.type)
                     s = this.visitKeyframes(i, e);
                 else {
@@ -20437,7 +22262,7 @@
                         r = !0;
                         const t = {};
                         n.easing && (t.easing = n.easing),
-                        i = am(t)
+                        i = Em(t)
                     }
                     e.currentTime += n.duration + n.delay;
                     const o = this.visitStyle(i, e);
@@ -20460,13 +22285,13 @@
             _makeStyleAst(t, e) {
                 const n = [];
                 Array.isArray(t.styles) ? t.styles.forEach(t=>{
-                    "string" == typeof t ? t == rm ? n.push(t) : e.errors.push(`The provided style string value ${t} is not allowed.`) : n.push(t)
+                    "string" == typeof t ? t == Cm ? n.push(t) : e.errors.push(`The provided style string value ${t} is not allowed.`) : n.push(t)
                 }
                 ) : n.push(t.styles);
                 let s = !1
                   , i = null;
                 return n.forEach(t=>{
-                    if (Xf(t)) {
+                    if (pg(t)) {
                         const e = t
                           , n = e.easing;
                         if (n && (i = n,
@@ -20510,7 +22335,7 @@
                         }),
                         e.options && function(t, e, n) {
                             const s = e.params || {}
-                              , i = Df(t);
+                              , i = Qf(t);
                             i.length && i.forEach(t=>{
                                 s.hasOwnProperty(t) || n.push(`Unable to resolve the local animation param ${t} in the given list of values`)
                             }
@@ -20535,48 +22360,48 @@
                 let r = !1
                   , o = !1
                   , a = 0;
-                const l = t.steps.map(t=>{
+                const c = t.steps.map(t=>{
                     const n = this._makeStyleAst(t, e);
-                    let l = null != n.offset ? n.offset : function(t) {
+                    let c = null != n.offset ? n.offset : function(t) {
                         if ("string" == typeof t)
                             return null;
                         let e = null;
                         if (Array.isArray(t))
                             t.forEach(t=>{
-                                if (Xf(t) && t.hasOwnProperty("offset")) {
+                                if (pg(t) && t.hasOwnProperty("offset")) {
                                     const n = t;
                                     e = parseFloat(n.offset),
                                     delete n.offset
                                 }
                             }
                             );
-                        else if (Xf(t) && t.hasOwnProperty("offset")) {
+                        else if (pg(t) && t.hasOwnProperty("offset")) {
                             const n = t;
                             e = parseFloat(n.offset),
                             delete n.offset
                         }
                         return e
                     }(n.styles)
-                      , c = 0;
-                    return null != l && (s++,
-                    c = n.offset = l),
-                    o = o || c < 0 || c > 1,
-                    r = r || c < a,
-                    a = c,
-                    i.push(c),
+                      , l = 0;
+                    return null != c && (s++,
+                    l = n.offset = c),
+                    o = o || l < 0 || l > 1,
+                    r = r || l < a,
+                    a = l,
+                    i.push(l),
                     n
                 }
                 );
                 o && e.errors.push("Please ensure that all keyframe offsets are between 0 and 1"),
                 r && e.errors.push("Please ensure that all keyframe offsets are in order");
-                const c = t.steps.length;
+                const l = t.steps.length;
                 let h = 0;
-                s > 0 && s < c ? e.errors.push("Not all style() steps within the declared keyframes() contain offsets") : 0 == s && (h = 1 / (c - 1));
-                const u = c - 1
+                s > 0 && s < l ? e.errors.push("Not all style() steps within the declared keyframes() contain offsets") : 0 == s && (h = 1 / (l - 1));
+                const u = l - 1
                   , d = e.currentTime
                   , p = e.currentAnimateTimings
                   , m = p.duration;
-                return l.forEach((t,s)=>{
+                return c.forEach((t,s)=>{
                     const r = h > 0 ? s == u ? 1 : h * s : i[s]
                       , o = r * m;
                     e.currentTime = d + p.delay + o,
@@ -20591,22 +22416,22 @@
             visitReference(t, e) {
                 return {
                     type: 8,
-                    animation: Nf(this, Ef(t.animation), e),
-                    options: Qf(t.options)
+                    animation: ng(this, qf(t.animation), e),
+                    options: mg(t.options)
                 }
             }
             visitAnimateChild(t, e) {
                 return e.depCount++,
                 {
                     type: 9,
-                    options: Qf(t.options)
+                    options: mg(t.options)
                 }
             }
             visitAnimateRef(t, e) {
                 return {
                     type: 10,
                     animation: this.visitReference(t.animation, e),
-                    options: Qf(t.options)
+                    options: mg(t.options)
                 }
             }
             visitQuery(t, e) {
@@ -20616,12 +22441,12 @@
                 e.currentQuery = t;
                 const [i,r] = function(t) {
                     const e = !!t.split(/\s*,\s*/).find(t=>":self" == t);
-                    return e && (t = t.replace($f, "")),
-                    [t = t.replace(/@\*/g, ff).replace(/@\w+/g, t=>".ng-trigger-" + t.substr(1)).replace(/:animating/g, _f), e]
+                    return e && (t = t.replace(lg, "")),
+                    [t = t.replace(/@\*/g, Rf).replace(/@\w+/g, t=>".ng-trigger-" + t.substr(1)).replace(/:animating/g, Nf), e]
                 }(t.selector);
                 e.currentQuerySelector = n.length ? n + " " + i : i,
-                Zm(e.collectedStyles, e.currentQuerySelector, {});
-                const o = Nf(this, Ef(t.animation), e);
+                _f(e.collectedStyles, e.currentQuerySelector, {});
+                const o = ng(this, qf(t.animation), e);
                 return e.currentQuery = null,
                 e.currentQuerySelector = n,
                 {
@@ -20632,7 +22457,7 @@
                     includeSelf: r,
                     animation: o,
                     originalSelector: t.selector,
-                    options: Qf(t.options)
+                    options: mg(t.options)
                 }
             }
             visitStagger(t, e) {
@@ -20641,16 +22466,16 @@
                     duration: 0,
                     delay: 0,
                     easing: "full"
-                } : bf(t.timings, e.errors, !0);
+                } : Bf(t.timings, e.errors, !0);
                 return {
                     type: 12,
-                    animation: Nf(this, Ef(t.animation), e),
+                    animation: ng(this, qf(t.animation), e),
                     timings: n,
                     options: null
                 }
             }
         }
-        class qf {
+        class dg {
             constructor(t) {
                 this.errors = t,
                 this.queryCount = 0,
@@ -20664,22 +22489,22 @@
                 this.options = null
             }
         }
-        function Xf(t) {
+        function pg(t) {
             return !Array.isArray(t) && "object" == typeof t
         }
-        function Qf(t) {
+        function mg(t) {
             var e;
-            return t ? (t = wf(t)).params && (t.params = (e = t.params) ? wf(e) : null) : t = {},
+            return t ? (t = jf(t)).params && (t.params = (e = t.params) ? jf(e) : null) : t = {},
             t
         }
-        function Kf(t, e, n) {
+        function fg(t, e, n) {
             return {
                 duration: t,
                 delay: e,
                 easing: n
             }
         }
-        function Zf(t, e, n, s, i, r, o=null, a=!1) {
+        function gg(t, e, n, s, i, r, o=null, a=!1) {
             return {
                 type: 1,
                 element: t,
@@ -20693,7 +22518,7 @@
                 subTimeline: a
             }
         }
-        class Gf {
+        class _g {
             constructor() {
                 this._map = new Map
             }
@@ -20714,24 +22539,24 @@
                 this._map.clear()
             }
         }
-        const Yf = new RegExp(":enter","g")
-          , Jf = new RegExp(":leave","g");
-        function tg(t, e, n, s, i, r={}, o={}, a, l, c=[]) {
-            return (new eg).buildKeyframes(t, e, n, s, i, r, o, a, l, c)
+        const yg = new RegExp(":enter","g")
+          , vg = new RegExp(":leave","g");
+        function bg(t, e, n, s, i, r={}, o={}, a, c, l=[]) {
+            return (new wg).buildKeyframes(t, e, n, s, i, r, o, a, c, l)
         }
-        class eg {
-            buildKeyframes(t, e, n, s, i, r, o, a, l, c=[]) {
-                l = l || new Gf;
-                const h = new sg(t,e,l,s,i,c,[]);
+        class wg {
+            buildKeyframes(t, e, n, s, i, r, o, a, c, l=[]) {
+                c = c || new _g;
+                const h = new Ag(t,e,c,s,i,l,[]);
                 h.options = a,
                 h.currentTimeline.setStyles([r], null, h.errors, a),
-                Nf(this, n, h);
+                ng(this, n, h);
                 const u = h.timelines.filter(t=>t.containsAnimation());
                 if (u.length && Object.keys(o).length) {
                     const t = u[u.length - 1];
                     t.allowOnlyTimelineStyles() || t.setStyles([o], null, h.errors, a)
                 }
-                return u.length ? u.map(t=>t.buildKeyframes()) : [Zf(e, [], [], [], 0, 0, "", !1)]
+                return u.length ? u.map(t=>t.buildKeyframes()) : [gg(e, [], [], [], 0, 0, "", !1)]
             }
             visitTrigger(t, e) {}
             visitState(t, e) {}
@@ -20755,8 +22580,8 @@
             }
             _visitSubInstructions(t, e, n) {
                 let s = e.currentTimeline.currentTime;
-                const i = null != n.duration ? yf(n.duration) : null
-                  , r = null != n.delay ? yf(n.delay) : null;
+                const i = null != n.duration ? Mf(n.duration) : null
+                  , r = null != n.delay ? Mf(n.delay) : null;
                 return 0 !== i && t.forEach(t=>{
                     const n = e.appendInstructionToTimeline(t, i, r);
                     s = Math.max(s, n.duration + n.delay)
@@ -20766,7 +22591,7 @@
             }
             visitReference(t, e) {
                 e.updateOptions(t.options, !0),
-                Nf(this, t.animation, e),
+                ng(this, t.animation, e),
                 e.previousNode = t
             }
             visitSequence(t, e) {
@@ -20777,11 +22602,11 @@
                 s.transformIntoNewTimeline(),
                 null != i.delay)) {
                     6 == s.previousNode.type && (s.currentTimeline.snapshotCurrentStyles(),
-                    s.previousNode = ng);
-                    const t = yf(i.delay);
+                    s.previousNode = Sg);
+                    const t = Mf(i.delay);
                     s.delayNextStep(t)
                 }
-                t.steps.length && (t.steps.forEach(t=>Nf(this, t, s)),
+                t.steps.length && (t.steps.forEach(t=>ng(this, t, s)),
                 s.currentTimeline.applyStylesToKeyframe(),
                 s.subContextCount > n && s.transformIntoNewTimeline()),
                 e.previousNode = t
@@ -20789,11 +22614,11 @@
             visitGroup(t, e) {
                 const n = [];
                 let s = e.currentTimeline.currentTime;
-                const i = t.options && t.options.delay ? yf(t.options.delay) : 0;
+                const i = t.options && t.options.delay ? Mf(t.options.delay) : 0;
                 t.steps.forEach(r=>{
                     const o = e.createSubContext(t.options);
                     i && o.delayNextStep(i),
-                    Nf(this, r, o),
+                    ng(this, r, o),
                     s = Math.max(s, o.currentTimeline.currentTime),
                     n.push(o.currentTimeline)
                 }
@@ -20805,7 +22630,7 @@
             _visitTiming(t, e) {
                 if (t.dynamic) {
                     const n = t.strValue;
-                    return bf(e.params ? Vf(n, e.params, e.errors) : n, e.errors)
+                    return Bf(e.params ? Zf(n, e.params, e.errors) : n, e.errors)
                 }
                 return {
                     duration: t.duration,
@@ -20852,9 +22677,9 @@
             visitQuery(t, e) {
                 const n = e.currentTimeline.currentTime
                   , s = t.options || {}
-                  , i = s.delay ? yf(s.delay) : 0;
+                  , i = s.delay ? Mf(s.delay) : 0;
                 i && (6 === e.previousNode.type || 0 == n && e.currentTimeline.getCurrentStyleProperties().length) && (e.currentTimeline.snapshotCurrentStyles(),
-                e.previousNode = ng);
+                e.previousNode = Sg);
                 let r = n;
                 const o = e.invokeQuery(t.selector, t.originalSelector, t.limit, t.includeSelf, !!s.optional, e.errors);
                 e.currentQueryTotal = o.length;
@@ -20864,7 +22689,7 @@
                     const o = e.createSubContext(t.options, n);
                     i && o.delayNextStep(i),
                     n === e.element && (a = o.currentTimeline),
-                    Nf(this, t.animation, o),
+                    ng(this, t.animation, o),
                     o.currentTimeline.applyStylesToKeyframe(),
                     r = Math.max(r, o.currentTimeline.currentTime)
                 }
@@ -20890,16 +22715,16 @@
                 case "full":
                     a = n.currentStaggerTime
                 }
-                const l = e.currentTimeline;
-                a && l.delayNextStep(a);
-                const c = l.currentTime;
-                Nf(this, t.animation, e),
+                const c = e.currentTimeline;
+                a && c.delayNextStep(a);
+                const l = c.currentTime;
+                ng(this, t.animation, e),
                 e.previousNode = t,
-                n.currentStaggerTime = s.currentTime - c + (s.startTime - n.currentTimeline.startTime)
+                n.currentStaggerTime = s.currentTime - l + (s.startTime - n.currentTimeline.startTime)
             }
         }
-        const ng = {};
-        class sg {
+        const Sg = {};
+        class Ag {
             constructor(t, e, n, s, i, r, o, a) {
                 this._driver = t,
                 this.element = e,
@@ -20910,13 +22735,13 @@
                 this.timelines = o,
                 this.parentContext = null,
                 this.currentAnimateTimings = null,
-                this.previousNode = ng,
+                this.previousNode = Sg,
                 this.subContextCount = 0,
                 this.options = {},
                 this.currentQueryIndex = 0,
                 this.currentQueryTotal = 0,
                 this.currentStaggerTime = 0,
-                this.currentTimeline = a || new ig(this._driver,e,0),
+                this.currentTimeline = a || new Og(this._driver,e,0),
                 o.push(this.currentTimeline)
             }
             get params() {
@@ -20927,14 +22752,14 @@
                     return;
                 const n = t;
                 let s = this.options;
-                null != n.duration && (s.duration = yf(n.duration)),
-                null != n.delay && (s.delay = yf(n.delay));
+                null != n.duration && (s.duration = Mf(n.duration)),
+                null != n.delay && (s.delay = Mf(n.delay));
                 const i = n.params;
                 if (i) {
                     let t = s.params;
                     t || (t = this.options.params = {}),
                     Object.keys(i).forEach(n=>{
-                        e && t.hasOwnProperty(n) || (t[n] = Vf(i[n], t, this.errors))
+                        e && t.hasOwnProperty(n) || (t[n] = Zf(i[n], t, this.errors))
                     }
                     )
                 }
@@ -20955,7 +22780,7 @@
             }
             createSubContext(t=null, e, n) {
                 const s = e || this.element
-                  , i = new sg(this._driver,s,this.subInstructions,this._enterClassName,this._leaveClassName,this.errors,this.timelines,this.currentTimeline.fork(s, n || 0));
+                  , i = new Ag(this._driver,s,this.subInstructions,this._enterClassName,this._leaveClassName,this.errors,this.timelines,this.currentTimeline.fork(s, n || 0));
                 return i.previousNode = this.previousNode,
                 i.currentAnimateTimings = this.currentAnimateTimings,
                 i.options = this._copyOptions(),
@@ -20967,7 +22792,7 @@
                 i
             }
             transformIntoNewTimeline(t) {
-                return this.previousNode = ng,
+                return this.previousNode = Sg,
                 this.currentTimeline = this.currentTimeline.fork(this.element, t),
                 this.timelines.push(this.currentTimeline),
                 this.currentTimeline
@@ -20978,7 +22803,7 @@
                     delay: this.currentTimeline.currentTime + (null != n ? n : 0) + t.delay,
                     easing: ""
                 }
-                  , i = new rg(this._driver,t.element,t.keyframes,t.preStyleProps,t.postStyleProps,s,t.stretchStartingKeyframe);
+                  , i = new Cg(this._driver,t.element,t.keyframes,t.preStyleProps,t.postStyleProps,s,t.stretchStartingKeyframe);
                 return this.timelines.push(i),
                 s
             }
@@ -20992,7 +22817,7 @@
                 let o = [];
                 if (s && o.push(this.element),
                 t.length > 0) {
-                    t = (t = t.replace(Yf, "." + this._enterClassName)).replace(Jf, "." + this._leaveClassName);
+                    t = (t = t.replace(yg, "." + this._enterClassName)).replace(vg, "." + this._leaveClassName);
                     let e = this._driver.query(this.element, t, 1 != n);
                     0 !== n && (e = n < 0 ? e.slice(e.length + n, e.length) : e.slice(0, n)),
                     o.push(...e)
@@ -21001,7 +22826,7 @@
                 o
             }
         }
-        class ig {
+        class Og {
             constructor(t, e, n, s) {
                 this._driver = t,
                 this.element = e,
@@ -21045,7 +22870,7 @@
             }
             fork(t, e) {
                 return this.applyStylesToKeyframe(),
-                new ig(this._driver,t,e || this.currentTime,this._elementTimelineStylesLookup)
+                new Og(this._driver,t,e || this.currentTime,this._elementTimelineStylesLookup)
             }
             _loadKeyframe() {
                 this._currentKeyframe && (this._previousKeyframe = this._currentKeyframe),
@@ -21076,8 +22901,8 @@
             applyEmptyStep(t) {
                 t && (this._previousKeyframe.easing = t),
                 Object.keys(this._globalTimelineStyles).forEach(t=>{
-                    this._backFill[t] = this._globalTimelineStyles[t] || rm,
-                    this._currentKeyframe[t] = rm
+                    this._backFill[t] = this._globalTimelineStyles[t] || Cm,
+                    this._currentKeyframe[t] = Cm
                 }
                 ),
                 this._currentEmptyStepKeyframe = this._currentKeyframe
@@ -21091,17 +22916,17 @@
                     return t.forEach(t=>{
                         "*" === t ? (s = s || Object.keys(e),
                         s.forEach(t=>{
-                            n[t] = rm
+                            n[t] = Cm
                         }
-                        )) : Af(t, !1, n)
+                        )) : Hf(t, !1, n)
                     }
                     ),
                     n
                 }(t, this._globalTimelineStyles);
                 Object.keys(r).forEach(t=>{
-                    const e = Vf(r[t], i, n);
+                    const e = Zf(r[t], i, n);
                     this._pendingStyles[t] = e,
-                    this._localTimelineStyles.hasOwnProperty(t) || (this._backFill[t] = this._globalTimelineStyles.hasOwnProperty(t) ? this._globalTimelineStyles[t] : rm),
+                    this._localTimelineStyles.hasOwnProperty(t) || (this._backFill[t] = this._globalTimelineStyles.hasOwnProperty(t) ? this._globalTimelineStyles[t] : Cm),
                     this._updateStyle(t, e)
                 }
                 )
@@ -21151,29 +22976,29 @@
                   , n = 1 === this._keyframes.size && 0 === this.duration;
                 let s = [];
                 this._keyframes.forEach((i,r)=>{
-                    const o = Af(i, !0);
+                    const o = Hf(i, !0);
                     Object.keys(o).forEach(n=>{
                         const s = o[n];
-                        "!" == s ? t.add(n) : s == rm && e.add(n)
+                        "!" == s ? t.add(n) : s == Cm && e.add(n)
                     }
                     ),
                     n || (o.offset = r / this.duration),
                     s.push(o)
                 }
                 );
-                const i = t.size ? Ff(t.values()) : []
-                  , r = e.size ? Ff(e.values()) : [];
+                const i = t.size ? Gf(t.values()) : []
+                  , r = e.size ? Gf(e.values()) : [];
                 if (n) {
                     const t = s[0]
-                      , e = wf(t);
+                      , e = jf(t);
                     t.offset = 0,
                     e.offset = 1,
                     s = [t, e]
                 }
-                return Zf(this.element, s, i, r, this.duration, this.startTime, this.easing, !1)
+                return gg(this.element, s, i, r, this.duration, this.startTime, this.easing, !1)
             }
         }
-        class rg extends ig {
+        class Cg extends Og {
             constructor(t, e, n, s, i, r, o=!1) {
                 super(t, e, r.delay),
                 this.element = e,
@@ -21197,16 +23022,16 @@
                     const i = []
                       , r = n + e
                       , o = e / r
-                      , a = Af(t[0], !1);
+                      , a = Hf(t[0], !1);
                     a.offset = 0,
                     i.push(a);
-                    const l = Af(t[0], !1);
-                    l.offset = og(o),
-                    i.push(l);
-                    const c = t.length - 1;
-                    for (let s = 1; s <= c; s++) {
-                        let o = Af(t[s], !1);
-                        o.offset = og((e + o.offset * n) / r),
+                    const c = Hf(t[0], !1);
+                    c.offset = kg(o),
+                    i.push(c);
+                    const l = t.length - 1;
+                    for (let s = 1; s <= l; s++) {
+                        let o = Hf(t[s], !1);
+                        o.offset = kg((e + o.offset * n) / r),
                         i.push(o)
                     }
                     n = r,
@@ -21214,23 +23039,23 @@
                     s = "",
                     t = i
                 }
-                return Zf(this.element, t, this.preStyleProps, this.postStyleProps, n, e, s, !0)
+                return gg(this.element, t, this.preStyleProps, this.postStyleProps, n, e, s, !0)
             }
         }
-        function og(t, e=3) {
+        function kg(t, e=3) {
             const n = Math.pow(10, e - 1);
             return Math.round(t * n) / n
         }
-        class ag {
+        class Eg {
         }
-        class lg extends ag {
+        class xg extends Eg {
             normalizePropertyName(t, e) {
-                return Pf(t)
+                return Jf(t)
             }
             normalizeStyleValue(t, e, n, s) {
                 let i = "";
                 const r = n.toString().trim();
-                if (cg[e] && 0 !== n && "0" !== n)
+                if (Dg[e] && 0 !== n && "0" !== n)
                     if ("number" == typeof n)
                         i = "px";
                     else {
@@ -21240,12 +23065,12 @@
                 return r + i
             }
         }
-        const cg = (()=>function(t) {
+        const Dg = (()=>function(t) {
             const e = {};
             return t.forEach(t=>e[t] = !0),
             e
         }("width,height,minWidth,minHeight,maxWidth,maxHeight,left,top,bottom,right,fontSize,outlineWidth,outlineOffset,paddingTop,paddingLeft,paddingBottom,paddingRight,marginTop,marginLeft,marginBottom,marginRight,borderRadius,borderWidth,borderTopWidth,borderLeftWidth,borderRightWidth,borderBottomWidth,textIndent,perspective".split(",")))();
-        function hg(t, e, n, s, i, r, o, a, l, c, h, u, d) {
+        function Vg(t, e, n, s, i, r, o, a, c, l, h, u, d) {
             return {
                 type: 0,
                 element: t,
@@ -21256,15 +23081,15 @@
                 toState: s,
                 toStyles: o,
                 timelines: a,
-                queriedElements: l,
-                preStyleProps: c,
+                queriedElements: c,
+                preStyleProps: l,
                 postStyleProps: h,
                 totalTime: u,
                 errors: d
             }
         }
-        const ug = {};
-        class dg {
+        const Tg = {};
+        class Fg {
             constructor(t, e, n) {
                 this._triggerName = t,
                 this.ast = e,
@@ -21281,11 +23106,11 @@
                   , r = s ? s.buildStyles(e, n) : {};
                 return i ? i.buildStyles(e, n) : r
             }
-            build(t, e, n, s, i, r, o, a, l, c) {
+            build(t, e, n, s, i, r, o, a, c, l) {
                 const h = []
-                  , u = this.ast.options && this.ast.options.params || ug
-                  , d = this.buildStyles(n, o && o.params || ug, h)
-                  , p = a && a.params || ug
+                  , u = this.ast.options && this.ast.options.params || Tg
+                  , d = this.buildStyles(n, o && o.params || Tg, h)
+                  , p = a && a.params || Tg
                   , m = this.buildStyles(s, p, h)
                   , f = new Set
                   , g = new Map
@@ -21294,35 +23119,35 @@
                   , v = {
                     params: Object.assign(Object.assign({}, u), p)
                 }
-                  , b = c ? [] : tg(t, e, this.ast.animation, i, r, d, m, v, l, h);
+                  , b = l ? [] : bg(t, e, this.ast.animation, i, r, d, m, v, c, h);
                 let w = 0;
                 if (b.forEach(t=>{
                     w = Math.max(t.duration + t.delay, w)
                 }
                 ),
                 h.length)
-                    return hg(e, this._triggerName, n, s, y, d, m, [], [], g, _, w, h);
+                    return Vg(e, this._triggerName, n, s, y, d, m, [], [], g, _, w, h);
                 b.forEach(t=>{
                     const n = t.element
-                      , s = Zm(g, n, {});
+                      , s = _f(g, n, {});
                     t.preStyleProps.forEach(t=>s[t] = !0);
-                    const i = Zm(_, n, {});
+                    const i = _f(_, n, {});
                     t.postStyleProps.forEach(t=>i[t] = !0),
                     n !== e && f.add(n)
                 }
                 );
-                const A = Ff(f.values());
-                return hg(e, this._triggerName, n, s, y, d, m, b, A, g, _, w)
+                const S = Gf(f.values());
+                return Vg(e, this._triggerName, n, s, y, d, m, b, S, g, _, w)
             }
         }
-        class pg {
+        class Pg {
             constructor(t, e) {
                 this.styles = t,
                 this.defaultParams = e
             }
             buildStyles(t, e) {
                 const n = {}
-                  , s = wf(this.defaultParams);
+                  , s = jf(this.defaultParams);
                 return Object.keys(t).forEach(e=>{
                     const n = t[e];
                     null != n && (s[e] = n)
@@ -21333,7 +23158,7 @@
                         const i = t;
                         Object.keys(i).forEach(t=>{
                             let r = i[t];
-                            r.length > 1 && (r = Vf(r, s, e)),
+                            r.length > 1 && (r = Zf(r, s, e)),
                             n[t] = r
                         }
                         )
@@ -21343,23 +23168,23 @@
                 n
             }
         }
-        class mg {
+        class Ig {
             constructor(t, e) {
                 this.name = t,
                 this.ast = e,
                 this.transitionFactories = [],
                 this.states = {},
                 e.states.forEach(t=>{
-                    this.states[t.name] = new pg(t.style,t.options && t.options.params || {})
+                    this.states[t.name] = new Pg(t.style,t.options && t.options.params || {})
                 }
                 ),
-                fg(this.states, "true", "1"),
-                fg(this.states, "false", "0"),
+                Rg(this.states, "true", "1"),
+                Rg(this.states, "false", "0"),
                 e.transitions.forEach(e=>{
-                    this.transitionFactories.push(new dg(t,e,this.states))
+                    this.transitionFactories.push(new Fg(t,e,this.states))
                 }
                 ),
-                this.fallbackTransition = new dg(t,{
+                this.fallbackTransition = new Fg(t,{
                     type: 1,
                     animation: {
                         type: 2,
@@ -21382,11 +23207,11 @@
                 return this.fallbackTransition.buildStyles(t, e, n)
             }
         }
-        function fg(t, e, n) {
+        function Rg(t, e, n) {
             t.hasOwnProperty(e) ? t.hasOwnProperty(n) || (t[n] = t[e]) : t.hasOwnProperty(n) && (t[e] = t[n])
         }
-        const gg = new Gf;
-        class _g {
+        const Wg = new _g;
+        class Ng {
             constructor(t, e, n) {
                 this.bodyNode = t,
                 this._driver = e,
@@ -21397,14 +23222,14 @@
             }
             register(t, e) {
                 const n = []
-                  , s = Uf(this._driver, e, n);
+                  , s = hg(this._driver, e, n);
                 if (n.length)
                     throw new Error(`Unable to build the animation due to the following errors: ${n.join("\n")}`);
                 this._animations[t] = s
             }
             _buildPlayer(t, e, n) {
                 const s = t.element
-                  , i = qm(0, this._normalizer, 0, t.keyframes, e, n);
+                  , i = pf(0, this._normalizer, 0, t.keyframes, e, n);
                 return this._driver.animate(s, i, t.duration, t.delay, t.easing, [], !0)
             }
             create(t, e, n={}) {
@@ -21412,9 +23237,9 @@
                   , i = this._animations[t];
                 let r;
                 const o = new Map;
-                if (i ? (r = tg(this._driver, e, i, df, pf, {}, {}, n, gg, s),
+                if (i ? (r = bg(this._driver, e, i, Ff, Pf, {}, {}, n, Wg, s),
                 r.forEach(t=>{
-                    const e = Zm(o, t.element, {});
+                    const e = _f(o, t.element, {});
                     t.postStyleProps.forEach(t=>e[t] = null)
                 }
                 )) : (s.push("The requested animation doesn't exist or has already been destroyed"),
@@ -21423,12 +23248,12 @@
                     throw new Error(`Unable to create the animation due to the following errors: ${s.join("\n")}`);
                 o.forEach((t,e)=>{
                     Object.keys(t).forEach(n=>{
-                        t[n] = this._driver.computeStyle(e, n, rm)
+                        t[n] = this._driver.computeStyle(e, n, Cm)
                     }
                     )
                 }
                 );
-                const a = zm(r.map(t=>{
+                const a = df(r.map(t=>{
                     const e = o.get(t.element);
                     return this._buildPlayer(t, {}, e)
                 }
@@ -21452,8 +23277,8 @@
                 return e
             }
             listen(t, e, n, s) {
-                const i = Km(e, "", "", "");
-                return Xm(this._getPlayer(t), n, i, s),
+                const i = gf(e, "", "", "");
+                return mf(this._getPlayer(t), n, i, s),
                 ()=>{}
             }
             command(t, e, n, s) {
@@ -21489,31 +23314,31 @@
                 }
             }
         }
-        const yg = "ng-animate-queued"
-          , vg = "ng-animate-disabled"
-          , bg = ".ng-animate-disabled"
-          , wg = []
-          , Ag = {
+        const Mg = "ng-animate-queued"
+          , Lg = "ng-animate-disabled"
+          , Bg = ".ng-animate-disabled"
+          , jg = []
+          , Hg = {
             namespaceId: "",
             setForRemoval: !1,
             setForMove: !1,
             hasAnimation: !1,
             removedBeforeQueried: !1
         }
-          , Sg = {
+          , $g = {
             namespaceId: "",
             setForMove: !1,
             setForRemoval: !1,
             hasAnimation: !1,
             removedBeforeQueried: !0
         };
-        class Og {
+        class Ug {
             constructor(t, e="") {
                 this.namespaceId = e;
                 const n = t && t.hasOwnProperty("value");
                 if (this.value = null != (s = n ? t.value : t) ? s : null,
                 n) {
-                    const e = wf(t);
+                    const e = jf(t);
                     delete e.value,
                     this.options = e
                 } else
@@ -21535,9 +23360,9 @@
                 }
             }
         }
-        const Cg = "void"
-          , kg = new Og(Cg);
-        class Eg {
+        const zg = "void"
+          , Xg = new Ug(zg);
+        class qg {
             constructor(t, e, n) {
                 this.id = t,
                 this.hostElement = e,
@@ -21547,7 +23372,7 @@
                 this._queue = [],
                 this._elementListeners = new Map,
                 this._hostClassName = "ng-tns-" + t,
-                Ig(e, this._hostClassName)
+                t_(e, this._hostClassName)
             }
             listen(t, e, n, s) {
                 if (!this._triggers.hasOwnProperty(e))
@@ -21557,17 +23382,17 @@
                 if ("start" != (i = n) && "done" != i)
                     throw new Error(`The provided animation trigger event "${n}" for the animation trigger "${e}" is not supported!`);
                 var i;
-                const r = Zm(this._elementListeners, t, [])
+                const r = _f(this._elementListeners, t, [])
                   , o = {
                     name: e,
                     phase: n,
                     callback: s
                 };
                 r.push(o);
-                const a = Zm(this._engine.statesByElement, t, {});
-                return a.hasOwnProperty(e) || (Ig(t, mf),
-                Ig(t, "ng-trigger-" + e),
-                a[e] = kg),
+                const a = _f(this._engine.statesByElement, t, {});
+                return a.hasOwnProperty(e) || (t_(t, If),
+                t_(t, "ng-trigger-" + e),
+                a[e] = Xg),
                 ()=>{
                     this._engine.afterFlush(()=>{
                         const t = r.indexOf(o);
@@ -21589,17 +23414,17 @@
             }
             trigger(t, e, n, s=!0) {
                 const i = this._getTrigger(e)
-                  , r = new Dg(this.id,e,t);
+                  , r = new Qg(this.id,e,t);
                 let o = this._engine.statesByElement.get(t);
-                o || (Ig(t, mf),
-                Ig(t, "ng-trigger-" + e),
+                o || (t_(t, If),
+                t_(t, "ng-trigger-" + e),
                 this._engine.statesByElement.set(t, o = {}));
                 let a = o[e];
-                const l = new Og(n,this.id);
-                if (!(n && n.hasOwnProperty("value")) && a && l.absorbOptions(a.options),
-                o[e] = l,
-                a || (a = kg),
-                l.value !== Cg && a.value === l.value) {
+                const c = new Ug(n,this.id);
+                if (!(n && n.hasOwnProperty("value")) && a && c.absorbOptions(a.options),
+                o[e] = c,
+                a || (a = Xg),
+                c.value !== zg && a.value === c.value) {
                     if (!function(t, e) {
                         const n = Object.keys(t)
                           , s = Object.keys(e);
@@ -21611,24 +23436,24 @@
                                 return !1
                         }
                         return !0
-                    }(a.params, l.params)) {
+                    }(a.params, c.params)) {
                         const e = []
                           , n = i.matchStyles(a.value, a.params, e)
-                          , s = i.matchStyles(l.value, l.params, e);
+                          , s = i.matchStyles(c.value, c.params, e);
                         e.length ? this._engine.reportError(e) : this._engine.afterFlush(()=>{
-                            kf(t, n),
-                            Cf(t, s)
+                            Xf(t, n),
+                            zf(t, s)
                         }
                         )
                     }
                     return
                 }
-                const c = Zm(this._engine.playersByElement, t, []);
-                c.forEach(t=>{
+                const l = _f(this._engine.playersByElement, t, []);
+                l.forEach(t=>{
                     t.namespaceId == this.id && t.triggerName == e && t.queued && t.destroy()
                 }
                 );
-                let h = i.matchTransition(a.value, l.value, t, l.params)
+                let h = i.matchTransition(a.value, c.value, t, c.params)
                   , u = !1;
                 if (!h) {
                     if (!s)
@@ -21642,13 +23467,13 @@
                     triggerName: e,
                     transition: h,
                     fromState: a,
-                    toState: l,
+                    toState: c,
                     player: r,
                     isFallbackTransition: u
                 }),
-                u || (Ig(t, yg),
+                u || (t_(t, Mg),
                 r.onStart(()=>{
-                    Rg(t, yg)
+                    e_(t, Mg)
                 }
                 )),
                 r.onDone(()=>{
@@ -21662,7 +23487,7 @@
                 }
                 ),
                 this.players.push(r),
-                c.push(r),
+                l.push(r),
                 r
             }
             deregister(t) {
@@ -21684,7 +23509,7 @@
                 this._engine.playersByElement.delete(t))
             }
             _signalRemovalForInnerTriggers(t, e) {
-                const n = this._engine.driver.query(t, ff, !0);
+                const n = this._engine.driver.query(t, Rf, !0);
                 n.forEach(t=>{
                     if (t.__ng_removed)
                         return;
@@ -21700,14 +23525,14 @@
                     const r = [];
                     if (Object.keys(i).forEach(e=>{
                         if (this._triggers[e]) {
-                            const n = this.trigger(t, e, Cg, s);
+                            const n = this.trigger(t, e, zg, s);
                             n && r.push(n)
                         }
                     }
                     ),
                     r.length)
                         return this._engine.markElementAsRemoved(this.id, t, !0, e),
-                        n && zm(r).onDone(()=>this._engine.processLeaveNode(t)),
+                        n && df(r).onDone(()=>this._engine.processLeaveNode(t)),
                         !0
                 }
                 return !1
@@ -21723,9 +23548,9 @@
                             return;
                         s.add(i);
                         const r = this._triggers[i].fallbackTransition
-                          , o = n[i] || kg
-                          , a = new Og(Cg)
-                          , l = new Dg(this.id,i,t);
+                          , o = n[i] || Xg
+                          , a = new Ug(zg)
+                          , c = new Qg(this.id,i,t);
                         this._engine.totalQueuedPlayers++,
                         this._queue.push({
                             element: t,
@@ -21733,7 +23558,7 @@
                             transition: r,
                             fromState: o,
                             toState: a,
-                            player: l,
+                            player: c,
                             isFallbackTransition: !0
                         })
                     }
@@ -21764,13 +23589,13 @@
                     n.markElementAsRemoved(this.id, t, !1, e);
                 else {
                     const s = t.__ng_removed;
-                    s && s !== Ag || (n.afterFlush(()=>this.clearElementCache(t)),
+                    s && s !== Hg || (n.afterFlush(()=>this.clearElementCache(t)),
                     n.destroyInnerAnimations(t),
                     n._onRemovalComplete(t, e))
                 }
             }
             insertNode(t, e) {
-                Ig(t, this._hostClassName)
+                t_(t, this._hostClassName)
             }
             drainQueuedTransitions(t) {
                 const e = [];
@@ -21782,9 +23607,9 @@
                       , r = this._elementListeners.get(i);
                     r && r.forEach(e=>{
                         if (e.name == n.triggerName) {
-                            const s = Km(i, n.triggerName, n.fromState.value, n.toState.value);
+                            const s = gf(i, n.triggerName, n.fromState.value, n.toState.value);
                             s._data = t,
-                            Xm(n.player, e.phase, s, e.callback)
+                            mf(n.player, e.phase, s, e.callback)
                         }
                     }
                     ),
@@ -21813,7 +23638,7 @@
                 e
             }
         }
-        class xg {
+        class Kg {
             constructor(t, e, n) {
                 this.bodyNode = t,
                 this.driver = e,
@@ -21850,7 +23675,7 @@
                 t
             }
             createNamespace(t, e) {
-                const n = new Eg(t,e,this);
+                const n = new qg(t,e,this);
                 return this.bodyNode && this.driver.containsElement(this.bodyNode, e) ? this._balanceNamespaceList(n, e) : (this.newHostElements.set(e, n),
                 this.collectEnterElement(e)),
                 this._namespaceLookup[t] = n
@@ -21912,7 +23737,7 @@
                 return e
             }
             trigger(t, e, n, s) {
-                if (Vg(e)) {
+                if (Zg(e)) {
                     const i = this._fetchNamespace(t);
                     if (i)
                         return i.trigger(e, n, s),
@@ -21921,7 +23746,7 @@
                 return !1
             }
             insertNode(t, e, n, s) {
-                if (!Vg(e))
+                if (!Zg(e))
                     return;
                 const i = e.__ng_removed;
                 if (i && i.setForRemoval) {
@@ -21941,11 +23766,11 @@
             }
             markElementAsDisabled(t, e) {
                 e ? this.disabledNodes.has(t) || (this.disabledNodes.add(t),
-                Ig(t, vg)) : this.disabledNodes.has(t) && (this.disabledNodes.delete(t),
-                Rg(t, vg))
+                t_(t, Lg)) : this.disabledNodes.has(t) && (this.disabledNodes.delete(t),
+                e_(t, Lg))
             }
             removeNode(t, e, n, s) {
-                if (Vg(e)) {
+                if (Zg(e)) {
                     const i = t ? this._fetchNamespace(t) : null;
                     if (i ? i.removeNode(e, s) : this.markElementAsRemoved(t, e, !1, s),
                     n) {
@@ -21965,15 +23790,15 @@
                 }
             }
             listen(t, e, n, s, i) {
-                return Vg(e) ? this._fetchNamespace(t).listen(e, n, s, i) : ()=>{}
+                return Zg(e) ? this._fetchNamespace(t).listen(e, n, s, i) : ()=>{}
             }
             _buildInstruction(t, e, n, s, i) {
                 return t.transition.build(this.driver, t.element, t.fromState.value, t.toState.value, n, s, t.fromState.options, t.toState.options, e, i)
             }
             destroyInnerAnimations(t) {
-                let e = this.driver.query(t, ff, !0);
+                let e = this.driver.query(t, Rf, !0);
                 e.forEach(t=>this.destroyActiveAnimationsForElement(t)),
-                0 != this.playersByQueriedElement.size && (e = this.driver.query(t, _f, !0),
+                0 != this.playersByQueriedElement.size && (e = this.driver.query(t, Nf, !0),
                 e.forEach(t=>this.finishActiveQueriedAnimationOnElement(t)))
             }
             destroyActiveAnimationsForElement(t) {
@@ -21990,7 +23815,7 @@
             whenRenderingDone() {
                 return new Promise(t=>{
                     if (this.players.length)
-                        return zm(this.players).onDone(()=>t());
+                        return df(this.players).onDone(()=>t());
                     t()
                 }
                 )
@@ -21998,7 +23823,7 @@
             processLeaveNode(t) {
                 const e = t.__ng_removed;
                 if (e && e.setForRemoval) {
-                    if (t.__ng_removed = Ag,
+                    if (t.__ng_removed = Hg,
                     e.namespaceId) {
                         this.destroyInnerAnimations(t);
                         const n = this._fetchNamespace(e.namespaceId);
@@ -22006,8 +23831,8 @@
                     }
                     this._onRemovalComplete(t, e.setForRemoval)
                 }
-                this.driver.matchesElement(t, bg) && this.markElementAsDisabled(t, !1),
-                this.driver.query(t, bg, !0).forEach(t=>{
+                this.driver.matchesElement(t, Bg) && this.markElementAsDisabled(t, !1),
+                this.driver.query(t, Bg, !0).forEach(t=>{
                     this.markElementAsDisabled(t, !1)
                 }
                 )
@@ -22018,7 +23843,7 @@
                 this.newHostElements.clear()),
                 this.totalAnimations && this.collectedEnterElements.length)
                     for (let n = 0; n < this.collectedEnterElements.length; n++)
-                        Ig(this.collectedEnterElements[n], "ng-star-inserted");
+                        t_(this.collectedEnterElements[n], "ng-star-inserted");
                 if (this._namespaceList.length && (this.totalQueuedPlayers || this.collectedLeaveElements.length)) {
                     const n = [];
                     try {
@@ -22038,7 +23863,7 @@
                 this._whenQuietFns.length) {
                     const t = this._whenQuietFns;
                     this._whenQuietFns = [],
-                    e.length ? zm(e).onDone(()=>{
+                    e.length ? df(e).onDone(()=>{
                         t.forEach(t=>t())
                     }
                     ) : t.forEach(t=>t())
@@ -22048,30 +23873,30 @@
                 throw new Error(`Unable to process animations due to the following failed trigger transitions\n ${t.join("\n")}`)
             }
             _flushAnimations(t, e) {
-                const n = new Gf
+                const n = new _g
                   , s = []
                   , i = new Map
                   , r = []
                   , o = new Map
                   , a = new Map
-                  , l = new Map
-                  , c = new Set;
+                  , c = new Map
+                  , l = new Set;
                 this.disabledNodes.forEach(t=>{
-                    c.add(t);
+                    l.add(t);
                     const e = this.driver.query(t, ".ng-animate-queued", !0);
                     for (let n = 0; n < e.length; n++)
-                        c.add(e[n])
+                        l.add(e[n])
                 }
                 );
                 const h = this.bodyNode
                   , u = Array.from(this.statesByElement.keys())
-                  , d = Pg(u, this.collectedEnterElements)
+                  , d = Jg(u, this.collectedEnterElements)
                   , p = new Map;
                 let m = 0;
                 d.forEach((t,e)=>{
-                    const n = df + m++;
+                    const n = Ff + m++;
                     p.set(e, n),
-                    t.forEach(t=>Ig(t, n))
+                    t.forEach(t=>t_(t, n))
                 }
                 );
                 const f = []
@@ -22085,22 +23910,22 @@
                     e.hasAnimation ? this.driver.query(t, ".ng-star-inserted", !0).forEach(t=>g.add(t)) : _.add(t))
                 }
                 const y = new Map
-                  , v = Pg(u, Array.from(g));
+                  , v = Jg(u, Array.from(g));
                 v.forEach((t,e)=>{
-                    const n = pf + m++;
+                    const n = Pf + m++;
                     y.set(e, n),
-                    t.forEach(t=>Ig(t, n))
+                    t.forEach(t=>t_(t, n))
                 }
                 ),
                 t.push(()=>{
                     d.forEach((t,e)=>{
                         const n = p.get(e);
-                        t.forEach(t=>Rg(t, n))
+                        t.forEach(t=>e_(t, n))
                     }
                     ),
                     v.forEach((t,e)=>{
                         const n = y.get(e);
-                        t.forEach(t=>Rg(t, n))
+                        t.forEach(t=>e_(t, n))
                     }
                     ),
                     f.forEach(t=>{
@@ -22121,20 +23946,20 @@
                             if (t && t.setForMove)
                                 return void e.destroy()
                         }
-                        const c = !h || !this.driver.containsElement(h, i)
+                        const l = !h || !this.driver.containsElement(h, i)
                           , u = y.get(i)
                           , d = p.get(i)
-                          , m = this._buildInstruction(t, n, d, u, c);
+                          , m = this._buildInstruction(t, n, d, u, l);
                         if (m.errors && m.errors.length)
                             w.push(m);
                         else {
-                            if (c)
-                                return e.onStart(()=>kf(i, m.fromStyles)),
-                                e.onDestroy(()=>Cf(i, m.toStyles)),
+                            if (l)
+                                return e.onStart(()=>Xf(i, m.fromStyles)),
+                                e.onDestroy(()=>zf(i, m.toStyles)),
                                 void s.push(e);
                             if (t.isFallbackTransition)
-                                return e.onStart(()=>kf(i, m.fromStyles)),
-                                e.onDestroy(()=>Cf(i, m.toStyles)),
+                                return e.onStart(()=>Xf(i, m.fromStyles)),
+                                e.onDestroy(()=>zf(i, m.toStyles)),
                                 void s.push(e);
                             m.timelines.forEach(t=>t.stretchStartingKeyframe = !0),
                             n.append(i, m.timelines),
@@ -22143,7 +23968,7 @@
                                 player: e,
                                 element: i
                             }),
-                            m.queriedElements.forEach(t=>Zm(o, t, []).push(e)),
+                            m.queriedElements.forEach(t=>_f(o, t, []).push(e)),
                             m.preStyleProps.forEach((t,e)=>{
                                 const n = Object.keys(t);
                                 if (n.length) {
@@ -22155,8 +23980,8 @@
                             ),
                             m.postStyleProps.forEach((t,e)=>{
                                 const n = Object.keys(t);
-                                let s = l.get(e);
-                                s || l.set(e, s = new Set),
+                                let s = c.get(e);
+                                s || c.set(e, s = new Set),
                                 n.forEach(t=>s.add(t))
                             }
                             )
@@ -22173,32 +23998,32 @@
                     b.forEach(t=>t.destroy()),
                     this.reportError(t)
                 }
-                const A = new Map
-                  , S = new Map;
+                const S = new Map
+                  , A = new Map;
                 r.forEach(t=>{
                     const e = t.element;
-                    n.has(e) && (S.set(e, e),
-                    this._beforeAnimationBuild(t.player.namespaceId, t.instruction, A))
+                    n.has(e) && (A.set(e, e),
+                    this._beforeAnimationBuild(t.player.namespaceId, t.instruction, S))
                 }
                 ),
                 s.forEach(t=>{
                     const e = t.element;
                     this._getPreviousPlayers(e, !1, t.namespaceId, t.triggerName, null).forEach(t=>{
-                        Zm(A, e, []).push(t),
+                        _f(S, e, []).push(t),
                         t.destroy()
                     }
                     )
                 }
                 );
-                const O = f.filter(t=>Mg(t, a, l))
+                const O = f.filter(t=>i_(t, a, c))
                   , C = new Map;
-                Tg(C, this.driver, _, l, rm).forEach(t=>{
-                    Mg(t, a, l) && O.push(t)
+                Yg(C, this.driver, _, c, Cm).forEach(t=>{
+                    i_(t, a, c) && O.push(t)
                 }
                 );
                 const k = new Map;
                 d.forEach((t,e)=>{
-                    Tg(k, this.driver, new Set(t), a, "!")
+                    Yg(k, this.driver, new Set(t), a, "!")
                 }
                 ),
                 O.forEach(t=>{
@@ -22213,45 +24038,45 @@
                 r.forEach(t=>{
                     const {element: e, player: r, instruction: o} = t;
                     if (n.has(e)) {
-                        if (c.has(e))
-                            return r.onDestroy(()=>Cf(e, o.toStyles)),
+                        if (l.has(e))
+                            return r.onDestroy(()=>zf(e, o.toStyles)),
                             r.disabled = !0,
                             r.overrideTotalTime(o.totalTime),
                             void s.push(r);
                         let t = D;
-                        if (S.size > 1) {
+                        if (A.size > 1) {
                             let n = e;
                             const s = [];
                             for (; n = n.parentNode; ) {
-                                const e = S.get(n);
+                                const e = A.get(n);
                                 if (e) {
                                     t = e;
                                     break
                                 }
                                 s.push(n)
                             }
-                            s.forEach(e=>S.set(e, t))
+                            s.forEach(e=>A.set(e, t))
                         }
-                        const n = this._buildAnimation(r.namespaceId, o, A, i, k, C);
+                        const n = this._buildAnimation(r.namespaceId, o, S, i, k, C);
                         if (r.setRealPlayer(n),
                         t === D)
                             E.push(r);
                         else {
                             const e = this.playersByElement.get(t);
-                            e && e.length && (r.parentPlayer = zm(e)),
+                            e && e.length && (r.parentPlayer = df(e)),
                             s.push(r)
                         }
                     } else
-                        kf(e, o.fromStyles),
-                        r.onDestroy(()=>Cf(e, o.toStyles)),
+                        Xf(e, o.fromStyles),
+                        r.onDestroy(()=>zf(e, o.toStyles)),
                         x.push(r),
-                        c.has(e) && s.push(r)
+                        l.has(e) && s.push(r)
                 }
                 ),
                 x.forEach(t=>{
                     const e = i.get(t.element);
                     if (e && e.length) {
-                        const n = zm(e);
+                        const n = df(e);
                         t.setRealPlayer(n)
                     }
                 }
@@ -22263,21 +24088,21 @@
                 for (let V = 0; V < f.length; V++) {
                     const t = f[V]
                       , e = t.__ng_removed;
-                    if (Rg(t, pf),
+                    if (e_(t, Pf),
                     e && e.hasAnimation)
                         continue;
                     let n = [];
                     if (o.size) {
                         let e = o.get(t);
                         e && e.length && n.push(...e);
-                        let s = this.driver.query(t, _f, !0);
+                        let s = this.driver.query(t, Nf, !0);
                         for (let t = 0; t < s.length; t++) {
                             let e = o.get(s[t]);
                             e && e.length && n.push(...e)
                         }
                     }
                     const s = n.filter(t=>!t.destroyed);
-                    s.length ? Ng(this, t, s) : this.processLeaveNode(t)
+                    s.length ? n_(this, t, s) : this.processLeaveNode(t)
                 }
                 return f.length = 0,
                 E.forEach(t=>{
@@ -22316,7 +24141,7 @@
                 } else {
                     const e = this.playersByElement.get(t);
                     if (e) {
-                        const t = !i || i == Cg;
+                        const t = !i || i == zg;
                         e.forEach(e=>{
                             e.queued || (t || e.triggerName == s) && r.push(e)
                         }
@@ -22333,50 +24158,50 @@
                 for (const o of e.timelines) {
                     const t = o.element
                       , a = t !== s
-                      , l = Zm(n, t, []);
+                      , c = _f(n, t, []);
                     this._getPreviousPlayers(t, a, i, r, e.toState).forEach(t=>{
                         const e = t.getRealPlayer();
                         e.beforeDestroy && e.beforeDestroy(),
                         t.destroy(),
-                        l.push(t)
+                        c.push(t)
                     }
                     )
                 }
-                kf(s, e.fromStyles)
+                Xf(s, e.fromStyles)
             }
             _buildAnimation(t, e, n, s, i, r) {
                 const o = e.triggerName
                   , a = e.element
-                  , l = []
-                  , c = new Set
+                  , c = []
+                  , l = new Set
                   , h = new Set
                   , u = e.timelines.map(e=>{
                     const u = e.element;
-                    c.add(u);
+                    l.add(u);
                     const d = u.__ng_removed;
                     if (d && d.removedBeforeQueried)
-                        return new cm(e.duration,e.delay);
+                        return new Dm(e.duration,e.delay);
                     const p = u !== a
                       , m = function(t) {
                         const e = [];
-                        return Wg(t, e),
+                        return s_(t, e),
                         e
-                    }((n.get(u) || wg).map(t=>t.getRealPlayer())).filter(t=>!!t.element && t.element === u)
+                    }((n.get(u) || jg).map(t=>t.getRealPlayer())).filter(t=>!!t.element && t.element === u)
                       , f = i.get(u)
                       , g = r.get(u)
-                      , _ = qm(0, this._normalizer, 0, e.keyframes, f, g)
+                      , _ = pf(0, this._normalizer, 0, e.keyframes, f, g)
                       , y = this._buildPlayer(e, _, m);
                     if (e.subTimeline && s && h.add(u),
                     p) {
-                        const e = new Dg(t,o,u);
+                        const e = new Qg(t,o,u);
                         e.setRealPlayer(y),
-                        l.push(e)
+                        c.push(e)
                     }
                     return y
                 }
                 );
-                l.forEach(t=>{
-                    Zm(this.playersByQueriedElement, t.element, []).push(t),
+                c.forEach(t=>{
+                    _f(this.playersByQueriedElement, t.element, []).push(t),
                     t.onDone(()=>function(t, e, n) {
                         let s;
                         if (t instanceof Map) {
@@ -22400,29 +24225,29 @@
                     }(this.playersByQueriedElement, t.element, t))
                 }
                 ),
-                c.forEach(t=>Ig(t, gf));
-                const d = zm(u);
+                l.forEach(t=>t_(t, Wf));
+                const d = df(u);
                 return d.onDestroy(()=>{
-                    c.forEach(t=>Rg(t, gf)),
-                    Cf(a, e.toStyles)
+                    l.forEach(t=>e_(t, Wf)),
+                    zf(a, e.toStyles)
                 }
                 ),
                 h.forEach(t=>{
-                    Zm(s, t, []).push(d)
+                    _f(s, t, []).push(d)
                 }
                 ),
                 d
             }
             _buildPlayer(t, e, n) {
-                return e.length > 0 ? this.driver.animate(t.element, e, t.duration, t.delay, t.easing, n) : new cm(t.duration,t.delay)
+                return e.length > 0 ? this.driver.animate(t.element, e, t.duration, t.delay, t.easing, n) : new Dm(t.duration,t.delay)
             }
         }
-        class Dg {
+        class Qg {
             constructor(t, e, n) {
                 this.namespaceId = t,
                 this.triggerName = e,
                 this.element = n,
-                this._player = new cm,
+                this._player = new Dm,
                 this._containsRealPlayer = !1,
                 this._queuedCallbacks = {},
                 this.destroyed = !1,
@@ -22434,7 +24259,7 @@
             setRealPlayer(t) {
                 this._containsRealPlayer || (this._player = t,
                 Object.keys(this._queuedCallbacks).forEach(e=>{
-                    this._queuedCallbacks[e].forEach(n=>Xm(t, e, void 0, n))
+                    this._queuedCallbacks[e].forEach(n=>mf(t, e, void 0, n))
                 }
                 ),
                 this._queuedCallbacks = {},
@@ -22455,7 +24280,7 @@
                 t.onDestroy(()=>this.destroy())
             }
             _queueEvent(t, e) {
-                Zm(this._queuedCallbacks, t, []).push(e)
+                _f(this._queuedCallbacks, t, []).push(e)
             }
             onDone(t) {
                 this.queued && this._queueEvent("done", t),
@@ -22505,23 +24330,23 @@
                 e.triggerCallback && e.triggerCallback(t)
             }
         }
-        function Vg(t) {
+        function Zg(t) {
             return t && 1 === t.nodeType
         }
-        function Fg(t, e) {
+        function Gg(t, e) {
             const n = t.style.display;
             return t.style.display = null != e ? e : "none",
             n
         }
-        function Tg(t, e, n, s, i) {
+        function Yg(t, e, n, s, i) {
             const r = [];
-            n.forEach(t=>r.push(Fg(t)));
+            n.forEach(t=>r.push(Gg(t)));
             const o = [];
             s.forEach((n,s)=>{
                 const r = {};
                 n.forEach(t=>{
                     const n = r[t] = e.computeStyle(s, t, i);
-                    n && 0 != n.length || (s.__ng_removed = Sg,
+                    n && 0 != n.length || (s.__ng_removed = $g,
                     o.push(s))
                 }
                 ),
@@ -22529,10 +24354,10 @@
             }
             );
             let a = 0;
-            return n.forEach(t=>Fg(t, r[a++])),
+            return n.forEach(t=>Gg(t, r[a++])),
             o
         }
-        function Pg(t, e) {
+        function Jg(t, e) {
             const n = new Map;
             if (t.forEach(t=>n.set(t, [])),
             0 == e.length)
@@ -22557,7 +24382,7 @@
             ),
             n
         }
-        function Ig(t, e) {
+        function t_(t, e) {
             if (t.classList)
                 t.classList.add(e);
             else {
@@ -22566,7 +24391,7 @@
                 n[e] = !0
             }
         }
-        function Rg(t, e) {
+        function e_(t, e) {
             if (t.classList)
                 t.classList.remove(e);
             else {
@@ -22574,16 +24399,16 @@
                 n && delete n[e]
             }
         }
-        function Ng(t, e, n) {
-            zm(n).onDone(()=>t.processLeaveNode(e))
+        function n_(t, e, n) {
+            df(n).onDone(()=>t.processLeaveNode(e))
         }
-        function Wg(t, e) {
+        function s_(t, e) {
             for (let n = 0; n < t.length; n++) {
                 const s = t[n];
-                s instanceof hm ? Wg(s.players, e) : e.push(s)
+                s instanceof Vm ? s_(s.players, e) : e.push(s)
             }
         }
-        function Mg(t, e, n) {
+        function i_(t, e, n) {
             const s = n.get(t);
             if (!s)
                 return !1;
@@ -22592,15 +24417,15 @@
             n.delete(t),
             !0
         }
-        class Lg {
+        class r_ {
             constructor(t, e, n) {
                 this.bodyNode = t,
                 this._driver = e,
                 this._triggerCache = {},
                 this.onRemovalComplete = (t,e)=>{}
                 ,
-                this._transitionEngine = new xg(t,e,n),
-                this._timelineEngine = new _g(t,e,n),
+                this._transitionEngine = new Kg(t,e,n),
+                this._timelineEngine = new Ng(t,e,n),
                 this._transitionEngine.onRemovalComplete = (t,e)=>this.onRemovalComplete(t, e)
             }
             registerTrigger(t, e, n, s, i) {
@@ -22608,11 +24433,11 @@
                 let o = this._triggerCache[r];
                 if (!o) {
                     const t = []
-                      , e = Uf(this._driver, i, t);
+                      , e = hg(this._driver, i, t);
                     if (t.length)
                         throw new Error(`The animation trigger "${s}" has failed to build due to the following errors:\n - ${t.join("\n - ")}`);
                     o = function(t, e) {
-                        return new mg(t,e)
+                        return new Ig(t,e)
                     }(s, e),
                     this._triggerCache[r] = o
                 }
@@ -22635,14 +24460,14 @@
             }
             process(t, e, n, s) {
                 if ("@" == n.charAt(0)) {
-                    const [t,i] = Gm(n);
+                    const [t,i] = yf(n);
                     this._timelineEngine.command(t, e, i, s)
                 } else
                     this._transitionEngine.trigger(t, e, n, s)
             }
             listen(t, e, n, s, i) {
                 if ("@" == n.charAt(0)) {
-                    const [t,s] = Gm(n);
+                    const [t,s] = yf(n);
                     return this._timelineEngine.listen(t, e, s, i)
                 }
                 return this._transitionEngine.listen(t, e, n, s, i)
@@ -22657,14 +24482,14 @@
                 return this._transitionEngine.whenRenderingDone()
             }
         }
-        function jg(t, e) {
+        function o_(t, e) {
             let n = null
               , s = null;
-            return Array.isArray(e) && e.length ? (n = Hg(e[0]),
-            e.length > 1 && (s = Hg(e[e.length - 1]))) : e && (n = Hg(e)),
-            n || s ? new Bg(t,n,s) : null
+            return Array.isArray(e) && e.length ? (n = c_(e[0]),
+            e.length > 1 && (s = c_(e[e.length - 1]))) : e && (n = c_(e)),
+            n || s ? new a_(t,n,s) : null
         }
-        let Bg = (()=>{
+        let a_ = (()=>{
             class t {
                 constructor(e, n, s) {
                     this._element = e,
@@ -22676,24 +24501,24 @@
                     this._initialStyles = i
                 }
                 start() {
-                    this._state < 1 && (this._startStyles && Cf(this._element, this._startStyles, this._initialStyles),
+                    this._state < 1 && (this._startStyles && zf(this._element, this._startStyles, this._initialStyles),
                     this._state = 1)
                 }
                 finish() {
                     this.start(),
-                    this._state < 2 && (Cf(this._element, this._initialStyles),
-                    this._endStyles && (Cf(this._element, this._endStyles),
+                    this._state < 2 && (zf(this._element, this._initialStyles),
+                    this._endStyles && (zf(this._element, this._endStyles),
                     this._endStyles = null),
                     this._state = 1)
                 }
                 destroy() {
                     this.finish(),
                     this._state < 3 && (t.initialStylesByElement.delete(this._element),
-                    this._startStyles && (kf(this._element, this._startStyles),
+                    this._startStyles && (Xf(this._element, this._startStyles),
                     this._endStyles = null),
-                    this._endStyles && (kf(this._element, this._endStyles),
+                    this._endStyles && (Xf(this._element, this._endStyles),
                     this._endStyles = null),
-                    Cf(this._element, this._initialStyles),
+                    zf(this._element, this._initialStyles),
                     this._state = 3)
                 }
             }
@@ -22701,22 +24526,22 @@
             t
         }
         )();
-        function Hg(t) {
+        function c_(t) {
             let e = null;
             const n = Object.keys(t);
             for (let s = 0; s < n.length; s++) {
                 const i = n[s];
-                $g(i) && (e = e || {},
+                l_(i) && (e = e || {},
                 e[i] = t[i])
             }
             return e
         }
-        function $g(t) {
+        function l_(t) {
             return "display" === t || "position" === t
         }
-        const Ug = "animation"
-          , zg = "animationend";
-        class qg {
+        const h_ = "animation"
+          , u_ = "animationend";
+        class d_ {
             constructor(t, e, n, s, i, r, o) {
                 this._element = t,
                 this._name = e,
@@ -22733,28 +24558,28 @@
             }
             apply() {
                 !function(t, e) {
-                    const n = Yg(t, "").trim();
+                    const n = y_(t, "").trim();
                     n.length && (function(t, e) {
                         let n = 0;
                         for (let s = 0; s < t.length; s++)
                             "," === t.charAt(s) && n++
                     }(n),
                     e = `${n}, ${e}`),
-                    Gg(t, "", e)
+                    __(t, "", e)
                 }(this._element, `${this._duration}ms ${this._easing} ${this._delay}ms 1 normal ${this._fillMode} ${this._name}`),
-                Zg(this._element, this._eventFn, !1),
+                g_(this._element, this._eventFn, !1),
                 this._startTime = Date.now()
             }
             pause() {
-                Xg(this._element, this._name, "paused")
+                p_(this._element, this._name, "paused")
             }
             resume() {
-                Xg(this._element, this._name, "running")
+                p_(this._element, this._name, "running")
             }
             setPosition(t) {
-                const e = Qg(this._element, this._name);
+                const e = m_(this._element, this._name);
                 this._position = t * this._duration,
-                Gg(this._element, "Delay", `-${this._position}ms`, e)
+                __(this._element, "Delay", `-${this._position}ms`, e)
             }
             getPosition() {
                 return this._position
@@ -22767,37 +24592,37 @@
             finish() {
                 this._finished || (this._finished = !0,
                 this._onDoneFn(),
-                Zg(this._element, this._eventFn, !0))
+                g_(this._element, this._eventFn, !0))
             }
             destroy() {
                 this._destroyed || (this._destroyed = !0,
                 this.finish(),
                 function(t, e) {
-                    const n = Yg(t, "").split(",")
-                      , s = Kg(n, e);
+                    const n = y_(t, "").split(",")
+                      , s = f_(n, e);
                     s >= 0 && (n.splice(s, 1),
-                    Gg(t, "", n.join(",")))
+                    __(t, "", n.join(",")))
                 }(this._element, this._name))
             }
         }
-        function Xg(t, e, n) {
-            Gg(t, "PlayState", n, Qg(t, e))
+        function p_(t, e, n) {
+            __(t, "PlayState", n, m_(t, e))
         }
-        function Qg(t, e) {
-            const n = Yg(t, "");
-            return n.indexOf(",") > 0 ? Kg(n.split(","), e) : Kg([n], e)
+        function m_(t, e) {
+            const n = y_(t, "");
+            return n.indexOf(",") > 0 ? f_(n.split(","), e) : f_([n], e)
         }
-        function Kg(t, e) {
+        function f_(t, e) {
             for (let n = 0; n < t.length; n++)
                 if (t[n].indexOf(e) >= 0)
                     return n;
             return -1
         }
-        function Zg(t, e, n) {
-            n ? t.removeEventListener(zg, e) : t.addEventListener(zg, e)
+        function g_(t, e, n) {
+            n ? t.removeEventListener(u_, e) : t.addEventListener(u_, e)
         }
-        function Gg(t, e, n, s) {
-            const i = Ug + e;
+        function __(t, e, n, s) {
+            const i = h_ + e;
             if (null != s) {
                 const e = t.style[i];
                 if (e.length) {
@@ -22808,10 +24633,10 @@
             }
             t.style[i] = n
         }
-        function Yg(t, e) {
-            return t.style[Ug + e] || ""
+        function y_(t, e) {
+            return t.style[h_ + e] || ""
         }
-        class Jg {
+        class v_ {
             constructor(t, e, n, s, i, r, o, a) {
                 this.element = t,
                 this.keyframes = e,
@@ -22900,7 +24725,7 @@
                 this._styler.apply()
             }
             _buildStyler() {
-                this._styler = new qg(this.element,this.animationName,this._duration,this._delay,this.easing,"forwards",()=>this.finish())
+                this._styler = new d_(this.element,this.animationName,this._duration,this._delay,this.easing,"forwards",()=>this.finish())
             }
             triggerCallback(t) {
                 const e = "start" == t ? this._onStartFns : this._onDoneFns;
@@ -22913,20 +24738,20 @@
                 if (this.hasStarted()) {
                     const e = this._state >= 3;
                     Object.keys(this._finalStyles).forEach(n=>{
-                        "offset" != n && (t[n] = e ? this._finalStyles[n] : Wf(this.element, n))
+                        "offset" != n && (t[n] = e ? this._finalStyles[n] : sg(this.element, n))
                     }
                     )
                 }
                 this.currentSnapshot = t
             }
         }
-        class t_ extends cm {
+        class b_ extends Dm {
             constructor(t, e) {
                 super(),
                 this.element = t,
                 this._startingStyles = {},
                 this.__initialized = !1,
-                this._styles = cf(e)
+                this._styles = Df(e)
             }
             init() {
                 !this.__initialized && this._startingStyles && (this.__initialized = !0,
@@ -22951,27 +24776,27 @@
                 super.destroy())
             }
         }
-        class e_ {
+        class w_ {
             constructor() {
                 this._count = 0
             }
             validateStyleProperty(t) {
-                return rf(t)
+                return Cf(t)
             }
             matchesElement(t, e) {
-                return of(t, e)
+                return kf(t, e)
             }
             containsElement(t, e) {
-                return af(t, e)
+                return Ef(t, e)
             }
             query(t, e, n) {
-                return lf(t, e, n)
+                return xf(t, e, n)
             }
             computeStyle(t, e, n) {
                 return window.getComputedStyle(t)[e]
             }
             buildKeyframeElement(t, e, n) {
-                n = n.map(t=>cf(t));
+                n = n.map(t=>Df(t));
                 let s = `@keyframes ${e} {\n`
                   , i = "";
                 n.forEach(t=>{
@@ -23000,14 +24825,14 @@
                 r
             }
             animate(t, e, n, s, i, r=[], o) {
-                const a = r.filter(t=>t instanceof Jg)
-                  , l = {};
-                If(n, s) && a.forEach(t=>{
+                const a = r.filter(t=>t instanceof v_)
+                  , c = {};
+                tg(n, s) && a.forEach(t=>{
                     let e = t.currentSnapshot;
-                    Object.keys(e).forEach(t=>l[t] = e[t])
+                    Object.keys(e).forEach(t=>c[t] = e[t])
                 }
                 );
-                const c = function(t) {
+                const l = function(t) {
                     let e = {};
                     return t && (Array.isArray(t) ? t : [t]).forEach(t=>{
                         Object.keys(t).forEach(n=>{
@@ -23017,9 +24842,9 @@
                     }
                     ),
                     e
-                }(e = Rf(t, e, l));
+                }(e = eg(t, e, c));
                 if (0 == n)
-                    return new t_(t,c);
+                    return new b_(t,l);
                 const h = "gen_css_kf_" + this._count++
                   , u = this.buildKeyframeElement(t, h, e);
                 (function(t) {
@@ -23028,8 +24853,8 @@
                     return "undefined" != typeof ShadowRoot && n instanceof ShadowRoot ? n : document.head
                 }
                 )(t).appendChild(u);
-                const d = jg(t, e)
-                  , p = new Jg(t,e,h,n,s,i,c,d);
+                const d = o_(t, e)
+                  , p = new v_(t,e,h,n,s,i,l,d);
                 return p.onDestroy(()=>{
                     var t;
                     (t = u).parentNode.removeChild(t)
@@ -23038,7 +24863,7 @@
                 p
             }
         }
-        class n_ {
+        class S_ {
             constructor(t, e, n, s) {
                 this.element = t,
                 this.keyframes = e,
@@ -23146,7 +24971,7 @@
             beforeDestroy() {
                 const t = {};
                 this.hasStarted() && Object.keys(this._finalKeyframe).forEach(e=>{
-                    "offset" != e && (t[e] = this._finished ? this._finalKeyframe[e] : Wf(this.element, e))
+                    "offset" != e && (t[e] = this._finished ? this._finalKeyframe[e] : sg(this.element, e))
                 }
                 ),
                 this.currentSnapshot = t
@@ -23157,22 +24982,22 @@
                 e.length = 0
             }
         }
-        class s_ {
+        class A_ {
             constructor() {
-                this._isNativeImpl = /\{\s*\[native\s+code\]\s*\}/.test(i_().toString()),
-                this._cssKeyframesDriver = new e_
+                this._isNativeImpl = /\{\s*\[native\s+code\]\s*\}/.test(O_().toString()),
+                this._cssKeyframesDriver = new w_
             }
             validateStyleProperty(t) {
-                return rf(t)
+                return Cf(t)
             }
             matchesElement(t, e) {
-                return of(t, e)
+                return kf(t, e)
             }
             containsElement(t, e) {
-                return af(t, e)
+                return Ef(t, e)
             }
             query(t, e, n) {
-                return lf(t, e, n)
+                return xf(t, e, n)
             }
             computeStyle(t, e, n) {
                 return window.getComputedStyle(t)[e]
@@ -23189,22 +25014,22 @@
                     fill: 0 == s ? "both" : "forwards"
                 };
                 i && (a.easing = i);
-                const l = {}
-                  , c = r.filter(t=>t instanceof n_);
-                If(n, s) && c.forEach(t=>{
+                const c = {}
+                  , l = r.filter(t=>t instanceof S_);
+                tg(n, s) && l.forEach(t=>{
                     let e = t.currentSnapshot;
-                    Object.keys(e).forEach(t=>l[t] = e[t])
+                    Object.keys(e).forEach(t=>c[t] = e[t])
                 }
                 );
-                const h = jg(t, e = Rf(t, e = e.map(t=>Af(t, !1)), l));
-                return new n_(t,e,a,h)
+                const h = o_(t, e = eg(t, e = e.map(t=>Hf(t, !1)), c));
+                return new S_(t,e,a,h)
             }
         }
-        function i_() {
-            return $m() && Element.prototype.animate || {}
+        function O_() {
+            return hf() && Element.prototype.animate || {}
         }
-        let r_ = (()=>{
-            class t extends im {
+        let C_ = (()=>{
+            class t extends Om {
                 constructor(t, e) {
                     super(),
                     this._nextAnimationId = 0,
@@ -23220,13 +25045,13 @@
                 build(t) {
                     const e = this._nextAnimationId.toString();
                     this._nextAnimationId++;
-                    const n = Array.isArray(t) ? om(t) : t;
-                    return l_(this._renderer, null, e, "register", [n]),
-                    new o_(e,this._renderer)
+                    const n = Array.isArray(t) ? km(t) : t;
+                    return x_(this._renderer, null, e, "register", [n]),
+                    new k_(e,this._renderer)
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Mo),Jn(zl))
+                return new (e || t)(Jn(Mo),Jn(zc))
             }
             ,
             t.\u0275prov = ht({
@@ -23236,7 +25061,7 @@
             t
         }
         )();
-        class o_ extends class {
+        class k_ extends class {
         }
         {
             constructor(t, e) {
@@ -23245,10 +25070,10 @@
                 this._renderer = e
             }
             create(t, e) {
-                return new a_(this._id,t,e || {},this._renderer)
+                return new E_(this._id,t,e || {},this._renderer)
             }
         }
-        class a_ {
+        class E_ {
             constructor(t, e, n, s) {
                 this.id = t,
                 this.element = e,
@@ -23262,7 +25087,7 @@
                 return this._renderer.listen(this.element, `@@${this.id}:${t}`, e)
             }
             _command(t, ...e) {
-                return l_(this._renderer, this.element, this.id, t, e)
+                return x_(this._renderer, this.element, this.id, t, e)
             }
             onDone(t) {
                 this._listen("done", t)
@@ -23307,12 +25132,12 @@
                 return null !== (e = null === (t = this._renderer.engine.players[+this.id]) || void 0 === t ? void 0 : t.getPosition()) && void 0 !== e ? e : 0
             }
         }
-        function l_(t, e, n, s, i) {
+        function x_(t, e, n, s, i) {
             return t.setProperty(e, `@@${n}:${s}`, i)
         }
-        const c_ = "@"
-          , h_ = "@.disabled";
-        let u_ = (()=>{
+        const D_ = "@"
+          , V_ = "@.disabled";
+        let T_ = (()=>{
             class t {
                 constructor(t, e, n) {
                     this.delegate = t,
@@ -23332,7 +25157,7 @@
                     const n = this.delegate.createRenderer(t, e);
                     if (!(t && e && e.data && e.data.animation)) {
                         let t = this._rendererCache.get(n);
-                        return t || (t = new d_("",n,this.engine),
+                        return t || (t = new F_("",n,this.engine),
                         this._rendererCache.set(n, t)),
                         t
                     }
@@ -23345,7 +25170,7 @@
                     }
                     ;
                     return e.data.animation.forEach(r),
-                    new p_(this,i,n,this.engine)
+                    new P_(this,i,n,this.engine)
                 }
                 begin() {
                     this._cdRecurDepth++,
@@ -23386,7 +25211,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(Mo),Jn(Lg),Jn(yl))
+                return new (e || t)(Jn(Mo),Jn(r_),Jn(yc))
             }
             ,
             t.\u0275prov = ht({
@@ -23396,7 +25221,7 @@
             t
         }
         )();
-        class d_ {
+        class F_ {
             constructor(t, e, n) {
                 this.namespaceId = t,
                 this.delegate = e,
@@ -23458,7 +25283,7 @@
                 this.delegate.removeStyle(t, e, n)
             }
             setProperty(t, e, n) {
-                e.charAt(0) == c_ && e == h_ ? this.disableAnimations(t, !!n) : this.delegate.setProperty(t, e, n)
+                e.charAt(0) == D_ && e == V_ ? this.disableAnimations(t, !!n) : this.delegate.setProperty(t, e, n)
             }
             setValue(t, e) {
                 this.delegate.setValue(t, e)
@@ -23470,17 +25295,17 @@
                 this.engine.disableAnimations(t, e)
             }
         }
-        class p_ extends d_ {
+        class P_ extends F_ {
             constructor(t, e, n, s) {
                 super(e, n, s),
                 this.factory = t,
                 this.namespaceId = e
             }
             setProperty(t, e, n) {
-                e.charAt(0) == c_ ? "." == e.charAt(1) && e == h_ ? this.disableAnimations(t, n = void 0 === n || !!n) : this.engine.process(this.namespaceId, t, e.substr(1), n) : this.delegate.setProperty(t, e, n)
+                e.charAt(0) == D_ ? "." == e.charAt(1) && e == V_ ? this.disableAnimations(t, n = void 0 === n || !!n) : this.engine.process(this.namespaceId, t, e.substr(1), n) : this.delegate.setProperty(t, e, n)
             }
             listen(t, e, n) {
-                if (e.charAt(0) == c_) {
+                if (e.charAt(0) == D_) {
                     const s = function(t) {
                         switch (t) {
                         case "body":
@@ -23495,7 +25320,7 @@
                     }(t);
                     let i = e.substr(1)
                       , r = "";
-                    return i.charAt(0) != c_ && ([i,r] = function(t) {
+                    return i.charAt(0) != D_ && ([i,r] = function(t) {
                         const e = t.indexOf(".");
                         return [t.substring(0, e), t.substr(e + 1)]
                     }(i)),
@@ -23507,8 +25332,8 @@
                 return this.delegate.listen(t, e, n)
             }
         }
-        let m_ = (()=>{
-            class t extends Lg {
+        let I_ = (()=>{
+            class t extends r_ {
                 constructor(t, e, n) {
                     super(t.body, e, n)
                 }
@@ -23517,7 +25342,7 @@
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(zl),Jn(uf),Jn(ag))
+                return new (e || t)(Jn(zc),Jn(Tf),Jn(Eg))
             }
             ,
             t.\u0275prov = ht({
@@ -23527,47 +25352,47 @@
             t
         }
         )();
-        const f_ = new Mn("AnimationModuleType")
-          , g_ = [{
-            provide: im,
-            useClass: r_
+        const R_ = new Mn("AnimationModuleType")
+          , W_ = [{
+            provide: Om,
+            useClass: C_
         }, {
-            provide: ag,
+            provide: Eg,
             useFactory: function() {
-                return new lg
+                return new xg
             }
         }, {
-            provide: Lg,
-            useClass: m_
+            provide: r_,
+            useClass: I_
         }, {
             provide: Mo,
             useFactory: function(t, e, n) {
-                return new u_(t,e,n)
+                return new T_(t,e,n)
             },
-            deps: [zc, Lg, yl]
+            deps: [zl, r_, yc]
         }]
-          , __ = [{
-            provide: uf,
+          , N_ = [{
+            provide: Tf,
             useFactory: function() {
-                return "function" == typeof i_() ? new s_ : new e_
+                return "function" == typeof O_() ? new A_ : new w_
             }
         }, {
-            provide: f_,
+            provide: R_,
             useValue: "BrowserAnimations"
-        }, ...g_]
-          , y_ = [{
-            provide: uf,
-            useClass: hf
+        }, ...W_]
+          , M_ = [{
+            provide: Tf,
+            useClass: Vf
         }, {
-            provide: f_,
+            provide: R_,
             useValue: "NoopAnimations"
-        }, ...g_];
-        let v_ = (()=>{
+        }, ...W_];
+        let L_ = (()=>{
             class t {
                 static withConfig(e) {
                     return {
                         ngModule: t,
-                        providers: e.disableAnimations ? y_ : __
+                        providers: e.disableAnimations ? M_ : N_
                     }
                 }
             }
@@ -23579,13 +25404,13 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                providers: __,
+                providers: N_,
                 imports: [sh]
             }),
             t
         }
         )()
-          , b_ = (()=>{
+          , B_ = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -23596,20 +25421,20 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[yp]]
+                imports: [[Mp]]
             }),
             t
         }
         )();
-        const w_ = new Ho("12.0.6")
-          , A_ = new Ho("12.0.6")
-          , S_ = new Mn("mat-sanity-checks",{
+        const j_ = new Ho("12.0.6")
+          , H_ = new Ho("12.0.6")
+          , $_ = new Mn("mat-sanity-checks",{
             providedIn: "root",
             factory: function() {
                 return !0
             }
         });
-        let O_, C_ = (()=>{
+        let U_, z_ = (()=>{
             class t {
                 constructor(t, e, n) {
                     this._hasDoneGlobalChecks = !1,
@@ -23626,7 +25451,7 @@
                     return "object" == typeof t && t ? t : null
                 }
                 _checksAreEnabled() {
-                    return Tl() && !this._isTestEnv()
+                    return Fc() && !this._isTestEnv()
                 }
                 _isTestEnv() {
                     const t = this._getWindow();
@@ -23646,28 +25471,28 @@
                     this._document.body.removeChild(t)
                 }
                 _checkCdkVersionMatch() {
-                    this._checksAreEnabled() && (!0 === this._sanityChecks || this._sanityChecks.version) && A_.full !== w_.full && console.warn("The Angular Material version (" + A_.full + ") does not match the Angular CDK version (" + w_.full + ").\nPlease ensure the versions of these two packages exactly match.")
+                    this._checksAreEnabled() && (!0 === this._sanityChecks || this._sanityChecks.version) && H_.full !== j_.full && console.warn("The Angular Material version (" + H_.full + ") does not match the Angular CDK version (" + j_.full + ").\nPlease ensure the versions of these two packages exactly match.")
                 }
             }
             return t.\u0275fac = function(e) {
-                return new (e || t)(Jn(km),Jn(S_, 8),Jn(zl))
+                return new (e || t)(Jn(Xm),Jn($_, 8),Jn(zc))
             }
             ,
             t.\u0275mod = zt({
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[mp], mp]
+                imports: [[Ip], Ip]
             }),
             t
         }
         )();
         try {
-            O_ = "undefined" != typeof Intl
-        } catch (D_) {
-            O_ = !1
+            U_ = "undefined" != typeof Intl
+        } catch (Q_) {
+            U_ = !1
         }
-        let k_ = (()=>{
+        let X_ = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -23678,12 +25503,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[b_, C_], C_]
+                imports: [[B_, z_], z_]
             }),
             t
         }
         )()
-          , E_ = (()=>{
+          , q_ = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -23694,12 +25519,12 @@
                 type: t
             }),
             t.\u0275inj = ut({
-                imports: [[C_], C_]
+                imports: [[z_], z_]
             }),
             t
         }
         )()
-          , x_ = (()=>{
+          , K_ = (()=>{
             class t {
             }
             return t.\u0275fac = function(e) {
@@ -23708,25 +25533,25 @@
             ,
             t.\u0275mod = zt({
                 type: t,
-                bootstrap: [jd]
+                bootstrap: [op]
             }),
             t.\u0275inj = ut({
                 providers: [Yh],
-                imports: [[Zh, sh, E_, k_, v_, Gd, np, sp, Qd, um, dm, Pm, Im, Rm, Nm, Wm, Lm, jm, Bm, Hm, Zu]]
+                imports: [[Zh, sh, q_, X_, L_, _p, Sp, Ap, mp, Tm, Fm, Jm, tf, ef, nf, sf, of, af, cf, lf, Zu]]
             }),
             t
         }
         )();
         (function() {
-            if (Fl)
+            if (Tc)
                 throw new Error("Cannot enable prod mode after platform setup.");
-            Vl = !1
+            Vc = !1
         }
         )(),
-        eh().bootstrapModule(x_).catch(t=>console.error(t))
+        eh().bootstrapModule(K_).catch(t=>console.error(t))
     }
 }, t=>{
     "use strict";
-    t(t.s = 582)
+    t(t.s = 850)
 }
 ]);

@@ -790,6 +790,34 @@
                                     style   = "height: 48px; width: 48px; margin-right: 10px; border-radius: 50%;"
                                 >DW</button>
                             </li>
+                            <li 
+                                class="nav-item"
+                                role="presentation" 
+                                style="
+                                    font: -webkit-mini-control;
+                                "
+                            >
+                                <button
+                                    class           = "nav-link"
+                                    id              = "fl-monitor-tab"
+                                    data-bs-toggle  = "tab"
+                                    data-bs-target  = "#fl-monitor"
+                                    type            = "button"
+                                    role            = "tab"
+                                    aria-controls   = "fl-monitor"
+                                    aria-selected   = "false"
+                                    style           = "
+                                        font-weight: bold;
+                                        color: black;
+                                        font-size: large;
+                                    "
+                                    onclick         = "window.localStorage.clear(); document.querySelector('iframe#flMonitor').setAttribute('src', document.querySelector('iframe#flMonitor').getAttribute('url'))"
+                                ><img
+                                    src     = "https://cdn.discordapp.com/icons/950306526856351755/9435a713b61341d846ba0b220234793b.webp?size=96"
+                                    alt     = ""
+                                    style   = "height: 48px; width: 48px; margin-right: 10px; border-radius: 50%;"
+                                >FL</button>
+                            </li>
                             <li
                                 class   = "nav-item"
                                 role    = "presentation"
@@ -839,6 +867,9 @@
                                 </div>
                                 <div class="tab-pane" id="dw-monitor" role="tabpanel" aria-labelledby="dw-monitor-tab">
                                     <iframe id="dwMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
+                                </div>
+                                <div class="tab-pane" id="fl-monitor" role="tabpanel" aria-labelledby="fl-monitor-tab">
+                                    <iframe id="flMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
                                 </div>
                             </div>
                         </th>
@@ -7157,7 +7188,7 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 type        = "range"
                                 class       = "form-range"
                                 min         = "1"
-                                max         = "95"
+                                max         = "100"
                                 value       = "1"
                                 step        = "1"
                                 style       = "

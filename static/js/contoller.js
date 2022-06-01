@@ -3653,9 +3653,6 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-
-
-
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -3688,6 +3685,71 @@ $(document).ready(function() {
 		<input type="number" class="form-control" placeholder="FSLS" value="" step="5" min="5" max="100" aria-label="">
 		<button type="submit" class="btn btn-primary fl-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
+
+	<div class="input-group fl-auto-craft-bait">
+		<div class="input-group-text" style="width: 147px; font-size: smaller;">AUTO CRAFT BAIT</div>
+		<select class="form-select fl-auto-craft-bait-select">
+			<option value="0,1000" >None</option>
+			<option value="1,1000" >Blue Bait 1 FSLF x 1</option>
+			<option value="2,1000" >Blue Bait 1 FSLF x 2</option>
+			<option value="3,1000" >Blue Bait 1 FSLF x 3</option>
+			<option value="4,1000" >Blue Bait 1 FSLF x 4</option>
+			<option value="5,1000" >Blue Bait 1 FSLF x 5</option>
+			<option value="6,1000" >Blue Bait 1 FSLF x 6</option>
+			<option value="7,1000" >Blue Bait 1 FSLF x 7</option>
+			<option value="8,1000" >Blue Bait 1 FSLF x 8</option>
+			<option value="9,1000" >Blue Bait 1 FSLF x 9</option>
+			<option value="10,1000">Blue Bait 1 FSLF x 10</option>
+			<option value="15,1000">Blue Bait 1 FSLF x 15</option>
+			<option value="25,1000">Blue Bait 1 FSLF x 25</option>
+			<option value="35,1000">Blue Bait 1 FSLF x 35</option>
+			<option value="50,1000">Blue Bait 1 FSLF x 50</option>
+			<option value="1,1001" >Blue Bait 1 FSLS x 1</option>
+			<option value="2,1001" >Blue Bait 1 FSLS x 2</option>
+			<option value="3,1001" >Blue Bait 1 FSLS x 3</option>
+			<option value="4,1001" >Blue Bait 1 FSLS x 4</option>
+			<option value="5,1001" >Blue Bait 1 FSLS x 5</option>
+			<option value="6,1001" >Blue Bait 1 FSLS x 6</option>
+			<option value="7,1001" >Blue Bait 1 FSLS x 7</option>
+			<option value="8,1001" >Blue Bait 1 FSLS x 8</option>
+			<option value="9,1001" >Blue Bait 1 FSLS x 9</option>
+			<option value="10,1001">Blue Bait 1 FSLS x 10</option>
+			<option value="15,1001">Blue Bait 1 FSLS x 15</option>
+			<option value="25,1001">Blue Bait 1 FSLS x 25</option>
+			<option value="35,1001">Blue Bait 1 FSLS x 35</option>
+			<option value="50,1001">Blue Bait 1 FSLS x 50</option>
+			<option value="1,1002" >Green Bait 2 FSLF x 1</option>
+			<option value="2,1002" >Green Bait 2 FSLF x 2</option>
+			<option value="3,1002" >Green Bait 2 FSLF x 3</option>
+			<option value="4,1002" >Green Bait 2 FSLF x 4</option>
+			<option value="5,1002" >Green Bait 2 FSLF x 5</option>
+			<option value="6,1002" >Green Bait 2 FSLF x 6</option>
+			<option value="7,1002" >Green Bait 2 FSLF x 7</option>
+			<option value="8,1002" >Green Bait 2 FSLF x 8</option>
+			<option value="9,1002" >Green Bait 2 FSLF x 9</option>
+			<option value="10,1002">Green Bait 2 FSLF x 10</option>
+			<option value="15,1002">Green Bait 2 FSLF x 15</option>
+			<option value="25,1002">Green Bait 2 FSLF x 25</option>
+			<option value="35,1002">Green Bait 2 FSLF x 35</option>
+			<option value="50,1002">Green Bait 2 FSLF x 50</option>
+			<option value="1,1003" >Green Bait 2 FSLS x 1</option>
+			<option value="2,1003" >Green Bait 2 FSLS x 2</option>
+			<option value="3,1003" >Green Bait 2 FSLS x 3</option>
+			<option value="4,1003" >Green Bait 2 FSLS x 4</option>
+			<option value="5,1003" >Green Bait 2 FSLS x 5</option>
+			<option value="6,1003" >Green Bait 2 FSLS x 6</option>
+			<option value="7,1003" >Green Bait 2 FSLS x 7</option>
+			<option value="8,1003" >Green Bait 2 FSLS x 8</option>
+			<option value="9,1003" >Green Bait 2 FSLS x 9</option>
+			<option value="10,1003">Green Bait 2 FSLS x 10</option>
+			<option value="15,1003">Green Bait 2 FSLS x 15</option>
+			<option value="25,1003">Green Bait 2 FSLS x 25</option>
+			<option value="35,1003">Green Bait 2 FSLS x 35</option>
+			<option value="50,1003">Green Bait 2 FSLS x 50</option>
+		</select>
+		<button type="submit" class="btn btn-primary fl-auto-craft-bait-set" style="width: 60px; ">SET</button>
+	</div>
+
 	<div class="input-group fl-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -3739,6 +3801,19 @@ $(document).ready(function() {
 								
 								fetch(
 									`/vers/fl/set?waxid=${ this['var']['id'] }&eco_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fl-panel-monitor"]`).querySelector('button.fl-auto-craft-bait-set').addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fl-panel-monitor"]').querySelector('select.fl-auto-craft-bait-select option:checked').value
+								}; console.debug( this['var'] );  
+								fetch(
+									`/vers/fl/set?waxid=${ this['var']['id'] }&a_craft_bait=${ this['var']['db']['value'] }`, 
 									{method : 'GET'}
 								); 
 							}); 
@@ -6078,6 +6153,9 @@ $(document).ready(function() {
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fl-panel-monitor"]').querySelector('input.fl-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fl']['cf']['eco_mine']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fl-panel-monitor"]').querySelector('select.fl-auto-craft-bait-select').value 	= window['information-data']['DATA'][_WAXID]['vers']['fl']['cf']['a_craft_bait'].toString(); 
 										}catch(e){ }; 
 										//	try{
 										//		document.querySelector('th[id*="' + _WAXID + '-fl-panel-monitor"]').querySelector('input.fl-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fl']['cf']['fee_mine']; 

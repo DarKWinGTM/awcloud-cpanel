@@ -90,10 +90,10 @@
         "https://diggersworld-wax-rpc.global.binfra.one"
     ], 
     "fl_c_sigh" : [
+        "https://chain.wax.io", 
+        "https://chain.wax.io", 
         "https://wax.pink.gg", 
-        "https://wax.eosphere.io", 
-        "https://api.waxsweden.org", 
-        "https://wax.greymass.com"
+        "https://wax.pink.gg"
     ], 
     "getwallet" : [
         "https://wax.neftyblocks.com", 

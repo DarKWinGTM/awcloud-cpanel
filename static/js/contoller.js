@@ -5495,16 +5495,16 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWF']).toFixed(1)
 											} G ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWG']).toFixed(1)
-											} FMC-IN ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FMC']).toFixed(1)
+											} FMC ${
+												window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FMC']
 											} : WITH [${ window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['power']['tax_limite'] }%] DEPO : W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWW']).toFixed(1)
 											} F ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWF']).toFixed(1)
 											} G ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWG']).toFixed(1)
-											} FMC-AH ${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FMC']).toFixed(1)
+											} FMC ${
+												window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FMC']
 											}`; 
 										}catch(e){ }; 
 									}; 

@@ -109,6 +109,7 @@
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
+        "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
@@ -117,6 +118,7 @@
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
+        "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [

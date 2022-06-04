@@ -340,7 +340,7 @@ $(document).ready(function() {
 		<input type="range" class="form-control fw-swap-wax-fwg-input" placeholder="20" value="20" step="5" min="0" max="600" >
 	</div>
 	<div class="input-group fw-withdraw-deposit">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.00 G 0.0 : WITH [0%] DEPO : W 0.0 F 0.0 G 0.0</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.00 G 0.0 FMC-IN 0 : WITH [0%] DEPO : W 0.0 F 0.0 G 0.0 FMC-OUT 0</div>
 		<button type="submit" class="btn btn-primary fw-withdraw" style="width: 20%; ">WITHDRAW</button>
 		<input type="number" class="form-control" placeholder="FWF" value="" step="5" min="5" max="100" aria-label="">
 		<input type="number" class="form-control" placeholder="FWG" value="" step="5" min="5" max="100" aria-label="">
@@ -5495,12 +5495,16 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWF']).toFixed(1)
 											} G ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FWG']).toFixed(1)
+											} FMC-IN ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['pre']['FMC']).toFixed(1)
 											} : WITH [${ window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['power']['tax_limite'] }%] DEPO : W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWW']).toFixed(1)
 											} F ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWF']).toFixed(1)
 											} G ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FWG']).toFixed(1)
+											} FMC-AH ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fw']['db']['balance']['has']['FMC']).toFixed(1)
 											}`; 
 										}catch(e){ }; 
 									}; 

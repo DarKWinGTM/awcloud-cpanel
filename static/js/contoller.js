@@ -2537,7 +2537,26 @@ $(document).ready(function() {
 			</label>
 		</div>AUTO SWITCH TO FREE SLOT, WHEN OVER 16 ROUND</div>
 	</div>
-
+	
+	<div class="input-group bl-auto-ring">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input bl-auto-ring-switch" value="0">
+				</label>
+			</div>
+		</div>
+		<div class="input-group-text bl-auto-ring-text" style="width: 183px; justify-content: center;">AUTO MANAGE RING</div>
+		<select class="form-select bl-auto-ring-select">
+			<option value="0">None</option>
+			<option value="1">Common Ring</option>
+			<option value="2">Rare Ring</option>
+			<option value="3">Legendary Ring</option>
+			<option value="4">Artifact Ring</option>
+		</select>
+		<button type="submit" class="btn btn-primary bl-auto-ring-set" style="width: 60px; ">SET</button>
+	</div>
+	
 	<div class="input-group bl-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -2582,6 +2601,36 @@ $(document).ready(function() {
 								
 								fetch(
 									`/vers/bl/set?waxid=${ this['var']['id'] }&set_heal=${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-bl-panel-monitor"]`).querySelector('input.bl-auto-ring-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bl-panel-monitor"]').querySelector('input.bl-auto-ring-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bl-panel-monitor"]').querySelector('select.bl-auto-ring-select option:checked').value
+								}; 
+								console.debug( this['var'] );  
+								fetch(
+									`/vers/bl/set?waxid=${ this['var']['id'] }&cfg_mine=acfr&value=${ this['var']['db']['check'] },${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-bl-panel-monitor"]`).querySelector('button.bl-auto-ring-set').addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bl-panel-monitor"]').querySelector('input.bl-auto-ring-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bl-panel-monitor"]').querySelector('select.bl-auto-ring-select option:checked').value
+								}; 
+								console.debug( this['var'] );  
+								fetch(
+									`/vers/bl/set?waxid=${ this['var']['id'] }&cfg_mine=acfr&value=${ this['var']['db']['check'] },${ this['var']['db']['value'] }`, 
 									{method : 'GET'}
 								); 
 							}); 
@@ -3101,12 +3150,10 @@ $(document).ready(function() {
 										}
 									})(document.querySelector('th[id*="' + this['var']['id'] + '-sr-panel-monitor"]').querySelector('select.sr-land-select option:checked').value)
 								}; console.debug( this['var'] );  
-								
 								fetch(
 									`/vers/sr/set?waxid=${ this['var']['id'] }&land=${ this['var']['db']['check'] },${ this['var']['db']['value'] }`, 
 									{method : 'GET'}
 								); 
-
 							}); 
 							document.querySelector(`th[id*="${ WAXID }-sr-panel-monitor"]`).querySelector('input.sr-auto-move-at-good-land-to-mine-switch').addEventListener('change', function(e) {
 								this['var'] = {
@@ -5675,6 +5722,22 @@ $(document).ready(function() {
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelector('input.bl-set-heal-rate-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['bl']['cf']['set_heal']; 
+										}catch(e){ }; 
+
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelector('input.bl-auto-ring-switch').checked 				= window['information-data']['DATA'][_WAXID]['vers']['bl']['cf']["cfg_mine"]['acfr'][0]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-bl-panel-monitor"]'
+											).querySelector(
+												'div.input-group-text.bl-auto-ring-text'
+											).innerText = 'AUTO MANAGE RING'; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelectorAll('select.bl-auto-ring-select option')[0].innerText 		= 'None'; 
+											document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelectorAll('select.bl-auto-ring-select option')[0].value 			= '0'; 
+											document.querySelector('th[id*="' + _WAXID + '-bl-panel-monitor"]').querySelector('select.bl-auto-ring-select').value 						= window['information-data']['DATA'][_WAXID]['vers']['bl']['cf']['cfg_mine']['acfr'][1].toString(); 
 										}catch(e){ }; 
 
 										//	window['information-data']['DATA'][_WAXID]['vers']['kq']['db']['log'] = []; 

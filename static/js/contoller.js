@@ -3814,6 +3814,12 @@ $(document).ready(function() {
 			</div>
 			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
 				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fl-feature-vip-mine-switch" value="0">
+					<span style="padding-left: 5;">VIP MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
 					<input type="checkbox" class="form-check-input fl-feature-fee-mine-switch" value="0" disabled>
 					<span style="padding-left: 5;">FEE MINE</span>
 				</label>
@@ -3848,6 +3854,20 @@ $(document).ready(function() {
 								
 								fetch(
 									`/vers/fl/set?waxid=${ this['var']['id'] }&eco_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fl-panel-monitor"]`).querySelector('input.fl-feature-vip-mine-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fl-panel-monitor"]').querySelector('input.fl-feature-vip-mine-switch').checked, 
+								}; 
+								
+								fetch(
+									`/vers/fl/set?waxid=${ this['var']['id'] }&vip_mine=${ this['var']['db']['check'] }`, 
 									{method : 'GET'}
 								); 
 							}); 
@@ -6220,6 +6240,9 @@ $(document).ready(function() {
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fl-panel-monitor"]').querySelector('input.fl-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fl']['cf']['eco_mine']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fl-panel-monitor"]').querySelector('input.fl-feature-vip-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fl']['cf']['vip_mine']; 
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-fl-panel-monitor"]').querySelector('select.fl-auto-craft-bait-select').value 	= window['information-data']['DATA'][_WAXID]['vers']['fl']['cf']['a_craft_bait'].toString(); 

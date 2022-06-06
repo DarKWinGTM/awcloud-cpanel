@@ -342,9 +342,9 @@ $(document).ready(function() {
 	<div class="input-group fw-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.00 G 0.0 FMC-IN 0 : WITH [0%] DEPO : W 0.0 F 0.0 G 0.0 FMC-OUT 0</div>
 		<button type="submit" class="btn btn-primary fw-withdraw" style="width: 20%; ">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="FWF" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="FWG" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="FWW" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="FWF" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="FWG" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="FWW" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary fw-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 	<div class="input-group fw-swap-fww-wax">
@@ -1982,7 +1982,7 @@ $(document).ready(function() {
 	<div class="input-group ss-target-set">
 		<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [10%] : STAKED : 0.0000 </div>
 		<button type="submit" class="btn btn-primary ss-withdraw" style="width: 20%; ">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="KYANITE" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="KYANITE" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary ss-deposit" style="width: 20%; ">DEPOSIT</button>
 		<div class="input-group">
 			<div class="input-group-text" style="width: 100px;">SHIP LIST</div>
@@ -2088,8 +2088,8 @@ $(document).ready(function() {
 	<div class="input-group kq-offchain-mainchain">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">C 0.00 K 0.00 : WITH [0%] DEPO : C 0.00 K 0.00</div>
 		<button type="submit" class="btn btn-primary kq-withdraw" style="width: 20%; ">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="KRYPTON" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="CUBE" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="KRYPTON" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="CUBE" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary kq-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 	<div class="input-group kq-score">
@@ -2263,9 +2263,9 @@ $(document).ready(function() {
 	<div class="input-group gx-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">A 0.0 P 0.00 O 0.0 : WITH [0%] DEPO : W 0.0 F 0.0 G 0.0</div>
 		<button type="submit" class="btn btn-primary gx-withdraw" style="width: 20%; "">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="GMA" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="GMP" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="GMO" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="GMA" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="GMP" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="GMO" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary gx-deposit" style="width: 20%; "">DEPOSIT</button>
 	</div>
 	<div class="input-group gx-swap-gma-wax">
@@ -2515,7 +2515,7 @@ $(document).ready(function() {
 	<div class="input-group bl-offchain-mainchain">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">BRWL 0.0000 : WITH [8%] DEPO : BRWL 0.0000</div>
 		<button type="submit" class="btn btn-primary bl-withdraw" style="width: 20%; ">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="BRWL" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="BRWL" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary bl-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 
@@ -2672,9 +2672,9 @@ $(document).ready(function() {
 	<div class="input-group af-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [5%] DEPO : W 0.0 F 0.0 S 0.0</div>
 		<button type="submit" class="btn btn-primary af-withdraw" style="width: 20%; ">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="AOFW" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="AOFS" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="AOFF" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="AOFW" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="AOFS" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="AOFF" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary af-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 	<div class="input-group af-feature">
@@ -2985,10 +2985,10 @@ $(document).ready(function() {
 	<div class="input-group sr-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 M 0.0 E 0.0 S 0.0 : WITH [5%] DEPO : W 0.0 M 0.0 E 0.0 S 0.0</div>
 		<button type="submit" class="btn btn-primary sr-withdraw" style="width: 20%; ">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="SRE" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="SRM" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="SRW" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="SRS" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="SRE" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="SRM" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="SRW" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="SRS" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary sr-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 	<div class="input-group sr-land">
@@ -3380,9 +3380,9 @@ $(document).ready(function() {
 	<div class="input-group dw-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">I 0.0 D 0.0 S 0.0 : WITH [5%] DEPO : I 0.0 D 0.0 S 0.0</div>
 		<button type="submit" class="btn btn-primary dw-withdraw" style="width: 20%; ">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="DWI" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="DWD" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="DWS" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="DWI" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="DWD" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="DWS" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary dw-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 	<div class="input-group dw-feature">
@@ -3728,8 +3728,8 @@ $(document).ready(function() {
 	<div class="input-group fl-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">F 0.0 S 0.0 : WITH [X%] DEPO : F 0.0 S 0.0</div>
 		<button type="submit" class="btn btn-primary fl-withdraw" style="width: 20%; ">WITHDRAW</button>
-		<input type="number" class="form-control" placeholder="FSLF" value="" step="5" min="5" max="100" aria-label="">
-		<input type="number" class="form-control" placeholder="FSLS" value="" step="5" min="5" max="100" aria-label="">
+		<input type="number" class="form-control" placeholder="FSLF" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="FSLS" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary fl-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 

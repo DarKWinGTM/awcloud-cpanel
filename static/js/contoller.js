@@ -1979,11 +1979,15 @@ $(document).ready(function() {
 	</div>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-ss-panel-monitor">
-	<div class="input-group ss-target-set">
+	
+	<div class="input-group ss-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; "> 0.0000 : WALLET : [10%] : STAKED : 0.0000 </div>
 		<button type="submit" class="btn btn-primary ss-withdraw" style="width: 20%; ">WITHDRAW</button>
 		<input type="number" class="form-control" placeholder="KYANITE" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary ss-deposit" style="width: 20%; ">DEPOSIT</button>
+	</div>
+	
+	<div class="input-group ss-target-set">
 		<div class="input-group">
 			<div class="input-group-text" style="width: 100px;">SHIP LIST</div>
 			<input type="number" class="form-control" placeholder="SHIP 1" disabled="">
@@ -2069,6 +2073,143 @@ $(document).ready(function() {
 )
                                 })
                             ); 
+							document.querySelector(`th[id*="${WAXID}-ss-panel-monitor"] button.ss-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'KYANITE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-ss-panel-monitor"] div.ss-withdraw-deposit').querySelector('input[placeholder*="KYANITE"]').value) || 0, 
+									'FEE' 		: 10, 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/ss_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['FEE']
+										}&quantity=${
+											this['var']['db']['KYANITE']
+										}.0000,0.0000,0.0000,0.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`SAAR WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`STARSHIP WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`STARSHIP WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`STARSHIP WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`STARSHIP WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-ss-panel-monitor"] button.ss-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'KYANITE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-ss-panel-monitor"] div.ss-withdraw-deposit').querySelector('input[placeholder*="KYANITE"]').value) || 0, 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/ss_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['KYANITE']
+										}.0000,0.0000,0.0000,0.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`STARSHIP DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`STARSHIP DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`STARSHIP DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`STARSHIP DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`STARSHIP DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -5557,9 +5698,9 @@ $(document).ready(function() {
 										document.querySelector(`iframe[src*="ss-monitor?wallet=${ _WAXID }"]`) 
 									){
 										try{
-											document.querySelector('th[id*="' + _WAXID + '-ss-panel-monitor"]').querySelector('div.ss-target-set div').innerText 			= `${
+											document.querySelector('th[id*="' + _WAXID + '-ss-panel-monitor"]').querySelector('div.ss-withdraw-deposit div').innerText 	= `${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ss']['db']['balance']['pre']['KYANITE']).toFixed(4)
-											} : STAKED [] WALLET : ${
+											} : WALLET [10%] STAKED : ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ss']['db']['balance']['has']['KYANITE']).toFixed(4)
 											}`; 
 										}catch(e){ }; 

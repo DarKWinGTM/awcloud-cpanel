@@ -3337,43 +3337,55 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                             function(e) {
                                                 $('#setLand').modal('hide');
                                                 for (SLRWAXID in window['information-data']['DATA']) {
-                                                    $.notify(
-                                                        `SET LAND : PLEASE WAIT ${ SLRWAXID }`, 'info'
-                                                    );
                                                     (function(ID) {
-                                                        fetch(`/cfgs?waxid=${
-                                                            ID
-                                                        }&land_list=${
-                                                            $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').join(',')
-                                                        }`, {
-                                                            "headers": {},
-                                                            "body": null,
-                                                            "method": "GET",
-                                                        }).then(
-                                                            result => result.json()
-                                                        ).then(result => {
-                                                            if (result['code'] == 200) {
-                                                                $.notify(
-                                                                    `RANDOM LAND : DONE ${ ID } - ${ JSON.stringify(result) }`,
-                                                                    'success'
-                                                                ); 
-                                                            } else {
-                                                                try {
-                                                                    $.notify(
-                                                                        `RANDOM LAND : WARNING ${ ID } - ${ JSON.stringify(result) }`, 'warn'
-                                                                    );
-                                                                } catch (e) {
-                                                                    $.notify(
-                                                                        `RANDOM LAND : ERROR ${ ID } - ${ JSON.stringify(result) }`,
-                                                                        'error'
-                                                                    );
-                                                                };
-                                                            };
-                                                        }).catch(error => {
+                                                        if(
+                                                            !window['information-data']['DATA'][ ID ]['cfgs']["land_list"].every(
+                                                                item => $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').includes(item)
+                                                            )
+                                                        ){
                                                             $.notify(
-                                                                `RANDOM LAND : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                                                                `SET LAND : PLEASE WAIT ${ ID }`, 'info'
                                                             );
-                                                        });
+                                                            setTimeout(function() {
+                                                                fetch(`/cfgs?waxid=${
+                                                                    ID
+                                                                }&land_list=${
+                                                                    $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').join(',')
+                                                                }`, {
+                                                                    "headers": {},
+                                                                    "body": null,
+                                                                    "method": "GET",
+                                                                }).then(
+                                                                    result => result.json()
+                                                                ).then(result => {
+                                                                    if (result['code'] == 200) {
+                                                                        $.notify(
+                                                                            `RANDOM LAND : DONE ${ ID } - ${ JSON.stringify(result) }`,
+                                                                            'success'
+                                                                        ); 
+                                                                    } else {
+                                                                        try {
+                                                                            $.notify(
+                                                                                `RANDOM LAND : WARNING ${ ID } - ${ JSON.stringify(result) }`, 'warn'
+                                                                            );
+                                                                        } catch (e) {
+                                                                            $.notify(
+                                                                                `RANDOM LAND : ERROR ${ ID } - ${ JSON.stringify(result) }`,
+                                                                                'error'
+                                                                            );
+                                                                        };
+                                                                    };
+                                                                }).catch(error => {
+                                                                    $.notify(
+                                                                        `RANDOM LAND : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                                                                    );
+                                                                });
+                                                            }, 1500 + Math.ceil(Math.random() * 18000));
+                                                        }else{
+                                                            $.notify(
+                                                                `SET LAND : ALREADY ${ ID }`, 'success'
+                                                            );
+                                                        }; 
                                                     })(SLRWAXID);
                                                 };
                                             }

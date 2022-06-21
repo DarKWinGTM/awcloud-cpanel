@@ -171,6 +171,8 @@ $(document).ready(function() {
 						try{ window[`${ TRELE.getAttribute('id') }-dw-panel-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-fl-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-fl-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-fwar-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-fwar-panel-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-panel-monitor`].parentElement.remove() }catch(e){};  
                         try{ TRELE.remove() }catch(e){}; 
@@ -264,12 +266,6 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
-							//	<iframe
-							//	url         = "https://farmersworld.idigger.online/affiliate?waxid=${ WAXID }"
-							//	style       = "width : 100%; height : 1408px;"
-							//	scrolling   = "no"
-							//	loading 	= "lazy"
-							//	></iframe>
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -4174,7 +4170,67 @@ $(document).ready(function() {
 							//			}); 
 							//		};
 							//	});
+                            document.querySelector('table').querySelector('thead').appendChild(
+                                Object.assign(document.createElement('tr'), {
+                                    innerHTML   : `
+<th
+    colspan     = "7"
+    style       = "display: none; "
+	id 			= "${ WAXID }-fwar-monitor"
+>
+	<!--
+	<textarea 
+		class 		= "form-control ${ WAXID }"
+		id 			= "message-text ${ WAXID }"
+		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
+	></textarea>
+	-->
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=farmwarsnfts"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
+</th>
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-fl-panel-monitor">
+	
+	<div class="input-group fwar-withdraw-deposit">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">WA 0.0 FO 0.0 WO 0.0 GO 0.0 : WITH [X%] DEPO : WA 0.0 FO 0.0 WO 0.0 GO 0.0</div>
+		<button type="submit" class="btn btn-primary fwar-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="WAFW" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="FOFW" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="WOFW" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="GOFW" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<button type="submit" class="btn btn-primary fwar-deposit" style="width: 20%; ">DEPOSIT</button>
+	</div>
 
+	<div class="input-group fwar-feature">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fwar-feature-key-mine-switch" value="0">
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fwar-feature-eco-mine-switch" value="0">
+					<span style="padding-left: 5;">ECO MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fwar-feature-fee-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">FEE MINE</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</th>`
+                                })
+                            ); 
 
 
 
@@ -4882,6 +4938,46 @@ $(document).ready(function() {
                                         }); 
                                     };
                                 });
+                                window[WAXID].querySelector('input.fwar_switch[type="checkbox"]').addEventListener('change', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+										
+                                        $(this).prop( "disabled", true ); 
+										
+                                        fetch(`/vers/fwar/set?waxid=${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }&switch=${ this.checked }`, 
+											{method : 'GET'}
+										).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            if(result['text'] != 'okay'){ throw result }else{
+                                                if (
+                                                    result['data'] == true
+                                                ){
+                                                    this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `FARM WARS ON ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `FARM WARS NO ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`FARM WARS : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (button){
+                                                setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
+                                            })(this); 
+                                        }); 
+                                    };
+                                });
 								
 								
 								
@@ -5045,6 +5141,9 @@ $(document).ready(function() {
 						}catch(e){ }; 
 						try{
 							window[ WAXID ].querySelector('input[class*="form-check-input fl_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['fl']["sw"]; 
+						}catch(e){ }; 
+						try{
+							window[ WAXID ].querySelector('input[class*="form-check-input fwar_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['fwar']["sw"]; 
 						}catch(e){ }; 
                         //  try{ $('[data-toggle="tooltip"]').tooltip() }catch(e){}; 
                         
@@ -6438,6 +6537,73 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fl']['db']['balance']['has']['FSLS']).toFixed(1)
 											}`; 
 										}catch(e){ }; 
+									}; 
+								}catch(e){ }; 
+								try{
+									if(
+										window['information-data']["DATA"][ _WAXID ]['vers']['fwar']["sw"] == true && 
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmwarsnfts"]`) 
+									){
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmwarsnfts"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmwarsnfts"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmwarsnfts"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=farmwarsnfts"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										//	document.querySelector(`th[id*="${ _WAXID }-fwar-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										//	document.querySelector(`th[id*="${ _WAXID }-fwar-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['key_mine']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['eco_mine']; 
+										}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['fee_mine']; 
+										//	}catch(e){ }; 
+										
+										//	document.querySelector(`th[id*="${ _WAXID }-fwar-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db'], undefined, 4); 
+
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-set-mine-frequency-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['cfg_mine']['time']; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fwar-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fwar-deposit-fslf-text'
+										//		).innerText = 'DEPOSIT FSLF ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['auto_depo_fslf'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-deposit-fslf-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['auto_depo_fslf'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-deposit-fslf-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['auto_depo_fslf'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fwar-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fwar-deposit-fsls-text'
+										//		).innerText = 'DEPOSIT FSLS ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['auto_depo_fsls'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-deposit-fsls-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['auto_depo_fsls'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-deposit-fsls-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['auto_depo_fsls'][1]; 
+										//	}catch(e){ }; 
+										
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('div.fwar-withdraw-deposit div').innerText 		= `F ${
+										//			parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['pre']['FSLF']).toFixed(1)
+										//		} S ${
+										//			parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['pre']['FSLS']).toFixed(1)
+										//		} : WITH [5%] DEPO : F ${
+										//			parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['has']['FSLF']).toFixed(1)
+										//		} S ${
+										//			parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['has']['FSLS']).toFixed(1)
+										//		}`; 
+										//	}catch(e){ }; 
 									}; 
 								}catch(e){ }; 
 								

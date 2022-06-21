@@ -27,7 +27,7 @@
         "https://api.wax.alohaeos.com", 
         "https://wax.neftyblocks.com", 
         "https://wax.dapplica.io", 
-        "https://chain.wax.io"
+        "https://wax.pink.gg"
     ], 
     "claimsigh" : [
         "https://wax.greymass.com", 
@@ -36,7 +36,7 @@
         "https://api.waxsweden.org"
     ], 
     "fw_c_sigh" : [
-        "https://chain.wax.io", 
+        "https://wax.greymass.com", 
         "https://wax.eosphere.io", 
         "https://wax.pink.gg", 
         "https://api.waxsweden.org"
@@ -68,7 +68,7 @@
     "bl_c_sigh" : [
         "https://wax.eosphere.io", 
         "https://api.wax.alohaeos.com", 
-        "https://chain.wax.io", 
+        "https://api.waxnet.io", 
         "https://wax.greymass.com"
     ], 
     "af_c_sigh" : [
@@ -90,10 +90,16 @@
         "https://diggersworld-wax-rpc.global.binfra.one"
     ], 
     "fl_c_sigh" : [
-        "https://chain.wax.io", 
-        "https://chain.wax.io", 
+        "https://api.waxnet.io", 
+        "https://api.waxnet.io", 
         "https://wax.pink.gg", 
         "https://wax.pink.gg"
+    ], 
+    "fwarcsigh" : [
+        "https://wax.dapplica.io", 
+        "https://wax.dapplica.io", 
+        "https://api.wax.alohaeos.com", 
+        "https://api.wax.alohaeos.com"
     ], 
     "getwallet" : [
         "https://wax.neftyblocks.com", 

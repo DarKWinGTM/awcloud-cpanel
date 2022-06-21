@@ -7364,6 +7364,9 @@ $(document).ready(function() {
 					).then(result => {
 
 						if(result['permissions'].slice(-1)[0]['name'] == 'active'){
+
+							$.notify(`MASTER KEY : CORRECT PERMISSIONS, ACTIVE KEY`, "success", { position : "top" }); 
+							
 							fetch("https://wax.greymass.com/v1/chain/get_accounts_by_authorizers", {
 								"headers": {
 									"accept": "application/json, text/plain, */*",
@@ -7396,21 +7399,40 @@ $(document).ready(function() {
 								e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
 							});
 						}else{
+
 							$.notify(`MASTER KEY : INCORRECT PERMISSIONS, WE NEED ACTIVE`, "warn", { position : "top" }); 
-							//	e.srcElement.value = ''; document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
-							//	$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
-							document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
-							document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
-							$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
-							//	if (
-							//		document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
-							//	){
-							//		document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
-							//		$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
-							//	}else{
-							//		document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
-							//		$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
-							//	}; 
+							
+							fetch("https://wax.greymass.com/v1/chain/get_accounts_by_authorizers", {
+								"headers": {
+									"accept": "application/json, text/plain, */*",
+									"accept-language": "en-US",
+									"content-type": "application/json;charset=UTF-8",
+									"sec-fetch-dest": "empty",
+									"sec-fetch-mode": "cors",
+									"sec-fetch-site": "cross-site"
+								},
+								"body"              : JSON.stringify({
+									'keys' 			: [document.querySelector('input[aria-label="KEY PRV ACTIVE"]').PublicKey]
+								}),
+								"method"            : "POST",
+								"mode" 				: "cors",
+								"credentials" 		: "omit"
+							}).then(
+								result => result.json()
+							).then(result => {
+								document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
+								if (
+									document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
+								){
+									document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
+									$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
+								}else{
+									document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
+									$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
+								}; 
+							}).catch(error => {
+								e.srcElement.value = ''; $( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
+							});
 						}; 
 
 					}).catch(error => {

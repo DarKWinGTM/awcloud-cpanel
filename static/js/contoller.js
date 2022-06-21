@@ -2668,11 +2668,13 @@ $(document).ready(function() {
 			<label class="form-check-label">
 				<input
 					type 			= "checkbox"
-					class 			= "form-check-input bl-auto-switch-to-free-slot-when-over-round-switch"
+					class 			= "form-check-input bl-auto-switch-to-free-slot-switch"
 					value 			= "0"
+					disabled
+					checked
 				>
 			</label>
-		</div>AUTO SWITCH TO FREE SLOT, WHEN OVER 16 ROUND</div>
+		</div>AUTO SWITCH TO FREE SLOT</div>
 	</div>
 	
 	<div class="input-group bl-auto-ring">

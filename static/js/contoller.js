@@ -7397,8 +7397,18 @@ $(document).ready(function() {
 							});
 						}else{
 							$.notify(`MASTER KEY : INCORRECT PERMISSIONS, WE NEED ACTIVE`, "warn", { position : "top" }); 
-							e.srcElement.value = ''; document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
-							$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
+							//	e.srcElement.value = ''; document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
+							//	$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true ); 
+							document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey = result['accounts'][0]['account_name']; 
+							if (
+								document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey
+							){
+								document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = document.querySelector('input[aria-label="KEY PRV ACTIVE"]').TagKey; 
+								$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", false )
+							}else{
+								document.querySelector('input[aria-label="KEY TAG ACTIVE"]').value = ''; 
+								$( document.querySelector('form[action*="#KEY"] button.btn-primary.key-add') ).prop( "disabled", true )
+							}; 
 						}; 
 
 					}).catch(error => {

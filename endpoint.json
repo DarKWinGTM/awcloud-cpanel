@@ -17,9 +17,9 @@
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
-        "https://wax.eosrio.io/v2/history/get_transaction?id=", 
         "https://api.wax.greeneosio.com/v2/history/get_transaction?id=", 
-        "https://waxapi.ledgerwise.io/v2/history/get_transaction?id="
+        "https://waxapi.ledgerwise.io/v2/history/get_transaction?id=", 
+        "https://hyperion-wax-mainnet.wecan.dev/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
         "https://wax.eosusa.news", 

@@ -4,11 +4,11 @@
         "https://waxnode02.alcor.exchange", 
         "https://api.wax.alohaeos.com", 
         "https://query.3dkrender.com", 
-        "https://wax.cryptolions.io", 
+        "https://wax.eosusa.news", 
         "https://wax.neftyblocks.com"
     ], 
     "lastminer" : [
-        "https://wax.cryptolions.io", 
+        "https://wax.eosusa.news", 
         "https://api.tokengamer.io", 
         "https://api.wax.alohaeos.com", 
         "https://wax.blacklusion.io", 
@@ -17,12 +17,12 @@
     ], 
     "histories" : [
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
-        "https://wax.hivebp.io/v2/history/get_transaction?id=", 
+        "https://wax.eosrio.io/v2/history/get_transaction?id=", 
         "https://api.wax.greeneosio.com/v2/history/get_transaction?id=", 
         "https://waxapi.ledgerwise.io/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
-        "https://wax.cryptolions.io", 
+        "https://wax.eosusa.news", 
         "https://wax.eosphere.io", 
         "https://api.wax.alohaeos.com", 
         "https://wax.neftyblocks.com", 
@@ -116,7 +116,8 @@
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
-        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?"
+        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
+        "https://aa.neftyblocks.com/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
@@ -125,7 +126,8 @@
         "https://aa.wax.blacklusion.io/atomicassets/v1/assets?", 
         "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
-        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?"
+        "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
+        "https://aa.neftyblocks.com/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

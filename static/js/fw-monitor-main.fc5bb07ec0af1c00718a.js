@@ -10019,7 +10019,7 @@
                         show_payer: !1
                     };
                     const i = (new uu).set("Content-Type", "text/plain");
-                    return this.http.post("https://chain.wax.io/v1/chain/get_table_rows", e, {
+                    return this.http.post("https://api.tokengamer.io/v1/chain/get_table_rows", e, {
                         headers: i
                     })
                 }
@@ -10039,7 +10039,7 @@
                         show_payer: !1
                     };
                     const i = (new uu).set("Content-Type", "text/plain");
-                    return this.http.post("https://chain.wax.io/v1/chain/get_table_rows", e, {
+                    return this.http.post("https://api.tokengamer.io/v1/chain/get_table_rows", e, {
                         headers: i
                     })
                 }
@@ -10053,7 +10053,7 @@
                         symbol: null
                     };
                     const i = (new uu).set("Content-Type", "text/plain");
-                    return this.http.post("https://chain.wax.io/v1/chain/get_currency_balance", e, {
+                    return this.http.post("https://api.tokengamer.io/v1/chain/get_currency_balance", e, {
                         headers: i
                     })
                 }
@@ -10073,7 +10073,7 @@
                         show_payer: !1
                     };
                     const i = (new uu).set("Content-Type", "text/plain");
-                    return this.http.post("https://chain.wax.io/v1/chain/get_table_rows", e, {
+                    return this.http.post("https://api.tokengamer.io/v1/chain/get_table_rows", e, {
                         headers: i
                     })
                 }
@@ -10093,7 +10093,7 @@
                         show_payer: !1
                     };
                     const i = (new uu).set("Content-Type", "text/plain");
-                    return this.http.post("https://chain.wax.io/v1/chain/get_table_rows", e, {
+                    return this.http.post("https://api.tokengamer.io/v1/chain/get_table_rows", e, {
                         headers: i
                     })
                 }
@@ -10113,7 +10113,7 @@
                         show_payer: !1
                     };
                     const i = (new uu).set("Content-Type", "text/plain");
-                    return this.http.post("https://chain.wax.io/v1/chain/get_table_rows", e, {
+                    return this.http.post("https://api.tokengamer.io/v1/chain/get_table_rows", e, {
                         headers: i
                     })
                 }

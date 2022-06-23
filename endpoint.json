@@ -80,8 +80,8 @@
     "sr_c_sigh" : [
         "https://api.tokengamer.io", 
         "https://api.tokengamer.io", 
-        "https://api.tokengamer.io", 
-        "https://api.tokengamer.io"
+        "https://api.waxnet.io", 
+        "https://api.waxnet.io"
     ], 
     "dw_c_sigh" : [
         "https://diggersworld-wax-rpc.global.binfra.one", 
@@ -106,7 +106,7 @@
         "https://waxnode02.alcor.exchange", 
         "https://wax.greymass.com", 
         "https://waxnode01.alcor.exchange", 
-        "https://api.tokengamer.io", 
+        "https://api.wax.alohaeos.com", 
         "https://wax.eosdac.io"
     ], 
     "atomichub" : [

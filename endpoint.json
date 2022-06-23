@@ -2,7 +2,7 @@
     "addrlists" : [
         "https://waxnode01.alcor.exchange", 
         "https://waxnode02.alcor.exchange", 
-        "https://api.wax.alohaeos.com", 
+        "https://api.tokengamer.io", 
         "https://query.3dkrender.com", 
         "https://wax.eosusa.news", 
         "https://wax.neftyblocks.com"
@@ -10,7 +10,7 @@
     "lastminer" : [
         "https://wax.eosusa.news", 
         "https://api.tokengamer.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://wax.greymass.com", 
         "https://wax.neftyblocks.com"
@@ -24,7 +24,7 @@
     "blockinfo" : [
         "https://wax.eosusa.news", 
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://api.tokengamer.io", 
         "https://wax.neftyblocks.com", 
         "https://wax.dapplica.io", 
         "https://wax.pink.gg"
@@ -32,7 +32,7 @@
     "claimsigh" : [
         "https://wax.greymass.com", 
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
         "https://api.waxsweden.org"
     ], 
     "fw_c_sigh" : [
@@ -44,37 +44,37 @@
     "ss_c_sigh" : [
         "https://wax.greymass.com", 
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
         "https://api.waxsweden.org"
     ], 
     "kq_c_sigh" : [
         "https://wax.greymass.com", 
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
         "https://api.waxsweden.org"
     ], 
     "cc_c_sigh" : [
         "https://wax.greymass.com", 
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
         "https://api.waxsweden.org"
     ], 
     "gx_c_sigh" : [
         "https://wax.eosphere.io", 
         "https://api.wax.greeneosio.com", 
         "https://wax.pink.gg", 
-        "https://api.wax.alohaeos.com"
+        "https://api.waxnet.io"
     ], 
     "bl_c_sigh" : [
         "https://wax.eosphere.io", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
         "https://api.waxnet.io", 
         "https://wax.greymass.com"
     ], 
     "af_c_sigh" : [
         "https://wax.pink.gg", 
         "https://wax.eosusa.news", 
-        "https://api.wax.alohaeos.com", 
+        "https://api.waxnet.io", 
         "https://wax.greymass.com"
     ], 
     "sr_c_sigh" : [
@@ -98,15 +98,15 @@
     "fwarcsigh" : [
         "https://wax.dapplica.io", 
         "https://wax.dapplica.io", 
-        "https://api.wax.alohaeos.com", 
-        "https://api.wax.alohaeos.com"
+        "https://api.waxnet.io", 
+        "https://api.waxnet.io"
     ], 
     "getwallet" : [
         "https://wax.neftyblocks.com", 
         "https://waxnode02.alcor.exchange", 
         "https://wax.greymass.com", 
         "https://waxnode01.alcor.exchange", 
-        "https://api.wax.alohaeos.com", 
+        "https://wax.pink.gg", 
         "https://wax.eosdac.io"
     ], 
     "atomichub" : [

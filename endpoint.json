@@ -2,14 +2,14 @@
     "addrlists" : [
         "https://waxnode01.alcor.exchange", 
         "https://waxnode02.alcor.exchange", 
-        "https://api.tokengamer.io", 
+        "https://api.waxsweden.org", 
         "https://query.3dkrender.com", 
         "https://wax.eosusa.news", 
         "https://wax.neftyblocks.com"
     ], 
     "lastminer" : [
         "https://wax.eosusa.news", 
-        "https://api.tokengamer.io", 
+        "https://api.waxsweden.org", 
         "https://wax.pink.gg", 
         "https://wax.blacklusion.io", 
         "https://wax.greymass.com", 
@@ -106,7 +106,7 @@
         "https://waxnode02.alcor.exchange", 
         "https://wax.greymass.com", 
         "https://waxnode01.alcor.exchange", 
-        "https://wax.pink.gg", 
+        "https://wax.blacklusion.io", 
         "https://wax.eosdac.io"
     ], 
     "atomichub" : [

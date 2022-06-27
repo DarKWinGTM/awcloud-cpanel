@@ -2810,7 +2810,7 @@ $(document).ready(function() {
 	</div>
 	<div class="input-group af-set-repair">
 		<div class="input-group-text af-set-repair-text" style="width: 248px; justify-content: center; ">REPAIR RATE 0000</div>
-		<input type="range" class="form-control af-set-repair-input" placeholder="1" value="0" step="1" min="0" max="20" >
+		<input type="range" class="form-control af-set-repair-input" placeholder="1" value="0" step="1" min="0" max="19" >
 	</div>
 	
 	<div class="input-group af-withdraw-deposit">

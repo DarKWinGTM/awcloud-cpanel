@@ -446,6 +446,15 @@
             border: 0 !important;
             color: #35ab25;
         }
+
+        div#alcor_exchange_monitor div.order-list {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;     /* Firefox */
+        }
+
+        div#alcor_exchange_monitor div.order-list ::-webkit-scrollbar {
+            display: none; 
+        }
     </style>
 </head>
 
@@ -836,7 +845,7 @@
                                         color: black;
                                         font-size: large;
                                     " 
-                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.102</div>
+                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.103</div>
                             </li>
                         </ul>
                         <!--
@@ -1099,7 +1108,7 @@ window['collapse-all-history'].addEventListener('click', function(e) {
                             font-size           : large;
                         ">
                             <div class="d-flex justify-content-center">
-                                <button id="total_setting" type="submit" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#totalSetting" style="width: 50%;">ALHOR TOOL</button>
+                                <button id="alcor_tool"    type="submit" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#alcorTool"    style="width: 50%;">ALHOR TOOL</button>
                                 <button id="pool_mineable" type="submit" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#poolMineable" style="width: 50%; ">MINEABLE</button>
                                 <!--
                             <button
@@ -7072,38 +7081,262 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
             </div>
         </div>
     </div>
-    <div class="modal" id="totalSetting" tabindex="-1" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 82%; ">
+    <div class="modal" id="alcorTool" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen" >
             <div class="modal-content">
                 <div class="modal-header" style="background-color: rgb(141, 197, 63) !important;">
-                    <h5 class="modal-title" id="">Total Setting</h5>
+                    <h5 class="modal-title" id="">ALCOR TOOL : </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <!--
+                <div class="modal-body" style="background-color: #191f28 !important;">
                     <div id="alcor_exchange_monitor" style="margin: auto; padding-bottom: 16px;">
-                        <div class="row justify-content-center w-100">
-                            <div class="col w-100" style="max-width: 900px;">
-                                <div class="card">
-                                    <iframe id="fwf_alcor" height="700" width="100%" loading = "lazy" scrolling="no" style="display:block; margin:auto" src="https://wax.alcor.exchange/trade/fwf-farmerstoken_wax-eosio.token"></iframe>
-                                    FWF
+                        <div class="row justify-content-center w-100" style="--bs-gutter-x: 0.1rem; ">
+                            <div
+                                class = "col w-100 alcor-panel 001"
+                                style = "
+                                    max-width: 700px;
+                                    zoom: 0.9;
+                                    -ms-zoom: 0.9;
+                                    -webkit-zoom: 0.9;
+                                    -moz-transform:  scale(0.9,0.9);
+                                "
+                            >
+                                <select class="form-select">
+                                    <option value="" selected>NONE</option>
+                                    <option value="aoff-ageoftokenss_wax-eosio.token" >AOFF</option>
+                                    <option value="aofs-ageoftokenss_wax-eosio.token" >AOFS</option>
+                                    <option value="aofw-ageoftokenss_wax-eosio.token" >AOFW</option>
+                                </select>
+                                <div class="card" style="background-color: #191f28 !important;">
+                                    <iframe id="001_alcor" height="700" width="100%" loading = "lazy" style="display:block; margin:auto" url="https://wax.alcor.exchange/trade/"></iframe>
                                 </div>
+
+                                <div class="input-group order-sell-001">
+                                    <div class="input-group-text">
+                                        <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-001-switch" value="0">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-text" style="width: 96px;">SELL ___</div>
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
+                                    <button type="submit" class="btn btn-primary order-sell-001-set" style="width: 60px; ">SET</button>
+                                </div>
+                                <div class="input-group order-sell-slippage-001">
+                                    <div class="input-group-text">
+                                        <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+                                            <label class="form-check-label">
+                                                <!--input type="checkbox" class="form-check-input order-sell-slippage-001-switch" value="0"-->
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
+                                    <input type="range" class="form-control order-sell-slippage-001-input" placeholder="0" value="0" step="1" min="0" max="10" >
+                                </div>
+                                <div class="input-group order-sell-001-config">
+                                    <div class="input-group-text" style="width: inherit; justify-content: center; ">
+                                        <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-001-config-push-only-switch" value="0">
+                                                <span style="padding-left: 5;">PUSH ONLY</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="col w-100" style="max-width: 900px;">
-                                <div class="card">
-                                    <iframe id="fww_alcor" height="700" width="100%" loading = "lazy" scrolling="no" style="display:block; margin:auto" src="https://wax.alcor.exchange/trade/fww-farmerstoken_wax-eosio.token"></iframe>
-                                    FWW
+                            <div
+                                class = "col w-100 alcor-panel 002"
+                                style = "
+                                    max-width: 700px;
+                                    zoom: 0.9;
+                                    -ms-zoom: 0.9;
+                                    -webkit-zoom: 0.9;
+                                    -moz-transform:  scale(0.9,0.9);
+                                "
+                            >
+                                <select class="form-select">
+                                    <option value="" selected>NONE</option>
+                                    <option value="aoff-ageoftokenss_wax-eosio.token" >AOFF</option>
+                                    <option value="aofs-ageoftokenss_wax-eosio.token" >AOFS</option>
+                                    <option value="aofw-ageoftokenss_wax-eosio.token" >AOFW</option>
+                                </select>
+                                <div class="card" style="background-color: #191f28 !important;">
+                                    <iframe id="002_alcor" height="700" width="100%" loading = "lazy" style="display:block; margin:auto" url="https://wax.alcor.exchange/trade/"></iframe>
                                 </div>
+
+                                <div class="input-group order-sell-002">
+                                    <div class="input-group-text">
+                                        <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-002-switch" value="0">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-text" style="width: 96px;">SELL ___</div>
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
+                                    <button type="submit" class="btn btn-primary order-sell-002-set" style="width: 60px; ">SET</button>
+                                </div>
+                                <div class="input-group order-sell-slippage-002">
+                                    <div class="input-group-text">
+                                        <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+                                            <label class="form-check-label">
+                                                <!--input type="checkbox" class="form-check-input order-sell-slippage-002-switch" value="0"-->
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
+                                    <input type="range" class="form-control order-sell-slippage-002-input" placeholder="0" value="0" step="1" min="0" max="10" >
+                                </div>
+                                <div class="input-group order-sell-002-config">
+                                    <div class="input-group-text" style="width: inherit; justify-content: center; ">
+                                        <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-002-config-push-only-switch" value="0">
+                                                <span style="padding-left: 5;">PUSH ONLY</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="col w-100" style="max-width: 900px;">
-                                <div class="card">
-                                    <iframe id="fwg_alcor" height="700" width="100%" loading = "lazy" scrolling="no" style="display:block; margin:auto" src="https://wax.alcor.exchange/trade/fwg-farmerstoken_wax-eosio.token"></iframe>
-                                    FWG
+                            <div
+                                class = "col w-100 alcor-panel 003"
+                                style = "
+                                    max-width: 700px;
+                                    zoom: 0.9;
+                                    -ms-zoom: 0.9;
+                                    -webkit-zoom: 0.9;
+                                    -moz-transform:  scale(0.9,0.9);
+                                "
+                            >
+                                <select class="form-select">
+                                    <option value="" selected>NONE</option>
+                                    <option value="aoff-ageoftokenss_wax-eosio.token" >AOFF</option>
+                                    <option value="aofs-ageoftokenss_wax-eosio.token" >AOFS</option>
+                                    <option value="aofw-ageoftokenss_wax-eosio.token" >AOFW</option>
+                                </select>
+                                <div class="card" style="background-color: #191f28 !important;">
+                                    <iframe id="003_alcor" height="700" width="100%" loading = "lazy" style="display:block; margin:auto" url="https://wax.alcor.exchange/trade/"></iframe>
                                 </div>
+                                
+                                <div class="input-group order-sell-003">
+                                    <div class="input-group-text">
+                                        <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-003-switch" value="0">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-text" style="width: 96px;">SELL ___</div>
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
+                                    <button type="submit" class="btn btn-primary order-sell-003-set" style="width: 60px; ">SET</button>
+                                </div>
+                                <div class="input-group order-sell-slippage-003">
+                                    <div class="input-group-text">
+                                        <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+                                            <label class="form-check-label">
+                                                <!--input type="checkbox" class="form-check-input order-sell-slippage-003-switch" value="0"-->
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
+                                    <input type="range" class="form-control order-sell-slippage-003-input" placeholder="0" value="0" step="1" min="0" max="10" >
+                                </div>
+                                <div class="input-group order-sell-003-config">
+                                    <div class="input-group-text" style="width: inherit; justify-content: center; ">
+                                        <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-003-config-push-only-switch" value="0">
+                                                <span style="padding-left: 5;">PUSH ONLY</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            <script>
+document.querySelectorAll('div.alcor-panel').forEach(function(e){
+    console.debug(e.querySelectorAll('select')); 
+    e.querySelectorAll('select').forEach(function(o){
+        o.addEventListener('change', function(event) {
+            e.querySelector('iframe').setAttribute(
+                'src', e.querySelector('iframe').getAttribute('url') + $(this).find("option:selected").val()
+            ); 
+        }); 
+    }); 
+}); 
+                            </script>
+                            
+                        </div>
+                        
+                        <div class="row justify-content-center w-100 order-list" style="--bs-gutter-x: 0.1rem; ">
+                            <div class="col w-100" style="max-width: 100%;">
+
+                                <div style="background-color: rgb(141, 197, 63) !important;text-align: center;color: black;"><button id="alcor_tool" type="button" class="btn-primary text-nowrap" style="width: 248px;">CANCLE ALL ORDER</button></div>
+
+                                <table cellpadding="0" style="zoom: 0.9; width:  100%; ">
+                                    <thead>
+
+                                        <tr>
+                                            <th style="width: 12%;"><div class="cell">#</div></th>
+                                            <th style="width: 12%;"><div class="cell">TIME</div></th>
+                                            <th style="width: 12%;"><div class="cell">PAIR</div></th>
+                                            <th style="width: 12%;"><div class="cell">SIDE</div></th>
+                                            <th style="width: 12%;"><div class="cell">AMOUNT</div></th>
+                                            <th style="width: 12%;"><div class="cell">TOTAL ( WAX )</div></th>
+                                            <th style="width: 12%;"><div class="cell">PRICE</div></th>
+                                        </tr>
+
+                                    </thead>
+                                </table>
                             </div>
                         </div>
+                        <div class="row justify-content-center w-100 order-list" style="--bs-gutter-x: 0.1rem; ">
+                            <div class="col w-100" style="max-width: 100%; height: 71px; overflow: auto">
+                                <table cellpadding="0" style="zoom: 0.9; width:  100%; ">
+                            
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <th style="width: 12%;">
+                                                <div class="cell"><span class="text-white">00000</span></div>
+                                            </th>
+                                            <th style="width: 12%;">
+                                                <div class="cell"><span class="text-white">0000-00-00 00:00</span></div>
+                                            </th>
+                                            <th style="width: 12%;">
+                                                <div class="cell"><span class="text-white">XXX / WAX</span></div>
+                                            </th>
+                                            <th style="width: 12%;">
+                                                <div class="cell"><span class="text-success">BUY</span></div>
+                                            </th>
+                                            <th style="width: 12%;">
+                                                <div class="cell"><span class="text-white">0.0000 BTK</span></div>
+                                            </th>
+                                            <th style="width: 12%;">
+                                                <div class="cell"><span class="text-white">0.0000 WAX</span></div>
+                                            </th>
+                                            <th style="width: 12%;">
+                                                <div class="cell"><span class="text-white">0.00000000</span></div>
+                                            </th>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        
                     </div>
-                    -->
+                </div>
+
+                <!-- 
                     <div
                         style = "
                             color: black;
@@ -7134,11 +7367,9 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             <input class="form-check-input" type="checkbox" id="enable-all-id-auto-transfer-wax-to-wax-id">Enable All ID Auto Transfer WAX to WAX ID, (Not Safe).
                         </div>
                     </div>
-                </div>
-                <!-- 
-            div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
-            </div
-          -->
+                  div class="modal-footer" style="padding: 0.75rem 0.75em 0rem 0rem; ">
+                  </div
+                -->
             </div>
         </div>
     </div>
@@ -7810,144 +8041,135 @@ document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-
     </div>
     <!--
     <script type="text/javascript">
- function googleTranslateElementInit() {
-   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
- }
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     -->
 </body>
 <script>
-    function tooltipTriggerRender() {
-        
-        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function(ele) {
-            return new bootstrap.Tooltip(ele)
-        }); //  setTimeout(function() { tooltipTriggerRender() }, 8000); 
+function tooltipTriggerRender() {
+    [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function(ele) {
+        return new bootstrap.Tooltip(ele)
+    }); //  setTimeout(function() { tooltipTriggerRender() }, 8000); 
+};
+tooltipTriggerRender();
+(function() {
+    "use strict";
+    window.addEventListener("message", (event) => {
+        if (
+            self == top &&
+            event.data &&
+            event.data.sender == 'CoinMarketCap' &&
+            event.data.wax &&
+            event.data.tlm
+        ) {
+            coinMarketCap.setAttribute('wax', event.data.wax)
+            coinMarketCap.setAttribute('tlm', event.data.tlm)
+        }
+    });
+})();
+window['translate'] = function(sourceLanguage, targetLanguage, text, callback) {
+    console.debug(sourceLanguage, targetLanguage, text)
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        callback(JSON.parse(xhr.responseText))
     };
-    tooltipTriggerRender();
-    (function() {
-        "use strict";
-        window.addEventListener("message", (event) => {
-            if (
-                self == top &&
-                event.data &&
-                event.data.sender == 'CoinMarketCap' &&
-                event.data.wax &&
-                event.data.tlm
-            ) {
-                coinMarketCap.setAttribute('wax', event.data.wax)
-                coinMarketCap.setAttribute('tlm', event.data.tlm)
-            }
-        });
-    })();
-
-    window['translate'] = function(sourceLanguage, targetLanguage, text, callback) {
-
-        console.debug(sourceLanguage, targetLanguage, text)
-        const xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-            callback(JSON.parse(xhr.responseText))
-        };
-        xhr.onerror = function() {
-            callback([
-                [
-                    [text]
-                ]
-            ])
-        };
-        xhr.open(
-            "GET", `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${
-	        	sourceLanguage
-	        }&tl=${
-	        	targetLanguage
-	        }&dt=t&q=${
-	        	text
-	        }`, true
-        );
-        xhr.send();
+    xhr.onerror = function() {
+        callback([
+            [
+                [text]
+            ]
+        ])
     };
+    xhr.open(
+        "GET", `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${
+        	sourceLanguage
+        }&tl=${
+        	targetLanguage
+        }&dt=t&q=${
+        	text
+        }`, true
+    );
+    xhr.send();
+};
 </script>
 
 <script>
-    var selectedFile;
-
-    document.getElementById("import-account").addEventListener("change", function(event) {
-        selectedFile = event.target.files[0];
-    });
-    document.querySelector('button.btn.btn-primary.import-account').addEventListener("click", function() {
-
-        $.notify(`ADDING ID : PLEASE WAIT`, 'info');
-
-        $("button.btn.btn-primary.import-account").addClass('invisible');
-
-        if (selectedFile) {
-            var fileReader      = new FileReader();
-            fileReader.onload   = function(event) {
-                //  var data        = event.target.result;;
-                var workbook = XLSX.read(event.target.result, {
-                    type: "binary"
-                });
-                workbook.SheetNames.forEach(sheet => {
-                    //  let rowObject   = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
-                    //  let jsonObject  = JSON.stringify(rowObject);
-                    //  for (db of rowObject) {
-                    for (db of XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet])) {
-                        if (
-                            db['WAXID'] &&
-                            db['EMAIL'] &&
-                            db['PASSWORD'] &&
-                            db['SECRET']
-                        ) {
-                            (function(jsondata) {
-                                setTimeout(function() {
-                                    jsondata['XMLh'].open("POST", '/add');
-                                    jsondata['XMLh'].setRequestHeader("Content-Type", "application/json");
-                                    jsondata['XMLh'].onreadystatechange = function() {
-                                        if (jsondata['XMLh'].readyState === 4) {
-
-                                            if (jsondata['XMLh'].responseText != 'okay') {
-                                                $("button.btn.btn-primary.import-account").removeClass('invisible');
-                                                $.notify(`ERROR ADD ACCOUNT ! ${ JSON.parse(jsondata['json'])['waxid'] } - ${ jsondata['XMLh'].responseText }`, "error");
-                                            } else {
-                                                $("button.btn.btn-primary.import-account").removeClass('invisible');
-                                                $.notify(`ADD NEW ACCOUNT + ${ JSON.parse(jsondata['json'])['waxid'] }`, "success");
-                                            };
-
-                                        }
-                                    };
-                                    jsondata['XMLh'].send(jsondata['json']);
-                                }, 2000 + Math.ceil(Math.random() * 48000));
-                            })({
-                                'XMLh'  : new XMLHttpRequest(),
-                                'json'  : JSON.stringify({
-                                    "waxid"     : db['WAXID'].trim(),
-                                    "email"     : db['EMAIL'].trim(),
-                                    "password"  : db['PASSWORD'].trim(),
-                                    "secret"    : db['SECRET'].trim(),
-                                    "backup"    : ''
-                                })
-                            });
-                        };
+var selectedFile;
+document.getElementById("import-account").addEventListener("change", function(event) {
+    selectedFile = event.target.files[0];
+});
+document.querySelector('button.btn.btn-primary.import-account').addEventListener("click", function() {
+    $.notify(`ADDING ID : PLEASE WAIT`, 'info');
+    $("button.btn.btn-primary.import-account").addClass('invisible');
+    if (selectedFile) {
+        var fileReader      = new FileReader();
+        fileReader.onload   = function(event) {
+            //  var data        = event.target.result;;
+            var workbook = XLSX.read(event.target.result, {
+                type: "binary"
+            });
+            workbook.SheetNames.forEach(sheet => {
+                //  let rowObject   = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+                //  let jsonObject  = JSON.stringify(rowObject);
+                //  for (db of rowObject) {
+                for (db of XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet])) {
+                    if (
+                        db['WAXID'] &&
+                        db['EMAIL'] &&
+                        db['PASSWORD'] &&
+                        db['SECRET']
+                    ) {
+                        (function(jsondata) {
+                            setTimeout(function() {
+                                jsondata['XMLh'].open("POST", '/add');
+                                jsondata['XMLh'].setRequestHeader("Content-Type", "application/json");
+                                jsondata['XMLh'].onreadystatechange = function() {
+                                    if (jsondata['XMLh'].readyState === 4) {
+                                        if (jsondata['XMLh'].responseText != 'okay') {
+                                            $("button.btn.btn-primary.import-account").removeClass('invisible');
+                                            $.notify(`ERROR ADD ACCOUNT ! ${ JSON.parse(jsondata['json'])['waxid'] } - ${ jsondata['XMLh'].responseText }`, "error");
+                                        } else {
+                                            $("button.btn.btn-primary.import-account").removeClass('invisible');
+                                            $.notify(`ADD NEW ACCOUNT + ${ JSON.parse(jsondata['json'])['waxid'] }`, "success");
+                                        };
+                                    }
+                                };
+                                jsondata['XMLh'].send(jsondata['json']);
+                            }, 2000 + Math.ceil(Math.random() * 48000));
+                        })({
+                            'XMLh'  : new XMLHttpRequest(),
+                            'json'  : JSON.stringify({
+                                "waxid"     : db['WAXID'].trim(),
+                                "email"     : db['EMAIL'].trim(),
+                                "password"  : db['PASSWORD'].trim(),
+                                "secret"    : db['SECRET'].trim(),
+                                "backup"    : ''
+                            })
+                        });
                     };
-                });
-            };
-            fileReader.readAsBinaryString(selectedFile);
-        }
-    });
-    window['atomichub'] = [
-        'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/',
-        'https://cors.bridged.cc/https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',  
-        'https://cors.bridged.cc/https://atomic.tokengamer.io/atomicassets/v1/assets/', 
-        'https://cors.bridged.cc/https://atomic.wax.io/atomicassets/v1/assets/', 
-        'https://wax.api.atomicassets.io/atomicassets/v1/assets/',
-        'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',
-        'https://atomic.tokengamer.io/atomicassets/v1/assets/',
-        'https://atomic.wax.io/atomicassets/v1/assets/', 
-        'https://wax.api.atomicassets.io/atomicassets/v1/assets/',
-        'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',
-        'https://atomic.tokengamer.io/atomicassets/v1/assets/',
-        'https://atomic.wax.io/atomicassets/v1/assets/'
-    ];
+                };
+            });
+        };
+        fileReader.readAsBinaryString(selectedFile);
+    }
+});
+window['atomichub'] = [
+    'https://cors.bridged.cc/https://wax.api.atomicassets.io/atomicassets/v1/assets/',
+    'https://cors.bridged.cc/https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',  
+    'https://cors.bridged.cc/https://atomic.tokengamer.io/atomicassets/v1/assets/', 
+    'https://cors.bridged.cc/https://atomic.wax.io/atomicassets/v1/assets/', 
+    'https://wax.api.atomicassets.io/atomicassets/v1/assets/',
+    'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',
+    'https://atomic.tokengamer.io/atomicassets/v1/assets/',
+    'https://atomic.wax.io/atomicassets/v1/assets/', 
+    'https://wax.api.atomicassets.io/atomicassets/v1/assets/',
+    'https://aa-wax-public1.neftyblocks.com/atomicassets/v1/assets/',
+    'https://atomic.tokengamer.io/atomicassets/v1/assets/',
+    'https://atomic.wax.io/atomicassets/v1/assets/'
+];
 </script>
 
 </html>

@@ -19,6 +19,8 @@
         "https://hyperion.tokengamer.io/v2/history/get_transaction?id=", 
         "https://api.wax.greeneosio.com/v2/history/get_transaction?id=", 
         "https://waxapi.ledgerwise.io/v2/history/get_transaction?id=", 
+        "https://wax.eosphere.io/v2/history/get_transaction?id=", 
+        "https://wax.hivebp.io/v2/history/get_transaction?id=", 
         "https://history-wax-mainnet.wecan.dev/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
@@ -117,7 +119,8 @@
         "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
-        "https://aa.neftyblocks.com/atomicassets/v1/assets?"
+        "https://aa.neftyblocks.com/atomicassets/v1/assets?", 
+        "https://api.chainchamps.com/atomicassets/v1/assets?"
     ], 
     "assetshub" : [
         "https://atomic-wax-mainnet.wecan.dev/atomicassets/v1/assets?", 
@@ -127,7 +130,8 @@
         "https://wax.blokcrafters.io/atomicassets/v1/assets?", 
         "https://atomic.wax.eosrio.io/atomicassets/v1/assets?", 
         "https://api.atomic.greeneosio.com/atomicassets/v1/assets?", 
-        "https://aa.neftyblocks.com/atomicassets/v1/assets?"
+        "https://aa.neftyblocks.com/atomicassets/v1/assets?", 
+        "https://api.chainchamps.com/atomicassets/v1/assets?"
     ], 
     "scrape_io" : [
         "d34d387883ce4482802f562be312a242cb8647902f4", 

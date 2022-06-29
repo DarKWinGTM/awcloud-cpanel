@@ -4075,14 +4075,14 @@ $(document).ready(function() {
 									if(v == 1){
 										return 'SAFE'
 									}else if (v == 2){
-										return 'RISK'
+										return ''
 									}else{
 										return 'HIGH'
 									}
 								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
-									`/vers/dw/set?waxid=${ this['var']['id'] }&cfg_mine=time&value=${ this['var']['db']['value'] }`, 
+									`/vers/dw/set?waxid=${ this['var']['id'] }&cfg_mine=risk&value=${ this['var']['db']['value'] }`, 
 									{method : 'GET'}
 								); 
 							}); 
@@ -4103,7 +4103,7 @@ $(document).ready(function() {
 									if(v == 1){
 										return 'SAFE'
 									}else if (v == 2){
-										return 'RISK'
+										return ''
 									}else{
 										return 'HIGH'
 									}
@@ -6822,7 +6822,7 @@ $(document).ready(function() {
 												if(v == 1){
 													return 'SAFE'
 												}else if (v == 2){
-													return 'RISK'
+													return ''
 												}else{
 													return 'HIGH'
 												}

@@ -845,7 +845,7 @@
                                         color: black;
                                         font-size: large;
                                     " 
-                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.103</div>
+                                    onmouseover     = "window.location.assign( `#${ document.title.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/gi).join() }` )">v0.0151.637.104</div>
                             </li>
                         </ul>
                         <!--
@@ -7102,45 +7102,51 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 "
                             >
                                 <select class="form-select">
-                                    <option value="" selected>NONE</option>
-                                    <option value="aoff-ageoftokenss_wax-eosio.token" >AOFF</option>
-                                    <option value="aofs-ageoftokenss_wax-eosio.token" >AOFS</option>
-                                    <option value="aofw-ageoftokenss_wax-eosio.token" >AOFW</option>
+                                    <option value="" symbol="___" code="" selected>NONE</option>
+                                    <option value="aoff-ageoftokenss_wax-eosio.token" symbol="AOFF" code="456" >AOFF</option>
+                                    <option value="aofs-ageoftokenss_wax-eosio.token" symbol="AOFS" code="455" >AOFS</option>
+                                    <option value="aofw-ageoftokenss_wax-eosio.token" symbol="AOFW" code="454" >AOFW</option>
                                 </select>
                                 <div class="card" style="background-color: #191f28 !important;">
                                     <iframe id="001_alcor" height="700" width="100%" loading = "lazy" style="display:block; margin:auto" url="https://wax.alcor.exchange/trade/"></iframe>
                                 </div>
 
-                                <div class="input-group order-sell-001">
+                                <div class="input-group order-sell">
                                     <div class="input-group-text">
                                         <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input order-sell-001-switch" value="0">
+                                                <input type="checkbox" class="form-check-input order-sell-switch" value="0">
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="input-group-text" style="width: 96px;">SELL ___</div>
-                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
-                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
-                                    <button type="submit" class="btn btn-primary order-sell-001-set" style="width: 60px; ">SET</button>
+                                    <div class="input-group-text" style="width: 116px;">SELL ___</div>
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="10000" >
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="10000" disabled>
+                                    <button type="submit" class="btn btn-primary order-sell-set" style="width: 60px; ">SET</button>
                                 </div>
-                                <div class="input-group order-sell-slippage-001">
+                                <div class="input-group order-sell-slippage">
                                     <div class="input-group-text">
                                         <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
                                             <label class="form-check-label">
-                                                <!--input type="checkbox" class="form-check-input order-sell-slippage-001-switch" value="0"-->
+                                                <!--input type="checkbox" class="form-check-input order-sell-slippage-switch" value="0"-->
                                             </label>
                                         </div>
                                     </div>
                                     <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
-                                    <input type="range" class="form-control order-sell-slippage-001-input" placeholder="0" value="0" step="1" min="0" max="10" >
+                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="1" min="0" max="50" >
                                 </div>
-                                <div class="input-group order-sell-001-config">
+                                <div class="input-group order-sell-config">
                                     <div class="input-group-text" style="width: inherit; justify-content: center; ">
                                         <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input order-sell-001-config-push-only-switch" value="0">
+                                                <input type="checkbox" class="form-check-input order-sell-config-push-only-switch" value="0">
                                                 <span style="padding-left: 5;">PUSH ONLY</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-config-dumper-switch" value="0">
+                                                <span style="padding-left: 5;">DUMP SELL</span>
                                             </label>
                                         </div>
                                     </div>
@@ -7158,45 +7164,51 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 "
                             >
                                 <select class="form-select">
-                                    <option value="" selected>NONE</option>
-                                    <option value="aoff-ageoftokenss_wax-eosio.token" >AOFF</option>
-                                    <option value="aofs-ageoftokenss_wax-eosio.token" >AOFS</option>
-                                    <option value="aofw-ageoftokenss_wax-eosio.token" >AOFW</option>
+                                    <option value="" symbol="___" code="" selected>NONE</option>
+                                    <option value="aoff-ageoftokenss_wax-eosio.token" symbol="AOFF" code="456" >AOFF</option>
+                                    <option value="aofs-ageoftokenss_wax-eosio.token" symbol="AOFS" code="455" >AOFS</option>
+                                    <option value="aofw-ageoftokenss_wax-eosio.token" symbol="AOFW" code="454" >AOFW</option>
                                 </select>
                                 <div class="card" style="background-color: #191f28 !important;">
                                     <iframe id="002_alcor" height="700" width="100%" loading = "lazy" style="display:block; margin:auto" url="https://wax.alcor.exchange/trade/"></iframe>
                                 </div>
 
-                                <div class="input-group order-sell-002">
+                                <div class="input-group order-sell">
                                     <div class="input-group-text">
                                         <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input order-sell-002-switch" value="0">
+                                                <input type="checkbox" class="form-check-input order-sell-switch" value="0">
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="input-group-text" style="width: 96px;">SELL ___</div>
-                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
-                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
-                                    <button type="submit" class="btn btn-primary order-sell-002-set" style="width: 60px; ">SET</button>
+                                    <div class="input-group-text" style="width: 116px;">SELL ___</div>
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="10000" >
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="10000" disabled>
+                                    <button type="submit" class="btn btn-primary order-sell-set" style="width: 60px; ">SET</button>
                                 </div>
-                                <div class="input-group order-sell-slippage-002">
+                                <div class="input-group order-sell-slippage">
                                     <div class="input-group-text">
                                         <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
                                             <label class="form-check-label">
-                                                <!--input type="checkbox" class="form-check-input order-sell-slippage-002-switch" value="0"-->
+                                                <!--input type="checkbox" class="form-check-input order-sell-slippage-switch" value="0"-->
                                             </label>
                                         </div>
                                     </div>
                                     <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
-                                    <input type="range" class="form-control order-sell-slippage-002-input" placeholder="0" value="0" step="1" min="0" max="10" >
+                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="1" min="0" max="50" >
                                 </div>
-                                <div class="input-group order-sell-002-config">
+                                <div class="input-group order-sell-config">
                                     <div class="input-group-text" style="width: inherit; justify-content: center; ">
                                         <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input order-sell-002-config-push-only-switch" value="0">
+                                                <input type="checkbox" class="form-check-input order-sell-config-push-only-switch" value="0">
                                                 <span style="padding-left: 5;">PUSH ONLY</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-config-dumper-switch" value="0">
+                                                <span style="padding-left: 5;">DUMP SELL</span>
                                             </label>
                                         </div>
                                     </div>
@@ -7214,29 +7226,29 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                 "
                             >
                                 <select class="form-select">
-                                    <option value="" selected>NONE</option>
-                                    <option value="aoff-ageoftokenss_wax-eosio.token" >AOFF</option>
-                                    <option value="aofs-ageoftokenss_wax-eosio.token" >AOFS</option>
-                                    <option value="aofw-ageoftokenss_wax-eosio.token" >AOFW</option>
+                                    <option value="" symbol="___" code="" selected>NONE</option>
+                                    <option value="aoff-ageoftokenss_wax-eosio.token" symbol="AOFF" code="456" >AOFF</option>
+                                    <option value="aofs-ageoftokenss_wax-eosio.token" symbol="AOFS" code="455" >AOFS</option>
+                                    <option value="aofw-ageoftokenss_wax-eosio.token" symbol="AOFW" code="454" >AOFW</option>
                                 </select>
                                 <div class="card" style="background-color: #191f28 !important;">
                                     <iframe id="003_alcor" height="700" width="100%" loading = "lazy" style="display:block; margin:auto" url="https://wax.alcor.exchange/trade/"></iframe>
                                 </div>
                                 
-                                <div class="input-group order-sell-003">
+                                <div class="input-group order-sell">
                                     <div class="input-group-text">
                                         <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input order-sell-003-switch" value="0">
+                                                <input type="checkbox" class="form-check-input order-sell-switch" value="0">
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="input-group-text" style="width: 96px;">SELL ___</div>
-                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" >
-                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="100" disabled>
-                                    <button type="submit" class="btn btn-primary order-sell-003-set" style="width: 60px; ">SET</button>
+                                    <div class="input-group-text" style="width: 116px;">SELL ___</div>
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="10000" >
+                                    <input type="number" class="form-control" placeholder="0.0000" value="0.0000" step="5" min="0" max="10000" disabled>
+                                    <button type="submit" class="btn btn-primary order-sell-set" style="width: 60px; ">SET</button>
                                 </div>
-                                <div class="input-group order-sell-slippage-003">
+                                <div class="input-group order-sell-slippage">
                                     <div class="input-group-text">
                                         <div class="form-check-inline form-switch" style="margin-right: 0rem; ">
                                             <label class="form-check-label">
@@ -7245,14 +7257,20 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                         </div>
                                     </div>
                                     <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
-                                    <input type="range" class="form-control order-sell-slippage-003-input" placeholder="0" value="0" step="1" min="0" max="10" >
+                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="1" min="0" max="50" >
                                 </div>
-                                <div class="input-group order-sell-003-config">
+                                <div class="input-group order-sell-config">
                                     <div class="input-group-text" style="width: inherit; justify-content: center; ">
                                         <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input order-sell-003-config-push-only-switch" value="0">
+                                                <input type="checkbox" class="form-check-input order-sell-config-push-only-switch" value="0">
                                                 <span style="padding-left: 5;">PUSH ONLY</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input order-sell-config-dumper-switch" value="0">
+                                                <span style="padding-left: 5;">DUMP SELL</span>
                                             </label>
                                         </div>
                                     </div>
@@ -7261,21 +7279,260 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                             </div>
                             
                             <script>
+
+document.querySelector('div.modal#alcorTool').addEventListener('shown.bs.modal', function(event) {
+    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').innerText = `ALCOR TOOL : ${ event.relatedTarget.parentNode.parentNode.parentNode.id }`
+    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id);
+    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').templateSell = `
+<th style="width: 12%;">
+    <div class="cell"><span class="text-white">00000</span></div>
+</th>
+<th style="width: 12%;">
+    <div class="cell"><span class="text-white">00/00/0000, 00:00:00</span></div>
+</th>
+<th style="width: 12%;">
+    <div class="cell"><span class="text-white">XXX / WAX</span></div>
+</th>
+<th style="width: 12%;">
+    <div class="cell"><span class="text-danger">SELL</span></div>
+</th>
+<th style="width: 12%;">
+    <div class="cell"><span class="text-white">0.0000 XXX</span></div>
+</th>
+<th style="width: 12%;">
+    <div class="cell"><span class="text-white">0.0000 WAX</span></div>
+</th>
+<th style="width: 12%;">
+    <div class="cell"><span class="text-white">0.00000000</span></div>
+</th>`; 
+    document.querySelector('div.modal#alcorTool div.order-list').querySelector('table').querySelector('tbody').innerHTML = document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').templateSell; 
+
+    (function thiscode(){
+        if(document.querySelector('div.modal#alcorTool').className.indexOf('show') >= 0){
+            fetch(`https://${ $( document.querySelector('select[aria-label*="Endpoint"]') ).find("option:selected").val() }/v1/chain/get_table_rows`, {
+                "headers"   : {},
+                "body"      : JSON.stringify({
+                    "json"              : true,
+                    "code"              : "alcordexmain",
+                    "scope"             : "alcordexmain",
+                    "table"             : "account",
+                    "table_key"         : "",
+                    "lower_bound"       : document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value"),
+                    "upper_bound"       : document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value"),
+                    "index_position"    : 1,
+                    "key_type"          : "",
+                    "limit"             : 1,
+                    "reverse"           : false,
+                    "show_payer"        : false
+                }),
+                "method": "POST"
+            }).then(
+                token => token.json()
+            ).then(token => {
+
+                if(
+                    token.rows.length >= 1
+                ){
+                    
+                    document.querySelector('div.modal#alcorTool div.order-list').querySelector('table').querySelector('tbody').innerHTML = ''; 
+
+                    token.rows[0].sellorders.map(e => e.key).forEach(function (id){
+                        fetch(`https://${ $( document.querySelector('select[aria-label*="Endpoint"]') ).find("option:selected").val() }/v1/chain/get_table_rows`, {
+                            "headers"   : {},
+                            "body"      : JSON.stringify({
+                                "json"              : true,
+                                "code"              : "alcordexmain",
+                                "scope"             : id,
+                                "table"             : "sellorder",
+                                "table_key"         : "",
+                                "lower_bound"       : document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value"),
+                                "upper_bound"       : document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value"),
+                                "index_position"    : 3,
+                                "key_type"          : "i64",
+                                "limit"             : 1000,
+                                "reverse"           : false,
+                                "show_payer"        : false
+                            }),
+                            "method": "POST"
+                        }).then(
+                            order => order.json()
+                        ).then(order => {
+
+                            console.debug( order ); 
+
+                            order.rows.forEach(function (sell){
+                                if(
+                                    order.rows.length >= 1 && !document.querySelector(`[id*="alcor-order-list-${sell.id}-${id}"]`)
+                                ){
+                                    console.debug( `alcor-order-list-${sell.id}-${id}` ); 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid = Object.assign(document.createElement('tr'), {
+                                        id          : `alcor-order-list-${sell.id}-${id}`, 
+                                        innerHTML   : document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').templateSell
+                                    })
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[0].innerText = `${sell.id}-${id}`; 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[1].innerText = (new Date(
+                                        sell.timestamp * 1000
+                                    ).toLocaleString(
+                                        "en-US", {
+                                            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+                                            year    : 'numeric', 
+                                            month   : '2-digit', 
+                                            day     : '2-digit', 
+                                            hour    : '2-digit', 
+                                            hour12  : false, 
+                                            minute  : '2-digit', 
+                                            second  : '2-digit'
+                                        }
+                                    ))
+                                    //  {
+                                    //      "rows": [
+                                    //          {
+                                    //              "id": 4002,
+                                    //              "account": "gj1xc.wam",
+                                    //              "bid": "7040.0000 SRM",
+                                    //              "ask": "68.77376000 WAX",
+                                    //              "unit_price": "976900",
+                                    //              "timestamp": 1656364936
+                                    //          }
+                                    //      ],
+                                    //      "more": false,
+                                    //      "next_key": "",
+                                    //      "next_key_bytes": ""
+                                    //  }
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[2].innerText = `${sell.bid.split(' ')[1]} / ${sell.ask.split(' ')[1]}`; 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[4].innerText = sell.bid; 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[5].innerText = `${sell.ask.split(' ')[0]} WAX`; 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[6].innerText = (parseInt(sell.unit_price) / 100000000).toFixed(8); 
+                                    document.querySelector('div.modal#alcorTool div.order-list').querySelector('table').querySelector('tbody').appendChild(
+                                        document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid
+                                    ); 
+                                }; 
+                            })
+
+                        }).catch(error => {
+                            console.debug( error )
+                        });
+                    }); 
+                }
+            }).catch(error => {
+                console.debug( error ); 
+            }); 
+            
+            setTimeout(function() { thiscode() }, 30000); 
+            
+        }; 
+    })()
+
+});
 document.querySelectorAll('div.alcor-panel').forEach(function(e){
-    console.debug(e.querySelectorAll('select')); 
+    
+    // /alco/aoff/set?waxid=xxxxx.wam&switch=false-0.0000-0-false
+    // /alco/${ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() }/set?waxid=xxxxx.wam&switch=false-0.0000-0-false
+    e.querySelector('button.order-sell-set').addEventListener('click', function(event) {
+        console.debug( event ); 
+        fetch(
+			`/alco/${
+                $( e.querySelector('select') ).find("option:selected")[0].getAttribute('symbol')
+            }/set?waxid=${
+                document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+            }&switch=${
+                e.querySelector('input.order-sell-switch').checked
+            }-${
+                parseInt( e.querySelectorAll('div.order-sell input')[1].value ).toFixed(4)
+            }-${
+                e.querySelectorAll('div.order-sell-slippage input')[0].value
+            }-${
+                e.querySelector('div.order-sell-config input.order-sell-config-push-only-switch').checked
+            }-${
+                e.querySelector('div.order-sell-config input.order-sell-config-dumper-switch').checked
+            }`, 
+			{method : 'GET'}
+		); 
+    }); 
+    e.querySelector('input.order-sell-switch').addEventListener('change', function(event) {
+        console.debug( event ); 
+        fetch(
+			`/alco/${
+                $( e.querySelector('select') ).find("option:selected")[0].getAttribute('symbol')
+            }/set?waxid=${
+                document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+            }&switch=${
+                e.querySelector('input.order-sell-switch').checked
+            }-${
+                parseInt( e.querySelectorAll('div.order-sell input')[1].value ).toFixed(4)
+            }-${
+                e.querySelectorAll('div.order-sell-slippage input')[0].value
+            }-${
+                e.querySelector('div.order-sell-config input.order-sell-config-push-only-switch').checked
+            }-${
+                e.querySelector('div.order-sell-config input.order-sell-config-dumper-switch').checked
+            }`, 
+			{method : 'GET'}
+		); 
+    }); 
+    
     e.querySelectorAll('select').forEach(function(o){
         o.addEventListener('change', function(event) {
-            e.querySelector('iframe').setAttribute(
-                'src', e.querySelector('iframe').getAttribute('url') + $(this).find("option:selected").val()
-            ); 
+            e.querySelector('iframe').setAttribute( 'src', e.querySelector('iframe').getAttribute('url') + $(this).find("option:selected").val() ); 
+            e.querySelector('input.order-sell-switch').checked                                          = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['sw']; 
+            e.querySelector('div.order-sell').querySelectorAll('input[type*="number"]')[0].value        = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['cf']['amount']; 
+            e.querySelector('div.order-sell-slippage input').value                                      = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['cf']['slippa']; 
+            e.querySelectorAll('div.order-sell-slippage div.input-group-text')[1].innerText             = 'SELL SLIPPAGE +' + ('0000' + e.querySelector('div.order-sell-slippage input').value ).slice(-'0000'.length) + '%'; 
+            e.querySelector('div.order-sell-config input.order-sell-config-push-only-switch').checked   = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['cf']['puonly']; 
+            e.querySelector('div.order-sell-config input.order-sell-config-dumper-switch').checked      = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['cf']['dumper']; 
+            o.parentElement.querySelector('div.order-sell').querySelectorAll('div.input-group-text')[1].innerText = `SELL ${ $(this).find("option:selected")[0].getAttribute('symbol') }`; 
+            
+            (function thiscode(ele, tok){
+                if (
+                    tok == $( ele ).find("option:selected")[0].getAttribute('symbol') && $( ele ).find("option:selected").val() != ''
+                ){
+                    setTimeout(function() { thiscode(ele, tok) }, 5000); 
+                    
+                    fetch(
+                        `https://wax.alcor.exchange/api/markets/${ $( ele ).find("option:selected")[0].getAttribute('code') }`, 
+						{method : 'GET'}
+					).then(
+                        result => result.json()
+                    ).then(result => {
+                        o.parentElement.querySelector('div.order-sell').querySelectorAll('input[type*="number"]')[1].var    = result; 
+                    }).catch(error => {
+                        console.debug( error )
+                    });
+                    
+                }; 
+            })( this, $(this).find("option:selected")[0].getAttribute('symbol') ); 
+            (function thiscode(ele, tok){
+                if (
+                    tok == $( ele ).find("option:selected")[0].getAttribute('symbol') && $( ele ).find("option:selected").val() != ''
+                ){
+                    setTimeout(function() { thiscode(ele, tok) }, 1000); 
+                    
+                    o.parentElement.querySelector('div.order-sell').querySelectorAll('input[type*="number"]')[1].value      = parseFloat(
+                        parseInt(
+                            o.parentElement.querySelectorAll('div.order-sell input')[1].value
+                        ) * (
+                            o.parentElement.querySelector('div.order-sell').querySelectorAll('input[type*="number"]')[1].var.ask * (
+                                ( 100 + parseInt(e.querySelector('div.order-sell-slippage input').value) ) / 100
+                            )
+                        )
+                    ).toFixed(8); 
+                    
+                }; 
+            })( this, $(this).find("option:selected")[0].getAttribute('symbol') ); 
+
         }); 
     }); 
+    
+    e.querySelector('div.order-sell-slippage input').addEventListener('change', function(event) {
+        e.querySelector('div.order-sell-slippage').querySelectorAll('div.input-group-text')[1].innerText = `SELL SLIPPAGE +${ ('0000' + $(event.target).val()).slice(-'0000'.length) }%`
+    }); 
+    
 }); 
                             </script>
                             
                         </div>
                         
-                        <div class="row justify-content-center w-100 order-list" style="--bs-gutter-x: 0.1rem; ">
+                        <div class="row justify-content-center w-100 order-head" style="--bs-gutter-x: 0.1rem; ">
                             <div class="col w-100" style="max-width: 100%;">
 
                                 <div style="background-color: rgb(141, 197, 63) !important;text-align: center;color: black;"><button id="alcor_tool" type="button" class="btn-primary text-nowrap" style="width: 248px;">CANCLE ALL ORDER</button></div>
@@ -7302,36 +7559,86 @@ document.querySelectorAll('div.alcor-panel').forEach(function(e){
                                 <table cellpadding="0" style="zoom: 0.9; width:  100%; ">
                             
                                     <tbody>
-                                        
-                                        <tr>
-                                            <th style="width: 12%;">
-                                                <div class="cell"><span class="text-white">00000</span></div>
-                                            </th>
-                                            <th style="width: 12%;">
-                                                <div class="cell"><span class="text-white">0000-00-00 00:00</span></div>
-                                            </th>
-                                            <th style="width: 12%;">
-                                                <div class="cell"><span class="text-white">XXX / WAX</span></div>
-                                            </th>
-                                            <th style="width: 12%;">
-                                                <div class="cell"><span class="text-success">BUY</span></div>
-                                            </th>
-                                            <th style="width: 12%;">
-                                                <div class="cell"><span class="text-white">0.0000 BTK</span></div>
-                                            </th>
-                                            <th style="width: 12%;">
-                                                <div class="cell"><span class="text-white">0.0000 WAX</span></div>
-                                            </th>
-                                            <th style="width: 12%;">
-                                                <div class="cell"><span class="text-white">0.00000000</span></div>
-                                            </th>
-                                        </tr>
-
                                     </tbody>
+
                                 </table>
 
                             </div>
                         </div>
+                        
+                        <script>
+document.querySelector('div.modal#alcorTool div.order-head').querySelector('button').addEventListener("click",function(e) {
+
+    $.notify(
+        document.querySelector('div.modal#alcorTool').querySelector('div.modal-header'), 
+        `CANCLE ORDER : PLEASE WAIT ${ [...document.querySelectorAll('[id*="alcor-order-list-"]')].map(e => e.id.replace('alcor-order-list-', '')).join(',') }`,
+        'info'
+    );
+
+    fetch(`/cancledex?waxid=${
+        document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
+    }&message=${
+        [...document.querySelectorAll('[id*="alcor-order-list-"]')].map(e => e.id.replace('alcor-order-list-', '')).join(',')
+    }`, {
+        "headers"   : {},
+        "body"      : null,
+        "method"    : "GET",
+    }).then(
+        result => result.json()
+    ).then(result => {
+        if (result['code'] == 200) {
+            $.notify(
+                document.querySelector('div.modal#alcorTool').querySelector('div.modal-header'), 
+                `CANCLE ORDER : DONE ${ document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value") } - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+                'success'
+            );
+        } else if (
+            result['data']['transaction'] &&
+            result['data']['transaction']['trx'] &&
+            result['data']['transaction']['trx']['code'] &&
+            result['data']['transaction']['trx']['error'] &&
+            result['data']['transaction']['trx']['error']['code'] &&
+            result['data']['transaction']['trx']['error']['details'] &&
+            result['data']['transaction']['trx']['error']['details'].length
+        ) {
+            $.notify(
+                document.querySelector('div.modal#alcorTool').querySelector('div.modal-header'), 
+                `CANCLE ORDER : WARNING ${ document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value") } - ${ result['data']['transaction']['trx']['error']['details'][0]['message'].split(':').splice(-1)[0] }`, 'warn'
+            ); 
+        } else {
+            try {
+                if (
+                    result['data']['transaction'] &&
+                    result['data']['transaction']['trx'] &&
+                    result['data']['transaction']['trx']['error'] &&
+                    result['data']['transaction']['trx']['error']['what']
+                ) {
+                    $.notify(
+                        document.querySelector('div.modal#alcorTool').querySelector('div.modal-header'), 
+                        `CANCLE ORDER : WARNING ${ document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value") } - ${ result['data']['transaction']['trx']['error']['what'] }`, 'warn'
+                    );
+                } else {
+                    $.notify(
+                        document.querySelector('div.modal#alcorTool').querySelector('div.modal-header'), 
+                        `CANCLE ORDER : WARNING ${ document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value") } - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+                    );
+                };
+            } catch (e) {
+                $.notify(
+                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header'), 
+                    `CANCLE ORDER : ERROR ${ document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value") } - ${ result['text'] }`,
+                    'error'
+                );
+            };
+        };
+    }).catch(error => {
+        $.notify(
+            document.querySelector('div.modal#alcorTool').querySelector('div.modal-header'), 
+            `CANCLE ORDER : CONNECTION FAILED ${ document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value") } ${ error }`, 'error'
+        );
+    });
+})
+                        </script>
                         
                     </div>
                 </div>

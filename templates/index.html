@@ -7526,6 +7526,9 @@ document.querySelectorAll('div.alcor-panel').forEach(function(e){
     e.querySelector('div.order-sell-slippage input').addEventListener('change', function(event) {
         e.querySelector('div.order-sell-slippage').querySelectorAll('div.input-group-text')[1].innerText = `SELL SLIPPAGE +${ ('0000' + $(event.target).val()).slice(-'0000'.length) }%`
     }); 
+    e.querySelector('div.order-sell-slippage input').addEventListener('input', function(event) {
+        e.querySelector('div.order-sell-slippage').querySelectorAll('div.input-group-text')[1].innerText = `SELL SLIPPAGE +${ ('0000' + $(event.target).val()).slice(-'0000'.length) }%`
+    }); 
     
 }); 
                             </script>

@@ -2812,6 +2812,10 @@ $(document).ready(function() {
 		<div class="input-group-text af-set-repair-text" style="width: 248px; justify-content: center; ">REPAIR RATE 0000</div>
 		<input type="range" class="form-control af-set-repair-input" placeholder="1" value="0" step="1" min="0" max="19" >
 	</div>
+	<div class="input-group af-set-recovery">
+		<div class="input-group-text af-set-recovery-text" style="width: 248px; justify-content: center; ">RECOVERY RATE 0000</div>
+		<input type="range" class="form-control af-set-recovery-input" placeholder="1" value="0" step="200" min="0" max="4950" >
+	</div>
 	
 	<div class="input-group af-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [5%] DEPO : W 0.0 F 0.0 S 0.0</div>
@@ -3054,6 +3058,43 @@ $(document).ready(function() {
 								).querySelector(
 									'div.af-set-repair-text'
 								).innerText = 'REPAIR RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('input.af-set-recovery-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('input.af-set-recovery-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-af-panel-monitor"]'
+								).querySelector(
+									'div.af-set-recovery-text'
+								).innerText = 'RECOVERY RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/af/set?waxid=${ this['var']['id'] }&cfg_mine=recr&value=${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('input.af-set-recovery-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('input.af-set-recovery-input').value, 
+								}; console.debug( this['var'] );  
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-af-panel-monitor"]'
+								).querySelector(
+									'div.af-set-recovery-text'
+								).innerText = 'RECOVERY RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
 							
@@ -3985,6 +4026,10 @@ $(document).ready(function() {
 		<input type="range" class="form-control dw-set-mine-risk-input" placeholder="1" value="1" step="1" min="1" max="3" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
+	<div class="input-group dw-set-repair">
+		<div class="input-group-text dw-set-repair-text" style="width: 248px; justify-content: center; ">REPAIR RATE 0000</div>
+		<input type="range" class="form-control dw-set-repair-input" placeholder="1" value="0" step="1" min="0" max="19" >
+	</div>
 
 	<div class="input-group dw-custom-risk">
 		<div class="input-group-text dw-custom-risk-text" style="width: inherit; justify-content: center; ">SET CUSTOM MINE</div>
@@ -4110,6 +4155,44 @@ $(document).ready(function() {
 								})(this['var']['db']['value']); //	('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-dw-panel-monitor"]`).querySelector('input.dw-set-repair-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"]').querySelector('input.dw-set-repair-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-dw-panel-monitor"]'
+								).querySelector(
+									'div.dw-set-repair-text'
+								).innerText = 'REPAIR RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/dw/set?waxid=${ this['var']['id'] }&cfg_mine=repr&value=${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-dw-panel-monitor"]`).querySelector('input.dw-set-repair-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-dw-panel-monitor"]').querySelector('input.dw-set-repair-input').value, 
+								}; console.debug( this['var'] );  
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-dw-panel-monitor"]'
+								).querySelector(
+									'div.dw-set-repair-text'
+								).innerText = 'REPAIR RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+
 							document.querySelector(`th[id*="${ WAXID }-dw-panel-monitor"]`).querySelector('button.dw-custom-risk-set').addEventListener('click', function(e) {
 								this['var'] = {
 									'id' : this.parentElement.parentElement.id.split('-')[0], 
@@ -6576,6 +6659,16 @@ $(document).ready(function() {
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-set-repair-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['repr']; 
 										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-af-panel-monitor"]'
+											).querySelector(
+												'div.af-set-recovery-text'
+											).innerText = 'RECOVERY RATE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['recr'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-set-recovery-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['cfg_mine']['recr']; 
+										}catch(e){ }; 
 
 										try{
 											document.querySelector(
@@ -6827,6 +6920,16 @@ $(document).ready(function() {
 													return 'HIGH'
 												}
 											})(window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk']); //	( '0000' + window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-dw-panel-monitor"]'
+											).querySelector(
+												'div.dw-set-repair-text'
+											).innerText = 'REPAIR RATE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['repr'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('input.dw-set-repair-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['repr']; 
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-dw-panel-monitor"]').querySelector('input.dw-set-mine-risk-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['dw']['cf']['cfg_mine']['risk']; 

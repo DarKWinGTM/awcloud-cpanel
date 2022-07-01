@@ -4844,7 +4844,7 @@ $(document).ready(function() {
     	></iframe>
 	</div>
 </th>
-<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-fl-panel-monitor">
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-fwar-panel-monitor">
 	
 	<div class="input-group fwar-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">WA 0.0 FO 0.0 WO 0.0 GO 0.0 : WITH [X%] DEPO : WA 0.0 FO 0.0 WO 0.0 GO 0.0</div>

@@ -3649,6 +3649,13 @@ $(document).ready(function() {
 									result => result.json()
 								).then(result => {
 									setTimeout(function(){ window.location.reload(true) }, 3000); 
+									//	$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select') ).empty(); 
+									//	$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select') ).empty(); 
+									$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select') ).empty(); 
+									$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select') ).empty(); 
+									$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select') ).append( $('<option>', { value : 'None' }).text( 'None' ) ); 
+									$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select') ).append( $('<option>', { value : 'None' }).text( 'None' ) ); 
+									document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${this['var']['id']}&act.account=ageoffarming"]`).src = ''
 								}).catch(error => {
 									setTimeout(function(){ window.location.reload(true) }, 3000); 
 								}); 
@@ -3669,7 +3676,14 @@ $(document).ready(function() {
 								).then(
 									result => result.json()
 								).then(result => {
-									setTimeout(function(){ window.location.reload(true) }, 3000); 
+									//	setTimeout(function(){ window.location.reload(true) }, 3000); 
+									//	$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select') ).empty(); 
+									//	$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select') ).empty(); 
+									$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select') ).empty(); 
+									$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select') ).empty(); 
+									$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select') ).append( $('<option>', { value : 'None' }).text( 'None' ) ); 
+									$( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select') ).append( $('<option>', { value : 'None' }).text( 'None' ) ); 
+									document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${this['var']['id']}&act.account=ageoffarming"]`).src = ''
 								}).catch(error => {
 									setTimeout(function(){ window.location.reload(true) }, 3000); 
 								}); 

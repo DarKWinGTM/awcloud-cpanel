@@ -7738,18 +7738,25 @@ $(document).ready(function() {
 										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-deposit-fsls-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['auto_depo_fsls'][0]; 
 										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('input.fwar-deposit-fsls-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fwar']['cf']['auto_depo_fsls'][1]; 
 										//	}catch(e){ }; 
-										
-										//	try{
-										//		document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('div.fwar-withdraw-deposit div').innerText 		= `F ${
-										//			parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['pre']['FSLF']).toFixed(1)
-										//		} S ${
-										//			parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['pre']['FSLS']).toFixed(1)
-										//		} : WITH [5%] DEPO : F ${
-										//			parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['has']['FSLF']).toFixed(1)
-										//		} S ${
-										//			parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['has']['FSLS']).toFixed(1)
-										//		}`; 
-										//	}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fwar-panel-monitor"]').querySelector('div.fwar-withdraw-deposit div').innerText 		= `WA ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['pre']['WAFW']).toFixed(1)
+											} FO  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['pre']['FOFW']).toFixed(1)
+											} WO  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['pre']['WOFW']).toFixed(1)
+											} GO  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['pre']['GOFW']).toFixed(1)
+											} : WITH [X%] DEPO : WA  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['has']['WAFW']).toFixed(1)
+											} FO  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['has']['FOFW']).toFixed(1)
+											} WO  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['has']['WOFW']).toFixed(1)
+											} GO  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fwar']['db']['balance']['has']['GOFW']).toFixed(1)
+											}`; 
+										}catch(e){ }; 
 									}; 
 								}catch(e){ }; 
 								

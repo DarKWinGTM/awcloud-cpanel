@@ -2818,7 +2818,7 @@ $(document).ready(function() {
 	</div>
 	
 	<div class="input-group af-withdraw-deposit">
-		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [5%] DEPO : W 0.0 F 0.0 S 0.0</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">W 0.0 F 0.0 S 0.0 : WITH [10%] DEPO : W 0.0 F 0.0 S 0.0</div>
 		<button type="submit" class="btn btn-primary af-withdraw" style="width: 20%; ">WITHDRAW</button>
 		<input type="number" class="form-control" placeholder="AOFW" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<input type="number" class="form-control" placeholder="AOFS" value="" step="5" min="5" max="2555555555555" aria-label="">
@@ -7250,7 +7250,7 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['pre']['AOFF']).toFixed(1)
 											} S ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['pre']['AOFS']).toFixed(1)
-											} : WITH [5%] DEPO : W ${
+											} : WITH [10%] DEPO : W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['has']['AOFW']).toFixed(1)
 											} F ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['has']['AOFF']).toFixed(1)

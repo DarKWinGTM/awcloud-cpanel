@@ -2895,7 +2895,28 @@ $(document).ready(function() {
 		<div class="input-group-text af-buy-wax-aofw-text" style="width: 248px;">BUY AOFW 0000</div>
 		<input type="range" class="form-control af-buy-wax-aofw-input" placeholder="20" value="20" step="5" min="0" max="600" >
 	</div>
-	
+
+	<div class="input-group af-attach-dogs-item">
+		<div class="input-group-text af-attach-dogs-item-text" style="width: inherit; justify-content: center; ">SET ATTACH DOG</div>
+		<select class="form-select af-attach-dogs-item-select" >
+			<option value="None">None</option>
+		</select>
+		<select class="form-select af-attach-dogs-host-select" >
+			<option value="None">None</option>
+		</select>
+		<button type="submit" class="btn btn-primary af-attach-dogs-item-set" style="width: 10%; ">SET</button>
+	</div>
+	<div class="input-group af-attach-clot-item">
+		<div class="input-group-text af-attach-clot-item-text" style="width: inherit; justify-content: center; ">SET ATTACH CLOTH</div>
+		<select class="form-select af-attach-clot-item-select" >
+			<option value="None">None</option>
+		</select>
+		<select class="form-select af-attach-clot-host-select" >
+			<option value="None">None</option>
+		</select>
+		<button type="submit" class="btn btn-primary af-attach-clot-item-set" style="width: 10%; ">SET</button>
+	</div>
+
 	<div class="input-group af-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -3097,7 +3118,6 @@ $(document).ready(function() {
 								).innerText = 'RECOVERY RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
-							
 							document.querySelector(`th[id*="${WAXID}-af-panel-monitor"] button.af-withdraw`).addEventListener('click', function(e) {
 								this['var'] = {
 									'id' : this.parentElement.parentElement.id.split('-')[0], 
@@ -3612,6 +3632,49 @@ $(document).ready(function() {
 								).innerText = 'BUY AOFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('button.af-attach-dogs-item-set').addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: $( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select') ).find("option:selected").val(), 
+									'value' 	: $( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select') ).find("option:selected").val()
+								}; 
+								console.debug( this['var'] );  
+								fetch(
+									`/vers/af/set?waxid=${ this['var']['id'] }&set_dogs=${ this['var']['db']['check'] }-${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								).then(
+									result => result.json()
+								).then(result => {
+									setTimeout(function(){ window.location.reload(true) }, 3000); 
+								}).catch(error => {
+									setTimeout(function(){ window.location.reload(true) }, 3000); 
+								}); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-af-panel-monitor"]`).querySelector('button.af-attach-clot-item-set').addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: $( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select') ).find("option:selected").val(), 
+									'value' 	: $( document.querySelector('th[id*="' + this['var']['id'] + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select') ).find("option:selected").val()
+								}; 
+								console.debug( this['var'] );  
+								fetch(
+									`/vers/af/set?waxid=${ this['var']['id'] }&set_clot=${ this['var']['db']['check'] }-${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								).then(
+									result => result.json()
+								).then(result => {
+									setTimeout(function(){ window.location.reload(true) }, 3000); 
+								}).catch(error => {
+									setTimeout(function(){ window.location.reload(true) }, 3000); 
+								}); 
+							}); 
+
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -6738,6 +6801,425 @@ $(document).ready(function() {
 											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('input.af-buy-wax-aofs-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['af']['cf']['trade_buy_aofs'][1]; 
 										}catch(e){ }; 
 										
+										try{
+											if (
+												document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelectorAll('select.af-attach-dogs-item-select option').length <= 1 && (
+													Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['dogs']).length >= 1
+												)
+											){
+    											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select').waxid = _WAXID; 
+    											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select').addEventListener('change', function(event) {
+													if(
+														window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][$(this).find("option:selected").val()]
+													){
+														document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').value = window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][
+															$(this).find("option:selected").val()
+														]; 
+													}; 
+												})
+											}; 
+											if (
+												document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelectorAll('select.af-attach-dogs-item-select option').length <= 1
+											){
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['dogs']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['dogs']).length >= 1
+													){
+														var option 		= document.createElement("option");
+														option.text 	= `${e[1]['asset_nft']} Tamed Wolf`; 
+														option.value 	= e[0];
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select').add(option);
+													}; 
+												}); 
+											}; 
+											//	if (
+											//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelectorAll('select.af-attach-dogs-host-select option').length <= 1 && (
+											//			Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFF']['tool']).length >= 1 || 
+											//			Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFS']['tool']).length >= 1 || 
+											//			Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFW']['tool']).length >= 1
+											//		)
+											//	){
+    										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').waxid = _WAXID; 
+    										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').addEventListener('change', function(event) {
+											//			if(
+											//				//	$(
+											//				//		document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelectorAll('select.af-attach-dogs-item-select')
+											//				//	).find("option:selected").val() != 'None' && 
+											//				Object.keys(
+											//					window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
+											//				).map(
+											//					e => window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][e]
+											//				).includes( $(this).find("option:selected").val() ) && $(this).find("option:selected")[0].style.color == "green"
+											//			){
+											//				console.debug( $(this).find("option:selected").val() ); 
+											//				Object.keys(window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']).map(function (e){
+											//					console.debug(e)
+											//					console.debug($(this).find("option:selected").val())
+											//					if(
+											//						window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][e] == $(
+											//							document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select')
+											//						).find("option:selected").val()
+											//					){
+											//						//	fetch(
+											//						//		`/vers/af/set?waxid=${ event.target.waxid }&set_dogs=${ e }-`, 
+											//						//		{method : 'GET'}
+											//						//	); 
+											//						document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select').value = e; 
+											//					}
+											//				})
+											//			}; 
+											//			//	else{
+											//			//		document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-item-select').value = 'None'; 
+											//			//	}; 
+											//		})
+											//	}; 
+											if (
+												document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelectorAll('select.af-attach-dogs-host-select option').length <= 1
+											){
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFF']['tool']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFF']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option"); 
+														option.text 	= `${
+															e[1]['asset_nft']
+														} ${
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i
+																	){
+																		return x
+																	}
+																}; return '0000000000000'
+															})( e[1]['asset_nft'], _WAXID )
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['nft_name']
+														}`; 
+														option.value 	= e[0]; 
+														if(
+															Object.keys(
+																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
+															).map(
+																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][i]
+															).includes( e[0] )
+														){ option.style.color = "green" }; 
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').add(option);
+													}; 
+												}); 
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFS']['tool']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFS']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option"); 
+														option.text 	= `${
+															e[1]['asset_nft']
+														} ${
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i
+																	){
+																		return x
+																	}
+																}; return '0000000000000'
+															})( e[1]['asset_nft'], _WAXID )
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['nft_name']
+														}`; 
+														option.value 	= e[0]; 
+														if(
+															Object.keys(
+																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
+															).map(
+																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][i]
+															).includes( e[0] )
+														){ option.style.color = "green" }; 
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').add(option);
+													}; 
+												}); 
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFW']['tool']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFW']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option"); 
+														option.text 	= `${
+															e[1]['asset_nft']
+														} ${
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i
+																	){
+																		return x
+																	}
+																}; return '0000000000000'
+															})( e[1]['asset_nft'], _WAXID )
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['nft_name']
+														}`; 
+														option.value 	= e[0]; 
+														if(
+															Object.keys(
+																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
+															).map(
+																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][i]
+															).includes( e[0] )
+														){ option.style.color = "green" }; 
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').add(option);
+													}; 
+												}); 
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['hunt']['LEATHER']['tool']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['hunt']['LEATHER']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option"); 
+														option.text 	= `${
+															e[1]['asset_nft']
+														} ${
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i
+																	){
+																		return x
+																	}
+																}; return '0000000000000'
+															})( e[1]['asset_nft'], _WAXID )
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['nft_name']
+														}`; 
+														option.value 	= e[0]; 
+														if(
+															Object.keys(
+																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
+															).map(
+																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][i]
+															).includes( e[0] )
+														){ option.style.color = "green" }; 
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').add(option);
+													}; 
+												}); 
+											}; 
+										}catch(e){ }; 
+										
+										try{
+											if (
+												document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelectorAll('select.af-attach-clot-item-select option').length <= 1 && (
+													Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['clot']).length >= 1
+												)
+											){
+    											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select').waxid = _WAXID; 
+    											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select').addEventListener('change', function(event) {
+													if(
+														window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][$(this).find("option:selected").val()]
+													){
+														document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').value = window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][
+															$(this).find("option:selected").val()
+														]; 
+													}; 
+												})
+											}; 
+											if (
+												document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelectorAll('select.af-attach-clot-item-select option').length <= 1
+											){
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['clot']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['clot']).length >= 1
+													){
+														var option 		= document.createElement("option");
+														option.text 	= `${e[1]['asset_nft']} Skin Clothing`; 
+														option.value 	= e[0];
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select').add(option);
+													}; 
+												}); 
+											}; 
+											//	if (
+											//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelectorAll('select.af-attach-clot-host-select option').length <= 1 && (
+											//			Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFF']['tool']).length >= 1 || 
+											//			Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFS']['tool']).length >= 1 || 
+											//			Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFW']['tool']).length >= 1
+											//		)
+											//	){
+    										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').waxid = _WAXID; 
+    										//		document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').addEventListener('change', function(event) {
+											//			if(
+											//				//	$(
+											//				//		document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelectorAll('select.af-attach-clot-item-select')
+											//				//	).find("option:selected").val() != 'None' && 
+											//				Object.keys(
+											//					window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
+											//				).map(
+											//					e => window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][e]
+											//				).includes( $(this).find("option:selected").val() ) && $(this).find("option:selected")[0].style.color == "green"
+											//			){
+											//				console.debug( $(this).find("option:selected").val() ); 
+											//				Object.keys(window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['clot']).map(function (e){
+											//					console.debug(e)
+											//					console.debug($(this).find("option:selected").val())
+											//					if(
+											//						window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][e] == $(
+											//							document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select')
+											//						).find("option:selected").val()
+											//					){
+											//						//	fetch(
+											//						//		`/vers/af/set?waxid=${ event.target.waxid }&set_clot=${ e }-`, 
+											//						//		{method : 'GET'}
+											//						//	); 
+											//						document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select').value = e; 
+											//					}
+											//				})
+											//			}else{
+											//				document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-clot-item-select').value = 'None'; 
+											//			}; 
+											//		})
+											//	}; 
+											if (
+												document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelectorAll('select.af-attach-clot-host-select option').length <= 1
+											){
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFF']['tool']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFF']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option"); 
+														option.text 	= `${
+															e[1]['asset_nft']
+														} ${
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i
+																	){
+																		return x
+																	}
+																}; return '0000000000000'
+															})( e[1]['asset_nft'], _WAXID )
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['nft_name']
+														}`; 
+														option.value 	= e[0]; 
+														if(
+															Object.keys(
+																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
+															).map(
+																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][i]
+															).includes( e[0] )
+														){ option.style.color = "green" }; 
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').add(option);
+													}; 
+												}); 
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFS']['tool']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFS']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option"); 
+														option.text 	= `${
+															e[1]['asset_nft']
+														} ${
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i
+																	){
+																		return x
+																	}
+																}; return '0000000000000'
+															})( e[1]['asset_nft'], _WAXID )
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['nft_name']
+														}`; 
+														option.value 	= e[0]; 
+														if(
+															Object.keys(
+																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
+															).map(
+																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][i]
+															).includes( e[0] )
+														){ option.style.color = "green" }; 
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').add(option);
+													}; 
+												}); 
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFW']['tool']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['mine']['AOFW']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option"); 
+														option.text 	= `${
+															e[1]['asset_nft']
+														} ${
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i
+																	){
+																		return x
+																	}
+																}; return '0000000000000'
+															})( e[1]['asset_nft'], _WAXID )
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['nft_name']
+														}`; 
+														option.value 	= e[0]; 
+														if(
+															Object.keys(
+																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
+															).map(
+																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][i]
+															).includes( e[0] )
+														){ option.style.color = "green" }; 
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').add(option);
+													}; 
+												}); 
+												Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['hunt']['LEATHER']['tool']).forEach( function (e){
+													if (
+														Object.entries(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['hunt']['LEATHER']['tool']).length >= 1
+													){
+														var option 		= document.createElement("option"); 
+														option.text 	= `${
+															e[1]['asset_nft']
+														} ${
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i
+																	){
+																		return x
+																	}
+																}; return '0000000000000'
+															})( e[1]['asset_nft'], _WAXID )
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['rarity']
+														} ${
+															window['information-data']['DATA'][_WAXID]['vers']['af']['db']['equipped']['info'][ e[1]['template_id'] ]['nft_name']
+														}`; 
+														option.value 	= e[0]; 
+														if(
+															Object.keys(
+																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
+															).map(
+																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][i]
+															).includes( e[0] )
+														){ option.style.color = "green" }; 
+														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').add(option);
+													}; 
+												}); 
+											}; 
+										}catch(e){ }; 
+
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('div.af-withdraw-deposit div').innerText 		= `W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['af']['db']['balance']['pre']['AOFW']).toFixed(1)

@@ -6910,7 +6910,8 @@ $(document).ready(function() {
 															(function (i, w){
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
 																	){
 																		return x
 																	}
@@ -6923,11 +6924,16 @@ $(document).ready(function() {
 														}`; 
 														option.value 	= e[0]; 
 														if(
-															Object.keys(
-																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
-															).map(
-																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][i]
-															).includes( e[0] )
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																	){
+																		return true
+																	}
+																}; return false
+															})( e[1]['asset_nft'], _WAXID )
 														){ option.style.color = "green" }; 
 														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').add(option);
 													}; 
@@ -6943,7 +6949,8 @@ $(document).ready(function() {
 															(function (i, w){
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
 																	){
 																		return x
 																	}
@@ -6956,11 +6963,16 @@ $(document).ready(function() {
 														}`; 
 														option.value 	= e[0]; 
 														if(
-															Object.keys(
-																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
-															).map(
-																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][i]
-															).includes( e[0] )
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																	){
+																		return true
+																	}
+																}; return false
+															})( e[1]['asset_nft'], _WAXID )
 														){ option.style.color = "green" }; 
 														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').add(option);
 													}; 
@@ -6976,7 +6988,8 @@ $(document).ready(function() {
 															(function (i, w){
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
 																	){
 																		return x
 																	}
@@ -6989,11 +7002,16 @@ $(document).ready(function() {
 														}`; 
 														option.value 	= e[0]; 
 														if(
-															Object.keys(
-																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
-															).map(
-																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][i]
-															).includes( e[0] )
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																	){
+																		return true
+																	}
+																}; return false
+															})( e[1]['asset_nft'], _WAXID )
 														){ option.style.color = "green" }; 
 														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').add(option);
 													}; 
@@ -7009,7 +7027,8 @@ $(document).ready(function() {
 															(function (i, w){
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
 																	){
 																		return x
 																	}
@@ -7022,11 +7041,16 @@ $(document).ready(function() {
 														}`; 
 														option.value 	= e[0]; 
 														if(
-															Object.keys(
-																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs']
-															).map(
-																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][i]
-															).includes( e[0] )
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																	){
+																		return true
+																	}
+																}; return false
+															})( e[1]['asset_nft'], _WAXID )
 														){ option.style.color = "green" }; 
 														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-dogs-host-select').add(option);
 													}; 
@@ -7119,7 +7143,8 @@ $(document).ready(function() {
 															(function (i, w){
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
 																	){
 																		return x
 																	}
@@ -7132,11 +7157,16 @@ $(document).ready(function() {
 														}`; 
 														option.value 	= e[0]; 
 														if(
-															Object.keys(
-																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
-															).map(
-																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][i]
-															).includes( e[0] )
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																	){
+																		return true
+																	}
+																}; return false
+															})( e[1]['asset_nft'], _WAXID )
 														){ option.style.color = "green" }; 
 														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').add(option);
 													}; 
@@ -7152,7 +7182,8 @@ $(document).ready(function() {
 															(function (i, w){
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
 																	){
 																		return x
 																	}
@@ -7165,11 +7196,16 @@ $(document).ready(function() {
 														}`; 
 														option.value 	= e[0]; 
 														if(
-															Object.keys(
-																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
-															).map(
-																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][i]
-															).includes( e[0] )
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																	){
+																		return true
+																	}
+																}; return false
+															})( e[1]['asset_nft'], _WAXID )
 														){ option.style.color = "green" }; 
 														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').add(option);
 													}; 
@@ -7185,7 +7221,8 @@ $(document).ready(function() {
 															(function (i, w){
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
 																	){
 																		return x
 																	}
@@ -7198,11 +7235,16 @@ $(document).ready(function() {
 														}`; 
 														option.value 	= e[0]; 
 														if(
-															Object.keys(
-																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
-															).map(
-																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][i]
-															).includes( e[0] )
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																	){
+																		return true
+																	}
+																}; return false
+															})( e[1]['asset_nft'], _WAXID )
 														){ option.style.color = "green" }; 
 														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').add(option);
 													}; 
@@ -7218,7 +7260,8 @@ $(document).ready(function() {
 															(function (i, w){
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
 																	){
 																		return x
 																	}
@@ -7231,11 +7274,16 @@ $(document).ready(function() {
 														}`; 
 														option.value 	= e[0]; 
 														if(
-															Object.keys(
-																window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot']
-															).map(
-																i => window['information-data']['DATA'][ _WAXID ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][i]
-															).includes( e[0] )
+															(function (i, w){
+																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
+																	if(
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																	){
+																		return true
+																	}
+																}; return false
+															})( e[1]['asset_nft'], _WAXID )
 														){ option.style.color = "green" }; 
 														document.querySelector('th[id*="' + _WAXID + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').add(option);
 													}; 

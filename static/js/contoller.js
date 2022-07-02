@@ -2904,7 +2904,7 @@ $(document).ready(function() {
 		<select class="form-select af-attach-dogs-host-select" >
 			<option value="None">None</option>
 		</select>
-		<button type="submit" class="btn btn-primary af-attach-dogs-item-set" style="width: 10%; ">SET</button>
+		<button type="submit" class="btn btn-primary af-attach-dogs-item-set" style="width: 10%; " disabled>SET</button>
 	</div>
 	<div class="input-group af-attach-clot-item">
 		<div class="input-group-text af-attach-clot-item-text" style="width: inherit; justify-content: center; ">SET ATTACH CLOTH</div>
@@ -2914,7 +2914,7 @@ $(document).ready(function() {
 		<select class="form-select af-attach-clot-host-select" >
 			<option value="None">None</option>
 		</select>
-		<button type="submit" class="btn btn-primary af-attach-clot-item-set" style="width: 10%; ">SET</button>
+		<button type="submit" class="btn btn-primary af-attach-clot-item-set" style="width: 10%; " disabled>SET</button>
 	</div>
 
 	<div class="input-group af-feature">
@@ -6839,6 +6839,11 @@ $(document).ready(function() {
 															$(this).find("option:selected").val()
 														]; 
 													}; 
+													if($(this).find("option:selected").val() == 'None'){
+														$( document.querySelector(`th[id*="${ event.target.waxid }-af-panel-monitor"]`).querySelector('button.af-attach-dogs-item-set') ).prop( "disabled", true )
+													}else{
+														$( document.querySelector(`th[id*="${ event.target.waxid }-af-panel-monitor"]`).querySelector('button.af-attach-dogs-item-set') ).prop( "disabled", false )
+													}; 
 												})
 											}; 
 											if (
@@ -7072,6 +7077,11 @@ $(document).ready(function() {
 														document.querySelector('th[id*="' + event.target.waxid + '-af-panel-monitor"]').querySelector('select.af-attach-clot-host-select').value = window['information-data']['DATA'][ event.target.waxid ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][
 															$(this).find("option:selected").val()
 														]; 
+													}; 
+													if($(this).find("option:selected").val() == 'None'){
+														$( document.querySelector(`th[id*="${ event.target.waxid }-af-panel-monitor"]`).querySelector('button.af-attach-clot-item-set') ).prop( "disabled", true )
+													}else{
+														$( document.querySelector(`th[id*="${ event.target.waxid }-af-panel-monitor"]`).querySelector('button.af-attach-clot-item-set') ).prop( "disabled", false )
 													}; 
 												})
 											}; 

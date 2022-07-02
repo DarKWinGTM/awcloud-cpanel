@@ -7285,7 +7285,14 @@ document.querySelector('div.modal#alcorTool').addEventListener('shown.bs.modal',
     document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').setAttribute("value", event.relatedTarget.parentNode.parentNode.parentNode.id);
     document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').templateSell = `
 <th style="width: 12%;">
-    <div class="cell"><span class="text-white">00000</span></div>
+    <div class="cell">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" style="margin-left: -10px;">
+            <label class="form-check-label" >
+                <span class="text-white" style="">00000</span>
+            </label>
+        </div>
+    </div>
 </th>
 <th style="width: 12%;">
     <div class="cell"><span class="text-white">00/00/0000, 00:00:00</span></div>
@@ -7369,8 +7376,8 @@ document.querySelector('div.modal#alcorTool').addEventListener('shown.bs.modal',
                                         id          : `alcor-order-list-${sell.id}-${id}`, 
                                         innerHTML   : document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').templateSell
                                     })
-                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[0].innerText = `${sell.id}-${id}`; 
-                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[1].innerText = (new Date(
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div.cell')[0].querySelector('span').innerText = `${sell.id}-${id}`; 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div.cell')[1].innerText = (new Date(
                                         sell.timestamp * 1000
                                     ).toLocaleString(
                                         "en-US", {
@@ -7384,25 +7391,10 @@ document.querySelector('div.modal#alcorTool').addEventListener('shown.bs.modal',
                                             second  : '2-digit'
                                         }
                                     ))
-                                    //  {
-                                    //      "rows": [
-                                    //          {
-                                    //              "id": 4002,
-                                    //              "account": "gj1xc.wam",
-                                    //              "bid": "7040.0000 SRM",
-                                    //              "ask": "68.77376000 WAX",
-                                    //              "unit_price": "976900",
-                                    //              "timestamp": 1656364936
-                                    //          }
-                                    //      ],
-                                    //      "more": false,
-                                    //      "next_key": "",
-                                    //      "next_key_bytes": ""
-                                    //  }
-                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[2].innerText = `${sell.bid.split(' ')[1]} / ${sell.ask.split(' ')[1]}`; 
-                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[4].innerText = sell.bid; 
-                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[5].innerText = `${sell.ask.split(' ')[0]} WAX`; 
-                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div')[6].innerText = (parseInt(sell.unit_price) / 100000000).toFixed(8); 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div.cell')[2].innerText = `${sell.bid.split(' ')[1]} / ${sell.ask.split(' ')[1]}`; 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div.cell')[4].innerText = sell.bid; 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div.cell')[5].innerText = `${sell.ask.split(' ')[0]} WAX`; 
+                                    document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid.querySelectorAll('div.cell')[6].innerText = (parseInt(sell.unit_price) / 100000000).toFixed(8); 
                                     document.querySelector('div.modal#alcorTool div.order-list').querySelector('table').querySelector('tbody').appendChild(
                                         document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').orderid
                                     ); 
@@ -7558,7 +7550,7 @@ document.querySelectorAll('div.alcor-panel').forEach(function(e){
                             </div>
                         </div>
                         <div class="row justify-content-center w-100 order-list" style="--bs-gutter-x: 0.1rem; ">
-                            <div class="col w-100" style="max-width: 100%; height: 71px; overflow: auto">
+                            <div class="col w-100" style="max-width: 100%; height: 125px; overflow: auto">
                                 <table cellpadding="0" style="zoom: 0.9; width:  100%; ">
                             
                                     <tbody>
@@ -7574,14 +7566,27 @@ document.querySelector('div.modal#alcorTool div.order-head').querySelector('butt
 
     $.notify(
         document.querySelector('div.modal#alcorTool').querySelector('div.modal-header'), 
-        `CANCLE ORDER : PLEASE WAIT ${ [...document.querySelectorAll('[id*="alcor-order-list-"]')].map(e => e.id.replace('alcor-order-list-', '')).join(',') }`,
-        'info'
+        `CANCLE ORDER : PLEASE WAIT ${
+            [...document.querySelectorAll('[id*="alcor-order-list-"]')].map(function (e){
+                if(
+                    e.querySelector('div.form-check input').checked
+                ){
+                    return e.id.replace('alcor-order-list-', '')
+                }
+            }).filter(f => f).join(',')
+        }`, 'info'
     );
 
     fetch(`/cancledex?waxid=${
         document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")
     }&message=${
-        [...document.querySelectorAll('[id*="alcor-order-list-"]')].map(e => e.id.replace('alcor-order-list-', '')).join(',')
+        [...document.querySelectorAll('[id*="alcor-order-list-"]')].map(function (e){
+            if(
+                e.querySelector('div.form-check input').checked
+            ){
+                return e.id.replace('alcor-order-list-', '')
+            }
+        }).filter(f => f).join(',')
     }`, {
         "headers"   : {},
         "body"      : null,

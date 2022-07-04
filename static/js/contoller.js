@@ -2003,34 +2003,51 @@ $(document).ready(function() {
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_03" value="SS-TARGET-SWITCH_03" step="1" min="1" max="100000" aria-label="">
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_04" value="SS-TARGET-SWITCH_04" step="1" min="1" max="100000" aria-label="">
 		<input type="number" class="form-control" placeholder="SS-TARGET-SWITCH_05" value="SS-TARGET-SWITCH_05" step="1" min="1" max="100000" aria-label="">
-		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 		<button type="submit" class="btn btn-primary ss-target-set" style="width: 60px; ">SET</button>
 	</div>
-
-	<div class="input-group ss-auto-c-nft">
+	
+	<div class="input-group ss-sector-set">
+		<div class="input-group-text" style="width: 100px;">SECTOR<span style="visibility: hidden;">_</span></div>
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_00" value="SS-SECTOR-SWITCH_00" step="1" min="1" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_01" value="SS-SECTOR-SWITCH_01" step="1" min="1" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_02" value="SS-SECTOR-SWITCH_02" step="1" min="1" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_03" value="SS-SECTOR-SWITCH_03" step="1" min="1" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_04" value="SS-SECTOR-SWITCH_04" step="1" min="1" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_05" value="SS-SECTOR-SWITCH_05" step="1" min="1" max="16" aria-label="">
+		<button type="submit" class="btn btn-primary ss-sector-set" style="width: 60px; ">SET</button>
+	</div>
+	<div class="input-group ss-auto-switch-planet-in-same-sector">
 		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
 		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
 			<label class="form-check-label">
 				<input
 					type 			= "checkbox"
-					class 			= "form-check-input ss-auto-c-nft-switch"
+					class 			= "form-check-input ss-auto-switch-planet-in-same-sector-switch"
 					value 			= "0"
 				>
 			</label>
-		</div>AUTO CLAIM NFT</div>
+		</div>AUTO SWITCH PLANET BY CONFIG SECTOR</div>
 	</div>
 
-	<div class="input-group ss-auto-s-b-s-s-w-k-i-e">
-		<div class="input-group-text" style="width: inherit; display: inline-flex; ">
-		<div class="form-check-inline form-switch" style="align-self: flex-start; margin-right: auto; ">
-			<label class="form-check-label">
-				<input
-					type 			= "checkbox"
-					class 			= "form-check-input ss-auto-s-b-s-s-w-k-i-e-switch"
-					value 			= "0"
-				>
-			</label>
-		</div>AUTO SWITCH PLANET BY SAME SECTOR, WHEN KYANITE IS EMPTY</div>
+	<div class="input-group ss-auto-claim-nft">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input bss-auto-claim-nft-switch" value="0">
+				</label>
+			</div>
+		</div>
+		<div class="input-group-text ss-auto-claim-nft-text" style="width: 183px; justify-content: center;">AUTO CLAIM NFT</div>
+		<select class="form-select ss-auto-claim-nft-select">
+			<option value="0">None</option>
+			<option value="1">Common +</option>
+			<option value="1">Uncommon +</option>
+			<option value="3">Rare +</option>
+			<option value="4">Epic +</option>
+			<option value="5">Mystic +</option>
+			<option value="6">Legendary +</option>
+		</select>
+		<button type="submit" class="btn btn-primary ss-auto-claim-nft-set" style="width: 60px; ">SET</button>
 	</div>
 
 	<div class="input-group ss-feature">
@@ -6916,7 +6933,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['dogs'] ).includes( x )
 																	){
 																		return x
 																	}
@@ -6933,7 +6951,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['dogs'] ).includes( x )
 																	){
 																		return true
 																	}
@@ -6955,7 +6974,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['dogs'] ).includes( x )
 																	){
 																		return x
 																	}
@@ -6972,7 +6992,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['dogs'] ).includes( x )
 																	){
 																		return true
 																	}
@@ -6994,7 +7015,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['dogs'] ).includes( x )
 																	){
 																		return x
 																	}
@@ -7011,7 +7033,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['dogs'] ).includes( x )
 																	){
 																		return true
 																	}
@@ -7033,7 +7056,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['dogs'] ).includes( x )
 																	){
 																		return x
 																	}
@@ -7050,7 +7074,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['dogs'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['dogs'] ).includes( x )
 																	){
 																		return true
 																	}
@@ -7154,7 +7179,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['clot'] ).includes( x )
 																	){
 																		return x
 																	}
@@ -7171,7 +7197,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['clot'] ).includes( x )
 																	){
 																		return true
 																	}
@@ -7193,7 +7220,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['clot'] ).includes( x )
 																	){
 																		return x
 																	}
@@ -7210,7 +7238,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['clot'] ).includes( x )
 																	){
 																		return true
 																	}
@@ -7232,7 +7261,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['clot'] ).includes( x )
 																	){
 																		return x
 																	}
@@ -7249,7 +7279,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['clot'] ).includes( x )
 																	){
 																		return true
 																	}
@@ -7271,7 +7302,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['clot'] ).includes( x )
 																	){
 																		return x
 																	}
@@ -7288,7 +7320,8 @@ $(document).ready(function() {
 																for (x of Object.keys(window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'])){
 																	if(
 																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] == i && 
-																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None'
+																		window['information-data']['DATA'][ w ]['vers']['af']['cf']['cfg_mine']['seta']['clot'][x] != 'None' && 
+																		Object.keys( window['information-data']['DATA'][ w ]['vers']['af']['db']['equipped']['clot'] ).includes( x )
 																	){
 																		return true
 																	}

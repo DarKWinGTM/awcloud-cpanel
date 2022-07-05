@@ -2041,7 +2041,7 @@ $(document).ready(function() {
 		<select class="form-select ss-auto-claim-nft-select">
 			<option value="0">None</option>
 			<option value="1">Common +</option>
-			<option value="1">Uncommon +</option>
+			<option value="2">Uncommon +</option>
 			<option value="3">Rare +</option>
 			<option value="4">Epic +</option>
 			<option value="5">Legendary +</option>

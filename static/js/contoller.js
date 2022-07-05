@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    //	window.onload = function (){ 
+    //	window.onload = function (){
         
         window['waxserver'] = {}; window['waxserver']['endpoint'] = [
 			//	{
@@ -2008,12 +2008,12 @@ $(document).ready(function() {
 	
 	<div class="input-group ss-sector-set">
 		<div class="input-group-text" style="width: 100px;">SECTOR<span style="visibility: hidden;">_</span></div>
-		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_00" value="SS-SECTOR-SWITCH_00" step="1" min="1" max="16" aria-label="">
-		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_01" value="SS-SECTOR-SWITCH_01" step="1" min="1" max="16" aria-label="">
-		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_02" value="SS-SECTOR-SWITCH_02" step="1" min="1" max="16" aria-label="">
-		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_03" value="SS-SECTOR-SWITCH_03" step="1" min="1" max="16" aria-label="">
-		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_04" value="SS-SECTOR-SWITCH_04" step="1" min="1" max="16" aria-label="">
-		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_05" value="SS-SECTOR-SWITCH_05" step="1" min="1" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_00" value="SS-SECTOR-SWITCH_00" step="1" min="0" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_01" value="SS-SECTOR-SWITCH_01" step="1" min="0" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_02" value="SS-SECTOR-SWITCH_02" step="1" min="0" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_03" value="SS-SECTOR-SWITCH_03" step="1" min="0" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_04" value="SS-SECTOR-SWITCH_04" step="1" min="0" max="16" aria-label="">
+		<input type="number" class="form-control" placeholder="SS-SECTOR-SWITCH_05" value="SS-SECTOR-SWITCH_05" step="1" min="0" max="16" aria-label="">
 		<button type="submit" class="btn btn-primary ss-sector-set" style="width: 60px; ">SET</button>
 	</div>
 	<div class="input-group ss-auto-switch-planet-in-same-sector">
@@ -2028,12 +2028,12 @@ $(document).ready(function() {
 			</label>
 		</div>AUTO SWITCH PLANET BY CONFIG SECTOR</div>
 	</div>
-
+	
 	<div class="input-group ss-auto-claim-nft">
 		<div class="input-group-text">
 			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input bss-auto-claim-nft-switch" value="0">
+					<input type="checkbox" class="form-check-input ss-auto-claim-nft-switch" value="0">
 				</label>
 			</div>
 		</div>
@@ -2044,8 +2044,8 @@ $(document).ready(function() {
 			<option value="1">Uncommon +</option>
 			<option value="3">Rare +</option>
 			<option value="4">Epic +</option>
-			<option value="5">Mystic +</option>
-			<option value="6">Legendary +</option>
+			<option value="5">Legendary +</option>
+			<option value="6">Mystic +</option>
 		</select>
 		<button type="submit" class="btn btn-primary ss-auto-claim-nft-set" style="width: 60px; ">SET</button>
 	</div>
@@ -2085,6 +2085,18 @@ $(document).ready(function() {
 	/SS-TARGET-SWITCH_04/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[4]
 ).replace(
 	/SS-TARGET-SWITCH_05/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['target'].split(',')[5]
+).replace(
+	/SS-SECTOR-SWITCH_00/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['sector'].split(',')[0]
+).replace(
+	/SS-SECTOR-SWITCH_01/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['sector'].split(',')[1]
+).replace(
+	/SS-SECTOR-SWITCH_02/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['sector'].split(',')[2]
+).replace(
+	/SS-SECTOR-SWITCH_03/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['sector'].split(',')[3]
+).replace(
+	/SS-SECTOR-SWITCH_04/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['sector'].split(',')[4]
+).replace(
+	/SS-SECTOR-SWITCH_05/gi, window['information-data']['DATA'][WAXID]['vers']['ss']['db']['sector'].split(',')[5]
 )
                                 })
                             ); 
@@ -2225,6 +2237,49 @@ $(document).ready(function() {
 									}); 
 								};
 							});
+							document.querySelector(`th[id*="${ WAXID }-ss-panel-monitor"]`).querySelector('input.ss-auto-switch-planet-in-same-sector-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ss-panel-monitor"]').querySelector('input.ss-auto-switch-planet-in-same-sector-switch').checked, 
+								}; 
+								fetch(
+									`/vers/ss/set?waxid=${ this['var']['id'] }&aswp=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-ss-panel-monitor"]`).querySelector('input.ss-auto-claim-nft-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ss-panel-monitor"]').querySelector('input.ss-auto-claim-nft-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ss-panel-monitor"]').querySelector('select.ss-auto-claim-nft-select option:checked').value
+								}; 
+								console.debug( this['var'] );  
+								fetch(
+									`/vers/ss/set?waxid=${ this['var']['id'] }&cfg_mine=acnf&value=${ this['var']['db']['check'] },${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-ss-panel-monitor"]`).querySelector('button.ss-auto-claim-nft-set').addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ss-panel-monitor"]').querySelector('input.ss-auto-claim-nft-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ss-panel-monitor"]').querySelector('select.ss-auto-claim-nft-select option:checked').value
+								}; 
+								console.debug( this['var'] );  
+								fetch(
+									`/vers/ss/set?waxid=${ this['var']['id'] }&cfg_mine=acnf&value=${ this['var']['db']['check'] },${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -5144,9 +5199,6 @@ $(document).ready(function() {
                                     //      console.log("Checkbox is not checked..");
                                     //  }; 
                                 });
-								
-								
-								
                                 window[WAXID].querySelector('input.ss_switch[type="checkbox"]').addEventListener('change', function(e) {
                                     if (
                                         !$(this).attr('disabled')
@@ -5233,6 +5285,58 @@ $(document).ready(function() {
                                             }; 
                                         }).catch(error => {
                                             $.notify(`PLANET TARGET ERROR : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (button){
+                                                setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
+                                            })(this); 
+                                        }); 
+                                    };
+                                });
+								document.querySelector(`th[id="${ WAXID }-ss-panel-monitor"]`).querySelector('div.input-group.ss-sector-set button.ss-sector-set').addEventListener('click', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+										
+                                        $(this).prop( "disabled", true ); 
+										
+                                        fetch(`/vers/ss/set?waxid=${ this.parentElement.parentElement.id.split('-')[0] }&sector=${
+											(this.parentElement.querySelectorAll('div.input-group.ss-sector-set input[max="16"]')[0].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-sector-set input[max="16"]')[1].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-sector-set input[max="16"]')[2].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-sector-set input[max="16"]')[3].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-sector-set input[max="16"]')[4].value || '-1')
+										},${
+											(this.parentElement.querySelectorAll('div.input-group.ss-sector-set input[max="16"]')[5].value || '-1')
+										}`, 
+											{method : 'GET'}
+										).then(
+                                            res => res.json()
+                                        ).then(res => {
+                                            if(res['text'] != 'okay'){ throw res }else{
+                                                if (
+                                                    res['code'] == 200
+                                                ){
+                                                    //	this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $( this.parentElement ).notify(
+                                                        'PLANET SECTOR SETUP', 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    //	this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $( this.parentElement ).notify(
+                                                        'PLANET SECTOR UNSET', 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`PLANET SECTOR ERROR : ${ error['text'] }`, "error", { position : "top" }); 
                                             (function (button){
                                                 setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
                                             })(this); 
@@ -6455,15 +6559,26 @@ $(document).ready(function() {
 										window['information-data']["DATA"][ _WAXID ]['vers']['ss']["sw"] == true && 
 										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=starshipgame"]`) 
 									){
+										
 										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=starshipgame"]`).setAttribute(
 											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=starshipgame"]`).getAttribute('url')
 										); 
+										
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-ss-panel-monitor"]').querySelector('input.ss-auto-switch-planet-in-same-sector-switch').checked = window['information-data']['DATA'][_WAXID]['vers']['ss']['cf']['cfg_mine']['aswp']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-ss-panel-monitor"]').querySelector('input.ss-auto-claim-nft-switch').checked 				= window['information-data']['DATA'][_WAXID]['vers']['ss']['cf']["cfg_mine"]['acnf'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-ss-panel-monitor"]').querySelector('select.ss-auto-claim-nft-select').value 					= window['information-data']['DATA'][_WAXID]['vers']['ss']['cf']['cfg_mine']['acnf'][1].toString(); 
+										}catch(e){ }; 
+
 									}; 
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['ss']["sw"] == true && 
 										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
 										document.querySelector(`iframe[src*="ss-monitor?wallet=${ _WAXID }"]`) 
 									){
+
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-ss-panel-monitor"]').querySelector('div.ss-withdraw-deposit div').innerText 	= `${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ss']['db']['balance']['pre']['KYANITE']).toFixed(4)

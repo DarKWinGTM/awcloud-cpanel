@@ -1,7 +1,7 @@
 {
     "addrlists" : [
         "https://waxnode01.alcor.exchange", 
-        "https://waxnode02.alcor.exchange", 
+        "https://wax.eosn.io", 
         "https://api.waxsweden.org", 
         "https://query.3dkrender.com", 
         "https://wax.eosusa.news", 
@@ -105,7 +105,7 @@
     ], 
     "getwallet" : [
         "https://wax.neftyblocks.com", 
-        "https://waxnode02.alcor.exchange", 
+        "https://wax.eosn.io", 
         "https://wax.greymass.com", 
         "https://waxnode01.alcor.exchange", 
         "https://wax.defibox.xyz", 

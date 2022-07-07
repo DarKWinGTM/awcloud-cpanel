@@ -103,6 +103,12 @@
         "https://api.waxnet.io", 
         "https://api.waxnet.io"
     ], 
+    "vl_c_sigh" : [
+        "https://api.tokengamer.io", 
+        "https://wax.dapplica.io", 
+        "https://api.waxnet.io", 
+        "https://wax.pink.gg"
+    ], 
     "getwallet" : [
         "https://wax.neftyblocks.com", 
         "https://wax.eosn.io", 

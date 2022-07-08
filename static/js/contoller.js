@@ -4768,155 +4768,147 @@ $(document).ready(function() {
 									{method : 'GET'}
 								); 
 							}); 
-							//	document.querySelector(`th[id*="${WAXID}-fl-panel-monitor"] button.fl-withdraw`).addEventListener('click', function(e) {
-							//		this['var'] = {
-							//			'id' : this.parentElement.parentElement.id.split('-')[0], 
-							//			'db' : {}
-							//		}; 
-							//		this['var']['db'] = {
-							//			'FSLF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fl-panel-monitor"] div.fl-withdraw-deposit').querySelector('input[placeholder*="FSLF"]').value) || 0, 
-							//			'FSLS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fl-panel-monitor"] div.fl-withdraw-deposit').querySelector('input[placeholder*="FSLS"]').value) || 0, 
-							//			'FEE' 	: window['information-data']['DATA'][ this['var']['id'] ]['vers']['fl']['db']['equipped']['ftax']['withdrawal_tax'] || 5, 
-							//		}; 
-							//		
-							//		if (
-							//			!$(this).attr('disabled')
-							//		){
-							//			$(this).prop( "disabled", true ); $(this).attr('readonly', true);
-							//			
-							//			fetch(
-							//				`/fl_with?waxid=${
-							//					this['var']['id']
-							//				}&amount=${
-							//					this['var']['db']['FEE']
-							//				}&quantity=${
-							//					this['var']['db']['FSLF']
-							//				}.0000,${
-							//					this['var']['db']['FSLS']
-							//				}.0000`,
-							//				{method : 'GET'}
-							//			).then(
-							//				result => result.json()
-							//			).then(result => {
-							//				if(result['text'] != 'okay'){ throw result }else{
-							//					if (
-							//						result['code'] == 200
-							//					){
-							//						$.notify(
-							//							`FISHING LANDS WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
-							//							"success", { position : "top" }
-							//						); 
-							//					}else{
-							//						try{
-							//							if(
-							//								result['data']['transaction'] && 
-							//								result['data']['transaction']['trx'] && 
-							//								result['data']['transaction']['trx']['error'] && 
-							//								result['data']['transaction']['trx']['error']['what']
-							//							){
-							//								$.notify(
-							//									`FISHING LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
-							//								); 
-							//							}else{
-							//								$.notify(
-							//									`FISHING LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-							//								); 
-							//							}; 
-							//						}catch(e){
-							//							$.notify(
-							//								`FISHING LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
-							//								'error'
-							//							); 
-							//						}; 
-							//					};
-							//					(function (input){
-							//						setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
-							//					})(this); 
-							//				}; 
-							//			}).catch(error => {
-							//				$.notify(`FISHING LANDS WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
-							//				(function (input){
-							//					setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
-							//				})(this); 
-							//			}); 
-							//		};
-							//	});
-							//	document.querySelector(`th[id*="${WAXID}-sr-panel-monitor"] button.sr-deposit`).addEventListener('click', function(e) {
-							//		this['var'] = {
-							//			'id' : this.parentElement.parentElement.id.split('-')[0], 
-							//			'db' : {}
-							//		}; 
-							//		this['var']['db'] = {
-							//			'SRE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-sr-panel-monitor"] div.sr-withdraw-deposit').querySelector('input[placeholder*="SRE"]').value) || 0, 
-							//			'SRM' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-sr-panel-monitor"] div.sr-withdraw-deposit').querySelector('input[placeholder*="SRM"]').value) || 0, 
-							//			'SRW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-sr-panel-monitor"] div.sr-withdraw-deposit').querySelector('input[placeholder*="SRW"]').value) || 0, 
-							//			'SRS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-sr-panel-monitor"] div.sr-withdraw-deposit').querySelector('input[placeholder*="SRS"]').value) || 0 
-							//		}; 
-							//		
-							//		if (
-							//			!$(this).attr('disabled')
-							//		){
-							//			$(this).prop( "disabled", true ); $(this).attr('readonly', true);
-							//			
-							//			fetch(
-							//				`/sr_depo?waxid=${
-							//					this['var']['id']
-							//				}&quantity=${
-							//					this['var']['db']['SRE']
-							//				}.0000,${
-							//					this['var']['db']['SRM']
-							//				}.0000,${
-							//					this['var']['db']['SRW']
-							//				}.0000,${
-							//					this['var']['db']['SRS']
-							//				}.0000`,
-							//				{method : 'GET'}
-							//			).then(
-							//				result => result.json()
-							//			).then(result => {
-							//				if(result['text'] != 'okay'){ throw result }else{
-							//					if (
-							//						result['code'] == 200
-							//					){
-							//						$.notify(
-							//							`SAAR DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
-							//							"success", { position : "top" }
-							//						); 
-							//					}else{
-							//						try{
-							//							if(
-							//								result['data']['transaction'] && 
-							//								result['data']['transaction']['trx'] && 
-							//								result['data']['transaction']['trx']['error'] && 
-							//								result['data']['transaction']['trx']['error']['what']
-							//							){
-							//								$.notify(
-							//									`SAAR DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
-							//								); 
-							//							}else{
-							//								$.notify(
-							//									`SAAR DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
-							//								); 
-							//							}; 
-							//						}catch(e){
-							//							$.notify(
-							//								`SAAR DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
-							//								'error'
-							//							); 
-							//						}; 
-							//					};
-							//					(function (input){
-							//						setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
-							//					})(this); 
-							//				}; 
-							//			}).catch(error => {
-							//				$.notify(`SAAR DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
-							//				(function (input){
-							//					setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
-							//				})(this); 
-							//			}); 
-							//		};
-							//	});
+							document.querySelector(`th[id*="${WAXID}-fl-panel-monitor"] button.fl-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'FSLF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fl-panel-monitor"] div.fl-withdraw-deposit').querySelector('input[placeholder*="FSLF"]').value) || 0, 
+									'FSLS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fl-panel-monitor"] div.fl-withdraw-deposit').querySelector('input[placeholder*="FSLS"]').value) || 0, 
+									'FEE' 	: 5, 
+								}; 
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/fl_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['FEE']
+										}&quantity=${
+											this['var']['db']['FSLF']
+										}.0000,${
+											this['var']['db']['FSLS']
+										}.0000,0.0000,0.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`FISHING LANDS WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`FISHING LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`FISHING LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`FISHING LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`FISHING LANDS WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-fl-panel-monitor"] button.fl-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'FSLF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fl-panel-monitor"] div.fl-withdraw-deposit').querySelector('input[placeholder*="FSLF"]').value) || 0, 
+									'FSLS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fl-panel-monitor"] div.fl-withdraw-deposit').querySelector('input[placeholder*="FSLS"]').value) || 0, 
+								}; 
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/fl_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['FSLF']
+										}.0000,${
+											this['var']['db']['FSLS']
+										}.0000,0.0000,0.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`FISHING LANDS DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`FISHING LANDS DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`FISHING LANDS DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`FISHING LANDS DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`FISHING LANDS DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -5024,7 +5016,7 @@ $(document).ready(function() {
 			</div>
 			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input vl-feature-eco-mine-switch" value="0" disabled>
+					<input type="checkbox" class="form-check-input vl-feature-eco-mine-switch" value="0" checked disabled>
 					<span style="padding-left: 5;">ECO MINE</span>
 				</label>
 			</div>
@@ -5039,6 +5031,159 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
+							document.querySelector(`th[id*="${WAXID}-vl-panel-monitor"] button.vl-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'VLW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-vl-panel-monitor"] div.vl-withdraw-deposit').querySelector('input[placeholder*="VLW"]').value) || 0, 
+									'VLF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-vl-panel-monitor"] div.vl-withdraw-deposit').querySelector('input[placeholder*="VLF"]').value) || 0, 
+									'VLS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-vl-panel-monitor"] div.vl-withdraw-deposit').querySelector('input[placeholder*="VLS"]').value) || 0, 
+									'VLG' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-vl-panel-monitor"] div.vl-withdraw-deposit').querySelector('input[placeholder*="VLG"]').value) || 0, 
+									'FEE' 	: 50, 
+								}; 
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/vl_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['FEE']
+										}&quantity=${
+											this['var']['db']['VLW']
+										}.0000,${
+											this['var']['db']['VLF']
+										}.0000,${
+											this['var']['db']['VLS']
+										}.0000,${
+											this['var']['db']['VLG']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`VARIA LANDS WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`VARIA LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`VARIA LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`VARIA LANDS WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`VARIA LANDS WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-vl-panel-monitor"] button.vl-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'VLW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-vl-panel-monitor"] div.vl-withdraw-deposit').querySelector('input[placeholder*="VLW"]').value) || 0, 
+									'VLF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-vl-panel-monitor"] div.vl-withdraw-deposit').querySelector('input[placeholder*="VLF"]').value) || 0, 
+									'VLS' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-vl-panel-monitor"] div.vl-withdraw-deposit').querySelector('input[placeholder*="VLS"]').value) || 0, 
+									'VLG' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-vl-panel-monitor"] div.vl-withdraw-deposit').querySelector('input[placeholder*="VLG"]').value) || 0
+								}; 
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/vl_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['VLW']
+										}.0000,${
+											this['var']['db']['VLF']
+										}.0000,${
+											this['var']['db']['VLS']
+										}.0000,${
+											this['var']['db']['VLG']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`VARIA LANDS DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`VARIA LANDS DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`VARIA LANDS DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`VARIA LANDS DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`VARIA LANDS DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
                             document.querySelector('table').querySelector('thead').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -5072,6 +5217,23 @@ $(document).ready(function() {
 		<button type="submit" class="btn btn-primary df-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 
+	<div class="input-group df-auto-withdraw-before-mine">
+		
+		<div class="input-group df-auto-withdraw-before-mine">
+			<div class="input-group-text">
+				<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input df-auto-withdraw-before-mine-switch" value="0" disabled="">
+						<!--span style="padding-left: 5;"></span-->
+					</label>
+				</div>
+			</div>
+			<div class="input-group-text df-auto-withdraw-before-mine-text" style="width: 248px;">AUTO WITHDRAW 0010 %</div>
+			<input type="range" class="form-control df-auto-withdraw-before-mine-input" placeholder="40" value="10" step="1" min="10" max="100">
+		</div>
+		
+	</div>
+
 	<div class="input-group df-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -5083,7 +5245,7 @@ $(document).ready(function() {
 			</div>
 			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input df-feature-eco-mine-switch" value="0" disabled>
+					<input type="checkbox" class="form-check-input df-feature-eco-mine-switch" value="0" checked disabled>
 					<span style="padding-left: 5;">ECO MINE</span>
 				</label>
 			</div>
@@ -5098,6 +5260,147 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
+							document.querySelector(`th[id*="${WAXID}-df-panel-monitor"] button.df-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'DFE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"] div.df-withdraw-deposit').querySelector('input[placeholder*="DFE"]').value) || 0, 
+									'DFW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"] div.df-withdraw-deposit').querySelector('input[placeholder*="DFW"]').value) || 0, 
+									'FEE' 	: 3, 
+								}; 
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/df_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['FEE']
+										}&quantity=${
+											this['var']['db']['DFE']
+										}.0000,${
+											this['var']['db']['DFW']
+										}.0000,0.0000,0.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`DESERT FARM WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`DESERT FARM WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`DESERT FARM WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`DESERT FARM WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`DESERT FARM WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-df-panel-monitor"] button.df-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'DFE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"] div.df-withdraw-deposit').querySelector('input[placeholder*="DFE"]').value) || 0, 
+									'DFW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"] div.df-withdraw-deposit').querySelector('input[placeholder*="DFW"]').value) || 0
+								}; 
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/df_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['DFE']
+										}.0000,${
+											this['var']['db']['DFW']
+										}.0000,0.0000,0.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`DESERT FARM DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`DESERT FARM DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`DESERT FARM DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`DESERT FARM DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`DESERT FARM DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
 
 
 

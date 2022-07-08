@@ -175,6 +175,8 @@ $(document).ready(function() {
 						try{ window[`${ TRELE.getAttribute('id') }-fwar-panel-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-vl-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-vl-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-df-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-df-panel-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-panel-monitor`].parentElement.remove() }catch(e){};  
                         try{ TRELE.remove() }catch(e){}; 
@@ -5037,6 +5039,65 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
+                            document.querySelector('table').querySelector('thead').appendChild(
+                                Object.assign(document.createElement('tr'), {
+                                    innerHTML   : `
+<th
+    colspan     = "7"
+    style       = "display: none; "
+	id 			= "${ WAXID }-df-monitor"
+>
+	<!--
+	<textarea 
+		class 		= "form-control ${ WAXID }"
+		id 			= "message-text ${ WAXID }"
+		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
+	></textarea>
+	-->
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=desertfarmgm"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
+</th>
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-df-panel-monitor">
+	
+	<div class="input-group df-withdraw-deposit">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">E 0.0 W 0.0 : WITH [3%] DEPO : E 0.0 W 0.0</div>
+		<button type="submit" class="btn btn-primary df-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="DFE" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="DFW" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<button type="submit" class="btn btn-primary df-deposit" style="width: 20%; ">DEPOSIT</button>
+	</div>
+
+	<div class="input-group df-feature">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input df-feature-key-mine-switch" value="0">
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input df-feature-eco-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">ECO MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input df-feature-fee-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">FEE MINE</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</th>`
+                                })
+                            ); 
 
 
 
@@ -5873,6 +5934,46 @@ $(document).ready(function() {
                                         }); 
                                     };
                                 });
+                                window[WAXID].querySelector('input.df_switch[type="checkbox"]').addEventListener('change', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+										
+                                        $(this).prop( "disabled", true ); 
+										
+                                        fetch(`/vers/df/set?waxid=${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }&switch=${ this.checked }`, 
+											{method : 'GET'}
+										).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            if(result['text'] != 'okay'){ throw result }else{
+                                                if (
+                                                    result['data'] == true
+                                                ){
+                                                    this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `DESERT FARM ON ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `DESERT FARM NO ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`DESERT FARM : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (button){
+                                                setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
+                                            })(this); 
+                                        }); 
+                                    };
+                                });
 								
 								
 								
@@ -6042,6 +6143,9 @@ $(document).ready(function() {
 						}catch(e){ }; 
 						try{
 							window[ WAXID ].querySelector('input[class*="form-check-input vl_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['vl']["sw"]; 
+						}catch(e){ }; 
+						try{
+							window[ WAXID ].querySelector('input[class*="form-check-input df_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['df']["sw"]; 
 						}catch(e){ }; 
                         //  try{ $('[data-toggle="tooltip"]').tooltip() }catch(e){}; 
                         
@@ -8164,6 +8268,72 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['vl']['db']['balance']['has']['VLS']).toFixed(1)
 											} G  ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['vl']['db']['balance']['has']['VLG']).toFixed(1)
+											}`; 
+										}catch(e){ }; 
+									}; 
+								}catch(e){ }; 
+								try{
+									if(
+										window['information-data']["DATA"][ _WAXID ]['vers']['df']["sw"] == true && 
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=desertfarmgm"]`) 
+									){
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=desertfarmgm"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=desertfarmgm"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=desertfarmgm"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=desertfarmgm"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										//	document.querySelector(`th[id*="${ _WAXID }-df-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										//	document.querySelector(`th[id*="${ _WAXID }-df-monitor"] textarea[id*="message-text ${ _WAXID }"]`).parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['key_mine']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['eco_mine']; 
+										}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-feature-fee-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['fee_mine']; 
+										//	}catch(e){ }; 
+										
+										//	document.querySelector(`th[id*="${ _WAXID }-df-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['df']['db'], undefined, 4); 
+
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-set-mine-frequency-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['cfg_mine']['time']; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-deposit-fslf-text'
+										//		).innerText = 'DEPOSIT FSLF ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_fslf'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-fslf-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_fslf'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-fslf-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_fslf'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-deposit-fsls-text'
+										//		).innerText = 'DEPOSIT FSLS ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_fsls'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-fsls-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_fsls'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-fsls-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_fsls'][1]; 
+										//	}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('div.df-withdraw-deposit div').innerText 		= `E ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['df']['db']['balance']['pre']['DFE']).toFixed(1)
+											} W  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['df']['db']['balance']['pre']['DFW']).toFixed(1)
+											} : WITH [X%] DEPO : E  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['df']['db']['balance']['has']['DFE']).toFixed(1)
+											} W  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['df']['db']['balance']['has']['DFW']).toFixed(1)
 											}`; 
 										}catch(e){ }; 
 									}; 

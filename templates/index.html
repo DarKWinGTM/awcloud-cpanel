@@ -7241,8 +7241,8 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
-                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="1" min="0" max="50" >
+                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0.0000%</div>
+                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="0.5" min="0" max="50" >
                                 </div>
                                 <div class="input-group order-sell-config">
                                     <div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -7311,8 +7311,8 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
-                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="1" min="0" max="50" >
+                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0.0000%</div>
+                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="0.5" min="0" max="50" >
                                 </div>
                                 <div class="input-group order-sell-config">
                                     <div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -7381,8 +7381,8 @@ document.querySelector('form[action="#STAKE"]').addEventListener('submit', funct
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0000%</div>
-                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="1" min="0" max="50" >
+                                    <div class="input-group-text" style="width: 231px;">SELL SLIPPAGE +0.0000%</div>
+                                    <input type="range" class="form-control order-sell-slippage-input" placeholder="0" value="0" step="0.5" min="0" max="50" >
                                 </div>
                                 <div class="input-group order-sell-config">
                                     <div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -7594,7 +7594,7 @@ document.querySelectorAll('div.alcor-panel').forEach(function(e){
             e.querySelector('input.order-sell-switch').checked                                          = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['sw']; 
             e.querySelector('div.order-sell').querySelectorAll('input[type*="number"]')[0].value        = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['cf']['amount']; 
             e.querySelector('div.order-sell-slippage input').value                                      = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['cf']['slippa']; 
-            e.querySelectorAll('div.order-sell-slippage div.input-group-text')[1].innerText             = 'SELL SLIPPAGE +' + ('0000' + e.querySelector('div.order-sell-slippage input').value ).slice(-'0000'.length) + '%'; 
+            e.querySelectorAll('div.order-sell-slippage div.input-group-text')[1].innerText             = 'SELL SLIPPAGE +' + parseFloat(e.querySelector('div.order-sell-slippage input').value).toFixed(4) + '%'; 
             e.querySelector('div.order-sell-config input.order-sell-config-push-only-switch').checked   = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['cf']['puonly']; 
             e.querySelector('div.order-sell-config input.order-sell-config-dumper-switch').checked      = window['information-data']['DATA'][document.querySelector('div.modal#alcorTool').querySelector('div.modal-header').querySelector('h5').getAttribute("value")]['alco'][ $(this).find("option:selected")[0].getAttribute('symbol').toLowerCase() ]['cf']['dumper']; 
             o.parentElement.querySelector('div.order-sell').querySelectorAll('div.input-group-text')[1].innerText = `SELL ${ $(this).find("option:selected")[0].getAttribute('symbol') }`; 
@@ -7629,7 +7629,7 @@ document.querySelectorAll('div.alcor-panel').forEach(function(e){
                             o.parentElement.querySelectorAll('div.order-sell input')[1].value
                         ) * (
                             o.parentElement.querySelector('div.order-sell').querySelectorAll('input[type*="number"]')[1].var.ask * (
-                                ( 100 + parseInt(e.querySelector('div.order-sell-slippage input').value) ) / 100
+                                ( 100 + parseFloat( e.querySelector('div.order-sell-slippage input').value ) ) / 100
                             )
                         )
                     ).toFixed(8); 
@@ -7641,10 +7641,10 @@ document.querySelectorAll('div.alcor-panel').forEach(function(e){
     }); 
     
     e.querySelector('div.order-sell-slippage input').addEventListener('change', function(event) {
-        e.querySelector('div.order-sell-slippage').querySelectorAll('div.input-group-text')[1].innerText = `SELL SLIPPAGE +${ ('0000' + $(event.target).val()).slice(-'0000'.length) }%`
+        e.querySelector('div.order-sell-slippage').querySelectorAll('div.input-group-text')[1].innerText = `SELL SLIPPAGE +${ parseFloat( $(event.target).val() ).toFixed(4) }%` 
     }); 
     e.querySelector('div.order-sell-slippage input').addEventListener('input', function(event) {
-        e.querySelector('div.order-sell-slippage').querySelectorAll('div.input-group-text')[1].innerText = `SELL SLIPPAGE +${ ('0000' + $(event.target).val()).slice(-'0000'.length) }%`
+        e.querySelector('div.order-sell-slippage').querySelectorAll('div.input-group-text')[1].innerText = `SELL SLIPPAGE +${ parseFloat( $(event.target).val() ).toFixed(4) }%` 
     }); 
     
 }); 

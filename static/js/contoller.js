@@ -5216,22 +5216,33 @@ $(document).ready(function() {
 		<input type="number" class="form-control" placeholder="DFW" value="" step="5" min="5" max="2555555555555" aria-label="">
 		<button type="submit" class="btn btn-primary df-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
-
-	<div class="input-group df-auto-withdraw-before-mine">
-		
-		<div class="input-group df-auto-withdraw-before-mine">
-			<div class="input-group-text">
-				<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
-					<label class="form-check-label">
-						<input type="checkbox" class="form-check-input df-auto-withdraw-before-mine-switch" value="0" disabled="">
-						<!--span style="padding-left: 5;"></span-->
-					</label>
-				</div>
+									
+	<div class="input-group df-withdraw-dfe">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO WITHDRAW BEFORE MINE, KEEP MINIMIUM SUPPLY IN GAME</div>
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input df-withdraw-dfe-switch" value="0">
+					<!--span style="padding-left: 5;"></span-->
+				</label>
 			</div>
-			<div class="input-group-text df-auto-withdraw-before-mine-text" style="width: 248px;">AUTO WITHDRAW 0010 %</div>
-			<input type="range" class="form-control df-auto-withdraw-before-mine-input" placeholder="40" value="10" step="1" min="10" max="100">
 		</div>
-		
+		<div class="input-group-text df-withdraw-dfe-text" style="width: 248px;">WITHDRAW DFE 0000</div>
+		<input type="range" class="form-control df-withdraw-dfe-input" placeholder="40" value="50" step="5" min="0" max="6400" >
+		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+	</div>
+	<div class="input-group df-withdraw-dfw">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input df-withdraw-dfw-switch" value="0">
+					<!--span style="padding-left: 5;"></span-->
+				</label>
+			</div>
+		</div>
+		<div class="input-group-text df-withdraw-dfw-text" style="width: 248px;">WITHDRAW DFW 0000</div>
+		<input type="range" class="form-control df-withdraw-dfw-input" placeholder="40" value="50" step="5" min="0" max="6400" >
+		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
 
 	<div class="input-group df-feature">
@@ -5402,6 +5413,129 @@ $(document).ready(function() {
 								};
 							});
 
+
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-dfe-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-dfe-text'
+								).innerText = 'WITHDRAW DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfe=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-dfe-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-dfe-text'
+								).innerText = 'WITHDRAW DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfe=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-dfe-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-dfe-text'
+								).innerText = 'WITHDRAW DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-dfw-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-dfw-text'
+								).innerText = 'WITHDRAW DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfw=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-dfw-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-dfw-text'
+								).innerText = 'WITHDRAW DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfw=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-dfw-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-dfw-text'
+								).innerText = 'WITHDRAW DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
 
 
 
@@ -8602,6 +8736,29 @@ $(document).ready(function() {
 										//	}catch(e){ }; 
 										
 										//	document.querySelector(`th[id*="${ _WAXID }-df-monitor"] textarea[id*="message-text ${ _WAXID }"]`).value = JSON.stringify(window['information-data']['DATA'][_WAXID]['vers']['df']['db'], undefined, 4); 
+
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfe'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfe'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-df-panel-monitor"]'
+											).querySelector(
+												'div.df-withdraw-dfe-text'
+											).innerText = 'WITHDRAW DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfe'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfw'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfw'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-df-panel-monitor"]'
+											).querySelector(
+												'div.df-withdraw-dfw-text'
+											).innerText = 'WITHDRAW DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfw'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
 
 										//	try{
 										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-set-mine-frequency-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['cfg_mine']['time']; 

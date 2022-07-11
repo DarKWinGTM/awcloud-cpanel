@@ -5585,7 +5585,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
 								).querySelector(
 									'div.df-withdraw-bid-text'
-								).innerText = 'WITHDRAW DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'WITHDRAW VALUE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
 									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfw=${ this['var']['db']['check'] }` + 
@@ -5607,7 +5607,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
 								).querySelector(
 									'div.df-withdraw-bid-text'
-								).innerText = 'WITHDRAW DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'WITHDRAW VALUE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
 									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfw=${ this['var']['db']['check'] }` + 

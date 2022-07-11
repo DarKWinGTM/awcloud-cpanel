@@ -5244,6 +5244,43 @@ $(document).ready(function() {
 		<input type="range" class="form-control df-withdraw-dfw-input" placeholder="40" value="50" step="5" min="0" max="6400" >
 		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
 	</div>
+	<div class="input-group df-withdraw-bid">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input df-withdraw-bid-switch" value="0">
+					<!--span style="padding-left: 5;"></span-->
+				</label>
+			</div>
+		</div>
+		<div class="input-group-text df-withdraw-bid-text" style="width: 248px;">WITHDRAW VALUE 0000</div>
+		<input type="range" class="form-control df-withdraw-bid-input" placeholder="40" value="50" step="5" min="0" max="6400" >
+		<!--div class="input-group-text" id="basic-addon WAX" style="width: 38px;">%</div-->
+	</div>
+	
+	<div class="input-group df-deposit-dfe">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO DEPOSIT TO GAME WHEN HAVE NOT ENOUGH SUPPLY</div>
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input df-deposit-dfe-switch" value="0">
+				</label>
+			</div>
+		</div>
+		<div class="input-group-text df-deposit-dfe-text" style="width: 248px;">DEPOSIT DFE 0000</div>
+		<input type="range" class="form-control df-deposit-dfe-input" placeholder="50" value="50" step="5" min="0" max="3200" >
+	</div>
+	<div class="input-group df-deposit-dfw">
+		<div class="input-group-text">
+			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input df-deposit-dfw-switch" value="0">
+				</label>
+			</div>
+		</div>
+		<div class="input-group-text df-deposit-dfw-text" style="width: 248px;">DEPOSIT DFW 0000</div>
+		<input type="range" class="form-control df-deposit-dfw-input" placeholder="50" value="50" step="5" min="0" max="3200" >
+	</div>
 
 	<div class="input-group df-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
@@ -5412,8 +5449,6 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-
-
 							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-dfe-switch').addEventListener('change', function(e) {
 								this['var'] = {
 									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
@@ -5536,8 +5571,190 @@ $(document).ready(function() {
 								).innerText = 'WITHDRAW DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 							}); 
-
-
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-bid-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-bid-text'
+								).innerText = 'WITHDRAW DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfw=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-bid-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-bid-text'
+								).innerText = 'WITHDRAW DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfw=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-withdraw-bid-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-withdraw-bid-text'
+								).innerText = 'WITHDRAW VALUE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-deposit-dfe-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-deposit-dfe-text'
+								).innerText = 'DEPOSIT DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_depo_dfe=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-deposit-dfe-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-deposit-dfe-text'
+								).innerText = 'DEPOSIT DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_depo_dfe=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-deposit-dfe-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-deposit-dfe-text'
+								).innerText = 'DEPOSIT DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-deposit-dfw-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-deposit-dfw-text'
+								).innerText = 'DEPOSIT DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_depo_dfw=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-deposit-dfw-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-deposit-dfw-text'
+								).innerText = 'DEPOSIT DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_depo_dfw=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-deposit-dfw-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
+								).querySelector(
+									'div.df-deposit-dfw-text'
+								).innerText = 'DEPOSIT DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
 
 
 
@@ -8758,6 +8975,39 @@ $(document).ready(function() {
 											).querySelector(
 												'div.df-withdraw-dfw-text'
 											).innerText = 'WITHDRAW DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfw'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_bid'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_bid'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-df-panel-monitor"]'
+											).querySelector(
+												'div.df-withdraw-bid-text'
+											).innerText = 'WITHDRAW VALUE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_bid'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfe'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfe'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-df-panel-monitor"]'
+											).querySelector(
+												'div.df-deposit-dfe-text'
+											).innerText = 'DEPOSIT DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfe'][1] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfw'][0]; 
+											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfw'][1]; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-df-panel-monitor"]'
+											).querySelector(
+												'div.df-deposit-dfw-text'
+											).innerText = 'DEPOSIT DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfw'][1] ).slice(-'0000'.length); 
 										}catch(e){ }; 
 
 										//	try{

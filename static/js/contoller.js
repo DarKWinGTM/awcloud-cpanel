@@ -5588,7 +5588,7 @@ $(document).ready(function() {
 								).innerText = 'WITHDRAW VALUE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
-									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfw=${ this['var']['db']['check'] }` + 
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_bid=${ this['var']['db']['check'] }` + 
 									',' + this['var']['db']['value'], 
 									{method : 'GET'}
 								); 
@@ -5610,7 +5610,7 @@ $(document).ready(function() {
 								).innerText = 'WITHDRAW VALUE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
-									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_dfw=${ this['var']['db']['check'] }` + 
+									`/vers/df/set?waxid=${ this['var']['id'] }&auto_with_bid=${ this['var']['db']['check'] }` + 
 									',' + this['var']['db']['value'], 
 									{method : 'GET'}
 								); 

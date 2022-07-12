@@ -5291,7 +5291,7 @@ $(document).ready(function() {
 				</label>
 			</div>
 		</div>
-		<div class="input-group-text df-buy-wax-dfe-text" style="width: 248px;">BUY DFE 0000</div>
+		<div class="input-group-text df-buy-wax-dfe-text" style="width: 248px;">BUY DFE 0000 WAX</div>
 		<input type="range" class="form-control df-buy-wax-dfe-input" placeholder="20" value="20" step="5" min="0" max="600" >
 	</div>
 	<div class="input-group df-buy-wax-dfw">
@@ -5302,7 +5302,7 @@ $(document).ready(function() {
 				</label>
 			</div>
 		</div>
-		<div class="input-group-text df-buy-wax-dfw-text" style="width: 248px;">BUY DFW 0000</div>
+		<div class="input-group-text df-buy-wax-dfw-text" style="width: 248px;">BUY DFW 0000 WAX</div>
 		<input type="range" class="form-control df-buy-wax-dfw-input" placeholder="20" value="20" step="5" min="0" max="600" >
 	</div>
 
@@ -5794,7 +5794,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
 								).querySelector(
 									'div.df-buy-wax-dfe-text'
-								).innerText = 'BUY DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'BUY DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
 								
 								fetch(
 									`/vers/df/set?waxid=${ this['var']['id'] }&trade_buy_dfe=${ this['var']['db']['check'] }` + 
@@ -5816,7 +5816,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
 								).querySelector(
 									'div.df-buy-wax-dfe-text'
-								).innerText = 'BUY DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'BUY DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
 								
 								fetch(
 									`/vers/df/set?waxid=${ this['var']['id'] }&trade_buy_dfe=${ this['var']['db']['check'] }` + 
@@ -5838,7 +5838,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
 								).querySelector(
 									'div.df-buy-wax-dfe-text'
-								).innerText = 'BUY DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'BUY DFE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
 								
 							}); 
 							document.querySelector(`th[id*="${ WAXID }-df-panel-monitor"]`).querySelector('input.df-buy-wax-dfw-switch').addEventListener('change', function(e) {
@@ -5855,7 +5855,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
 								).querySelector(
 									'div.df-buy-wax-dfw-text'
-								).innerText = 'BUY DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'BUY DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
 								
 								fetch(
 									`/vers/df/set?waxid=${ this['var']['id'] }&trade_buy_dfw=${ this['var']['db']['check'] }` + 
@@ -5877,7 +5877,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
 								).querySelector(
 									'div.df-buy-wax-dfw-text'
-								).innerText = 'BUY DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'BUY DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
 								
 								fetch(
 									`/vers/df/set?waxid=${ this['var']['id'] }&trade_buy_dfw=${ this['var']['db']['check'] }` + 
@@ -5899,7 +5899,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-df-panel-monitor"]'
 								).querySelector(
 									'div.df-buy-wax-dfw-text'
-								).innerText = 'BUY DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'BUY DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
 								
 							}); 
 
@@ -9165,7 +9165,7 @@ $(document).ready(function() {
 												'th[id*="' + _WAXID + '-df-panel-monitor"]'
 											).querySelector(
 												'div.df-buy-wax-dfe-text'
-											).innerText = 'BUY DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfe'][1] ).slice(-'0000'.length); 
+											).innerText = 'BUY DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfe'][1] ).slice(-'0000'.length) + ' WAX'; 
 										}catch(e){ }; 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-buy-wax-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfw'][0]; 
@@ -9176,7 +9176,7 @@ $(document).ready(function() {
 												'th[id*="' + _WAXID + '-df-panel-monitor"]'
 											).querySelector(
 												'div.df-buy-wax-dfw-text'
-											).innerText = 'BUY DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfw'][1] ).slice(-'0000'.length); 
+											).innerText = 'BUY DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfw'][1] ).slice(-'0000'.length) + ' WAX'; 
 										}catch(e){ }; 
 
 										//	try{

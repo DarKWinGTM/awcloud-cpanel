@@ -174,9 +174,11 @@ $(document).ready(function() {
 						try{ window[`${ TRELE.getAttribute('id') }-fwar-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-fwar-panel-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-vl-monitor`].parentElement.remove() }catch(e){};  
-						try{ window[`${ TRELE.getAttribute('id') }-vl-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-vl-panel-monitor`].parentElement.remove() }catch(e){}; 
 						try{ window[`${ TRELE.getAttribute('id') }-df-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-df-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-bw-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-bw-panel-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-panel-monitor`].parentElement.remove() }catch(e){};  
                         try{ TRELE.remove() }catch(e){}; 
@@ -5904,6 +5906,151 @@ $(document).ready(function() {
 							}); 
 
 
+                            document.querySelector('table').querySelector('thead').appendChild(
+                                Object.assign(document.createElement('tr'), {
+                                    innerHTML   : `
+<th
+    colspan     = "7"
+    style       = "display: none; "
+	id 			= "${ WAXID }-bw-monitor"
+>
+	<!--
+	<textarea 
+		class 		= "form-control ${ WAXID }"
+		id 			= "message-text ${ WAXID }"
+		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
+	></textarea>
+	-->
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=burgerzworld"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
+</th>
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-bw-panel-monitor">
+	
+	<div class="input-group bw-withdraw-deposit">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">BZWB 0.0 BZWC 0.0 BZWP 0.0 : WITH [3%] DEPO : BZWB 0.0 BZWC 0.0 BZWP 0.0</div>
+		<button type="submit" class="btn btn-primary bw-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="BZWB" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="BZWC" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="BZWP" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<button type="submit" class="btn btn-primary bw-deposit" style="width: 20%; ">DEPOSIT</button>
+	</div>
+
+	<div class="input-group bw-feature">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input bw-feature-key-mine-switch" value="0">
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input bw-feature-eco-mine-switch" value="0" checked disabled>
+					<span style="padding-left: 5;">ECO MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input bw-feature-fee-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">FEE MINE</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</th>`
+                                })
+                            ); 
+
+
+	//	<div class="input-group bw-withdraw-dfe">
+	//		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO WITHDRAW BEFORE MINE, KEEP MINIMIUM SUPPLY IN GAME</div>
+	//		<div class="input-group-text">
+	//			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+	//				<label class="form-check-label">
+	//					<input type="checkbox" class="form-check-input bw-withdraw-dfe-switch" value="0">
+	//				</label>
+	//			</div>
+	//		</div>
+	//		<div class="input-group-text bw-withdraw-dfe-text" style="width: 248px;">WITHDRAW DFE 0000</div>
+	//		<input type="range" class="form-control bw-withdraw-dfe-input" placeholder="40" value="50" step="5" min="0" max="6400" >
+	//	</div>
+	//	<div class="input-group bw-withdraw-dfw">
+	//		<div class="input-group-text">
+	//			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+	//				<label class="form-check-label">
+	//					<input type="checkbox" class="form-check-input df-withdraw-dfw-switch" value="0">
+	//				</label>
+	//			</div>
+	//		</div>
+	//		<div class="input-group-text bw-withdraw-dfw-text" style="width: 248px;">WITHDRAW DFW 0000</div>
+	//		<input type="range" class="form-control bw-withdraw-dfw-input" placeholder="40" value="50" step="5" min="0" max="6400" >
+	//	</div>
+	//	<div class="input-group bw-withdraw-bid">
+	//		<div class="input-group-text">
+	//			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+	//				<label class="form-check-label">
+	//					<input type="checkbox" class="form-check-input bw-withdraw-bid-switch" value="0">
+	//				</label>
+	//			</div>
+	//		</div>
+	//		<div class="input-group-text bw-withdraw-bid-text" style="width: 248px;">WITHDRAW VALUE 0000</div>
+	//		<input type="range" class="form-control bw-withdraw-bid-input" placeholder="40" value="50" step="5" min="0" max="6400" >
+	//	</div>
+	//	
+	//	<div class="input-group bw-deposit-dfe">
+	//		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO DEPOSIT TO GAME WHEN HAVE NOT ENOUGH SUPPLY</div>
+	//		<div class="input-group-text">
+	//			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+	//				<label class="form-check-label">
+	//					<input type="checkbox" class="form-check-input bw-deposit-dfe-switch" value="0">
+	//				</label>
+	//			</div>
+	//		</div>
+	//		<div class="input-group-text bw-deposit-dfe-text" style="width: 248px;">DEPOSIT DFE 0000</div>
+	//		<input type="range" class="form-control bw-deposit-dfe-input" placeholder="50" value="50" step="5" min="0" max="3200" >
+	//	</div>
+	//	<div class="input-group bw-deposit-dfw">
+	//		<div class="input-group-text">
+	//			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+	//				<label class="form-check-label">
+	//					<input type="checkbox" class="form-check-input bw-deposit-dfw-switch" value="0">
+	//				</label>
+	//			</div>
+	//		</div>
+	//		<div class="input-group-text bw-deposit-dfw-text" style="width: 248px;">DEPOSIT DFW 0000</div>
+	//		<input type="range" class="form-control bw-deposit-dfw-input" placeholder="50" value="50" step="5" min="0" max="3200" >
+	//	</div>
+	//	
+	//	<div class="input-group bw-buy-wax-dfe">
+	//		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO BUY WHEN HAVE NOT ENOUGH SUPPLY</div>
+	//		<div class="input-group-text">
+	//			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+	//				<label class="form-check-label">
+	//					<input type="checkbox" class="form-check-input bw-buy-wax-dfe-switch" value="0">
+	//				</label>
+	//			</div>
+	//		</div>
+	//		<div class="input-group-text bw-buy-wax-dfe-text" style="width: 248px;">BUY DFE 0000 WAX</div>
+	//		<input type="range" class="form-control bw-buy-wax-dfe-input" placeholder="20" value="20" step="5" min="0" max="600" >
+	//	</div>
+	//	<div class="input-group bw-buy-wax-dfw">
+	//		<div class="input-group-text">
+	//			<div class="form-check-inline form-switch" style="margin-right: 0rem; ">
+	//				<label class="form-check-label">
+	//					<input type="checkbox" class="form-check-input bw-buy-wax-dfw-switch" value="0">
+	//				</label>
+	//			</div>
+	//		</div>
+	//		<div class="input-group-text bw-buy-wax-dfw-text" style="width: 248px;">BUY DFW 0000 WAX</div>
+	//		<input type="range" class="form-control bw-buy-wax-dfw-input" placeholder="20" value="20" step="5" min="0" max="600" >
+	//	</div>
+
 
 
 
@@ -6775,6 +6922,46 @@ $(document).ready(function() {
                                         }); 
                                     };
                                 });
+                                window[WAXID].querySelector('input.bw_switch[type="checkbox"]').addEventListener('change', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+										
+                                        $(this).prop( "disabled", true ); 
+										
+                                        fetch(`/vers/bw/set?waxid=${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }&switch=${ this.checked }`, 
+											{method : 'GET'}
+										).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            if(result['text'] != 'okay'){ throw result }else{
+                                                if (
+                                                    result['data'] == true
+                                                ){
+                                                    this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `BURGERZ WORLD ON ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `BURGERZ WORLD NO ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`BURGERZ WORLD : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (button){
+                                                setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
+                                            })(this); 
+                                        }); 
+                                    };
+                                });
 								
 								
 								
@@ -6947,6 +7134,9 @@ $(document).ready(function() {
 						}catch(e){ }; 
 						try{
 							window[ WAXID ].querySelector('input[class*="form-check-input df_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['df']["sw"]; 
+						}catch(e){ }; 
+						try{
+							window[ WAXID ].querySelector('input[class*="form-check-input bw_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['bw']["sw"]; 
 						}catch(e){ }; 
                         //  try{ $('[data-toggle="tooltip"]').tooltip() }catch(e){}; 
                         
@@ -9213,6 +9403,123 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['df']['db']['balance']['has']['DFE']).toFixed(1)
 											} W  ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['df']['db']['balance']['has']['DFW']).toFixed(1)
+											}`; 
+										}catch(e){ }; 
+									}; 
+								}catch(e){ }; 
+
+
+
+								try{
+									if(
+										window['information-data']["DATA"][ _WAXID ]['vers']['bw']["sw"] == true && 
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=burgerzworld"]`) 
+									){
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=burgerzworld"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=burgerzworld"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=burgerzworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=burgerzworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-bw-panel-monitor"]').querySelector('input.bw-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['bw']['cf']['key_mine']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-bw-panel-monitor"]').querySelector('input.bw-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['bw']['cf']['eco_mine']; 
+										}catch(e){ }; 
+
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-withdraw-dfe-text'
+										//		).innerText = 'WITHDRAW DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfe'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-withdraw-dfw-text'
+										//		).innerText = 'WITHDRAW DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_dfw'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_bid'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-withdraw-bid-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_bid'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-withdraw-bid-text'
+										//		).innerText = 'WITHDRAW VALUE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_with_bid'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-deposit-dfe-text'
+										//		).innerText = 'DEPOSIT DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfe'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-deposit-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-deposit-dfw-text'
+										//		).innerText = 'DEPOSIT DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['auto_depo_dfw'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-buy-wax-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-buy-wax-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-buy-wax-dfe-text'
+										//		).innerText = 'BUY DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfe'][1] ).slice(-'0000'.length) + ' WAX'; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-buy-wax-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-df-panel-monitor"]').querySelector('input.df-buy-wax-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-df-panel-monitor"]'
+										//		).querySelector(
+										//			'div.df-buy-wax-dfw-text'
+										//		).innerText = 'BUY DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfw'][1] ).slice(-'0000'.length) + ' WAX'; 
+										//	}catch(e){ }; 
+
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-bw-panel-monitor"]').querySelector('div.bw-withdraw-deposit div').innerText 		= `BZWB ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bw']['db']['balance']['pre']['BZWB']).toFixed(1)
+											} BZWC  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bw']['db']['balance']['pre']['BZWC']).toFixed(1)
+											} BZWP  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bw']['db']['balance']['pre']['BZWP']).toFixed(1)
+											} : WITH [X%] DEPO : BZWB ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bw']['db']['balance']['has']['BZWB']).toFixed(1)
+											} BZWC  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bw']['db']['balance']['has']['BZWC']).toFixed(1)
+											} BZWP  ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bw']['db']['balance']['has']['BZWP']).toFixed(1)
 											}`; 
 										}catch(e){ }; 
 									}; 

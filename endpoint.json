@@ -24,7 +24,7 @@
         "https://history-wax-mainnet.wecan.dev/v2/history/get_transaction?id="
     ], 
     "blockinfo" : [
-        "https://wax.eosusa.news", 
+        "https://wax.greymass.com", 
         "https://wax.eosphere.io", 
         "https://api.tokengamer.io", 
         "https://wax.neftyblocks.com", 
@@ -75,7 +75,7 @@
     ], 
     "af_c_sigh" : [
         "https://wax.api.eosnation.io", 
-        "https://wax.eosusa.news", 
+        "https://wax.greymass.com", 
         "https://api.waxnet.io", 
         "https://wax.greymass.com"
     ], 

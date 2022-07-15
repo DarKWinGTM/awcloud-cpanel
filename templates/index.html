@@ -3474,7 +3474,7 @@ document.querySelector('div.modal#boxNFT')['settool'] = function() {
                                                         if(
                                                             !window['information-data']['DATA'][ ID ]['cfgs']["land_list"].every(
                                                                 item => $('div.modal#setLand [aria-label*="RANDOM LAND"]').tagsinput('items').includes(item)
-                                                            )
+                                                            ) || window['information-data']['DATA'][ ID ]['cfgs']["land_list"]
                                                         ){
                                                             $.notify(
                                                                 `SET LAND : PLEASE WAIT ${ ID }`, 'info'

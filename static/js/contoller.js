@@ -5930,6 +5930,19 @@ $(document).ready(function() {
 	</div>
 </th>
 <th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-bw-panel-monitor">
+
+	<div class="input-group bw-set-repair">
+		<div class="input-group-text bw-set-repair-text" style="width: 248px; justify-content: center; ">REPAIR RATE 0000</div>
+		<input type="range" class="form-control bw-set-repair-input" placeholder="1" value="0" step="10" min="50" max="200" >
+	</div>
+	<div class="input-group bw-set-recovery">
+		<div class="input-group-text bw-set-recovery-text" style="width: 248px; justify-content: center; ">RECOVERY RATE 0000</div>
+		<input type="range" class="form-control bw-set-recovery-input" placeholder="1" value="0" step="200" min="0" max="950" >
+		<select class="form-select bw-set-recovery-option" style="width: inherit; ">
+			<option value="BZWB" style="text-align-last: center; ">BZWB</option>
+			<option value="BZWP" style="text-align-last: center; ">BZWP</option>
+		</select>
+	</div>
 	
 	<div class="input-group bw-withdraw-deposit">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">BZWB 0.0 BZWC 0.0 BZWP 0.0 : WITH [3%] DEPO : BZWB 0.0 BZWC 0.0 BZWP 0.0</div>

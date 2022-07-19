@@ -14382,7 +14382,7 @@
                             void 0 !== t.data.rows && t.data.rows.length > 0 && (e.rewards = t.data.rows.length)
                         }
                         )),
-                        r().get("/api/spacestations").then((function(t) {
+                        r().get("https://starship.primatepirate.com/api/spacestations").then((function(t) {
                             void 0 !== t.data.spacestations && t.data.spacestations.length > 0 && (e.spacestations = t.data.spacestations)
                         }
                         )),

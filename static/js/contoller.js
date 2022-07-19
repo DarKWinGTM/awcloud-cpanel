@@ -191,7 +191,7 @@ $(document).ready(function() {
                         !document.querySelector(`tr[id*="${WAXID}"]`)
                     ){
                         try{
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     id          : WAXID, 
                                     innerHTML   : window['information-data']['DOMS'].replace(
@@ -255,7 +255,7 @@ $(document).ready(function() {
                                     //	)
                                 })
                             ); 
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -272,7 +272,7 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -1959,7 +1959,7 @@ $(document).ready(function() {
 							//	</div>
 							
 							
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -2138,7 +2138,7 @@ $(document).ready(function() {
 												result['code'] == 200
 											){
 												$.notify(
-													`SAAR WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													`STARSHIP WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
 													"success", { position : "top" }
 												); 
 											}else{
@@ -2286,7 +2286,7 @@ $(document).ready(function() {
 									{method : 'GET'}
 								); 
 							}); 
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -2353,7 +2353,7 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -2407,7 +2407,7 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -2705,7 +2705,7 @@ $(document).ready(function() {
 									{method : 'GET'}
 								); 
 							}); 
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -2853,7 +2853,7 @@ $(document).ready(function() {
 									{method : 'GET'}
 								); 
 							}); 
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -3234,7 +3234,7 @@ $(document).ready(function() {
 												result['code'] == 200
 											){
 												$.notify(
-													`SAAR WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													`AGE OF FARMING WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
 													"success", { position : "top" }
 												); 
 											}else{
@@ -3775,8 +3775,7 @@ $(document).ready(function() {
 									setTimeout(function(){ window.location.reload(true) }, 3000); 
 								}); 
 							}); 
-
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -4160,7 +4159,7 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -4566,7 +4565,7 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -4911,7 +4910,7 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -4972,7 +4971,7 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -5007,6 +5006,15 @@ $(document).ready(function() {
 		<button type="submit" class="btn btn-primary vl-deposit" style="width: 20%; ">DEPOSIT</button>
 	</div>
 
+	<div class="input-group vl-palace-consume">
+		<div class="input-group-text" style="width: 248px;">PALACE CONSUME RESOURCE</div>
+		<select class="form-select vl-palace-consume-option">
+			<option value="1">VLW</option>
+			<option value="2">VLF</option>
+			<option value="3">VLS</option>
+		</select>
+	</div>
+
 	<div class="input-group vl-feature">
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
 		<div class="input-group-text" style="width: inherit; justify-content: center; ">
@@ -5033,6 +5041,21 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
+							document.querySelector(`th[id*="${WAXID}-vl-panel-monitor"] select.vl-palace-consume-option`).addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: $(this).find("option:selected").val(), 
+								}; 
+
+								fetch(
+									`/vers/vl/set?waxid=${ this['var']['id'] }&cfg_mine=plrc&value=${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+
+							})
 							document.querySelector(`th[id*="${WAXID}-vl-panel-monitor"] button.vl-withdraw`).addEventListener('click', function(e) {
 								this['var'] = {
 									'id' : this.parentElement.parentElement.id.split('-')[0], 
@@ -5186,7 +5209,7 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -5904,9 +5927,7 @@ $(document).ready(function() {
 								).innerText = 'BUY DFW ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
 								
 							}); 
-
-
-                            document.querySelector('table').querySelector('thead').appendChild(
+                            document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
 <th
@@ -5964,7 +5985,7 @@ $(document).ready(function() {
 			</div>
 			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input bw-feature-eco-mine-switch" value="0" checked disabled>
+					<input type="checkbox" class="form-check-input bw-feature-eco-mine-switch" value="0">
 					<span style="padding-left: 5;">ECO MINE</span>
 				</label>
 			</div>
@@ -5979,6 +6000,257 @@ $(document).ready(function() {
 </th>`
                                 })
                             ); 
+							document.querySelector(`th[id*="${ WAXID }-bw-panel-monitor"]`).querySelector('input.bw-feature-key-mine-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"]').querySelector('input.bw-feature-key-mine-switch').checked, 
+								}; 
+								
+								fetch(
+									`/vers/bw/set?waxid=${ this['var']['id'] }&key_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-bw-panel-monitor"]`).querySelector('input.bw-feature-eco-mine-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"]').querySelector('input.bw-feature-eco-mine-switch').checked, 
+								}; 
+								
+								fetch(
+									`/vers/bw/set?waxid=${ this['var']['id'] }&eco_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-bw-panel-monitor"]`).querySelector('input.bw-set-repair-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"]').querySelector('input.bw-set-repair-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-bw-panel-monitor"]'
+								).querySelector(
+									'div.bw-set-repair-text'
+								).innerText = 'REPAIR RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/bw/set?waxid=${ this['var']['id'] }&cfg_mine=repr&value=${ this['var']['db']['value'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-bw-panel-monitor"]`).querySelector('input.bw-set-repair-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"]').querySelector('input.bw-set-repair-input').value, 
+								}; console.debug( this['var'] );  
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-bw-panel-monitor"]'
+								).querySelector(
+									'div.bw-set-repair-text'
+								).innerText = 'REPAIR RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							
+							document.querySelector(`th[id*="${ WAXID }-bw-panel-monitor"]`).querySelector('input.bw-set-recovery-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"]').querySelector('input.bw-set-recovery-input').value, 
+									'resou' 	: $( document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"] select.bw-set-recovery-option') ).find("option:selected").val()
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-bw-panel-monitor"]'
+								).querySelector(
+									'div.bw-set-recovery-text'
+								).innerText = 'RECOVERY RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+								fetch(
+									`/vers/bw/set?waxid=${ this['var']['id'] }&cfg_mine=recr&value=${ this['var']['db']['value'] },${ this['var']['db']['resou'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-bw-panel-monitor"]`).querySelector('input.bw-set-recovery-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"]').querySelector('input.bw-set-recovery-input').value, 
+								}; console.debug( this['var'] );  
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-bw-panel-monitor"]'
+								).querySelector(
+									'div.bw-set-recovery-text'
+								).innerText = 'RECOVERY RATE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								
+							}); 
+							document.querySelector(`th[id*="${WAXID}-bw-panel-monitor"] button.bw-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'BZWB' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"] div.bw-withdraw-deposit').querySelector('input[placeholder*="BZWB"]').value) || 0, 
+									'BZWC' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"] div.bw-withdraw-deposit').querySelector('input[placeholder*="BZWC"]').value) || 0, 
+									'BZWP' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"] div.bw-withdraw-deposit').querySelector('input[placeholder*="BZWP"]').value) || 0, 
+									'FEE' 	: 5, 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/bw_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['FEE']
+										}&quantity=${
+											this['var']['db']['BZWB']
+										}.0000,${
+											this['var']['db']['BZWC']
+										}.0000,${
+											this['var']['db']['BZWP']
+										}.0000,0.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`BURGERZ WORLD WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`BURGERZ WORLD WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`BURGERZ WORLD WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`BURGERZ WORLD WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`BURGERZ WORLD WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-bw-panel-monitor"] button.bw-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'BZWB' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"] div.bw-withdraw-deposit').querySelector('input[placeholder*="BZWB"]').value) || 0, 
+									'BZWC' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"] div.bw-withdraw-deposit').querySelector('input[placeholder*="BZWC"]').value) || 0, 
+									'BZWP' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-bw-panel-monitor"] div.bw-withdraw-deposit').querySelector('input[placeholder*="BZWP"]').value) || 0								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/bw_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['BZWB']
+										}.0000,${
+											this['var']['db']['BZWC']
+										}.0000,${
+											this['var']['db']['BZWP']
+										}.0000,0.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`BURGERZ WORLD DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`BURGERZ WORLD DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`BURGERZ WORLD DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`BURGERZ WORLD DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`BURGERZ WORLD DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
 
 
 	//	<div class="input-group bw-withdraw-dfe">
@@ -9255,6 +9527,11 @@ $(document).ready(function() {
 										//		document.querySelector('th[id*="' + _WAXID + '-vl-panel-monitor"]').querySelector('input.vl-deposit-fsls-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['vl']['cf']['auto_depo_fsls'][0]; 
 										//		document.querySelector('th[id*="' + _WAXID + '-vl-panel-monitor"]').querySelector('input.vl-deposit-fsls-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['vl']['cf']['auto_depo_fsls'][1]; 
 										//	}catch(e){ }; 
+
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-vl-panel-monitor"]').querySelector('select.vl-palace-consume-option').value = window['information-data']['DATA'][_WAXID]['vers']['vl']['cf']['cfg_mine']['plrc'].toString(); 
+										}catch(e){ }; 
+
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-vl-panel-monitor"]').querySelector('div.vl-withdraw-deposit div').innerText 		= `W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['vl']['db']['balance']['pre']['VLW']).toFixed(1)
@@ -9519,6 +9796,25 @@ $(document).ready(function() {
 										//			'div.df-buy-wax-dfw-text'
 										//		).innerText = 'BUY DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['df']['cf']['trade_buy_dfw'][1] ).slice(-'0000'.length) + ' WAX'; 
 										//	}catch(e){ }; 
+
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-bw-panel-monitor"]'
+											).querySelector(
+												'div.bw-set-repair-text'
+											).innerText = 'REPAIR RATE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['bw']['cf']['cfg_mine']['repr'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-bw-panel-monitor"]').querySelector('input.bw-set-repair-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['bw']['cf']['cfg_mine']['repr']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-bw-panel-monitor"]'
+											).querySelector(
+												'div.bw-set-recovery-text'
+											).innerText = 'RECOVERY RATE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['bw']['cf']['cfg_mine']['recr'][0] ).slice(-'0000'.length); 
+											document.querySelector('th[id*="' + _WAXID + '-bw-panel-monitor"]').querySelector('select.bw-set-recovery-option').value = window['information-data']['DATA'][_WAXID]['vers']['bw']['cf']['cfg_mine']['recr'][1].toString(); 
+										}catch(e){ }; 
 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-bw-panel-monitor"]').querySelector('div.bw-withdraw-deposit div').innerText 		= `BZWB ${

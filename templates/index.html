@@ -658,24 +658,24 @@
                             >
                                 <button
                                     class           = "nav-link"
-                                    id              = "gm-monitor-tab"
+                                    id              = "fe-monitor-tab"
                                     data-bs-toggle  = "tab"
-                                    data-bs-target  = "#gm-monitor"
+                                    data-bs-target  = "#fe-monitor"
                                     type            = "button"
                                     role            = "tab"
-                                    aria-controls   = "gm-monitor"
+                                    aria-controls   = "fe-monitor"
                                     aria-selected   = "false"
                                     style           = "
                                         font-weight: bold;
                                         color: black;
                                         font-size: large;
                                     "
-                                    onclick         = "window.localStorage.clear(); document.querySelector('iframe#gmMonitor').setAttribute('src', document.querySelector('iframe#gmMonitor').getAttribute('url'))"
+                                    onclick         = "window.localStorage.clear(); document.querySelector('iframe#feMonitor').setAttribute('src', document.querySelector('iframe#feMonitor').getAttribute('url'))"
                                 ><img
-                                    src     = "https://cdn.discordapp.com/icons/907620431819833404/a_1d459bf6da0d29114ed178e518b145ce.gif?size=96"
+                                    src     = "https://play.fiveelement.io/images/five-elements/logo-menu.png"
                                     alt     = ""
                                     style   = "height: 48px; width: 48px; margin-right: 10px; border-radius: 50%;"
-                                >GM</button>
+                                >FE</button>
                             </li>
                             <li 
                                 class="nav-item"
@@ -992,6 +992,9 @@
                                 <div class="tab-pane" id="fw-monitor" role="tabpanel" aria-labelledby="fw-monitor-tab">
                                     <iframe id="fwMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
                                 </div>
+                                <div class="tab-pane" id="fe-monitor" role="tabpanel" aria-labelledby="fe-monitor-tab">
+                                    <iframe id="flMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
+                                </div>
                                 <div class="tab-pane" id="gx-monitor" role="tabpanel" aria-labelledby="gx-monitor-tab">
                                     <iframe id="gxMonitor" style="width : 100%; height : 776px; min-height : 776px; " url=""></iframe>
                                 </div>
@@ -1161,6 +1164,14 @@ window['expand-all-history'].addEventListener('click', function(e) {
         document.querySelector(`th[id*="${ _WAXID_ }-dw-panel-monitor"][colspan="2"]`).style.removeProperty("position");
         document.querySelector(`th[id*="${ _WAXID_ }-fl-monitor"][colspan="7"]`).style.removeProperty("position");
         document.querySelector(`th[id*="${ _WAXID_ }-fl-panel-monitor"][colspan="2"]`).style.removeProperty("position");
+        document.querySelector(`th[id*="${ _WAXID_ }-fwar-monitor"][colspan="7"]`).style.removeProperty("position");
+        document.querySelector(`th[id*="${ _WAXID_ }-fwar-panel-monitor"][colspan="2"]`).style.removeProperty("position");
+        document.querySelector(`th[id*="${ _WAXID_ }-vl-monitor"][colspan="7"]`).style.removeProperty("position");
+        document.querySelector(`th[id*="${ _WAXID_ }-vl-panel-monitor"][colspan="2"]`).style.removeProperty("position");
+        document.querySelector(`th[id*="${ _WAXID_ }-df-monitor"][colspan="7"]`).style.removeProperty("position");
+        document.querySelector(`th[id*="${ _WAXID_ }-df-panel-monitor"][colspan="2"]`).style.removeProperty("position");
+        document.querySelector(`th[id*="${ _WAXID_ }-bw-monitor"][colspan="7"]`).style.removeProperty("position");
+        document.querySelector(`th[id*="${ _WAXID_ }-bw-panel-monitor"][colspan="2"]`).style.removeProperty("position");
 
         document.querySelector(`th[id*="${ _WAXID_ }-fw-monitor"][colspan="7"]`).style.removeProperty("visibility");
         document.querySelector(`th[id*="${ _WAXID_ }-fw-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
@@ -1182,6 +1193,14 @@ window['expand-all-history'].addEventListener('click', function(e) {
         document.querySelector(`th[id*="${ _WAXID_ }-dw-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
         document.querySelector(`th[id*="${ _WAXID_ }-fl-monitor"][colspan="7"]`).style.removeProperty("visibility");
         document.querySelector(`th[id*="${ _WAXID_ }-fl-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
+        document.querySelector(`th[id*="${ _WAXID_ }-fwar-monitor"][colspan="7"]`).style.removeProperty("visibility");
+        document.querySelector(`th[id*="${ _WAXID_ }-fwar-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
+        document.querySelector(`th[id*="${ _WAXID_ }-vl-monitor"][colspan="7"]`).style.removeProperty("visibility");
+        document.querySelector(`th[id*="${ _WAXID_ }-vl-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
+        document.querySelector(`th[id*="${ _WAXID_ }-df-monitor"][colspan="7"]`).style.removeProperty("visibility");
+        document.querySelector(`th[id*="${ _WAXID_ }-df-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
+        document.querySelector(`th[id*="${ _WAXID_ }-bw-monitor"][colspan="7"]`).style.removeProperty("visibility");
+        document.querySelector(`th[id*="${ _WAXID_ }-bw-panel-monitor"][colspan="2"]`).style.removeProperty("visibility");
         
     };
 });
@@ -1215,6 +1234,17 @@ window['collapse-all-history'].addEventListener('click', function(e) {
         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=diggerswgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fishinglgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fishinglgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
+
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmwarsnfts"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmwarsnfts"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=varialandsio"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=varialandsio"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=desertfarmgm"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=desertfarmgm"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=burgerzworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=burgerzworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fiveelements"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.position = 'absolute';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fiveelements"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.position = 'absolute';
         
         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmersworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
@@ -1236,6 +1266,16 @@ window['collapse-all-history'].addEventListener('click', function(e) {
         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=diggerswgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fishinglgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
         document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fishinglgame"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmwarsnfts"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=farmwarsnfts"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=varialandsio"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=varialandsio"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=desertfarmgm"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=desertfarmgm"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=burgerzworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=burgerzworld"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fiveelements"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.visibility = 'hidden';
+        document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID_ }&act.account=fiveelements"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.visibility = 'hidden';
         
     };
 });

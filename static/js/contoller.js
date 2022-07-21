@@ -92,18 +92,6 @@ $(document).ready(function() {
             //			//	'cors.bridged.cc/https://api.waxsweden.org', 
             //			//	'cors.bridged.cc/https://api.waxsweden.org'
             //			//  , 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online', 
-            //			//  'cors.bridged.cc/https://apiminingv2.idigger.online'
         ]; 
         
         document.querySelector('div.modal#poolMineable').addEventListener('shown.bs.modal', function () {
@@ -179,6 +167,8 @@ $(document).ready(function() {
 						try{ window[`${ TRELE.getAttribute('id') }-df-panel-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-bw-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-bw-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-fe-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-fe-panel-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-panel-monitor`].parentElement.remove() }catch(e){};  
                         try{ TRELE.remove() }catch(e){}; 
@@ -6253,6 +6243,262 @@ $(document).ready(function() {
 							});
 
 
+
+
+
+
+                            document.querySelector('table thead.cpanel-control').appendChild(
+                                Object.assign(document.createElement('tr'), {
+                                    innerHTML   : `
+<th
+    colspan     = "7"
+    style       = "display: none; "
+	id 			= "${ WAXID }-fe-monitor"
+>
+	<!--
+	<textarea 
+		class 		= "form-control ${ WAXID }"
+		id 			= "message-text ${ WAXID }"
+		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
+	></textarea>
+	-->
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=fiveelements"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
+</th>
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-fe-panel-monitor">
+	
+	<div class="input-group fe-withdraw-deposit">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">E 0.0 F 0.0 G 0.0 O 0.0 W 0.0 : WITH [7%] DEPO : E 0.0 F 0.0 G 0.0 O 0.0 W 0.0</div>
+		<button type="submit" class="btn btn-primary fe-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="FEE" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="FEF" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="FEG" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="FEO" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="FEW" value="" step="5" min="5" max="2555555555555" aria-label="">
+		<button type="submit" class="btn btn-primary fe-deposit" style="width: 20%; ">DEPOSIT</button>
+	</div>
+
+	<div class="input-group fe-feature">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fe-feature-key-mine-switch" value="0">
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fe-feature-eco-mine-switch" value="0">
+					<span style="padding-left: 5;">ECO MINE</span>
+				</label>
+			</div>
+			<div class="form-check-inline form-switch" style="margin-right: 0.5rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input fe-feature-fee-mine-switch" value="0" disabled>
+					<span style="padding-left: 5;">FEE MINE</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</th>`
+                                })
+                            ); 
+							document.querySelector(`th[id*="${ WAXID }-fe-panel-monitor"]`).querySelector('input.fe-feature-key-mine-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"]').querySelector('input.fe-feature-key-mine-switch').checked, 
+								}; 
+								
+								fetch(
+									`/vers/fe/set?waxid=${ this['var']['id'] }&key_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-fe-panel-monitor"]`).querySelector('input.fe-feature-eco-mine-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"]').querySelector('input.fe-feature-eco-mine-switch').checked, 
+								}; 
+								
+								fetch(
+									`/vers/fe/set?waxid=${ this['var']['id'] }&eco_mine=${ this['var']['db']['check'] }`, 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${WAXID}-fe-panel-monitor"] button.fe-withdraw`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'FEE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEE"]').value) || 0, 
+									'FEF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEF"]').value) || 0, 
+									'FEG' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEG"]').value) || 0, 
+									'FEO' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEO"]').value) || 0, 
+									'FEW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEW"]').value) || 0, 
+									'TAX' 	: 7, 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/fe_with?waxid=${
+											this['var']['id']
+										}&amount=${
+											this['var']['db']['TAX']
+										}&quantity=${
+											this['var']['db']['FEE']
+										}.0000,${
+											this['var']['db']['FEF']
+										}.0000,${
+											this['var']['db']['FEG']
+										}.0000,${
+											this['var']['db']['FEO']
+										}.0000,${
+											this['var']['db']['FEW']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`FIVE ELEMENTS WITHDRAW : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`FIVE ELEMENTS WITHDRAW : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`FIVE ELEMENTS WITHDRAW : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`FIVE ELEMENTS WITHDRAW : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`FIVE ELEMENTS WITHDRAW : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+							document.querySelector(`th[id*="${WAXID}-fe-panel-monitor"] button.fe-deposit`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'FEE' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEE"]').value) || 0, 
+									'FEF' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEF"]').value) || 0, 
+									'FEG' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEG"]').value) || 0, 
+									'FEO' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEO"]').value) || 0, 
+									'FEW' 	: parseInt(document.querySelector('th[id*="' + this['var']['id'] + '-fe-panel-monitor"] div.fe-withdraw-deposit').querySelector('input[placeholder*="FEW"]').value) || 0								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/fe_depo?waxid=${
+											this['var']['id']
+										}&quantity=${
+											this['var']['db']['FEE']
+										}.0000,${
+											this['var']['db']['FEF']
+										}.0000,${
+											this['var']['db']['FEG']
+										}.0000,${
+											this['var']['db']['FEO']
+										}.0000,${
+											this['var']['db']['FEW']
+										}.0000`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`FIVE ELEMENTS DEPOSIT : DONE ${this['var']['id']} - <a href="https://eosauthority.com/transaction/${ result['data']['transaction']['trx']['transaction_id'] }?network=wax#actions">TRX ${ result['data']['transaction']['trx']['transaction_id'] }</a>`,
+													"success", { position : "top" }
+												); 
+											}else{
+												try{
+													if(
+														result['data']['transaction'] && 
+														result['data']['transaction']['trx'] && 
+														result['data']['transaction']['trx']['error'] && 
+														result['data']['transaction']['trx']['error']['what']
+													){
+														$.notify(
+															`FIVE ELEMENTS DEPOSIT : WARNING ${this['var']['id']} - ${ result['data']['transaction']['trx']['error']['details'][0]['message'] }`, 'warn'
+														); 
+													}else{
+														$.notify(
+															`FIVE ELEMENTS DEPOSIT : WARNING ${this['var']['id']} - ${ (Object.keys( result['data']['result'] ) || []).map(obj => result['data']['result'][obj].split(/:|-/gi)[2]).join('_').replace(/,/gi, '') }`, 'warn'
+														); 
+													}; 
+												}catch(e){
+													$.notify(
+														`FIVE ELEMENTS DEPOSIT : WARNING ${this['var']['id']} - ${ result['text'] }`, 
+														'error'
+													); 
+												}; 
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`FIVE ELEMENTS DEPOSIT : ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
+
+
 	//	<div class="input-group bw-withdraw-dfe">
 	//		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO WITHDRAW BEFORE MINE, KEEP MINIMIUM SUPPLY IN GAME</div>
 	//		<div class="input-group-text">
@@ -7247,6 +7493,46 @@ $(document).ready(function() {
                                         }); 
                                     };
                                 });
+                                window[WAXID].querySelector('input.fe_switch[type="checkbox"]').addEventListener('change', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+										
+                                        $(this).prop( "disabled", true ); 
+										
+                                        fetch(`/vers/fe/set?waxid=${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }&switch=${ this.checked }`, 
+											{method : 'GET'}
+										).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            if(result['text'] != 'okay'){ throw result }else{
+                                                if (
+                                                    result['data'] == true
+                                                ){
+                                                    this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `FIVE ELEMENTS ON ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `FIVE ELEMENTS NO ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`FIVE ELEMENTS : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (button){
+                                                setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
+                                            })(this); 
+                                        }); 
+                                    };
+                                });
 								
 								
 								
@@ -7422,6 +7708,9 @@ $(document).ready(function() {
 						}catch(e){ }; 
 						try{
 							window[ WAXID ].querySelector('input[class*="form-check-input bw_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['bw']["sw"]; 
+						}catch(e){ }; 
+						try{
+							window[ WAXID ].querySelector('input[class*="form-check-input fe_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['fe']["sw"]; 
 						}catch(e){ }; 
                         //  try{ $('[data-toggle="tooltip"]').tooltip() }catch(e){}; 
                         
@@ -9698,8 +9987,6 @@ $(document).ready(function() {
 									}; 
 								}catch(e){ }; 
 
-
-
 								try{
 									if(
 										window['information-data']["DATA"][ _WAXID ]['vers']['bw']["sw"] == true && 
@@ -9829,6 +10116,129 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bw']['db']['balance']['has']['BZWC']).toFixed(1)
 											} BZWP  ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['bw']['db']['balance']['has']['BZWP']).toFixed(1)
+											}`; 
+										}catch(e){ }; 
+									}; 
+								}catch(e){ }; 
+
+								try{
+									if(
+										window['information-data']["DATA"][ _WAXID ]['vers']['fe']["sw"] == true && 
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fiveelements"]`) 
+									){
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fiveelements"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fiveelements"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fiveelements"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=fiveelements"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['key_mine']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-feature-eco-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['eco_mine']; 
+										}catch(e){ }; 
+
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-withdraw-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-withdraw-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fe-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fe-withdraw-dfe-text'
+										//		).innerText = 'WITHDRAW DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_dfe'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-withdraw-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-withdraw-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fe-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fe-withdraw-dfw-text'
+										//		).innerText = 'WITHDRAW DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_dfw'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-withdraw-bid-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_bid'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-withdraw-bid-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_bid'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fe-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fe-withdraw-bid-text'
+										//		).innerText = 'WITHDRAW VALUE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_with_bid'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-deposit-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_depo_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-deposit-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_depo_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fe-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fe-deposit-dfe-text'
+										//		).innerText = 'DEPOSIT DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_depo_dfe'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-deposit-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_depo_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-deposit-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_depo_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fe-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fe-deposit-dfw-text'
+										//		).innerText = 'DEPOSIT DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['auto_depo_dfw'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-buy-wax-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['trade_buy_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-buy-wax-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['trade_buy_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fe-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fe-buy-wax-dfe-text'
+										//		).innerText = 'BUY DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['trade_buy_dfe'][1] ).slice(-'0000'.length) + ' WAX'; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-buy-wax-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['trade_buy_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('input.fe-buy-wax-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['trade_buy_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-fe-panel-monitor"]'
+										//		).querySelector(
+										//			'div.fe-buy-wax-dfw-text'
+										//		).innerText = 'BUY DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['fe']['cf']['trade_buy_dfw'][1] ).slice(-'0000'.length) + ' WAX'; 
+										//	}catch(e){ }; 
+
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-fe-panel-monitor"]').querySelector('div.fe-withdraw-deposit div').innerText 		= `E ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['pre']['FEE']).toFixed(1)
+											} F ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['pre']['FEF']).toFixed(1)
+											} G ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['pre']['FEG']).toFixed(1)
+											} O ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['pre']['FEO']).toFixed(1)
+											} W ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['pre']['FEW']).toFixed(1)
+											} : WITH [X%] DEPO : E ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['has']['FEE']).toFixed(1)
+											} F ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['has']['FEF']).toFixed(1)
+											} G ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['has']['FEG']).toFixed(1)
+											} O ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['has']['FEO']).toFixed(1)
+											} W ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['has']['FEW']).toFixed(1)
 											}`; 
 										}catch(e){ }; 
 									}; 

@@ -8414,7 +8414,7 @@ document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-
                     Array.from(
                         document.querySelector('div.modal#taskScheduler').querySelectorAll('input.time'), time => `${time.value}:${time.checked}`
                     ).join(',') != Array.from(
-                        Object.keys( window['information-data']['DATA']['iajgq.wam']['time'] ), time => `${time}:${window['information-data']['DATA'][ ID ]['time'][time]}`
+                        Object.keys( window['information-data']['DATA'][ ID ]['time'] ), time => `${time}:${window['information-data']['DATA'][ ID ]['time'][time]}`
                     ).join(',')
                 ){
                     

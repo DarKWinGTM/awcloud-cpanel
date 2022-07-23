@@ -8409,39 +8409,55 @@ document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-
                 `TASK SCHEDULER : PLEASE WAIT`, 'info'
             );
             (function(ID) {
-                setTimeout(function(){
-                    this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input.time'), time => `${time.value}:${time.checked}`).join(',');
-                    this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                    fetch(`/task_scheduler/set?waxid=${ ID }&time=${ this['time'] }&zone=${ this['zone'] }`, {
-                        "headers": {},
-                        "body": null,
-                        "method": "GET",
-                    }).then(
-                        result => result.json()
-                    ).then(result => {
-                        if (result['code'] == 200) {
-                            $.notify(
-                                `TASK SCHEDULER : DONE ${ ID }`,
-                                'success'
-                            );
-                        } else {
-                            try {
+
+                this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input.time'), time => `${time.value}:${time.checked}`).join(',');
+                this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+                if (
+                    this['time'] != Array.from(
+                        Object.keys( window['information-data']['DATA']['iajgq.wam']['time'] ), time => `${time}:${window['information-data']['DATA'][ ID ]['time'][time]}`
+                    ).join(',')
+                ){
+                    
+                    setTimeout(function(){
+                        fetch(`/task_scheduler/set?waxid=${ ID }&time=${ this['time'] }&zone=${ this['zone'] }`, {
+                            "headers": {},
+                            "body": null,
+                            "method": "GET",
+                        }).then(
+                            result => result.json()
+                        ).then(result => {
+                            if (result['code'] == 200) {
                                 $.notify(
-                                    `TASK SCHEDULER : FAIL ${ ID } - ${ result['text'] }`, 'warn'
+                                    `TASK SCHEDULER : DONE ${ ID }`,
+                                    'success'
                                 );
-                            } catch (e) {
-                                $.notify(
-                                    `TASK SCHEDULER : ERROR  ${ ID }- ${ result['text'] }`,
-                                    'error'
-                                );
+                            } else {
+                                try {
+                                    $.notify(
+                                        `TASK SCHEDULER : FAIL ${ ID } - ${ result['text'] }`, 'warn'
+                                    );
+                                } catch (e) {
+                                    $.notify(
+                                        `TASK SCHEDULER : ERROR  ${ ID }- ${ result['text'] }`,
+                                        'error'
+                                    );
+                                };
                             };
-                        };
-                    }).catch(error => {
-                        $.notify(
-                            `TASK SCHEDULER : CONNECTION FAILED ${ ID } ${ error }`, 'error'
-                        );
-                    });
-                }, 1000 + Math.ceil(Math.random() * 16000))
+                        }).catch(error => {
+                            $.notify(
+                                `TASK SCHEDULER : CONNECTION FAILED ${ ID } ${ error }`, 'error'
+                            );
+                        });
+                    }, 1000 + Math.ceil(Math.random() * 20000))
+                    
+                }else{
+                    
+                    $.notify(
+                        `TASK SCHEDULER : ALREADY ${ ID }`, 'success'
+                    );
+                    
+                }
             })(TASKSCHE);
             $.notify(
                 //  window[TASKSCHE],

@@ -8410,16 +8410,19 @@ document.querySelector('div.modal#taskScheduler button.btn.btn-primary.set-task-
             );
             (function(ID) {
 
-                this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input.time'), time => `${time.value}:${time.checked}`).join(',');
-                this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
                 if (
-                    this['time'] != Array.from(
+                    Array.from(
+                        document.querySelector('div.modal#taskScheduler').querySelectorAll('input.time'), time => `${time.value}:${time.checked}`
+                    ).join(',') != Array.from(
                         Object.keys( window['information-data']['DATA']['iajgq.wam']['time'] ), time => `${time}:${window['information-data']['DATA'][ ID ]['time'][time]}`
                     ).join(',')
                 ){
                     
                     setTimeout(function(){
+
+                        this['time'] = Array.from(document.querySelector('div.modal#taskScheduler').querySelectorAll('input.time'), time => `${time.value}:${time.checked}`).join(',');
+                        this['zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                        
                         fetch(`/task_scheduler/set?waxid=${ ID }&time=${ this['time'] }&zone=${ this['zone'] }`, {
                             "headers": {},
                             "body": null,

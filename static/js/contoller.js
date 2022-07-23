@@ -8376,9 +8376,9 @@ $(document).ready(function() {
 
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-ss-panel-monitor"]').querySelector('div.ss-withdraw-deposit div').innerText 	= `${
-												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ss']['db']['balance']['pre']['KYANITE']).toFixed(4)
-											} : WALLET [10%] STAKED : ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ss']['db']['balance']['has']['KYANITE']).toFixed(4)
+											} : WALLET [10%] STAKED : ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ss']['db']['balance']['pre']['KYANITE']).toFixed(4)
 											}`; 
 										}catch(e){ }; 
 									}; 

@@ -42,10 +42,10 @@
         "https://api.waxsweden.org"
     ], 
     "ss_c_sigh" : [
-        "https://wax.greymass.com", 
-        "https://wax.eosphere.io", 
-        "https://wax.api.eosnation.io", 
-        "https://api.waxsweden.org"
+        "https://api.waxnet.io", 
+        "https://api.waxnet.io", 
+        "https://api.waxnet.io", 
+        "https://api.waxnet.io"
     ], 
     "kq_c_sigh" : [
         "https://wax.greymass.com", 

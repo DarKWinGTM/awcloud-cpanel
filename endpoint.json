@@ -66,10 +66,10 @@
         "https://api.waxnet.io"
     ], 
     "bl_c_sigh" : [
-        "https://wax.eosphere.io", 
-        "https://wax.api.eosnation.io", 
         "https://api.waxnet.io", 
-        "https://wax.greymass.com"
+        "https://api.waxnet.io", 
+        "https://api.waxnet.io", 
+        "https://api.waxnet.io"
     ], 
     "af_c_sigh" : [
         "https://wax.api.eosnation.io", 

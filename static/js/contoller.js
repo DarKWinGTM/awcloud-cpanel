@@ -941,7 +941,7 @@ $(document).ready(function() {
 									'th[id*="' + this['var']['id'] + '-fw-panel-monitor"]'
 								).querySelector(
 									'div.fw-withdraw-fwg-text'
-								).innerText = 'WITHDRAW FWF ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
+								).innerText = 'WITHDRAW FWG ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length); 
 								
 								fetch(
 									`/vers/fw/set?waxid=${ this['var']['id'] }&auto_with_fwg=${ this['var']['db']['check'] }` + 

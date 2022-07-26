@@ -125,6 +125,12 @@
         "https://api.waxnet.io", 
         "https://wax.pink.gg"
     ], 
+    "ur_c_sigh" : [
+        "https://wax.api.eosnation.io", 
+        "https://wax.greymass.com", 
+        "https://api.waxnet.io", 
+        "https://api.wax.alohaeos.com"
+    ], 
     "getwallet" : [
         "https://wax.neftyblocks.com", 
         "https://wax.eosn.io", 

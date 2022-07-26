@@ -169,6 +169,8 @@ $(document).ready(function() {
 						try{ window[`${ TRELE.getAttribute('id') }-bw-panel-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-fe-monitor`].parentElement.remove() }catch(e){};  
 						try{ window[`${ TRELE.getAttribute('id') }-fe-panel-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-ur-monitor`].parentElement.remove() }catch(e){};  
+						try{ window[`${ TRELE.getAttribute('id') }-ur-panel-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-monitor`].parentElement.remove() }catch(e){};  
 						//	try{ window[`${ TRELE.getAttribute('id') }-ft-panel-monitor`].parentElement.remove() }catch(e){};  
                         try{ TRELE.remove() }catch(e){}; 
@@ -6241,12 +6243,6 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-
-
-
-
-
-
                             document.querySelector('table thead.cpanel-control').appendChild(
                                 Object.assign(document.createElement('tr'), {
                                     innerHTML   : `
@@ -6497,7 +6493,125 @@ $(document).ready(function() {
 									}); 
 								};
 							});
-
+                            document.querySelector('table thead.cpanel-control').appendChild(
+                                Object.assign(document.createElement('tr'), {
+                                    innerHTML   : `
+<th
+    colspan     = "7"
+    style       = "display: none; "
+	id 			= "${ WAXID }-ur-monitor"
+>
+	<!--
+	<textarea 
+		class 		= "form-control ${ WAXID }"
+		id 			= "message-text ${ WAXID }"
+		style 		= "width : 100%;height : 580px; background: transparent; color: white; resize: none; border: 0 none;"
+	></textarea>
+	-->
+	<div style="overflow: auto; ">
+    	<iframe
+    	url         = "https://waxscan.wecan.dev/account?name=${ WAXID }&act.account=underwtrader"
+		style       = "width : 100%; height : 1024px; margin-top: -450px ;overflow: auto;"
+		loading 	= "lazy"
+    	></iframe>
+	</div>
+</th>
+<th colspan="2" style="display: none; vertical-align: top; max-width: 486px;" id = "${ WAXID }-ur-panel-monitor">
+	
+	<div class="input-group ur-withdraw-deposit">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">E 0.0 N 0.0 X 0.0 O 0.0 : WITH [X%] DEPO : E 0.0 N 0.0 X 0.0 O 0.0</div>
+		<button type="submit" class="btn btn-primary ur-withdraw" style="width: 20%; ">WITHDRAW</button>
+		<input type="number" class="form-control" placeholder="ENERGY" value="" 	step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="NEONITE" value="" 	step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="XPERITE" value="" 	step="5" min="5" max="2555555555555" aria-label="">
+		<input type="number" class="form-control" placeholder="OMNITE" value="" 	step="5" min="5" max="2555555555555" aria-label="">
+		<button type="submit" class="btn btn-primary ur-deposit" style="width: 20%; ">DEPOSIT</button>
+	</div>
+	
+	<div class="input-group ur-set-token">
+		<div class="input-group-text ur-set-token-text" style="width: 248px; justify-content: center; ">SET "refreshToken"</div>
+		<input type="text" class="form-control ur-set-token" placeholder="TOKEN" aria-label="TOKEN">
+		<button type="submit" class="btn btn-primary ur-set-token" style="width: 60px; ">SET</button>
+	</div>
+	
+	<div class="input-group ur-set-race-mode">
+		<div class="input-group-text ur-set-race-mode-text" style="width: inherit; justify-content: center; ">SET RACE MODE</div>
+		<select class="form-select ur-set-race-mode-select">
+			<option value="None">None</option>
+		</select>
+		<select class="form-select ur-set-race-mode-host-select">
+			<option value="None">None</option>
+			<option value="REGULAR">REGULAR</option>
+			<option value="ILLEGAL" disabled>ILLEGAL</option>
+		</select>
+		<button type="submit" class="btn btn-primary ur-set-race-mode-set" style="width: 10%; " disabled="">SET</button>
+	</div>
+	
+	<div class="input-group ur-feature">
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">FEATURE</div>
+		<div class="input-group-text" style="width: inherit; justify-content: center; ">
+			<div class="form-check-inline form-switch" style="margin-right: 2rem; ">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input ur-feature-key-mine-switch" value="0">
+					<span style="padding-left: 5;">KEY MINE</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</th>`
+                                })
+                            ); 
+							document.querySelector(`th[id*="${WAXID}-ur-panel-monitor"] button.ur-set-token`).addEventListener('click', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'token' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"] div.ur-set-token').querySelector('input[placeholder*="TOKEN"]').value || '', 
+								}; 
+								
+								if (
+									!$(this).attr('disabled')
+								){
+									$(this).prop( "disabled", true ); $(this).attr('readonly', true);
+									
+									fetch(
+										`/vers/ur/set?waxid=${
+											this['var']['id']
+										}&key_load=${
+											this['var']['db']['token']
+										}`,
+										{method : 'GET'}
+									).then(
+										result => result.json()
+									).then(result => {
+										if(result['text'] != 'okay'){ throw result }else{
+											if (
+												result['code'] == 200
+											){
+												$.notify(
+													`UNDER WORLD RACING : SET TOKEN DONE ${this['var']['id']}`,
+													"success", { position : "top" }
+												); 
+											}else{
+												$.notify(
+													`UNDER WORLD RACING : SET TOKEN ERROR ${this['var']['id']} - ${ result['text'] }`, 
+													'error'
+												); 
+												
+											};
+											(function (input){
+												setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+											})(this); 
+										}; 
+									}).catch(error => {
+										$.notify(`UNDER WORLD RACING : SET TOKEN ERROR ${this['var']['id']} ${error}`, "error", { position : "top" }); 
+										(function (input){
+											setTimeout(function(){ $(input).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+										})(this); 
+									}); 
+								};
+							});
 
 	//	<div class="input-group bw-withdraw-dfe">
 	//		<div class="input-group-text" style="width: inherit; justify-content: center; ">AUTO WITHDRAW BEFORE MINE, KEEP MINIMIUM SUPPLY IN GAME</div>
@@ -7533,9 +7647,46 @@ $(document).ready(function() {
                                         }); 
                                     };
                                 });
-								
-								
-								
+                                window[WAXID].querySelector('input.ur_switch[type="checkbox"]').addEventListener('change', function(e) {
+                                    if (
+                                        !$(this).attr('disabled')
+                                    ){
+										
+                                        $(this).prop( "disabled", true ); 
+										
+                                        fetch(`/vers/ur/set?waxid=${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }&switch=${ this.checked }`, 
+											{method : 'GET'}
+										).then(
+                                            result => result.json()
+                                        ).then(result => {
+                                            if(result['text'] != 'okay'){ throw result }else{
+                                                if (
+                                                    result['data'] == true
+                                                ){
+                                                    this.checked = true; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `UNDER WORLD RACING ON ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "success", { position : "top" }
+                                                    ); 
+                                                }else{
+                                                    this.checked = false; setTimeout(function(){ window.location.reload(true) }, 3000); 
+                                                    $.notify(
+                                                        `UNDER WORLD RACING NO ${ this.parentElement.parentElement.parentElement.parentElement.parentElement.id }`, 
+                                                        "error", { position : "top" }
+                                                    ); 
+                                                };
+                                                (function (checkbox){
+                                                    setTimeout(function(){ $(checkbox).prop( "disabled", false ); $(this).attr('readonly', false); }, 2000); 
+                                                })(this); 
+                                            }; 
+                                        }).catch(error => {
+                                            $.notify(`UNDER WORLD RACING : ${ error['text'] }`, "error", { position : "top" }); 
+                                            (function (button){
+                                                setTimeout(function(){ $(button).prop( "disabled", false ); }, 2000); 
+                                            })(this); 
+                                        }); 
+                                    };
+                                });
                             }catch(e){}; 
 							
                             try{ document.querySelector(`tr[id*="${WAXID}"]`).setAttribute('class', 'align-middle') }catch(e){}; 
@@ -7711,6 +7862,9 @@ $(document).ready(function() {
 						}catch(e){ }; 
 						try{
 							window[ WAXID ].querySelector('input[class*="form-check-input fe_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['fe']["sw"]; 
+						}catch(e){ }; 
+						try{
+							window[ WAXID ].querySelector('input[class*="form-check-input ur_switch"]').checked = window['information-data']["DATA"][ WAXID ]['vers']['ur']["sw"]; 
 						}catch(e){ }; 
                         //  try{ $('[data-toggle="tooltip"]').tooltip() }catch(e){}; 
                         
@@ -10239,6 +10393,126 @@ $(document).ready(function() {
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['has']['FEO']).toFixed(1)
 											} W ${
 												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['fe']['db']['balance']['has']['FEW']).toFixed(1)
+											}`; 
+										}catch(e){ }; 
+									}; 
+								}catch(e){ }; 
+								
+								try{
+									if(
+										window['information-data']["DATA"][ _WAXID ]['vers']['ur']["sw"] == true && 
+										Object.keys( window['information-data']['DATA'] ).length >= 1 && 
+										!document.querySelector(`iframe[src*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=underwtrader"]`) 
+									){
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=underwtrader"]`).setAttribute(
+											'src', document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=underwtrader"]`).getAttribute('url')
+										); 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=underwtrader"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="7"]').style.display = 'table-cell'; 
+										document.querySelector(`iframe[url*="waxscan.wecan.dev/account?name=${ _WAXID }&act.account=underwtrader"]`).parentElement.parentElement.parentElement.querySelector('th[colspan*="2"]').style.display = 'table-cell'; 
+										
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['key_mine']; 
+										}catch(e){ }; 
+
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"] div.ur-set-token input.ur-set-token').value 					= window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['autho'][1]; 
+										}catch(e){ }; 
+										
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-withdraw-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-withdraw-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+										//		).querySelector(
+										//			'div.ur-withdraw-dfe-text'
+										//		).innerText = 'WITHDRAW DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_dfe'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-withdraw-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-withdraw-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+										//		).querySelector(
+										//			'div.ur-withdraw-dfw-text'
+										//		).innerText = 'WITHDRAW DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_dfw'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-withdraw-bid-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_bid'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-withdraw-bid-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_bid'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+										//		).querySelector(
+										//			'div.ur-withdraw-bid-text'
+										//		).innerText = 'WITHDRAW VALUE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_with_bid'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-deposit-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_depo_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-deposit-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_depo_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+										//		).querySelector(
+										//			'div.ur-deposit-dfe-text'
+										//		).innerText = 'DEPOSIT DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_depo_dfe'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-deposit-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_depo_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-deposit-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_depo_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+										//		).querySelector(
+										//			'div.ur-deposit-dfw-text'
+										//		).innerText = 'DEPOSIT DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['auto_depo_dfw'][1] ).slice(-'0000'.length); 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-dfe-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['trade_buy_dfe'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-dfe-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['trade_buy_dfe'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+										//		).querySelector(
+										//			'div.ur-buy-wax-dfe-text'
+										//		).innerText = 'BUY DFE ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['trade_buy_dfe'][1] ).slice(-'0000'.length) + ' WAX'; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-dfw-switch').checked 		= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['trade_buy_dfw'][0]; 
+										//		document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-dfw-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['trade_buy_dfw'][1]; 
+										//	}catch(e){ }; 
+										//	try{
+										//		document.querySelector(
+										//			'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+										//		).querySelector(
+										//			'div.ur-buy-wax-dfw-text'
+										//		).innerText = 'BUY DFW ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['trade_buy_dfw'][1] ).slice(-'0000'.length) + ' WAX'; 
+										//	}catch(e){ }; 
+										
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('div.ur-withdraw-deposit div').innerText 		= `E ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['balance']['pre']['ENERGY']).toFixed(1)
+											} N ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['balance']['pre']['NEONITE']).toFixed(1)
+											} X ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['balance']['pre']['OMNITE']).toFixed(1)
+											} O ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['balance']['pre']['XPERITE']).toFixed(1)
+											} : WITH [X%] DEPO : E ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['balance']['has']['ENERGY']).toFixed(1)
+											} F ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['balance']['has']['NEONITE']).toFixed(1)
+											} G ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['balance']['has']['OMNITE']).toFixed(1)
+											} O ${
+												parseFloat(window['information-data']['DATA'][_WAXID]['vers']['ur']['db']['balance']['has']['XPERITE']).toFixed(1)
 											}`; 
 										}catch(e){ }; 
 									}; 

@@ -8073,7 +8073,7 @@ $(document).ready(function() {
 	</div>
 	<div class="input-group ur-set-fill-fuel">
 		<div class="input-group-text ur-set-fill-fuel-text" style="width: 248px; justify-content: center; ">FILL FUEL 0000</div>
-		<input type="range" class="form-control ur-set-fill-fuel-input" placeholder="1" value="0" step="10" min="1" max="1000" >
+		<input type="range" class="form-control ur-set-fill-fuel-input" placeholder="1" value="0" step="10" min="10" max="1000" >
 	</div>
 
 	<div class="input-group ur-withdraw-deposit">
@@ -13095,6 +13095,27 @@ $(document).ready(function() {
 										
 										try{
 											document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-feature-key-mine-switch').checked 	= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['key_mine']; 
+										}catch(e){ }; 
+
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+											).querySelector(
+												'div.ur-set-mine-frequency-text'
+											).innerText = 'MINE FREQUENCY ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['cfg_mine']['time'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-set-mine-frequency-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['cfg_mine']['time']; 
+										}catch(e){ }; 
+										try{
+											document.querySelector(
+												'th[id*="' + _WAXID + '-ur-panel-monitor"]'
+											).querySelector(
+												'div.ur-set-fill-fuel-text'
+											).innerText = 'FILL FUEL ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['cfg_mine']['fill'] ).slice(-'0000'.length); 
+										}catch(e){ }; 
+										try{
+											document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-set-fill-fuel-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['cfg_mine']['fill']; 
 										}catch(e){ }; 
 
 										try{

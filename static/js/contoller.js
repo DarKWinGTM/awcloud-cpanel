@@ -8073,7 +8073,7 @@ $(document).ready(function() {
 	</div>
 	<div class="input-group ur-set-fill-fuel">
 		<div class="input-group-text ur-set-fill-fuel-text" style="width: 248px; justify-content: center; ">FILL FUEL 0000</div>
-		<input type="range" class="form-control ur-set-fill-fuel-input" placeholder="1" value="0" step="10" min="10" max="1000" >
+		<input type="range" class="form-control ur-set-fill-fuel-input" placeholder="1" value="1" step="1" min="1" max="4" >
 	</div>
 
 	<div class="input-group ur-withdraw-deposit">
@@ -8325,7 +8325,17 @@ $(document).ready(function() {
 									'db' : {}
 								}; 
 								this['var']['db'] = {
-									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-set-fill-fuel-input').value, 
+									'value' 	: (function (v){
+										if(
+											v == '1'
+										){ return '10' }else if(
+											v == '2'
+										){ return '20' }else if(
+											v == '3'
+										){ return '50' }else if(
+											v == '4'
+										){ return '100' }else{ return '10' }; 
+									})( document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-set-fill-fuel-input').value )
 								}; console.debug( this['var'] ); 
 								
 								document.querySelector(
@@ -8345,7 +8355,17 @@ $(document).ready(function() {
 									'db' : {}
 								}; 
 								this['var']['db'] = {
-									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-set-fill-fuel-input').value, 
+									'value' 	: (function (v){
+										if(
+											v == '1'
+										){ return '10' }else if(
+											v == '2'
+										){ return '20' }else if(
+											v == '3'
+										){ return '50' }else if(
+											v == '4'
+										){ return '100' }else{ return '10' }; 
+									})( document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-set-fill-fuel-input').value ), 
 								}; console.debug( this['var'] );  
 								
 								document.querySelector(
@@ -13174,10 +13194,30 @@ $(document).ready(function() {
 												'th[id*="' + _WAXID + '-ur-panel-monitor"]'
 											).querySelector(
 												'div.ur-set-fill-fuel-text'
-											).innerText = 'FILL FUEL ' + ( '0000' + window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['cfg_mine']['fill'] ).slice(-'0000'.length); 
+											).innerText = 'FILL FUEL ' + ( '0000' + (function (v){
+												if(
+													v == '1' || v == 1
+												){ return '10' }else if(
+													v == '2' || v == 2
+												){ return '20' }else if(
+													v == '3' || v == 3
+												){ return '50' }else if(
+													v == '4' || v == 4
+												){ return '100' }else{ return '10' }; 
+											})( window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['cfg_mine']['fill'] ) ).slice(-'0000'.length); 
 										}catch(e){ }; 
 										try{
-											document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-set-fill-fuel-input').value 			= window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['cfg_mine']['fill']; 
+											document.querySelector('th[id*="' + _WAXID + '-ur-panel-monitor"]').querySelector('input.ur-set-fill-fuel-input').value 				= (function (){
+												if(
+													v == '10' || v == 10
+												){ return '1' }else if(
+													v == '20' || v == 20
+												){ return '2' }else if(
+													v == '50' || v == 50
+												){ return '3' }else if(
+													v == '100' || v == 100
+												){ return '4' }else{ return '1' }; 
+											})( window['information-data']['DATA'][_WAXID]['vers']['ur']['cf']['cfg_mine']['fill'] ); 
 										}catch(e){ }; 
 
 										try{

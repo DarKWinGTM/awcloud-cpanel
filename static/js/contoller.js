@@ -9111,6 +9111,68 @@ $(document).ready(function() {
 								
 							}); 
 							
+							document.querySelector(`th[id*="${ WAXID }-ur-panel-monitor"]`).querySelector('input.ur-buy-wax-xperite-switch').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.parentElement.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-xperite-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-xperite-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-ur-panel-monitor"]'
+								).querySelector(
+									'div.ur-buy-wax-xperite-text'
+								).innerText = 'SWAP XPERITE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
+								
+								fetch(
+									`/vers/ur/set?waxid=${ this['var']['id'] }&trade_buy_xperite=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-ur-panel-monitor"]`).querySelector('input.ur-buy-wax-xperite-input').addEventListener('change', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-xperite-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-xperite-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-ur-panel-monitor"]'
+								).querySelector(
+									'div.ur-buy-wax-xperite-text'
+								).innerText = 'SWAP XPERITE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
+								
+								fetch(
+									`/vers/ur/set?waxid=${ this['var']['id'] }&trade_buy_xperite=${ this['var']['db']['check'] }` + 
+									',' + this['var']['db']['value'], 
+									{method : 'GET'}
+								); 
+							}); 
+							document.querySelector(`th[id*="${ WAXID }-ur-panel-monitor"]`).querySelector('input.ur-buy-wax-xperite-input').addEventListener('input', function(e) {
+								this['var'] = {
+									'id' : this.parentElement.parentElement.id.split('-')[0], 
+									'db' : {}
+								}; 
+								this['var']['db'] = {
+									'check' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-xperite-switch').checked, 
+									'value' 	: document.querySelector('th[id*="' + this['var']['id'] + '-ur-panel-monitor"]').querySelector('input.ur-buy-wax-xperite-input').value, 
+								}; console.debug( this['var'] ); 
+								
+								document.querySelector(
+									'th[id*="' + this['var']['id'] + '-ur-panel-monitor"]'
+								).querySelector(
+									'div.ur-buy-wax-xperite-text'
+								).innerText = 'SWAP XPERITE ' + ('0000' + this['var']['db']['value']).slice(-'0000'.length) + ' WAX'; 
+								
+							}); 
+							
 							
 							
 							document.querySelector(`th[id*="${WAXID}-ur-panel-monitor"] button.ur-set-token`).addEventListener('click', function(e) {

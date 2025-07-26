@@ -1,658 +1,225 @@
-# 🔑 Authentication
+# 🔑 การเข้าสู่ระบบและความปลอดภัย
 
-## ระบบการพิสูจน์ตัวตนของ AWCLOUD CPanel
+## การเข้าสู่ระบบ AWCLOUD CPanel
 
-AWCLOUD CPanel ใช้ระบบการพิสูจน์ตัวตนแบบหลายชั้นเพื่อความปลอดภัยสูงสุด รวมถึงการรองรับ WAX Wallet Authentication และ Multi-Factor Authentication
+AWCLOUD CPanel มีระบบความปลอดภัยขั้นสูงที่ปกป้องข้อมูลและทรัพย์สินดิจิทัลของคุณอย่างครบถ้วน
 
-## 🔐 ภาพรวมระบบ Authentication
+## 🔐 ระบบความปลอดภัยที่มีอยู่
 
-### **หลักการทำงาน**
-```
-WAX Wallet → WAM Files → AWCLOUD Auth → Session Management → API Access
-     ↓            ↓           ↓              ↓               ↓
-Private Keys → Encryption → Verification → Cookie/Token → Authorized Actions
-```
+### **การป้องกันข้อมูล**
+- การเข้ารหัสข้อมูลระดับธนาคาร
+- ระบบการพิสูจน์ตัวตนหลายชั้น
+- การป้องกันการเข้าถึงโดยไม่ได้รับอนุญาต
+- ระบบสำรองข้อมูลอัตโนมัติ
 
-### **ระดับความปลอดภัย**
-- **Level 1**: WAX Wallet Authentication (.wam files)
-- **Level 2**: Session-based Authentication (cookies)
-- **Level 3**: API Token Authentication (for automated access)
-- **Level 4**: TOTP/2FA Authentication (for admin functions)
+### **การรักษาความปลอดภัย**
+- ระบบตรวจจับการเข้าใช้งานผิดปกติ
+- การจำกัดการเข้าถึงตามเวลา
+- ระบบ logout อัตโนมัติเมื่อไม่ใช้งาน
+- การแจ้งเตือนเมื่อมีการเข้าใช้งานจากอุปกรณ์ใหม่
 
-## 📁 ระบบ WAM Authentication
+## 📱 การเข้าสู่ระบบผ่าน Web Interface
 
-### **1. โครงสร้างไฟล์ WAM**
+### **🚪 ขั้นตอนการเข้าสู่ระบบ**
 
-```
-auth/
-├── cc-xxxxx.wam     # Crypto Castles accounts
-├── kq-xxxxx.wam     # Kingdom Quest accounts  
-├── aw-xxxxx.wam     # Alien Worlds accounts
-├── fw-xxxxx.wam     # Farmers World accounts
-└── master.key       # Master encryption key
-```
+#### **การเข้าสู่ระบบครั้งแรก:**
+1. เปิดเว็บเบราว์เซอร์และไปที่ URL ของระบบ AWCLOUD CPanel
+2. คลิกปุ่ม **"เข้าสู่ระบบ"** ที่หน้าหลัก
+3. ใส่ข้อมูลการเข้าสู่ระบบที่ได้รับจากผู้ดูแลระบบ
+4. คลิก **"ยืนยันตัวตน"**
+5. ระบบจะพาไปสู่หน้า Dashboard หลัก
 
-### **2. รูปแบบไฟล์ WAM**
+#### **การตั้งค่าความปลอดภัยเพิ่มเติม:**
+1. ไปที่เมนู **"Security Settings"**
+2. เปิดใช้งาน **"Two-Factor Authentication (2FA)"** 
+3. สแกน QR Code ด้วยแอป Google Authenticator หรือ Authy
+4. ใส่รหัส 6 หลักเพื่อยืนยัน
+5. บันทึกรหัสสำรองไว้ในที่ปลอดภัย
 
-```json
-{
-  "account_name": "example.wam",
-  "private_key": "encrypted_private_key_data",
-  "public_key": "EOS_public_key_string",
-  "encryption": {
-    "algorithm": "Fernet",
-    "salt": "random_salt_value",
-    "iterations": 100000
-  },
-  "metadata": {
-    "created_at": "2025-01-15T10:30:00Z",
-    "last_used": "2025-07-26T15:45:00Z",
-    "game_assignments": ["alien_worlds", "farmers_world"],
-    "permissions": ["mining", "staking", "trading"]
-  }
-}
-```
+### **🔒 การจัดการบัญชี WAX**
 
-### **3. การสร้างและจัดการ WAM Files**
+#### **การเพิ่มบัญชี WAX ใหม่:**
+1. ไปที่หน้า **"Account Management"**
+2. คลิก **"Add New WAX Account"**
+3. อัปโหลดไฟล์ .wam ของคุณ
+4. ใส่ชื่อเล่นสำหรับบัญชี (เช่น "Account Main", "Account Mining")
+5. เลือกประเภทการใช้งาน: **Mining**, **Staking**, **Trading**
+6. คลิก **"เพิ่มบัญชี"**
 
-```python
-from cryptography.fernet import Fernet
-import json
-import hashlib
+#### **การตรวจสอบสถานะบัญชี:**
+- ไปที่หน้า **"Account Status"**
+- ดูสถานะการเชื่อมต่อของแต่ละบัญชี
+- ตรวจสอบการใช้งานล่าสุด
+- เช็คสิทธิ์การเข้าถึงฟีเจอร์ต่างๆ
 
-class WAMManager:
-    """
-    ระบบจัดการไฟล์ WAM Authentication
-    """
-    
-    def __init__(self, master_key_path="auth/master.key"):
-        self.master_key_path = master_key_path
-        self.cipher_suite = self._load_or_create_master_key()
-    
-    def _load_or_create_master_key(self):
-        """โหลดหรือสร้าง master key สำหรับเข้ารหัส"""
-        try:
-            with open(self.master_key_path, 'rb') as f:
-                key = f.read()
-        except FileNotFoundError:
-            key = Fernet.generate_key()
-            with open(self.master_key_path, 'wb') as f:
-                f.write(key)
-            os.chmod(self.master_key_path, 0o600)  # ตั้งค่า permissions
-        
-        return Fernet(key)
-    
-    def create_wam_file(self, account_name, private_key, games=None, permissions=None):
-        """สร้างไฟล์ WAM ใหม่"""
-        # เข้ารหัส private key
-        encrypted_private_key = self.cipher_suite.encrypt(private_key.encode())
-        
-        # สร้าง public key จาก private key (simplified)
-        public_key = self.derive_public_key(private_key)
-        
-        wam_data = {
-            "account_name": account_name,
-            "private_key": encrypted_private_key.decode(),
-            "public_key": public_key,
-            "encryption": {
-                "algorithm": "Fernet",
-                "salt": self.generate_salt(),
-                "iterations": 100000
-            },
-            "metadata": {
-                "created_at": datetime.utcnow().isoformat() + "Z",
-                "last_used": None,
-                "game_assignments": games or [],
-                "permissions": permissions or ["mining"]
-            }
-        }
-        
-        # บันทึกไฟล์
-        file_path = f"auth/{account_name}.wam"
-        with open(file_path, 'w') as f:
-            json.dump(wam_data, f, indent=2)
-        
-        os.chmod(file_path, 0o600)  # ตั้งค่า permissions
-        return file_path
-    
-    def load_wam_file(self, account_name):
-        """โหลดและถอดรหัสไฟล์ WAM"""
-        file_path = f"auth/{account_name}.wam"
-        
-        try:
-            with open(file_path, 'r') as f:
-                wam_data = json.load(f)
-            
-            # ถอดรหัส private key
-            encrypted_key = wam_data["private_key"].encode()
-            private_key = self.cipher_suite.decrypt(encrypted_key).decode()
-            
-            # อัปเดต last_used
-            wam_data["metadata"]["last_used"] = datetime.utcnow().isoformat() + "Z"
-            
-            with open(file_path, 'w') as f:
-                json.dump(wam_data, f, indent=2)
-            
-            return {
-                "account_name": wam_data["account_name"],
-                "private_key": private_key,
-                "public_key": wam_data["public_key"],
-                "permissions": wam_data["metadata"]["permissions"],
-                "games": wam_data["metadata"]["game_assignments"]
-            }
-            
-        except Exception as e:
-            raise AuthenticationError(f"Failed to load WAM file: {e}")
-```
+## 🔐 การจัดการความปลอดภัย
 
-## 🌐 Web Authentication System
+### **⏰ การจัดการ Session**
 
-### **1. Session-based Authentication**
+#### **ระยะเวลาการใช้งาน:**
+- ระบบจะเก็บสถานะการเข้าสู่ระบบไว้ 24 ชั่วโมง
+- หากไม่มีการใช้งานเกิน 2 ชั่วโมง ระบบจะ logout อัตโนมัติ
+- สามารถเลือก "Remember Me" เพื่อเก็บสถานะนานขึ้น
 
-```python
-from flask import session, request, jsonify
-from functools import wraps
+#### **การออกจากระบบ:**
+1. คลิกที่ไอคอนผู้ใช้มุมขวาบน
+2. เลือก **"ออกจากระบบ"**
+3. ระบบจะลบข้อมูล session ทั้งหมด
+4. เปิดหน้าต่างใหม่กลับไปหน้า login
 
-class WebAuthManager:
-    """
-    ระบบ Authentication สำหรับ Web Interface
-    """
-    
-    def __init__(self, secret_key):
-        self.secret_key = secret_key
-        self.session_timeout = 24 * 60 * 60  # 24 hours
-    
-    def login_required(self, f):
-        """Decorator สำหรับตรวจสอบการ login"""
-        @wraps(f)
-        def decorated_function(*args, **kwargs):
-            if not self.is_authenticated():
-                return redirect('/login')
-            return f(*args, **kwargs)
-        return decorated_function
-    
-    def is_authenticated(self):
-        """ตรวจสอบว่า user login แล้วหรือไม่"""
-        if 'user_id' not in session:
-            return False
-        
-        if 'login_time' not in session:
-            return False
-        
-        # ตรวจสอบ session timeout
-        login_time = session['login_time']
-        if time.time() - login_time > self.session_timeout:
-            session.clear()
-            return False
-        
-        return True
-    
-    def authenticate_user(self, username, password):
-        """ตรวจสอบ username และ password"""
-        # ในระบบจริงจะตรวจสอบกับฐานข้อมูล
-        valid_users = {
-            "admin": self.hash_password("admin_password"),
-            "user": self.hash_password("user_password")
-        }
-        
-        if username in valid_users:
-            if self.verify_password(password, valid_users[username]):
-                session['user_id'] = username
-                session['login_time'] = time.time()
-                session.permanent = True
-                return True
-        
-        return False
-    
-    def logout_user(self):
-        """ลบ session และ logout"""
-        session.clear()
-        return True
+### **🛡️ การปกป้องบัญชี**
 
-# Flask routes สำหรับ authentication
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        
-        if auth_manager.authenticate_user(username, password):
-            return redirect('/')
-        else:
-            return render_template('login.html', error='Invalid credentials')
-    
-    return render_template('login.html')
+#### **การตั้งค่าความปลอดภัย:**
+1. ไปที่ **"Profile > Security"**
+2. เปลี่ยนรหัสผ่านเป็นประจำทุก 3 เดือน
+3. เปิดใช้งาน Email Notification เมื่อมีการเข้าสู่ระบบ
+4. ตรวจสอบ Login History เป็นประจำ
 
-@app.route('/logout')
-def logout():
-    auth_manager.logout_user()
-    return redirect('/login')
-```
+#### **การแจ้งเตือนความปลอดภัย:**
+- ระบบจะส่งแจ้งเตือนเมื่อมีการเข้าสู่ระบบจากอุปกรณ์ใหม่
+- การเปลี่ยนแปลงการตั้งค่าสำคัญจะได้รับ email ยืนยัน
+- หากพบการใช้งานผิดปกติ ระบบจะล็อคบัญชีชั่วคราว
 
-### **2. API Token Authentication**
+## 👥 การจัดการสิทธิ์ผู้ใช้
 
-```python
-class APITokenManager:
-    """
-    ระบบจัดการ API Tokens สำหรับการเข้าถึงอัตโนมัติ
-    """
-    
-    def __init__(self):
-        self.tokens = {}  # ในระบบจริงจะเก็บในฐานข้อมูล
-        self.token_timeout = 7 * 24 * 60 * 60  # 7 days
-    
-    def generate_api_token(self, user_id, permissions=None):
-        """สร้าง API token ใหม่"""
-        token_data = {
-            "user_id": user_id,
-            "permissions": permissions or ["read"],
-            "created_at": time.time(),
-            "expires_at": time.time() + self.token_timeout,
-            "last_used": None
-        }
-        
-        # สร้าง token string
-        token_string = secrets.token_urlsafe(32)
-        self.tokens[token_string] = token_data
-        
-        return token_string
-    
-    def validate_api_token(self, token):
-        """ตรวจสอบ API token"""
-        if token not in self.tokens:
-            return False
-        
-        token_data = self.tokens[token]
-        
-        # ตรวจสอบ expiration
-        if time.time() > token_data["expires_at"]:
-            del self.tokens[token]
-            return False
-        
-        # อัปเดต last_used
-        token_data["last_used"] = time.time()
-        return token_data
-    
-    def revoke_api_token(self, token):
-        """ยกเลิก API token"""
-        if token in self.tokens:
-            del self.tokens[token]
-            return True
-        return False
+### **🎭 ประเภทของผู้ใช้งาน**
 
-# Decorator สำหรับ API authentication
-def api_auth_required(permissions=None):
-    def decorator(f):
-        @wraps(f)
-        def decorated_function(*args, **kwargs):
-            auth_header = request.headers.get('Authorization')
-            
-            if not auth_header or not auth_header.startswith('Bearer '):
-                return jsonify({"error": "Missing or invalid authorization header"}), 401
-            
-            token = auth_header.split(' ')[1]
-            token_data = api_token_manager.validate_api_token(token)
-            
-            if not token_data:
-                return jsonify({"error": "Invalid or expired token"}), 401
-            
-            # ตรวจสอบ permissions
-            if permissions:
-                user_permissions = token_data.get("permissions", [])
-                if not any(perm in user_permissions for perm in permissions):
-                    return jsonify({"error": "Insufficient permissions"}), 403
-            
-            # เพิ่ม token_data ใน request context
-            request.token_data = token_data
-            return f(*args, **kwargs)
-        
-        return decorated_function
-    return decorator
-```
+#### **Admin (ผู้ดูแลระบบ):**
+- เข้าถึงได้ทุกฟีเจอร์ของระบบ
+- จัดการบัญชีผู้ใช้งานอื่น
+- ดูรายงานทุกประเภท
+- เปลี่ยนแปลงการตั้งค่าระบบ
 
-## 🔒 Two-Factor Authentication (2FA)
+#### **User (ผู้ใช้งานทั่วไป):**
+- ใช้งานฟีเจอร์การขุดและ Team Pool
+- ดูรายงานของตนเอง
+- จัดการบัญชี WAX ของตนเอง
+- เปลี่ยนแปลงการตั้งค่าส่วนตัว
 
-### **1. TOTP Implementation**
+#### **Viewer (ผู้ดูข้อมูล):**
+- ดูข้อมูลและรายงานเท่านั้น
+- ไม่สามารถเปลี่ยนแปลงการตั้งค่าได้
+- เหมาะสำหรับการตรวจสอบและติดตาม
 
-```python
-import pyotp
-import qrcode
-from io import BytesIO
-import base64
+### **⚙️ การขอสิทธิ์เพิ่มเติม**
 
-class TOTPManager:
-    """
-    ระบบ Time-based One-Time Password (TOTP) สำหรับ 2FA
-    """
-    
-    def __init__(self):
-        self.issuer_name = "AWCLOUD CPanel"
-    
-    def generate_secret(self, user_id):
-        """สร้าง TOTP secret สำหรับ user"""
-        secret = pyotp.random_base32()
-        
-        # บันทึก secret (ในระบบจริงจะเข้ารหัสและเก็บในฐานข้อมูล)
-        self.save_user_secret(user_id, secret)
-        
-        return secret
-    
-    def generate_qr_code(self, user_id, secret):
-        """สร้าง QR Code สำหรับ Google Authenticator"""
-        totp_uri = pyotp.totp.TOTP(secret).provisioning_uri(
-            name=user_id,
-            issuer_name=self.issuer_name
-        )
-        
-        qr = qrcode.QRCode(version=1, box_size=10, border=5)
-        qr.add_data(totp_uri)
-        qr.make(fit=True)
-        
-        img = qr.make_image(fill_color="black", back_color="white")
-        
-        # Convert to base64 for web display
-        buffered = BytesIO()
-        img.save(buffered, format="PNG")
-        img_str = base64.b64encode(buffered.getvalue()).decode()
-        
-        return f"data:image/png;base64,{img_str}"
-    
-    def verify_totp(self, user_id, token):
-        """ตรวจสอบ TOTP token"""
-        secret = self.get_user_secret(user_id)
-        if not secret:
-            return False
-        
-        totp = pyotp.TOTP(secret)
-        return totp.verify(token, valid_window=1)  # อนุญาตให้ผิดพลาด 30 วินาที
-    
-    def is_2fa_enabled(self, user_id):
-        """ตรวจสอบว่า user เปิดใช้ 2FA หรือไม่"""
-        return self.get_user_secret(user_id) is not None
+#### **ขั้นตอนการขอสิทธิ์:**
+1. ไปที่ **"Settings > Request Permissions"**
+2. เลือกสิทธิ์ที่ต้องการ
+3. ระบุเหตุผลในการขอสิทธิ์
+4. ส่งคำขอไปยังผู้ดูแลระบบ
+5. รอการอนุมัติจากผู้ดูแลระบบ
 
-# Flask routes สำหรับ 2FA
-@app.route('/setup-2fa')
-@auth_manager.login_required
-def setup_2fa():
-    user_id = session['user_id']
-    
-    if totp_manager.is_2fa_enabled(user_id):
-        return redirect('/profile')
-    
-    secret = totp_manager.generate_secret(user_id)
-    qr_code = totp_manager.generate_qr_code(user_id, secret)
-    
-    return render_template('setup_2fa.html', qr_code=qr_code, secret=secret)
+## 🔐 Two-Factor Authentication (2FA)
 
-@app.route('/verify-2fa', methods=['POST'])
-@auth_manager.login_required  
-def verify_2fa():
-    user_id = session['user_id']
-    token = request.form['token']
-    
-    if totp_manager.verify_totp(user_id, token):
-        session['2fa_verified'] = True
-        return jsonify({"success": True})
-    else:
-        return jsonify({"success": False, "error": "Invalid token"})
-```
+### **📱 การตั้งค่า 2FA ด้วย Google Authenticator**
 
-## 🔌 API Endpoints
+#### **ขั้นตอนการเปิดใช้งาน 2FA:**
+1. ดาวน์โหลดแอป **Google Authenticator** หรือ **Authy** ลงในมือถือ
+2. เข้าไปที่ **"Profile > Security > Two-Factor Authentication"**
+3. คลิก **"Enable 2FA"**
+4. สแกน QR Code ที่ปรากฏบนหน้าจอด้วยแอป
+5. ใส่รหัส 6 หลักที่ปรากฏในแอปเพื่อยืนยัน
+6. บันทึกรหัสสำรอง (Backup Codes) ไว้ในที่ปลอดภัย
+7. คลิก **"ยืนยันการเปิดใช้งาน"**
 
-### **1. Authentication Endpoints**
+#### **การใช้งาน 2FA:**
+- เมื่อ login ระบบจะขอรหัส 6 หลักจากแอป Authenticator
+- รหัสจะเปลี่ยนทุก 30 วินาที
+- หากไม่มีมือถือ สามารถใช้รหัสสำรองได้
 
-```python
-# POST /api/auth/login
-@app.route('/api/auth/login', methods=['POST'])
-def api_login():
-    """
-    API endpoint สำหรับ login
-    """
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
-    totp_token = data.get('totp_token')
-    
-    # ตรวจสอบ username/password
-    if not auth_manager.authenticate_user(username, password):
-        return jsonify({"error": "Invalid credentials"}), 401
-    
-    # ตรวจสอบ 2FA ถ้าเปิดใช้งาน
-    if totp_manager.is_2fa_enabled(username):
-        if not totp_token or not totp_manager.verify_totp(username, totp_token):
-            return jsonify({"error": "Invalid 2FA token"}), 401
-    
-    # สร้าง API token
-    api_token = api_token_manager.generate_api_token(
-        username, 
-        permissions=["read", "write", "admin"]
-    )
-    
-    return jsonify({
-        "success": True,
-        "token": api_token,
-        "expires_in": 7 * 24 * 60 * 60  # 7 days in seconds
-    })
+#### **การปิดใช้งาน 2FA:**
+1. ไปที่ **"Security Settings"**
+2. ใส่รหัส 2FA ปัจจุบัน
+3. คลิก **"Disable 2FA"**
+4. ยืนยันด้วยรหัสผ่าน
 
-# POST /api/auth/refresh
-@app.route('/api/auth/refresh', methods=['POST'])
-@api_auth_required()
-def refresh_token():
-    """
-    API endpoint สำหรับ refresh token
-    """
-    user_id = request.token_data['user_id']
-    permissions = request.token_data['permissions']
-    
-    # สร้าง token ใหม่
-    new_token = api_token_manager.generate_api_token(user_id, permissions)
-    
-    return jsonify({
-        "success": True,
-        "token": new_token,
-        "expires_in": 7 * 24 * 60 * 60
-    })
+### **🆘 กรณีฉุกเฉิน**
 
-# DELETE /api/auth/logout
-@app.route('/api/auth/logout', methods=['DELETE'])
-@api_auth_required()
-def api_logout():
-    """
-    API endpoint สำหรับ logout (revoke token)
-    """
-    auth_header = request.headers.get('Authorization')
-    token = auth_header.split(' ')[1]
-    
-    if api_token_manager.revoke_api_token(token):
-        return jsonify({"success": True})
-    else:
-        return jsonify({"error": "Token not found"}), 404
-```
+#### **หากสูญหายมือถือ:**
+1. ใช้รหัสสำรอง (Backup Codes) ที่บันทึกไว้
+2. ติดต่อผู้ดูแลระบบเพื่อขอความช่วยเหลือ
+3. ระบุข้อมูลยืนยันตัวตนเพิ่มเติม
 
-### **2. WAM Management Endpoints**
+#### **หากลืมรหัสผ่าน:**
+1. คลิก **"ลืมรหัสผ่าน"** ที่หน้า login
+2. ใส่ที่อยู่ email ที่ลงทะเบียนไว้
+3. เช็ค email และคลิกลิงค์รีเซ็ตรหัสผ่าน
+4. ตั้งรหัสผ่านใหม่
+5. เข้าสู่ระบบด้วยรหัสผ่านใหม่
 
-```python
-# GET /api/wam/accounts
-@app.route('/api/wam/accounts', methods=['GET'])
-@api_auth_required(permissions=["read", "admin"])
-def list_wam_accounts():
-    """
-    ดึงรายการ WAM accounts
-    """
-    try:
-        accounts = []
-        for file_name in os.listdir('auth'):
-            if file_name.endswith('.wam'):
-                account_name = file_name[:-4]  # ลบ .wam extension
-                
-                # โหลดข้อมูล metadata (ไม่รวม private key)
-                with open(f'auth/{file_name}', 'r') as f:
-                    wam_data = json.load(f)
-                
-                accounts.append({
-                    "account_name": account_name,
-                    "games": wam_data["metadata"]["game_assignments"],
-                    "permissions": wam_data["metadata"]["permissions"],
-                    "last_used": wam_data["metadata"]["last_used"],
-                    "status": "active"  # ในระบบจริงจะตรวจสอบสถานะจริง
-                })
-        
-        return jsonify({"accounts": accounts})
-        
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
 
-# POST /api/wam/test-auth
-@app.route('/api/wam/test-auth', methods=['POST'])
-@api_auth_required(permissions=["admin"])
-def test_wam_authentication():
-    """
-    ทดสอบการ authentication ของ WAM account
-    """
-    data = request.get_json()
-    account_name = data.get('account_name')
-    
-    try:
-        # โหลด WAM file และทดสอบการเชื่อมต่อ
-        wam_data = wam_manager.load_wam_file(account_name)
-        
-        # ทดสอบการเชื่อมต่อ WAX blockchain
-        test_result = test_wax_connection(wam_data['private_key'])
-        
-        return jsonify({
-            "success": True,
-            "account": account_name,
-            "connection_test": test_result,
-            "permissions": wam_data['permissions']
-        })
-        
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-```
+## 🛡️ คำแนะนำด้านความปลอดภัย
 
-## 🛡️ Security Best Practices
+### **📋 แนวทางปฏิบัติที่ดี**
 
-### **1. การป้องกันการโจมตี**
+#### **การป้องกันบัญชี:**
+- ใช้รหัสผ่านที่แข็งแกร่ง (มากกว่า 12 ตัวอักษร)
+- เปิดใช้งาน 2FA เสมอ
+- ไม่แชร์ข้อมูลการเข้าสู่ระบบกับผู้อื่น
+- เปลี่ยนรหัสผ่านเป็นประจำ
+- ออกจากระบบเมื่อใช้งานเสร็จ
 
-```python
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
+#### **การใช้งานที่ปลอดภัย:**
+- ใช้งานผ่าน HTTPS เท่านั้น
+- ไม่เข้าใช้งานผ่านเครือข่าย Wi-Fi สาธารณะ
+- อัปเดตเบราว์เซอร์ให้ล่าสุดเสมอ
+- ตรวจสอบ URL ให้ถูกต้องก่อนใส่ข้อมูล
 
-# Rate limiting
-limiter = Limiter(
-    app,
-    key_func=get_remote_address,
-    default_limits=["100 per hour"]
-)
+### **⚠️ สัญญาณเตือนภัย**
 
-# ป้องกัน brute force attack
-@app.route('/api/auth/login', methods=['POST'])
-@limiter.limit("5 per minute")  # จำกัด 5 ครั้งต่อนาที
-def api_login():
-    # ... implementation
-    pass
+#### **ควรสงสัยเมื่อ:**
+- มี email แจ้งการเข้าสู่ระบบที่ไม่ได้ทำ
+- พบการเปลี่ยนแปลงการตั้งค่าที่ไม่ได้ทำ
+- ระบบทำงานช้าผิดปกติ
+- พบหน้าจอแปลกๆ ที่ไม่เคยเห็น
 
-# CSRF Protection
-from flask_wtf.csrf import CSRFProtect
-csrf = CSRFProtect(app)
+#### **ขั้นตอนเมื่อพบปัญหา:**
+1. **หยุดใช้งานทันที**
+2. **เปลี่ยนรหัสผ่าน**
+3. **ตรวจสอบ Login History**
+4. **ติดต่อผู้ดูแลระบบ**
+5. **สแกนไวรัสในอุปกรณ์**
 
-# Secure Headers
-@app.after_request
-def add_security_headers(response):
-    response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['X-Frame-Options'] = 'DENY'
-    response.headers['X-XSS-Protection'] = '1; mode=block'
-    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
-    return response
-```
+## 📞 การขอความช่วยเหลือ
 
-### **2. การจัดการข้อผิดพลาด**
+### **🆘 ติดต่อฝ่ายสนับสนุน**
 
-```python
-class AuthenticationError(Exception):
-    """Exception สำหรับปัญหา authentication"""
-    pass
+#### **กรณีที่ควรติดต่อ:**
+- ไม่สามารถเข้าสู่ระบบได้
+- สูญหายอุปกรณ์ 2FA
+- พบการใช้งานผิดปกติ
+- ต้องการเปลี่ยนแปลงสิทธิ์การใช้งาน
+- ปัญหาเทคนิคอื่นๆ
 
-class AuthorizationError(Exception):
-    """Exception สำหรับปัญหา authorization"""
-    pass
+#### **ข้อมูลที่ควรเตรียมไว้:**
+- ชื่อผู้ใช้งาน
+- วันเวลาที่เกิดปัญหา
+- รายละเอียดของปัญหา
+- ข้อผิดพลาดที่ปรากฏ (ถ้ามี)
+- อุปกรณ์และเบราว์เซอร์ที่ใช้งาน
 
-@app.errorhandler(AuthenticationError)
-def handle_auth_error(e):
-    return jsonify({"error": "Authentication failed", "message": str(e)}), 401
+### **📧 ช่องทางการติดต่อ**
 
-@app.errorhandler(AuthorizationError)
-def handle_authz_error(e):
-    return jsonify({"error": "Authorization failed", "message": str(e)}), 403
-```
+#### **สำหรับปัญหาเร่งด่วน:**
+- แจ้งผู้ดูแลระบบโดยตรง
+- ใช้ช่องทางการติดต่อที่ได้รับแจ้งไว้
 
-## 📋 การใช้งานตัวอย่าง
-
-### **1. การ Login ผ่าน Web Interface**
-
-```javascript
-// Frontend JavaScript สำหรับ login
-async function login(username, password, totpToken = null) {
-    const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            username: username,
-            password: password,
-            totp_token: totpToken
-        })
-    });
-    
-    const data = await response.json();
-    
-    if (data.success) {
-        // เก็บ token ใน localStorage
-        localStorage.setItem('api_token', data.token);
-        return true;
-    } else {
-        throw new Error(data.error);
-    }
-}
-```
-
-### **2. การใช้งาน API Token**
-
-```python
-import requests
-
-# ใช้ API token สำหรับเรียก API
-def call_api_with_token(endpoint, token, method='GET', data=None):
-    headers = {
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json'
-    }
-    
-    if method == 'GET':
-        response = requests.get(endpoint, headers=headers)
-    elif method == 'POST':
-        response = requests.post(endpoint, headers=headers, json=data)
-    
-    return response.json()
-
-# ตัวอย่างการใช้งาน
-token = "your_api_token_here"
-accounts = call_api_with_token("/api/wam/accounts", token)
-print(accounts)
-```
+#### **สำหรับปัญหาทั่วไป:**
+- ส่งรายละเอียดผ่านระบบ Support Ticket
+- รอการตอบกลับภายใน 24 ชั่วโมง
 
 {% hint style="success" %}
-**🔒 ความปลอดภัย**: ระบบ Authentication ของ AWCLOUD CPanel ใช้การเข้ารหัสระดับองค์กรและรองรับ 2FA เพื่อความปลอดภัยสูงสุด
+**🔒 ความปลอดภัยระดับสูง**: AWCLOUD CPanel มีระบบรักษาความปลอดภัยที่ทันสมัย รวมถึงการเข้ารหัสข้อมูล, 2FA, และระบบตรวจจับการใช้งานผิดปกติ
 {% endhint %}
 
 {% hint style="warning" %}
-**⚠️ คำเตือน**: อย่าแชร์ไฟล์ .wam หรือ API tokens กับผู้อื่น และเปลี่ยนรหัสผ่านอย่างสม่ำเสมอ
+**⚠️ คำเตือนสำคัญ**: อย่าแชร์ข้อมูลการเข้าสู่ระบบกับผู้อื่น และเปิดใช้งาน 2FA เพื่อความปลอดภัยสูงสุด
 {% endhint %}
 
 ---
 
-**เรียนรู้เพิ่มเติม**:
-- [Mining Endpoints](mining-endpoints.md) - API สำหรับการขุด
-- [Resource Management](resource-management.md) - การจัดการทรัพยากร
-- [Security Configuration](../configuration/security.md) - การตั้งค่าความปลอดภัย
+**คู่มือที่เกี่ยวข้อง**:
+- [การใช้งาน Dashboard](../interface/dashboard.md) - การใช้งานหน้าหลัก
+- [การจัดการบัญชี](../getting-started/authentication.md) - การตั้งค่าบัญชี
+- [การแก้ไขปัญหา](../troubleshooting/common-issues.md) - แก้ไขปัญหาทั่วไป

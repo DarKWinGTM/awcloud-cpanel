@@ -15,20 +15,14 @@
 
 ## Core Features
 * [⛏️ Mining Automation](features/mining-automation.md)
-* [🎯 Multi-Game Support](features/multi-game-support.md)
+* [🎯 Alien Worlds Focus](features/alien-worlds-focus.md)
 * [📊 Resource Management](features/resource-management.md)
 * [🌐 Proxy System](features/proxy-system.md)
 * [📈 Real-time Monitoring](features/monitoring.md)
 * [👥 Team Pool Management](features/team-pool.md)
 
-## Game Guides
+## Game Guide
 * [👽 Alien Worlds](games/alien-worlds.md)
-* [🚜 Farmers World](games/farmers-world.md)
-* [🏰 Crypto Castles](games/crypto-castles.md)
-* [⚔️ Kingdom Quest](games/kingdom-quest.md)
-* [🚀 Space Ship](games/space-ship.md)
-* [🥊 Blockchain Brawlers](games/blockchain-brawlers.md)
-* [🎲 Other Supported Games](games/other-games.md)
 
 ## Web Interface
 * [📱 Main Dashboard](interface/dashboard.md)
@@ -41,14 +35,14 @@
 * [🔑 Authentication](api/authentication.md)
 * [⛏️ Mining Endpoints](api/mining-endpoints.md)
 * [📊 Resource Management](api/resource-management.md)
-* [🎮 Game Operations](api/game-operations.md)
+* [👽 Alien Worlds Operations](api/alien-worlds-operations.md)
 * [📈 Monitoring Data](api/monitoring-data.md)
 * [📋 Response Formats](api/response-formats.md)
 
 ## Advanced Configuration
 * [🌍 Environment Variables](configuration/environment.md)
 * [🌐 Proxy Configuration](configuration/proxy.md)
-* [🎮 Game Settings](configuration/game-settings.md)
+* [👽 Alien Worlds Settings](configuration/alien-worlds-settings.md)
 * [🔒 Security Configuration](configuration/security.md)
 * [⚡ Performance Tuning](configuration/performance.md)
 
@@ -63,12 +57,12 @@
 * [🚨 Error Codes](troubleshooting/error-codes.md)
 * [📈 Performance Issues](troubleshooting/performance.md)
 * [🌐 Network Problems](troubleshooting/network.md)
-* [🎮 Game-Specific Issues](troubleshooting/game-issues.md)
+* [👽 Alien Worlds Issues](troubleshooting/alien-worlds-issues.md)
 
 ## FAQ
 * [❓ General Questions](faq/general.md)
 * [🔧 Technical Questions](faq/technical.md)
-* [🎮 Gaming Questions](faq/gaming.md)
+* [👽 Alien Worlds Questions](faq/alien-worlds.md)
 * [🔒 Security Questions](faq/security.md)
 
 ## Resources

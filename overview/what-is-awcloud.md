@@ -2,14 +2,14 @@
 
 ## ภาพรวมของระบบ (System Overview)
 
-**AWCLOUD CPanel** เป็นแพลตฟอร์มอัตโนมัติขั้นสูงสำหรับการจัดการและควบคุมการขุด Cryptocurrency และเล่นเกม Blockchain บน WAX Network ที่ได้รับการพัฒนาอย่างต่อเนื่องและครอบคลุมทุกความต้องการของผู้ใช้งานมืออาชีพ
+**AWCLOUD CPanel** เป็นแพลตฟอร์มอัตโนมัติขั้นสูงที่เฉพาะเจาะจงสำหรับการขุด Alien Worlds บน WAX Blockchain ที่ได้รับการพัฒนาอย่างต่อเนื่องและเป็นผู้เชี่ยวชาญด้านการขุด Alien Worlds โดยเฉพาะ
 
 ## จุดประสงค์หลัก (Primary Purpose)
 
 ระบบนี้ถูกออกแบบมาเพื่อ:
 
-### 🎯 **การขุดอัตโนมัติแบบมืออาชีพ**
-- **Multi-Game Mining**: รองรับการขุดหลายเกมพร้อมกันกว่า 15 เกม
+### 🎯 **การขุด Alien Worlds อัตโนมัติแบบมืออาชีพ**
+- **Alien Worlds Specialist**: เฉพาะเจาะจงสำหรับ Alien Worlds เท่านั้น
 - **Intelligent Timing**: ระบบจัดการเวลาอัจฉริยะหลีกเลี่ยง Ban Wave
 - **Resource Optimization**: การจัดการ CPU/NET/RAM อัตโนมัติ
 - **Account Management**: จัดการบัญชีหลายบัญชีในระบบเดียว
@@ -26,26 +26,19 @@
 - **Authentication System**: ระบบ WAM authentication ที่ปลอดภัย
 - **Access Control**: การจัดการสิทธิ์ผู้ใช้แบบหลายระดับ
 
-## เกมที่รองรับ (Supported Games)
+## เกมที่รองรับ (Supported Game)
 
-### 🌟 **เกมหลัก (Primary Games)**
-- **👽 Alien Worlds**: เกมขุดบนดาวเคราะห์ต่างๆ พร้อม TLM token
-- **🚜 Farmers World**: เกมจำลองการเกษตรพร้อมระบบปศุสัตว์
-- **🏰 Crypto Castles**: เกมสร้างปราสาทและการจัดการทรัพยากร
-- **⚔️ Kingdom Quest**: เกม RPG ผจญภัยสไตล์ medieval
-
-### 🎮 **เกมเสริม (Additional Games)**
-- **🚀 Space Ship**: การสำรวจอวกาศและการค้าขาย
-- **🥊 Blockchain Brawlers**: เกมต่อสู้และการจัดการนักสู้
-- **⛏️ Galaxy Miners**: การขุดแร่ในอวกาศ
-- **🌊 Sailors World**: การสำรวจทะเลและการผจญภัย
-- **🐼 Panda Paradise**: เกมจำลองสวนสัตว์
-- **💎 Defira Mining**: ระบบ DeFi gaming ขั้นสูง
+### 👽 **Alien Worlds - เฉพาะเจาะจง**
+- **ประเภท**: Mining & Planet Exploration Game
+- **Token**: TLM (Trilium)
+- **Blockchain**: WAX Network
+- **NFTs**: Tools, Land, Avatars
+- **Gameplay**: Mining Trilium on different planets
 
 ### 📊 **สถิติการรองรับ**
-- **รวมทั้งหมด**: 15+ เกม
-- **การอัปเดต**: รายสัปดาห์
-- **ระบบใหม่**: เพิ่มเติมอย่างต่อเนื่อง
+- **เกมที่รองรับ**: Alien Worlds เท่านั้น
+- **การอัปเดต**: รายสัปดาห์สำหรับ Alien Worlds
+- **ระบบเฉพาะ**: ปรับแต่งเพื่อ Alien Worlds โดยเฉพาะ
 
 ## สถาปัตยกรรมระบบ (System Architecture)
 

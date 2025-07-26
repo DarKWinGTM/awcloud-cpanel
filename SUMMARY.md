@@ -7,7 +7,7 @@
 * [✨ คุณสมบัติหลัก](overview/our-features.md)
 
 ## การเริ่มต้นใช้งาน (Getting Started)
-* [⚙️ ความต้องการสำหรับการใช้งาน](getting-started/requirements.md)
+* [⚙️ สิ่งที่คุณต้องเตรียมก่อนใช้งาน](getting-started/requirements.md)
 * [📦 คู่มือการเริ่มต้นใช้งาน](getting-started/installation.md)
 
 ## การตั้งค่าเริ่มต้น (Setup)

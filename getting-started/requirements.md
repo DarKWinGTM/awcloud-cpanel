@@ -1,161 +1,157 @@
-# ⚙️ ความต้องการสำหรับการใช้งาน
+# ⚙️ สิ่งที่คุณต้องเตรียมก่อนใช้งาน
 
-## ความต้องการสำหรับการใช้งาน AWCLOUD CPanel
+## ความพร้อมสำหรับการใช้งาน AWCLOUD CPanel
 
-**AWCLOUD CPanel** เป็น **Web-based Service** ที่ไม่ต้องติดตั้งซอฟต์แวร์ใดๆ บนเครื่องของคุณ เพียงแค่มีเบราว์เซอร์และอินเทอร์เน็ต ก็สามารถใช้งานได้ทันที
+**AWCLOUD CPanel** เป็นเว็บไซต์ที่คุณเข้าใช้งานผ่าน **Web Browser** เหมือน Google, Facebook, หรือเว็บไซต์ทั่วไป ไม่ต้องติดตั้งโปรแกรมใดๆ
 
-## 🌐 ความต้องการด้าน Web Browser
+## 🌐 เบราว์เซอร์ที่รองรับ
 
-### **เบราว์เซอร์ที่รองรับ**
-- ✅ **Google Chrome**: เวอร์ชัน 90+ (แนะนำ)
-- ✅ **Mozilla Firefox**: เวอร์ชัน 88+
-- ✅ **Microsoft Edge**: เวอร์ชัน 90+
-- ✅ **Safari**: เวอร์ชัน 14+ (macOS/iOS)
-- ✅ **Opera**: เวอร์ชัน 76+
+### **เบราว์เซอร์ที่แนะนำ**
+- ✅ **Google Chrome** (เวอร์ชันล่าสุด) - แนะนำมากที่สุด
+- ✅ **Microsoft Edge** (เวอร์ชันล่าสุด)
+- ✅ **Mozilla Firefox** (เวอร์ชันล่าสุด)
+- ✅ **Safari** (สำหรับ Mac/iPhone/iPad)
 
 ### **การตั้งค่าเบราว์เซอร์**
-- เปิดใช้งาน **JavaScript** (จำเป็น)
-- เปิดใช้งาน **Cookies** (จำเป็น)
-- ปิดการใช้งาน **Ad Blockers** สำหรับ awcloud domain
-- อนุญาต **Pop-ups** สำหรับ WAX wallet connections
+**สิ่งที่จำเป็น:**
+- เปิดใช้งาน **JavaScript** ✅
+- เปิดใช้งาน **Cookies** ✅
+- อนุญาต **Pop-ups** สำหรับเว็บไซต์ AWCLOUD ✅
 
-## 💻 ความต้องการด้านอุปกรณ์
+**แนะนำ:**
+- ปิด **Ad Blocker** สำหรับเว็บไซต์ AWCLOUD
+- อัปเดตเบราว์เซอร์เป็นเวอร์ชันล่าสุดเสมอ
 
-### **คอมพิวเตอร์ (Desktop/Laptop)**
-- **ระบบปฏิบัติการ**: Windows 10+, macOS 10.15+, Linux (Ubuntu 18.04+)
-- **RAM**: ขั้นต่ำ 4 GB (แนะนำ 8 GB+)
-- **หน้าจอ**: ความละเอียดขั้นต่ำ 1366x768 (แนะนำ 1920x1080+)
+## 💻 อุปกรณ์ที่รองรับ
 
-### **อุปกรณ์เคลื่อนที่ (Mobile/Tablet)**
-- **iOS**: iOS 14+ (iPhone/iPad)
-- **Android**: Android 8.0+ (API level 26+)
-- **หน้าจอ**: ขั้นต่ำ 375x667 pixels
-- **RAM**: ขั้นต่ำ 3 GB
+### **คอมพิวเตอร์ (แนะนำ)**
+- **Windows**: Windows 10 หรือใหม่กว่า
+- **Mac**: macOS 10.15 หรือใหม่กว่า
+- **Linux**: Ubuntu, CentOS, Debian
+- **หน้าจอ**: ความละเอียดขั้นต่ำ 1366x768 (แนะนำ 1920x1080)
 
-## 🌐 ความต้องการด้านอินเทอร์เน็ต
-
-### **ความเร็วการเชื่อมต่อ**
-- **ขั้นต่ำ**: 5 Mbps download, 1 Mbps upload
-- **แนะนำ**: 25+ Mbps download, 5+ Mbps upload
-- **Latency**: < 200ms ไปยัง servers
-- **ความเสถียร**: การเชื่อมต่อไม่ขาดหาย
-
-### **การเข้าถึง Domains**
-ระบบต้องสามารถเชื่อมต่อไปยัง:
-```
-https://awcloud.cpanel.service     # Main service
-https://api.awcloud.service        # API endpoints
-https://wax.greymass.com          # WAX blockchain
-https://api.waxsweden.org         # WAX blockchain
-https://wax.pink.gg               # WAX blockchain
-```
-
-## 🔐 ความต้องการด้าน WAX Blockchain
-
-### **WAX Wallet Account**
-- **ขั้นต่ำ**: 1 WAX account ที่ active
-- **แนะนำ**: 3-10 WAX accounts สำหรับ performance ที่ดี
-- **การ authenticate**: รองรับ WAM files, private keys, Anchor wallet
-
-### **ทรัพยากร WAX Account**
-```
-CPU: ขั้นต่ำ 100ms staked per account
-NET: ขั้นต่ำ 50 KB staked per account  
-RAM: ขั้นต่ำ 8 KB per account
-WAX Tokens: 10+ WAX สำหรับ transaction fees
-```
-
-### **NFT Tools สำหรับ Alien Worlds**
-- **ขั้นต่ำ**: 1 mining tool (Shovel, Standard Capacitor, เป็นต้น)
-- **แนะนำ**: 3+ mining tools ต่อ account
-- **ระดับสูง**: Rare/Epic tools สำหรับ efficiency ที่ดีกว่า
-
-## 🎮 ความต้องการสำหรับ Alien Worlds
-
-### **Account Requirements**
-- WAX account ที่ลงทะเบียน Alien Worlds แล้ว
-- อย่างน้อย 1 mining tool ใน inventory
-- เลือก Planet สำหรับการขุด
-- Land NFT (optional - เพิ่ม rewards)
-
-### **Game Resources**
-- **TLM Balance**: สำหรับ staking และ voting
-- **Tool Durability**: เครื่องมือที่ไม่เสีย
-- **Cooldown Time**: เข้าใจเวลา cooldown ของแต่ละ account
-
-## 🔒 ความต้องการด้านความปลอดภัย
-
-### **การรักษาความปลอดภัย Account**
-- รหัสผ่านที่แข็งแกร่งสำหรับ AWCLOUD CPanel
-- การสำรอง private keys อย่างปลอดภัย
-- การใช้งาน 2FA (ถ้ามี)
-- การไม่แชร์ข้อมูล login กับผู้อื่น
-
-### **การป้องกันการเข้าถึง**
-- ใช้งานจากเครือข่ายที่น่าเชื่อถือ
-- ไม่ใช้งานจาก public WiFi สำหรับการ mining
-- ปิด browser หลังใช้งานเสร็จ
-- ตรวจสอบ URL ให้ถูกต้องก่อนเข้าสู่ระบบ
-
-## 🌐 Proxy Services (Optional)
-
-### **เมื่อไหร่ควรใช้ Proxy**
-- เมื่อมี account หลายตัว (10+ accounts)
-- เมื่อต้องการป้องกันการตรวจจับ IP
-- เมื่ออยู่ในประเทศที่มีข้อจำกัด
-- เมื่อต้องการเพิ่มความปลอดภัย
-
-### **Proxy Providers ที่แนะนำ**
-- **WebShare.io**: Residential proxies คุณภาพสูง
-- **PacketStream**: Residential proxy network
-- **PlainProxies**: Datacenter proxies ราคาดี
-- **Custom Proxies**: HTTP/HTTPS/SOCKS5
-
-## 📱 การใช้งานบนมือถือ
-
-### **Mobile Web Experience**
-- เข้าถึงผ่าน mobile browser
-- Touch-optimized interface
-- Responsive design ที่ปรับตามหน้าจอ
-- การแจ้งเตือนผ่าน browser notifications
-
-### **ข้อจำกัดบนมือถือ**
-- การจัดการ account จำนวนมากอาจไม่สะดวก
-- การดู charts และ analytics มีพื้นที่จำกัด
-- การใส่ private keys ต้องระวังเรื่องความปลอดภัย
-
-## ✅ Checklist ก่อนเริ่มใช้งาน
-
-### **การเตรียมตัวขั้นพื้นฐาน**
-- [ ] ✅ มี WAX account ที่ active
-- [ ] ✅ มี mining tools ใน inventory
-- [ ] ✅ มี CPU/NET/RAM เพียงพอ
-- [ ] ✅ เบราว์เซอร์รองรับและตั้งค่าถูกต้อง
-- [ ] ✅ อินเทอร์เน็ตเสถียรและเร็วพอ
-
-### **การเตรียมตัวขั้นสูง**
-- [ ] ✅ มี account หลายตัวสำหรับ efficiency
-- [ ] ✅ ตั้งค่า proxy (ถ้าจำเป็น)
-- [ ] ✅ เตรียม backup keys และ passwords
-- [ ] ✅ ศึกษา Alien Worlds mechanics
-- [ ] ✅ วางแผนกลยุทธ์การขุด
-
-## 🚀 ขั้นตอนแรกในการเริ่มใช้งาน
-
-1. **เข้าสู่เว็บไซต์**: เปิดเบราว์เซอร์และไปที่ AWCLOUD CPanel
-2. **ลงทะเบียน/เข้าสู่ระบบ**: สร้าง account หรือ login
-3. **เชื่อมต่อ WAX accounts**: เพิ่ม WAX accounts ด้วย WAM files
-4. **ตรวจสอบ accounts**: ตรวจสอบ tools และ resources
-5. **เริ่มต้นการขุด**: เลือกกลยุทธ์และเริ่ม mining
-
-{% hint style="success" %}
-**ข้อดีของ Web-based Service**: ไม่ต้องติดตั้ง, ไม่ต้อง update, เข้าถึงได้จากทุกที่, มีการสำรองข้อมูลอัตโนมัติ
-{% endhint %}
+### **มือถือ/แท็บเล็ต**
+- **iPhone/iPad**: iOS 14 หรือใหม่กว่า
+- **Android**: Android 8.0 หรือใหม่กว่า
+- **หน้าจอ**: ขนาดขั้นต่ำ 5 นิ้ว
 
 {% hint style="info" %}
-**เคล็ดลับ**: สำหรับการใช้งานเป็นครั้งแรก แนะนำให้เริ่มด้วย 1-2 accounts เพื่อทำความเข้าใจระบบก่อน จากนั้นค่อยขยายไปยัง accounts เพิ่มเติม
+**เคล็ดลับ**: การใช้งานบนคอมพิวเตอร์จะสะดวกกว่าการใช้งานบนมือถือ เนื่องจากหน้าจอใหญ่กว่าและสามารถดูข้อมูลได้มากกว่า
+{% endhint %}
+
+## 🌐 การเชื่อมต่ออินเทอร์เน็ต
+
+### **ความเร็วอินเทอร์เน็ต**
+- **ขั้นต่ำ**: 5 Mbps (สำหรับการใช้งานพื้นฐาน)
+- **แนะนำ**: 25+ Mbps (สำหรับการใช้งานที่ราบรื่น)
+- **ความเสถียร**: ควรมีอินเทอร์เน็ตที่ไม่ขาดบ่อย
+
+### **เครือข่ายที่ปลอดภัย**
+- ใช้ **WiFi บ้าน** หรือ **อินเทอร์เน็ตส่วนตัว**
+- หลีกเลี่ยง **WiFi สาธารณะ** (ร้านกาแฟ, สนามบิน)
+- ใช้ **VPN** ถ้าจำเป็นต้องใช้อินเทอร์เน็ตสาธารณะ
+
+## 🎮 สิ่งที่ต้องมีสำหรับ Alien Worlds
+
+### **WAX Wallet Account**
+**สิ่งที่จำเป็น:**
+- **อย่างน้อย 1 WAX account** ที่เปิดใช้งานแล้ว
+- **Private Key** หรือ **WAM file** ของ account
+- **ลงทะเบียน Alien Worlds** แล้ว
+
+**แนะนำสำหรับการใช้งานที่ดี:**
+- **3-5 WAX accounts** สำหรับขุดหลาย account
+- **10+ accounts** สำหรับการใช้งานระดับมืออาชีพ
+
+### **ทรัพยากร WAX ที่ต้องมี**
+```
+✅ CPU: มากกว่า 100ms (สำหรับ transaction)
+✅ NET: มากกว่า 50 KB (สำหรับ transaction)
+✅ RAM: มากกว่า 8 KB (สำหรับเก็บข้อมูล)
+✅ WAX Tokens: 10+ WAX (สำหรับค่าธรรมเนียม)
+```
+
+### **Mining Tools (NFT)**
+**ขั้นต่ำ:**
+- **1 Mining Tool** (Shovel, Capacitor, เป็นต้น)
+- **Tools ที่ใช้งานได้** (Durability > 0)
+
+**แนะนำ:**
+- **3+ Mining Tools** ต่อ account
+- **Tools หลากหลายระดับ** (Common, Rare, Epic)
+- **Tools ที่เหมาะสมกับ Planet** ที่ต้องการขุด
+
+### **Alien Worlds Game Requirements**
+- ✅ **Account ลงทะเบียนเกมแล้ว**
+- ✅ **เลือก Planet เริ่มต้น**
+- ✅ **มี Avatar และ Character**
+- ✅ **เข้าใจกฎของเกม** (Cooldown, Mining Mechanics)
+
+## 🔐 ความปลอดภัยและการรักษาข้อมูล
+
+### **ข้อมูลสำคัญที่ต้องเก็บปลอดภัย**
+- **Private Keys** ของ WAX accounts
+- **WAM Files** และรหัสผ่าน
+- **รหัสผ่าน AWCLOUD CPanel**
+- **Backup Phrase** จาก wallet
+
+### **การรักษาความปลอดภัย**
+- ✅ **ไม่แชร์ Private Keys** กับใครเด็ดขาด
+- ✅ **ใช้รหัสผ่านที่แข็งแกร่ง**
+- ✅ **เก็บ Backup** ในที่ปลอดภัย
+- ✅ **ลงชื่อออกหลังใช้งาน** เสมอ
+
+## ⚠️ ข้อควรระวัง
+
+### **สิ่งที่ไม่ควรทำ**
+- ❌ **ใช้งานจาก WiFi สาธารณะ** (ไม่ปลอดภัย)
+- ❌ **แชร์หน้าจอขณะที่มี Private Keys**
+- ❌ **ใช้งานจากคอมพิวเตอร์สาธารณะ**
+- ❌ **คลิกลิงก์ปลอม** (Phishing)
+
+### **การระวังการหลอกลวง**
+- ✅ **ตรวจสอบ URL** ให้ถูกต้องเสมอ
+- ✅ **ใช้ Bookmark** แทนการค้นหา Google
+- ✅ **ไม่ใส่ข้อมูลสำคัญ** ในเว็บไซต์ปลอม
+
+## ✅ Checklist ความพร้อม
+
+### **ก่อนเริ่มใช้งาน ตรวจสอบ:**
+
+**อุปกรณ์และการเชื่อมต่อ:**
+- [ ] ✅ เบราว์เซอร์รองรับและอัปเดตแล้ว
+- [ ] ✅ อินเทอร์เน็ตเสถียรและเร็วพอ
+- [ ] ✅ หน้าจอขนาดเหมาะสม
+
+**WAX Account:**
+- [ ] ✅ มี WAX account อย่างน้อย 1 account
+- [ ] ✅ มี Private Key หรือ WAM file
+- [ ] ✅ Account มี CPU/NET/RAM เพียงพอ
+- [ ] ✅ มี WAX Tokens สำหรับค่าธรรมเนียม
+
+**Alien Worlds:**
+- [ ] ✅ Account ลงทะเบียนเกมแล้ว
+- [ ] ✅ มี Mining Tools ใน inventory
+- [ ] ✅ เลือก Planet สำหรับการขุด
+
+**ความปลอดภัย:**
+- [ ] ✅ เตรียม Backup ข้อมูลสำคัญ
+- [ ] ✅ ตั้งรหัสผ่านที่แข็งแกร่ง
+- [ ] ✅ ใช้เครือข่ายที่ปลอดภัย
+
+## 🚀 พร้อมแล้ว! ขั้นต่อไป
+
+เมื่อคุณมีทุกอย่างที่ต้องการแล้ว คุณสามารถ:
+
+1. **เข้าสู่เว็บไซต์ AWCLOUD CPanel**
+2. **ลงทะเบียนหรือเข้าสู่ระบบ**
+3. **เพิ่ม WAX Accounts**
+4. **เริ่มต้นการขุด Alien Worlds**
+
+{% hint style="success" %}
+**ข้อดีของ Web Platform**: ไม่ต้องติดตั้ง, ไม่ต้องอัปเดต, เข้าใช้ได้จากทุกที่, ปลอดภัย
 {% endhint %}
 
 ---
 
-**ขั้นต่อไป**: เมื่อพร้อมแล้ว ไปที่ [การเริ่มต้นใช้งาน](../fundamentals/getting-set-up/README.md) เพื่อเรียนรู้วิธีการใช้งาน AWCLOUD CPanel
+**ขั้นต่อไป**: [คู่มือการเริ่มต้นใช้งาน](installation.md) - เรียนรู้วิธีการเข้าใช้งานเว็บไซต์

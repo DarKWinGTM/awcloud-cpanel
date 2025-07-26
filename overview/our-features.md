@@ -1,17 +1,46 @@
-# ✨ Our Features
+# ✨ คุณสมบัติหลัก AWCLOUD CPanel
 
-{% hint style="info" %}
-**GitBook tip:** A succinct video overview is a great way to introduce folks to your product. Embed a Loom, Vimeo or YouTube video and you're good to go! We love this video from the fine folks at Loom as a perfect example of a succinct feature overview.
-{% endhint %}
+## 👽 การขุด Alien Worlds อัตโนมัติขั้นสูง
 
-## Awesome Feature One
+**ระบบขุดเฉพาะเจาะจงสำหรับ Alien Worlds** พร้อมเทคโนโลยีป้องกัน Ban Wave
 
-Get amazing things done with awesome feature one. But remember that awesome feature two and three exist too. In fact, Awesome Product is full of awesome features.
+- ⛏️ **Smart Mining Algorithm**: ระบบขุดอัจฉริยะปรับตัวตามสถานการณ์
+- ⏰ **Intelligent Timing**: จัดการเวลาหลีกเลี่ยงการตรวจจับ
+- 🔄 **Auto Resource Management**: จัดการ CPU/NET/RAM อัตโนมัติ
+- 🎯 **Planet Optimization**: เลือก Planet ที่เหมาะสมอัตโนมัติ
 
-![](https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?crop=entropy\&cs=tinysrgb\&fm=jpg\&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwyfHxhcHB8ZW58MHx8fHwxNjYwNTgzMzQz\&ixlib=rb-1.2.1\&q=80)
+## 📊 ระบบตรวจสอบแบบเรียลไทม์
 
-## Awesome Feature Two
+**Dashboard ครบครันสำหรับการติดตามผลงาน**
 
-Get amazing things done with awesome feature two. But remember that awesome feature one and three exist too. In fact, Awesome Product is full of awesome features.
+- 📈 **Live Mining Statistics**: สถิติการขุดแบบเรียลไทม์
+- 💰 **Earning Tracker**: ติดตามรายได้ TLM และ NFT
+- ⚡ **Resource Monitor**: ตรวจสอบ WAX resources
+- 🔍 **Transaction History**: ประวัติ transaction ย้อนหลัง
 
-![](https://images.unsplash.com/photo-1569144157591-c60f3f82f137?crop=entropy\&cs=tinysrgb\&fm=jpg\&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwxfHxmZWF0dXJlfGVufDB8fHx8MTY2MDU4MzM1OQ\&ixlib=rb-1.2.1\&q=80)
+## 🔒 ระบบความปลอดภัยระดับองค์กร
+
+**การป้องกันและรักษาความปลอดภัยอย่างครบถ้วน**
+
+- 🔐 **WAM Authentication**: ระบบ WAX wallet ที่ปลอดภัย
+- 🌐 **Multi-Proxy Support**: รองรับ Proxy หลากหลายผู้ให้บริการ
+- 🛡️ **Anti-Detection**: ป้องกันการตรวจจับจากระบบ
+- 🔑 **Encrypted Storage**: เก็บข้อมูลแบบเข้ารหัส
+
+## 👥 การจัดการบัญชีหลายบัญชี
+
+**บริหารจัดการ WAX accounts แบบมืออาชีพ**
+
+- 🎮 **Multi-Account Mining**: ขุดหลาย account พร้อมกัน
+- ⚖️ **Load Balancing**: กระจายการทำงานอย่างสมดุล
+- 📋 **Account Profiles**: จัดการโปรไฟล์แต่ละ account
+- 🔄 **Sync Management**: ซิงค์ข้อมูลระหว่าง accounts
+
+## 🤖 ระบบ AI และการเรียนรู้
+
+**เทคโนโลยี AI ช่วยเพิ่มประสิทธิภาพ**
+
+- 🧠 **Smart Decision Making**: ตัดสินใจด้วย AI
+- 📊 **Performance Analytics**: วิเคราะห์ประสิทธิภาพ
+- 🔮 **Predictive Mining**: คาดการณ์ผลตอบแทน
+- 📈 **Optimization Suggestions**: แนะนำการปรับปรุง

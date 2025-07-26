@@ -1,72 +1,33 @@
 # Table of contents
 
-## Overview
-* [🏠 Introduction](README.md)
-* [💎 What is AWCLOUD CPanel](overview/what-is-awcloud.md)
-* [🏗️ System Architecture](overview/architecture.md)
-* [🎮 Supported Games](overview/supported-games.md)
+## ภาพรวม (Overview)
+* [🏠 ยินดีต้อนรับ](README.md)
+* [💎 AWCLOUD CPanel คืออะไร](overview/what-is-awcloud.md)
+* [💡 สิ่งที่เราทำ](overview/what-we-do.md)
+* [✨ คุณสมบัติหลัก](overview/our-features.md)
 
-## Getting Started
-* [⚙️ Requirements](getting-started/requirements.md)
-* [📦 Installation Guide](getting-started/installation.md)
-* [🔧 Configuration Setup](getting-started/configuration.md)
-* [🚀 Quick Start Guide](getting-started/quick-start.md)
-* [🔐 Authentication Setup](getting-started/authentication.md)
+## การเริ่มต้นใช้งาน (Getting Started)
+* [⚙️ ความต้องการสำหรับการใช้งาน](getting-started/requirements.md)
+* [📦 คู่มือการเริ่มต้นใช้งาน](getting-started/installation.md)
 
-## Core Features
-* [⛏️ Mining Automation](features/mining-automation.md)
-* [🎯 Alien Worlds Focus](features/alien-worlds-focus.md)
-* [📊 Resource Management](features/resource-management.md)
-* [🌐 Proxy System](features/proxy-system.md)
-* [📈 Real-time Monitoring](features/monitoring.md)
-* [👥 Team Pool Management](features/team-pool.md)
+## การตั้งค่าเริ่มต้น (Setup)
+* [🛠️ การตั้งค่าระบบ](fundamentals/getting-set-up/README.md)
+* [🧑 การจัดการผู้ใช้และทีมงาน](fundamentals/getting-set-up/inviting-members.md)
+* [📝 การตั้งค่าสิทธิ์และความปลอดภัย](fundamentals/getting-set-up/setting-permissions.md)
 
-## Game Guide
+## คู่มือการใช้งาน (User Guides)
+* [📪 การสร้าง Mining Strategy](product-guides/making-a-post.md)
+* [📎 การทำความเข้าใจ Mining Projects](product-guides/understanding-projects.md)
+
+## คุณสมบัติหลัก (Core Features)
+* [⛏️ ระบบขุดอัตโนมัติ](features/mining-automation.md)
+
+## เกมที่รองรับ (Supported Games)
 * [👽 Alien Worlds](games/alien-worlds.md)
 
-## Web Interface
-* [📱 Main Dashboard](interface/dashboard.md)
-* [📺 Game Monitors](interface/game-monitors.md)
-* [💻 Console Interface](interface/console.md)
-* [⚙️ Configuration Panel](interface/configuration.md)
-* [📝 Change Log System](interface/changelog.md)
+## การใช้งานเฉพาะทาง (Use Cases)
+* [🎨 สำหรับ UI/UX Designers](use-cases/for-designers.md)
+* [🖥️ สำหรับ Developers](use-cases/for-developers.md)
 
 ## API Reference
 * [🔑 Authentication](api/authentication.md)
-* [⛏️ Mining Endpoints](api/mining-endpoints.md)
-* [📊 Resource Management](api/resource-management.md)
-* [👽 Alien Worlds Operations](api/alien-worlds-operations.md)
-* [📈 Monitoring Data](api/monitoring-data.md)
-* [📋 Response Formats](api/response-formats.md)
-
-## Advanced Configuration
-* [🌍 Environment Variables](configuration/environment.md)
-* [🌐 Proxy Configuration](configuration/proxy.md)
-* [👽 Alien Worlds Settings](configuration/alien-worlds-settings.md)
-* [🔒 Security Configuration](configuration/security.md)
-* [⚡ Performance Tuning](configuration/performance.md)
-
-## Development
-* [📋 Development Log System](development/changelog-system.md)
-* [🤖 AI Code Analyzer](development/ai-analyzer.md)
-* [🔢 Version Management](development/version-management.md)
-* [🤝 Contributing Guidelines](development/contributing.md)
-
-## Troubleshooting
-* [❗ Common Issues](troubleshooting/common-issues.md)
-* [🚨 Error Codes](troubleshooting/error-codes.md)
-* [📈 Performance Issues](troubleshooting/performance.md)
-* [🌐 Network Problems](troubleshooting/network.md)
-* [👽 Alien Worlds Issues](troubleshooting/alien-worlds-issues.md)
-
-## FAQ
-* [❓ General Questions](faq/general.md)
-* [🔧 Technical Questions](faq/technical.md)
-* [👽 Alien Worlds Questions](faq/alien-worlds.md)
-* [🔒 Security Questions](faq/security.md)
-
-## Resources
-* [🔗 External Links](resources/links.md)
-* [👥 Community](resources/community.md)
-* [🆘 Support](resources/support.md)
-* [📊 Changelog](resources/changelog.md)

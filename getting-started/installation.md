@@ -1,457 +1,308 @@
-# 📦 Installation Guide
+# 📦 คู่มือการเริ่มต้นใช้งาน
 
-## คู่มือการติดตั้ง AWCLOUD CPanel
+## การเริ่มต้นใช้งาน AWCLOUD CPanel
 
-คู่มือนี้จะแนะนำการติดตั้ง AWCLOUD CPanel ตั้งแต่เริ่มต้นจนพร้อมใช้งาน
+**AWCLOUD CPanel** เป็น Web-based Service ที่ไม่ต้องติดตั้งซอฟต์แวร์ใดๆ คู่มือนี้จะแนะนำวิธีการเริ่มต้นใช้งานตั้งแต่การลงทะเบียนจนพร้อมขุด Alien Worlds
 
-## 🚀 การติดตั้งแบบเร็ว (Quick Installation)
+## 🚀 การเริ่มต้นแบบเร็ว (Quick Start)
 
-### **ขั้นตอนที่ 1: เตรียมระบบ**
+### **ขั้นตอนที่ 1: เข้าสู่เว็บไซต์**
 
-```bash
-# อัปเดตระบบ (Ubuntu/Debian)
-sudo apt update && sudo apt upgrade -y
+1. เปิดเบราว์เซอร์ที่รองรับ (Chrome, Firefox, Edge, Safari)
+2. ไปที่ **AWCLOUD CPanel** website: `https://awcloud.cpanel.service`
+3. ตรวจสอบว่า URL ถูกต้องและมี SSL certificate
 
-# ติดตั้ง Python 3.8+ และ dependencies
-sudo apt install python3 python3-pip python3-venv git -y
+### **ขั้นตอนที่ 2: ลงทะเบียนหรือเข้าสู่ระบบ**
 
-# ตรวจสอบเวอร์ชัน Python
-python3 --version  # ต้องเป็น 3.8 หรือสูงกว่า
+**สำหรับผู้ใช้ใหม่:**
+```
+1. คลิก "Sign Up" หรือ "ลงทะเบียน"
+2. กรอกข้อมูล: Email, Password, ชื่อผู้ใช้
+3. ยืนยัน Email address
+4. เข้าสู่ระบบด้วย credentials ที่สร้าง
 ```
 
-### **ขั้นตอนที่ 2: ดาวน์โหลดและติดตั้ง**
-
-```bash
-# Clone หรือ Download โปรเจ็ค
-git clone https://github.com/DarKWinGTM/awcloud-cpanel.git
-cd awcloud-cpanel
-
-# หรือ Download แล้ว Extract
-# wget https://github.com/DarKWinGTM/awcloud-cpanel/archive/main.zip
-# unzip main.zip && cd awcloud-cpanel-main
+**สำหรับผู้ใช้เดิม:**
+```
+1. คลิก "Login" หรือ "เข้าสู่ระบบ"
+2. กรอก Email/Username และ Password
+3. เข้าสู่ Dashboard หลัก
 ```
 
-### **ขั้นตอนที่ 3: สร้าง Virtual Environment**
+### **ขั้นตอนที่ 3: เพิ่ม WAX Accounts**
 
-```bash
-# สร้าง Virtual Environment
-python3 -m venv awcloud-env
+1. **ไปที่เมนู "Account Management"**
+2. **เลือกวิธีการเพิ่ม account:**
+   - **WAM File Upload**: อัปโหลดไฟล์ .wam
+   - **Private Key**: กรอก private key โดยตรง
+   - **Anchor Wallet**: เชื่อมต่อผ่าน Anchor
 
-# เปิดใช้งาน Virtual Environment
-source awcloud-env/bin/activate  # Linux/macOS
-# awcloud-env\Scripts\activate    # Windows
+3. **ตั้งชื่อ account** (สำหรับการจัดการ)
+4. **ทดสอบการเชื่อมต่อ** และตรวจสอบข้อมูล account
+
+### **ขั้นตอนที่ 4: ตรวจสอบและเตรียม Accounts**
+
+```
+✅ ตรวจสอบ WAX account resources:
+   - CPU: มีเพียงพอสำหรับ mining
+   - NET: มีเพียงพอสำหรับ transactions  
+   - RAM: อย่างน้อย 8 KB
+
+✅ ตรวจสอบ Alien Worlds readiness:
+   - มี mining tools ใน inventory
+   - เลือก Planet สำหรับการขุด
+   - Account ลงทะเบียน Alien Worlds แล้ว
 ```
 
-### **ขั้นตอนที่ 4: ติดตั้ง Dependencies**
+### **ขั้นตอนที่ 5: เริ่มต้นการขุด**
 
-```bash
-# ติดตั้ง Python packages
-pip install --upgrade pip
-pip install -r requirements.txt
+1. **ไปที่เมนู "Mining Dashboard"**
+2. **เลือก accounts** ที่ต้องการใช้ขุด
+3. **เลือก Mining Strategy:**
+   - **Conservative**: ขุดแบบปลอดภัย
+   - **Balanced**: ขุดแบบสมดุล
+   - **Aggressive**: ขุดแบบเข้มข้น
+4. **คลิก "Start Mining"**
+5. **ตรวจสอบสถานะ** ใน Real-time Dashboard
 
-# ตรวจสอบการติดตั้ง
-pip list | grep -E "(Flask|cloudscraper|cryptography)"
+### **1. การตั้งค่าบัญชีผู้ใช้ (User Account Setup)**
+
+#### **📧 การลงทะเบียนบัญชี**
+
+**ข้อมูลที่จำเป็น:**
+- **Email Address**: สำหรับการเข้าสู่ระบบและการแจ้งเตือน
+- **Username**: ชื่อผู้ใช้ที่ไม่ซ้ำกับผู้อื่น
+- **Password**: รหัสผ่านที่แข็งแกร่ง (8+ ตัวอักษร, มีตัวเลขและสัญลักษณ์)
+- **Referral Code**: (ถ้ามี) สำหรับส่วนลดหรือโบนัส
+
+**การยืนยันตัวตน:**
+```
+1. ตรวจสอบ Email verification link
+2. คลิกลิงก์ยืนยันใน Email
+3. เข้าสู่ระบบด้วย credentials ที่สร้าง
+4. ตั้งค่า Security settings (2FA แนะนำ)
 ```
 
-### **ขั้นตอนที่ 5: การกำหนดค่าเบื้องต้น**
+#### **🔐 การตั้งค่าความปลอดภัย**
 
-```bash
-# Copy และแก้ไขไฟล์ configuration
-cp endpoint.json.example endpoint.json    # ถ้ามี
-cp config.py.example config.py            # ถ้ามี
+**Two-Factor Authentication (2FA):**
+- เปิดใช้งาน 2FA ด้วย Google Authenticator หรือ Authy
+- สำรอง Recovery codes ไว้ในที่ปลอดภัย
+- ตั้งค่า Security questions
 
-# สร้างโฟลเดอร์สำคัญ
-mkdir -p auth static/log dev-log-backups
+**Session Management:**
+- ตั้งค่า Auto-logout time
+- การจำกัด concurrent sessions
+- การแจ้งเตือนเมื่อมีการ login จาก IP ใหม่
+
+### **2. การจัดการ WAX Accounts**
+
+#### **💳 การเพิ่ม WAX Accounts**
+
+**วิธีการที่ 1: WAM File Upload**
+```
+1. ไปที่ "Account Management" > "Add Account"
+2. เลือก "Upload WAM File"
+3. อัปโหลดไฟล์ .wam ของ account
+4. กรอกรหัสผ่าน WAM file
+5. ตั้งชื่อ account สำหรับการจัดการ
+6. ทดสอบการเชื่อมต่อ
 ```
 
-## 🔧 การติดตั้งแบบละเอียด (Detailed Installation)
-
-### **1. การเตรียม Environment ตามระบบปฏิบัติการ**
-
-#### **🐧 Ubuntu/Debian Linux**
-
-```bash
-# ติดตั้ง system dependencies
-sudo apt update
-sudo apt install -y python3 python3-pip python3-venv python3-dev \
-                    build-essential libssl-dev libffi-dev \
-                    git curl wget nginx supervisor
-
-# ติดตั้ง Node.js (สำหรับ frontend tools)
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt install -y nodejs
-
-# ตรวจสอบการติดตั้ง
-python3 --version && pip3 --version && node --version
+**วิธีการที่ 2: Private Key Entry**
+```
+1. เลือก "Manual Key Entry"
+2. กรอก Private Key ของ WAX account
+3. ระบบจะดึงข้อมูล Public Key และ Account Name อัตโนมัติ
+4. ตั้งชื่อ account และบันทึก
+5. ทดสอบการ sign transaction
 ```
 
-#### **🍎 macOS**
-
-```bash
-# ติดตั้ง Homebrew (ถ้ายังไม่มี)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# ติดตั้ง dependencies
-brew install python@3.9 git node nginx
-
-# เพิ่ม Python ใน PATH
-echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
+**วิธีการที่ 3: Anchor Wallet Integration**
+```
+1. เลือก "Connect Anchor Wallet"  
+2. เปิด Anchor Wallet บนเครื่อง
+3. สแกน QR Code หรือคลิกลิงก์
+4. อนุมัติการเชื่อมต่อใน Anchor
+5. เลือก accounts ที่ต้องการเพิ่ม
 ```
 
-#### **🪟 Windows**
+#### **🔍 การตรวจสอบ Account Status**
 
-```powershell
-# ติดตั้งผ่าน Chocolatey (แนะนำ)
-Set-ExecutionPolicy Bypass -Scope Process -Force
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+**Resource Checking:**
+```
+✅ CPU Resources:
+   - Available: มากกว่า 100ms
+   - Staked: มากกว่า 50 WAX แนะนำ
+   - Usage: ต่ำกว่า 80%
 
-# ติดตั้ง Python, Git, Node.js
-choco install python git nodejs -y
+✅ NET Resources:  
+   - Available: มากกว่า 50 KB
+   - Staked: มากกว่า 10 WAX แนะนำ
+   - Usage: ต่ำกว่า 80%
 
-# หรือดาวน์โหลดโดยตรงจาก:
-# Python: https://www.python.org/downloads/
-# Git: https://git-scm.com/download/win
-# Node.js: https://nodejs.org/
+✅ RAM:
+   - Available: มากกว่า 8 KB
+   - Used: ตรวจสอบการใช้งาน
+   - Sufficient: สำหรับ transactions
 ```
 
-### **2. การตั้งค่า Virtual Environment**
+**Alien Worlds Readiness:**
+```
+✅ Game Registration:
+   - Account ลงทะเบียน Alien Worlds แล้ว
+   - มี Avatar และ stats
+   - เลือก Starting planet
 
-```bash
-# สร้างและจัดการ Virtual Environment
-python3 -m venv awcloud-env
+✅ Mining Tools:
+   - มี tools อย่างน้อย 1 ชิ้น
+   - Tools ไม่เสีย (durability > 0)
+   - Tools เหมาะสมกับการขุด
 
-# เปิดใช้งาน (เลือกตามระบบ)
-source awcloud-env/bin/activate           # Linux/macOS
-awcloud-env\Scripts\activate.bat          # Windows Command Prompt
-awcloud-env\Scripts\Activate.ps1          # Windows PowerShell
-
-# ตรวจสอบว่าอยู่ใน Virtual Environment
-which python  # ควรแสดง path ไปยัง awcloud-env
-pip list      # ควรมี packages น้อย
+✅ Planet Selection:
+   - เลือก Planet ที่ต้องการขุด
+   - ตรวจสอบ Mining difficulty
+   - ดู Rewards และ TLM rates
 ```
 
-### **3. การติดตั้ง Python Dependencies แบบละเอียด**
+### **3. การตั้งค่า Mining Strategies**
 
-```bash
-# อัปเกรด pip และ setuptools
-pip install --upgrade pip setuptools wheel
+#### **⚙️ Strategy Templates**
 
-# ติดตั้ง dependencies หลัก
-pip install Flask==2.0.2
-pip install cloudscraper==1.2.58
-pip install pytz==2021.1
-pip install cryptography==3.4.7
-pip install grequests==0.6.0
-
-# ติดตั้ง dependencies เสริม
-pip install requests>=2.25.0
-pip install websocket-client>=1.0.0
-pip install Pillow>=8.0.0
-
-# หรือติดตั้งทั้งหมดจาก requirements.txt
-pip install -r requirements.txt
-
-# ตรวจสอบการติดตั้ง
-pip check  # ตรวจสอบ dependency conflicts
-```
-
-### **4. การเตรียม Configuration Files**
-
-#### **📁 ไฟล์ที่จำเป็น**
-
-```bash
-# สร้างไฟล์ configuration หลัก
-touch endpoint.json        # WAX blockchain endpoints
-touch binance.json         # Binance API configuration
-touch okx.json             # OKX exchange configuration
-touch proxies.key          # Proxy configurations
-touch exauth.json          # External authentication
-
-# ตั้งค่า permissions
-chmod 600 *.json *.key     # ป้องกันการเข้าถึงจากผู้อื่น
-```
-
-#### **📝 ตัวอย่าง endpoint.json**
-
+**Conservative Strategy:**
 ```json
 {
-  "wax_endpoints": [
-    "https://wax.greymass.com",
-    "https://api.waxsweden.org", 
-    "https://wax.pink.gg",
-    "https://api.wax.alohaeos.com",
-    "https://wax-mainnet.bloks.io"
-  ],
-  "hyperion_endpoints": [
-    "https://wax.hyperion.eosrio.io",
-    "https://api.waxsweden.org"
-  ],
-  "atomic_endpoints": [
-    "https://wax.api.atomicassets.io"
-  ]
-}
-```
-
-## 🔐 การตั้งค่า Authentication
-
-### **1. การเตรียม WAX Accounts**
-
-```bash
-# สร้างโฟลเดอร์ auth
-mkdir -p auth
-chmod 700 auth  # ตั้งค่า permissions แบบปลอดภัย
-
-# สร้างไฟล์ WAM authentication (ตัวอย่าง)
-# ไฟล์เหล่านี้จะต้องได้จากการ export จาก WAX wallet
-# cc-xxxxx.wam  (Crypto Castles accounts)
-# kq-xxxxx.wam  (Kingdom Quest accounts)
-# aw-xxxxx.wam  (Alien Worlds accounts)
-```
-
-### **2. การตั้งค่า Security**
-
-```bash
-# สร้าง encryption key สำหรับระบบ
-python3 -c "
-from cryptography.fernet import Fernet
-key = Fernet.generate_key()
-with open('secret.key', 'wb') as f:
-    f.write(key)
-print('Secret key generated successfully')
-"
-
-# ตั้งค่า permissions
-chmod 600 secret.key
-chmod 600 auth/*.wam
-```
-
-## 🌐 การตั้งค่า Proxy (ถ้าต้องการ)
-
-### **1. การกำหนดค่า Proxy Providers**
-
-```bash
-# แก้ไขไฟล์ proxies.key
-cat > proxies.key << 'EOF'
-{
-  "webshare": {
-    "username": "your-username",
-    "password": "your-password",
-    "endpoints": [
-      "rotating-residential.webshare.io:9000",
-      "rotating-residential.webshare.io:9001"
-    ]
+  "name": "Conservative Mining",
+  "mining_interval": "6-8 minutes",
+  "random_delay": "30-60 seconds", 
+  "resource_threshold": {
+    "cpu_min": 150,
+    "net_min": 75,
+    "stop_on_low": true
   },
-  "packetstream": {
-    "username": "your-username", 
-    "password": "your-password",
-    "endpoint": "proxy.packetstream.io:31112"
-  }
+  "planets": ["eyeke", "kavian"],
+  "avoid_peak_hours": true
 }
-EOF
-
-chmod 600 proxies.key
 ```
 
-## 🚀 การทดสอบการติดตั้ง
-
-### **1. การทดสอบ Basic Installation**
-
-```bash
-# ทดสอบ Python และ dependencies
-python3 -c "
-import flask, cloudscraper, cryptography, pytz
-print('✅ All core dependencies imported successfully')
-print(f'Flask version: {flask.__version__}')
-print(f'CloudScraper version: {cloudscraper.__version__}')
-"
-
-# ทดสอบการเชื่อมต่อ WAX blockchain
-python3 -c "
-import requests
-try:
-    response = requests.get('https://wax.greymass.com/v1/chain/get_info', timeout=10)
-    if response.status_code == 200:
-        print('✅ WAX blockchain connection successful')
-    else:
-        print('❌ WAX blockchain connection failed')
-except Exception as e:
-    print(f'❌ Connection error: {e}')
-"
-```
-
-### **2. การทดสอบระบบหลัก**
-
-```bash
-# ทดสอบการโหลด main application
-python3 -c "
-import sys
-sys.path.append('.')
-try:
-    import awcloudc
-    print('✅ Main application imports successfully')
-except ImportError as e:
-    print(f'❌ Import error: {e}')
-"
-
-# ทดสอบ development log system
-python3 update-dev-log.py list --limit 5
-```
-
-### **3. การรัน Application ครั้งแรก**
-
-```bash
-# รัน development server
-python3 awcloudc.py
-
-# หรือรันด้วย Flask
-export FLASK_APP=awcloudc.py
-export FLASK_ENV=development
-flask run --host=0.0.0.0 --port=5000
-
-# เปิดเบราว์เซอร์ไปที่
-# http://localhost:5000
-```
-
-## ⚙️ การตั้งค่าการรันอัตโนมัติ (Production Setup)
-
-### **1. การตั้งค่า Systemd Service (Linux)**
-
-```bash
-# สร้าง service file
-sudo tee /etc/systemd/system/awcloud.service << 'EOF'
-[Unit]
-Description=AWCLOUD CPanel Service
-After=network.target
-
-[Service]
-Type=simple
-User=ubuntu
-WorkingDirectory=/home/ubuntu/awcloud-cpanel
-Environment=PATH=/home/ubuntu/awcloud-cpanel/awcloud-env/bin
-ExecStart=/home/ubuntu/awcloud-cpanel/awcloud-env/bin/python awcloudc.py
-Restart=always
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# เปิดใช้งาน service
-sudo systemctl daemon-reload
-sudo systemctl enable awcloud
-sudo systemctl start awcloud
-sudo systemctl status awcloud
-```
-
-### **2. การตั้งค่า Nginx Reverse Proxy**
-
-```bash
-# สร้าง Nginx configuration
-sudo tee /etc/nginx/sites-available/awcloud << 'EOF'
-server {
-    listen 80;
-    server_name your-domain.com;
-    
-    location / {
-        proxy_pass http://127.0.0.1:5000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-    
-    location /static {
-        alias /home/ubuntu/awcloud-cpanel/static;
-        expires 7d;
-    }
+**Balanced Strategy:**
+```json
+{
+  "name": "Balanced Mining",
+  "mining_interval": "4-6 minutes",
+  "random_delay": "15-45 seconds",
+  "resource_threshold": {
+    "cpu_min": 100,
+    "net_min": 50,
+    "stop_on_low": false
+  },
+  "planets": ["eyeke", "kavian", "naron"],
+  "avoid_peak_hours": false
 }
-EOF
-
-# เปิดใช้งาน site
-sudo ln -s /etc/nginx/sites-available/awcloud /etc/nginx/sites-enabled/
-sudo nginx -t
-sudo systemctl restart nginx
 ```
 
-## 🔍 การตรวจสอบการติดตั้ง (Installation Verification)
-
-### **✅ Checklist การติดตั้งสำเร็จ**
-
-```bash
-# 1. ตรวจสอบ Python และ Virtual Environment
-python3 --version    # >= 3.8
-which python         # ต้องอยู่ใน awcloud-env
-pip list | wc -l     # ต้องมี packages มากกว่า 10
-
-# 2. ตรวจสอบ Core Dependencies
-python3 -c "import flask, cloudscraper, cryptography; print('✅ Core OK')"
-
-# 3. ตรวจสอบไฟล์ Configuration
-ls -la *.json *.key auth/  # ตรวจสอบไฟล์และ permissions
-
-# 4. ทดสอบ Network Connectivity
-python3 -c "
-import requests
-urls = [
-    'https://wax.greymass.com/v1/chain/get_info',
-    'https://wax.api.atomicassets.io/health'
-]
-for url in urls:
-    try:
-        r = requests.get(url, timeout=5)
-        print(f'✅ {url}: {r.status_code}')
-    except Exception as e:
-        print(f'❌ {url}: {e}')
-"
-
-# 5. ทดสอบ Development Log System
-python3 update-dev-log.py version
+**Aggressive Strategy:**
+```json
+{
+  "name": "Aggressive Mining", 
+  "mining_interval": "3-4 minutes",
+  "random_delay": "5-15 seconds",
+  "resource_threshold": {
+    "cpu_min": 50,
+    "net_min": 25,
+    "stop_on_low": false
+  },
+  "planets": ["auto_select"],
+  "avoid_peak_hours": false
+}
 ```
 
-## 🚨 การแก้ปัญหาการติดตั้ง (Troubleshooting)
+### **4. การตั้งค่า Proxy (ขั้นสูง)**
 
-### **❌ ปัญหาที่พบบ่อย**
+#### **🌐 เมื่อไหร่ควรใช้ Proxy**
 
-#### **1. Python Version Issues**
-```bash
-# ถ้า Python < 3.8
-sudo apt install python3.9 python3.9-venv
-python3.9 -m venv awcloud-env
+**สถานการณ์ที่แนะนำ:**
+- มี WAX accounts มากกว่า 10 accounts
+- ต้องการป้องกันการตรวจจับ IP address
+- อยู่ในพื้นที่ที่มีข้อจำกัดทางภูมิศาสตร์
+- ต้องการกระจาย traffic เพื่อความปลอดภัย
+
+**การตั้งค่า Proxy Provider:**
+```
+1. ไปที่ "Advanced Settings" > "Proxy Configuration"
+2. เลือก Proxy Provider:
+   - WebShare.io (แนะนำสำหรับ residential)
+   - PacketStream (ราคาดี)
+   - PlainProxies (datacenter proxies)
+   - Custom Proxy (ถ้ามี proxy เอง)
+
+3. กรอกข้อมูล authentication:
+   - Username/Password
+   - Proxy endpoints
+   - Rotation settings
+
+4. ทดสอบการเชื่อมต่อ proxy
+5. กำหนด accounts ที่จะใช้ proxy
 ```
 
-#### **2. Permission Denied Errors**
-```bash
-# แก้ไข permissions
-sudo chown -R $USER:$USER awcloud-cpanel/
-chmod 755 awcloud-cpanel/
-chmod 600 awcloud-cpanel/*.json awcloud-cpanel/*.key
+### **5. การตั้งค่า Notifications**
+
+#### **📱 การแจ้งเตือน**
+
+**In-Browser Notifications:**
+- แจ้งเตือนเมื่อ mining สำเร็จ
+- เตือนเมื่อ resources ต่ำ
+- แจ้งเตือนเมื่อเกิด errors
+
+**Email Notifications:**
+- Daily mining reports
+- Account errors และ warnings
+- System maintenance notices
+
+**Webhook Integration (ขั้นสูง):**
+```json
+{
+  "webhook_url": "https://your-server.com/webhook",
+  "events": [
+    "mining_success",
+    "account_error", 
+    "resource_low",
+    "daily_summary"
+  ],
+  "auth_token": "your-secret-token"
+}
 ```
 
-#### **3. Network Connection Issues**
-```bash
-# ทดสอบ DNS และ connectivity
-nslookup wax.greymass.com
-curl -I https://wax.greymass.com/v1/chain/get_info
-```
+## ✅ การตรวจสอบการตั้งค่า (Setup Verification)
 
-#### **4. Virtual Environment Problems**
-```bash
-# ลบและสร้างใหม่
-rm -rf awcloud-env/
-python3 -m venv awcloud-env
-source awcloud-env/bin/activate
-pip install -r requirements.txt
-```
+### **🔍 Pre-Mining Checklist**
+
+**Account Verification:**
+- [ ] ✅ ทุก WAX accounts เชื่อมต่อสำเร็จ
+- [ ] ✅ Resources เพียงพอสำหรับการขุด  
+- [ ] ✅ Mining tools พร้อมใช้งาน
+- [ ] ✅ Planets ถูกเลือกแล้ว
+
+**System Settings:**
+- [ ] ✅ Mining strategy ถูกตั้งค่า
+- [ ] ✅ Notifications เปิดใช้งาน
+- [ ] ✅ Security settings ตั้งค่าแล้ว
+- [ ] ✅ Proxy settings (ถ้าใช้)
+
+**Final Testing:**
+- [ ] ✅ ทดสอบ mining 1-2 accounts ก่อน
+- [ ] ✅ ตรวจสอบ real-time dashboard
+- [ ] ✅ ทดสอบ stop/start functions
+- [ ] ✅ ยืนยันการรับ notifications
 
 {% hint style="success" %}
-**🎉 การติดตั้งสำเร็จ!** ตอนนี้คุณพร้อมที่จะไปยังขั้นตอนต่อไป: [Configuration Setup](configuration.md)
+**🎉 พร้อมใช้งานแล้ว!** ตอนนี้คุณสามารถเริ่มต้นการขุด Alien Worlds ด้วย AWCLOUD CPanel ได้แล้ว
 {% endhint %}
 
 {% hint style="info" %}
-**💡 เคล็ดลับ**: หากพบปัญหาใดๆ ในการติดตั้ง สามารถดู [Troubleshooting Guide](../troubleshooting/common-issues.md) เพื่อหาวิธีแก้ไขได้
+**💡 เคล็ดลับสำหรับผู้เริ่มต้น**: เริ่มด้วย 1-2 accounts และ Conservative strategy ก่อน เมื่อคุ้นเคยแล้วค่อยเพิ่ม accounts และปรับ strategy
 {% endhint %}
 
 ---
 
-**ขั้นต่อไป**: [Configuration Setup](configuration.md) - การกำหนดค่าระบบให้พร้อมใช้งาน
+**ขั้นต่อไป**: [การใช้งานระบบ](../fundamentals/getting-set-up/README.md) - เรียนรู้การใช้งาน Dashboard และ features ต่างๆ

@@ -36,6 +36,7 @@
 
 ### 📊 การติดตามและรายงาน (Monitoring)
 * [🎮 การใช้งาน Game Monitor และติดตามสถิติ](user-manual/game-monitoring.md)
+* [🖥️ Console Web Interface](user-manual/console-interface.md)
 
 ### 🚀 ฟีเจอร์ขั้นสูง (Advanced Features)
 * [🚀 ฟีเจอร์ขั้นสูงและระบบพิเศษ](user-manual/advanced-features.md)

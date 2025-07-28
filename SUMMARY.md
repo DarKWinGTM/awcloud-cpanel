@@ -18,6 +18,7 @@
 
 ### 🚀 การใช้งานเบื้องต้น (Basic Usage)
 * [🏠 การใช้งาน Dashboard หลัก](user-manual/dashboard-guide.md)
+* [🖥️ คู่มือการใช้งาน Dashboard UI](user-manual/dashboard-ui-guide.md)
 * [📊 การติดตาม Account และสถิติ](user-manual/account-monitoring.md)
 * [💼 ระบบจัดการ WAX Account พื้นฐาน](user-manual/wax-account-basics.md)
 

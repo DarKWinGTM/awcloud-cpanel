@@ -1,7 +1,7 @@
 # 🎯 คู่มือ Modal System ครบถ้วน - AWCLOUD CPanel
 
 {% hint style="success" %}
-**คู่มือฉบับสมบูรณ์** สำหรับการใช้งาน Modal Systems ทั้ง **23+ modals** ที่มีอยู่จริงในระบบ AWCLOUD CPanel (จากการวิเคราะห์ระบบจริง)
+**คู่มือฉบับสมบูรณ์** สำหรับการใช้งาน Modal Systems ทั้ง **22+ modals** ที่มีอยู่จริงในระบบ AWCLOUD CPanel (จากการวิเคราะห์ระบบจริง)
 {% endhint %}
 
 ## 📋 สารบัญ Modal Systems
@@ -22,22 +22,21 @@
 11. [actionReport](#11-action-report-modal) - รายงานการทำงาน
 12. [sessionsToken](#12-sessions-token-modal) - จัดการ Session
 
-### 👥 **Team Modals** (การทำงานแบบทีม)
-13. [teamMineConfig](#13-team-mine-config-modal) - ตั้งค่าทีม
-14. [teamPoolConfig](#14-team-pool-config-modal) - จัดการ Pool
+### 👥 **Team Modals** (ฟีเจอร์ขั้นสูง)
+13. [teamPoolConfig](#13-team-pool-config-modal) - จัดการ Pool ขั้นสูง
 
 ### 💳 **Wallet Modals** (สร้าง Account)
-15. [createWaxCloudWallet](#15-create-wax-cloud-wallet-modal) - สร้าง WAX Cloud
-16. [createAnchorWallet](#16-create-anchor-wallet-modal) - สร้าง Anchor
-17. [registerWalletSign](#17-register-wallet-sign-modal) - ลงทะเบียน Signature
-18. [setupSoftPrivateKey](#18-setup-soft-private-key-modal) - ตั้งค่า Private Key
+14. [createWaxCloudWallet](#14-create-wax-cloud-wallet-modal) - สร้าง WAX Cloud
+15. [createAnchorWallet](#15-create-anchor-wallet-modal) - สร้าง Anchor
+16. [registerWalletSign](#16-register-wallet-sign-modal) - ลงทะเบียน Signature
+17. [setupSoftPrivateKey](#17-setup-soft-private-key-modal) - ตั้งค่า Private Key
 
 ### 🛠️ **Utility Modals** (เครื่องมือเสริม)
-19. [alcorTool](#19-alcor-tool-modal) - Trading บน Alcor
-20. [costMinerConfig](#20-cost-miner-config-modal) - คำนวณต้นทุน
-21. [subscriptionInfo](#21-subscription-info-modal) - ข้อมูลสมาชิก
-22. [gotBAN](#22-got-ban-modal) - จัดการ Ban
-23. [howto](#23-how-to-modal) - คู่มือช่วยเหลือ
+18. [alcorTool](#18-alcor-tool-modal) - Trading บน Alcor
+19. [costMinerConfig](#19-cost-miner-config-modal) - คำนวณต้นทุน
+20. [subscriptionInfo](#20-subscription-info-modal) - ข้อมูลสมาชิก
+21. [gotBAN](#21-got-ban-modal) - จัดการ Ban
+22. [howto](#22-how-to-modal) - คู่มือช่วยเหลือ
 
 ---
 

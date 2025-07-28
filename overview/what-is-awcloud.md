@@ -2,29 +2,29 @@
 
 ## ภาพรวมของระบบ (System Overview)
 
-**AWCLOUD CPanel** เป็นแพลตฟอร์มอัตโนมัติขั้นสูงที่เฉพาะเจาะจงสำหรับการขุด Alien Worlds บน WAX Blockchain ที่ได้รับการพัฒนาอย่างต่อเนื่องและเป็นผู้เชี่ยวชาญด้านการขุด Alien Worlds โดยเฉพาะ
+**AWCLOUD CPanel** เป็น **Web-based Management System** ที่เชี่ยวชาญด้านการจัดการ **Alien Worlds** บน WAX Blockchain โดยเฉพาะ พร้อมเครื่องมือครบครันสำหรับการจัดการ WAX accounts, NFTs และ blockchain assets
 
 ## จุดประสงค์หลัก (Primary Purpose)
 
 ระบบนี้ถูกออกแบบมาเพื่อ:
 
-### 🎯 **การขุด Alien Worlds อัตโนมัติแบบมืออาชีพ**
+### 🎯 **การจัดการ Alien Worlds แบบมืออาชีพ**
 - **Alien Worlds Specialist**: เฉพาะเจาะจงสำหรับ Alien Worlds เท่านั้น
-- **Intelligent Timing**: ระบบจัดการเวลาอัจฉริยะหลีกเลี่ยง Ban Wave
-- **Resource Optimization**: การจัดการ CPU/NET/RAM อัตโนมัติ
-- **Account Management**: จัดการบัญชีหลายบัญชีในระบบเดียว
+- **Land Management**: การจัดการ land สำหรับ mining
+- **Resource Monitoring**: ตรวจสอบ CPU/NET/RAM แบบเรียลไทม์
+- **Multi-Account Support**: จัดการหลาย WAX accounts ในระบบเดียว
 
-### 🏗️ **การจัดการทรัพยากรแบบครบวงจร**
-- **Real-time Monitoring**: ตรวจสอบสถานะแบบเรียลไทม์
-- **Advanced Analytics**: วิเคราะห์ประสิทธิภาพและผลตอบแทน
-- **Risk Management**: ระบบจัดการความเสี่ยงอัตโนมัติ
-- **Performance Tracking**: ติดตามผลการดำเนินงานอย่างละเอียด
+### 🏗️ **การจัดการ WAX Blockchain Assets**
+- **Token Operations**: Transfer, Stake, Unstake WAX tokens
+- **NFT Management**: จัดการ NFT inventory และ trading
+- **Wallet Integration**: รองรับ Anchor และ WAX Cloud Wallet
+- **Real-time Dashboard**: ติดตามข้อมูลแบบเรียลไทม์
 
-### 🔒 **ความปลอดภัยระดับองค์กร**
-- **Enterprise Security**: การเข้ารหัสข้อมูลระดับองค์กร
-- **Proxy Integration**: ระบบ Proxy หลากหลายผู้ให้บริการ
-- **Authentication System**: ระบบ WAM authentication ที่ปลอดภัย
-- **Access Control**: การจัดการสิทธิ์ผู้ใช้แบบหลายระดับ
+### 🔒 **ความปลอดภัยและการควบคุม**
+- **Secure Authentication**: ระบบ WAM files authentication
+- **Private Key Management**: จัดการ private keys อย่างปลอดภัย
+- **Access Control**: การควบคุมการเข้าถึงระบบ
+- **Session Management**: จัดการ sessions และ tokens
 
 ## เกมที่รองรับ (Supported Game)
 
@@ -37,22 +37,21 @@
 
 ### 📊 **สถิติการรองรับ**
 - **เกมที่รองรับ**: Alien Worlds เท่านั้น
-- **การอัปเดต**: รายสัปดาห์สำหรับ Alien Worlds
-- **ระบบเฉพาะ**: ปรับแต่งเพื่อ Alien Worlds โดยเฉพาะ
+- **ฟีเจอร์เต็มรูปแบบ**: ครอบคลุมทุกด้านของ Alien Worlds
 
 ## สถาปัตยกรรมระบบ (System Architecture)
 
-### 🏗️ **Backend Infrastructure**
+### 🏗️ **System Architecture**
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Flask Server  │────│  Game Modules   │────│  WAX Blockchain │
-│   (awcloudc.py) │    │   (15+ games)   │    │   (Multiple RPC)│
+│   Flask Server  │────│ Game Support    │────│  WAX Blockchain │
+│   (awcloudc.py) │    │    Module       │    │   (Multiple RPC)│
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          ▼                       ▼                       ▼
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  Proxy System   │    │  Auth System    │    │  Monitor System │
-│ (Multi-Provider)│    │  (WAM Files)    │    │ (Real-time Data)│
+│  Web Interface  │    │  Auth System    │    │  Data Storage   │
+│ (Bootstrap UI)  │    │  (WAM Files)    │    │ (JSON Config)   │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 

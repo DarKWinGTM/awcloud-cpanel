@@ -43,29 +43,16 @@
 ### ⚡ **Resource Management Logic**
 
 #### 1. **CPU Management**
-```python
-# ตรวจสอบ CPU ของ miner account
-if int(DB['POOLDATA']['db'][miner]['cpu']['available']) < 600:
-    # สลับไปใช้ dummy account หรือหยุดชั่วคราว
-    switch_to_backup_or_pause()
-```
+- ตรวจสอบ CPU ของ miner account แบบเรียลไทม์
+- สลับไปใช้ dummy account หรือหยุดชั่วคราวเมื่อ CPU ต่ำกว่า 600
 
 #### 2. **RAM Management**
-```python
-# ตรวจสอบ RAM availability
-available_ram = total_ram - used_ram
-if available_ram < 600:
-    # ทำ RAM cleanup หรือใช้ account อื่น
-    perform_cleanup_or_switch()
-```
+- ตรวจสอบ RAM availability อย่างต่อเนื่อง
+- ทำ RAM cleanup หรือใช้ account อื่นเมื่อ RAM ไม่เพียงพอ
 
 #### 3. **WAX Balance Management**
-```python
-# ตรวจสอบ WAX balance
-if float(wax_balance) < 0.3:
-    # หยุดการขุดและแจ้งเตือน
-    pause_mining_operations()
-```
+- ตรวจสอบ WAX balance ก่อนทำธุรกรรม
+- หยุดการขุดและแจ้งเตือนเมื่อ WAX ต่ำกว่า 0.3
 
 ### 🔄 **Team Coordination Process**
 
@@ -92,18 +79,9 @@ if float(wax_balance) < 0.3:
 - **Resource Monitoring**: ติดตาม CPU/RAM usage patterns
 
 #### **Avoidance Strategies**
-```python
-# เมื่อตรวจพบ ban wave
-if all_miners_flagged():
-    # หยุดการทำงาน 20-60 วินาที
-    pause_duration = random.randrange(20, 60)
-    time.sleep(pause_duration)
-    
-# เมื่อ accounts ถูก pause
-if all_miners_paused():
-    # รอสักครู่ก่อนเริ่มใหม่
-    wait_and_retry()
-```
+- **เมื่อตรวจพบ ban wave**: หยุดการทำงาน 20-60 วินาทีแบบสุ่ม
+- **เมื่อ accounts ถูก pause**: รอสักครู่ก่อนเริ่มใหม่
+- **Random Timing**: ใช้เวลาแบบสุ่มเพื่อหลีกเลี่ยงการตรวจจับ
 
 ## การตั้งค่า Team Pool
 
@@ -158,16 +136,9 @@ Team: alpha_team
 ### 🔧 **Team Management Operations**
 
 #### **การเพิ่ม/ลบ Account**
-```python
-# เพิ่ม miner account ใหม่
-add_miner_to_team(team_name, new_account)
-
-# เพิ่ม dummy account
-add_dummy_to_team(team_name, dummy_account)
-
-# ลบ account ออกจาก team
-remove_from_team(team_name, account_name)
-```
+- **เพิ่ม miner account ใหม่**: ผ่านระบบจัดการ team
+- **เพิ่ม dummy account**: เพิ่มเข้าไปใน team pool
+- **ลบ account ออกจาก team**: ลบและอัปเดต team configuration
 
 #### **การปรับแต่ง Team Settings**
 - **Mining Frequency**: ความถี่ในการขุด

@@ -170,52 +170,22 @@
 #### **⚙️ Strategy Templates**
 
 **Conservative Strategy:**
-```json
-{
-  "name": "Conservative Mining",
-  "mining_interval": "6-8 minutes",
-  "random_delay": "30-60 seconds", 
-  "resource_threshold": {
-    "cpu_min": 150,
-    "net_min": 75,
-    "stop_on_low": true
-  },
-  "planets": ["eyeke", "kavian"],
-  "avoid_peak_hours": true
-}
-```
+- ขุดทุก 6-8 นาที พร้อมหน่วงเวลา 30-60 วินาที
+- ใช้ทรัพยากรขั้นต่ำ CPU 150, NET 75
+- ขุดบนดาว Eyeke และ Kavian
+- หลีกเลี่ยงช่วงเวลาคนใช้เยอะ
 
 **Balanced Strategy:**
-```json
-{
-  "name": "Balanced Mining",
-  "mining_interval": "4-6 minutes",
-  "random_delay": "15-45 seconds",
-  "resource_threshold": {
-    "cpu_min": 100,
-    "net_min": 50,
-    "stop_on_low": false
-  },
-  "planets": ["eyeke", "kavian", "naron"],
-  "avoid_peak_hours": false
-}
-```
+- ขุดทุก 4-6 นาที พร้อมหน่วงเวลา 15-45 วินาที
+- ใช้ทรัพยากรขั้นต่ำ CPU 100, NET 50
+- ขุดบนดาว Eyeke, Kavian และ Naron
+- ขุดได้ตลอดเวลา
 
 **Aggressive Strategy:**
-```json
-{
-  "name": "Aggressive Mining", 
-  "mining_interval": "3-4 minutes",
-  "random_delay": "5-15 seconds",
-  "resource_threshold": {
-    "cpu_min": 50,
-    "net_min": 25,
-    "stop_on_low": false
-  },
-  "planets": ["auto_select"],
-  "avoid_peak_hours": false
-}
-```
+- ขุดทุก 3-4 นาที พร้อมหน่วงเวลา 5-15 วินาที
+- ใช้ทรัพยากรขั้นต่ำ CPU 50, NET 25
+- เลือกดาวอัตโนมัติ
+- ขุดได้ตลอดเวลา
 
 ### **4. การตั้งค่า Proxy (ขั้นสูง)**
 
@@ -259,19 +229,6 @@
 - Account errors และ warnings
 - System maintenance notices
 
-**Webhook Integration (ขั้นสูง):**
-```json
-{
-  "webhook_url": "https://your-server.com/webhook",
-  "events": [
-    "mining_success",
-    "account_error", 
-    "resource_low",
-    "daily_summary"
-  ],
-  "auth_token": "your-secret-token"
-}
-```
 
 ## ✅ การตรวจสอบการตั้งค่า (Setup Verification)
 

@@ -24,6 +24,12 @@ AWCLOUD CPanel เป็นระบบจัดการ WAX Account สำห�
 - **📍 Choose Land**: เลือก Land เฉพาะตาม Planet ต่างๆ
 - **📋 Land Registration**: ลงทะเบียน Land ใหม่
 
+### **🤖 ระบบ Auto Registration**
+- **⚡ Auto Register Alien Worlds**: ลงทะเบียน account เข้าเกมอัตโนมัติ
+- **📜 Agree Terms**: ยอมรับเงื่อนไขการใช้งานแบบอัตโนมัติ
+- **🎮 Game Registration**: ลงทะเบียนใหม่หรือ account ที่ยังไม่ได้เข้าเกม
+- **🔄 Bulk Registration**: ลงทะเบียนหลาย account พร้อมกัน
+
 ## 🖥️ การใช้งาน Web Interface
 
 ### **📱 หน้าจอหลัก (Monitor)**

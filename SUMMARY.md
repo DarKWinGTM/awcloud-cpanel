@@ -24,8 +24,7 @@
 * [🎯 คู่มือ Modal System ครบถ้วน](user-manual/modal-guide-complete.md)
 * [🤔 เมื่อไหร่ควรใช้ฟีเจอร์ไหน](user-manual/when-to-use-features.md)
 
-### 🌍 การจัดการ Land และ Resources
-* [🌍 การจัดการ Land และ Mining Location](user-manual/land-management.md)
+### 💸 การจัดการ Resources
 * [💸 การโอน Token และจัดการ WAX Resources](user-manual/transfer-resources.md)
 
 ### 📊 การติดตามและรายงาน (Monitoring)

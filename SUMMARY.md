@@ -18,8 +18,7 @@
 ## 📖 คู่มือการใช้งานสำหรับผู้ใช้ (User Manual)
 
 ### 🚀 การใช้งานเบื้องต้น (Basic Usage)
-* [🏠 การใช้งาน Dashboard หลัก](user-manual/dashboard-guide.md)
-* [💼 ระบบจัดการ WAX Account พื้นฐาน](user-manual/wax-account-basics.md)
+* [🏠 คู่มือการใช้งาน Dashboard และจัดการ WAX Accounts](user-manual/dashboard-guide.md)
 
 ### 🎯 คู่มือการใช้งานครบถ้วน (Complete Guides)
 * [🎯 คู่มือ Modal System ครบถ้วน](user-manual/modal-guide-complete.md)
@@ -30,7 +29,6 @@
 * [💸 การโอน Token และจัดการ WAX Resources](user-manual/transfer-resources.md)
 
 ### 📊 การติดตามและรายงาน (Monitoring)
-* [🎮 การใช้งาน Game Monitor และติดตามสถิติ](user-manual/game-monitoring.md)
 * [🖥️ Console Web Interface](user-manual/console-interface.md)
 
 ### 🚀 ฟีเจอร์ขั้นสูง (Advanced Features)

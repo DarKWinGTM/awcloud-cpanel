@@ -9,16 +9,11 @@
 * [📦 คู่มือการเริ่มต้นใช้งาน](getting-started/installation.md)
 * [🚀 เริ่มต้นใช้งานใน 10 นาที](getting-started/quick-start-guide.md)
 
-## 🎮 เกมที่รองรับ (Supported Games)
-* [👽 Alien Worlds](games/alien-worlds.md)
-
-## 🚀 คุณสมบัติขั้นสูง (Advanced Features)
-* [👥 Team Pool System](features/team-pool.md)
-
 ## 📖 คู่มือการใช้งานสำหรับผู้ใช้ (User Manual)
 
 ### 🚀 การใช้งานเบื้องต้น (Basic Usage)
 * [🏠 คู่มือการใช้งาน Dashboard และจัดการ WAX Accounts](user-manual/dashboard-guide.md)
+* [📖 คู่มือระบบขุด Alien Worlds](user-manual/mining-systems-guide.md)
 
 ### 🎯 คู่มือการใช้งานครบถ้วน (Complete Guides)
 * [🎯 คู่มือ Modal System ครบถ้วน](user-manual/modal-guide-complete.md)
@@ -30,8 +25,11 @@
 ### 📊 การติดตามและรายงาน (Monitoring)
 * [🖥️ Console Web Interface](user-manual/console-interface.md)
 
-### 🚀 ฟีเจอร์ขั้นสูง (Advanced Features)
-* [🚀 ฟีเจอร์ขั้นสูงและระบบพิเศษ](user-manual/advanced-features.md)
+## 🎮 เกมที่รองรับ (Supported Games)
+* [👽 Alien Worlds](games/alien-worlds.md)
+
+## 🚀 ฟีเจอร์ขั้นสูง (Advanced Features)
+* [👥 Team Pool System](features/team-pool.md)
 
 ## 🔧 การแก้ไขปัญหา (Troubleshooting)
 * [🔧 การแก้ไขปัญหาและ FAQ](troubleshooting/common-issues.md)

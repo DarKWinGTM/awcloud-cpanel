@@ -6,9 +6,8 @@
 
 ## 🔗 คู่มือที่เกี่ยวข้อง
 
-- **[Dashboard Guide](dashboard-guide.md)** - วิธีเข้าถึง Modals จาก Dashboard
-- **[WAX Account Basics](wax-account-basics.md)** - พื้นฐานการจัดการ Account
-- **[Land Management](land-management.md)** - การจัดการ Land แบบละเอียด
+- **[Dashboard Guide](dashboard-guide.md)** - วิธีเข้าถึง Modals จาก Dashboard และการจัดการ WAX Accounts
+- **[Transfer Resources](transfer-resources.md)** - การจัดการ WAX Resources แบบละเอียด
 
 ## 🔰 การใช้งานพื้นฐานสำหรับผู้เริ่มต้น
 
@@ -52,7 +51,7 @@
 12. [sessionsToken](#12-sessions-token-modal) - จัดการ Session
 
 ### 👥 **Team Modals** (ฟีเจอร์ขั้นสูง)
-13. [teamPoolConfig](#13-team-pool-config-modal) - จัดการ Pool ขั้นสูง
+13. [teamPoolConfig](#13-team-pool-config-modal) - จัดการ Team Pool ขั้นสูง
 
 ### 💳 **Wallet Modals** (สร้าง Account)
 14. [createWaxCloudWallet](#14-create-wax-cloud-wallet-modal) - สร้าง WAX Cloud
@@ -863,6 +862,66 @@ Additional Services: API Access, Priority Support
 
 ---
 
+### 13. 🏊 **TEAM POOL CONFIG Modal** (teamPoolConfig) {#13-team-pool-config-modal}
+
+**การเข้าถึง:** เมนู Team → modal teamPoolConfig
+
+{% hint style="info" %}
+**เนื้อหาเชื่อมโยง:** [Team Pool System](../features/team-pool.md) - รายละเอียดครบถ้วนเกี่ยวกับระบบ Team Pool
+{% endhint %}
+
+**คุณสมบัติหลัก:**
+- **จัดการ mining pool สำหรับทีม**
+- **ตั้งค่าการแบ่งปันผลกำไร**
+- **สถิติผลงานของทีม**
+- **ประสานงาน Miner และ Dummy Accounts**
+
+**วิธีใช้งาน Step-by-Step:**
+
+#### **1. ตั้งค่า Pool พื้นฐาน**
+```
+Pool Name: Alpha Mining Pool
+Commission: 5%
+Min Contribution: 100 WAX
+Pool Type: AWTEAM System
+```
+
+#### **2. กำหนดการแบ่งปัน**
+```
+Distribution Method: Proportional to Contribution
+Payout Frequency: Daily
+Min Payout: 10 TLM
+Auto Distribution: Enable
+```
+
+#### **3. จัดการสมาชิก**
+```
+Miner Accounts: 8/10
+Dummy Accounts: 4/5
+Total Pool Power: 15,250 TLM/day
+Pool Efficiency: 97.3%
+```
+
+#### **4. ติดตามสถิติ Pool**
+```
+📊 Pool Statistics:
+├── Total Members: 12 active
+├── Daily Revenue: 1,245 TLM
+├── Success Rate: 97.3%
+├── Resource Usage: Optimal
+└── Ban Detection: Active
+```
+
+**การตั้งค่า Advanced:**
+- **Resource Management**: จัดการ CPU/NET/RAM ระหว่าง accounts
+- **Ban Detection**: ระบบตรวจจับและหลีกเลี่ยง ban wave
+- **Queue Management**: จัดคิวการขุดอัตโนมัติ
+- **Performance Optimization**: ปรับแต่งประสิทธิภาพ pool
+
+💡 **เคล็ดลับ:** ตั้งค่า commission ให้เหมาะสม (3-7%) เพื่อดึงดูดสมาชิกคุณภาพและรักษาความยั่งยืนของ pool
+
+---
+
 ### 22. 🚫 **GOT BAN Modal** (gotBAN/gotBan) {#22-got-ban-modal}
 
 **การเข้าถึง:** เมนูความปลอดภัย → modal gotBAN
@@ -1122,7 +1181,7 @@ Ctrl+S - บันทึกการตั้งค่า
 
 **🔗 ลิงก์ที่เกี่ยวข้อง:**
 - [Dashboard Guide](dashboard-guide.md)
-- [Advanced Features](advanced-features.md)  
+- [Mining Systems Guide](mining-systems-guide.md)  
 - [Troubleshooting Guide](../troubleshooting/common-issues.md)
 
 {% hint style="info" %}

@@ -82,12 +82,12 @@
 ### 🔗 **ขั้นตอนแบบละเอียด**
 
 **การจัดการ Account ขั้นสูง:**
-- **[WAX Account Basics](../user-manual/wax-account-basics.md)** - การเพิ่ม Account, ตรวจสอบ Resources
+- **[Dashboard Guide](../user-manual/dashboard-guide.md)** - การเพิ่ม Account, ตรวจสอบ Resources
 - **[Modal System Guide](../user-manual/modal-guide-complete.md)** - การใช้งาน Modal ทั้งหมด
 
 **การขุดขั้นสูงและปรับแต่ง:**
 - **[Dashboard Guide](../user-manual/dashboard-guide.md)** - การใช้งาน Dashboard แบบครบถ้วน
-- **[Advanced Features](../user-manual/advanced-features.md)** - ฟีเจอร์ขั้นสูงทั้งหมด
+- **[Mining Systems Guide](../user-manual/mining-systems-guide.md)** - ระบบขุดขั้นสูงและ Team Pool
 
 **แก้ไขปัญหาและ Troubleshooting:**
 - **[Common Issues](../troubleshooting/common-issues.md)** - การแก้ไขปัญหาทั่วไป

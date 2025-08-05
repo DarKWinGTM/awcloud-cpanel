@@ -717,39 +717,19 @@ Action Report เป็น Modal สำหรับบันทึกและ�
 
 ## 👥 **Team Modals - การทำงานแบบทีม**
 
-### 13. 🏊 **TEAM POOL CONFIG Modal** (teamPoolConfig) {#13-team-pool-config-modal}
+### 13. 🏊 **TEAM POOL CONFIG Modal** (teamPoolConfig)
 
-**การเข้าถึง:** เมนู Team → modal teamPoolConfig
+{% hint style="info" %}
+**📖 รายละเอียดครบถ้วน:** ดู [Modal Section 13 ด้านล่าง](#13-team-pool-config-modal) และ [Team Pool System Complete Guide](../features/team-pool.md)
+{% endhint %}
 
-**คุณสมบัติหลัก:**
-- **จัดการ mining pool สำหรับทีม**
-- **ตั้งค่าการแบ่งปันผลกำไร**
-- **สถิติผลงานของทีม**
+**การเข้าถึง:** Dashboard หลัก → ปุ่ม "TEAM POOL CONFIG" (สีเขียว)
 
-**วิธีใช้งาน:**
-
-1. **ตั้งค่า Pool**
-   ```
-   Pool Name: Alpha Mining Pool
-   Commission: 5%
-   Min Contribution: 100 WAX
-   ```
-
-2. **กำหนดการแบ่งปัน**
-   ```
-   Distribution Method: Proportional
-   Payout Frequency: Daily
-   Min Payout: 10 TLM
-   ```
-
-3. **ติดตามสถิติ**
-   ```
-   Total Pool Power: 15,250 TLM/day
-   Active Members: 8/10
-   Pool Efficiency: 97.3%
-   ```
-
-💡 **เคล็ดลับ:** ตั้งค่า commission ให้เหมาะสมเพื่อดึงดูดสมาชิกคุณภาพ
+**สรุปย่อ:**
+- **🆕 Team Creation** - สร้าง team pool ใหม่
+- **⚙️ Mode Selection** - Standard/MPool modes  
+- **👥 Member Management** - จัดการ miner/dummy accounts
+- **📊 Performance Monitoring** - ติดตามสถิติ team
 
 ---
 
@@ -1015,140 +995,79 @@ Additional Services: API Access, Priority Support
 
 **การเข้าถึง:** Dashboard หลัก → ปุ่ม "TEAM POOL CONFIG" (สีเขียว)
 
-{% hint style="info" %}
-**เนู้อหาเชื่อมโยง:** [Team Pool System](../features/team-pool.md) - รายละเอียดครบถ้วนเกี่ยวกับระบบ Team Pool
+{% hint style="success" %}
+**📖 คู่มือครบถ้วน:** [Team Pool System Complete Guide](../features/team-pool.md) - เอกสารฉบับสมบูรณ์พร้อม configuration guides, troubleshooting และ enterprise management
 {% endhint %}
 
-**คุณสมบัติหลัก:**
-- **สร้างและจัดการ Team Pool** สำหรับขุดแบบกลุ่ม
-- **ตั้งค่า Mining Modes** - รองรับ 2 โหมดหลัก: Standard และ MPool
-- **จัดการสมาชิก** - เพิ่ม/ลบสมาชิกในทีม
-- **กำหนดค่า Commission** - ตั้งค่าค่าคอมมิชชั่นของ Pool
+#### **🎯 Modal Interface Overview**
 
-**วิธีการใช้งาน Step-by-Step:**
+**คุณสมบัติหลักของ Modal:**
+- **🆕 Team Creation Wizard** - สร้าง team pool แบบ step-by-step  
+- **⚙️ Mode Selection** - เลือก Standard หรือ MPool mode
+- **👥 Member Management** - จัดการ miner/dummy accounts
+- **📊 Real-time Statistics** - ดูสถิติการทำงาน team
 
-#### 🆕 **สร้าง Team Pool ใหม่**
+#### **🚀 Modal Workflow Summary**
 
-1. **เลือกสร้าง Pool ใหม่**
-   ```
-   TEAM ID: เลือก "Create new Team Pool"
-   ENABLE: ✓ เปิดใช้งาน
-   ```
+**การสร้าง Team Pool ใหม่:**
+1. **Team Setup**: กำหนด Team ID และเปิดใช้งาน
+2. **Mode Selection**: เลือกระหว่าง Standard/MPool mode  
+3. **Account Assignment**: กำหนด miner และ dummy accounts
+4. **Configuration**: ตั้งค่า timing, resources และ security
 
-2. **เลือก Mining Mode**
-   ```
-   MODE: มี 2 ตัวเลือก
-   - Standard Mode: การขุดแบบปกติ  
-   - MPool Mode: การขุดแบบ Mining Pool (ขั้นสูง)
-   ```
+#### **⚙️ Modal Configuration Options**
 
-#### ⚙️ **Standard Mode Configuration**
+**Standard Mode (Basic Team Pool):**
+- **Duration Options:** 4h - 4 weeks ตามความต้องการ
+- **Wallet Integration:** Anchor Wallet support
+- **Auto-Features:** Claim, Resource Management ปรับได้
+- **เหมาะสำหรับ:** Individual users, small teams
 
-เมื่อเลือก Standard Mode จะมีตัวเลือก:
+**MPool Mode (Advanced Team Pool):**  
+- **Duration:** Non-stop mining (55555 setting)
+- **Configuration:** Pre-optimized สำหรับประสิทธิภาพสูงสุด
+- **Advanced Features:** AWTEAM System integration
+- **เหมาะสำหรับ:** Enterprise teams, professional operations
 
-```
-Mining Duration: เลือกระยะเวลาขุด
-- 4 hours, 6 hours, 8 hours
-- 12 hours, 24 hours, 48 hours  
-- 1 week (168 hours)
-- 2 weeks (336 hours)
-- 3 weeks (504 hours)
-- 4 weeks (672 hours)
+#### **👥 Member Management Interface**
 
-Wallet Type: anc (Anchor Wallet)
-Claim Amount: ตั้งค่าจำนวน claim
-Auto-Claim: เปิด/ปิดการ claim อัตโนมัติ
-Smart Resource: เปิด/ปิดการจัดการทรัพยากรอัตโนมัติ
-Clear Settings: ล้างการตั้งค่าเดิม
-```
+**การจัดการใน Modal:**
+```yaml
+Member Assignment:
+  - Miner Accounts: กำหนดบทบาทขุดหลัก
+  - Dummy Accounts: กำหนดบทบาทสนับสนุน
+  - Permission Levels: Owner/Active/Mining
+  - Share Distribution: กำหนดเปอร์เซ็นต์แบ่งปัน
 
-#### 🏊 **MPool Mode Configuration** (ขั้นสูง)
-
-เมื่อเลือก MPool Mode ระบบจะตั้งค่าดังนี้:
-
-```
-Mining Duration: 55555 (Non-stop mining)
-Wallet Type: anc (ล็อกไว้)
-Claim Amount: 25555 (ล็อกไว้)
-Auto-Claim: เปิดใช้งาน (ล็อกไว้)
-Smart Resource: เปิดใช้งาน (ล็อกไว้)  
-Clear Settings: เปิดใช้งาน (ล็อกไว้)
-
-⚠️ หมายเหตุ: MPool Mode ไม่สามารถปรับแต่งค่าส่วนใหญ่ได้
-เนื่องจากเป็นโหมดที่ปรับแต่งมาแล้วเพื่อประสิทธิภาพสูงสุด
+Commission Settings:
+  - Pool Commission: 0-10% (แนะนำ 3-7%)  
+  - Auto Distribution: เปิด/ปิดการแจกจ่ายอัตโนมัติ
+  - Payout Schedule: Daily/Weekly options
 ```
 
-#### 👥 **การจัดการสมาชิกทีม**
+#### **📊 Real-time Monitoring in Modal**
 
-1. **เพิ่มสมาชิกใหม่**
-   ```
-   Member Account: กรอกชื่อ WAX Account
-   Permission Level: Owner/Active/Mining
-   Share Percentage: กำหนดเปอร์เซ็นต์การแบ่ง
-   ```
+**สถิติที่แสดงใน Modal:**
+- **📈 Pool Performance:** Success rate และ efficiency metrics
+- **👥 Member Status:** สถานะ miner/dummy accounts  
+- **💰 Revenue Tracking:** Daily TLM และ revenue statistics
+- **🛡️ Security Status:** Ban detection และ protection status
 
-2. **ตั้งค่า Commission**
-   ```
-   Pool Commission: 0% - 10%
-   Member Commission: กำหนดเปอร์เซ็นต์แต่ละคน
-   Auto Distribution: เปิด/ปิดการแจกจ่ายอัตโนมัติ
-   ```
+#### **💡 Modal Usage Best Practices**
 
-💡 **เคล็ดลับการใช้งาน:**
-- **สำหรับผู้เริ่มต้น:** ใช้ Standard Mode ก่อน
-- **สำหรับทีมขนาดใหญ่:** ใช้ MPool Mode เพื่อประสิทธิภาพสูงสุด
-- **ตั้งค่า Commission:** เริ่มต้นที่ 2-5% เพื่อดึงดูดสมาชิก
-- **ตรวจสอบ Performance:** ดูผลการทำงานใน Dashboard ประจำวัน
+**🔰 สำหรับมือใหม่:**
+- เริ่มด้วย Standard Mode + 12-24h duration
+- ตั้งค่า commission 3-5% เพื่อดึงดูดสมาชิก
+- เปิด Auto-Claim และ Smart Resource
 
-**คุณสมบัติหลัก:**
-- **จัดการ mining pool สำหรับทีม**
-- **ตั้งค่าการแบ่งปันผลกำไร**
-- **สถิติผลงานของทีม**
-- **ประสานงาน Miner และ Dummy Accounts**
+**⚡ สำหรับ Advanced Users:**
+- ใช้ MPool Mode สำหรับ maximum efficiency
+- ตั้งค่า advanced resource management  
+- ใช้ custom timing schedules
 
-**วิธีใช้งาน Step-by-Step:**
-
-#### **1. ตั้งค่า Pool พื้นฐาน**
-```
-Pool Name: Alpha Mining Pool
-Commission: 5%
-Min Contribution: 100 WAX
-Pool Type: AWTEAM System
-```
-
-#### **2. กำหนดการแบ่งปัน**
-```
-Distribution Method: Proportional to Contribution
-Payout Frequency: Daily
-Min Payout: 10 TLM
-Auto Distribution: Enable
-```
-
-#### **3. จัดการสมาชิก**
-```
-Miner Accounts: 8/10
-Dummy Accounts: 4/5
-Total Pool Power: 15,250 TLM/day
-Pool Efficiency: 97.3%
-```
-
-#### **4. ติดตามสถิติ Pool**
-```
-📊 Pool Statistics:
-├── Total Members: 12 active
-├── Daily Revenue: 1,245 TLM
-├── Success Rate: 97.3%
-├── Resource Usage: Optimal
-└── Ban Detection: Active
-```
-
-**การตั้งค่า Advanced:**
-- **Resource Management**: จัดการ CPU/NET/RAM ระหว่าง accounts
-- **Ban Detection**: ระบบตรวจจับและหลีกเลี่ยง ban wave
-- **Queue Management**: จัดคิวการขุดอัตโนมัติ
-- **Performance Optimization**: ปรับแต่งประสิทธิภาพ pool
-
-💡 **เคล็ดลับ:** ตั้งค่า commission ให้เหมาะสม (3-7%) เพื่อดึงดูดสมาชิกคุณภาพและรักษาความยั่งยืนของ pool
+{% hint style="info" %}
+**🔗 รายละเอียดครบถ้วน:** สำหรับ step-by-step configuration, JSON examples, API integration, troubleshooting และ enterprise management โปรดดู [Team Pool System Complete Guide](../features/team-pool.md)
+{% endhint %}
 
 ---
 

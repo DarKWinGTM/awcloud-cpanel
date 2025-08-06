@@ -254,7 +254,7 @@ Resource Health: ✅ All Good
 ### 📚 **การเรียนรู้ต่อ:**
 
 1. **[Dashboard Guide](../user-manual/dashboard-guide.md)** - เรียนรู้ Dashboard แบบลึกซึ้ง
-2. **[Modal System Guide](../user-manual/modal-guide-complete.md)** - การใช้งาน 23 modals ทั้งหมด
+2. **[Modal System Guide](../user-manual/modal-guide-complete.md)** - การใช้งาน 25 modals ทั้งหมด
 3. **[Mining Systems Guide](../user-manual/mining-systems-guide.md)** - ระบบขุดขั้นสูงและ Team Pool
 4. **[Troubleshooting](../troubleshooting/common-issues.md)** - การแก้ไขปัญหาครบถ้วน
 

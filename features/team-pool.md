@@ -32,11 +32,6 @@
 - **ข้อกำหนด**: WAX balance ต้องมากกว่า 0.3 WAX
 - **การตรวจสอบ**: ระบบตรวจสอบ resource availability แบบเรียลไทม์
 
-### 🛡️ **Dummy Accounts**
-- **หน้าที่หลัก**: สร้าง buy offers และรับ NFT transfers
-- **การทำงาน**: ช่วยแบ่งปันภาระงานจาก miner accounts
-- **ข้อกำหนด**: CPU ต้องมากกว่า 600, RAM available ต้องมากกว่า 600
-- **การประสานงาน**: ทำงานร่วมกับ miner accounts แบบอัตโนมัติ
 
 ## กลไกการทำงานของ AWTEAM
 
@@ -58,17 +53,17 @@
 
 #### **ขั้นตอนที่ 1: Pool Validation**
 - ตรวจสอบว่า team members ทั้งหมดอยู่ใน pool
-- ยืนยันสถานะของ miner และ dummy accounts
+- ยืนยันสถานะของ miner accounts
 - ตรวจสอบความพร้อมของทรัพยากร
 
 #### **ขั้นตอนที่ 2: Resource Allocation**
-- กำหนด main account สำหรับ mining operation
-- จัดสรร dummy accounts สำหรับ support operations
+- กำหนด main accounts สำหรับ mining operations
+- จัดสรรทรัพยากรตามลำดับความสำคัญ
 - ตั้งค่า backup accounts สำหรับ failover
 
 #### **ขั้นตอนที่ 3: Mining Execution**
-- เริ่มการขุดด้วย main miner account
-- ใช้ dummy accounts สำหรับ NFT operations
+- เริ่มการขุดด้วย miner accounts ที่เตรียมไว้
+- จัดการ NFT operations และ resource sharing
 - ตรวจสอบสถานะแบบเรียลไทม์
 
 ### 🚨 **Ban Wave Avoidance System**
@@ -87,10 +82,9 @@
 
 ### 📋 **ข้อกำหนดพื้นฐาน**
 
-1. **Minimum Team Size**: อย่างน้อย 2 accounts (1 miner + 1 dummy)
+1. **Minimum Team Size**: อย่างน้อย 2 miner accounts
 2. **Resource Requirements**:
    - Miner: CPU > 600, RAM > 600, WAX > 0.3
-   - Dummy: CPU > 600, RAM > 600
 3. **Network Requirements**: เชื่อมต่อ WAX RPC nodes ที่เสถียร
 
 ### ⚙️ **การกำหนดค่า Team**
@@ -98,8 +92,8 @@
 #### **1. Team Registration**
 การลงทะเบียน team ประกอบด้วยการกำหนด:
 - **ชื่อ Team**: ตั้งชื่อให้กับ team ของคุณ
-- **Miner Accounts**: กำหนด accounts ที่จะทำหน้าที่ขุด (เช่น account1.wam, account2.wam)
-- **Dummy Accounts**: กำหนด accounts ที่จะช่วยงาน (เช่น dummy1.wam, dummy2.wam)  
+- **Miner Accounts**: กำหนด accounts ที่จะทำหน้าที่ขุด (เช่น account1.wam, account2.wam, account3.wam)
+- **Pool Type**: เลือกระหว่าง LPOOL หรือ MPOOL ตามวัตถุประสงค์
 - **การตั้งค่า**: กำหนดช่วงเวลาการขุด (300 วินาที), ขีดจำกัดทรัพยากร (600), และเปิดใช้งาน failover
 
 #### **2. Account Pool Setup**
@@ -114,8 +108,8 @@
 #### **การแสดงสถานะ Team**
 ในหน้า dashboard จะแสดงข้อมูลสถานะ team ดังนี้:
 - **ชื่อ Team**: แสดงชื่อของ team (เช่น alpha_team)
+- **Pool Type**: ประเภท pool (LPOOL/MPOOL)
 - **Miner Accounts**: จำนวน miner accounts ที่กำลังทำงาน (เช่น 3/3 Active)
-- **Dummy Accounts**: จำนวน dummy accounts ที่พร้อมใช้งาน (เช่น 2/2 Ready)
 - **Resource Pool**: เปอร์เซ็นต์ทรัพยากรที่ใช้ได้ (เช่น 85% Available)
 - **Status**: สถานะการทำงานปัจจุบัน (Mining Active, Paused, Error)
 
@@ -129,7 +123,7 @@
 
 #### **การเพิ่ม/ลบ Account**
 - **เพิ่ม miner account ใหม่**: ผ่านระบบจัดการ team
-- **เพิ่ม dummy account**: เพิ่มเข้าไปใน team pool
+- **จัดการ account pool**: เพิ่ม/ลบ accounts ใน team
 - **ลบ account ออกจาก team**: ลบและอัปเดต team configuration
 
 #### **การปรับแต่ง Team Settings**
@@ -142,7 +136,7 @@
 
 ### ✅ **ข้อแนะนำการใช้งาน**
 
-1. **ใช้ Dummy Accounts อย่างเพียงพอ**: อัตราส่วน 1:1 หรือ 2:1 ระหว่าง miner:dummy
+1. **ใช้ Miner Accounts หลากหลาย**: กระจาย accounts เพื่อลดความเสี่ยง
 2. **ตรวจสอบ Resources เป็นประจำ**: ตั้งค่า alert เมื่อทรัพยากรต่ำ
 3. **กระจาย Mining Times**: หลีกเลี่ยงการขุดพร้อมกันทุก account
 4. **สำรอง WAX**: เตรียม WAX สำหรับ transaction fees
@@ -209,7 +203,7 @@
 - **Mining Performance** - สถิติการขุดของ team
 - **Resource Utilization** - การใช้งานทรัพยากรฯ
 - **Error Tracking** - บันทึกข้อผิดพลาด
-- **Profit Analysis** - วิเคราะห์ผลกำไร
+- **Performance Analysis** - วิเคราะห์ประสิทธิภาพ
 
 #### **🛡️ Security Settings Tab**
 - **2FA Integration** - การยืนยันตัวตน 2 ขั้นตอน
@@ -223,134 +217,46 @@
 
 ### **ขั้นตอนที่ 1: เลือกสร้าง Pool ใหม่**
 
-```json
-Initial Configuration:
-{
-  "TEAM_ID": "Create new Team Pool",
-  "ENABLE": true,
-  "MODE": "Standard | MPool"
-}
-```
 
 **การตั้งค่าเบื้องต้น:**
 1. **TEAM ID:** เลือก "Create new Team Pool"
 2. **ENABLE:** ✓ เปิดใช้งาน Pool
-3. **MODE:** เลือกโหมดการทำงาน
+3. **MODE:** เลือกระหว่าง LPOOL หรือ MPOOL ตามหน้าที่
 
 ### **ขั้นตอนที่ 2: เลือก Mining Mode**
 
-#### **🔧 Standard Mode Configuration**
+#### **📊 LPOOL Mode Configuration (Level Pool)**
 
-**เมื่อเลือก Standard Mode จะมีตัวเลือก:**
+**LPOOL (Level Pool) เมื่อเลือก Level Pool จะมีตัวเลือก:**
 
-```yaml
-Mining Duration Options:
-  short_term: [4h, 6h, 8h]
-  medium_term: [12h, 24h, 48h]
-  long_term: [1w, 2w, 3w, 4w]
 
-Configuration:
-  wallet_type: "anc" # Anchor Wallet
-  claim_amount: "auto | custom"
-  resource_management: "enabled"
-```
+**Level Pool Workflow:**
+- **เก็บเลเวล:** Accounts ทำงานเพื่อเพิ่มระดับ
+- **ตรวจสอบ Level:** เมื่อถึงระดับเป้าหมาย
+- **ส่งต่อ Miner Pool:** Transfer accounts ที่พร้อมแล้วไปขุดจริง
 
-**Mining Duration ที่แนะนำ:**
-- **4-8 hours:** สำหรับ testing และ short-term mining
-- **12-24 hours:** สำหรับ regular mining operations
-- **1-4 weeks:** สำหรับ long-term stable mining
+#### **⚡ MPOOL Mode Configuration (Miner Pool)**
 
-#### **⚡ MPool Mode Configuration (Advanced)**
-
-**MPool Mode Features:**
-- **Advanced Resource Pooling** - การรวม resources จากหลาย accounts
-- **Intelligent Load Balancing** - การกระจายภาระงานอัตโนมัติ
-- **Dynamic Account Switching** - การสลับ account ตาม conditions
+**MPOOL (Miner Pool) Features:**
+- **Advanced Mining Operations** - การขุดแบบมืออาชีพ
+- **Level-Ready Accounts** - ใช้ accounts ที่ได้ระดับจาก Level Pool แล้ว
+- **High-End Tools Support** - รองรับ mining tools ระดับสูง
 - **Ban Wave Protection** - ป้องกัน ban wave แบบขั้นสูง
 
-```json
-MPool Configuration Example:
-{
-  "mode": "mpool",
-  "pool_settings": {
-    "main_miners": ["account1.wam", "account2.wam", "account3.wam"],
-    "dummy_accounts": ["dummy1.wam", "dummy2.wam"],
-    "resource_threshold": {
-      "cpu_minimum": 600,
-      "ram_minimum": 600,
-      "wax_minimum": 0.3
-    },
-    "rotation_strategy": "cycle", // cycle | slice | throw
-    "failover_enabled": true
-  }
-}
-```
+
+**Miner Pool Workflow:**
+- **รับ Accounts:** จาก Level Pool ที่มีระดับเพียงพอแล้ว  
+- **เครื่องมือขุด:** ใช้ tools ที่ unlock ได้จากระดับสูง
+- **ประสิทธิภาพสูง:** Mining ด้วย accounts ที่มี experience
 
 ### **ขั้นตอนที่ 3: การกำหนดค่า Advanced Settings**
 
 #### **🎯 Team Composition Setup**
 
-**Miner Accounts Configuration:**
-```json
-{
-  "miner_accounts": {
-    "primary": ["account1.wam", "account2.wam"],
-    "secondary": ["account3.wam", "account4.wam"],
-    "backup": ["account5.wam"]
-  },
-  "requirements": {
-    "min_cpu": 600,
-    "min_ram": 600,
-    "min_wax": 0.3,
-    "tools_required": 3
-  }
-}
-```
 
-**Dummy Accounts Configuration:**
-```json
-{
-  "dummy_accounts": {
-    "primary": ["dummy1.wam", "dummy2.wam"],
-    "backup": ["dummy3.wam"]
-  },
-  "responsibilities": [
-    "NFT transfers",
-    "Buy offers creation",
-    "Resource sharing"
-  ]
-}
-```
 
 #### **⏰ Time Scheduling Configuration**
 
-**24-Hour Operation Schedule:**
-```json
-{
-  "schedule": {
-    "0-1-2-3-4-5-6-7": "night_shift",
-    "8-9-10-11-12-13-14-15": "day_shift",
-    "16-17-18-19-20-21-22-23": "evening_shift"
-  },
-  "shift_settings": {
-    "night_shift": {
-      "intensity": "low",
-      "accounts_active": "50%",
-      "maintenance_window": true
-    },
-    "day_shift": {
-      "intensity": "high", 
-      "accounts_active": "100%",
-      "peak_performance": true
-    },
-    "evening_shift": {
-      "intensity": "medium",
-      "accounts_active": "75%",
-      "balanced_operation": true
-    }
-  }
-}
-```
 
 ---
 
@@ -359,20 +265,11 @@ MPool Configuration Example:
 ### 🎯 **Real-time Dashboard Monitoring**
 
 **Team Status Display ใน Dashboard:**
-```
-Team: alpha_team
-├── 👨‍⛏️ Miners: 3/3 Active 
-│   ├── account1.wam: Mining (CPU: 850, RAM: 700, WAX: 4.2)
-│   ├── account2.wam: Ready (CPU: 620, RAM: 650, WAX: 2.1)
-│   └── account3.wam: Cooldown (CPU: 920, RAM: 750, WAX: 3.8)
-├── 🛡️ Dummies: 3/3 Ready
-│   ├── dummy1.wam: Available (CPU: 680, RAM: 600)
-│   ├── dummy2.wam: Processing (CPU: 720, RAM: 630)
-│   └── dummy3.wam: Available (CPU: 810, RAM: 680)
-├── 📊 Resource Pool: 85% Available
-├── ⚡ Status: Mining Active
-└── 📈 Performance: 95.2% Success Rate
-```
+- **Team Name**: แสดงชื่อ team ที่สร้างไว้
+- **Pool Type**: แสดง LPOOL หรือ MPOOL
+- **Miners Status**: จำนวนและสถานะ miner accounts
+- **Resource Pool**: เปอร์เซ็นต์ทรัพยากรที่ใช้ได้
+- **Mining Status**: สถานะการทำงานปัจจุบัน
 
 ### 🚨 **Alert System และการแจ้งเตือน**
 
@@ -414,26 +311,9 @@ Team: alpha_team
 ### ⚡ **Performance Optimization Techniques**
 
 #### **🎯 Resource Allocation Strategy**
-```json
-Optimal Resource Distribution:
-{
-  "high_priority_miners": {
-    "cpu_allocation": "40%",
-    "ram_allocation": "35%", 
-    "accounts": ["main1.wam", "main2.wam"]
-  },
-  "medium_priority_miners": {
-    "cpu_allocation": "35%",
-    "ram_allocation": "35%",
-    "accounts": ["backup1.wam", "backup2.wam"]
-  },
-  "dummy_accounts": {
-    "cpu_allocation": "25%", 
-    "ram_allocation": "30%",
-    "accounts": ["dummy1.wam", "dummy2.wam"]
-  }
-}
-```
+- **High Priority Accounts**: จัดสรรทรัพยากรมากที่สุด
+- **Secondary Accounts**: ใช้เป็น backup สำหรับ failover
+- **Resource Balancing**: กระจายภาระงานอย่างสมดุล
 
 #### **🔄 Dynamic Team Balancing**
 - **Load Balancing:** กระจายภาระงานตาม performance
@@ -444,21 +324,9 @@ Optimal Resource Distribution:
 ### 🏢 **Enterprise Team Management**
 
 #### **🌐 Multi-Team Coordination**
-```yaml
-Enterprise Architecture:
-  production_teams:
-    - team_alpha: [primary mining, 24/7 operation]
-    - team_beta: [secondary mining, resource backup]
-    - team_gamma: [emergency response, disaster recovery]
-  
-  development_teams:
-    - team_delta: [strategy testing, R&D]
-    - team_echo: [tool optimization, performance testing]
-  
-  maintenance_teams:
-    - team_zulu: [system maintenance, updates]
-    - team_yankee: [backup operations, monitoring]
-```
+- **Production Teams**: ทีมหลักสำหรับการขุดประจำ 24/7
+- **Development Teams**: ทีมทดสอบกลยุทธ์และ R&D
+- **Maintenance Teams**: ทีมดูแลระบบและ monitoring
 
 #### **🔒 Security และ Access Control**
 - **Role-Based Access Control (RBAC)** - จำกัดสิทธิ์ตามบทบาท
@@ -472,43 +340,15 @@ Enterprise Architecture:
 
 ### ✅ **ข้อแนะนำการใช้งาน Enterprise-Level**
 
-#### **🎯 Team Composition Best Practices:**
-1. **Small Team (2-5 miners):** เหมาะสำหรับ individual users
-   - Ratio: 1:1 miner:dummy
-   - Investment: Medium, Management: Easy
-   - Risk: Lower redundancy but easier to manage
-
-2. **Medium Team (6-12 miners):** เหมาะสำหรับ small businesses  
-   - Ratio: 2:1 miner:dummy
-   - Investment: Higher, Management: Moderate
-   - Risk: Good redundancy and performance balance
-
-3. **Large Team (13+ miners):** เหมาะสำหรับ enterprise operations
-   - Ratio: 3:1 miner:dummy  
-   - Investment: High, Management: Complex
-   - Risk: High redundancy, professional-grade operation
+#### **🎯 Team Size Recommendations:**
+- **Small Team (2-3 miners):** เหมาะสำหรับเริ่มต้นและทดสอบ
+- **Medium Team (4-8 miners):** เหมาะสำหรับการใช้งานปกติ
+- **Large Team (9+ miners):** สำหรับการขุดขนาดใหญ่
 
 #### **⏰ Timing Optimization Strategies:**
-```json
-Peak Performance Schedule:
-{
-  "high_traffic_hours": {
-    "utc_time": "12:00-20:00",
-    "strategy": "maximum_team_activity",
-    "accounts_active": "100%"
-  },
-  "off_peak_hours": {
-    "utc_time": "20:00-12:00", 
-    "strategy": "maintenance_and_optimization",
-    "accounts_active": "60%"
-  },
-  "maintenance_windows": {
-    "daily": "02:00-04:00 UTC",
-    "weekly": "Sunday 01:00-05:00 UTC",
-    "monthly": "First Sunday 00:00-08:00 UTC"
-  }
-}
-```
+- **High Traffic Hours**: 12:00-20:00 UTC - เปิด accounts ทั้งหมด
+- **Off Peak Hours**: 20:00-12:00 UTC - ลด accounts เพื่อ maintenance
+- **Maintenance Windows**: ช่วงเวลา maintenance ประจำ
 
 ### ⚠️ **หลีกเลี่ยงข้อผิดพลาดที่พบบ่อย**
 
@@ -532,34 +372,6 @@ Peak Performance Schedule:
 
 ### 🆘 **Crisis Management**
 
-#### **🔴 Complete Team Failure Response:**
-```yaml
-Emergency Response Timeline:
-  T+0_minutes:
-    - Detect team failure through automated monitoring
-    - Send critical alerts to emergency contacts
-    - Activate emergency response team
-  
-  T+5_minutes:
-    - Assess scope and impact of failure
-    - Identify root cause (ban wave, resource depletion, system failure)
-    - Activate backup teams if available
-  
-  T+15_minutes:
-    - Stop all affected mining operations
-    - Switch to emergency backup accounts
-    - Preserve critical data and transaction logs
-  
-  T+30_minutes:
-    - Begin recovery procedures
-    - Restore team configuration from backups
-    - Gradual service restoration with monitoring
-  
-  T+60_minutes:
-    - Full system restoration
-    - Post-incident analysis
-    - Update emergency procedures based on lessons learned
-```
 
 #### **🛡️ Ban Wave Protection Protocol:**
 - **Detection:** Automated ban wave detection ทุก 30 วินาที

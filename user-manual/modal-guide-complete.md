@@ -6,10 +6,12 @@
 
 ## 🔗 คู่มือที่เกี่ยวข้อง
 
+- **Dashboard Guide** - วิธีเข้าถึง Modals จาก Dashboard และการจัดการ WAX Accounts
 {% content-ref url="dashboard-guide.md" %}
 [dashboard-guide.md](dashboard-guide.md)
 {% endcontent-ref %}
 
+- **Transfer Resources** - การจัดการ WAX Resources แบบละเอียด
 {% content-ref url="transfer-resources.md" %}
 [transfer-resources.md](transfer-resources.md)
 {% endcontent-ref %}
@@ -40,108 +42,133 @@
 ## 📋 สารบัญ Modal Systems
 
 ### 🎯 **Core Modals** (ใช้งานประจำวัน)
-1. {% content-ref url="box-nft-modal.md" %}
+1. **🛠️ BOX NFT Modal** - จัดการ NFT และ Mining Tools ครบครัน 7 tabs
+{% content-ref url="box-nft-modal.md" %}
 [box-nft-modal.md](box-nft-modal.md)
 {% endcontent-ref %}
 
-2. {% content-ref url="set-land-modal.md" %}
+2. **🌍 SET LAND Modal** - เลือกพื้นที่การขุด และจัดการ Planet ทั้ง 6 ดาว
+{% content-ref url="set-land-modal.md" %}
 [set-land-modal.md](set-land-modal.md)
 {% endcontent-ref %}
 
-3. {% content-ref url="transfer-wax-modal.md" %}
+3. **💸 TRANSFER WAX Modal** - ส่ง Token ระหว่าง Account ปลอดภัย
+{% content-ref url="transfer-wax-modal.md" %}
 [transfer-wax-modal.md](transfer-wax-modal.md)
 {% endcontent-ref %}
 
-4. {% content-ref url="stake-wax-modal.md" %}
+4. **⚡ STAKE WAX Modal** - จัดการทรัพยากร CPU/NET/RAM
+{% content-ref url="stake-wax-modal.md" %}
 [stake-wax-modal.md](stake-wax-modal.md)
 {% endcontent-ref %}
 
-5. {% content-ref url="allocate-wax-modal.md" %}
+5. **🔄 ALLOCATE WAX Modal** - กระจาย WAX ไปหลาย Account พร้อมกัน
+{% content-ref url="allocate-wax-modal.md" %}
 [allocate-wax-modal.md](allocate-wax-modal.md)
 {% endcontent-ref %}
 
-6. {% content-ref url="swap-tlm-modal.md" %}
+6. **🔄 SWAP TLM Modal** - แลกเปลี่ยน Token แบบเรียลไทม์
+{% content-ref url="swap-tlm-modal.md" %}
 [swap-tlm-modal.md](swap-tlm-modal.md)
 {% endcontent-ref %}
 
 ### 🔧 **Advanced Modals** (ขั้นสูง)
-7. {% content-ref url="pool-mineable-modal.md" %}
+7. **📊 POOL MINEABLE Modal** - ตั้งค่า Mining Rate สำหรับ 4 Planet
+{% content-ref url="pool-mineable-modal.md" %}
 [pool-mineable-modal.md](pool-mineable-modal.md)
 {% endcontent-ref %}
 
-8. {% content-ref url="totp-config-modal.md" %}
+8. **🛡️ TOTP CONFIG Modal** - ความปลอดภัย 2FA แบบ Google Authenticator
+{% content-ref url="totp-config-modal.md" %}
 [totp-config-modal.md](totp-config-modal.md)
 {% endcontent-ref %}
 
-9. {% content-ref url="task-scheduler-modal.md" %}
+9. **⏰ TASK SCHEDULER Modal** - ตั้งเวลาทำงานอัตโนมัติ
+{% content-ref url="task-scheduler-modal.md" %}
 [task-scheduler-modal.md](task-scheduler-modal.md)
 {% endcontent-ref %}
 
-10. {% content-ref url="wax-detective-modal.md" %}
+10. **🔍 WAX DETECTIVE Modal** - วิเคราะห์ Transaction และ Performance
+{% content-ref url="wax-detective-modal.md" %}
 [wax-detective-modal.md](wax-detective-modal.md)
 {% endcontent-ref %}
 
-11. {% content-ref url="action-report-modal.md" %}
+11. **📊 ACTION REPORT Modal** - รายงานการทำงาน Web Interface
+{% content-ref url="action-report-modal.md" %}
 [action-report-modal.md](action-report-modal.md)
 {% endcontent-ref %}
 
-12. {% content-ref url="sessions-token-modal.md" %}
+12. **🔐 SESSIONS TOKEN Modal** - จัดการ Session และความปลอดภัย
+{% content-ref url="sessions-token-modal.md" %}
 [sessions-token-modal.md](sessions-token-modal.md)
 {% endcontent-ref %}
 
 ### 👥 **Team Modals** (ฟีเจอร์ขั้นสูง)
-13. {% content-ref url="team-pool-config-modal.md" %}
+13. **🏊 TEAM POOL CONFIG Modal** - จัดการ LPOOL/MPOOL และ Team Mining
+{% content-ref url="team-pool-config-modal.md" %}
 [team-pool-config-modal.md](team-pool-config-modal.md)
 {% endcontent-ref %}
 
 ### 💳 **Wallet Modals** (สร้าง Account)
-14. {% content-ref url="create-wax-cloud-wallet-modal.md" %}
+14. **☁️ CREATE WAX CLOUD WALLET Modal** - สร้าง WAX Cloud แบบ 3 ขั้นตอน
+{% content-ref url="create-wax-cloud-wallet-modal.md" %}
 [create-wax-cloud-wallet-modal.md](create-wax-cloud-wallet-modal.md)
 {% endcontent-ref %}
 
-15. {% content-ref url="create-anchor-wallet-modal.md" %}
+15. **⚓ CREATE ANCHOR WALLET Modal** - สร้าง Anchor Wallet ระดับมืออาชีพ
+{% content-ref url="create-anchor-wallet-modal.md" %}
 [create-anchor-wallet-modal.md](create-anchor-wallet-modal.md)
 {% endcontent-ref %}
 
-16. {% content-ref url="register-wallet-sign-modal.md" %}
+16. **✍️ REGISTER WALLET SIGN Modal** - ลงทะเบียน Wallet Signature
+{% content-ref url="register-wallet-sign-modal.md" %}
 [register-wallet-sign-modal.md](register-wallet-sign-modal.md)
 {% endcontent-ref %}
 
-17. {% content-ref url="setup-soft-private-key-modal.md" %}
+17. **🔑 SETUP SOFT PRIVATE KEY Modal** - ตั้งค่า Private Key ขั้นสูง
+{% content-ref url="setup-soft-private-key-modal.md" %}
 [setup-soft-private-key-modal.md](setup-soft-private-key-modal.md)
 {% endcontent-ref %}
 
 ### 🛠️ **Utility Modals** (เครื่องมือเสริม)
-18. {% content-ref url="alcor-tool-modal.md" %}
+18. **🔄 ALCOR TOOL Modal** - Trading บน Alcor Exchange อัตโนมัติ
+{% content-ref url="alcor-tool-modal.md" %}
 [alcor-tool-modal.md](alcor-tool-modal.md)
 {% endcontent-ref %}
 
-19. {% content-ref url="cost-miner-config-modal.md" %}
+19. **💰 COST MINER CONFIG Modal** - จัดการ WAX Chain Power UP
+{% content-ref url="cost-miner-config-modal.md" %}
 [cost-miner-config-modal.md](cost-miner-config-modal.md)
 {% endcontent-ref %}
 
-20. {% content-ref url="subscription-info-modal.md" %}
+20. **📋 SUBSCRIPTION INFO Modal** - ข้อมูลสมาชิกและต่ออายุ
+{% content-ref url="subscription-info-modal.md" %}
 [subscription-info-modal.md](subscription-info-modal.md)
 {% endcontent-ref %}
 
-21. {% content-ref url="got-ban-modal.md" %}
+21. **🚫 GOT BAN Modal** - จัดการ Account ที่โดน Ban
+{% content-ref url="got-ban-modal.md" %}
 [got-ban-modal.md](got-ban-modal.md)
 {% endcontent-ref %}
 
-22. {% content-ref url="how-to-modal.md" %}
+22. **❓ HOW TO Modal** - คู่มือช่วยเหลือและวิดีโอสาธิต
+{% content-ref url="how-to-modal.md" %}
 [how-to-modal.md](how-to-modal.md)
 {% endcontent-ref %}
 
 ### 💎 **NFT Redemption Modals** (แลกเปลี่ยน NFT)
-23. {% content-ref url="redeem-point-nft-modal.md" %}
+23. **🏆 REDEEM POINT NFT Modal** - แลก Point NFTs จากคะแนน
+{% content-ref url="redeem-point-nft-modal.md" %}
 [redeem-point-nft-modal.md](redeem-point-nft-modal.md)
 {% endcontent-ref %}
 
-24. {% content-ref url="redeem-premium-nft-modal.md" %}
+24. **💰 REDEEM PREMIUM NFT Modal** - แลก Premium NFTs สำหรับสมาชิกพิเศษ
+{% content-ref url="redeem-premium-nft-modal.md" %}
 [redeem-premium-nft-modal.md](redeem-premium-nft-modal.md)
 {% endcontent-ref %}
 
-25. {% content-ref url="redeem-level-nft-modal.md" %}
+25. **📈 REDEEM LEVEL NFT Modal** - แลก Level NFTs ตามระดับ Account
+{% content-ref url="redeem-level-nft-modal.md" %}
 [redeem-level-nft-modal.md](redeem-level-nft-modal.md)
 {% endcontent-ref %}
 

@@ -35,41 +35,41 @@
 ## 📋 สารบัญ Modal Systems
 
 ### 🎯 **Core Modals** (ใช้งานประจำวัน)
-1. [🛠️ **BOX NFT Modal**](box-nft-modal.md) - จัดการ NFT และ Mining Tools ครบครัน 7 tabs
-2. [🌍 **SET LAND Modal**](set-land-modal.md) - เลือกพื้นที่การขุด และจัดการ Planet ทั้ง 6 ดาว
-3. [💸 **TRANSFER WAX Modal**](transfer-wax-modal.md) - ส่ง Token ระหว่าง Account ปลอดภัย
-4. [⚡ **STAKE WAX Modal**](stake-wax-modal.md) - จัดการทรัพยากร CPU/NET/RAM
-5. [🔄 **ALLOCATE WAX Modal**](allocate-wax-modal.md) - กระจาย WAX ไปหลาย Account พร้อมกัน
-6. [🔄 **SWAP TLM Modal**](swap-tlm-modal.md) - แลกเปลี่ยน Token แบบเรียลไทม์
+1. [🛠️ **BOX NFT Modal**](box-nft-modal) - จัดการ NFT และ Mining Tools ครบครัน 7 tabs
+2. [🌍 **SET LAND Modal**](set-land-modal) - เลือกพื้นที่การขุด และจัดการ Planet ทั้ง 6 ดาว
+3. [💸 **TRANSFER WAX Modal**](transfer-wax-modal) - ส่ง Token ระหว่าง Account ปลอดภัย
+4. [⚡ **STAKE WAX Modal**](stake-wax-modal) - จัดการทรัพยากร CPU/NET/RAM
+5. [🔄 **ALLOCATE WAX Modal**](allocate-wax-modal) - กระจาย WAX ไปหลาย Account พร้อมกัน
+6. [🔄 **SWAP TLM Modal**](swap-tlm-modal) - แลกเปลี่ยน Token แบบเรียลไทม์
 
 ### 🔧 **Advanced Modals** (ขั้นสูง)
-7. [📊 **POOL MINEABLE Modal**](pool-mineable-modal.md) - ตั้งค่า Mining Rate สำหรับ 4 Planet
-8. [🛡️ **TOTP CONFIG Modal**](totp-config-modal.md) - ความปลอดภัย 2FA แบบ Google Authenticator
-9. [⏰ **TASK SCHEDULER Modal**](task-scheduler-modal.md) - ตั้งเวลาทำงานอัตโนมัติ
-10. [🔍 **WAX DETECTIVE Modal**](wax-detective-modal.md) - วิเคราะห์ Transaction และ Performance
-11. [📊 **ACTION REPORT Modal**](action-report-modal.md) - รายงานการทำงาน Web Interface
-12. [🔐 **SESSIONS TOKEN Modal**](sessions-token-modal.md) - จัดการ Session และความปลอดภัย
+7. [📊 **POOL MINEABLE Modal**](pool-mineable-modal) - ตั้งค่า Mining Rate สำหรับ 4 Planet
+8. [🛡️ **TOTP CONFIG Modal**](totp-config-modal) - ความปลอดภัย 2FA แบบ Google Authenticator
+9. [⏰ **TASK SCHEDULER Modal**](task-scheduler-modal) - ตั้งเวลาทำงานอัตโนมัติ
+10. [🔍 **WAX DETECTIVE Modal**](wax-detective-modal) - วิเคราะห์ Transaction และ Performance
+11. [📊 **ACTION REPORT Modal**](action-report-modal) - รายงานการทำงาน Web Interface
+12. [🔐 **SESSIONS TOKEN Modal**](sessions-token-modal) - จัดการ Session และความปลอดภัย
 
 ### 👥 **Team Modals** (ฟีเจอร์ขั้นสูง)
-13. [🏊 **TEAM POOL CONFIG Modal**](team-pool-config-modal.md) - จัดการ LPOOL/MPOOL และ Team Mining
+13. [🏊 **TEAM POOL CONFIG Modal**](team-pool-config-modal) - จัดการ LPOOL/MPOOL และ Team Mining
 
 ### 💳 **Wallet Modals** (สร้าง Account)
-14. [☁️ **CREATE WAX CLOUD WALLET Modal**](create-wax-cloud-wallet-modal.md) - สร้าง WAX Cloud แบบ 3 ขั้นตอน
-15. [⚓ **CREATE ANCHOR WALLET Modal**](create-anchor-wallet-modal.md) - สร้าง Anchor Wallet ระดับมืออาชีพ
-16. [✍️ **REGISTER WALLET SIGN Modal**](register-wallet-sign-modal.md) - ลงทะเบียน Wallet Signature
-17. [🔑 **SETUP SOFT PRIVATE KEY Modal**](setup-soft-private-key-modal.md) - ตั้งค่า Private Key ขั้นสูง
+14. [☁️ **CREATE WAX CLOUD WALLET Modal**](create-wax-cloud-wallet-modal) - สร้าง WAX Cloud แบบ 3 ขั้นตอน
+15. [⚓ **CREATE ANCHOR WALLET Modal**](create-anchor-wallet-modal) - สร้าง Anchor Wallet ระดับมืออาชีพ
+16. [✍️ **REGISTER WALLET SIGN Modal**](register-wallet-sign-modal) - ลงทะเบียน Wallet Signature
+17. [🔑 **SETUP SOFT PRIVATE KEY Modal**](setup-soft-private-key-modal) - ตั้งค่า Private Key ขั้นสูง
 
 ### 🛠️ **Utility Modals** (เครื่องมือเสริม)
-18. [🔄 **ALCOR TOOL Modal**](alcor-tool-modal.md) - Trading บน Alcor Exchange อัตโนมัติ
-19. [💰 **COST MINER CONFIG Modal**](cost-miner-config-modal.md) - จัดการ WAX Chain Power UP
-20. [📋 **SUBSCRIPTION INFO Modal**](subscription-info-modal.md) - ข้อมูลสมาชิกและต่ออายุ
-21. [🚫 **GOT BAN Modal**](got-ban-modal.md) - จัดการ Account ที่โดน Ban
-22. [❓ **HOW TO Modal**](how-to-modal.md) - คู่มือช่วยเหลือและวิดีโอสาธิต
+18. [🔄 **ALCOR TOOL Modal**](alcor-tool-modal) - Trading บน Alcor Exchange อัตโนมัติ
+19. [💰 **COST MINER CONFIG Modal**](cost-miner-config-modal) - จัดการ WAX Chain Power UP
+20. [📋 **SUBSCRIPTION INFO Modal**](subscription-info-modal) - ข้อมูลสมาชิกและต่ออายุ
+21. [🚫 **GOT BAN Modal**](got-ban-modal) - จัดการ Account ที่โดน Ban
+22. [❓ **HOW TO Modal**](how-to-modal) - คู่มือช่วยเหลือและวิดีโอสาธิต
 
 ### 💎 **NFT Redemption Modals** (แลกเปลี่ยน NFT)
-23. [🏆 **REDEEM POINT NFT Modal**](redeem-point-nft-modal.md) - แลก Point NFTs จากคะแนน
-24. [💰 **REDEEM PREMIUM NFT Modal**](redeem-premium-nft-modal.md) - แลก Premium NFTs สำหรับสมาชิกพิเศษ
-25. [📈 **REDEEM LEVEL NFT Modal**](redeem-level-nft-modal.md) - แลก Level NFTs ตามระดับ Account
+23. [🏆 **REDEEM POINT NFT Modal**](redeem-point-nft-modal) - แลก Point NFTs จากคะแนน
+24. [💰 **REDEEM PREMIUM NFT Modal**](redeem-premium-nft-modal) - แลก Premium NFTs สำหรับสมาชิกพิเศษ
+25. [📈 **REDEEM LEVEL NFT Modal**](redeem-level-nft-modal) - แลก Level NFTs ตามระดับ Account
 
 ---
 

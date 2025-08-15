@@ -61,6 +61,7 @@
 
 ### 📊 การติดตามและรายงาน (Monitoring)
 * [🖥️ Console Web Interface](user-manual/console-interface.md)
+* [🤖 Headless Automation System](user-manual/headless-automation.md)
 
 ## 🎮 เกมที่รองรับ (Supported Games)
 * [👽 Alien Worlds](games/alien-worlds.md)

@@ -16,6 +16,11 @@
 [transfer-resources.md](transfer-resources.md)
 {% endcontent-ref %}
 
+- **Headless Automation System** - ระบบอัตโนมัติขั้นสูง 24/7 สำหรับ Mining
+{% content-ref url="headless-automation.md" %}
+[headless-automation.md](headless-automation.md)
+{% endcontent-ref %}
+
 ## 🔰 การใช้งานพื้นฐานสำหรับผู้เริ่มต้น
 
 ### 📖 ก่อนใช้งาน Modal Systems

@@ -27,7 +27,7 @@
 ### 🎯 **คุณสมบัติหลัก**
 - **🤖 Automated Mining Claims** - ขุด TLM แบบอัตโนมัติโดยไม่ต้องเฝ้าดู
 - **🔄 Multi-Account Management** - จัดการหลาย WAX accounts พร้อมกัน
-- **🌐 Browser Automation** - ทำงานผ่าน headless browser ระบบ browserless.nodenetwork.ovh
+- **🌐 Browser Automation** - ทำงานผ่าน headless browser ระบบ Task Manager Server API
 - **⏰ 24/7 Operations** - ดำเนินการต่อเนื่องตลอด 24 ชั่วโมง
 - **🛡️ Anti-Detection** - ระบบป้องกันการตรวจจับด้วย proxy rotation
 - **📊 Real-time Monitoring** - ติดตามสถานะและผลการทำงานแบบเรียลไทม์
@@ -36,7 +36,7 @@
 ```
 User Configuration (AWCLOUD CPanel)
            ↓
-Headless Browser Creation (browserless.nodenetwork.ovh)
+Headless Browser Creation (Task Manager Server API)
            ↓
 Automated Alien Worlds Navigation
            ↓
@@ -191,7 +191,7 @@ Automation Dashboard:
 ### **❌ ปัญหาที่พบบ่อย**
 
 #### **🌐 Browser Connection Issues**
-- **สาเหตุ:** browserless.nodenetwork.ovh ไม่พร้อมใช้งาน
+- **สาเหตุ:** Task Manager Server API ไม่พร้อมใช้งาน
 - **อาการ:** Automation หยุดทำงาน, ไม่สามารถสร้าง browser session
 - **วิธีแก้:** 
   1. ตรวจสอบ internet connection

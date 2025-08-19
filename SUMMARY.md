@@ -61,13 +61,14 @@
 
 ### 📊 การติดตามและรายงาน (Monitoring)
 * [🖥️ Console Web Interface](user-manual/console-interface.md)
-* [🤖 Headless Automation System](user-manual/headless-automation.md)
+
+## 🚀 ฟีเจอร์และระบบขยาย (Features & Extensions)
+* [🎆 Features Hub - ศูนย์รวมฟีเจอร์](features/features-hub.md)
+* [🤖 Headless Automation System](features/headless-automation.md)
+* [👥 Team Pool System](features/team-pool.md)
 
 ## 🎮 เกมที่รองรับ (Supported Games)
 * [👽 Alien Worlds](games/alien-worlds.md)
-
-## 🚀 ฟีเจอร์ขั้นสูง (Advanced Features)
-* [👥 Team Pool System](features/team-pool.md)
 
 ## 🔧 การแก้ไขปัญหา (Troubleshooting)
 * [🔧 การแก้ไขปัญหาและ FAQ](troubleshooting/common-issues.md)

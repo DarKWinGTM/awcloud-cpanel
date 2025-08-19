@@ -16,9 +16,9 @@
 [transfer-resources.md](transfer-resources.md)
 {% endcontent-ref %}
 
-- **Headless Automation System** - ระบบอัตโนมัติขั้นสูง 24/7 สำหรับ Mining
-{% content-ref url="headless-automation.md" %}
-[headless-automation.md](headless-automation.md)
+- **Headless Automation System** - ระบบอัตโนมัติขั้นสูง 24/7 สำหรับ Mining (ย้ายไปที่ Features)
+{% content-ref url="../features/headless-automation.md" %}
+[headless-automation.md](../features/headless-automation.md)
 {% endcontent-ref %}
 
 ## 🔰 การใช้งานพื้นฐานสำหรับผู้เริ่มต้น

@@ -285,6 +285,8 @@
 
 
 
+
+
 <div class="timeline">
 <div class="mb-4">
     <h5 class="date-badge mb-3">16 มกราคม 2569</h5>
@@ -348,26 +350,56 @@
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part I: Simple DBSync Migration (Jan 10-14, 2026)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🔄 Simple DBSync Migration - Major Refactoring:
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🔄 **Simple DBSync Migration (Jan 10-14, 2026)** - Major Refactoring ครั้งใหญ่
 
-ลบ Wrapper Classes (~855 lines):
-• Tri******** class (135 lines) - wrapper สำหรับ WAS*****
-• AUT***** singleton class (~170 lines)
-• Anc*******************, Anc*******************, _Li**********, _En************
-• ANC*****, ANC***** classes และ helper functions
+**38. ลบ Wrapper Classes (~855 lines):**
+• TriggerDict class (135 lines) - wrapper สำหรับ WAS*****
+• AUT***** singleton class (~170 lines) - wrapper สำหรับ *** storage
+• AnchdataStorageBackend (~60 lines), AnchdataRuntimeManager (~80 lines)
+• _ListAccessor (~50 lines), _EngineAccessor (~140 lines)
+• ANCHWITH (~30 lines), ANC***** (~30 lines) classes
+• Helper functions: _get_part, _get_path, _set_path, _delete_path (~30 lines)
+• repl_triggle callback function (~10 lines)
 
-เพิ่ม Core Functions (~100 lines):
-• dbs***() - Recursive cop* 3.3x faster than deepcopy
-• dbs***() - Background thr*** sync with globals() lookup
+**39. เพิ่ม Core Functions (~100 lines):**
+• DBmanager.dbsnap() - Recursive cop* 3.3x faster than deepcopy, Thread-safe: list() before iterate
+• DBmanager.dbsync() - Background thr*** sync with globals() lookup, snapshot + == comparison, ato*** write: temp → os.replace → target
 • _ma***********(), _lo*******() helpers
 
-Architecture Changes:
-• Thread Model: gev***+callback → _th****+polling
-• Data Type: Wrapper classes → Plain dict
-• JSON: orjson → stdlib json
-• Locks: 6 types → 0
+**40. Thread Model Change:**
+• Before: gevent.spawn_later + callback-based trigger
+• After: _thread.start_new_thread + polling-based (snapshot comparison ทุก 1 วินาที)
+• แยก OS thr*** จาก gev*** ecosystem → ลดปัญหา SIGSEGV
 
-Results: -755 lines, -7 classes, -6 locks, -1 C extension</p>
+**41. orjson → json Migration:**
+• orjson.dumps()/loads() → json.dumps()/loads()
+• File mode: 'wb'/'rb' → 'w'/'r' (orjson=bytes, json=str***)
+• ลด C Extension dependency, Pure Python → portable กว่า
+
+**42. Thread Safety Improvements:**
+• Copy params to local: _name = name ป้องกัน param sharing
+• Snapshot before compare: data = self.dbsnap(_data) ก่อน if data != snap
+• list() before iterate: for k, v in list(_obj.items()) ป้องกัน RuntimeError
+
+**43. Startup Load Error Handling:**
+• Before: raise SystemExit(1) → Docker res**** → ดู log ไม่ได้
+• After: while True: time.sleep(3600) → Halt ไม่ exit → ดู log ได้
+
+**44. Syntax Migration (~87 จุด):**
+• ANC*****().AUTHSSTORE['x'] → ANC*****['x'] (~51 จุด)
+• AUT*****().AUTHSSTORE['x'] → AUT*****['x'] (~8 จุด)
+• .value() → ลบออก (~28 จุด)
+
+**45. AUT***** Encryption Change:**
+• encrypt=True → encrypt=False (ไม่ encrypt ตาม design)
+• Startup load รองรับทั้ง encrypted และ plaintext format
+
+**46. Design Changes (Jan 13):**
+• เปลี่ยนจากส่ง data เป็น parameter → ใช้ globals()[name] lookup
+• เปลี่ยนชื่อตัวแปร: current → data, last_snapshot → snap, content → dump
+
+**Results:** -755 lines, -7 classes, -6 locks, -1 C extension
+**Status:** ✅ COMPLETE (Active Development)</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-009</small>
@@ -389,13 +421,45 @@ Results: -755 lines, -7 classes, -6 locks, -1 C extension</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part H: Bug Fixes - Jan 9, 2026</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🐛 Bug Fixes (Jan 9, 2026):
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🐛 **Bug Fixes (Jan 9, 2026) - Items 36-37:**
 
-• Dict Access Safety - แก้ไข dict access patterns ที่อาจเกิด KeyError
-• Error Handling - เพิ่ม try/except สำหรับ operations ที่อาจ fail
-• Race Condition Prevention - แก้ไข race conditions ใน concurrent operations
-• Memory Leak Fix - แก้ไข memory leaks จาก unclosed resources
-• Timeout Handling - ปรับปรุง timeout handling สำหรับ network operations</p>
+**36. Dict .get() Default Parameter Bug Fix (18 จุด):**
+
+**ปัญหาที่พบ:**
+• .get('***', default) คืน default เฉพาะเมื่อ *** ไม่มีเท่านั้น
+• ถ้า *** มีอยู่แต่ค่าเป็น None หรือ '' → คืนค่านั้น ไม่ใช่ default
+
+**Error ที่เกิดขึ้น:**
+• None.get() → AttributeError: 'NoneType' object has no attribute 'get'
+• ''.get() → AttributeError: 'str' object has no attribute 'get'
+• None <= 100 → TypeError: '<=' not supported between instances of 'NoneType' and 'int'
+• int('') → ValueError: invalid literal for int() with base 10: ''
+
+**การแก้ไข (18 จุด):**
+
+Type 1: Numeric Default (5 จุด)
+• Before: .get('available', 0)
+• After: (.get('available') or 0)
+
+Type 2: String Default (5 จุด)
+• Before: .get('core_liquid_balance', '0').split(' ')[0]
+• After: (.get('core_liquid_balance') or '0').split(' ')[0]
+
+Type 3: Dict Default (2 จุด)
+• Before: WAS*****['open'][_].get('tick', {}).get('text', '')
+• After: ((WAS*****['open'][_].get('tick') or {}).get('text') or '')
+
+Type 4: aut*************() Maximum Safety (6 จุด)
+• Before: aut*************(...).get('text', '').split(' ')[0]
+• After: (aut*************(...).get('text') or '').split(' ')[0]
+
+**37. Additional Sleep for Rate Limiting:**
+• เพิ่ม time.sleep(1.95) สำหรับ rate limiting เพิ่มเติม
+• ป้องกันการเรียก API ถี่เกินไป
+
+**เอกสารอ้างอิง:**
+• bugs/dict-get-default-parameter-bug.md
+• docs/besp - Best Practices/python-dict-access.md</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-008</small>
@@ -417,12 +481,29 @@ Results: -755 lines, -7 classes, -6 locks, -1 C extension</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part G: Code Style & Structure (Items 35-37)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">📝 Code Style & Structure:
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">📝 **Code Style & Structure (Items 33-35):**
 
-• Code Organization - ปรับโครงสร้าง code ให้อ่านง่ายขึ้น
+**33. Code Formatting & Compaction:**
+• Compact multi-line dict definitions เป็น single line
+• ลดจำนวนบรรทัดโดยไม่เปลี่ยน logic
+• Before: 'abundant': {\n    'mtx': 0\n},
+• After: 'abundant': {'mtx': 0}, 'common': {'mtx': 0}, ...
+• Structures affected: MAI*******, SEN****, AUT*****, DB['POOLDATA']['fr']
+
+**34. SUBSET.var['001'] Constant Usage (50+ instances):**
+• แทนที่ hardcoded '0000...0000' (64 chars) ด้วย SUBSET.var['001']
+• ทำให้ code maintainable และ consistent
+• Centralize Zero Hash constant
+
+**35. ~~File Mode Text → Binary~~ → Text Mode (ย้อนกลับแล้ว):**
+• สถานะปัจจุบัน: ใช้ text mode 'w' กับ json.dumps()
+• เหตุผล: stdlib json คืน str*** ไม่ใช่ bytes
+• Files affected: db-update.json, tk-update.json, wcw.json, cle.json, rep.dum/rep.dat
+
+**Code Organization:**
+• ปรับโครงสร้าง code ให้อ่านง่ายขึ้น
 • Import Cleanup - จัดระเบียบ imports และลบ unused imports
 • Comment Improvements - ปรับปรุง comments ให้ชัดเจนขึ้น
-• Formatting Consistency - ปรับ formatting ให้สอดคล้องกันทั้งไฟล์
 • Dead Code Removal - ลบ code ที่ไม่ได้ใช้งาน</p>
             
             
@@ -445,12 +526,28 @@ Results: -755 lines, -7 classes, -6 locks, -1 C extension</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part F: Configuration Changes (Items 33-34)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">⚙️ Configuration Changes:
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">⚙️ **Configuration Changes (Items 31-32):**
 
-• Constants Optimization - ปรับค่า constants สำหรับ better performance และ stability
-• Environment Variables - ปรับปรุงการจัดการ environment variables
-• Timing Adjustments - ปรับ sleep intervals และ timeout val***
-• Rate Limiting - เพิ่ม time.sleep() สำหรับ rate limiting ใน API calls</p>
+**31. Proxy Configuration Changes:**
+• ปรับ weight ของ pro** providers
+• เปลี่ยนจาก LightningProxies (SG) → ByteZero (NL)
+• LightningProxies SG: * 2 → * 0
+• ByteZero NL: * 0 → * 2
+
+**32. aut*****() *** Generation Conditions:**
+• เพิ่ม *** generation conditions สำหรับ public-legacy[3] <= 4
+• ปรับปรุง log**** ด้วย sty**().GRE** และ sty**().WHI**
+• Logic: if int(AUT*****['AUTHKEY'][0]["public-legacy"][3]) <= 4: # New *** generation
+
+**Constants Optimization:**
+• ปรับค่า constants สำหรับ better performance และ stability
+
+**Environment Variables:**
+• ปรับปรุงการจัดการ environment variables
+
+**Timing Adjustments:**
+• ปรับ sleep intervals และ timeout values
+• เพิ่ม time.sleep() สำหรับ rate limiting ใน API calls</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-006</small>
@@ -472,14 +569,37 @@ Results: -755 lines, -7 classes, -6 locks, -1 C extension</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part E: Safe Dict Access Patterns (Items 29-32)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🛡️ Safe Dict Access Patterns:
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🛡️ **Safe Dict Access Patterns (Items 29-32):**
 
-• Dict .get() Bug Fix - แก้ไข pattern ที่ผิดพลาด: dict.get(***, {}).get(subkey) → dict.get(***, {}).get(subkey, default)
-• Safe Access Pattern - เพิ่ม default val*** สำหรับ nested dict access
-• KeyError Prevention - ป้องกัน KeyError ด้วย .get() method
-• Defensive Coding - เพิ่ม error handling สำหรับ dict operations
+**30. Safe Dict Access with .get() (50+ instances):**
+• เพิ่ม safe dict access patterns ด้วย chained .get() calls
+• ป้องกัน KeyError exceptions จาก direct access
 
-Pattern: dict.get('***', {}).get('subkey', default_value)</p>
+**Patterns ที่ใช้:**
+• Pattern 1: Simple .get() with default
+  DB['POOLDATA']['db'].get(self.DATA['waxid'])
+
+• Pattern 2: Chained .get() with empty dict default
+  DB['POOLDATA']['db'].get(self.DATA['waxid'], {}).get('mke*')
+
+• Pattern 3: Deep nested access
+  tk['POOLDATA']['db'].get(self.DATA['waxid'], {}).get('private')
+
+• Pattern 4: Very deep nested access
+  .get('ver*', {}).get('fw', {}).get('cf', {}).get('key_mine')
+
+**Locations (50+ instances):**
+• DB['POOLDATA']['db'].get(...) checks
+• tk['POOLDATA']['db'].get(...) checks
+• Nested dict access throughout codebase
+
+**ปัญหาที่แก้ไข:**
+• KeyError เมื่อ *** ไม่มีอยู่
+• NoneType errors เมื่อ nested access
+• Defensive coding สำหรับ dict operations
+
+**Best Practice:**
+dict.get('***', {}).get('subkey', default_value)</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-005</small>
@@ -501,13 +621,35 @@ Pattern: dict.get('***', {}).get('subkey', default_value)</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part D: Major Refactoring (Items 25-28)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🏗️ Major Refactoring:
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🏗️ **Major Refactoring (Items 25-29):**
 
-• AUT***** Class - Singleton pattern with _instance, _instance_lock, _AutoSaveDict สำหรับ automatic persistence, Debounce mechanism, File locking, flush() method
-• _AutoSaveDict Class - auto-persistence with callback trigger, รองรับ __s********, __d********, upd***(), ***()
-• AWS*** Class - ลบ dfu*****() ที่ซ้ำซ้อน, รวมเข้ากับ dbu*****() พร้อม mode parameter
+**25. AUT***** Class - Complete Refactoring:**
+• Singleton pattern with _instance และ _instance_lock
+• _AutoSaveDict สำหรับ automatic persistence
+• Debounce mechanism: _schedule_write() และ _execute_write()
+• File locking: _acquire_file_lock() และ _release_file_lock()
+• flush() method สำหรับ immediate write
+• invalidate_cache() และ reset_instance() class methods
 
-หมายเหตุ: Anc******************* with In-Memory Caching ถูกยกเลิกใน Simple DBSync Migration - ใช้ simple dict + dbs***() แทน</p>
+**26. _AutoSaveDict Class (Auto-Persist Storage):**
+• เพิ่ม _AutoSaveDict(dict) class สำหรับ auto-save และ thr*** safety
+• Override __setitem__, __delitem__, upd***(), pop()
+• Callback mechanism สำหรับ trigger _schedule_write() อัตโนมัติเมื่อ data เปลี่ยน
+
+**27. ~~AnchdataStorageBackend with In-Memory Caching~~ (ยกเลิกแล้ว):**
+• สถานะปัจจุบัน: ใช้ Simple DBSync pattern ด้วย global dicts + dbs***() + stdlib json
+• เหตุผล: Simple DBSync Migration ใช้รูปแบบ simple dict แทน class wrappers
+
+**28. AWS*** Class - dfupdate() Consolidation:**
+• ลบ dfupdate() method ที่ซ้ำซ้อน
+• รวมเข้ากับ dbu*****(self, mode='') พร้อม mode parameter
+• เพิ่ม time.sleep(0.10) สำหรับ rate limiting
+
+**29. REA******* Initialization Move:**
+• ย้าย REA******* initialization จาก BEF*********************() ไปยัง before_first_request()
+• ให้ตรง Fla** lifecycle
+
+**หมายเหตุ:** AnchdataStorageBackend with In-Memory Caching ถูกยกเลิกใน Simple DBSync Migration - ใช้ simple dict + dbs***() แทน</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-004</small>
@@ -529,17 +671,46 @@ Pattern: dict.get('***', {}).get('subkey', default_value)</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part C: Performance Optimizations (Items 15-24)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">⚡ Performance Optimizations:
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">⚡ **Performance Optimizations (Items 15-24):**
 
-• copy.deepcopy() Optimization - แทนที่ด้วย dict() shallow cop* ใน 13 จุดที่ปลอดภัย
-• WAS***** Dict Copy - ใช้ dict() constructor แทน dict comprehension
-• _th**** → gevent.spawn Migration - ป้องกัน race condition และ SIGSEGV
-• _thread.allocate_lock() → threading.Lock() - compatible กับ gev*** mon*** patching
-• WSG******* Migration - เปลี่ยนจาก app.run() เป็น gevent.pywsgi.WSGIServer
-• Random Sleep Optimization - ปรับ ranges สำหรับ better performance
-• WebSocket run_forever() - เพิ่ม ping_interval, ping_timeout, skip_utf8_validation
+**15. copy.deepcopy() → dict() Optimization (13 จุด):**
+• แทนที่ copy.deepcopy() ด้วย dict() shallow cop* ในจุดที่ปลอดภัย
+• ลด overhead จาก deep cop* ที่ไม่จำเป็น เร็วขึ้น 10-50x
+• จุดที่แก้ไข: DB['POOLDATA']['db'], DB['POOLDATA']['fr']['teamp'], WCW*******, WAS*****['push']
 
-หมายเหตุ: orjson-related ite** (18, 19, 24) ถูกยกเลิกใน Simple DBSync Migration - ใช้ stdlib json แทน</p>
+**16. WAS***** Dict Copy Simplification:**
+• แทนที่ {**{k: v for k, v in WAS*****['wait'].items()}} ด้วย dict(WAS*****['wait'])
+• ลดความซับซ้อนและเพิ่มประสิทธิภาพ
+
+**17. _th**** → gevent.spawn Migration:**
+• เปลี่ยน _thread.start_new_thread(self.run_client, ()) เป็น self.greenlet = gevent.spawn(self.run_client)
+• ป้องกัน race condition และ SIGSEGV
+
+**18-19. ~~orjson in WebSocket/File Writes~~ (ยกเลิกแล้ว):**
+• สถานะปัจจุบัน: ใช้ json.loads()/json.dumps() (stdlib)
+• File mode: text mode 'w'/'r' (json ใช้ str*** ไม่ใช่ bytes)
+
+**20. _thread.allocate_lock() → threading.Lock():**
+• เปลี่ยน lock = _thread.allocate_lock() เป็น lock = threading.Lock()
+• ให้ compatible กับ gev*** mon*** patching
+
+**21. app.run() → WSG******* Migration:**
+• เปลี่ยน app.run(host='0.0.0.0', port=POR*) เป็น WSG*******(('0.0.0.0', POR*), ***).serve_forever()
+• ใช้ gevent-native WSGI server
+
+**22. Random Sleep Interval Tuning:**
+• ปรับ random.uniform(10.25, 40.75) → random.uniform(10.25, 22.75)
+• ลด latency ใน main loop
+
+**23. WebSocket run_forever() Optimization:**
+• เพิ่ม ws.run_forever(ping_interval=30, ping_timeout=10, skip_utf8_validation=True)
+• เพิ่ม heartbeat และลด overhead
+
+**24. ~~_deep_copy() with orjson~~ → dbs***() (ยกเลิกแล้ว):**
+• สถานะปัจจุบัน: ใช้ dbs***() recursive cop* แทน
+• เร็วกว่า deepcopy 3.3x โดยไม่ต้องพึ่ง C extension
+
+**หมายเหตุ:** orjson-related items (18, 19, 24) ถูกยกเลิกใน Simple DBSync Migration - ใช้ stdlib json แทน</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-003</small>
@@ -561,19 +732,54 @@ Pattern: dict.get('***', {}).get('subkey', default_value)</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part B: New Features (Items 5-14)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">✨ New Features:
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">✨ **New Features (Items 5-14):**
 
-• Logging Module (syslog) - เพิ่ม mod********** สำหรับ log****, faulthandler, system stats monitoring
-• SUB*** Class - เพิ่ม class สำหรับ variable storage แทน hardcoded zero hash (64 chars)
-• Tri******** Enhancement - รองรับ nested dict, auto-wrap เป็น Tri********
-• pow************() Mode - เพิ่ม mode parameter รองรับ 'ram' mode
-• aut*****() Mode - เพิ่ม mode parameter รองรับ 'sort' mode
-• mem*********(2) - เพิ่ม mode 2 สำหรับ thr*** ใหม่
-• /teamp Endpoint Statistics - เพิ่ม info.calc.gain และ info.calc.cons
-• res****()/res****() Logging - เพิ่ม log**** ไปยัง -res.log
-• Critical Error Logging - เพิ่ม log**** ไปยัง -brk.log
+**5. Logging Module (mod**********):**
+• เพิ่ม mod********** สำหรับ log**** และ monitoring
+• รองรับ init_faultlog(), init_syslog(), syslog(), log_exception()
+• Deep Debugging: dump_threads(), dump_greenlets(), dump_system(), get_stats_detailed()
+• Profiling (py-spy integration): start_profiling(), stop_profiling(), is_profiling()
+• Network Debug: enable_network_debug()
 
-หมายเหตุ: orjson Integration ถูกยกเลิกใน Simple DBSync Migration</p>
+**6. ~~orjson Integration~~ → stdlib json (ยกเลิกแล้ว):**
+• สถานะปัจจุบัน: ใช้ import json (stdlib) เท่านั้น
+• เหตุผล: ลด C extension dependencies, เพิ่มความเข้ากันได้ข้าม platform
+
+**7. SUB*** Class (Centralized Constants):**
+• เพิ่ม class SUB*** สำหรับ variable storage
+• SUBSET.var['001'] = '0' * 64 (zero hash 64 chars)
+• ใช้แทน hardcoded str*** กว่า 50 จุดในโค้ด
+
+**8. TriggerDict Enhancement (Nested Dict Auto-Wrap):**
+• ปรับปรุง TriggerDict ให้รองรับ nested dict
+• Auto-wrap nested dict เป็น TriggerDict พร้อม callback trigger
+
+**9. pow************() Mode Parameter:**
+• เพิ่ม mode parameter: pow************(self, mode='')
+• รองรับ mode='ram' สำหรับ action powerup_cpu_net_ram_private
+• ซื้อ CPU+NET+RAM ใน transaction เดียว
+
+**10. aut*****() Mode Parameter:**
+• เพิ่ม mode parameter: aut*****(mode='')
+• รองรับ mode='sort' สำหรับ action authsort
+
+**11. mem*********(2) - New Thread Mode:**
+• เพิ่ม mode=2 สำหรับ mem*********() function
+• รองรับ thr*** ใหม่สำหรับ memo processing
+
+**12. /teamp Endpoint Statistics:**
+• เพิ่ม info.calc.gain และ info.calc.cons statistics
+• แสดงข้อมูล calculation ใน response
+
+**13. res****() และ res****() Logging:**
+• เพิ่ม log**** ไปยัง -res.log สำหรับ res**** และ res**** operations
+• บันทึก timestamp ทุกครั้งที่มี recovery/res****
+
+**14. Critical Error Logging (-brk.log):**
+• เพิ่ม log**** สำหรับ critical errors ไปยัง -brk.log
+• บันทึก critical errors แยกไฟล์สำหรับ troubleshooting
+
+**หมายเหตุ:** orjson Integration ถูกยกเลิกใน Simple DBSync Migration</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-002</small>
@@ -595,14 +801,32 @@ Pattern: dict.get('***', {}).get('subkey', default_value)</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part A: Critical Fixes (Items 1-4)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🔧 Critical Bug Fixes:
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🔧 **Critical Bug Fixes (Items 1-4):**
 
-• Exit Code Wrapper (self-contained) - ไม่ต้องพึ่ง external wrapper.sh, บันทึก exit code และ signal ลง log อัตโนมัติ
-• Gevent Monkey Patching - ย้ายไปต้นไฟล์ก่อน imports ทั้งหมด ป้องกันปัญหา thr******/gev*** compatibility
-• SIGSEGV Fix - เปลี่ยนจาก threading.Timer เป็น gevent.spawn_later, เพิ่ม Snapshot Pattern ป้องกัน race condition
-• FREEZE Detection - เพิ่ม range จาก 6→15 characters, เพิ่ม log**** เมื่อเกิด FREEZE
+**1. Exit Code Wrapper (Self-contained):**
+• เพิ่ม self-contained exit code wrapper ที่ต้นไฟล์
+• ไม่ต้องใช้ external wrapper.sh อีกต่อไป
+• บันทึก exit code และ signal ลง log file อัตโนมัติ
+• Signals Supported: SIGHUP(129), SIGINT(130), SIGABRT(134), SIGKILL(137), SIGSEGV(139), SIGPIPE(141), SIGTERM(143)
 
-Signals Supported: SIGHUP(129), SIGINT(130), SIGABRT(134), SIGKILL(137), SIGSEGV(139), SIGPIPE(141), SIGTERM(143)</p>
+**2. Gevent Monkey Patching (ย้ายตำแหน่ง):**
+• ย้าย monkey.patch_all() ไปอยู่ต้นไฟล์ก่อน import อื่นๆ ทั้งหมด
+• เพิ่ม import gev*** หลัง mon*** patching
+• ป้องกันปัญหา thr******/gev*** compatibility และ deadlock
+
+**3. SIGSEGV Fix - threading.Timer → gevent.spawn_later (Critical):**
+• เปลี่ยนจาก threading.Timer เป็น gevent.spawn_later
+• เพิ่ม Snapshot Pattern: repData = dict(WAS*****) ป้องกัน race condition
+• ป้องกัน race condition ระหว่าง Native Thread และ Greenlets
+• แก้ปัญหา Segmentation Fault (exit code 139) ใน repl_triggle() function
+
+**4. FREEZE Detection Improvement:**
+• เพิ่ม range ของ FREEZE detection จาก 6 → 15 characters
+• เพิ่ม log**** เมื่อเกิด FREEZE: echo "FREEZE $(date)" >> log/$PART-res.log
+
+**เอกสารอ้างอิง:**
+• bugs/sigsegv-crash-analysis.md
+• refactor/Kiro Opus/wiki/gevent-threading-compatibility-analysis.md</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-001</small>

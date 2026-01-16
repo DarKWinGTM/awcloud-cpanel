@@ -287,6 +287,8 @@
 
 
 
+
+
 <div class="timeline">
 <div class="mb-4">
     <h5 class="date-badge mb-3">16 มกราคม 2569</h5>
@@ -353,18 +355,17 @@
             <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🔄 **Simple DBSync Migration (Jan 10-14, 2026)** - Major Refactoring ครั้งใหญ่
 
 **38. ลบ Wrapper Classes (~855 lines):**
-• TriggerDict class (135 lines) - wrapper สำหรับ WAS*****
-• AUT***** singleton class (~170 lines) - wrapper สำหรับ *** storage
-• AnchdataStorageBackend (~60 lines), AnchdataRuntimeManager (~80 lines)
-• _ListAccessor (~50 lines), _EngineAccessor (~140 lines)
-• ANCHWITH (~30 lines), ANC***** (~30 lines) classes
-• Helper functions: _get_part, _get_path, _set_path, _delete_path (~30 lines)
-• repl_triggle callback function (~10 lines)
+• Dict wrapper class (135 lines) - wrapper สำหรับ data storage
+• Auth singleton class (~170 lines) - wrapper สำหรับ *** storage
+• Storage backend classes (~60+80 lines)
+• Accessor classes (~50+140 lines)
+• Helper classes (~30+30 lines)
+• Helper functions และ callback function (~40 lines)
 
 **39. เพิ่ม Core Functions (~100 lines):**
-• DBmanager.dbsnap() - Recursive cop* 3.3x faster than deepcopy, Thread-safe: list() before iterate
-• DBmanager.dbsync() - Background thr*** sync with globals() lookup, snapshot + == comparison, ato*** write: temp → os.replace → target
-• _ma***********(), _lo*******() helpers
+• Recursive cop* function - 3.3x faster than deepcopy, Thread-safe: list() before iterate
+• Background sync function - globals() lookup, snapshot + == comparison, ato*** write
+• Helper functions สำหรับ decrypt และ load JSON
 
 **40. Thread Model Change:**
 • Before: gevent.spawn_later + callback-based trigger
@@ -377,29 +378,24 @@
 • ลด C Extension dependency, Pure Python → portable กว่า
 
 **42. Thread Safety Improvements:**
-• Copy params to local: _name = name ป้องกัน param sharing
-• Snapshot before compare: data = self.dbsnap(_data) ก่อน if data != snap
-• list() before iterate: for k, v in list(_obj.items()) ป้องกัน RuntimeError
+• Copy params to local ป้องกัน param sharing
+• Snapshot before compare ก่อน if data != snap
+• list() before iterate ป้องกัน RuntimeError
 
 **43. Startup Load Error Handling:**
 • Before: raise SystemExit(1) → Docker res**** → ดู log ไม่ได้
 • After: while True: time.sleep(3600) → Halt ไม่ exit → ดู log ได้
 
 **44. Syntax Migration (~87 จุด):**
-• ANC*****().AUTHSSTORE['x'] → ANC*****['x'] (~51 จุด)
-• AUT*****().AUTHSSTORE['x'] → AUT*****['x'] (~8 จุด)
-• .value() → ลบออก (~28 จุด)
+• ลบ accessor pattern เปลี่ยนเป็น direct dict access
+• ลบ .value() calls ที่ไม่จำเป็น
 
-**45. AUT***** Encryption Change:**
-• encrypt=True → encrypt=False (ไม่ encrypt ตาม design)
-• Startup load รองรับทั้ง encrypted และ plaintext format
-
-**46. Design Changes (Jan 13):**
-• เปลี่ยนจากส่ง data เป็น parameter → ใช้ globals()[name] lookup
-• เปลี่ยนชื่อตัวแปร: current → data, last_snapshot → snap, content → dump
+**45-46. Configuration และ Design Changes:**
+• เปลี่ยน encryption setting ตาม design
+• เปลี่ยนจากส่ง data เป็น parameter → ใช้ globals() lookup
 
 **Results:** -755 lines, -7 classes, -6 locks, -1 C extension
-**Status:** ✅ COMPLETE (Active Development)</p>
+**Status:** ✅ COMPLETE</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-009</small>
@@ -421,45 +417,17 @@
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part H: Bug Fixes - Jan 9, 2026</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🐛 **Bug Fixes (Jan 9, 2026) - Items 36-37:**
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">**36. Dict .get() Default Parameter Bug Fix (18 จุด)** - แก้ปัญหา .get('***', default) คืน default เฉพาะเมื่อ *** ไม่มีเท่านั้น ถ้า *** มีอยู่แต่ค่าเป็น None หรือ '' จะคืนค่านั้นไม่ใช่ default
 
-**36. Dict .get() Default Parameter Bug Fix (18 จุด):**
+**Error ที่เกิดขึ้น:** None.get() → AttributeError, ''.get() → AttributeError, None <= 100 → TypeError, int('') → ValueError
 
-**ปัญหาที่พบ:**
-• .get('***', default) คืน default เฉพาะเมื่อ *** ไม่มีเท่านั้น
-• ถ้า *** มีอยู่แต่ค่าเป็น None หรือ '' → คืนค่านั้น ไม่ใช่ default
+**การแก้ไข:**
+• Type 1 (5 จุด): .get('***', 0) → (.get('***') or 0)
+• Type 2 (5 จุด): .get('***', '0').split() → (.get('***') or '0').split()
+• Type 3 (2 จุด): dict.get('***', {}).get('subkey', '') → ((dict.get('***') or {}).get('subkey') or '')
+• Type 4 (6 จุด): func().get('***', '').split() → (func().get('***') or '').split()
 
-**Error ที่เกิดขึ้น:**
-• None.get() → AttributeError: 'NoneType' object has no attribute 'get'
-• ''.get() → AttributeError: 'str' object has no attribute 'get'
-• None <= 100 → TypeError: '<=' not supported between instances of 'NoneType' and 'int'
-• int('') → ValueError: invalid literal for int() with base 10: ''
-
-**การแก้ไข (18 จุด):**
-
-Type 1: Numeric Default (5 จุด)
-• Before: .get('available', 0)
-• After: (.get('available') or 0)
-
-Type 2: String Default (5 จุด)
-• Before: .get('core_liquid_balance', '0').split(' ')[0]
-• After: (.get('core_liquid_balance') or '0').split(' ')[0]
-
-Type 3: Dict Default (2 จุด)
-• Before: WAS*****['open'][_].get('tick', {}).get('text', '')
-• After: ((WAS*****['open'][_].get('tick') or {}).get('text') or '')
-
-Type 4: aut*************() Maximum Safety (6 จุด)
-• Before: aut*************(...).get('text', '').split(' ')[0]
-• After: (aut*************(...).get('text') or '').split(' ')[0]
-
-**37. Additional Sleep for Rate Limiting:**
-• เพิ่ม time.sleep(1.95) สำหรับ rate limiting เพิ่มเติม
-• ป้องกันการเรียก API ถี่เกินไป
-
-**เอกสารอ้างอิง:**
-• bugs/dict-get-default-parameter-bug.md
-• docs/besp - Best Practices/python-dict-access.md</p>
+**37. Additional Sleep for Rate Limiting** - เพิ่ม time.sleep(1.95) ป้องกัน API rate limit</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-008</small>
@@ -481,30 +449,11 @@ Type 4: aut*************() Maximum Safety (6 จุด)
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part G: Code Style & Structure (Items 35-37)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">📝 **Code Style & Structure (Items 33-35):**
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">**33. Code Formatting & Compaction** - ย่อ multi-line dict definitions เป็น single line ลด ~250 lines ใน data structures ต่างๆ
 
-**33. Code Formatting & Compaction:**
-• Compact multi-line dict definitions เป็น single line
-• ลดจำนวนบรรทัดโดยไม่เปลี่ยน logic
-• Before: 'abundant': {\n    'mtx': 0\n},
-• After: 'abundant': {'mtx': 0}, 'common': {'mtx': 0}, ...
-• Structures affected: MAI*******, SEN****, AUT*****, DB['POOLDATA']['fr']
+**34. Centralized Constant Usage (50+ instances)** - แทนที่ hardcoded zero hash str*** (64 chars) ด้วย centralized constant ทำให้ code maintainable และ consistent
 
-**34. SUBSET.var['001'] Constant Usage (50+ instances):**
-• แทนที่ hardcoded '0000...0000' (64 chars) ด้วย SUBSET.var['001']
-• ทำให้ code maintainable และ consistent
-• Centralize Zero Hash constant
-
-**35. ~~File Mode Text → Binary~~ → Text Mode (ย้อนกลับแล้ว):**
-• สถานะปัจจุบัน: ใช้ text mode 'w' กับ json.dumps()
-• เหตุผล: stdlib json คืน str*** ไม่ใช่ bytes
-• Files affected: db-update.json, tk-update.json, wcw.json, cle.json, rep.dum/rep.dat
-
-**Code Organization:**
-• ปรับโครงสร้าง code ให้อ่านง่ายขึ้น
-• Import Cleanup - จัดระเบียบ imports และลบ unused imports
-• Comment Improvements - ปรับปรุง comments ให้ชัดเจนขึ้น
-• Dead Code Removal - ลบ code ที่ไม่ได้ใช้งาน</p>
+**35. ~~File Mode Text → Binary~~ → Text Mode (ย้อนกลับแล้ว)** - สถานะปัจจุบัน: ใช้ text mode 'w' กับ json.dumps() เนื่องจาก stdlib json คืน str***</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-007</small>
@@ -526,28 +475,9 @@ Type 4: aut*************() Maximum Safety (6 จุด)
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part F: Configuration Changes (Items 33-34)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">⚙️ **Configuration Changes (Items 31-32):**
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">**31. Proxy Configuration Changes** - ปรับ weight ของ pro** providers เปลี่ยนจาก LightningProxies (SG) → ByteZero (NL)
 
-**31. Proxy Configuration Changes:**
-• ปรับ weight ของ pro** providers
-• เปลี่ยนจาก LightningProxies (SG) → ByteZero (NL)
-• LightningProxies SG: * 2 → * 0
-• ByteZero NL: * 0 → * 2
-
-**32. aut*****() *** Generation Conditions:**
-• เพิ่ม *** generation conditions สำหรับ public-legacy[3] <= 4
-• ปรับปรุง log**** ด้วย sty**().GRE** และ sty**().WHI**
-• Logic: if int(AUT*****['AUTHKEY'][0]["public-legacy"][3]) <= 4: # New *** generation
-
-**Constants Optimization:**
-• ปรับค่า constants สำหรับ better performance และ stability
-
-**Environment Variables:**
-• ปรับปรุงการจัดการ environment variables
-
-**Timing Adjustments:**
-• ปรับ sleep intervals และ timeout values
-• เพิ่ม time.sleep() สำหรับ rate limiting ใน API calls</p>
+**32. Auth *** Generation Conditions** - เพิ่ม *** generation conditions สำหรับ public-legacy[3] <= 4 พร้อมปรับปรุง log**** ด้วย color styling</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-006</small>
@@ -569,37 +499,17 @@ Type 4: aut*************() Maximum Safety (6 จุด)
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part E: Safe Dict Access Patterns (Items 29-32)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🛡️ **Safe Dict Access Patterns (Items 29-32):**
-
-**30. Safe Dict Access with .get() (50+ instances):**
-• เพิ่ม safe dict access patterns ด้วย chained .get() calls
-• ป้องกัน KeyError exceptions จาก direct access
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">**30. Safe Dict Access with .get() (50+ instances)** - เพิ่ม safe dict access patterns ด้วย chained .get() calls ป้องกัน KeyError exceptions จาก direct access
 
 **Patterns ที่ใช้:**
-• Pattern 1: Simple .get() with default
-  DB['POOLDATA']['db'].get(self.DATA['waxid'])
+• Pattern 1: dict.get('***') - Simple .get() with default
+• Pattern 2: dict.get('***', {}).get('subkey') - Chained .get() with empty dict default
+• Pattern 3: nested_dict.get('***', {}).get('nested') - Deep nested access
+• Pattern 4: .get('a', {}).get('b', {}).get('c', {}).get('d') - Very deep nested access
 
-• Pattern 2: Chained .get() with empty dict default
-  DB['POOLDATA']['db'].get(self.DATA['waxid'], {}).get('mke*')
+**ปัญหาที่แก้ไข:** KeyError เมื่อ *** ไม่มีอยู่, NoneType errors เมื่อ nested access, Defensive coding สำหรับ dict operations
 
-• Pattern 3: Deep nested access
-  tk['POOLDATA']['db'].get(self.DATA['waxid'], {}).get('private')
-
-• Pattern 4: Very deep nested access
-  .get('ver*', {}).get('fw', {}).get('cf', {}).get('key_mine')
-
-**Locations (50+ instances):**
-• DB['POOLDATA']['db'].get(...) checks
-• tk['POOLDATA']['db'].get(...) checks
-• Nested dict access throughout codebase
-
-**ปัญหาที่แก้ไข:**
-• KeyError เมื่อ *** ไม่มีอยู่
-• NoneType errors เมื่อ nested access
-• Defensive coding สำหรับ dict operations
-
-**Best Practice:**
-dict.get('***', {}).get('subkey', default_value)</p>
+**Best Practice:** dict.get('***', {}).get('subkey', default_value)</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-005</small>
@@ -621,35 +531,15 @@ dict.get('***', {}).get('subkey', default_value)</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part D: Major Refactoring (Items 25-28)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🏗️ **Major Refactoring (Items 25-29):**
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">**25. Auth Data Class - Complete Refactoring** - ปรับโครงสร้าง auth data class ใหม่ มี Singleton pattern, Auto-Save Dict สำหรับ auto-save, debounce mechanism, file locking, flush() method สำหรับ immediate write
 
-**25. AUT***** Class - Complete Refactoring:**
-• Singleton pattern with _instance และ _instance_lock
-• _AutoSaveDict สำหรับ automatic persistence
-• Debounce mechanism: _schedule_write() และ _execute_write()
-• File locking: _acquire_file_lock() และ _release_file_lock()
-• flush() method สำหรับ immediate write
-• invalidate_cache() และ reset_instance() class methods
+**26. Auto-Save Dict Class (Auto-Persist Storage)** - เพิ่ม auto-save dict class ที่ override __setitem__, __delitem__, upd***(), pop() เพื่อ trigger save อัตโนมัติเมื่อ data เปลี่ยน
 
-**26. _AutoSaveDict Class (Auto-Persist Storage):**
-• เพิ่ม _AutoSaveDict(dict) class สำหรับ auto-save และ thr*** safety
-• Override __setitem__, __delitem__, upd***(), pop()
-• Callback mechanism สำหรับ trigger _schedule_write() อัตโนมัติเมื่อ data เปลี่ยน
+**27. ~~Storage Backend with In-Memory Caching~~ (ยกเลิกแล้ว)** - สถานะปัจจุบัน: ใช้ Simple DBSync pattern ด้วย global dicts + recursive cop* + stdlib json แทน class wrappers
 
-**27. ~~AnchdataStorageBackend with In-Memory Caching~~ (ยกเลิกแล้ว):**
-• สถานะปัจจุบัน: ใช้ Simple DBSync pattern ด้วย global dicts + dbs***() + stdlib json
-• เหตุผล: Simple DBSync Migration ใช้รูปแบบ simple dict แทน class wrappers
+**28. API Stack Class - Method Consolidation** - ลบ method ที่ซ้ำซ้อน รวมเข้ากับ method หลักพร้อม mode parameter และเพิ่ม time.sleep() สำหรับ rate limiting
 
-**28. AWS*** Class - dfupdate() Consolidation:**
-• ลบ dfupdate() method ที่ซ้ำซ้อน
-• รวมเข้ากับ dbu*****(self, mode='') พร้อม mode parameter
-• เพิ่ม time.sleep(0.10) สำหรับ rate limiting
-
-**29. REA******* Initialization Move:**
-• ย้าย REA******* initialization จาก BEF*********************() ไปยัง before_first_request()
-• ให้ตรง Fla** lifecycle
-
-**หมายเหตุ:** AnchdataStorageBackend with In-Memory Caching ถูกยกเลิกใน Simple DBSync Migration - ใช้ simple dict + dbs***() แทน</p>
+**29. Realtime DB Initialization Move** - ย้าย realtime database initialization ให้ตรง Fla** lifecycle</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-004</small>
@@ -671,46 +561,23 @@ dict.get('***', {}).get('subkey', default_value)</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part C: Performance Optimizations (Items 15-24)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">⚡ **Performance Optimizations (Items 15-24):**
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">**15. copy.deepcopy() → dict() Optimization (13 จุด)** - แทนที่ copy.deepcopy() ด้วย dict() shallow cop* ในจุดที่ปลอดภัย ลด overhead จาก deep cop* ที่ไม่จำเป็น เร็วขึ้น 10-50x
 
-**15. copy.deepcopy() → dict() Optimization (13 จุด):**
-• แทนที่ copy.deepcopy() ด้วย dict() shallow cop* ในจุดที่ปลอดภัย
-• ลด overhead จาก deep cop* ที่ไม่จำเป็น เร็วขึ้น 10-50x
-• จุดที่แก้ไข: DB['POOLDATA']['db'], DB['POOLDATA']['fr']['teamp'], WCW*******, WAS*****['push']
+**16. Dict Copy Simplification** - แทนที่ dict comprehension ด้วย dict() constructor ลดความซับซ้อนและเพิ่มประสิทธิภาพ
 
-**16. WAS***** Dict Copy Simplification:**
-• แทนที่ {**{k: v for k, v in WAS*****['wait'].items()}} ด้วย dict(WAS*****['wait'])
-• ลดความซับซ้อนและเพิ่มประสิทธิภาพ
+**17. _th**** → gevent.spawn Migration** - เปลี่ยน _thread.start_new_thread() เป็น gevent.spawn() ป้องกัน race condition และ SIGSEGV
 
-**17. _th**** → gevent.spawn Migration:**
-• เปลี่ยน _thread.start_new_thread(self.run_client, ()) เป็น self.greenlet = gevent.spawn(self.run_client)
-• ป้องกัน race condition และ SIGSEGV
+**18-19. ~~orjson in WebSocket/File Writes~~ (ยกเลิกแล้ว)** - สถานะปัจจุบัน: ใช้ json.loads()/json.dumps() (stdlib) และ text mode 'w'/'r'
 
-**18-19. ~~orjson in WebSocket/File Writes~~ (ยกเลิกแล้ว):**
-• สถานะปัจจุบัน: ใช้ json.loads()/json.dumps() (stdlib)
-• File mode: text mode 'w'/'r' (json ใช้ str*** ไม่ใช่ bytes)
+**20. _thread.allocate_lock() → threading.Lock()** - เปลี่ยน lock allocation ให้ compatible กับ gev*** mon*** patching
 
-**20. _thread.allocate_lock() → threading.Lock():**
-• เปลี่ยน lock = _thread.allocate_lock() เป็น lock = threading.Lock()
-• ให้ compatible กับ gev*** mon*** patching
+**21. app.run() → WSG******* Migration** - เปลี่ยนเป็น gevent-native WSGI server
 
-**21. app.run() → WSG******* Migration:**
-• เปลี่ยน app.run(host='0.0.0.0', port=POR*) เป็น WSG*******(('0.0.0.0', POR*), ***).serve_forever()
-• ใช้ gevent-native WSGI server
+**22. Random Sleep Interval Tuning** - ปรับ random.uniform() ranges ลด latency ใน main loop
 
-**22. Random Sleep Interval Tuning:**
-• ปรับ random.uniform(10.25, 40.75) → random.uniform(10.25, 22.75)
-• ลด latency ใน main loop
+**23. WebSocket run_forever() Optimization** - เพิ่ม ping_interval=30, ping_timeout=10, skip_utf8_validation=True เพิ่ม heartbeat และลด overhead
 
-**23. WebSocket run_forever() Optimization:**
-• เพิ่ม ws.run_forever(ping_interval=30, ping_timeout=10, skip_utf8_validation=True)
-• เพิ่ม heartbeat และลด overhead
-
-**24. ~~_deep_copy() with orjson~~ → dbs***() (ยกเลิกแล้ว):**
-• สถานะปัจจุบัน: ใช้ dbs***() recursive cop* แทน
-• เร็วกว่า deepcopy 3.3x โดยไม่ต้องพึ่ง C extension
-
-**หมายเหตุ:** orjson-related items (18, 19, 24) ถูกยกเลิกใน Simple DBSync Migration - ใช้ stdlib json แทน</p>
+**24. ~~_deep_copy() with orjson~~ → recursive cop* (ยกเลิกแล้ว)** - สถานะปัจจุบัน: ใช้ recursive cop* function แทน เร็วกว่า deepcopy 3.3x โดยไม่ต้องพึ่ง C extension</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-003</small>
@@ -732,54 +599,25 @@ dict.get('***', {}).get('subkey', default_value)</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part B: New Features (Items 5-14)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">✨ **New Features (Items 5-14):**
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">**5. Logging Module** - เพิ่ม log**** module รองรับ init_faultlog(), init_syslog(), syslog(), log_exception(), dump_threads(), dump_greenlets(), dump_system(), start_profiling(), stop_profiling() สำหรับ crash debugging และ py-spy integration
 
-**5. Logging Module (mod**********):**
-• เพิ่ม mod********** สำหรับ log**** และ monitoring
-• รองรับ init_faultlog(), init_syslog(), syslog(), log_exception()
-• Deep Debugging: dump_threads(), dump_greenlets(), dump_system(), get_stats_detailed()
-• Profiling (py-spy integration): start_profiling(), stop_profiling(), is_profiling()
-• Network Debug: enable_network_debug()
+**6. ~~orjson Integration~~ → stdlib json (ยกเลิกแล้ว)** - ยกเลิก orjson แล้ว เปลี่ยนกลับไปใช้ import json (stdlib) เพื่อลด C extension dependencies และเพิ่มความเข้ากันได้ข้าม platform
 
-**6. ~~orjson Integration~~ → stdlib json (ยกเลิกแล้ว):**
-• สถานะปัจจุบัน: ใช้ import json (stdlib) เท่านั้น
-• เหตุผล: ลด C extension dependencies, เพิ่มความเข้ากันได้ข้าม platform
+**7. Centralized Constants Class** - เพิ่ม class เก็บค่า constants เช่น zero hash 64 chars ใช้แทน hardcoded str*** กว่า 50 จุดในโค้ด
 
-**7. SUB*** Class (Centralized Constants):**
-• เพิ่ม class SUB*** สำหรับ variable storage
-• SUBSET.var['001'] = '0' * 64 (zero hash 64 chars)
-• ใช้แทน hardcoded str*** กว่า 50 จุดในโค้ด
+**8. Dict Wrapper Enhancement (Nested Dict Auto-Wrap)** - ปรับปรุง dict wrapper class ให้ auto-wrap nested dict พร้อม callback trigger เมื่อมีการเปลี่ยนแปลงค่า
 
-**8. TriggerDict Enhancement (Nested Dict Auto-Wrap):**
-• ปรับปรุง TriggerDict ให้รองรับ nested dict
-• Auto-wrap nested dict เป็น TriggerDict พร้อม callback trigger
+**9. Resource PowerUp Mode Parameter** - เพิ่ม mode parameter สำหรับ res***** powerup function รองรับ mode='ram' ซื้อ CPU+NET+RAM ใน transaction เดียว
 
-**9. pow************() Mode Parameter:**
-• เพิ่ม mode parameter: pow************(self, mode='')
-• รองรับ mode='ram' สำหรับ action powerup_cpu_net_ram_private
-• ซื้อ CPU+NET+RAM ใน transaction เดียว
+**10. Auth Sort Mode Parameter** - เพิ่ม mode parameter สำหรับ auth function รองรับ mode='sort' จัดลำดับ *** ใน transaction
 
-**10. aut*****() Mode Parameter:**
-• เพิ่ม mode parameter: aut*****(mode='')
-• รองรับ mode='sort' สำหรับ action authsort
+**11. Memo Account New Thread Mode** - เพิ่ม mode=2 สำหรับ memo account function รองรับ thr*** ใหม่จัดการ account ที่ถูก clear จาก Team Pool
 
-**11. mem*********(2) - New Thread Mode:**
-• เพิ่ม mode=2 สำหรับ mem*********() function
-• รองรับ thr*** ใหม่สำหรับ memo processing
+**12. Team Pool Endpoint Statistics** - เพิ่ม info.calc.gain และ info.calc.cons statistics ใน Team Pool API response
 
-**12. /teamp Endpoint Statistics:**
-• เพิ่ม info.calc.gain และ info.calc.cons statistics
-• แสดงข้อมูล calculation ใน response
+**13. res****() และ res****() Logging** - เพิ่ม log**** บันทึก timestamp ทุกครั้งที่มี recovery/res****
 
-**13. res****() และ res****() Logging:**
-• เพิ่ม log**** ไปยัง -res.log สำหรับ res**** และ res**** operations
-• บันทึก timestamp ทุกครั้งที่มี recovery/res****
-
-**14. Critical Error Logging (-brk.log):**
-• เพิ่ม log**** สำหรับ critical errors ไปยัง -brk.log
-• บันทึก critical errors แยกไฟล์สำหรับ troubleshooting
-
-**หมายเหตุ:** orjson Integration ถูกยกเลิกใน Simple DBSync Migration</p>
+**14. Critical Error Logging** - เพิ่ม log**** บันทึก critical errors แยกไฟล์สำหรับ troubleshooting</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-002</small>
@@ -801,32 +639,13 @@ dict.get('***', {}).get('subkey', default_value)</p>
         </div>
         <div class="card-body">
             <h6 class="card-title" style="color: #1E293B; font-family: Poppins, sans-serif; font-weight: 700; margin-bottom: 0.75rem;">Part A: Critical Fixes (Items 1-4)</h6>
-            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">🔧 **Critical Bug Fixes (Items 1-4):**
+            <p class="card-text" style="color: #475569; font-family: Open Sans, sans-serif; margin-bottom: 0.75rem; white-space: pre-wrap; word-wrap: break-word;">**1. Exit Code Wrapper (Self-contained)** - เพิ่ม bash wrapper ที่ต้นไฟล์ตรวจจับ exit code และ signal crashes (SIGSEGV=139, SIGKILL=137, SIGTERM=143) บันทึกลง log อัตโนมัติ ไม่ต้องพึ่ง external wrapper script อีกต่อไป
 
-**1. Exit Code Wrapper (Self-contained):**
-• เพิ่ม self-contained exit code wrapper ที่ต้นไฟล์
-• ไม่ต้องใช้ external wrapper.sh อีกต่อไป
-• บันทึก exit code และ signal ลง log file อัตโนมัติ
-• Signals Supported: SIGHUP(129), SIGINT(130), SIGABRT(134), SIGKILL(137), SIGSEGV(139), SIGPIPE(141), SIGTERM(143)
+**2. Gevent Monkey Patching (ย้ายตำแหน่ง)** - ย้าย monkey.patch_all() ไปอยู่ต้นไฟล์ก่อน import อื่นๆ ทั้งหมด เพื่อป้องกัน deadlock จาก thr******/gev*** conflict
 
-**2. Gevent Monkey Patching (ย้ายตำแหน่ง):**
-• ย้าย monkey.patch_all() ไปอยู่ต้นไฟล์ก่อน import อื่นๆ ทั้งหมด
-• เพิ่ม import gev*** หลัง mon*** patching
-• ป้องกันปัญหา thr******/gev*** compatibility และ deadlock
+**3. SIGSEGV Fix - threading.Timer → gevent.spawn_later (Critical)** - แก้ปัญหา Segmentation Fault (exit code 139) โดยเปลี่ยนจาก threading.Timer เป็น gevent.spawn_later พร้อมเพิ่ม Snapshot Pattern ป้องกัน race condition ระหว่าง Native Thread และ Greenlets
 
-**3. SIGSEGV Fix - threading.Timer → gevent.spawn_later (Critical):**
-• เปลี่ยนจาก threading.Timer เป็น gevent.spawn_later
-• เพิ่ม Snapshot Pattern: repData = dict(WAS*****) ป้องกัน race condition
-• ป้องกัน race condition ระหว่าง Native Thread และ Greenlets
-• แก้ปัญหา Segmentation Fault (exit code 139) ใน repl_triggle() function
-
-**4. FREEZE Detection Improvement:**
-• เพิ่ม range ของ FREEZE detection จาก 6 → 15 characters
-• เพิ่ม log**** เมื่อเกิด FREEZE: echo "FREEZE $(date)" >> log/$PART-res.log
-
-**เอกสารอ้างอิง:**
-• bugs/sigsegv-crash-analysis.md
-• refactor/Kiro Opus/wiki/gevent-threading-compatibility-analysis.md</p>
+**4. FREEZE Detection Improvement** - เพิ่ม range ของ FREEZE detection จาก 6 → 15 characters ใน regex pattern และเพิ่ม log**** เมื่อตรวจพบ freeze</p>
             
             
             <small class="text-muted d-block mt-2"><i class="bi bi-hash ms-2 me-1"></i>dev-2026-01-16-001</small>
